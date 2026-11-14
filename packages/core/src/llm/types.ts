@@ -25,6 +25,12 @@ export interface LlmEndpoint {
   /** Keychain slot the native side reads the key from. */
   keyRef: string;
   /**
+   * False for a server on this machine (Ollama, LM Studio, vLLM), which usually
+   * takes no key. Defaults to true: a provider that needs one and gets none
+   * fails with a message the user can act on.
+   */
+  needsKey?: boolean;
+  /**
    * The model's whole window in tokens, when the user stated it — local servers
    * name their models but not what they can read at once.
    */

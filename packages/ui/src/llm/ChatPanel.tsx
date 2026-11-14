@@ -226,7 +226,11 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
     streamBuffer.current = "";
     setStreaming("");
     try {
-      await transport.start(requestId, buildChatRequest({ endpoint: active, messages, maxOutputTokens: 1_024 }), active.keyRef);
+      await transport.start(
+        requestId,
+        buildChatRequest({ endpoint: active, messages, maxOutputTokens: 1_024 }),
+        active.needsKey === false ? null : active.keyRef,
+      );
     } catch (cause) {
       requestRef.current = null;
       decoderRef.current = null;
@@ -290,6 +294,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
       baseUrl: normalized.baseUrl,
       model: draft.model.trim(),
       keyRef: `llm.${draft.id}`,
+      ...(normalized.local && !draft.key.trim() ? { needsKey: false } : {}),
     };
     const others = config.endpoints.filter((e) => e.id !== endpoint.id);
     await persist({ endpoints: [...others, endpoint], activeId: endpoint.id });
@@ -329,7 +334,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
         await transport.setKey(endpoint.keyRef, draft.key.trim());
         setKeys((prev) => ({ ...prev, [draft.id]: true }));
       }
-      const body = await transport.models(buildModelsRequest(endpoint), endpoint.keyRef);
+      const body = await transport.models(buildModelsRequest(endpoint), endpoint.needsKey === false ? null : endpoint.keyRef);
       const ids = parseModels(JSON.parse(body));
       setTestNote(ids.length ? t("ai.testOk", { n: ids.length }) : t("ai.testEmpty"));
     } catch (cause) {
@@ -359,7 +364,8 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)" }}>
               <strong>{endpoint.label}</strong>
               <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }}>
-                {endpoint.model || t("ai.noModel")} · {keys[endpoint.id] ? t("ai.keyStored") : t("ai.keyNotStored")}
+                {endpoint.model || t("ai.noModel")}
+                {endpoint.needsKey === false ? "" : ` · ${keys[endpoint.id] ? t("ai.keyStored") : t("ai.keyNotStored")}`}
               </span>
             </div>
             <span style={{ marginInlineStart: "auto", display: "flex", gap: "var(--space-2)" }}>
@@ -386,7 +392,9 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
             <TextInput aria-label={t("ai.name")} placeholder={t("ai.name")} value={draft.label} onChange={(e) => setDraft({ ...draft, label: e.target.value })} purpose="name" />
             <TextInput aria-label={t("ai.address")} placeholder={t("ai.address")} value={draft.baseUrl} onChange={(e) => setDraft({ ...draft, baseUrl: e.target.value })} purpose="address" />
             <TextInput aria-label={t("ai.model")} placeholder={t("ai.model")} value={draft.model} onChange={(e) => setDraft({ ...draft, model: e.target.value })} purpose="code" />
-            <TextInput aria-label={t("ai.key")} placeholder={t("ai.key")} type="password" value={draft.key} onChange={(e) => setDraft({ ...draft, key: e.target.value })} purpose="secret" autoComplete="off" />
+            {!(normalizeBaseUrl(draft.baseUrl)?.local ?? false) && (
+              <TextInput aria-label={t("ai.key")} placeholder={t("ai.key")} type="password" value={draft.key} onChange={(e) => setDraft({ ...draft, key: e.target.value })} purpose="secret" autoComplete="off" />
+            )}
             <SelectField
               aria-label={t("ai.providers")}
               value={draft.protocol}

@@ -39,6 +39,8 @@ Built-in presets:
 | OpenAI | cloud |
 | Anthropic | cloud |
 | DeepSeek | cloud |
+| Ollama | on this Mac, no key |
+| LM Studio | on this Mac, no key |
 
 Plus **any OpenAI-compatible endpoint**: give it a name, a base URL such as
 `https://your-server/v1`, and a token. This covers self-hosted servers, gateways

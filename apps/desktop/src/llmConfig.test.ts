@@ -62,11 +62,22 @@ describe("stored chat endpoints", () => {
     expect(nextCustomId([{ id: "custom-1", label: "x", protocol: "openai-chat", baseUrl: "https://x/v1", model: "", keyRef: "llm.custom-1" }])).toBe("custom-2");
   });
 
-  it("ships OpenAI, Anthropic and DeepSeek with usable addresses", () => {
-    expect(LLM_PRESETS.map((p) => p.id)).toEqual(["openai", "anthropic", "deepseek"]);
+  it("ships the three cloud providers and the two local servers", () => {
+    expect(LLM_PRESETS.map((p) => p.id)).toEqual(["openai", "anthropic", "ollama", "lmstudio", "deepseek"]);
     for (const preset of LLM_PRESETS) {
-      expect(preset.baseUrl.startsWith("https://")).toBe(true);
-      expect(preset.model.length).toBeGreaterThan(0);
+      const cloud = preset.needsKey !== false;
+      expect(preset.baseUrl.startsWith(cloud ? "https://" : "http://localhost:")).toBe(true);
     }
+    // A server on this machine takes no key; a cloud provider does.
+    expect(LLM_PRESETS.filter((p) => p.needsKey === false).map((p) => p.id)).toEqual(["ollama", "lmstudio"]);
+  });
+
+  it("keeps a local endpoint keyless across a restart", () => {
+    const config = readLlmConfig({
+      endpoints: [
+        { id: "ollama", protocol: "openai-chat", baseUrl: "http://localhost:11434/v1", model: "llama3.2", needsKey: false },
+      ],
+    });
+    expect(config.endpoints[0]?.needsKey).toBe(false);
   });
 });

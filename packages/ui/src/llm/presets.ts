@@ -15,8 +15,10 @@ export interface LlmPreset {
   protocol: LlmEndpoint["protocol"];
   baseUrl: string;
   model: string;
-  /** Where the user creates a key. */
+  /** Where the user creates a key; empty for a server on this machine. */
   keyUrl: string;
+  /** False for a server that runs here and takes no key. */
+  needsKey?: boolean;
 }
 
 export const LLM_PRESETS: readonly LlmPreset[] = [
@@ -35,6 +37,24 @@ export const LLM_PRESETS: readonly LlmPreset[] = [
     baseUrl: "https://api.anthropic.com/v1",
     model: "claude-sonnet-4-5",
     keyUrl: "https://console.anthropic.com/settings/keys",
+  },
+  {
+    id: "ollama",
+    label: "Ollama",
+    protocol: "openai-chat",
+    baseUrl: "http://localhost:11434/v1",
+    model: "llama3.2",
+    keyUrl: "",
+    needsKey: false,
+  },
+  {
+    id: "lmstudio",
+    label: "LM Studio",
+    protocol: "openai-chat",
+    baseUrl: "http://localhost:1234/v1",
+    model: "",
+    keyUrl: "",
+    needsKey: false,
   },
   {
     id: "deepseek",
@@ -67,12 +87,13 @@ export function endpointFromPreset(preset: LlmPreset): LlmEndpoint {
     baseUrl: preset.baseUrl,
     model: preset.model,
     keyRef: `llm.${preset.id}`,
+    ...(preset.needsKey === false ? { needsKey: false } : {}),
   };
 }
 
 /** A provider the user named themselves — any OpenAI-compatible server. */
-export function customEndpoint(id: string, label: string, baseUrl: string, model: string): LlmEndpoint {
-  return { id, label, protocol: "openai-chat", baseUrl, model, keyRef: `llm.${id}` };
+export function customEndpoint(id: string, label: string, baseUrl: string, model: string, needsKey = true): LlmEndpoint {
+  return { id, label, protocol: "openai-chat", baseUrl, model, keyRef: `llm.${id}`, ...(needsKey ? {} : { needsKey: false }) };
 }
 
 /** Reads what was stored, and keeps only what is still a valid endpoint. */
@@ -91,6 +112,7 @@ export function readLlmConfig(raw: unknown): LlmConfig {
       baseUrl: candidate.baseUrl,
       model: typeof candidate.model === "string" ? candidate.model : "",
       keyRef: typeof candidate.keyRef === "string" && candidate.keyRef ? candidate.keyRef : `llm.${candidate.id}`,
+      ...(candidate.needsKey === false ? { needsKey: false } : {}),
       ...(typeof candidate.contextTokens === "number" && candidate.contextTokens > 0
         ? { contextTokens: candidate.contextTokens }
         : {}),
