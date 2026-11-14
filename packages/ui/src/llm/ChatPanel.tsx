@@ -103,6 +103,9 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
       const stored = readLlmConfig(await store.get(CONFIG_KEY));
       if (cancelled) return;
       setConfig(stored);
+      // Nothing to talk to yet: open the provider list instead of an empty
+      // chat that can only fail.
+      if (stored.endpoints.length === 0) setView("config");
       const presence: Record<string, boolean> = {};
       for (const endpoint of stored.endpoints) {
         presence[endpoint.id] = await transport.hasKey(endpoint.keyRef).catch(() => false);
