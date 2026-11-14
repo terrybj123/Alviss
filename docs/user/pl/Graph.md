@@ -2,7 +2,7 @@
 
 Stan na: 2026-11-02
 
-Graf Plainva to narzędzie do pracy, nie plakat: pokazuje, gdzie jesteś, co jest połączone, czego brakuje — i możesz działać na tym bezpośrednio. Istnieje JEDEN silnik grafu w trzech odsłonach.
+Graf Alviss to narzędzie do pracy, nie plakat: pokazuje, gdzie jesteś, co jest połączone, czego brakuje — i możesz działać na tym bezpośrednio. Istnieje JEDEN silnik grafu w trzech odsłonach.
 
 ## Graf kontekstowy (prawy pasek boczny)
 
@@ -22,14 +22,14 @@ Narzędzia na pasku nagłówka:
 
 - Style krawędzi na pierwszy rzut oka (legenda, w lewym dolnym rogu): **relacje** to ciągłe linie akcentu z etykietą, **linki** są przerywane, **osadzenia** kropkowane.
 - **Szukaj** przyciemnia wszystko, co nie pasuje. Filtruj według **typu** (OKF) i **tagu**; rodzaje krawędzi (**Linki**, **Relacje**, **Osadzenia**) przełącza się pojedynczo.
-- Notatki przeglądowe zarządzane przez Plainva (`index.md` i `log.md`) są domyślnie ukryte — linkują niemal do wszystkiego i przeciążyłyby graf; dotyczy to również grafu kontekstowego i grafu bazy danych. Na mapie sejfu przywracasz je przyciskiem **Filtry** za pomocą pola wyboru **Pokaż index.md**.
+- Notatki przeglądowe zarządzane przez Alviss (`index.md` i `log.md`) są domyślnie ukryte — linkują niemal do wszystkiego i przeciążyłyby graf; dotyczy to również grafu kontekstowego i grafu bazy danych. Na mapie sejfu przywracasz je przyciskiem **Filtry** za pomocą pola wyboru **Pokaż index.md**.
 - **Skup na zaznaczeniu** zawęża mapę do wybranej notatki plus 1–3 kroki sąsiedztwa.
 - **Mapa ciepła** rozjaśnia niedawno edytowane notatki (7/30/90 dni) — „nad czym ostatnio pracowałem?”.
 - **Podróż w czasie** pokazuje notatki według daty utworzenia; suwak odtwarza wzrost Twojego sejfu. Data pochodzi z właściwości `date`/`datum`, w przeciwnym razie z daty utworzenia pliku (przybliżenie dla sejfów wyłącznie w chmurze).
 
 Praca na mapie:
 
-- Przeciągnij jeden węzeł **na** drugi: Plainva proponuje zapisanie linku tekstowego — lub bezpośrednio pasującą **relację** z Twoich baz danych (jeśli relacja dopuszcza dokładnie jeden wpis, Plainva pyta przed zastąpieniem).
+- Przeciągnij jeden węzeł **na** drugi: Alviss proponuje zapisanie linku tekstowego — lub bezpośrednio pasującą **relację** z Twoich baz danych (jeśli relacja dopuszcza dokładnie jeden wpis, Alviss pyta przed zastąpieniem).
 - Kliknięcie prawym przyciskiem na węźle: Otwórz, Podgląd, Otwórz w podziale, **Nowa połączona notatka**, Zmień nazwę (z aktualizacją linków w całym sejfie), Dodaj zakładkę, Usuń.
 - Kliknięcie prawym przyciskiem na pustym miejscu: **Nowa notatka**, Resetuj układ, **Eksportuj jako PNG/SVG**.
 - Kliknięcie wiązki krawędzi między folderami wyświetla poszczególne linki; najechanie na krawędź pokazuje zdanie, w którym żyje link.

@@ -70,7 +70,7 @@ Chaque ligne de case à cocher porte une icône de base de données : **Déplace
 
 ## Bloquer du temps pour une tâche
 
-Une tâche a une date d'échéance et peut porter une **heure de la journée** (`2026-09-21T14:00`) — c'est à ce moment-là que Plainva vous le rappelle. Une heure est un instant, pas une durée. Lorsque vous voulez réserver un créneau pour l'une d'elles, Plainva crée un **événement** — c'est l'objet qui possède une plage horaire, s'affiche avec ses chevauchements dans la grille et se synchronise avec votre compte d'agenda.
+Une tâche a une date d'échéance et peut porter une **heure de la journée** (`2026-09-21T14:00`) — c'est à ce moment-là que Alviss vous le rappelle. Une heure est un instant, pas une durée. Lorsque vous voulez réserver un créneau pour l'une d'elles, Alviss crée un **événement** — c'est l'objet qui possède une plage horaire, s'affiche avec ses chevauchements dans la grille et se synchronise avec votre compte d'agenda.
 
 L'icône d'agenda sur une ligne de tâche ouvre **Bloquer du temps** : la date (préremplie avec l'échéance), le début et la **Durée** (15 min, 30 min, 1 h, 2 h ou **Personnalisée**), plus un sélecteur d'agenda si plusieurs agendas acceptent l'écriture. L'événement reprend le titre de la tâche et renvoie vers la note. Un **clic droit** sur la ligne affiche les mêmes actions que la feuille sur le téléphone : terminée/ouverte, déplacer vers la base, répétition, bloquer du temps.
 
@@ -78,12 +78,12 @@ Pour une tâche issue de la base de données, la note mémorise aussi le blocage
 
 ## Tâches récurrentes
 
-Une tâche qui revient régulièrement reçoit une **répétition** via l'icône de répétition dans la section **Base de tâches**. Plainva ne crée pas de **série** : cocher la tâche crée la **suivante** comme sa propre note à côté de celle qui est terminée, avec la nouvelle échéance. Ainsi, il n'y a jamais qu'une seule tâche ouverte à la fois, celle qui est terminée reste comme trace de ce qui a été fait, et il n'existe pas de série invisible dont on pourrait tout supprimer par accident — supprimez une tâche et la chaîne s'arrête.
+Une tâche qui revient régulièrement reçoit une **répétition** via l'icône de répétition dans la section **Base de tâches**. Alviss ne crée pas de **série** : cocher la tâche crée la **suivante** comme sa propre note à côté de celle qui est terminée, avec la nouvelle échéance. Ainsi, il n'y a jamais qu'une seule tâche ouverte à la fois, celle qui est terminée reste comme trace de ce qui a été fait, et il n'existe pas de série invisible dont on pourrait tout supprimer par accident — supprimez une tâche et la chaîne s'arrête.
 
 La boîte de dialogue propose trois choses :
 
 - **Rythme** — Quotidienne, Hebdomadaire, Mensuelle ou Annuelle, plus l'intervalle sous **Tous les** (par exemple « Tous les 3 » + « Quotidienne » = tous les trois jours).
-- **Compté à partir de : L'échéance** — une cadence fixe (« tous les lundis »). Cochez tardivement une tâche en retard et Plainva saute à la prochaine échéance **à venir** au lieu de remplir la liste avec celles que vous avez manquées.
+- **Compté à partir de : L'échéance** — une cadence fixe (« tous les lundis »). Cochez tardivement une tâche en retard et Alviss saute à la prochaine échéance **à venir** au lieu de remplir la liste avec celles que vous avez manquées.
 - **Compté à partir de : L'achèvement** — le rythme démarre le jour où vous la cochez (« tous les trois jours après avoir arrosé les plantes »).
 
 **Ne pas répéter** retire à nouveau la répétition. Les tâches mensuelles ne dépassent jamais la fin d'un mois : le 31 janvier plus un mois donne le 28 ou le 29 février, pas le 3 mars.
@@ -122,15 +122,15 @@ Une case à cocher vous rappelle sa tâche quand sa date d'échéance porte une 
 
 Activez-le dans **Paramètres → Calendrier → Rappels** avec **Cases à cocher avec une heure** — par vault et sur cet appareil, désactivé jusqu'à ce que vous l'activiez. Le rappel arrive à cette heure, moins l'avance réglée sous **Avance pour les tâches avec une heure**. Sur le téléphone, il propose **Cocher**, **Dans 1 heure** et **Demain matin**, comme le rappel d'une tâche de la base de tâches ; sur l'ordinateur, la notification à côté propose **Ouvrir la tâche**. Dans les deux cas, vous arrivez dans la note à la ligne de la tâche, même après que la note a été renommée ou déplacée.
 
-Une case que vous cochez, supprimez ou à laquelle vous donnez une autre heure est replanifiée en quelques secondes. Une case avec une date mais sans heure ne rappelle rien, et les notes avec `plainva.tasks: false` restent à l'écart. Plainva n'écrit rien dans la note pour un rappel. Obsidian ne connaît pas d'heure : il ne lit plus une date `📅` suivie d'une heure.
+Une case que vous cochez, supprimez ou à laquelle vous donnez une autre heure est replanifiée en quelques secondes. Une case avec une date mais sans heure ne rappelle rien, et les notes avec `plainva.tasks: false` restent à l'écart. Alviss n'écrit rien dans la note pour un rappel. Obsidian ne connaît pas d'heure : il ne lit plus une date `📅` suivie d'une heure.
 
 ## Compatibilité Obsidian
 
-Les tâches sont des cases à cocher GFM (GitHub-Flavored Markdown) ordinaires. Plainva n'ajoute jamais de syntaxe spéciale : les mêmes lignes `- [ ]` se rendent comme des cases à cocher dans Obsidian et se lisent proprement dans n'importe quel éditeur. Les conventions `📅 date` et `#tag` correspondent au style courant d'Obsidian-Tasks, mais ce ne sont que du texte dans votre note.
+Les tâches sont des cases à cocher GFM (GitHub-Flavored Markdown) ordinaires. Alviss n'ajoute jamais de syntaxe spéciale : les mêmes lignes `- [ ]` se rendent comme des cases à cocher dans Obsidian et se lisent proprement dans n'importe quel éditeur. Les conventions `📅 date` et `#tag` correspondent au style courant d'Obsidian-Tasks, mais ce ne sont que du texte dans votre note.
 
 ## Requêtes Tasks depuis Obsidian
 
-Une note venue d'Obsidian peut contenir un bloc de code `tasks` avec une requête. Plainva le dessine sous forme de liste de tâches — dans l'aperçu en direct et en mode lecture, sur le bureau comme sur le téléphone, y compris à l'intérieur d'une citation ou d'un callout :
+Une note venue d'Obsidian peut contenir un bloc de code `tasks` avec une requête. Alviss le dessine sous forme de liste de tâches — dans l'aperçu en direct et en mode lecture, sur le bureau comme sur le téléphone, y compris à l'intérieur d'une citation ou d'un callout :
 
 ````markdown
 ```tasks
@@ -141,21 +141,21 @@ sort by filename reverse
 ```
 ````
 
-La requête reste dans la note exactement comme vous l'avez écrite ; Plainva n'écrit jamais dans le bloc. Le mode source affiche toujours le texte brut.
+La requête reste dans la note exactement comme vous l'avez écrite ; Alviss n'écrit jamais dans le bloc. Le mode source affiche toujours le texte brut.
 
 ### Travailler avec la liste
 
-- Cochez la case d'une tâche : Plainva écrit la ligne de la tâche dans sa propre note — avec la date d'achèvement et la récurrence, comme dans la vue Tâches.
+- Cochez la case d'une tâche : Alviss écrit la ligne de la tâche dans sa propre note — avec la date d'achèvement et la récurrence, comme dans la vue Tâches.
 - Cliquez ou touchez une ligne : la note s'ouvre à la ligne de la tâche.
 - Clic droit sur une ligne sur le bureau, ou appui long sur le téléphone, pour ouvrir le menu de la ligne : **Terminées**/**Ouvertes**, **Modifier l'échéance**, **Définir la priorité**, **Définir l'état**.
 - Dans une note intégrée (`![[…]]`), la liste est en lecture seule : ni case à cocher, ni menu.
 - Quand le curseur se trouve dans le bloc, l'éditeur affiche la requête sous forme de texte. **Modifier la requête** place le curseur dans la requête ; sur le téléphone, la note passe d'abord en modification.
 
-Le pied du bloc affiche le nombre de tâches (« 12 tâches »), l'interrupteur **Explication** et **Modifier la requête**. **Explication** montre comment Plainva a lu chaque ligne de la requête, avec les dates sous forme de jours réels. Un grand résultat n'est pas tronqué en silence : Plainva affiche les 100 premières lignes, puis **Tout afficher (n)**.
+Le pied du bloc affiche le nombre de tâches (« 12 tâches »), l'interrupteur **Explication** et **Modifier la requête**. **Explication** montre comment Alviss a lu chaque ligne de la requête, avec les dates sous forme de jours réels. Un grand résultat n'est pas tronqué en silence : Alviss affiche les 100 premières lignes, puis **Tout afficher (n)**.
 
-### Ce que Plainva comprend
+### Ce que Alviss comprend
 
-Plainva lit ces lignes du langage de requête de Tasks :
+Alviss lit ces lignes du langage de requête de Tasks :
 
 | Sujet | Lignes |
 |---|---|
@@ -173,12 +173,12 @@ Plainva lit ces lignes du langage de requête de Tasks :
 | Affichage et quantité | `show tree`, `hide backlink`, `hide task count` et similaires, `limit 20`, `limit groups 5`, `explain` |
 | Commentaires et espaces réservés | lignes commençant par `#` ; espaces réservés comme `{{query.file.path}}`, qui renvoient à la note où se trouve la requête |
 
-### Lignes que Plainva ne peut pas suivre
+### Lignes que Alviss ne peut pas suivre
 
 Chaque ligne d'une requête relève de l'un de ces trois cas :
 
-- Une ligne qu'Obsidian connaît et que Plainva ne connaît pas encore — par exemple du code (`filter by function` ; Plainva n'exécute jamais de code issu des notes), des expressions régulières (`regex matches`), des dépendances (`is blocked`), des préréglages ou d'autres formulations de date. Une indication au-dessus de la liste nomme la ligne et la raison ; la ligne est ignorée, si bien que la liste peut afficher plus de tâches que dans Obsidian — ou dans un autre ordre, pour les lignes `sort by` et `group by`.
-- Une ligne de mise en page sans équivalent dans Plainva (`hide edit button`, `short mode`, …) est acceptée sans bruit.
+- Une ligne qu'Obsidian connaît et que Alviss ne connaît pas encore — par exemple du code (`filter by function` ; Alviss n'exécute jamais de code issu des notes), des expressions régulières (`regex matches`), des dépendances (`is blocked`), des préréglages ou d'autres formulations de date. Une indication au-dessus de la liste nomme la ligne et la raison ; la ligne est ignorée, si bien que la liste peut afficher plus de tâches que dans Obsidian — ou dans un autre ordre, pour les lignes `sort by` et `group by`.
+- Une ligne de mise en page sans équivalent dans Alviss (`hide edit button`, `short mode`, …) est acceptée sans bruit.
 - Une ligne qu'Obsidian rejette lui aussi (faute de frappe, parenthèses mélangées, date impossible) affiche une erreur avec la ligne et la raison, et aucune liste.
 
 ### Différences avec Obsidian
@@ -186,7 +186,7 @@ Chaque ligne d'une requête relève de l'un de ces trois cas :
 - « Aujourd'hui » est le jour du calendrier.
 - Les notes avec `plainva.tasks: false` comptent ici ; Obsidian ne connaît pas cette propriété.
 - Un filtre global et une requête globale définis dans Obsidian sont nommés dans l'**Explication**, mais pas appliqués.
-- Les caractères d'état personnalisés (`[>]`, `[!]`, …) ne sont pas des tâches dans Plainva.
+- Les caractères d'état personnalisés (`[>]`, `[!]`, …) ne sont pas des tâches dans Alviss.
 
 Les blocs Dataview restent du texte brut.
 
@@ -212,11 +212,11 @@ Ces fichiers correspondent à des tâches différentes. Des tâches récurrentes
 <!-- task-names-2026-09-24 -->
 ## Comment les tâches du fournisseur sont nommées
 
-Une tâche que Plainva reflète depuis une liste de tâches de votre fournisseur porte le nom de son titre : « Appeler le dentiste » devient `Appeler le dentiste.md` dans le dossier de votre base de tâches. Si le nom est déjà pris — par une note à vous ou par une deuxième tâche du même titre —, la nouvelle tâche reçoit le numéro libre suivant, comme toute autre note : `Courses 2.md`, `Courses 3.md`.
+Une tâche que Alviss reflète depuis une liste de tâches de votre fournisseur porte le nom de son titre : « Appeler le dentiste » devient `Appeler le dentiste.md` dans le dossier de votre base de tâches. Si le nom est déjà pris — par une note à vous ou par une deuxième tâche du même titre —, la nouvelle tâche reçoit le numéro libre suivant, comme toute autre note : `Courses 2.md`, `Courses 3.md`.
 
-Ce n'est pas le nom qui dit quelle tâche se trouve dans quel fichier, mais le marqueur du frontmatter (`plainva.pim`, voir la [Référence du format de fichier](File_Format_Reference.md)). Plainva ne reprend donc un nom existant que si le fichier contient la même tâche, et crée les nouvelles tâches dans le même ordre sur chaque appareil : deux appareils attribuent ainsi les mêmes numéros. Si le titre change chez le fournisseur, Plainva met à jour le titre de la note sans renommer le fichier : les liens vers la note restent valides. Vous pouvez la renommer ou la déplacer vous-même à tout moment ; le marqueur conserve le lien.
+Ce n'est pas le nom qui dit quelle tâche se trouve dans quel fichier, mais le marqueur du frontmatter (`plainva.pim`, voir la [Référence du format de fichier](File_Format_Reference.md)). Alviss ne reprend donc un nom existant que si le fichier contient la même tâche, et crée les nouvelles tâches dans le même ordre sur chaque appareil : deux appareils attribuent ainsi les mêmes numéros. Si le titre change chez le fournisseur, Alviss met à jour le titre de la note sans renommer le fichier : les liens vers la note restent valides. Vous pouvez la renommer ou la déplacer vous-même à tout moment ; le marqueur conserve le lien.
 
-**Nettoyer les noms avec identifiant.** Entre le 12 et le 24 septembre 2026, Plainva ajoutait un identifiant au nom des nouvelles notes de tâche (`Appeler le dentiste — 3f9a1c0b7d2e4a61.md`). Si votre vault contient encore de tels noms, la vue des tâches — sur l'ordinateur comme sur le téléphone — affiche une fois un avis avec la liste ancien → nouveau et le nombre de liens mis à jour avec elles. **Nettoyer les noms…** redemande confirmation, puis renomme les notes d'après leur titre, en numérotant celles de même titre comme ci-dessus ; les liens vers elles sont mis à jour. **Masquer** met l'avis de côté jusqu'à ce que d'autres noms de ce type apparaissent. Plainva ne reconnaît que les noms qu'il a attribués lui-même : l'identifiant doit correspondre au marqueur du même fichier. Rien n'est jamais renommé de lui-même. Vos autres appareils reçoivent les changements de nom comme un déplacement dès qu'ils ont la même version ; une version plus ancienne y voit à la place des notes supprimées et de nouvelles notes, et soit demande s'il faut les supprimer, soit garde l'ancien nom à côté du nouveau — mettez de préférence ces appareils à jour avant. Sur l'ordinateur, l'avis apparaît dans la fenêtre principale.
+**Nettoyer les noms avec identifiant.** Entre le 12 et le 24 septembre 2026, Alviss ajoutait un identifiant au nom des nouvelles notes de tâche (`Appeler le dentiste — 3f9a1c0b7d2e4a61.md`). Si votre vault contient encore de tels noms, la vue des tâches — sur l'ordinateur comme sur le téléphone — affiche une fois un avis avec la liste ancien → nouveau et le nombre de liens mis à jour avec elles. **Nettoyer les noms…** redemande confirmation, puis renomme les notes d'après leur titre, en numérotant celles de même titre comme ci-dessus ; les liens vers elles sont mis à jour. **Masquer** met l'avis de côté jusqu'à ce que d'autres noms de ce type apparaissent. Alviss ne reconnaît que les noms qu'il a attribués lui-même : l'identifiant doit correspondre au marqueur du même fichier. Rien n'est jamais renommé de lui-même. Vos autres appareils reçoivent les changements de nom comme un déplacement dès qu'ils ont la même version ; une version plus ancienne y voit à la place des notes supprimées et de nouvelles notes, et soit demande s'il faut les supprimer, soit garde l'ancien nom à côté du nouveau — mettez de préférence ces appareils à jour avant. Sur l'ordinateur, l'avis apparaît dans la fenêtre principale.
 
 <!-- tasks-jex-2026-09-14 -->
 ## Métadonnées Tasks et répétition
@@ -238,22 +238,22 @@ Le statut, le texte recherché, le dossier, l’étiquette, les tâches avec éc
 
 La vue Tâches s'ouvre sur **Aujourd'hui**. Les listes — une barre à gauche sur le bureau, un segment au-dessus de la liste sur le téléphone — sont **Aujourd'hui** (ce qui est dû aujourd'hui, avec **En retard** en haut), **À venir** (les 14 prochains jours, par jour), **Boîte de réception** (tâches ouvertes sans date), **Toutes** (les deux sections décrites ci-dessus, avec le filtre **Ouvertes**/**Terminées**/**Toutes**) et **Terminées**. Chaque liste puise dans les deux sources, la base de tâches et les cases à cocher de vos notes, triées par priorité, puis par heure, puis par titre. Les autres filtres s'appliquent à chaque liste, et la liste choisie est mémorisée par vault. Sur le bureau, la barre liste aussi les tags les plus fréquents comme filtres en un clic ; sur le téléphone, l'écran **Aujourd'hui** mène à l'**Aujourd'hui** du planificateur.
 
-Au-dessus des listes se trouve le champ de saisie ; sur le téléphone, **+ Nouvelle tâche** et le bouton **＋** l'ouvrent sous forme de feuille. Tapez une ligne — `Envoyer offre demain 14h !!! #client chaque semaine` — et appuyez sur Entrée : Plainva crée la tâche dans la base de tâches. Il comprend aujourd'hui, demain, après-demain, les jours de la semaine, « dans 3 jours », « la semaine prochaine », les dates en chiffres, une heure (`14:30`, `14h`), un rythme (quotidien, hebdomadaire, mensuel, annuel, « chaque lundi », « toutes les 2 semaines »), `!`, `!!` et `!!!` pour une priorité basse, moyenne et haute, et `#tags` — les mots dans la langue de l'application, les chiffres et les signes dans n'importe quelle langue. Tout ce qui est reconnu est marqué dans le champ et listé en dessous sous la forme d'un bloc amovible **avant** que quoi que ce soit ne soit enregistré ; retirez un bloc et ses mots recomptent simplement comme titre. Sur le téléphone, des boutons rapides écrivent les mêmes mots pour vous. Si la base de tâches désigne une liste d'un fournisseur, une puce décide si la tâche y est créée aussi.
+Au-dessus des listes se trouve le champ de saisie ; sur le téléphone, **+ Nouvelle tâche** et le bouton **＋** l'ouvrent sous forme de feuille. Tapez une ligne — `Envoyer offre demain 14h !!! #client chaque semaine` — et appuyez sur Entrée : Alviss crée la tâche dans la base de tâches. Il comprend aujourd'hui, demain, après-demain, les jours de la semaine, « dans 3 jours », « la semaine prochaine », les dates en chiffres, une heure (`14:30`, `14h`), un rythme (quotidien, hebdomadaire, mensuel, annuel, « chaque lundi », « toutes les 2 semaines »), `!`, `!!` et `!!!` pour une priorité basse, moyenne et haute, et `#tags` — les mots dans la langue de l'application, les chiffres et les signes dans n'importe quelle langue. Tout ce qui est reconnu est marqué dans le champ et listé en dessous sous la forme d'un bloc amovible **avant** que quoi que ce soit ne soit enregistré ; retirez un bloc et ses mots recomptent simplement comme titre. Sur le téléphone, des boutons rapides écrivent les mêmes mots pour vous. Si la base de tâches désigne une liste d'un fournisseur, une puce décide si la tâche y est créée aussi.
 
-**Définir la priorité** dans le menu d'une ligne (clic droit sur le bureau, appui long sur le téléphone) propose **haute**, **moyenne**, **basse** et **aucune** ; un drapeau devant le titre l'indique. Dans la base de tâches, la priorité est une colonne à sélection : une base créée maintenant l'a déjà, une plus ancienne l'obtient la première fois que vous définissez une priorité — jamais par simple ouverture. Une case à cocher porte la marque de priorité d'Obsidian sur sa ligne : Plainva lit 🔺 et ⏫ comme haute, 🔼 comme moyenne, 🔽 et ⏬ comme basse, et écrit ⏫, 🔼 ou 🔽.
+**Définir la priorité** dans le menu d'une ligne (clic droit sur le bureau, appui long sur le téléphone) propose **haute**, **moyenne**, **basse** et **aucune** ; un drapeau devant le titre l'indique. Dans la base de tâches, la priorité est une colonne à sélection : une base créée maintenant l'a déjà, une plus ancienne l'obtient la première fois que vous définissez une priorité — jamais par simple ouverture. Une case à cocher porte la marque de priorité d'Obsidian sur sa ligne : Alviss lit 🔺 et ⏫ comme haute, 🔼 comme moyenne, 🔽 et ⏬ comme basse, et écrit ⏫, 🔼 ou 🔽.
 
-`- [/]` (**En cours**) et `- [-]` (**Annulée**) sont aussi des tâches. Elles reçoivent leur propre case dans l'éditeur, en mode lecture et dans chaque liste ; en cours compte comme ouverte, annulée comme fermée. Un clic continue de basculer seulement entre ouverte et terminée — il termine une tâche en cours et rouvre une tâche annulée. **Définir l'état** dans le menu de la ligne fixe les deux états ; Plainva ne les écrit jamais de lui-même.
+`- [/]` (**En cours**) et `- [-]` (**Annulée**) sont aussi des tâches. Elles reçoivent leur propre case dans l'éditeur, en mode lecture et dans chaque liste ; en cours compte comme ouverte, annulée comme fermée. Un clic continue de basculer seulement entre ouverte et terminée — il termine une tâche en cours et rouvre une tâche annulée. **Définir l'état** dans le menu de la ligne fixe les deux états ; Alviss ne les écrit jamais de lui-même.
 
 **La date d'une tâche est le moyen de la modifier.** Appuyez sur la date d'une tâche (à l'intérieur d'un jour, sur son heure) et le sélecteur de date s'ouvre — sous la date sur le bureau, en feuille sur le téléphone. **Modifier l'échéance** dans le menu de la ligne ouvre le même sélecteur ; c'est aussi ainsi qu'une tâche sans date en reçoit une. Sur le téléphone, **Nouvelle tâche** et la cellule de date d'une base de données choisissent leur jour dans le même calendrier, et non dans la molette de dates du système. Une case à cocher dans une note — dans l'éditeur, la vue de lecture et le journal — est dimensionnée pour le doigt sur le téléphone. Une entrée de la base de données des tâches garde son heure, une case à cocher reçoit ou change sa date `📅`. À côté du titre **En retard**, **Tout à aujourd'hui** reporte d'un coup toutes les tâches en retard à aujourd'hui. Les deux sont confirmés par un message qui propose **Annuler**. Dans le champ de saisie, `[[` propose des notes et `#` des tags, comme dans l'éditeur : `Entrée` ou `Tab` prend la proposition surlignée, `Esc` ferme la liste.
 
-**Choix rapides et heure.** Au-dessus du calendrier, le sélecteur propose **Aujourd'hui**, **Demain**, **Ce week-end**, **La semaine prochaine** et **Pas de date**, chacun avec son jour de la semaine. Ce week-end est le samedi qui vient — aujourd'hui, si l'on est samedi ou dimanche ; la semaine prochaine est le premier jour de la semaine suivante, selon **Début de la semaine**. En bas, **Heure** a un interrupteur : désactivé, la tâche est due toute la journée ; activé, vous choisissez l'heure à côté. Un choix rapide ou un jour conserve une heure déjà définie ; pour ne changer que l'heure, appuyez sur **Terminé**. Une entrée de la base de tâches enregistre l'heure dans sa valeur d'échéance (`2026-10-26T10:00`). Pour une case à cocher dans une note, le sélecteur ne règle que le jour — le `📅` d'Obsidian n'a pas d'heure — et l'indique à la place de l'interrupteur ; une heure que vous écrivez vous-même après la date (voir *Rappels pour les cases à cocher*) reste quand le jour change. Si la colonne d'échéance de la base n'affiche que des jours, Plainva propose une fois **Passer à date et heure**.
+**Choix rapides et heure.** Au-dessus du calendrier, le sélecteur propose **Aujourd'hui**, **Demain**, **Ce week-end**, **La semaine prochaine** et **Pas de date**, chacun avec son jour de la semaine. Ce week-end est le samedi qui vient — aujourd'hui, si l'on est samedi ou dimanche ; la semaine prochaine est le premier jour de la semaine suivante, selon **Début de la semaine**. En bas, **Heure** a un interrupteur : désactivé, la tâche est due toute la journée ; activé, vous choisissez l'heure à côté. Un choix rapide ou un jour conserve une heure déjà définie ; pour ne changer que l'heure, appuyez sur **Terminé**. Une entrée de la base de tâches enregistre l'heure dans sa valeur d'échéance (`2026-10-26T10:00`). Pour une case à cocher dans une note, le sélecteur ne règle que le jour — le `📅` d'Obsidian n'a pas d'heure — et l'indique à la place de l'interrupteur ; une heure que vous écrivez vous-même après la date (voir *Rappels pour les cases à cocher*) reste quand le jour change. Si la colonne d'échéance de la base n'affiche que des jours, Alviss propose une fois **Passer à date et heure**.
 
-D'autres façons d'y entrer : **Nouvelle tâche** dans le menu de la zone de notification sur le bureau (quand Plainva continue de tourner en arrière-plan), sur Android le raccourci du lanceur **Nouvelle tâche** (appui long sur l'icône de l'application), et sur le téléphone **Créer comme tâche** quand vous partagez quelque chose vers Plainva — le texte et les pièces jointes finissent dans la note de la tâche. La façon dont une tâche avec une heure vous le rappelle est décrite dans [Calendrier et tâches externes](Calendar_and_Tasks.md).
+D'autres façons d'y entrer : **Nouvelle tâche** dans le menu de la zone de notification sur le bureau (quand Alviss continue de tourner en arrière-plan), sur Android le raccourci du lanceur **Nouvelle tâche** (appui long sur l'icône de l'application), et sur le téléphone **Créer comme tâche** quand vous partagez quelque chose vers Alviss — le texte et les pièces jointes finissent dans la note de la tâche. La façon dont une tâche avec une heure vous le rappelle est décrite dans [Calendrier et tâches externes](Calendar_and_Tasks.md).
 
 <!-- widgets-2026-09-23 -->
 ## Cocher depuis un widget
 
-La case du widget **Aujourd’hui** enregistre une demande : la coche apparaît aussitôt, la note change à la prochaine ouverture de Plainva, et c’est alors que la récurrence et la synchronisation ont lieu. Jusque-là, la ligne indique **appliqué à l’ouverture de Plainva**. Une tâche terminée, supprimée ou déplacée entre-temps est laissée telle quelle. Sur iPhone, cela demande iOS 17 ; en dessous, un appui sur la ligne ouvre la tâche. Détails : [L’application mobile](Mobile_App.md).
+La case du widget **Aujourd’hui** enregistre une demande : la coche apparaît aussitôt, la note change à la prochaine ouverture de Alviss, et c’est alors que la récurrence et la synchronisation ont lieu. Jusque-là, la ligne indique **appliqué à l’ouverture de Alviss**. Une tâche terminée, supprimée ou déplacée entre-temps est laissée telle quelle. Sur iPhone, cela demande iOS 17 ; en dessous, un appui sur la ligne ouvre la tâche. Détails : [L’application mobile](Mobile_App.md).
 
 <!-- task-rows-2026-10-24 -->
 ## Sous-tâches, puces et ce qui est terminé aujourd'hui
@@ -264,6 +264,6 @@ La case du widget **Aujourd’hui** enregistre une demande : la coche apparaît 
 
 Les deux sont activées tant que vous ne les désactivez pas : **Sous-tâches** et **Puces** se trouvent avec les autres filtres (cases à cocher sur le bureau, rangée de filtres sur le téléphone) et sont mémorisées avec eux.
 
-**Terminées aujourd'hui.** Sous **Aujourd'hui**, une ligne repliée **Terminées (n)** rassemble ce qui a été coché aujourd'hui — une case à cocher selon sa date d'achèvement `✅` (que Plainva écrit à chaque coche), une entrée de la base de tâches selon le jour où sa note a été modifiée pour la dernière fois, car une base n'a pas de date d'achèvement propre. Une case terminée sans date n'est pas comptée : rien n'indique quand elle a été terminée. Le pli est fermé tant que vous ne l'ouvrez pas ; l'appareil mémorise votre choix. L'écran **Aujourd'hui** du téléphone montre le même pli sous **À échéance**.
+**Terminées aujourd'hui.** Sous **Aujourd'hui**, une ligne repliée **Terminées (n)** rassemble ce qui a été coché aujourd'hui — une case à cocher selon sa date d'achèvement `✅` (que Alviss écrit à chaque coche), une entrée de la base de tâches selon le jour où sa note a été modifiée pour la dernière fois, car une base n'a pas de date d'achèvement propre. Une case terminée sans date n'est pas comptée : rien n'indique quand elle a été terminée. Le pli est fermé tant que vous ne l'ouvrez pas ; l'appareil mémorise votre choix. L'écran **Aujourd'hui** du téléphone montre le même pli sous **À échéance**.
 
 **La case sur le téléphone.** Dans l'éditeur, en mode lecture, dans la zone Tâches et sous **Aujourd'hui**, le téléphone dessine chaque case de tâche de la même façon : grande et arrondie, remplie d'une coche quand elle est terminée, à moitié remplie pour **En cours**, barrée pour **Annulée**. Le bureau garde ses cases plus petites, conçues pour la souris.

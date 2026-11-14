@@ -2,11 +2,11 @@
 
 Stan na: 2026-10-30
 
-Plainva chroni Twoją pracę na dwóch poziomach: **wersje plików** (automatyczne migawki każdego pojedynczego pliku podczas edycji i usuwania) oraz **kopie zapasowe vaultu** (regularne archiwa ZIP całego vaultu, przechowywane poza folderem vaultu). Obie funkcje działają w tle bez żadnej konfiguracji i można je dostosować w ustawieniach, w sekcji **Backup i historia wersji**.
+Alviss chroni Twoją pracę na dwóch poziomach: **wersje plików** (automatyczne migawki każdego pojedynczego pliku podczas edycji i usuwania) oraz **kopie zapasowe vaultu** (regularne archiwa ZIP całego vaultu, przechowywane poza folderem vaultu). Obie funkcje działają w tle bez żadnej konfiguracji i można je dostosować w ustawieniach, w sekcji **Backup i historia wersji**.
 
 ## Wersje plików (migawki)
 
-Przed każdym zapisem Plainva zapisuje migawkę poprzedniego stanu — jako zwykłą kopię tekstową w `.plainva/backups/` wewnątrz vaultu (ten folder jest ukryty w drzewie plików, wyszukiwaniu i synchronizacji). Aby uniknąć setek kopii podczas pisania, obowiązuje **Interwał migawek** (domyślnie: najwyżej jedna nowa wersja co 2 minuty). **Usunięcie zawsze tworzy migawkę**, niezależnie od interwału.
+Przed każdym zapisem Alviss zapisuje migawkę poprzedniego stanu — jako zwykłą kopię tekstową w `.plainva/backups/` wewnątrz vaultu (ten folder jest ukryty w drzewie plików, wyszukiwaniu i synchronizacji). Aby uniknąć setek kopii podczas pisania, obowiązuje **Interwał migawek** (domyślnie: najwyżej jedna nowa wersja co 2 minuty). **Usunięcie zawsze tworzy migawkę**, niezależnie od interwału.
 
 Przechowywanie (konfigurowalne dla każdego vaultu):
 
@@ -17,7 +17,7 @@ Przechowywanie (konfigurowalne dla każdego vaultu):
 
 Podczas zmiany nazwy lub przenoszenia pliku jego historia wersji przenosi się razem z nim.
 
-**Dlaczego duże pliki są traktowane inaczej:** załącznik o rozmiarze 90 MB edytowany raz za razem mógłby wypełnić sejf setką kopii — dziewięć gigabajtów dla jednego pliku. Powyżej limitu Plainva zachowuje najnowszą wersję zamiast pełnej historii i informuje o tym raz na sejf. Notatki i zwykłe obrazy są znacznie poniżej tej granicy i nie są tym objęte. **Usunięcie jest zawsze zapisywane w całości**, niezależnie od rozmiaru: nowa wersja zapisanego pliku nadal jest na dysku, usunięty plik już nie — tam migawka to jedyna droga powrotu.
+**Dlaczego duże pliki są traktowane inaczej:** załącznik o rozmiarze 90 MB edytowany raz za razem mógłby wypełnić sejf setką kopii — dziewięć gigabajtów dla jednego pliku. Powyżej limitu Alviss zachowuje najnowszą wersję zamiast pełnej historii i informuje o tym raz na sejf. Notatki i zwykłe obrazy są znacznie poniżej tej granicy i nie są tym objęte. **Usunięcie jest zawsze zapisywane w całości**, niezależnie od rozmiaru: nowa wersja zapisanego pliku nadal jest na dysku, usunięty plik już nie — tam migawka to jedyna droga powrotu.
 
 ## Przeglądanie i przywracanie wersji
 
@@ -31,22 +31,22 @@ Obrazy również mają wersje (z podglądem); pozostałe pliki binarne można pr
 
 ## Przywracanie usuniętych plików
 
-Ponieważ każde usunięcie najpierw tworzy migawkę pliku, Plainva może przywrócić usunięte pliki: kliknij prawym przyciskiem myszy nazwę vaultu na górze drzewa plików → **Przywróć usunięte pliki…** (dostępne też w **Ustawienia → Vault → Backup i historia wersji → Historia wersji**). Lista pokazuje wszystkie pliki, których migawki nadal istnieją, mimo że oryginał zniknął — **Przywróć** odtwarza najnowszy stan w pierwotnej lokalizacji (foldery są odtwarzane w razie potrzeby), **Wersje…** otwiera pełną historię usuniętego pliku.
+Ponieważ każde usunięcie najpierw tworzy migawkę pliku, Alviss może przywrócić usunięte pliki: kliknij prawym przyciskiem myszy nazwę vaultu na górze drzewa plików → **Przywróć usunięte pliki…** (dostępne też w **Ustawienia → Vault → Backup i historia wersji → Historia wersji**). Lista pokazuje wszystkie pliki, których migawki nadal istnieją, mimo że oryginał zniknął — **Przywróć** odtwarza najnowszy stan w pierwotnej lokalizacji (foldery są odtwarzane w razie potrzeby), **Wersje…** otwiera pełną historię usuniętego pliku.
 
-Uwaga: usunięcie **całego folderu** przenosi go do kosza systemu operacyjnego — w tym przypadku kosz systemowy jest głównym sposobem odzyskania; w Plainva mogą znajdować się co najwyżej starsze migawki zawartych w nim plików.
+Uwaga: usunięcie **całego folderu** przenosi go do kosza systemu operacyjnego — w tym przypadku kosz systemowy jest głównym sposobem odzyskania; w Alviss mogą znajdować się co najwyżej starsze migawki zawartych w nim plików.
 
 ## Automatyczne kopie zapasowe vaultu (ZIP)
 
-Dodatkowo Plainva tworzy kopię zapasową całego vaultu jako plik ZIP — domyślnie **codziennie** w tle (przy otwieraniu vaultu, jeśli ostatnia kopia zapasowa jest starsza niż 24 godziny). Chroni to nawet w przypadku utraty lub uszkodzenia samego folderu vaultu, ponieważ pliki ZIP znajdują się **poza** vaultem:
+Dodatkowo Alviss tworzy kopię zapasową całego vaultu jako plik ZIP — domyślnie **codziennie** w tle (przy otwieraniu vaultu, jeśli ostatnia kopia zapasowa jest starsza niż 24 godziny). Chroni to nawet w przypadku utraty lub uszkodzenia samego folderu vaultu, ponieważ pliki ZIP znajdują się **poza** vaultem:
 
 - Domyślnym miejscem docelowym jest folder danych aplikacji (widoczny w ustawieniach pod **Folder docelowy**; **Otwórz folder** prowadzi tam bezpośrednio).
-- Za pomocą **Wybierz folder…** możesz zamiast tego wskazać dysk zewnętrzny lub NAS; **Domyślny** przełącza z powrotem na folder danych aplikacji. Jeśli miejsce docelowe jest obecnie niedostępne (NAS wyłączony), pasek stanu dyskretnie o tym wspomina, a Plainva ponawia próbę później.
+- Za pomocą **Wybierz folder…** możesz zamiast tego wskazać dysk zewnętrzny lub NAS; **Domyślny** przełącza z powrotem na folder danych aplikacji. Jeśli miejsce docelowe jest obecnie niedostępne (NAS wyłączony), pasek stanu dyskretnie o tym wspomina, a Alviss ponawia próbę później.
 - **Liczba przechowywanych kopii zapasowych** (domyślnie: 7) ogranicza ich liczbę; starsze pliki ZIP tego samego vaultu są usuwane automatycznie. Obce pliki w folderze docelowym nigdy nie są dotykane.
 - **Utwórz kopię zapasową teraz** uruchamia kopię zapasową ręcznie w dowolnym momencie; pasek stanu pokazuje przebieg i wynik.
 
 Pliki ZIP mają nazwę `VaultName_2026-07-05_14-30-00.zip` i zawierają wszystkie notatki, załączniki oraz konfigurację `.obsidian` — **nie** zawierają wewnętrznego folderu `.plainva` (indeks wyszukiwania jest odbudowywany przy następnym otwarciu; wersje plików celowo nie są częścią pliku ZIP).
 
-**Przywracanie z pliku ZIP:** plik ZIP jest zupełnie zwykłym archiwum. Rozpakuj go w dowolnym miejscu i otwórz rozpakowany folder w Plainva jako vault — gotowe.
+**Przywracanie z pliku ZIP:** plik ZIP jest zupełnie zwykłym archiwum. Rozpakuj go w dowolnym miejscu i otwórz rozpakowany folder w Alviss jako vault — gotowe.
 
 ## Ustawienia w skrócie
 
@@ -63,8 +63,8 @@ Ustawienia → **Vault** → **Backup i historia wersji**:
 
 ## Warto wiedzieć
 
-- Wersje plików to zwykłe kopie w `.plainva/backups/` — w razie potrzeby można je otworzyć bez Plainva w dowolnym menedżerze plików.
-- Własna synchronizacja Plainva nigdy nie przesyła `.plainva`. Jeśli synchronizujesz folder vaultu zewnętrznym klientem (np. aplikacją Nextcloud), migawki są przesyłane razem z nim — kosztuje to trochę miejsca, ale nie szkodzi.
+- Wersje plików to zwykłe kopie w `.plainva/backups/` — w razie potrzeby można je otworzyć bez Alviss w dowolnym menedżerze plików.
+- Własna synchronizacja Alviss nigdy nie przesyła `.plainva`. Jeśli synchronizujesz folder vaultu zewnętrznym klientem (np. aplikacją Nextcloud), migawki są przesyłane razem z nim — kosztuje to trochę miejsca, ale nie szkodzi.
 - Konflikty synchronizacji są dodatkowo chronione za pomocą plików `.CONFLICT` (patrz [FAQ](FAQ.md)); historia wersji uzupełnia to o oś czasu każdego pliku.
 
 Na telefonie **Backupy ZIP** to pierwsza grupa strony **Backup i historia wersji**, a pod nią następuje **Historia wersji** z pozycją **Przywróć usunięte pliki** na końcu.
@@ -73,7 +73,7 @@ Na urządzeniu mobilnym nieudany zapis notatki zatrzymuje zmianę, ponowne wczyt
 
 Kopia ZIP jest uznawana za udaną dopiero po odczytaniu wszystkich wybranych plików i zapisaniu pełnego archiwum. Nieudana próba nie usuwa wcześniejszych archiwów ani nie zmienia daty ostatniej udanej kopii. Na urządzeniu mobilnym komunikat błędu automatycznej kopii podaje nazwę vaulta; przycisk **Utwórz kopię zapasową teraz** w sekcji **Backup i historia wersji** → **Backupy ZIP** uruchamia kolejną próbę. Ukryta konfiguracja użytkownika, np. `.obsidian`, jest uwzględniana na obu platformach. Katalogi `.plainva`, `.git`, `.trash` i `node_modules` są wykluczane na każdym poziomie. Przy tworzeniu kilku archiwów w tej samej sekundzie nowa nazwa otrzymuje przyrostek, np. `_001`.
 
-Zapis jest oznaczany jako zakończony dopiero po potwierdzeniu zapisu danych. Tekst wpisany podczas zapisywania pozostaje niezapisany, dopóki nie zostanie zapisana również jego wersja. Szkice na komputerze należą do swojej sesji edytora: zakończenie starej sesji nie usuwa szkicu z nowo otwartego edytora. Gdy jednocześnie pojawiają się zmiany zewnętrzne, Plainva scala zgodne zmiany; tekst powodujący konflikt pozostaje dostępny jako szkic i kopia konfliktowa.
+Zapis jest oznaczany jako zakończony dopiero po potwierdzeniu zapisu danych. Tekst wpisany podczas zapisywania pozostaje niezapisany, dopóki nie zostanie zapisana również jego wersja. Szkice na komputerze należą do swojej sesji edytora: zakończenie starej sesji nie usuwa szkicu z nowo otwartego edytora. Gdy jednocześnie pojawiają się zmiany zewnętrzne, Alviss scala zgodne zmiany; tekst powodujący konflikt pozostaje dostępny jako szkic i kopia konfliktowa.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Jasne decyzje przy porównywaniu plików
@@ -95,4 +95,4 @@ Scalanie wiersz po wierszu to narzędzie na komputer; tu przyjmujesz jedną wers
 
 ## Porównanie wybranej kopii
 
-Wybrana wersja pokazuje dodane i usunięte wiersze względem bieżącej notatki, nawet przy ukrytym diffie. **Otwórz w nowym oknie** zachowuje dokładnie tę kopię na komputerze. Gdy zniknie, Plainva o tym informuje. Duże pliki mogą nie mieć liczby wierszy; pliki binarne nie mają porównania tekstu. Te same liczby są dostępne w pełnym porównaniu mobilnym.
+Wybrana wersja pokazuje dodane i usunięte wiersze względem bieżącej notatki, nawet przy ukrytym diffie. **Otwórz w nowym oknie** zachowuje dokładnie tę kopię na komputerze. Gdy zniknie, Alviss o tym informuje. Duże pliki mogą nie mieć liczby wierszy; pliki binarne nie mają porównania tekstu. Te same liczby są dostępne w pełnym porównaniu mobilnym.

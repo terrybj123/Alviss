@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-09-30
 
-Plainva offers three ways to search: full-text search across the whole vault, the quick switcher for opening files, and find & replace inside a note.
+Alviss offers three ways to search: full-text search across the whole vault, the quick switcher for opening files, and find & replace inside a note.
 
 ## Full-text search across the vault
 
@@ -10,7 +10,7 @@ The field at the top of the sidebar searches titles and contents across the vaul
 
 Search reacts while you type: word prefixes already match ("Projec" finds "Project plan") — no Enter needed. The **X** at the right of the field clears the current search (or press `Esc`); the sidebar then shows the normal file tree again.
 
-In Chinese, Japanese, Thai and other scripts written without spaces between words, search finds a term anywhere in the text: `議事録` finds "今日は会議の議事録を書いた", `搜索` finds "全文搜索". Latin words inside such text are found too ("Plainva" in "…でPlainvaを使った").
+In Chinese, Japanese, Thai and other scripts written without spaces between words, search finds a term anywhere in the text: `議事録` finds "今日は会議の議事録を書いた", `搜索` finds "全文搜索". Latin words inside such text are found too ("Alviss" in "…でAlvissを使った").
 
 Search lists individual occurrences with a text excerpt, heading path and line number. Opening a row selects that exact occurrence; several matches in the same note appear separately. The displayed count includes only results already loaded. You can load more occurrences. Arrow keys move between occurrences and Enter opens the selection. Loading, empty results and errors are shown explicitly; new input discards obsolete answers. If an edited occurrence can no longer be identified uniquely, a message explains this. The same occurrences are available in the quick switcher and mobile search. Returning to search on the phone restores the query, loaded results and list position. Hits come by **Relevance** unless you pick **Last modified**, **Title** or **Path** with the sort button next to the search field (on the phone: in the bar of the search screen); loading more keeps the chosen order. On the phone the sort sheet stays open until you tap **Done**: tapping the chosen order again reverses its direction.
 
@@ -23,7 +23,7 @@ The search field also applies to the other sidebar views: in **Tags** it filters
 - `path:folder` — only files whose path contains the text (e.g. `path:Projects`; with spaces: `path:"My Folder"`).
 - `tag:name` — only notes carrying that tag, including nested tags: `tag:project` also finds `#project/internal`. `tag:#project` works as well.
 - Operators can be negated (`-path:Archive`, `-tag:done`) and combined freely with search terms: `plan tag:project -draft`.
-- Multiple terms are combined with AND. Special characters like `- ( ) : *` inside terms are harmless — Plainva treats the input literally.
+- Multiple terms are combined with AND. Special characters like `- ( ) : *` inside terms are harmless — Alviss treats the input literally.
 
 ## Quick switcher
 
@@ -55,7 +55,7 @@ The sidebar view **Tags** lists all `#tags` in the vault with a hit count; a cli
 
 In a note a tag is drawn as a small pill — while you write and while you read; the text itself stays `#project/website`. A click on the pill (on the phone: a tap while reading) opens the notes that carry the tag. What counts as a tag is the same everywhere — in the tag list, in a task and when renaming: a `#` at the start of a line or after a space, followed by letters, digits, `_`, `-` or `/`. Digits alone are not a tag (`#42` stays a number), and neither is anything inside code or a link. **Colour tags** under **Settings → App → Appearance** gives every tag a colour that follows from its name; nested tags share the colour of their top-level tag. The setting belongs to this device and stores nothing in your notes.
 
-**Rename a tag** right across the vault: right-click a tag in the **Tags** view and enter a new name. Plainva rewrites the tag everywhere — in note bodies (`#tag` and its `#tag/child` subtags) and in the frontmatter (`tags:`) — writing each affected note back through the same safe path. Unrelated tags that merely contain the name (for example `#area/tag`) are left alone.
+**Rename a tag** right across the vault: right-click a tag in the **Tags** view and enter a new name. Alviss rewrites the tag everywhere — in note bodies (`#tag` and its `#tag/child` subtags) and in the frontmatter (`tags:`) — writing each affected note back through the same safe path. Unrelated tags that merely contain the name (for example `#area/tag`) are left alone.
 
 ## Navigating within a note
 

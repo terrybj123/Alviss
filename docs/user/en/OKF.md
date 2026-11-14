@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-11-03
 
-OKF (Open Knowledge Format) is an open convention for Markdown knowledge collections: plain Markdown files with a small, uniform frontmatter header. This page explains what OKF is, what Plainva does for it automatically — and why you do not *have* to use any of it.
+OKF (Open Knowledge Format) is an open convention for Markdown knowledge collections: plain Markdown files with a small, uniform frontmatter header. This page explains what OKF is, what Alviss does for it automatically — and why you do not *have* to use any of it.
 
 ## What is OKF?
 
@@ -21,9 +21,9 @@ type: Note
 
 > Writing files with a tool or script? The exact field contract — allowed values, how each property type serializes, and the reserved-name rules — is in the [File Format Reference](File_Format_Reference.md).
 
-**Where OKF comes from:** OKF is an open specification by Google Cloud ([`GoogleCloudPlatform/knowledge-catalog`](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md), Apache-2.0 licence). Plainva follows **OKF 0.2** (published 25 July 2026). New in 0.2 are five optional fields with which a note says where it came from, whether someone reviewed it and whether it still holds — `generated`, `verified`, `sources`, `stale_after` and `status`. What Plainva shows and writes of them is described below under "Provenance, review and lifecycle".
+**Where OKF comes from:** OKF is an open specification by Google Cloud ([`GoogleCloudPlatform/knowledge-catalog`](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md), Apache-2.0 licence). Alviss follows **OKF 0.2** (published 25 July 2026). New in 0.2 are five optional fields with which a note says where it came from, whether someone reviewed it and whether it still holds — `generated`, `verified`, `sources`, `stale_after` and `status`. What Alviss shows and writes of them is described below under "Provenance, review and lifecycle".
 
-## Why does Plainva use OKF?
+## Why does Alviss use OKF?
 
 Plain Markdown is wonderfully portable — but on its own it has no reliable structure. OKF adds just enough of it, and everything remains ordinary Markdown with standard frontmatter:
 
@@ -32,30 +32,30 @@ Plain Markdown is wonderfully portable — but on its own it has no reliable str
 - **Scripts and AI assistants can work with your vault safely**, because the on-disk format is uniform and documented.
 - **No lock-in.** OKF is an open convention on top of plain Markdown — other OKF tools understand your files, today and in ten years.
 
-## What Plainva does automatically
+## What Alviss does automatically
 
-**New files** get the OKF header automatically: every note created in Plainva receives `type` in its frontmatter — since OKF 0.2 the version marker `okf_version` lives once in the root `index.md`, no longer in every note. You configure the values per vault: **type for new notes** (default `Note`) under **Settings → Vault → Notes & filing → New notes** and **type for daily notes** (default `Daily Note`) under **Settings → Vault → Daily notes & journal → Daily notes**. If a template brings its own `type`, the template wins.
+**New files** get the OKF header automatically: every note created in Alviss receives `type` in its frontmatter — since OKF 0.2 the version marker `okf_version` lives once in the root `index.md`, no longer in every note. You configure the values per vault: **type for new notes** (default `Note`) under **Settings → Vault → Notes & filing → New notes** and **type for daily notes** (default `Daily Note`) under **Settings → Vault → Daily notes & journal → Daily notes**. If a template brings its own `type`, the template wins.
 
-**Existing files are never changed unasked.** Plainva only adds OKF fields when creating new files or when you explicitly start the conversion.
+**Existing files are never changed unasked.** Alviss only adds OKF fields when creating new files or when you explicitly start the conversion.
 
-**Protected system fields:** In the **Properties** panel, `type` and — where older notes still carry it — `okf_version` are marked as OKF system fields ("OKF system field – managed by Plainva"): the `type` value is selectable from a dropdown of known types, `okf_version` is display-only; renaming, type changes and deletion are locked so the convention cannot break by accident.
+**Protected system fields:** In the **Properties** panel, `type` and — where older notes still carry it — `okf_version` are marked as OKF system fields ("OKF system field – managed by Alviss"): the `type` value is selectable from a dropdown of known types, `okf_version` is display-only; renaming, type changes and deletion are locked so the convention cannot break by accident.
 
-**The short version in the settings:** the info button (ⓘ) of the **OKF format** group under **Settings → Vault → Maintenance** gives you the explanation in three sentences plus a link to this page. It does not open by itself; if a vault contains files that do not follow OKF, Plainva says so once in a small message with a button that takes you straight to the conversion.
+**The short version in the settings:** the info button (ⓘ) of the **OKF format** group under **Settings → Vault → Maintenance** gives you the explanation in three sentences plus a link to this page. It does not open by itself; if a vault contains files that do not follow OKF, Alviss says so once in a small message with a button that takes you straight to the conversion.
 
 ## Provenance, review and lifecycle (OKF 0.2)
 
-Since OKF 0.2 a note can say where it came from, who reviewed it and whether it still holds. Plainva turns that into three things:
+Since OKF 0.2 a note can say where it came from, who reviewed it and whether it still holds. Alviss turns that into three things:
 
-**What Plainva shows.**
+**What Alviss shows.**
 
 - A note with `status: draft` or `status: deprecated` carries a badge in the document header — **Draft** or **Deprecated**. `stable` stays silent; a `status` column of your own with other values (say `Open` in a task database) is not a lifecycle state and gets no badge.
-- Once `stale_after` has passed, the notice **Marked as stale (since …)** sits above the note with a jump to the properties. The notice is display only — Plainva changes nothing in the note.
+- Once `stale_after` has passed, the notice **Marked as stale (since …)** sits above the note with a jump to the properties. The notice is display only — Alviss changes nothing in the note.
 - The **Trust & provenance** section of the properties panel (on the phone: in the note's context sheet) summarises the fields and derives a trust level from them: **Not verified**, **Machine-confirmed** or **Reviewed by a person** — plus generated-by, the verified list, sources as clickable links, status and stale-after. The **Status**, **Stale after** and **OKF version** rows carry translated labels; the key written to the file (`status`, `stale_after`, `okf_version`) shows as a hint on the lock icon and never changes.
 
-**What Plainva writes.**
+**What Alviss writes.**
 
 - `generated` (and, where a source is known, `sources`) is set by exactly three machine write paths: the **importer** (`plainva-import/<version>`, one instant per run — the import report carries it too), **mail capture** (`plainva-mail-capture/<version>`, with the message's Message-ID as the source) and the **task sync** (`plainva-task-sync/<version>`, only when it creates a note).
-- `verified` is written only by **Mark as reviewed** in the **Trust & provenance** section: Plainva appends `human:<your name>` with the current instant to the list — a second review never overwrites the first. Your name is asked for once per vault; it stays on this device and can be changed under **Settings → Vault → Notes & filing → Annotations → Your name (remarks and reviews)**.
+- `verified` is written only by **Mark as reviewed** in the **Trust & provenance** section: Alviss appends `human:<your name>` with the current instant to the list — a second review never overwrites the first. Your name is asked for once per vault; it stays on this device and can be changed under **Settings → Vault → Notes & filing → Annotations → Your name (remarks and reviews)**.
 - The editor never touches any of these fields on its own, and existing notes are never stamped after the fact. `status` and `stale_after` are yours to set, as a property or in the frontmatter.
 
 **Upgrading the bundle version.** The version of the convention lives once in the root `index.md`. A vault that still declares `"0.1"` keeps working unchanged — under **Settings → Vault → Maintenance → OKF format → Bundle version** (on the phone the same) you lift it to 0.2 with **Upgrade…**. The dialog shows beforehand what changes: the line in the root `index.md` and, as a checkbox (on by default), removing the legacy `okf_version` field from the notes that still carry it. Every file is backed up before it changes; **Clean up…** does only the second part. The field table and the write rules in detail are in the [File Format Reference](File_Format_Reference.md).
@@ -66,16 +66,16 @@ An `index.md` is a folder's table of contents: a list of the notes and subfolder
 
 - **Generating** — always on your action, never out of nowhere: right-click a folder → **Create overview** / **Refresh overview**, or in bulk via the **index.md manager** (**Settings → Vault → Maintenance → OKF format**). A link in another note that names another folder's overview only as `index` would lead to the new `index.md`: when a new overview would take such links over, **Create overview** asks first and offers **Write links to other overviews with their folder, so they keep leading there**, ticked by default — as adopting does. Generating in all folders without an `index.md` at once gives one count for the whole run, since a link can be taken over by any of the new overviews; the links are written before the first overview exists, and the result line counts them. When no new overview would take a link over, nothing extra is asked.
 - **Adopting instead of generating** — if you already have overview notes (MOC, Overview, folder note, README …), the manager suggests them as candidates. **Adopt** renames the file to `index.md` (links are updated vault-wide). With **Prepare adopted files for OKF (remove frontmatter, convert this file's wikilinks to markdown links)** — ticked by default — the note is prepared on the way: its frontmatter is removed (the note as it was is backed up first) and its wikilinks become relative Markdown links, each where it stands; nothing else in the note changes. The note's links to itself then lead to the new `index.md`, and a link from another note that reached it through the `title` in its frontmatter — which goes with the frontmatter — names the file from then on. Embeds, wikilinks that lead to no note and a wikilink inside the text of another link are not converted; the result line counts them. A folder that already has an `index.md` is offered no candidates — nothing can be adopted there, and the note stays untouched. If an adoption cannot be done — the note has an open conflict, for example — the result says why, in words. Links to a heading of the note itself (`[[#Heading]]`) stay as they are and are counted on their own. A link in another note that names another folder's overview only as `index` would lead to the new `index.md`; when an adoption would take such links over, the manager counts them and offers **Write links to other overviews with their folder, so they keep leading there**, ticked by default — before anything moves, each such link is then written with its folder (`[[Projects/index]]`), and the result line counts them. The phone's question offers the same.
-- **Automatic upkeep** — listings *generated* by Plainva carry an invisible marker at the end of the file (an HTML comment). Only such marked files are kept up to date automatically whenever the folder changes — and only in OKF vaults (recognizable by `okf_version` in the root `index.md`).
-- **Read-only with an exit** — managed index.md files open in read mode with the banner "This index.md is managed by Plainva and updated automatically." There you can **Refresh** — or choose **Edit anyway**: that removes the marker and the file is fully yours again (no more automatic updates).
+- **Automatic upkeep** — listings *generated* by Alviss carry an invisible marker at the end of the file (an HTML comment). Only such marked files are kept up to date automatically whenever the folder changes — and only in OKF vaults (recognizable by `okf_version` in the root `index.md`).
+- **Read-only with an exit** — managed index.md files open in read mode with the banner "This index.md is managed by Alviss and updated automatically." There you can **Refresh** — or choose **Edit anyway**: that removes the marker and the file is fully yours again (no more automatic updates).
 - **All at once** — **Update all index.md files** is available in the vault root's context menu and in the settings; files without the marker are skipped.
 - **Fill the gaps** — inside the index.md manager, **Generate index.md in all N folders without one** preselects every folder that has no index.md yet, so you can create them all in one run.
 - **On the phone** — the same, through two doors: holding a folder offers **Create overview** or **Refresh overview**, whichever that folder needs. For the rare pass across everything there is **Settings → Vault → Maintenance → Overviews**: folders without one come first, and **Generate index.md in all N folders without one** creates them in a single run. A folder whose `index.md` you wrote yourself is listed and left alone — adopting is a named decision in that list, never the side effect of a tap. It asks first, and the question offers the same preparation as the desktop's dialog, ticked by default. The automatic upkeep runs on the phone too now: a vault edited there no longer drifts out of date until a desktop opens it.
-- In read mode, managed listings render as cards with file/folder icons; links open right inside Plainva.
+- In read mode, managed listings render as cards with file/folder icons; links open right inside Alviss.
 
 ## Converting an existing vault (opt-in)
 
-If files in the vault do not conform to the OKF format (missing `type` field, or reserved names used as regular notes), Plainva offers the conversion — once when opening the vault, and permanently under **Settings → Vault → Maintenance → OKF format** (the entry only appears while there is something to do).
+If files in the vault do not conform to the OKF format (missing `type` field, or reserved names used as regular notes), Alviss offers the conversion — once when opening the vault, and permanently under **Settings → Vault → Maintenance → OKF format** (the entry only appears while there is something to do).
 
 The **Convert to OKF format** wizard works in clear steps:
 
@@ -93,9 +93,9 @@ The same route exists on mobile: **Settings → Vault → Maintenance → Conver
 Two things are added, because a phone may take an app out of memory at any moment:
 
 - **Pause and continue.** The run stops at the next file when you tap **Pause** or the app goes to the background. Continuing writes into the same backup folder — no second one appears. Continuing also keeps the options the run began with, and a note the run has already converted is not converted a second time.
-- **Asked at start-up.** If a run is left unfinished, Plainva says so the next time you open the vault and offers **Continue** or **Roll back**; **Later** is a valid answer. An interrupted run leaves a partly converted vault, not a broken one: only frontmatter fields are added, and every note stays valid Markdown.
+- **Asked at start-up.** If a run is left unfinished, Alviss says so the next time you open the vault and offers **Continue** or **Roll back**; **Later** is a valid answer. An interrupted run leaves a partly converted vault, not a broken one: only frontmatter fields are added, and every note stays valid Markdown.
 
-**Roll back** restores the files from the backup folder — on the desktop too, from the report at the end of the run. The backup folder stays afterwards; it is the only copy of the state before the conversion. A note you changed, moved or deleted after the conversion is left as it is; Plainva says how many there are, and their earlier text stays in the backup folder.
+**Roll back** restores the files from the backup folder — on the desktop too, from the report at the end of the run. The backup folder stays afterwards; it is the only copy of the state before the conversion. A note you changed, moved or deleted after the conversion is left as it is; Alviss says how many there are, and their earlier text stays in the backup folder.
 
 ## Do I have to use OKF?
 
@@ -103,7 +103,7 @@ No. OKF is a gentle standard:
 
 - New files get the header automatically — it never gets in the way and costs nothing.
 - Existing vaults (e.g. from Obsidian) keep working unchanged; the conversion is strictly opt-in.
-- A missing `okf_version` — or one that older notes still carry — does not count as a violation; you can use Plainva and Obsidian side by side permanently without nagging.
+- A missing `okf_version` — or one that older notes still carry — does not count as a violation; you can use Alviss and Obsidian side by side permanently without nagging.
 - Obsidian and any other editor can still open every file: it is and remains plain Markdown.
 
 ## See also

@@ -12,7 +12,7 @@ A `.base` file stores only the *view* of your notes: which sources (folders, tag
 
 Concretely, that means:
 
-- Edit a cell in the table and Plainva writes the value into the note's frontmatter.
+- Edit a cell in the table and Alviss writes the value into the note's frontmatter.
 - Delete the `.base` file and you only lose the view — all data stays in the notes.
 - The same notes can appear in any number of databases at once.
 
@@ -42,7 +42,7 @@ A database can have any number of views; each has a **View type**:
 | **Timeline** | Time axis with **Start date** and optional **End date** |
 | **Pinboard** | Google-Keep-style board of sticky notes — cards show the rendered note content (own section below) |
 
-**Add view** creates more; **View options** offers **Rename**, **Duplicate**, **Delete** and drag-reordering. Plainva remembers the last active view per file. Calendar and Timeline need a date field (**Date only** or **Date & time** as the **Format**); entries display the fields enabled under **Properties**.
+**Add view** creates more; **View options** offers **Rename**, **Duplicate**, **Delete** and drag-reordering. Alviss remembers the last active view per file. Calendar and Timeline need a date field (**Date only** or **Date & time** as the **Format**); entries display the fields enabled under **Properties**.
 
 ## Configure: tabs for view, columns, filter, sort, data source
 
@@ -60,7 +60,7 @@ On the phone, **Configure** opens the same areas as a list; tapping one enters t
 
 Clicking a column header opens the property editor (**Property: X**):
 
-- **Name** — renaming affects the notes: on save, the property is renamed in the frontmatter of every matching note (with confirmation and a progress indicator). Plainva asks every note first: if one cannot take the new name — it already has a property of that name, or the block at its top cannot be read as properties — nothing is renamed, and a message names those notes.
+- **Name** — renaming affects the notes: on save, the property is renamed in the frontmatter of every matching note (with confirmation and a progress indicator). Alviss asks every note first: if one cannot take the new name — it already has a property of that name, or the block at its top cannot be read as properties — nothing is renamed, and a message names those notes.
 - **Field type** — Text, Number, Rating, Checkbox, Date, Date & time, List, Tags, Select, Status, Multi-select, URL, Email, Phone, Relation (the same grouped type menu as in the notes' **Properties** panel). A URL, email or phone property opens only web, mail and phone links ([Notes & Markdown](Notes_and_Markdown.md), “Links out of the app”).
   A **Rating** is a number drawn as dots (five unless the column says otherwise). The file holds `mood: 4` — a plain number that Obsidian and any spreadsheet read too; sorting and filtering work as they do for a number. You press the dot that should count; pressing the current value clears it again.
 - **Day from the file name** (`file.day`) — calendars and timelines can place daily notes by their **file name**, without the date also sitting in the frontmatter. The field appears in the date-field picker as soon as the vault names daily notes (folder and format under **Settings → Your vault → Daily notes & journal**); it is computed from the name, stands in no note, and cannot be edited — so a card placed this way cannot be dragged to another day either (that would rename the file). Obsidian does not know this field: a view that uses it stays empty there. That is the price of not keeping the date twice.
@@ -69,7 +69,7 @@ Clicking a column header opens the property editor (**Property: X**):
 
 Behavioral notes:
 
-- If a property is missing in some notes, Plainva offers to **add it (empty) to N source files**.
+- If a property is missing in some notes, Alviss offers to **add it (empty) to N source files**.
 - For **Select**, **Status**, **Multi-select**, **List** and **Tags**, a comma in a value separates multiple entries; in the **Text** type a comma stays plain text.
 - The OKF system fields `type` and `okf_version` are protected here as well: name, field type and delete are locked, and `okf_version` cells are read-only (background: [OKF](OKF.md)).
 
@@ -78,7 +78,7 @@ Behavioral notes:
 Relations link notes to each other — like in Notion, but stored as perfectly normal `[[wiki links]]` in the frontmatter (visible in Obsidian as clickable property links).
 
 - **Creating**: add a property of field type **Relation**. Optionally pick a **Target database (.base)** — the picker then only suggests notes from that database (empty = **Any note**; **This database** enables self-relations). The **Cardinality** limits to **Exactly 1** or allows **No limit**.
-- **Setting values**: the picker searches notes, excludes the current entry, and can create a target on the fly via **Create new note**. A chip saying "Linked note does not exist" marks a broken link (target deleted/renamed outside Plainva).
+- **Setting values**: the picker searches notes, excludes the current entry, and can create a target on the fly via **Create new note**. A chip saying "Linked note does not exist" marks a broken link (target deleted/renamed outside Alviss).
 - **Reverse relation**: the option **Show on "X"** creates a computed column in the target database showing the links in reverse — it is directly editable (edits write into the linking notes). Deleting the relation removes its reverse column too.
 - **Sub-items**: for self-relations you can **Enable sub-items** — entries with a parent relation appear collapsible under their parent entry in the table (cycles are handled; switched off, the list stays flat and the values are kept).
 - **Board by relation**: boards can group by a relation; dragging cards between columns rewrites the link.
@@ -101,11 +101,11 @@ A **rollup** computes a value from the notes a link points at — "how many of t
 
 A table column can carry a line underneath that sums it up — the **Sum** of an effort, the **Earliest** date, how many rows have a value at all.
 
-- **Configure → Properties → Summary**: Each visible property keeps its name above the control. Choose a summary below it; No summary removes it. This works on desktop and mobile. Custom formulas keep their name and remain unchanged in the file; Plainva does not calculate them.
+- **Configure → Properties → Summary**: Each visible property keeps its name above the control. Choose a summary below it; No summary removes it. This works on desktop and mobile. Custom formulas keep their name and remain unchanged in the file; Alviss does not calculate them.
 - **Calculations**: Average · Min · Max · Sum · Range · Median · Std dev · Earliest · Latest · Checked · Unchecked · Empty · Filled · Unique.
 - **The footer computes over the rows the view shows** — not over the whole vault. A filter therefore changes the number underneath as well.
 - **Nothing to measure is not zero**: a column without a single usable value leaves its footer blank rather than claiming 0. A column without a footer of its own stays blank and never borrows its neighbour's number.
-- **Visible in Obsidian**: column footers are Obsidian's own feature, not a Plainva addition. What you set here you see there — and the other way round. Custom formula expressions written in Obsidian survive in the file; Plainva simply shows no value for them.
+- **Visible in Obsidian**: column footers are Obsidian's own feature, not a Alviss addition. What you set here you see there — and the other way round. Custom formula expressions written in Obsidian survive in the file; Alviss simply shows no value for them.
 
 ## Project planning: milestones, dependencies, effort
 
@@ -122,13 +122,13 @@ blockedBy:
 ```
 
   Only **one** direction is stored: a stored pair is two facts that can disagree. Only `FINISHTOSTART` is evaluated and drawn; other types survive in the file untouched. A cycle is refused as you write it, naming the path it would close.
-- **A conflict is reported, never corrected.** If a task starts before the one it waits for has finished, the arrow turns red and stays red. The dates are your statement — Plainva only says that two of them disagree.
+- **A conflict is reported, never corrected.** If a task starts before the one it waits for has finished, the arrow turns red and stays red. The dates are your statement — Alviss only says that two of them disagree.
 - **Effort** is a plain number of minutes in a property of your choosing (the **Project** template calls it `effort`). A column footer sums it; a rollup adds it up across a project's tasks.
 - **Actual time** is *not* stored. It is read from the calendar entries a task was blocked into, so it stays correct when you move or resize the appointment. Without a calendar account the column shows a dash rather than a zero — "not measured" and "measured, and it was none" are different statements.
 
 ## Where does this note belong? (database context)
 
-When you open a database entry directly — from the file tree, from search or through a `[[link]]` — Plainva now tells you what it is part of:
+When you open a database entry directly — from the file tree, from search or through a `[[link]]` — Alviss now tells you what it is part of:
 
 - Above the note sits a **context line**: the databases the note belongs to as clickable chips (a click opens the database), followed by the path `parent entry / this note` when the database uses sub-items. If the note belongs to **several** databases, all of them appear — the line wraps rather than dropping one.
 - In the right sidebar, the **Databases** section shows what only the database knows about the note. Each database it belongs to gets one line with its name and view — a click opens it — and the position in the view (**12 / 34**) with arrows to the previous and next entry. Below that stand the fields the database **computes** for this note and that are in no file: rollups, reverse relations, and facts about the file such as the time it was last changed. Columns the note carries itself are not repeated: one line names them (**Under Properties: …**), and they are edited once, in the **Properties** section. A note that belongs to several databases gets one block per database. Below follow the **parent entry**, the **sub-items** (collapsible) and the entries **linked** through relations — each one clickable. On the phone the same stands in the **Databases** tab of the note's context sheet.
@@ -144,8 +144,8 @@ The **Entry** button at the top left (formerly **New**; clearly separate from th
 - **Storage folder**: new items always land in a designated folder. If the database has no folder source, a dialog walks you through creating one once; with several folder sources you pick once. Change it anytime via the arrow menu on the button → **Change storage folder…**.
 - **Templates**: the arrow menu (**Templates and storage folder**) lists the templates from your vault's template folder — use one once, star it via **Set as default** (then every click on **Entry** uses it for this database), or **Create new template** (a new template starts with a `# {{title}}` heading, so entries created from it inherit their file name as the H1). The same menu also offers **Open templates folder**, which reveals the template folder in the file tree — templates are ordinary notes you can edit, rename or delete there. Without a default template, an **Entry** starts from the template that **Templates per folder** names for its storage folder or **Templates per note type** for its type — like every new note, on the desktop and on the phone.
 - **Templates per database**: templates can be assigned to databases. By default the arrow menu only shows the templates assigned to this database (plus its default template); everything else is reachable via **Show all templates (n)**. Assign right there — the database icon on each row reads **Assign to this database** or **Remove assignment to this database** — or on the template itself: the editor's ⋮ menu offers **Target databases…**, a dialog with a search field where you assign the template to any number of databases. A template created from a database via **Create new template** starts assigned to it. The assignment is stored as a `plainva.templateFor` list in the template's frontmatter (see the [file format reference](File_Format_Reference.md)); it is never copied into entries created from the template, and when a `.base` is renamed or moved, or its folder is renamed or moved, the assignments go along — on the computer and on the phone. The **Insert template** slash command deliberately stays unfiltered — it inserts text into an existing note and has no database context.
-- **Task lists**: If the database is a task database and you have connected a calendar/tasks account, **Configure → Data source** shows the row **Also create new tasks in**. Pick a list there and every task created in Plainva is also created in that list at the provider — from **+ New task**, from a promoted checkbox and from a mail captured as a task alike; without a choice it stays a note, exactly as before. The choice belongs to the database (stored as `plainva.taskList`, see the [file format reference](File_Format_Reference.md)), not to the individual task, and the row only appears when an account actually offers a task list. If the chosen list later disappears (account removed, list deleted), Plainva does not create the task somewhere else — it treats the database as if nothing had been chosen. The new task remembers which provider task belongs to it; without that note the next sync would create a second note for the same task. If the provider call fails, the note stays and Plainva says so — the note is the deliverable, the provider task the addition.
-- **Template placeholders**: templates interpolate `{{title}}`, `{{date}}` and `{{time}}`. When you *insert* a template into a note (the **Insert template** slash command / `Mod+Alt+T`), two more are resolved: `{{cursor}}` marks where the cursor lands after inserting, and `{{prompt:Label}}` asks you for a value (labelled *Label*) and inserts your answer. Creating a *new* note from a template now behaves the same way: Plainva asks for every `{{prompt:…}}` value at once and places the caret at `{{cursor}}` as the note opens. Only background paths (task sync, mail capture) are never asked — there the answers stay empty. The full placeholder list is in [Notes and Markdown](Notes_and_Markdown.md).
+- **Task lists**: If the database is a task database and you have connected a calendar/tasks account, **Configure → Data source** shows the row **Also create new tasks in**. Pick a list there and every task created in Alviss is also created in that list at the provider — from **+ New task**, from a promoted checkbox and from a mail captured as a task alike; without a choice it stays a note, exactly as before. The choice belongs to the database (stored as `plainva.taskList`, see the [file format reference](File_Format_Reference.md)), not to the individual task, and the row only appears when an account actually offers a task list. If the chosen list later disappears (account removed, list deleted), Alviss does not create the task somewhere else — it treats the database as if nothing had been chosen. The new task remembers which provider task belongs to it; without that note the next sync would create a second note for the same task. If the provider call fails, the note stays and Alviss says so — the note is the deliverable, the provider task the addition.
+- **Template placeholders**: templates interpolate `{{title}}`, `{{date}}` and `{{time}}`. When you *insert* a template into a note (the **Insert template** slash command / `Mod+Alt+T`), two more are resolved: `{{cursor}}` marks where the cursor lands after inserting, and `{{prompt:Label}}` asks you for a value (labelled *Label*) and inserts your answer. Creating a *new* note from a template now behaves the same way: Alviss asks for every `{{prompt:…}}` value at once and places the caret at `{{cursor}}` as the note opens. Only background paths (task sync, mail capture) are never asked — there the answers stay empty. The full placeholder list is in [Notes and Markdown](Notes_and_Markdown.md).
 - **Rename, duplicate, delete**: right-click an entry in any view (table, list, cards, board, calendar, timeline) for **Open**, **Open in split**, **Rename…**, **Duplicate** and **Delete…** — deleting runs through the usual cascade dialog. The peek window carries the same actions in its ⋮ menu, and a double-click on its title renames too. When the heading still mirrors the file name (the state a fresh `{database name}_{number}` entry is in), renaming carries it along; a heading you wrote yourself is never touched.
 
 ## Pinboard (sticky notes like Google Keep)
@@ -170,12 +170,12 @@ Note for synced vaults: if two devices arrange the board at the same time, a `.C
 - **Board colour**: in a board's **View** settings, **Column colour** lets a column take its group's colour — either **Whole list** (the whole column is tinted) or **Chip only** (just the header chip, the default). It applies to Select/Status/Multi-select groups.
 - **Card colour**: a board card is tinted with the note's own colour — **Color** in the card's menu sets it; it is the same colour the note's header and its pinboard card show. **Card colour by** in the **View** settings tints the remaining cards with the option colour of a Select/Status/Multi-select property; a note's own colour takes precedence.
 - **Checklist on the card**: a card whose note holds `- [ ]` lines shows a progress bar with the count; click it to unfold the lines, tick them off right there, or add a sub-task in the field below (it lands after the last checkbox of the note). The count is also the **Checklist** column, available in every view under **Properties**.
-- **Swimlanes**: under **View** (on the phone: **Configure**), **Swimlanes by** adds a second axis — one row per value of another select, status or relation property (priority, assignee …), with the same columns in every row. Dropping a card on a cell writes both the column's and the lane's property; the chevron folds a lane away, and Plainva remembers that per file. On the phone the lanes stack, and the lane chip on a card moves it to another lane.
+- **Swimlanes**: under **View** (on the phone: **Configure**), **Swimlanes by** adds a second axis — one row per value of another select, status or relation property (priority, assignee …), with the same columns in every row. Dropping a card on a cell writes both the column's and the lane's property; the chevron folds a lane away, and Alviss remembers that per file. On the phone the lanes stack, and the lane chip on a card moves it to another lane.
 - **WIP limit**: click the count in a column header and enter the most cards the column should hold — the header then reads `6/5` in the warning colour once the column exceeds it. The **View** settings (on the phone: **Configure**) list the limits of all columns; empty means no limit.
 - **Embedding**: databases can be embedded in notes (slash command **Embed database** or `@` → **Databases**) and used there with full functionality.
 - **Automatic scope inside a related element**: when you embed a database inside a single element of a *related* database, it is automatically filtered to that element — embed the task database inside a project note and you only see that project's tasks. This works in both directions (embed the "many" side to see the rows that point at the host element, or the "one" side to see what the host points at) and for self-referential databases with a parent/sub-items hierarchy (embedding the database inside an element shows that element's sub-items, nested). A small **Filter** chip in the embedded header shows what it is scoped to; use it to switch the relation or choose **Show all**. The scope is never written into the `.base` file, so the same database shows the right rows in every element it is embedded in.
 - **New entries inherit the link**: creating an entry with **Entry** inside such a scoped embed automatically links it to the host element (a task you create in a project's embedded task list belongs to that project right away). For the reverse direction the host is linked to the new entry instead; an already assigned single-value relation is left untouched.
-- **Explicit "This note" filter (like Notion's "this page")**: instead of relying on the automatic scope, you can make it explicit and permanent. In **Configure → Filter**, add a rule on a relation property and pick the value **This note**. The database is then scoped to whichever note it is embedded in — ideal for **templates**: embed the task database in a project template, and every project created from it shows its own tasks. It works for any wiki-link property, not only detected relations, and an explicit **This note** filter takes precedence over the automatic scope. This filter lives only in Plainva (it is not written into the `.base` as a normal filter), so both Obsidian and a standalone open show all rows.
+- **Explicit "This note" filter (like Notion's "this page")**: instead of relying on the automatic scope, you can make it explicit and permanent. In **Configure → Filter**, add a rule on a relation property and pick the value **This note**. The database is then scoped to whichever note it is embedded in — ideal for **templates**: embed the task database in a project template, and every project created from it shows its own tasks. It works for any wiki-link property, not only detected relations, and an explicit **This note** filter takes precedence over the automatic scope. This filter lives only in Alviss (it is not written into the `.base` as a normal filter), so both Obsidian and a standalone open show all rows.
 - **Comments on a cell**: when a property carries remarks, its cell shows a small dot with the number of open threads — in **Table**, **Board** and **Gallery**. A comment hangs on the **note and its property key**, not on the `.base`: the same remark therefore appears in every database that shows the note, and in the note's own **Properties** panel. **Comment on this property** in the cell menu starts a new thread. Renaming a column carries the comments along; if the property is deleted, the card stays readable and names the value it recorded. More on this under [Security & Sharing](Security_and_Sharing.md).
 
 ## Several entries at once
@@ -199,13 +199,13 @@ While it runs you see progress ("7 of 24") and can cancel it — what was alread
 
 ## Deleting with connections (cascade deletion)
 
-When you delete something other entries hang off, Plainva shows an overview instead of a bare yes/no question:
+When you delete something other entries hang off, Alviss shows an overview instead of a bare yes/no question:
 
 - **Element with assigned elements** (e.g. a project that tasks point at via a relation): the dialog lists the assigned elements — including their own sub-elements — grouped by their source database, asking **Also delete assigned elements**. **Shared** elements (also assigned to another element) are excluded by default and carry a badge like "also 'Q3 campaign'".
 - **Deleting a whole database**: when you delete a `.base`, the dialog asks whether **all elements** of the database should go too (**Also delete all elements**). Elements that are also rows of *another* database are excluded by default. Folder overviews (`index.md`) and attachments always stay.
 - **Linked databases**: every database linked via a relation gets its own clearly named card with two steps — first the **assigned** elements only, optionally the **whole** database (file plus every element). Both steps default to **off**: nothing from a linked database is deleted without your explicit checkmark.
 
-**Show elements** opens a per-group list with a checkbox per element, so you can keep individual elements. The red button counts live ("Delete 15 files"). **Clean up references** (on by default) removes references to deleted items from the properties of the remaining notes; body links stay untouched. Past the familiar large-deletion threshold the second safety prompt appears as well, and with sync active the deletion also reaches the cloud. Every deleted file keeps a version snapshot — recoverable via **Restore deleted files**. If the database configured as the **Default task database** is deleted, Plainva resets that setting and removes template assignments; tasks at Google/Microsoft remain untouched. On the phone the same overview appears as a sheet with group checkmarks and a counter (without per-element opt-out).
+**Show elements** opens a per-group list with a checkbox per element, so you can keep individual elements. The red button counts live ("Delete 15 files"). **Clean up references** (on by default) removes references to deleted items from the properties of the remaining notes; body links stay untouched. Past the familiar large-deletion threshold the second safety prompt appears as well, and with sync active the deletion also reaches the cloud. Every deleted file keeps a version snapshot — recoverable via **Restore deleted files**. If the database configured as the **Default task database** is deleted, Alviss resets that setting and removes template assignments; tasks at Google/Microsoft remain untouched. On the phone the same overview appears as a sheet with group checkmarks and a counter (without per-element opt-out).
 
 ## Example: what a .base file looks like
 
@@ -237,13 +237,13 @@ views:
       groupBy: status
 ```
 
-Everything Plainva-specific (colors, board rendering, relations, storage folder) lives under `plainva:` keys.
+Everything Alviss-specific (colors, board rendering, relations, storage folder) lives under `plainva:` keys.
 
 ## Editing .base files directly (tools and AI)
 
-If a script or an AI assistant writes `.base` files without going through Plainva, three hard rules matter — break one and Obsidian refuses to open the whole file:
+If a script or an AI assistant writes `.base` files without going through Alviss, three hard rules matter — break one and Obsidian refuses to open the whole file:
 
-- **Only the top-level keys `filters`, `formulas`, `properties`, `summaries`, `views`.** Never add another top-level key; all Plainva extras go under nested `plainva:` sub-keys.
+- **Only the top-level keys `filters`, `formulas`, `properties`, `summaries`, `views`.** Never add another top-level key; all Alviss extras go under nested `plainva:` sub-keys.
 - **Every view needs a non-empty string `name`.**
 - **A `filters` object carries exactly one of `and` / `or` / `not` per level** (never two side by side).
 
@@ -253,16 +253,16 @@ The complete on-disk contract — every field, the full two-sided relations exam
 
 ## What about Obsidian?
 
-The format matches Obsidian's Bases format; Plainva writes its extensions exclusively into `plainva:` sub-keys, which Obsidian ignores ("graceful degradation"):
+The format matches Obsidian's Bases format; Alviss writes its extensions exclusively into `plainva:` sub-keys, which Obsidian ignores ("graceful degradation"):
 
-- Obsidian opens the file without errors; Plainva-only views such as Board/Calendar/Timeline appear there as a plain table.
+- Obsidian opens the file without errors; Alviss-only views such as Board/Calendar/Timeline appear there as a plain table.
 - Reverse-relation columns appear empty in Obsidian (they are computed); relation values in notes are visible there as clickable links.
-- The first time you use a Plainva extension, a dialog (**Plainva extension**) points this out; it can be disabled under **Settings** via **Extended databases** or **Warnings**.
+- The first time you use a Alviss extension, a dialog (**Alviss extension**) points this out; it can be disabled under **Settings** via **Extended databases** or **Warnings**.
 
 ## See also
 
 - [File Format Reference](File_Format_Reference.md) — the exact on-disk `.base` contract for tools and hand-editing
-- [Database Reference (.base)](Base_Reference.md) — every key, filter form, view type and summary Plainva supports, and where it differs from Obsidian
+- [Database Reference (.base)](Base_Reference.md) — every key, filter form, view type and summary Alviss supports, and where it differs from Obsidian
 - [Notes & Markdown](Notes_and_Markdown.md) — properties/frontmatter in detail
 - [OKF](OKF.md) — what a uniform `type` buys you in practice
 
@@ -278,7 +278,7 @@ If the view also has an **End date** (Configure → View), a multi-day entry is 
 
 The timeline shows **one row per entry** and, in it, a **bar** from its start date to its end date. At the top you switch between **Week**, **3 weeks** and **Quarter**; a vertical line marks **today** across every row.
 
-**The edges of a bar are handles.** Drag the right edge and Plainva writes the **end date** into the note; the left edge writes the **start date**. Drag the bar itself and both dates move together — its length stays what it was. Two things no gesture can force: an edge never crosses the other one (an end before its beginning would be a broken record), and without a configured **End date** none is invented — then only the beginning can move.
+**The edges of a bar are handles.** Drag the right edge and Alviss writes the **end date** into the note; the left edge writes the **start date**. Drag the bar itself and both dates move together — its length stays what it was. Two things no gesture can force: an edge never crosses the other one (an end before its beginning would be a broken record), and without a configured **End date** none is invented — then only the beginning can move.
 
 A bar that reaches beyond the period shown is cut at the edge and carries **no handle** there: what you see is the edge of the window, not the end of the entry.
 

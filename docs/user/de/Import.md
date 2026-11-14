@@ -2,7 +2,7 @@
 
 Stand: 2026-11-04
 
-Plainva übernimmt Notizen aus anderen Apps in einen neuen Vault oder einen neu benannten Unterordner des offenen Vaults. Der restliche Vault bleibt unverändert; der Importordner lässt sich anschließend verschieben oder löschen.
+Alviss übernimmt Notizen aus anderen Apps in einen neuen Vault oder einen neu benannten Unterordner des offenen Vaults. Der restliche Vault bleibt unverändert; der Importordner lässt sich anschließend verschieben oder löschen.
 
 **Der Import läuft auf beiden Geräten — mit denselben Quellen.** Am Desktop führen der Startbildschirm, die Befehlspalette und das Kontextmenü eines Ordners hinein; auf dem Telefon findest Du ihn unter **Einstellungen → Wartung → Aus anderer App importieren**. Auch Quellen, die einen Zugang zu einem Dienst brauchen — Notion über die API —, stehen dort zur Verfügung. Auch die Befehlspalette des Telefons (`>` im Suchfeld) führt hinein.
 
@@ -16,13 +16,13 @@ Drei Wege:
 
 Der erste Schritt fragt nach Deinem Export — **Dateien wählen…** oder **Ordner wählen…**, je nachdem, was Du vorliegen hast. Danach benennt der Assistent die erkannte App und Du legst fest, wohin geschrieben wird. Es folgt eine Vorschau mit den Zahlen des Laufs, den Grenzen dieses Imports und den Schaltern zur Quelle. Geschrieben wird erst, wenn Du auf **Import starten** klickst.
 
-**Du musst nicht wissen, welcher Eintrag zu Deinem Export passt.** Wähle die Dateien, und Plainva erkennt die Quelle — einen Notion-Export an den langen IDs in seinen Pfaden, einen Logseq-Graphen an seinen Ordnern `journals/` und `pages/`, einen Keep- oder Simplenote-Export am Inhalt des JSON. Der Assistent sagt, was er erkannt hat; lag er falsch, änderst Du es in den Kacheln darunter, und Deine Wahl bleibt stehen.
+**Du musst nicht wissen, welcher Eintrag zu Deinem Export passt.** Wähle die Dateien, und Alviss erkennt die Quelle — einen Notion-Export an den langen IDs in seinen Pfaden, einen Logseq-Graphen an seinen Ordnern `journals/` und `pages/`, einen Keep- oder Simplenote-Export am Inhalt des JSON. Der Assistent sagt, was er erkannt hat; lag er falsch, änderst Du es in den Kacheln darunter, und Deine Wahl bleibt stehen.
 
 ## Wohin der Import schreibt
 
 Genau eines von beiden je Import — nie beides:
 
-- **Neuer Vault**: Du wählst einen leeren Ordner, Plainva legt darin einen frischen Vault an und importiert dorthin. Nichts von dem, was Du schon hast, kann berührt werden, und den ganzen Import machst Du rückgängig, indem Du diesen Ordner löschst. Das ist die richtige Wahl, wenn Du Plainva ausprobierst. Auf dem Telefon ist ein Vault kein Ordner, den Du aussuchst, sondern ein eigener Bereich der App: Du vergibst nur einen Namen. Rückgängig machst Du den Import dann, indem Du diesen Vault unter **Mehr → Vaults** entfernst.
+- **Neuer Vault**: Du wählst einen leeren Ordner, Alviss legt darin einen frischen Vault an und importiert dorthin. Nichts von dem, was Du schon hast, kann berührt werden, und den ganzen Import machst Du rückgängig, indem Du diesen Ordner löschst. Das ist die richtige Wahl, wenn Du Alviss ausprobierst. Auf dem Telefon ist ein Vault kein Ordner, den Du aussuchst, sondern ein eigener Bereich der App: Du vergibst nur einen Namen. Rückgängig machst Du den Import dann, indem Du diesen Vault unter **Mehr → Vaults** entfernst.
 - **Unterordner im offenen Vault**: Alles landet in einem einzigen, neu angelegten Unterordner, den Du benennst. Der Rest Deines Vaults bleibt unberührt.
 
 Die Zielzeile unter der Auswahl nennt immer den genauen Ordner — wo etwas landet, ist damit nie eine Vermutung.
@@ -79,7 +79,7 @@ Ein großer Workspace dauert, deshalb lässt sich ein Import stoppen: **Import s
 | **HTML-Ordner / ZIP** | Ein Ordner, Dateien oder ein ZIP mit HTML-Seiten | Die Seiten als Markdown-Notizen, die Links untereinander umgebogen |
 | **Markdown-Ordner / ZIP** | Einen Ordner, Dateien oder ein ZIP | Die `.md`-Dateien und ihre Ordnerstruktur |
 
-**Obsidian** steht mit in der Liste, startet aber keinen Import — und braucht auch keinen. Plainva arbeitet mit denselben Markdown-Dateien: Der Eintrag erklärt das und bietet Dir **Vault öffnen** an. Wiki-Links, Tags, Frontmatter und `.base`-Dateien funktionieren weiter, und Dein Vault bleibt mit Obsidian nutzbar. Ehrlich dazu gehört: Es gibt kein Plugin-Ökosystem, kein Canvas und kein Dataview — dafür Filter in `.base`; Plugin-Syntax in Deinen Notizen bleibt als Text stehen. Eine Ausnahme ist ein `tasks`-Block aus Obsidian: Plainva zeigt ihn als Aufgabenliste ([Tasks-Abfragen aus Obsidian](Tasks.md#tasks-abfragen-aus-obsidian)).
+**Obsidian** steht mit in der Liste, startet aber keinen Import — und braucht auch keinen. Alviss arbeitet mit denselben Markdown-Dateien: Der Eintrag erklärt das und bietet Dir **Vault öffnen** an. Wiki-Links, Tags, Frontmatter und `.base`-Dateien funktionieren weiter, und Dein Vault bleibt mit Obsidian nutzbar. Ehrlich dazu gehört: Es gibt kein Plugin-Ökosystem, kein Canvas und kein Dataview — dafür Filter in `.base`; Plugin-Syntax in Deinen Notizen bleibt als Text stehen. Eine Ausnahme ist ein `tasks`-Block aus Obsidian: Alviss zeigt ihn als Aufgabenliste ([Tasks-Abfragen aus Obsidian](Tasks.md#tasks-abfragen-aus-obsidian)).
 
 ## Warum fehlt meine App?
 
@@ -98,9 +98,9 @@ Notion ist die eine Quelle, bei der sich die beiden Wege deutlich unterscheiden.
 
 **Mit Integrations-Token (empfohlen).** Den Token legst Du unter `notion.so/my-integrations` an — der Assistent nennt die drei Schritte und öffnet Dir die Seite. Öffne danach in Notion jede Seite, die Du importieren willst, klicke oben rechts auf **„..."** → **Verbindungen**, und füge Deine Integration hinzu — Notion gibt nur Seiten heraus, die Du ausdrücklich verbunden hast.
 
-**Plainva speichert den Token nicht.** Er gilt für diesen einen Lauf und ist danach wieder weg; es entsteht kein verbundenes Konto. Für den nächsten Import fügst Du ihn erneut ein.
+**Alviss speichert den Token nicht.** Er gilt für diesen einen Lauf und ist danach wieder weg; es entsteht kein verbundenes Konto. Für den nächsten Import fügst Du ihn erneut ein.
 
-Über die API sieht Plainva die Struktur, nicht nur den Text:
+Über die API sieht Alviss die Struktur, nicht nur den Text:
 
 - Die Seiten-Hierarchie wird zur Ordnerstruktur.
 - Jede Datenbank wird eine `.base`-Datei plus ein Ordner mit **einer Notiz pro Zeile**.
@@ -109,27 +109,27 @@ Notion ist die eine Quelle, bei der sich die beiden Wege deutlich unterscheiden.
 - Tabellen-, Board-, Kalender- und Listenansicht werden aus dem Datenbankschema erzeugt.
 - In eine Seite eingebettete Datenbanken werden zu echten `![[Datenbank.base]]`-Embeds.
 
-**Aus einem ZIP-Export.** Das funktioniert offline und ohne Token, aber Notions Export enthält weder das Datenbankschema noch die Seiten-IDs. Seiten und Ordner kommen mit, und **Links zwischen den importierten Seiten funktionieren weiter** — Notion schreibt sie mit einer langen ID in jedem Pfadabschnitt, und Plainva richtet sie auf die Notizen aus, die tatsächlich geschrieben wurden. Die `.csv` neben jedem Datenbank-Ordner wird für das gelesen, was die Seiten selbst nicht tragen: die Spalten, ihre Typen und die Werte jeder Zeile als Frontmatter. Zeilen, für die der Export keine Seite hat, werden als Notizen geschrieben. Zugeordnet wird über den Titel — der API-Weg ist der mit echten IDs und bleibt die bessere Wahl für einen Workspace, der auf Relationen gebaut ist.
+**Aus einem ZIP-Export.** Das funktioniert offline und ohne Token, aber Notions Export enthält weder das Datenbankschema noch die Seiten-IDs. Seiten und Ordner kommen mit, und **Links zwischen den importierten Seiten funktionieren weiter** — Notion schreibt sie mit einer langen ID in jedem Pfadabschnitt, und Alviss richtet sie auf die Notizen aus, die tatsächlich geschrieben wurden. Die `.csv` neben jedem Datenbank-Ordner wird für das gelesen, was die Seiten selbst nicht tragen: die Spalten, ihre Typen und die Werte jeder Zeile als Frontmatter. Zeilen, für die der Export keine Seite hat, werden als Notizen geschrieben. Zugeordnet wird über den Titel — der API-Weg ist der mit echten IDs und bleibt die bessere Wahl für einen Workspace, der auf Relationen gebaut ist.
 
 ## Was ein Import nicht übernehmen kann
 
 Jeder Import nennt seine Grenzen in der Vorschau und noch einmal im Bericht. Die wichtigsten:
 
 - **Anhänge kommen mit.** Aus einem ZIP oder Ordner behalten sie ihren Platz im Export, damit ein relativer Bild-Link in einer Notiz weiter funktioniert. Aus Notion über die API werden sie während des Imports heruntergeladen — Notion signiert diese Links, und sie laufen binnen einer Stunde ab — und landen in einem Ordner `Attachments`; Bilder, die eine Seite von woanders aus dem Netz einbindet, bleiben Links. Zwei Ausnahmen bleiben in Deinem Export und werden im Bericht einzeln genannt: Anhänge in einer Evernote-`.enex` und Google-Keep-Bilder.
-- **Einzelne Einträge in einem Archiv überspringt Plainva bewusst:** sehr große Dateien, symbolische Links und Einträge mit unsicherem Pfad. Sie erscheinen mit Grund in der Vorschau, bevor Du den Import startest.
+- **Einzelne Einträge in einem Archiv überspringt Alviss bewusst:** sehr große Dateien, symbolische Links und Einträge mit unsicherem Pfad. Sie erscheinen mit Grund in der Vorschau, bevor Du den Import startest.
 - **Sehr lange Notion-Seiten** werden vollständig gelesen, aber Inhalte in Toggles, Spalten oder Unterlisten werden nicht verfolgt.
-- **Logseq-Dateien werden unverändert kopiert** — `key:: value`-Eigenschaften und Block-Referenzen werden nicht in Plainva-Eigenschaften oder -Links umgewandelt.
+- **Logseq-Dateien werden unverändert kopiert** — `key:: value`-Eigenschaften und Block-Referenzen werden nicht in Alviss-Eigenschaften oder -Links umgewandelt.
 - **Gelöschtes bleibt gelöscht.** Der Papierkorb von Simplenote und Google Keep wird übersprungen — Du hattest Dich einmal gegen diese Notizen entschieden, und ein Import soll sie Dir nicht stillschweigend zurückgeben. Im Bericht stehen sie namentlich, damit Du siehst, was zurückblieb.
 - **Notion-ZIP-Exporte** ordnen Zeilen über den Titel zu (siehe oben) und tragen keine Relationen zwischen Datenbanken.
 - **HTML-Tabellen und Codeblöcke verlieren ihre Struktur.** Die Umwandlung liest Überschriften, Listen, Auszeichnungen, Links und Bilder; eine Tabelle wird zum Text ihrer Zellen. Jede Seite, bei der das passiert ist, steht im Bericht.
 
 ## Daten und Zeiten bleiben erhalten
 
-Eine über Jahre gewachsene Sammlung verliert ihren Zeitbezug, wenn nach dem Import alles von heute stammt. Plainva übernimmt deshalb die Datumsangaben der Quelle:
+Eine über Jahre gewachsene Sammlung verliert ihren Zeitbezug, wenn nach dem Import alles von heute stammt. Alviss übernimmt deshalb die Datumsangaben der Quelle:
 
 - Sie stehen als `created` und `updated` im Frontmatter der importierten Notiz — dort liest sie auch die Zeitleiste des Graphen.
 - Zusätzlich bekommt die Datei selbst das Änderungsdatum der Quelle, sodass Sortierung nach Datum und **Zuletzt geöffnet** stimmen. Das Erstellungsdatum der Datei lässt sich nur unter Windows setzen; auf den anderen Systemen ist das Frontmatter der Träger.
-- Liefert eine Quelle kein Datum mit, nimmt Plainva das Datum der Exportdatei. Erfunden wird nie eines: fehlt jede Angabe, bleibt das Feld leer.
+- Liefert eine Quelle kein Datum mit, nimmt Alviss das Datum der Exportdatei. Erfunden wird nie eines: fehlt jede Angabe, bleibt das Feld leer.
 
 ## Ein Fehler beendet nicht den ganzen Import
 
@@ -140,7 +140,7 @@ Wenn eine einzelne Notiz nicht geschrieben werden kann, läuft der Import weiter
 Der Import schreibt in den geöffneten Vault und ist deshalb bewusst nicht-destruktiv gebaut:
 
 - Ist ein Notizname schon vergeben, bekommt die importierte Notiz eine **Nummer** (`Meeting (2).md`), statt die vorhandene zu ersetzen. Das gilt auch, wenn zwei Quellnotizen denselben Namen tragen.
-- Importierte Notizen bekommen das übliche OKF-Frontmatter — `type` sowie einen `generated`-Stempel mit Plainvas Import-Akteur (`plainva-import/<Version>`) und dem Zeitpunkt des Laufs, bei bekannter Quelle auch `sources` — und verhalten sich damit in `.base`-Filtern und -Ansichten wie jede andere Plainva-Notiz. Über den Stempel findest Du alles wieder, was in einem Lauf hereinkam.
+- Importierte Notizen bekommen das übliche OKF-Frontmatter — `type` sowie einen `generated`-Stempel mit Alvisss Import-Akteur (`plainva-import/<Version>`) und dem Zeitpunkt des Laufs, bei bekannter Quelle auch `sources` — und verhalten sich damit in `.base`-Filtern und -Ansichten wie jede andere Alviss-Notiz. Über den Stempel findest Du alles wieder, was in einem Lauf hereinkam.
 - Außerhalb des Ziel-Unterordners wird nichts verändert.
 
 Wenn Du den Import lieber komplett getrennt halten willst, lege vorher einen neuen Vault an (**Neuer Vault** im Startbildschirm) und importiere dorthin.
@@ -183,4 +183,4 @@ JEX verlangt ein frisches Ziel. Ungültige Archive, Pfadkonflikte, symbolische/h
 
 ## Wenn sich eine HTML-Datei nicht umwandeln lässt
 
-Ist HTML tiefer verschachtelt als unterstützt, führt der Importbericht die Datei als übersprungen auf. Plainva speichert dafür keine gekürzte Notiz. Andere gültige Dateien desselben Imports können weiter verarbeitet werden. Versuche einen einfacheren HTML-Export oder exportiere die betroffene Notiz als Markdown; behalte den ursprünglichen Export, bis Du das Ergebnis geprüft hast.
+Ist HTML tiefer verschachtelt als unterstützt, führt der Importbericht die Datei als übersprungen auf. Alviss speichert dafür keine gekürzte Notiz. Andere gültige Dateien desselben Imports können weiter verarbeitet werden. Versuche einen einfacheren HTML-Export oder exportiere die betroffene Notiz als Markdown; behalte den ursprünglichen Export, bis Du das Ergebnis geprüft hast.

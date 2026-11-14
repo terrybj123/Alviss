@@ -2,17 +2,17 @@
 
 Última actualización: 2026-10-22
 
-Plainva no tiene ningún sistema de plugins que ejecute código de terceros. En su lugar, el propio vault es la interfaz de extensión: tus notas son Markdown puro, las bases de datos son YAML puro (`.base`), y las [convenciones OKF](OKF.md) dan a cada archivo una estructura predecible. Cualquier cosa que pueda leer y escribir archivos — un script de shell, un programa Python, una herramienta CLI, una tarea programada o un agente de IA — puede ampliar, generar o reorganizar tu vault sin una sola API específica de Plainva.
+Alviss no tiene ningún sistema de plugins que ejecute código de terceros. En su lugar, el propio vault es la interfaz de extensión: tus notas son Markdown puro, las bases de datos son YAML puro (`.base`), y las [convenciones OKF](OKF.md) dan a cada archivo una estructura predecible. Cualquier cosa que pueda leer y escribir archivos — un script de shell, un programa Python, una herramienta CLI, una tarea programada o un agente de IA — puede ampliar, generar o reorganizar tu vault sin una sola API específica de Alviss.
 
 Esta página explica cómo hacerlo de forma **segura**. El formato exacto a nivel de bytes de cada archivo está documentado por separado en la [Referencia del formato de archivo](File_Format_Reference.md); esta página es el complemento práctico: las reglas, el flujo de trabajo y qué entregarle a un asistente de IA.
 
 ## Por qué archivos en vez de un sandbox de plugins
 
 - **Seguridad.** Un sistema de plugins de código ejecuta el programa de otra persona dentro de tu editor con acceso a tus notas. Los archivos planos no necesitan esa confianza: un script solo toca la carpeta a la que apuntas, con los permisos normales de tu sistema operativo.
-- **Longevidad.** El formato sobrevive a la aplicación. Un archivo Markdown que generaste con un script hace cinco años se sigue abriendo hoy — en Plainva, en Obsidian, en cualquier editor de texto. No hay ninguna API de plugins que quede obsoleta.
+- **Longevidad.** El formato sobrevive a la aplicación. Un archivo Markdown que generaste con un script hace cinco años se sigue abriendo hoy — en Alviss, en Obsidian, en cualquier editor de texto. No hay ninguna API de plugins que quede obsoleta.
 - **El formato es el contrato.** Como el formato en disco es abierto y está documentado, la "API" es estable e inspeccionable. Puedes compararla con diff, versionarla en Git y razonar sobre ella.
 
-Si quieres algo que Plainva no hace de fábrica, no esperas a un plugin — escribes un pequeño script contra los archivos.
+Si quieres algo que Alviss no hace de fábrica, no esperas a un plugin — escribes un pequeño script contra los archivos.
 
 ## Leer un vault de forma segura
 
@@ -26,20 +26,20 @@ Leer nunca requiere cuidado especial — los archivos de texto no se pueden "cor
 
 ## Escribir en un vault de forma segura
 
-Sigue estas reglas y Plainva (y Obsidian) aceptarán tus cambios sin problemas. Plainva vigila la carpeta del vault: una escritura externa se detecta y se reindexa automáticamente, normalmente en menos de un segundo.
+Sigue estas reglas y Alviss (y Obsidian) aceptarán tus cambios sin problemas. Alviss vigila la carpeta del vault: una escritura externa se detecta y se reindexa automáticamente, normalmente en menos de un segundo.
 
-1. **Escribe UTF-8.** Da a un archivo nuevo finales de línea LF y ningún BOM: así escribe el propio Plainva. Un archivo que ya tiene finales de línea CRLF o un BOM puede conservarlos: Plainva lee ambos y los deja como están, también cuando la nota se edita o se sincroniza. La excepción es un retorno de carro solo como final de línea (lo que tienen los archivos antiguos de Mac): Plainva lee un archivo así, pero lo guarda con LF la primera vez que lo modifica. Lo que no puede leer es otra codificación (UTF-16 o Windows-1252, que algunas herramientas de Windows escriben por defecto). Plainva no abre un archivo así: muestra **Este archivo no es texto** y lo ofrece al programa del sistema (**Abrir en la aplicación predeterminada**; en el teléfono, **Compartir**), y nada en Plainva escribe un texto encima: ni al guardar, ni una propiedad, ni un enlace que reescribe un cambio de nombre. El **Historial de versiones** lo conserva byte a byte, y al restaurarlo o duplicarlo se copian sus bytes. Para editarlo en Plainva, guárdalo como UTF-8 en el otro programa. Si otro programa guarda un archivo en otra codificación mientras tienes cambios sin guardar en él, Plainva conserva tus cambios a su lado como un archivo `.CONFLICT`; la comparación ofrece entonces **Reemplazar el archivo actual con la copia en conflicto**, **Conservar ambos archivos** y **Eliminar la copia en conflicto**. La sincronización lo transfiere intacto de todos modos, byte a byte, como una imagen: no se combina, y si dos dispositivos lo cambiaron al mismo tiempo, tu versión se conserva como un archivo `.CONFLICT`.
-2. **Escribe de forma atómica.** Escribe en un archivo temporal en la misma carpeta y luego renómbralo sobre el archivo de destino. Una nota escrita a medias (por ejemplo, tras un fallo) es peor que ningún cambio. El propio Plainva escribe cada nota así.
+1. **Escribe UTF-8.** Da a un archivo nuevo finales de línea LF y ningún BOM: así escribe el propio Alviss. Un archivo que ya tiene finales de línea CRLF o un BOM puede conservarlos: Alviss lee ambos y los deja como están, también cuando la nota se edita o se sincroniza. La excepción es un retorno de carro solo como final de línea (lo que tienen los archivos antiguos de Mac): Alviss lee un archivo así, pero lo guarda con LF la primera vez que lo modifica. Lo que no puede leer es otra codificación (UTF-16 o Windows-1252, que algunas herramientas de Windows escriben por defecto). Alviss no abre un archivo así: muestra **Este archivo no es texto** y lo ofrece al programa del sistema (**Abrir en la aplicación predeterminada**; en el teléfono, **Compartir**), y nada en Alviss escribe un texto encima: ni al guardar, ni una propiedad, ni un enlace que reescribe un cambio de nombre. El **Historial de versiones** lo conserva byte a byte, y al restaurarlo o duplicarlo se copian sus bytes. Para editarlo en Alviss, guárdalo como UTF-8 en el otro programa. Si otro programa guarda un archivo en otra codificación mientras tienes cambios sin guardar en él, Alviss conserva tus cambios a su lado como un archivo `.CONFLICT`; la comparación ofrece entonces **Reemplazar el archivo actual con la copia en conflicto**, **Conservar ambos archivos** y **Eliminar la copia en conflicto**. La sincronización lo transfiere intacto de todos modos, byte a byte, como una imagen: no se combina, y si dos dispositivos lo cambiaron al mismo tiempo, tu versión se conserva como un archivo `.CONFLICT`.
+2. **Escribe de forma atómica.** Escribe en un archivo temporal en la misma carpeta y luego renómbralo sobre el archivo de destino. Una nota escrita a medias (por ejemplo, tras un fallo) es peor que ningún cambio. El propio Alviss escribe cada nota así.
 3. **Conserva el frontmatter OKF y las claves desconocidas.** Mantén `type` y `okf_version` al reescribir una nota, y nunca elimines claves de frontmatter que no reconozcas — arrástralas sin cambios. No "limpies" claves que no entiendas.
-4. **Nunca toques `.plainva/`.** Esa carpeta contiene el índice local del dispositivo de Plainva, las copias de seguridad, los pines del grafo y el estado de sincronización. No forma parte de tu contenido y tus scripts nunca deben escribirla, sincronizarla ni subirla a Git.
-5. **Respeta las reglas de `.base`.** Una `.base` usa solo las cuatro claves de nivel superior de Obsidian (`filters`, `formulas`, `properties`, `views`); cada vista necesita un `name`; los filtros tienen una única raíz. Todos los datos específicos de Plainva van bajo subclaves anidadas `plainva:`. La [Referencia del formato de archivo](File_Format_Reference.md#databases-base) tiene el contrato completo, incluido un ejemplo de relaciones en ambos sentidos.
-6. **No pelees con el editor.** Si una nota está abierta *y* tiene cambios sin guardar en Plainva, mejor evita reescribirla desde un script en ese mismo momento. Plainva tiene un resolutor de conflictos como red de seguridad, pero el camino más limpio es dejar que la aplicación guarde primero (o editar notas que no están abiertas en ese momento).
+4. **Nunca toques `.plainva/`.** Esa carpeta contiene el índice local del dispositivo de Alviss, las copias de seguridad, los pines del grafo y el estado de sincronización. No forma parte de tu contenido y tus scripts nunca deben escribirla, sincronizarla ni subirla a Git.
+5. **Respeta las reglas de `.base`.** Una `.base` usa solo las cuatro claves de nivel superior de Obsidian (`filters`, `formulas`, `properties`, `views`); cada vista necesita un `name`; los filtros tienen una única raíz. Todos los datos específicos de Alviss van bajo subclaves anidadas `plainva:`. La [Referencia del formato de archivo](File_Format_Reference.md#databases-base) tiene el contrato completo, incluido un ejemplo de relaciones en ambos sentidos.
+6. **No pelees con el editor.** Si una nota está abierta *y* tiene cambios sin guardar en Alviss, mejor evita reescribirla desde un script en ese mismo momento. Alviss tiene un resolutor de conflictos como red de seguridad, pero el camino más limpio es dejar que la aplicación guarde primero (o editar notas que no están abiertas en ese momento).
 
 ## Patrones
 
 Algunas tareas habituales, todas simples operaciones de archivo:
 
-- **Crear notas en masa** — genera archivos `.md` con un bloque de frontmatter OKF (`type`, idealmente `generated: { by: <tu-herramienta>/<versión>, at: … }`, más tus propias propiedades) y un cuerpo Markdown. Desde OKF 0.2, `okf_version` va solo en el `index.md` raíz, no en las notas. Plainva las indexa a medida que aparecen.
+- **Crear notas en masa** — genera archivos `.md` con un bloque de frontmatter OKF (`type`, idealmente `generated: { by: <tu-herramienta>/<versión>, at: … }`, más tus propias propiedades) y un cuerpo Markdown. Desde OKF 0.2, `okf_version` va solo en el `index.md` raíz, no en las notas. Alviss las indexa a medida que aparecen.
 - **Generadores de notas diarias o informes** — un script programado que escribe una nota fechada en tu carpeta de notas diarias, rellenada desde otra fuente.
 - **Barridos de propiedades** — lee el frontmatter de cada nota, transforma un campo y vuelve a escribirlo (de forma atómica, conservando las claves desconocidas).
 - **Exportar / publicar** — lee el vault y renderízalo a HTML, un sitio estático o un PDF. Solo lectura — sin reglas de las que preocuparse.
@@ -64,7 +64,7 @@ Como el contrato es un documento, no una API en vivo, las mismas instrucciones f
 - Conserva `type`, `okf_version` y las claves desconocidas.
 - Nunca escribas en `.plainva/`.
 - `.base`: cuatro claves de nivel superior, vistas con nombre, filtros de raíz única, subclaves `plainva:` para todo lo demás.
-- El vault está vigilado — los cambios externos aparecen en Plainva automáticamente.
+- El vault está vigilado — los cambios externos aparecen en Alviss automáticamente.
 
 ## Ver también
 

@@ -2,11 +2,11 @@
 
 Last reviewed: 2026-10-30
 
-Plainva protects your work on two levels: **file versions** (automatic snapshots of every single file as you edit and delete) and **vault backups** (regular ZIP archives of the whole vault, stored outside the vault folder). Both run in the background without any setup and can be tuned in the settings under **Backup & version history**.
+Alviss protects your work on two levels: **file versions** (automatic snapshots of every single file as you edit and delete) and **vault backups** (regular ZIP archives of the whole vault, stored outside the vault folder). Both run in the background without any setup and can be tuned in the settings under **Backup & version history**.
 
 ## File versions (snapshots)
 
-Before every save Plainva stores a snapshot of the previous state — as a plain text copy under `.plainva/backups/` inside the vault (this folder is hidden from the file tree, search and sync). To avoid hundreds of copies while you type, a **Snapshot interval** applies (default: at most one new version every 2 minutes). **Deleting always snapshots**, regardless of the interval.
+Before every save Alviss stores a snapshot of the previous state — as a plain text copy under `.plainva/backups/` inside the vault (this folder is hidden from the file tree, search and sync). To avoid hundreds of copies while you type, a **Snapshot interval** applies (default: at most one new version every 2 minutes). **Deleting always snapshots**, regardless of the interval.
 
 Retention (configurable per vault):
 
@@ -17,7 +17,7 @@ Retention (configurable per vault):
 
 When you rename or move a file, its version history moves along with it.
 
-**Why large files are treated differently:** a 90 MB attachment edited repeatedly could otherwise fill the vault with a hundred copies — nine gigabytes for one file. Above the limit Plainva keeps the newest version instead of the full history, and says so once per vault. Notes and ordinary images are far below it and are unaffected. **A deletion is always saved in full**, however large the file: the new version of a saved file is still on disk, but a deleted one is gone — there the snapshot is the only way back.
+**Why large files are treated differently:** a 90 MB attachment edited repeatedly could otherwise fill the vault with a hundred copies — nine gigabytes for one file. Above the limit Alviss keeps the newest version instead of the full history, and says so once per vault. Notes and ordinary images are far below it and are unaffected. **A deletion is always saved in full**, however large the file: the new version of a saved file is still on disk, but a deleted one is gone — there the snapshot is the only way back.
 
 ## Viewing and restoring versions
 
@@ -31,22 +31,22 @@ Images have versions too (with preview); other binary files can be restored with
 
 ## Restoring deleted files
 
-Because every deletion snapshots the file first, Plainva can bring deleted files back: right-click the vault name at the top of the file tree → **Restore deleted files…** (also reachable under **Settings → Vault → Backup & version history → Version history**). The list shows all files whose snapshots still exist while the original is gone — **Restore** recreates the newest state at the original location (folders are recreated as needed), **Versions…** opens the full history of the deleted file.
+Because every deletion snapshots the file first, Alviss can bring deleted files back: right-click the vault name at the top of the file tree → **Restore deleted files…** (also reachable under **Settings → Vault → Backup & version history → Version history**). The list shows all files whose snapshots still exist while the original is gone — **Restore** recreates the newest state at the original location (folders are recreated as needed), **Versions…** opens the full history of the deleted file.
 
-Note: deleting a **whole folder** moves it to the operating system's trash — for that case the system trash is the primary way back; in Plainva you may only find older snapshots of the contained files.
+Note: deleting a **whole folder** moves it to the operating system's trash — for that case the system trash is the primary way back; in Alviss you may only find older snapshots of the contained files.
 
 ## Automatic vault backups (ZIP)
 
-In addition, Plainva backs up the whole vault as a ZIP file — by default **daily** in the background (when opening the vault, if the last backup is older than 24 hours). This protects you even if the vault folder itself is lost or damaged, because the ZIPs live **outside** the vault:
+In addition, Alviss backs up the whole vault as a ZIP file — by default **daily** in the background (when opening the vault, if the last backup is older than 24 hours). This protects you even if the vault folder itself is lost or damaged, because the ZIPs live **outside** the vault:
 
 - The default destination is the app data folder (shown under **Destination folder** in the settings; **Open folder** takes you straight there).
-- Via **Choose folder…** you can pick an external drive or a NAS instead; **Default** switches back to the app data folder. If the destination is currently unreachable (NAS off), the status bar mentions it quietly and Plainva retries later.
+- Via **Choose folder…** you can pick an external drive or a NAS instead; **Default** switches back to the app data folder. If the destination is currently unreachable (NAS off), the status bar mentions it quietly and Alviss retries later.
 - **Backups to keep** (default: 7) caps the count; older ZIPs of the same vault are deleted automatically. Foreign files in the destination folder are never touched.
 - **Back up now** starts a backup manually at any time; the status bar shows the run and its result.
 
 The ZIP files are named `VaultName_2026-07-05_14-30-00.zip` and contain all notes, attachments and your `.obsidian` configuration — they do **not** contain the internal `.plainva` folder (the search index is rebuilt on the next open; file versions are deliberately not part of the ZIP).
 
-**Restoring from a ZIP:** the ZIP is a completely normal archive. Extract it anywhere and open the extracted folder in Plainva as a vault — done.
+**Restoring from a ZIP:** the ZIP is a completely normal archive. Extract it anywhere and open the extracted folder in Alviss as a vault — done.
 
 ## Settings at a glance
 
@@ -63,8 +63,8 @@ Settings → **Vault** → **Backup & version history**:
 
 ## Good to know
 
-- File versions are ordinary copies under `.plainva/backups/` — if push comes to shove you can open them without Plainva in any file manager.
-- Plainva's own sync never transfers `.plainva`. If you sync the vault folder with a third-party client (e.g. the Nextcloud app), the snapshots travel along — that costs some storage but does no harm.
+- File versions are ordinary copies under `.plainva/backups/` — if push comes to shove you can open them without Alviss in any file manager.
+- Alviss's own sync never transfers `.plainva`. If you sync the vault folder with a third-party client (e.g. the Nextcloud app), the snapshots travel along — that costs some storage but does no harm.
 - Sync conflicts are additionally protected via `.CONFLICT` files (see the [FAQ](FAQ.md)); the version history complements that with the timeline of every file.
 
 On the phone, **ZIP backups** is the first group of the **Backup & version history** page, followed by the **Version history** with **Restore deleted files** at its end.
@@ -73,7 +73,7 @@ On mobile, a failed note save stops switching, reloading or removing the vault. 
 
 A ZIP backup counts as successful only after all selected files were readable and the complete archive was saved. A failed run does not remove earlier archives or change the last successful backup time. On mobile, automatic failures name the vault; **Back up now** under **Backup & version history** → **ZIP backups** starts another attempt. Hidden user configuration such as `.obsidian` is included on both platforms. The directories `.plainva`, `.git`, `.trash` and `node_modules` are excluded at every depth. When several archives are created in the same second, a new filename receives a suffix such as `_001`.
 
-A save is reported as complete only after the write has been confirmed. Text entered during an ongoing save remains unsaved until its own version is written. Desktop drafts belong to their editor session: completing an old session does not delete a draft from a newly opened editor. When external changes arrive at the same time, Plainva merges compatible changes; conflicting text remains available as a draft and a conflict copy.
+A save is reported as complete only after the write has been confirmed. Text entered during an ongoing save remains unsaved until its own version is written. Desktop drafts belong to their editor session: completing an old session does not delete a draft from a newly opened editor. When external changes arrive at the same time, Alviss merges compatible changes; conflicting text remains available as a draft and a conflict copy.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Make clear choices when comparing files
@@ -95,4 +95,4 @@ Merging line by line is a desktop tool; here you take one version whole or keep 
 
 ## Comparing a selected snapshot
 
-The selected version shows added and removed lines against the current note, including when the diff is hidden. On desktop, **Open in new window** keeps that exact snapshot selected. If it disappears, Plainva reports that it is unavailable. Large files may have no line count; binary files have no text diff. Mobile provides the same counts in the full comparison screen.
+The selected version shows added and removed lines against the current note, including when the diff is hidden. On desktop, **Open in new window** keeps that exact snapshot selected. If it disappears, Alviss reports that it is unavailable. Large files may have no line count; binary files have no text diff. Mobile provides the same counts in the full comparison screen.

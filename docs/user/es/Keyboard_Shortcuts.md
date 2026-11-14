@@ -13,7 +13,7 @@ Pulsa `F1` (o **Paleta de comandos → Mostrar atajos de teclado**) para abrir e
 | `Ctrl+,` | Abrir configuración |
 | `Ctrl+Plus` / `Ctrl+Minus` | Ampliar / reducir el zoom de la interfaz (80–150 %) |
 | `Ctrl+0` | Restablecer el zoom al 100 % |
-| `Ctrl+S` | Confirmar guardado (Plainva guarda automáticamente) |
+| `Ctrl+S` | Confirmar guardado (Alviss guarda automáticamente) |
 | `F1` | Mostrar esta ventana |
 | `Esc` | Cancelar acción (cerrar diálogo, cancelar renombrado) |
 
@@ -128,7 +128,7 @@ Ratón: **la rueda** hace zoom; **arrastre con el botón central** o `Ctrl`+arra
 - **Pestañas:** arrastra para reordenar, entre paneles, o hasta un borde para dividir; el **clic derecho** abre el menú de la pestaña (**Fijar**, **Recargar**, **Abrir en panel dividido**, grupo de cierre). Una pestaña **fijada** pasa al frente y sobrevive a cualquier cierre masivo.
 - **Barra de acciones (extremo izquierdo):** mantén pulsado un botón brevemente y arrástralo para reordenarlo (el grupo superior y el inferior permanecen separados); `Esc` cancela.
 - **Enlaces:** haz clic en un enlace wiki o Markdown para abrirlo (`Ctrl`+clic para una pestaña nueva).
-- **Clic derecho** en una selección o un campo abre el menú propio de Plainva para copiar / cortar / pegar.
+- **Clic derecho** en una selección o un campo abre el menú propio de Alviss para copiar / cortar / pegar.
 - **Ventana de vista rápida:** arrastra el encabezado para moverla, el asa de la esquina para cambiar el tamaño; `◀ ▶` tiene su propio historial. Si hay varias ventanas flotantes abiertas — una vista rápida, la vista previa del evento, un correo que estás redactando —, la que pulsas pasa al frente, y `Esc` cierra la que está al frente.
 - **Calendario:** haz clic en el título de la pestaña de calendario o en el nombre del mes de la barra lateral (o llega con `Tab` y pulsa `Intro`) para el selector de fecha: las flechas se mueven por la cuadrícula, `RePág/AvPág` cambian de mes, `Intro` salta, `Esc` cierra; haz clic en un día para su nota diaria.
 - **Menús:** un menú que abres desde un botón o con **clic derecho** pone el teclado en su primera opción: las flechas, `Inicio` y `Fin` se mueven por él, `Intro` elige una opción y `Esc` lo cierra y devuelve el teclado a donde estaba. Sobre un campo en el que estás escribiendo y sobre un texto que solo puedes leer, el teclado se queda donde estaba.

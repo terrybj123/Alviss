@@ -2,7 +2,7 @@
 
 Ultimo aggiornamento: 2026-10-26
 
-Plainva accede a Google con **Accesso su questo dispositivo**. Quando la tua build include l'**Accesso standard** per Google, non inserisci nulla e questa pagina non ti serve. Altrimenti — o se preferisci un progetto tutto tuo — usi le tue credenziali API di Google: questo approccio **Bring Your Own Credentials (BYO)** offre un modo sicuro per sincronizzare i tuoi file privati.
+Alviss accede a Google con **Accesso su questo dispositivo**. Quando la tua build include l'**Accesso standard** per Google, non inserisci nulla e questa pagina non ti serve. Altrimenti — o se preferisci un progetto tutto tuo — usi le tue credenziali API di Google: questo approccio **Bring Your Own Credentials (BYO)** offre un modo sicuro per sincronizzare i tuoi file privati.
 
 In sostanza configuri un tuo piccolo "progetto sviluppatore" presso Google, che appartiene solo a te e a cui solo tu puoi accedere.
 
@@ -12,7 +12,7 @@ In sostanza configuri un tuo piccolo "progetto sviluppatore" presso Google, che 
 1. Vai alla [Google Cloud Console](https://console.cloud.google.com/).
 2. Accedi con il tuo account Google.
 3. In alto a sinistra (accanto al logo di Google Cloud), apri il menu a tendina dei progetti e scegli **Nuovo progetto**.
-4. Inserisci un nome (ad es. "Plainva Sync") e clicca su **Crea**.
+4. Inserisci un nome (ad es. "Alviss Sync") e clicca su **Crea**.
 
 ### 2. Abilita l'API di Google Drive
 1. Seleziona il progetto appena creato nel menu a tendina in alto.
@@ -20,44 +20,44 @@ In sostanza configuri un tuo piccolo "progetto sviluppatore" presso Google, che 
 3. Clicca su **Abilita**.
 
 ### 3. Configura la schermata di consenso OAuth
-Perché Plainva usi le tue credenziali, deve essere configurata una schermata di consenso ("OAuth Consent Screen"). Poiché solo tu usi l'app, può restare in modalità "test".
+Perché Alviss usi le tue credenziali, deve essere configurata una schermata di consenso ("OAuth Consent Screen"). Poiché solo tu usi l'app, può restare in modalità "test".
 
 1. Nel menu laterale sinistro, sotto **API e servizi**, apri **Schermata consenso OAuth**.
 2. Sotto "Tipo di utente" scegli **Esterno** (a meno che tu non usi Google Workspace) e clicca su **Crea**.
 3. **Informazioni sull'app:**
-   - Nome dell'app: ad es. "Plainva"
+   - Nome dell'app: ad es. "Alviss"
    - Email di assistenza utenti: la tua email
    - Informazioni di contatto dello sviluppatore: la tua email
    - Clicca su **Salva e continua**.
 4. **Ambiti:**
    - Clicca su **Aggiungi o rimuovi ambiti**.
    - Cerca `.../auth/drive` (Google Drive API, accesso completo) e seleziona la casella.
-   - *Contesto: l'accesso completo è necessario perché Plainva possa sincronizzare anche i file che trascini nella tua cartella di sincronizzazione tramite l'interfaccia web di Google Drive.*
+   - *Contesto: l'accesso completo è necessario perché Alviss possa sincronizzare anche i file che trascini nella tua cartella di sincronizzazione tramite l'interfaccia web di Google Drive.*
    - Clicca su Aggiorna, poi **Salva e continua**.
 5. **Utenti di test:**
    - Clicca su **Aggiungi utenti**.
-   - Inserisci esattamente l'indirizzo email di Google che userai in seguito per la sincronizzazione in Plainva.
+   - Inserisci esattamente l'indirizzo email di Google che userai in seguito per la sincronizzazione in Alviss.
    - Clicca su **Salva e continua**, poi torna alla dashboard.
 
-*Importante: NON devi pubblicare l'app — nello stato "Test" funziona già pienamente. Aspettati però che Google faccia scadere l'accesso dopo **7 giorni** in questo caso, e in modo definitivo: in questa modalità scade anche il refresh token, quindi Plainva non può rinnovarlo in background. Plainva te lo dice in chiaro ("accesso scaduto"), e **Riconnetti** nei dettagli dell'account lo ripristina in un unico passaggio per ogni servizio di quell'account.*
+*Importante: NON devi pubblicare l'app — nello stato "Test" funziona già pienamente. Aspettati però che Google faccia scadere l'accesso dopo **7 giorni** in questo caso, e in modo definitivo: in questa modalità scade anche il refresh token, quindi Alviss non può rinnovarlo in background. Alviss te lo dice in chiaro ("accesso scaduto"), e **Riconnetti** nei dettagli dell'account lo ripristina in un unico passaggio per ogni servizio di quell'account.*
 
 **In produzione** elimina la scadenza fissa della modalità di test. Non garantisce un accesso permanente: Google può comunque far scadere o revocare l’accesso. I requisiti di pubblicazione e verifica dipendono dall’uso e dai permessi richiesti. [Google: scadenza dei token di aggiornamento](https://developers.google.com/identity/protocols/oauth2#expiration).
 
 ### 4. Crea le credenziali (ID client e Secret)
 1. Apri **Credenziali** nel menu a sinistra.
 2. Clicca su **Crea credenziali** in alto e scegli **ID client OAuth**.
-3. Come "Tipo di applicazione" scegli **App desktop** per Plainva su un computer. Per il telefono (Android e iPhone) crea invece un client di tipo **iOS** — vedi la fine di questa pagina.
-4. Nome: ad es. "Plainva Desktop Client".
+3. Come "Tipo di applicazione" scegli **App desktop** per Alviss su un computer. Per il telefono (Android e iPhone) crea invece un client di tipo **iOS** — vedi la fine di questa pagina.
+4. Nome: ad es. "Alviss Desktop Client".
 5. Clicca su **Crea**.
 6. Un popup mostra il tuo **ID client** e il **Secret client**.
 
-### 5. Inseriscili in Plainva
+### 5. Inseriscili in Alviss
 1. Apri **Impostazioni → il tuo vault → Account cloud**.
 2. Per un nuovo account scegli **Collega account…** → la scheda **Google** e spunta i servizi; per un account che hai già, aprilo e scegli **Cambia** in **Accesso su questo dispositivo**.
 3. Scegli **ID client personale** e incolla l'**ID client** e il **Secret client** copiati — sul telefono solo l'**ID client** del client iOS; non ha secret. Poi **Salva**.
 4. Clicca su **Accedi con Google…** (per un account che hai già: **Riconnetti**).
 5. Si apre una finestra del browser di Google. Accedi con l'account che hai aggiunto sotto "Utenti di test".
-6. Google potrebbe avvisare che l'app non è verificata. Clicca su **Avanzate** e poi su **Vai a Plainva (non sicuro)**.
+6. Google potrebbe avvisare che l'app non è verificata. Clicca su **Avanzate** e poi su **Vai a Alviss (non sicuro)**.
 7. Conferma i permessi richiesti — un solo consenso copre tutti i servizi che hai spuntato.
 8. L'ID client personale vale solo per questo dispositivo; gli altri mantengono la propria impostazione. Inseriscilo su ogni dispositivo che deve usare il tuo progetto.
 
@@ -66,7 +66,7 @@ Il tuo vault ora si sincronizza in sicurezza con Google Drive tramite le tue cre
 <!-- accounts-tasks-2026-09-11 -->
 ## Google OAuth — Desktop / Android / iOS
 
-Le istruzioni per desktop qui sopra richiedono un client desktop con ID client e relativo secret. Sul telefono, su Android come su iOS, Plainva accede a Google nel browser: crea nel tuo progetto Google un client OAuth di tipo **iOS**, anche per Android, con l’ID bundle `com.plainva.app`. Plainva ritorna tramite `com.plainva.app:/oauth2redirect`; non c’è un client secret. Inserisci l’ID client sul telefono in **Accesso su questo dispositivo** → **ID client personale**. Non creare un client di tipo Android: Google accetta il nome del pacchetto e l’impronta del certificato della versione Play in un solo progetto al mondo e rifiuta tutti gli altri («il nome del pacchetto Android e l’impronta sono già in uso»). Un client Android configurato per Plainva 0.8.3 o 0.8.4 non funziona per un nuovo accesso; gli account che hanno già effettuato l’accesso continuano a funzionare. Un client desktop non sostituisce la registrazione mobile. Per i calendari abilita anche Google Calendar API e Google Tasks API. Se sul telefono Google mostra “Errore 400: redirect_uri_mismatch”, l’ID client è di tipo “App desktop”: crea un client di tipo **iOS** come descritto qui e inserisci invece il suo ID client. Sotto il campo dell’ID client, **Apri la guida di Google** porta a questa sezione.
+Le istruzioni per desktop qui sopra richiedono un client desktop con ID client e relativo secret. Sul telefono, su Android come su iOS, Alviss accede a Google nel browser: crea nel tuo progetto Google un client OAuth di tipo **iOS**, anche per Android, con l’ID bundle `com.plainva.app`. Alviss ritorna tramite `com.plainva.app:/oauth2redirect`; non c’è un client secret. Inserisci l’ID client sul telefono in **Accesso su questo dispositivo** → **ID client personale**. Non creare un client di tipo Android: Google accetta il nome del pacchetto e l’impronta del certificato della versione Play in un solo progetto al mondo e rifiuta tutti gli altri («il nome del pacchetto Android e l’impronta sono già in uso»). Un client Android configurato per Alviss 0.8.3 o 0.8.4 non funziona per un nuovo accesso; gli account che hanno già effettuato l’accesso continuano a funzionare. Un client desktop non sostituisce la registrazione mobile. Per i calendari abilita anche Google Calendar API e Google Tasks API. Se sul telefono Google mostra “Errore 400: redirect_uri_mismatch”, l’ID client è di tipo “App desktop”: crea un client di tipo **iOS** come descritto qui e inserisci invece il suo ID client. Sotto il campo dell’ID client, **Apri la guida di Google** porta a questa sezione.
 
 [Google: iOS / Desktop](https://developers.google.com/identity/protocols/oauth2/native-app) · [Google: Android](https://developer.android.com/identity/authorization)
 

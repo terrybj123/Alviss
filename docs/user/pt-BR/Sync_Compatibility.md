@@ -1,22 +1,22 @@
-# Compatibilidade de Sincronização do Plainva
+# Compatibilidade de Sincronização do Alviss
 
 Última revisão: 2026-11-03
 
-Se um serviço WebDAV, CalDAV ou S3 retornar uma página de login ou um inventário incompleto, o Plainva informa um erro de sincronização. Essa resposta não é tratada como uma pasta ou lista de calendários vazia e não provoca exclusões deduzidas do seu conteúdo. Isso vale tanto no desktop quanto no celular.
+Se um serviço WebDAV, CalDAV ou S3 retornar uma página de login ou um inventário incompleto, o Alviss informa um erro de sincronização. Essa resposta não é tratada como uma pasta ou lista de calendários vazia e não provoca exclusões deduzidas do seu conteúdo. Isso vale tanto no desktop quanto no celular.
 
 Se um arquivo local não puder ser enviado por um erro de permissão ou leitura, a tarefa e o erro permanecem na fila. Restabeleça o acesso ao arquivo e tente sincronizar novamente. Apenas um arquivo realmente ausente é considerado inexistente; uma falha de acesso não é registrada como envio bem-sucedido.
 
-As alterações offline são preservadas mesmo após várias renomeações. O Plainva conclui as movimentações relacionadas antes de enviar o conteúdo atual; uma operação com falha retém as tarefas dependentes. Se a origem remota não existir, o Plainva envia o arquivo local ou o conteúdo da pasta para o novo local. O conteúdo que não puder ser lido permanece na fila com um erro para nova tentativa.
+As alterações offline são preservadas mesmo após várias renomeações. O Alviss conclui as movimentações relacionadas antes de enviar o conteúdo atual; uma operação com falha retém as tarefas dependentes. Se a origem remota não existir, o Alviss envia o arquivo local ou o conteúdo da pasta para o novo local. O conteúdo que não puder ser lido permanece na fila com um erro para nova tentativa.
 
 A confirmação vale apenas para a exclusão realizada. Ela é mantida nas novas tentativas após erros de conexão ou uma reinicialização; novos arquivos no mesmo local não a herdam. A confirmação adicional de uma exclusão em massa pausada e a opção de restaurar afetam apenas as tarefas exibidas. Exclusões grandes que já estavam na fila antes desta atualização podem precisar de uma nova confirmação.
 
-Entradas do diário que dois dispositivos anexam à mesma nota diária antes de terem sincronizado não são um conflito: o Plainva as mescla por horário e mantém cada linha dos dois dispositivos — mesmo quando os dois dispositivos criaram a nota do dia de forma independente. Toda outra alteração simultânea em uma nota é tratada como antes. Veja [Diário](Journal.md).
+Entradas do diário que dois dispositivos anexam à mesma nota diária antes de terem sincronizado não são um conflito: o Alviss as mescla por horário e mantém cada linha dos dois dispositivos — mesmo quando os dois dispositivos criaram a nota do dia de forma independente. Toda outra alteração simultânea em uma nota é tratada como antes. Veja [Diário](Journal.md).
 
-Uma pasta que você cria no Plainva é criada na nuvem dentro da pasta do vault. Até a versão 0.8.3, o Plainva também criava uma pasta vazia com o mesmo nome no nível superior do Google Drive, OneDrive ou Dropbox, ou do bucket S3 quando o vault usa um prefixo. O Plainva não remove essas cópias por conta própria; depois de verificar que uma dessas pastas de nível superior está vazia e não faz parte da pasta do seu vault, você pode excluí-la.
+Uma pasta que você cria no Alviss é criada na nuvem dentro da pasta do vault. Até a versão 0.8.3, o Alviss também criava uma pasta vazia com o mesmo nome no nível superior do Google Drive, OneDrive ou Dropbox, ou do bucket S3 quando o vault usa um prefixo. O Alviss não remove essas cópias por conta própria; depois de verificar que uma dessas pastas de nível superior está vazia e não faz parte da pasta do seu vault, você pode excluí-la.
 
-Letras acentuadas podem ser armazenadas de duas formas: `ü` como um único caractere ou como `u` seguido de um trema combinante. O macOS e o iOS costumam manter a segunda forma (por exemplo, numa pasta criada no Finder); muitos servidores e outros sistemas, a primeira. O Plainva trata as duas como o mesmo nome: lê e grava o arquivo ou a pasta que já existe, na forma em que este dispositivo ou a nuvem o armazena, e não renomeia nada. Os nomes que você cria no Plainva são armazenados na primeira forma. Só quando uma pasta realmente contém as duas formas lado a lado, ou quando dois nomes diferem em maiúsculas e minúsculas, o Plainva mostra o nome em **Mesmo nome, dois arquivos**: deixa o segundo arquivo fora da sincronização e não apaga nada por conta própria, nem aqui nem na nuvem. No cartão, **Remover duplicados** remove um segundo arquivo igual ao sincronizado, e **Manter os dois** dá a um arquivo diferente um nome próprio.
+Letras acentuadas podem ser armazenadas de duas formas: `ü` como um único caractere ou como `u` seguido de um trema combinante. O macOS e o iOS costumam manter a segunda forma (por exemplo, numa pasta criada no Finder); muitos servidores e outros sistemas, a primeira. O Alviss trata as duas como o mesmo nome: lê e grava o arquivo ou a pasta que já existe, na forma em que este dispositivo ou a nuvem o armazena, e não renomeia nada. Os nomes que você cria no Alviss são armazenados na primeira forma. Só quando uma pasta realmente contém as duas formas lado a lado, ou quando dois nomes diferem em maiúsculas e minúsculas, o Alviss mostra o nome em **Mesmo nome, dois arquivos**: deixa o segundo arquivo fora da sincronização e não apaga nada por conta própria, nem aqui nem na nuvem. No cartão, **Remover duplicados** remove um segundo arquivo igual ao sincronizado, e **Manter os dois** dá a um arquivo diferente um nome próprio.
 
-O Plainva sincroniza vaults por meio de adaptadores de sincronização intercambiáveis. Esta página mostra quais serviços você já pode usar hoje — diretamente integrados, via o protocolo WebDAV, ou via o próprio cliente de sincronização de desktop do provedor.
+O Alviss sincroniza vaults por meio de adaptadores de sincronização intercambiáveis. Esta página mostra quais serviços você já pode usar hoje — diretamente integrados, via o protocolo WebDAV, ou via o próprio cliente de sincronização de desktop do provedor.
 
 ## Diretamente integrados
 
@@ -25,8 +25,8 @@ O Plainva sincroniza vaults por meio de adaptadores de sincronização intercamb
 | Pasta local | Disponível | Nenhuma configuração necessária; alterações externas (por exemplo, feitas por outras ferramentas de sincronização) são detectadas automaticamente. |
 | WebDAV / Nextcloud | Disponível, verificado com o Nextcloud | URL do servidor, nome de usuário e (recomendado) uma senha de aplicativo. |
 | Google Drive | Disponível (credenciais BYO) | Requer seu próprio projeto no Google Cloud, veja o [guia do Google Drive BYO](Google_Drive_BYO_Guide.md). |
-| OneDrive | Disponível | Login pelo navegador (PKCE, sem secret). O Plainva já vem com seu próprio registro de app — basta escolher o OneDrive e conectar, sem necessidade de configuração. Usar seu próprio registro de app (gratuito) no Entra continua sendo opcional (veja o guia [OneDrive & Dropbox (BYO)](OneDrive_and_Dropbox_BYO_Guide.md)). |
-| Dropbox | Disponível | Login pelo navegador (PKCE, sem secret). O Plainva já vem com seu próprio app do Dropbox — basta escolher o Dropbox e conectar, sem necessidade de configuração. Usar seu próprio app (gratuito) do Dropbox continua sendo opcional (veja o guia [OneDrive & Dropbox (BYO)](OneDrive_and_Dropbox_BYO_Guide.md)). |
+| OneDrive | Disponível | Login pelo navegador (PKCE, sem secret). O Alviss já vem com seu próprio registro de app — basta escolher o OneDrive e conectar, sem necessidade de configuração. Usar seu próprio registro de app (gratuito) no Entra continua sendo opcional (veja o guia [OneDrive & Dropbox (BYO)](OneDrive_and_Dropbox_BYO_Guide.md)). |
+| Dropbox | Disponível | Login pelo navegador (PKCE, sem secret). O Alviss já vem com seu próprio app do Dropbox — basta escolher o Dropbox e conectar, sem necessidade de configuração. Usar seu próprio app (gratuito) do Dropbox continua sendo opcional (veja o guia [OneDrive & Dropbox (BYO)](OneDrive_and_Dropbox_BYO_Guide.md)). |
 | Armazenamento de objetos compatível com S3 | Disponível (novo em 2026-07-04, aceitação nativa pendente) | AWS S3, Cloudflare R2, Backblaze B2, MinIO, Wasabi, Hetzner e outros — basta um endpoint, bucket, região e um par de chaves de API; sem login pelo navegador. |
 
 ## Serviços utilizáveis via WebDAV
@@ -49,11 +49,11 @@ O adaptador WebDAV fala o WebDAV padrão, então os serviços a seguir devem fun
 
 ## Via o cliente de sincronização de desktop do provedor (pasta local)
 
-Até que integrações nativas cheguem, você pode usar qualquer serviço cujo cliente de desktop mantenha uma pasta local sincronizada. O Plainva então trata o vault como uma pasta local e detecta alterações externas automaticamente.
+Até que integrações nativas cheguem, você pode usar qualquer serviço cujo cliente de desktop mantenha uma pasta local sincronizada. O Alviss então trata o vault como uma pasta local e detecta alterações externas automaticamente.
 
 **Importante:** defina a pasta do vault como "sempre manter neste dispositivo" / "disponível offline". Arquivos de espaço reservado somente online (Files On-Demand, online-only, modo de streaming) podem interferir na indexação e na sincronização.
 
-**Um caminho por pasta:** para uma pasta de vault, use ou o cliente de desktop do provedor ou a sincronização própria do Plainva, nunca os dois ao mesmo tempo. Duas ferramentas de sincronização na mesma pasta enviam cada alteração duas vezes e podem criar pastas duplicadas — por exemplo, quando uma grava letras acentuadas em uma forma Unicode diferente da outra.
+**Um caminho por pasta:** para uma pasta de vault, use ou o cliente de desktop do provedor ou a sincronização própria do Alviss, nunca os dois ao mesmo tempo. Duas ferramentas de sincronização na mesma pasta enviam cada alteração duas vezes e podem criar pastas duplicadas — por exemplo, quando uma grava letras acentuadas em uma forma Unicode diferente da outra.
 
 - **OneDrive** (integração com o Explorer; desative o Files On-Demand para a pasta do vault)
 - **Dropbox** (cliente de desktop; evite "somente online" para a pasta do vault)
@@ -63,11 +63,11 @@ Até que integrações nativas cheguem, você pode usar qualquer serviço cujo c
 
 ## Observação sobre as novas integrações (2026-07-04)
 
-OneDrive, Dropbox e o armazenamento compatível com S3 foram diretamente integrados desde 2026-07-04 (veja a tabela acima) — antes do planejado no faseamento do plano mestre (§13.3). O Plainva já vem com seus próprios registros de app para OneDrive e Dropbox, então você não precisa do seu próprio client ID ou app key — os campos vêm pré-preenchidos e basta conectar. Usar seu próprio ID de app continua sendo opcional (por exemplo, por restrições corporativas); veja o guia [OneDrive & Dropbox (BYO)](OneDrive_and_Dropbox_BYO_Guide.md). O caminho do cliente de sincronização de desktop (veja acima) continua disponível como alternativa.
+OneDrive, Dropbox e o armazenamento compatível com S3 foram diretamente integrados desde 2026-07-04 (veja a tabela acima) — antes do planejado no faseamento do plano mestre (§13.3). O Alviss já vem com seus próprios registros de app para OneDrive e Dropbox, então você não precisa do seu próprio client ID ou app key — os campos vêm pré-preenchidos e basta conectar. Usar seu próprio ID de app continua sendo opcional (por exemplo, por restrições corporativas); veja o guia [OneDrive & Dropbox (BYO)](OneDrive_and_Dropbox_BYO_Guide.md). O caminho do cliente de sincronização de desktop (veja acima) continua disponível como alternativa.
 
 ## Deliberadamente não planejado
 
 - **iCloud como uma integração de API:** a Apple não oferece uma API oficial de terceiros para o iCloud Drive. Use a pasta local do iCloud em vez disso (veja acima).
-- **Syncthing como provedor integrado:** desnecessário — o Plainva funciona com qualquer pasta local que o Syncthing, ou o Synctrain no iPhone e no iPad, mantém sincronizada (veja acima).
+- **Syncthing como provedor integrado:** desnecessário — o Alviss funciona com qualquer pasta local que o Syncthing, ou o Synctrain no iPhone e no iPad, mantém sincronizada (veja acima).
 - **Proton Drive / Mega:** nenhuma API oficial ou apenas APIs difíceis de integrar (criptografia E2E, SDK em C++). Mantidos sob observação.
 - **Lista de observação** (sob demanda): pCloud, Box, Filen, SFTP.

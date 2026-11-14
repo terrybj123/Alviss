@@ -2,7 +2,7 @@
 
 Última revisão: 2026-09-30
 
-O Plainva oferece três formas de buscar: busca de texto completo em todo o vault, o alternador rápido para abrir arquivos, e localizar e substituir dentro de uma nota.
+O Alviss oferece três formas de buscar: busca de texto completo em todo o vault, o alternador rápido para abrir arquivos, e localizar e substituir dentro de uma nota.
 
 ## Busca de texto completo no vault
 
@@ -10,7 +10,7 @@ O campo no topo da barra lateral pesquisa títulos e conteúdo em todo o vault. 
 
 A busca reage enquanto você digita: prefixos de palavra já encontram resultados ("Proj" encontra "Projeto plano") — sem precisar de Enter. O **X** à direita do campo limpa a busca atual (ou pressione `Esc`); a barra lateral volta então a mostrar a árvore de arquivos normal.
 
-Em chinês, japonês, tailandês e outras escritas sem espaços entre as palavras, a busca encontra um termo em qualquer ponto do texto: `議事録` encontra "今日は会議の議事録を書いた", `搜索` encontra "全文搜索". Palavras latinas no meio desse texto também são encontradas ("Plainva" em "…でPlainvaを使った").
+Em chinês, japonês, tailandês e outras escritas sem espaços entre as palavras, a busca encontra um termo em qualquer ponto do texto: `議事録` encontra "今日は会議の議事録を書いた", `搜索` encontra "全文搜索". Palavras latinas no meio desse texto também são encontradas ("Alviss" em "…でAlvissを使った").
 
 A pesquisa lista cada ocorrência com um trecho, o caminho dos títulos e o número da linha. Abrir uma linha seleciona exatamente essa ocorrência; várias correspondências na mesma nota aparecem separadas. A contagem inclui apenas os resultados já carregados. Você pode carregar mais ocorrências. As setas mudam a seleção e Enter a abre. Carregamento, resultados vazios e erros são indicados; uma nova consulta descarta respostas antigas. Se uma edição impedir a identificação inequívoca da ocorrência, uma mensagem explica isso. As mesmas ocorrências estão disponíveis no alternador rápido e na pesquisa móvel. Ao voltar à pesquisa no celular, a consulta, os resultados carregados e a posição da lista são restaurados. Os resultados vêm por **Relevância**, a menos que você escolha **Última alteração**, **Título** ou **Caminho** com o botão de ordenação ao lado do campo de busca (no telefone: na barra da tela de busca); carregar mais mantém a ordem escolhida. No telefone, a folha de ordenação fica aberta até você tocar em **Concluído**: tocar de novo na ordem escolhida inverte a direção.
 
@@ -23,7 +23,7 @@ O campo de busca também se aplica às outras visualizações da barra lateral: 
 - `path:pasta` — apenas arquivos cujo caminho contenha o texto (ex.: `path:Projetos`; com espaços: `path:"Minha Pasta"`).
 - `tag:nome` — apenas notas com essa tag, incluindo tags aninhadas: `tag:projeto` também encontra `#projeto/interno`. `tag:#projeto` também funciona.
 - Os operadores podem ser negados (`-path:Arquivo`, `-tag:concluido`) e combinados livremente com termos de busca: `plano tag:projeto -rascunho`.
-- Vários termos são combinados com E. Caracteres especiais como `- ( ) : *` dentro dos termos são inofensivos — o Plainva trata a entrada literalmente.
+- Vários termos são combinados com E. Caracteres especiais como `- ( ) : *` dentro dos termos são inofensivos — o Alviss trata a entrada literalmente.
 
 ## Alternador rápido
 
@@ -55,7 +55,7 @@ A visualização da barra lateral **Tags** lista todas as `#tags` do vault com u
 
 Na nota, uma tag é desenhada como uma pequena pílula — enquanto você escreve e enquanto lê; o texto em si continua sendo `#projeto/site`. Um clique na pílula (no telefone: um toque no modo de leitura) abre as notas que carregam a tag. O que conta como tag é igual em todo lugar — na lista de tags, em uma tarefa e ao renomear: um `#` no início da linha ou depois de um espaço, seguido de letras, dígitos, `_`, `-` ou `/`. Apenas dígitos não são uma tag (`#42` continua sendo um número), nem o que está dentro de código ou de um link. **Colorir tags** em **Configurações → App → Aparência** dá a cada tag uma cor que decorre do nome; tags aninhadas compartilham a cor da tag de nível superior. A configuração pertence a este dispositivo e não salva nada nas suas notas.
 
-**Renomear uma tag** em todo o vault: clique com o botão direito em uma tag na visualização **Tags** e digite um novo nome. O Plainva reescreve a tag em todos os lugares — no corpo das notas (`#tag` e suas subtags `#tag/child`) e no frontmatter (`tags:`) — gravando de volta cada nota afetada pelo mesmo caminho seguro. Tags não relacionadas que apenas contêm o nome (por exemplo, `#area/tag`) permanecem intocadas.
+**Renomear uma tag** em todo o vault: clique com o botão direito em uma tag na visualização **Tags** e digite um novo nome. O Alviss reescreve a tag em todos os lugares — no corpo das notas (`#tag` e suas subtags `#tag/child`) e no frontmatter (`tags:`) — gravando de volta cada nota afetada pelo mesmo caminho seguro. Tags não relacionadas que apenas contêm o nome (por exemplo, `#area/tag`) permanecem intocadas.
 
 ## Navegando dentro de uma nota
 

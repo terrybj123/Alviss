@@ -2,7 +2,7 @@
 
 Laatst bijgewerkt: 2026-11-04
 
-Plainva importeert notities uit andere apps in een nieuwe vault of een nieuw benoemde submap van de geopende vault. De rest blijft ongewijzigd; je kunt de importmap daarna verplaatsen of verwijderen.
+Alviss importeert notities uit andere apps in een nieuwe vault of een nieuw benoemde submap van de geopende vault. De rest blijft ongewijzigd; je kunt de importmap daarna verplaatsen of verwijderen.
 
 **Importeren werkt op beide apparaten, met dezelfde bronnen.** Op de desktop leiden het startscherm, het opdrachtenpalet en het contextmenu van een map ernaartoe; op de telefoon vind je het onder **Instellingen → Onderhoud → Importeren uit een andere app**. Ook bronnen die toegang tot een dienst nodig hebben — Notion via de API — zijn daar beschikbaar. Ook het opdrachtenpalet van de telefoon (`>` in het zoekveld) leidt ernaartoe.
 
@@ -16,13 +16,13 @@ Drie manieren:
 
 De eerste stap vraagt om je export — **Bestanden kiezen...** of **Map kiezen...**, wat je ook hebt. Daarna noemt de wizard de app die hij herkend heeft, en bepaal je zelf waar de import naartoe schrijft. Er volgt een voorbeeld met de cijfers van de uitvoering, de grenzen van deze import en de schakelaars voor de bron. Er wordt pas iets geschreven zodra je op **Import starten** klikt.
 
-**Je hoeft niet te weten welke optie bij je export past.** Kies de bestanden, en Plainva herkent de bron — een Notion-export aan de lange ID's in zijn paden, een Logseq-graph aan zijn mappen `journals/` en `pages/`, een Keep- of Simplenote-export aan de inhoud van de JSON. De wizard laat zien wat hij herkend heeft; als hij het mis had, wijzig je het in de lijst hierboven en blijft je keuze staan.
+**Je hoeft niet te weten welke optie bij je export past.** Kies de bestanden, en Alviss herkent de bron — een Notion-export aan de lange ID's in zijn paden, een Logseq-graph aan zijn mappen `journals/` en `pages/`, een Keep- of Simplenote-export aan de inhoud van de JSON. De wizard laat zien wat hij herkend heeft; als hij het mis had, wijzig je het in de lijst hierboven en blijft je keuze staan.
 
 ## Waar de import naartoe schrijft
 
 Precies een van de twee per import — nooit beide:
 
-- **Nieuwe vault**: je kiest een lege map, Plainva maakt daarin een nieuwe vault aan en importeert daarnaartoe. Niets van wat je al hebt kan worden aangeraakt, en de hele import ongedaan maken betekent die map verwijderen. Dit is de juiste keuze als je Plainva uitprobeert. Op de telefoon is een vault geen map die je uitkiest maar een gebied van de app: je geeft er alleen een naam aan. De import ongedaan maken betekent dan die vault verwijderen onder **Meer → Vaults**.
+- **Nieuwe vault**: je kiest een lege map, Alviss maakt daarin een nieuwe vault aan en importeert daarnaartoe. Niets van wat je al hebt kan worden aangeraakt, en de hele import ongedaan maken betekent die map verwijderen. Dit is de juiste keuze als je Alviss uitprobeert. Op de telefoon is een vault geen map die je uitkiest maar een gebied van de app: je geeft er alleen een naam aan. De import ongedaan maken betekent dan die vault verwijderen onder **Meer → Vaults**.
 - **Submap van de geopende vault**: alles komt terecht in één nieuw aangemaakte submap die je benoemt. De rest van je vault blijft onaangeroerd.
 
 De doelregel onder de keuze noemt altijd de exacte map, zodat waar dingen terechtkomen nooit gissen is.
@@ -79,7 +79,7 @@ Een grote werkruimte kan even duren, dus een import kan worden gestopt: **Import
 | **HTML-map / ZIP** | Een map, bestanden of een ZIP met HTML-pagina’s | De pagina’s als Markdown-notities, met de links ertussen omgeleid |
 | **Markdown-map / ZIP** | Een map, bestanden of een ZIP | De `.md`-bestanden en hun mapstructuur |
 
-**Obsidian** staat ook in de lijst, maar start geen import — en heeft er ook geen nodig. Plainva werkt met dezelfde Markdown-bestanden: het item legt dat uit en biedt je **Vault openen** aan. Wiki-links, tags, frontmatter en `.base`-bestanden blijven werken, en je vault blijft bruikbaar in Obsidian. Eerlijk gezegd: er is geen plugin-ecosysteem, geen Canvas en geen Dataview — daarvoor in de plaats krijg je filters in `.base`, en plugin-syntax in je notities blijft daar gewoon als platte tekst staan. Een uitzondering is een `tasks`-blok uit Obsidian: Plainva toont het als takenlijst ([Tasks-query's uit Obsidian](Tasks.md#tasks-querys-uit-obsidian)).
+**Obsidian** staat ook in de lijst, maar start geen import — en heeft er ook geen nodig. Alviss werkt met dezelfde Markdown-bestanden: het item legt dat uit en biedt je **Vault openen** aan. Wiki-links, tags, frontmatter en `.base`-bestanden blijven werken, en je vault blijft bruikbaar in Obsidian. Eerlijk gezegd: er is geen plugin-ecosysteem, geen Canvas en geen Dataview — daarvoor in de plaats krijg je filters in `.base`, en plugin-syntax in je notities blijft daar gewoon als platte tekst staan. Een uitzondering is een `tasks`-blok uit Obsidian: Alviss toont het als takenlijst ([Tasks-query's uit Obsidian](Tasks.md#tasks-querys-uit-obsidian)).
 
 ## Waarom ontbreekt mijn app?
 
@@ -98,9 +98,9 @@ Notion is de enige bron waarbij de twee wegen sterk verschillen.
 
 **Met een integratietoken (aanbevolen).** Maak een token aan op `notion.so/my-integrations` — de wizard noemt de drie stappen en opent de pagina voor je. Open daarna elke Notion-pagina die je wilt importeren, kies rechtsboven **"..."** → **Verbindingen**, en voeg je integratie toe — Notion geeft alleen pagina's vrij die je uitdrukkelijk hebt verbonden.
 
-**Plainva bewaart het token niet.** Het geldt voor die ene keer en is daarna weg; er ontstaat geen gekoppeld account. Voor de volgende import plak je het opnieuw.
+**Alviss bewaart het token niet.** Het geldt voor die ene keer en is daarna weg; er ontstaat geen gekoppeld account. Voor de volgende import plak je het opnieuw.
 
-Via de API ziet Plainva de structuur, niet alleen de tekst:
+Via de API ziet Alviss de structuur, niet alleen de tekst:
 
 - De paginahiërarchie wordt een mapstructuur.
 - Elke database wordt een `.base`-bestand plus een map met **één notitie per rij**.
@@ -109,7 +109,7 @@ Via de API ziet Plainva de structuur, niet alleen de tekst:
 - Tabel-, bord-, kalender- en lijstweergaven worden gegenereerd uit het databaseschema.
 - Databases die in een pagina zijn ingesloten, worden live `![[Database.base]]`-embeds.
 
-**Vanuit een ZIP-export.** Dit werkt offline en heeft geen token nodig, maar Notions export bevat geen databaseschema en geen pagina-ID's. Pagina's en hun mappen komen over, en **links tussen de geïmporteerde pagina's blijven werken** — Notion schrijft ze met een lang ID in elk padsegment, en Plainva wijst ze naar de notities die daadwerkelijk zijn geschreven. De `.csv` naast elke databasemap wordt gelezen voor wat de pagina’s zelf niet dragen: de kolommen, hun types en de waarden van elke rij als frontmatter. Rijen waarvoor de export geen pagina heeft, worden als notities geschreven. Koppelen gebeurt op titel — de API-route is die met echte ID’s en blijft de betere keuze voor een werkruimte die op relaties is gebouwd.
+**Vanuit een ZIP-export.** Dit werkt offline en heeft geen token nodig, maar Notions export bevat geen databaseschema en geen pagina-ID's. Pagina's en hun mappen komen over, en **links tussen de geïmporteerde pagina's blijven werken** — Notion schrijft ze met een lang ID in elk padsegment, en Alviss wijst ze naar de notities die daadwerkelijk zijn geschreven. De `.csv` naast elke databasemap wordt gelezen voor wat de pagina’s zelf niet dragen: de kolommen, hun types en de waarden van elke rij als frontmatter. Rijen waarvoor de export geen pagina heeft, worden als notities geschreven. Koppelen gebeurt op titel — de API-route is die met echte ID’s en blijft de betere keuze voor een werkruimte die op relaties is gebouwd.
 
 ## Wat imports niet kunnen meenemen
 
@@ -118,18 +118,18 @@ Elke importer noemt zijn grenzen in het voorbeeld en nogmaals in het rapport. De
 - **Bijlagen komen mee.** Uit een ZIP of map behouden ze de plek die ze in de export hadden, zodat een relatieve afbeeldingslink in een notitie blijft werken. Uit Notion via de API worden ze tijdens de import gedownload — Notion ondertekent die links en ze verlopen binnen een uur — en belanden in een map `Attachments`; afbeeldingen die een pagina ergens anders van het web haalt, blijven links. Twee uitzonderingen blijven in je export en worden een voor een in het rapport genoemd: bijlagen binnen een Evernote-`.enex` en Google Keep-afbeeldingen.
 - **Sommige onderdelen van het archief worden bewust overgeslagen:** zeer grote bestanden, symbolische links en onderdelen met een onveilig pad. Ze verschijnen met een reden in het voorbeeld, voordat je de import start.
 - **Zeer lange Notion-pagina's** worden volledig gelezen, maar inhoud genest in toggles, kolommen of sublijsten wordt niet meegenomen.
-- **Logseq-bestanden worden ongewijzigd gekopieerd** — `key:: value`-eigenschappen en blokverwijzingen worden niet omgezet naar Plainva-eigenschappen of -links.
+- **Logseq-bestanden worden ongewijzigd gekopieerd** — `key:: value`-eigenschappen en blokverwijzingen worden niet omgezet naar Alviss-eigenschappen of -links.
 - **Verwijderde notities blijven verwijderd.** De prullenbak van Simplenote en Google Keep wordt overgeslagen — je hebt ooit besloten om die notities los te laten, en een import moet ze niet stilletjes teruggeven. Ze worden met naam genoemd in het rapport, zodat je ziet wat is achtergebleven.
 - **Notion-ZIP-exports** koppelen rijen aan pagina’s op titel (zie hierboven) en nemen geen relaties tussen databases mee.
 - **HTML-tabellen en codeblokken verliezen hun structuur.** De omzetting leest koppen, lijsten, opmaak, links en afbeeldingen; een tabel wordt de tekst van haar cellen. Elke pagina waar dat gebeurde staat in het rapport.
 
 ## Datums worden ook overgenomen
 
-Een collectie die jarenlang is gegroeid, verliest zijn tijdlijn als na een import alles van vandaag lijkt te dateren. Plainva neemt daarom de datums van de bron over:
+Een collectie die jarenlang is gegroeid, verliest zijn tijdlijn als na een import alles van vandaag lijkt te dateren. Alviss neemt daarom de datums van de bron over:
 
 - Ze komen terecht als `created` en `updated` in de frontmatter van de geïmporteerde notitie — dat is ook waar de tijdlijn van de graaf ze leest.
 - Het bestand zelf krijgt ook de wijzigingsdatum van de bron, zodat sorteren op datum en **Onlangs geopend** kloppen. De aanmaakdatum van een bestand kan alleen onder Windows worden ingesteld; op de andere systemen is de frontmatter de drager.
-- Als een bron geen datums meelevert, gebruikt Plainva de datum van het exportbestand. Er wordt nooit een verzonnen: zonder enig aanknopingspunt blijft het veld leeg.
+- Als een bron geen datums meelevert, gebruikt Alviss de datum van het exportbestand. Er wordt nooit een verzonnen: zonder enig aanknopingspunt blijft het veld leeg.
 
 ## Eén mislukking beëindigt niet de hele import
 
@@ -140,7 +140,7 @@ Als één notitie niet kan worden geschreven, gaat de import gewoon door en staa
 De import schrijft naar de geopende vault en is daarom bewust niet-destructief opgezet:
 
 - Als een notitienaam al bezet is, krijgt de geïmporteerde notitie een **nummer** (`Meeting (2).md`) in plaats van de bestaande te vervangen. Dit geldt ook wanneer twee bronnotities dezelfde naam delen.
-- Geïmporteerde notities krijgen de gebruikelijke OKF-frontmatter — `type` plus een `generated`-stempel met Plainva's import-actor (`plainva-import/<versie>`) en het moment van de uitvoering, en `sources` waar de herkomst bekend is — zodat ze zich in `.base`-filters en -weergaven gedragen als elke andere Plainva-notitie. De stempel laat je alles terugvinden wat samen is binnengekomen.
+- Geïmporteerde notities krijgen de gebruikelijke OKF-frontmatter — `type` plus een `generated`-stempel met Alviss's import-actor (`plainva-import/<versie>`) en het moment van de uitvoering, en `sources` waar de herkomst bekend is — zodat ze zich in `.base`-filters en -weergaven gedragen als elke andere Alviss-notitie. De stempel laat je alles terugvinden wat samen is binnengekomen.
 - Buiten de doelsubmap wordt niets aangepast.
 
 Als je de import liever helemaal apart wilt houden, maak dan eerst een nieuwe vault aan (**Nieuwe vault** op het startscherm) en importeer daarin.
@@ -183,4 +183,4 @@ JEX vereist een nieuw doel. Ongeldige archieven, conflicterende paden, symbolisc
 
 ## Als een HTML-bestand niet kan worden omgezet
 
-Als HTML dieper is genest dan wordt ondersteund, vermeldt het importrapport het bestand als overgeslagen. Plainva slaat hiervoor geen ingekorte notitie op. Andere geldige bestanden kunnen wel verder worden geïmporteerd. Probeer een eenvoudigere HTML-export of exporteer de betreffende notitie als Markdown; bewaar de oorspronkelijke export totdat je het resultaat hebt gecontroleerd.
+Als HTML dieper is genest dan wordt ondersteund, vermeldt het importrapport het bestand als overgeslagen. Alviss slaat hiervoor geen ingekorte notitie op. Andere geldige bestanden kunnen wel verder worden geïmporteerd. Probeer een eenvoudigere HTML-export of exporteer de betreffende notitie als Markdown; bewaar de oorspronkelijke export totdat je het resultaat hebt gecontroleerd.

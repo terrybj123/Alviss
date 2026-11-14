@@ -2,7 +2,7 @@
 
 Laatst bijgewerkt: 2026-10-30
 
-**Normaal gesproken heb je deze pagina niet nodig:** Plainva levert voor OneDrive **en** Dropbox een eigen app-ID mee — je kiest de provider, klikt op **Aanmelden met Microsoft…** resp. **Aanmelden met Dropbox…** en meldt je aan. Een **eigen** (gratis) app-registratie heb je alleen in twee gevallen nodig: als een bedrijfsbeperking de meegeleverde aanmelding blokkeert, of als je de verbinding bewust onder je eigen controle wilt houden. Voor **OneDrive** voer je haar in onder **Aanmelding op dit apparaat** → **Wijzigen** → **Eigen client-ID** — op de accountpagina of in de wizard, op de desktop en op de telefoon, alleen voor dit apparaat. Voor **Dropbox** werkt het hetzelfde: in de wizard onder **Andere aanmelding** → **Eigen app-key**, of op de accountpagina onder **Toegang op dit apparaat** → **Aanmelding op dit apparaat** → **Wijzigen**. De app-key geldt voor dit apparaat, andere apparaten behouden hun instelling; een app-key die een account eerder al had, wordt automatisch overgenomen. Hoe dan ook voer je precies één publieke waarde in:
+**Normaal gesproken heb je deze pagina niet nodig:** Alviss levert voor OneDrive **en** Dropbox een eigen app-ID mee — je kiest de provider, klikt op **Aanmelden met Microsoft…** resp. **Aanmelden met Dropbox…** en meldt je aan. Een **eigen** (gratis) app-registratie heb je alleen in twee gevallen nodig: als een bedrijfsbeperking de meegeleverde aanmelding blokkeert, of als je de verbinding bewust onder je eigen controle wilt houden. Voor **OneDrive** voer je haar in onder **Aanmelding op dit apparaat** → **Wijzigen** → **Eigen client-ID** — op de accountpagina of in de wizard, op de desktop en op de telefoon, alleen voor dit apparaat. Voor **Dropbox** werkt het hetzelfde: in de wizard onder **Andere aanmelding** → **Eigen app-key**, of op de accountpagina onder **Toegang op dit apparaat** → **Aanmelding op dit apparaat** → **Wijzigen**. De app-key geldt voor dit apparaat, andere apparaten behouden hun instelling; een app-key die een account eerder al had, wordt automatisch overgenomen. Hoe dan ook voer je precies één publieke waarde in:
 
 - **OneDrive** → een **Client-ID** (formaat `00000000-0000-0000-0000-000000000000`)
 - **Dropbox** → een **App-key** (korte tekenreeks)
@@ -27,8 +27,8 @@ Deze pagina is de uitgebreide aanvulling op de korte versies onder [Sync instell
 ### 2. Nieuwe app-registratie aanmaken
 
 1. Menu **Identiteit → Toepassingen → App-registraties**, dan **+ Nieuwe registratie**.
-2. **Naam:** vrij te kiezen, bijv. `Plainva` (alleen ter weergave).
-3. **Ondersteunde accounttypen:** kies **"Accounts in elke organisatiedirectory … en persoonlijke Microsoft-accounts"**. Alleen deze optie sluit aan op het aanmeldpunt van Plainva; "alleen deze directory" laat persoonlijke OneDrive-accounts mislukken.
+2. **Naam:** vrij te kiezen, bijv. `Alviss` (alleen ter weergave).
+3. **Ondersteunde accounttypen:** kies **"Accounts in elke organisatiedirectory … en persoonlijke Microsoft-accounts"**. Alleen deze optie sluit aan op het aanmeldpunt van Alviss; "alleen deze directory" laat persoonlijke OneDrive-accounts mislukken.
 4. **Redirect-URI** — regel dit meteen hier:
    - Platform: **"Openbare client/native (mobiel en desktop)"**.
    - Waarde: `http://localhost` (precies zo — geen poort, geen slash aan het eind).
@@ -38,7 +38,7 @@ Deze pagina is de uitgebreide aanvulling op de korte versies onder [Sync instell
 
 ### 3. Client-ID kopiëren
 
-Kopieer op het **Overzicht** van de app de waarde **"Toepassings-ID (client)"** — dat is jouw waarde voor Plainva. (De "Directory-ID (tenant)" heb je niet nodig.)
+Kopieer op het **Overzicht** van de app de waarde **"Toepassings-ID (client)"** — dat is jouw waarde voor Alviss. (De "Directory-ID (tenant)" heb je niet nodig.)
 
 ### 4. Openbare clientstromen toestaan
 
@@ -51,10 +51,10 @@ Kopieer op het **Overzicht** van de app de waarde **"Toepassings-ID (client)"** 
 1. Menu **API-machtigingen → + Een machtiging toevoegen → Microsoft Graph → Gedelegeerde machtigingen**.
 2. Vink beide aan:
    - `Files.ReadWrite`
-   - `offline_access` (levert het langdurige aanmeldtoken — **zonder** deze weigert Plainva de verbinding)
+   - `offline_access` (levert het langdurige aanmeldtoken — **zonder** deze weigert Alviss de verbinding)
 3. **Toevoegen**. Beheerderstoestemming is niet nodig bij persoonlijke accounts; je stemt zelf toe bij het aanmelden.
 
-### In Plainva invoeren
+### In Alviss invoeren
 
 1. **Instellingen → Vault → Cloudaccounts**: open het Microsoft-account, of start **Account verbinden…** met de tegel **Microsoft**.
 2. Kies bij **Aanmelding op dit apparaat** **Wijzigen** en daarna **Eigen client-ID**.
@@ -78,14 +78,14 @@ Kopieer op het **Overzicht** van de app de waarde **"Toepassings-ID (client)"** 
 2. **Type of access:** **Full Dropbox** — niet "App folder".
 
    > ⚠️ **Full Dropbox** is verplicht: "App folder" ziet alleen een geïsoleerde submap en vindt bestaande vaults elders in je Dropbox niet.
-3. **Name:** een wereldwijd unieke naam, bijv. `Plainva-Sync-<jenaam>` (alleen technisch, niemand anders ziet dit).
+3. **Name:** een wereldwijd unieke naam, bijv. `Alviss-Sync-<jenaam>` (alleen technisch, niemand anders ziet dit).
 4. **Create app**.
 
 ### 3. Redirect-URI registreren
 
 Tabblad **Settings → OAuth 2 → Redirect URIs**: voer **exact** `http://127.0.0.1:41953` in en klik op **Add**.
 
-> ⚠️ Moet tekstueel exact overeenkomen: `127.0.0.1` (niet `localhost`), poort `41953`, geen slash aan het eind. Plainva bindt precies deze poort; elke afwijking breekt de aanmelding af.
+> ⚠️ Moet tekstueel exact overeenkomen: `127.0.0.1` (niet `localhost`), poort `41953`, geen slash aan het eind. Alviss bindt precies deze poort; elke afwijking breekt de aanmelding af.
 
 ### 4. Machtigingen instellen
 
@@ -96,20 +96,20 @@ Tabblad **Permissions** — vink het volgende aan en klik onderaan op **Submit**
 - `files.content.read`
 - `files.content.write`
 
-> ⚠️ Wijzig je de machtigingen later, dan moet je in Plainva **opnieuw verbinden**, anders blijven de oude rechten gelden.
+> ⚠️ Wijzig je de machtigingen later, dan moet je in Alviss **opnieuw verbinden**, anders blijven de oude rechten gelden.
 
 ### 5. App-key kopiëren
 
-Tabblad **Settings**: kopieer de waarde **App key** — dat is jouw waarde voor Plainva. (Het "App secret" heb je niet nodig.)
+Tabblad **Settings**: kopieer de waarde **App key** — dat is jouw waarde voor Alviss. (Het "App secret" heb je niet nodig.)
 
 > Je app blijft in de status "Development". Voor privégebruik is dat voldoende; "Apply for production" is alleen nodig als veel andere gebruikers dezelfde App-key gaan gebruiken.
 
-### In Plainva invoeren
+### In Alviss invoeren
 
 1. **Instellingen → Vault → Cloudaccounts**: open het Dropbox-account of start **Account verbinden…** met de tegel **Dropbox**.
 2. Open in de wizard **Andere aanmelding** en kies **Eigen app-key**; op de accountpagina in plaats daarvan **Toegang op dit apparaat** → **Aanmelding op dit apparaat** → **Wijzigen**.
 3. Plak de gekopieerde App-key en kies **Opslaan**.
-4. **Aanmelden met Dropbox…** (op de accountpagina **Opnieuw verbinden**) → meld je aan in de browser en bevestig de toegang. De cloudmap (standaard `/Plainva`) kies je daarna via **Map kiezen…**.
+4. **Aanmelden met Dropbox…** (op de accountpagina **Opnieuw verbinden**) → meld je aan in de browser en bevestig de toegang. De cloudmap (standaard `/Alviss`) kies je daarna via **Map kiezen…**.
 
 ---
 

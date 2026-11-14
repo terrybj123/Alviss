@@ -13,7 +13,7 @@ Stan na: 2026-10-22
 | `Ctrl+,` | Otwórz ustawienia |
 | `Ctrl+Plus` / `Ctrl+Minus` | Powiększ / pomniejsz interfejs (80–150 %) |
 | `Ctrl+0` | Zresetuj powiększenie do 100 % |
-| `Ctrl+S` | Potwierdź zapis (Plainva zapisuje automatycznie) |
+| `Ctrl+S` | Potwierdź zapis (Alviss zapisuje automatycznie) |
 | `F1` | Pokaż skróty klawiszowe |
 | `Esc` | Anuluj akcję (zamknij okno dialogowe, przerwij zmianę nazwy) |
 
@@ -128,7 +128,7 @@ Mysz: **przewijanie kółkiem** zmienia powiększenie; **przeciąganie środkowy
 - **Karty:** przeciąganie zmienia ich kolejność, przenosi je między panelami, a przeciągnięcie do krawędzi dzieli widok; **kliknięcie prawym przyciskiem** otwiera menu karty (**Przypnij**, **Odśwież**, **Otwórz w podziale**, grupa zamykania). **Przypięta** karta przesuwa się na początek i przetrwa każde masowe zamknięcie.
 - **Pasek akcji (skrajnie po lewej):** przytrzymaj przycisk chwilę i przeciągnij, aby zmienić jego kolejność (górna i dolna grupa pozostają oddzielne); `Esc` anuluje.
 - **Linki:** kliknięcie linku wewnętrznego lub linku Markdown otwiera go (`Ctrl`+klik w nowej karcie).
-- **Kliknięcie prawym przyciskiem** na zaznaczeniu lub polu otwiera własne menu kontekstowe Plainva: kopiuj / wytnij / wklej.
+- **Kliknięcie prawym przyciskiem** na zaznaczeniu lub polu otwiera własne menu kontekstowe Alviss: kopiuj / wytnij / wklej.
 - **Okno podglądu:** przeciąganie nagłówka przesuwa je, uchwyt w rogu zmienia rozmiar; `◀ ▶` ma własną historię. Gdy otwartych jest kilka pływających okien — okno podglądu, podgląd wydarzenia, pisana właśnie wiadomość e-mail —, kliknięte okno wychodzi na wierzch, a `Esc` zamyka to, które jest na wierzchu.
 - **Kalendarz:** kliknięcie tytułu w karcie kalendarza lub nazwy miesiąca na pasku bocznym (albo `Tab` i `Enter`) otwiera wybór daty — strzałki poruszają się po siatce, `PgUp/PgDn` przewijają miesiące, `Enter` przechodzi, `Esc` zamyka; kliknięcie dnia otwiera jego notatkę dzienną.
 - **Menu:** menu otwarte przyciskiem lub **kliknięciem prawym przyciskiem** ustawia klawiaturę na pierwszej pozycji — strzałki, `Home` i `End` przesuwają po nim, `Enter` wybiera pozycję, `Esc` zamyka je i przywraca klawiaturę tam, gdzie była. Nad polem, w którym trwa pisanie, i nad tekstem tylko do odczytu klawiatura zostaje tam, gdzie była.

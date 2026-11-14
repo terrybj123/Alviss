@@ -70,7 +70,7 @@ Haz **clic derecho** en el icono para elegir en su lugar otra base de datos como
 
 ## Bloquear tiempo para una tarea
 
-Una tarea tiene una fecha de vencimiento y puede llevar una **hora del día** (`2026-09-21T14:00`) — es entonces cuando Plainva te avisa. Una hora es un instante, no un intervalo. Cuando quieras reservar un hueco para una de ellas, Plainva crea un **evento** — ese es el objeto que posee un intervalo de tiempo, se dibuja con sus solapamientos en la cuadrícula y se sincroniza con tu cuenta de calendario.
+Una tarea tiene una fecha de vencimiento y puede llevar una **hora del día** (`2026-09-21T14:00`) — es entonces cuando Alviss te avisa. Una hora es un instante, no un intervalo. Cuando quieras reservar un hueco para una de ellas, Alviss crea un **evento** — ese es el objeto que posee un intervalo de tiempo, se dibuja con sus solapamientos en la cuadrícula y se sincroniza con tu cuenta de calendario.
 
 El icono de calendario en una fila de tarea abre **Bloquear tiempo**: la fecha (prerrellenada con el vencimiento), el inicio y la **Duración** (15 min, 30 min, 1 h, 2 h o **Personalizada**), además de un selector de calendario cuando hay más de uno con permiso de escritura. El evento lleva el título de la tarea y enlaza de vuelta a la nota. Un **clic derecho** en la fila muestra las mismas acciones que la hoja en el teléfono: hecha/abierta, mover a la base de datos, repetición, bloquear tiempo.
 
@@ -78,12 +78,12 @@ En una tarea de la base de datos, la nota además recuerda el bloque en su front
 
 ## Tareas repetitivas
 
-Una tarea que vuelve con regularidad obtiene una **Repetición** mediante el icono de repetición en la sección **Base de datos de tareas**. Plainva no crea una **serie**: marcar la tarea como hecha crea la **siguiente** como su propia nota junto a la terminada, con la nueva fecha de vencimiento. De ese modo solo hay una tarea abierta a la vez, la terminada queda como registro de lo hecho, y no existe una serie invisible de la que se pueda borrar todo por accidente — elimina una tarea y la cadena termina.
+Una tarea que vuelve con regularidad obtiene una **Repetición** mediante el icono de repetición en la sección **Base de datos de tareas**. Alviss no crea una **serie**: marcar la tarea como hecha crea la **siguiente** como su propia nota junto a la terminada, con la nueva fecha de vencimiento. De ese modo solo hay una tarea abierta a la vez, la terminada queda como registro de lo hecho, y no existe una serie invisible de la que se pueda borrar todo por accidente — elimina una tarea y la cadena termina.
 
 El diálogo ofrece tres cosas:
 
 - **Ritmo** — Diaria, Semanal, Mensual o Anual, más el intervalo bajo **Cada** (por ejemplo, «Cada 3» + «Diaria» = cada tres días).
-- **Contado desde: El vencimiento** — una cadencia fija («cada lunes»). Si marcas como hecha con retraso una tarea vencida, Plainva salta al siguiente vencimiento **en el futuro** en lugar de llenar la lista con las que se te pasaron.
+- **Contado desde: El vencimiento** — una cadencia fija («cada lunes»). Si marcas como hecha con retraso una tarea vencida, Alviss salta al siguiente vencimiento **en el futuro** en lugar de llenar la lista con las que se te pasaron.
 - **Contado desde: La finalización** — el ritmo empieza el día en que la marcas como hecha («cada tres días después de regar las plantas»).
 
 **No repetir** elimina la repetición de nuevo. Las tareas mensuales nunca se desplazan más allá del fin de un mes: el 31 de enero más un mes es el 28 o el 29 de febrero, no el 3 de marzo.
@@ -122,15 +122,15 @@ Una casilla te avisa cuando su fecha de vencimiento lleva una hora: escribe la h
 
 Actívalo en **Ajustes → Calendario → Recordatorios** con **Casillas con hora**: por vault y en este dispositivo, desactivado hasta que lo actives. El recordatorio llega a esa hora, menos la antelación de **Antelación para tareas con hora**. En el teléfono ofrece **Marcar**, **En 1 hora** y **Mañana por la mañana**, como el recordatorio de una tarea de la base de datos de tareas; en el escritorio, el aviso de al lado ofrece **Abrir tarea**. En ambos casos llegas a la nota en la línea de la tarea, también después de que la nota se haya renombrado o movido.
 
-Una casilla que marcas, borras o a la que das otra hora se vuelve a planificar en segundos. Una casilla con fecha pero sin hora no avisa, y las notas con `plainva.tasks: false` quedan fuera. Plainva no escribe nada en la nota para un recordatorio. Obsidian no conoce horas: deja de leer una fecha `📅` seguida de una hora.
+Una casilla que marcas, borras o a la que das otra hora se vuelve a planificar en segundos. Una casilla con fecha pero sin hora no avisa, y las notas con `plainva.tasks: false` quedan fuera. Alviss no escribe nada en la nota para un recordatorio. Obsidian no conoce horas: deja de leer una fecha `📅` seguida de una hora.
 
 ## Compatibilidad con Obsidian
 
-Las tareas son casillas GFM (GitHub-Flavored Markdown) normales. Plainva nunca añade una sintaxis especial: las mismas líneas `- [ ]` se renderizan como casillas en Obsidian y se leen con claridad en cualquier editor. Las convenciones `📅 date` y `#tag` son el estilo habitual de Obsidian-Tasks, pero son solo texto en tu nota.
+Las tareas son casillas GFM (GitHub-Flavored Markdown) normales. Alviss nunca añade una sintaxis especial: las mismas líneas `- [ ]` se renderizan como casillas en Obsidian y se leen con claridad en cualquier editor. Las convenciones `📅 date` y `#tag` son el estilo habitual de Obsidian-Tasks, pero son solo texto en tu nota.
 
 ## Consultas Tasks de Obsidian
 
-Una nota que viene de Obsidian puede contener un bloque de código `tasks` con una consulta. Plainva lo dibuja como una lista de tareas — en la vista previa en vivo y en el modo lectura, en el escritorio y en el teléfono, también dentro de una cita o un callout:
+Una nota que viene de Obsidian puede contener un bloque de código `tasks` con una consulta. Alviss lo dibuja como una lista de tareas — en la vista previa en vivo y en el modo lectura, en el escritorio y en el teléfono, también dentro de una cita o un callout:
 
 ````markdown
 ```tasks
@@ -141,21 +141,21 @@ sort by filename reverse
 ```
 ````
 
-La consulta se queda en la nota exactamente como la escribiste; Plainva nunca escribe dentro del bloque. El modo fuente siempre muestra el texto plano.
+La consulta se queda en la nota exactamente como la escribiste; Alviss nunca escribe dentro del bloque. El modo fuente siempre muestra el texto plano.
 
 ### Trabajar con la lista
 
-- Marca la casilla de una tarea: Plainva escribe la línea de la tarea en su propia nota — con la fecha de finalización y la repetición, como en la vista Tareas.
+- Marca la casilla de una tarea: Alviss escribe la línea de la tarea en su propia nota — con la fecha de finalización y la repetición, como en la vista Tareas.
 - Haz clic o toca una fila: la nota se abre en la línea de la tarea.
 - Clic derecho en una fila en el escritorio, o mantener pulsada en el teléfono, abre el menú de la fila: **Hechas**/**Abiertas**, **Cambiar vencimiento**, **Establecer prioridad**, **Establecer estado**.
 - En una nota incrustada (`![[…]]`) la lista es de solo lectura: sin casilla ni menú.
 - Con el cursor dentro del bloque, el editor muestra la consulta como texto. **Editar consulta** coloca el cursor en la consulta; en el teléfono primero pasa a edición.
 
-El pie del bloque muestra el número de tareas («12 tareas»), el interruptor **Explicación** y **Editar consulta**. **Explicación** muestra cómo ha leído Plainva cada línea de la consulta, con las fechas como días reales. Un resultado grande no se corta en silencio: Plainva muestra las primeras 100 filas y después **Mostrar todas (n)**.
+El pie del bloque muestra el número de tareas («12 tareas»), el interruptor **Explicación** y **Editar consulta**. **Explicación** muestra cómo ha leído Alviss cada línea de la consulta, con las fechas como días reales. Un resultado grande no se corta en silencio: Alviss muestra las primeras 100 filas y después **Mostrar todas (n)**.
 
-### Lo que Plainva entiende
+### Lo que Alviss entiende
 
-Plainva lee estas líneas del lenguaje de consultas de Tasks:
+Alviss lee estas líneas del lenguaje de consultas de Tasks:
 
 | Tema | Líneas |
 |---|---|
@@ -173,12 +173,12 @@ Plainva lee estas líneas del lenguaje de consultas de Tasks:
 | Presentación y cantidad | `show tree`, `hide backlink`, `hide task count` y similares, `limit 20`, `limit groups 5`, `explain` |
 | Comentarios y marcadores de posición | líneas que empiezan por `#`; marcadores de posición como `{{query.file.path}}`, que se refieren a la nota en la que está la consulta |
 
-### Líneas que Plainva no puede seguir
+### Líneas que Alviss no puede seguir
 
 Cada línea de una consulta cae en uno de tres casos:
 
-- Una línea que Obsidian conoce y Plainva todavía no — por ejemplo código (`filter by function`; Plainva nunca ejecuta código de las notas), expresiones regulares (`regex matches`), dependencias (`is blocked`), ajustes preestablecidos u otras expresiones de fecha. Un aviso sobre la lista nombra la línea y el motivo; la línea se omite, así que la lista puede mostrar más tareas que en Obsidian — o en otro orden, en las líneas `sort by` y `group by`.
-- Una línea de presentación sin equivalente en Plainva (`hide edit button`, `short mode`, …) se acepta sin avisar.
+- Una línea que Obsidian conoce y Alviss todavía no — por ejemplo código (`filter by function`; Alviss nunca ejecuta código de las notas), expresiones regulares (`regex matches`), dependencias (`is blocked`), ajustes preestablecidos u otras expresiones de fecha. Un aviso sobre la lista nombra la línea y el motivo; la línea se omite, así que la lista puede mostrar más tareas que en Obsidian — o en otro orden, en las líneas `sort by` y `group by`.
+- Una línea de presentación sin equivalente en Alviss (`hide edit button`, `short mode`, …) se acepta sin avisar.
 - Una línea que Obsidian también rechaza (una errata, paréntesis mezclados, una fecha imposible) muestra un error con la línea y el motivo, y ninguna lista.
 
 ### Diferencias con Obsidian
@@ -186,7 +186,7 @@ Cada línea de una consulta cae en uno de tres casos:
 - «Hoy» es el día del calendario.
 - Las notas con `plainva.tasks: false` cuentan aquí; Obsidian no conoce esa propiedad.
 - Un filtro global y una consulta global definidos en Obsidian se nombran en la **Explicación**, pero no se aplican.
-- Los caracteres de estado personalizados (`[>]`, `[!]`, …) no son tareas en Plainva.
+- Los caracteres de estado personalizados (`[>]`, `[!]`, …) no son tareas en Alviss.
 
 Los bloques de Dataview siguen siendo texto plano.
 
@@ -198,7 +198,7 @@ Los bloques de Dataview siguen siendo texto plano.
 
 ## Completar desde la vista general
 
-Al marcar una tarea en la vista general, Plainva escribe la casilla en la nota de origen y actualiza esa nota en el índice antes de consultar de nuevo la lista. La tarea sale de **Abiertas** inmediatamente y no reaparece desde un índice antiguo.
+Al marcar una tarea en la vista general, Alviss escribe la casilla en la nota de origen y actualiza esa nota en el índice antes de consultar de nuevo la lista. La tarea sale de **Abiertas** inmediatamente y no reaparece desde un índice antiguo.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Separar tareas con el mismo título
@@ -212,11 +212,11 @@ Estos archivos pertenecen a tareas diferentes. Las tareas recurrentes con el mis
 <!-- task-names-2026-09-24 -->
 ## Cómo se llaman las tareas del proveedor
 
-Una tarea que Plainva refleja desde una lista de tareas de tu proveedor se llama como su título: «Llamar al dentista» se convierte en `Llamar al dentista.md` en la carpeta de tu base de datos de tareas. Si el nombre ya está ocupado —por una nota tuya o por una segunda tarea con el mismo título—, la nueva tarea recibe el siguiente número libre, como cualquier otra nota: `Compras 2.md`, `Compras 3.md`.
+Una tarea que Alviss refleja desde una lista de tareas de tu proveedor se llama como su título: «Llamar al dentista» se convierte en `Llamar al dentista.md` en la carpeta de tu base de datos de tareas. Si el nombre ya está ocupado —por una nota tuya o por una segunda tarea con el mismo título—, la nueva tarea recibe el siguiente número libre, como cualquier otra nota: `Compras 2.md`, `Compras 3.md`.
 
-Qué tarea está en qué archivo no lo dice el nombre, sino la marca en el frontmatter (`plainva.pim`, consulta la [Referencia del formato de archivo](File_Format_Reference.md)). Por eso Plainva solo reutiliza un nombre existente si el archivo contiene la misma tarea, y crea las tareas nuevas en el mismo orden en cada dispositivo: así dos dispositivos asignan los mismos números. Si el título cambia en el proveedor, Plainva actualiza el encabezado de la nota, pero no renombra el archivo, y los enlaces a la nota siguen funcionando. Puedes renombrarla o moverla tú cuando quieras; la marca mantiene el enlace.
+Qué tarea está en qué archivo no lo dice el nombre, sino la marca en el frontmatter (`plainva.pim`, consulta la [Referencia del formato de archivo](File_Format_Reference.md)). Por eso Alviss solo reutiliza un nombre existente si el archivo contiene la misma tarea, y crea las tareas nuevas en el mismo orden en cada dispositivo: así dos dispositivos asignan los mismos números. Si el título cambia en el proveedor, Alviss actualiza el encabezado de la nota, pero no renombra el archivo, y los enlaces a la nota siguen funcionando. Puedes renombrarla o moverla tú cuando quieras; la marca mantiene el enlace.
 
-**Limpiar nombres con identificador.** Entre el 12 y el 24 de septiembre de 2026, Plainva añadía un identificador al nombre de las notas de tarea nuevas (`Llamar al dentista — 3f9a1c0b7d2e4a61.md`). Si tu vault todavía tiene nombres así, la vista de tareas —en el escritorio y en el teléfono— muestra una vez un aviso con la lista antiguo → nuevo y el número de enlaces que se actualizan con ellas. **Limpiar nombres…** vuelve a preguntar y después renombra las notas según su título, numerando las del mismo título como arriba; los enlaces a ellas se actualizan. **Ocultar** aparta el aviso hasta que aparezcan más nombres así. Plainva solo reconoce los nombres que asignó él mismo: el identificador debe coincidir con la marca del mismo archivo. Nunca se renombra nada por sí solo. Tus otros dispositivos reciben los cambios de nombre como un traslado cuando tienen la misma versión; una versión anterior ve allí en su lugar notas eliminadas y nuevas, y a veces pregunta si debe eliminarlas, a veces deja el nombre antiguo junto al nuevo; mejor actualiza antes esos dispositivos. En el escritorio, el aviso aparece en la ventana principal.
+**Limpiar nombres con identificador.** Entre el 12 y el 24 de septiembre de 2026, Alviss añadía un identificador al nombre de las notas de tarea nuevas (`Llamar al dentista — 3f9a1c0b7d2e4a61.md`). Si tu vault todavía tiene nombres así, la vista de tareas —en el escritorio y en el teléfono— muestra una vez un aviso con la lista antiguo → nuevo y el número de enlaces que se actualizan con ellas. **Limpiar nombres…** vuelve a preguntar y después renombra las notas según su título, numerando las del mismo título como arriba; los enlaces a ellas se actualizan. **Ocultar** aparta el aviso hasta que aparezcan más nombres así. Alviss solo reconoce los nombres que asignó él mismo: el identificador debe coincidir con la marca del mismo archivo. Nunca se renombra nada por sí solo. Tus otros dispositivos reciben los cambios de nombre como un traslado cuando tienen la misma versión; una versión anterior ve allí en su lugar notas eliminadas y nuevas, y a veces pregunta si debe eliminarlas, a veces deja el nombre antiguo junto al nuevo; mejor actualiza antes esos dispositivos. En el escritorio, el aviso aparece en la ventana principal.
 
 <!-- tasks-jex-2026-09-14 -->
 ## Metadatos de Tasks y repetición
@@ -238,22 +238,22 @@ El estado, texto de búsqueda, carpeta, etiqueta, filtro de vencimiento y visibi
 
 La vista de tareas se abre en **Hoy**. Las listas — una barra a la izquierda en el escritorio, un segmento encima de la lista en el teléfono — son **Hoy** (lo que vence hoy, con **Atrasadas** arriba), **Próximamente** (los próximos 14 días, por día), **Bandeja de entrada** (tareas abiertas sin fecha), **Todas** (las dos secciones descritas arriba, con el filtro **Abiertas**/**Hechas**/**Todas**) y **Hechas**. Cada lista se nutre de ambas fuentes, la base de datos de tareas y las casillas de tus notas, ordenadas por prioridad, luego por hora, luego por título. Los demás filtros se aplican a cada lista, y la lista elegida se recuerda por vault. En el escritorio, la barra también lista las etiquetas más frecuentes como filtros de un clic; en el teléfono, la pantalla **Hoy** lleva a la **Hoy** del planificador.
 
-Encima de las listas está el campo de captura; en el teléfono, **+ Nueva tarea** y el botón **＋** lo abren como una hoja. Escribe una línea — `Enviar oferta mañana 14:00 !!! #cliente cada semana` — y pulsa Intro: Plainva crea la tarea en la base de datos de tareas. Entiende hoy, mañana, pasado mañana, los días de la semana, «en 3 días», «la próxima semana», fechas en cifras, una hora (`14:30`, `2 pm`), un ritmo (diario, semanal, mensual, anual, «cada lunes», «cada 2 semanas»), `!`, `!!` y `!!!` para prioridad baja, media y alta, y `#tags` — las palabras en el idioma de la aplicación, cifras y signos en cualquier idioma. Todo lo reconocido queda marcado dentro del campo y se lista debajo como un bloque eliminable **antes** de que se guarde nada; si quitas un bloque, sus palabras vuelven a contar simplemente como título. En el teléfono, unos botones rápidos escriben las mismas palabras por ti. Si la base de datos de tareas nombra una lista de un proveedor, un chip decide si la tarea se crea también allí.
+Encima de las listas está el campo de captura; en el teléfono, **+ Nueva tarea** y el botón **＋** lo abren como una hoja. Escribe una línea — `Enviar oferta mañana 14:00 !!! #cliente cada semana` — y pulsa Intro: Alviss crea la tarea en la base de datos de tareas. Entiende hoy, mañana, pasado mañana, los días de la semana, «en 3 días», «la próxima semana», fechas en cifras, una hora (`14:30`, `2 pm`), un ritmo (diario, semanal, mensual, anual, «cada lunes», «cada 2 semanas»), `!`, `!!` y `!!!` para prioridad baja, media y alta, y `#tags` — las palabras en el idioma de la aplicación, cifras y signos en cualquier idioma. Todo lo reconocido queda marcado dentro del campo y se lista debajo como un bloque eliminable **antes** de que se guarde nada; si quitas un bloque, sus palabras vuelven a contar simplemente como título. En el teléfono, unos botones rápidos escriben las mismas palabras por ti. Si la base de datos de tareas nombra una lista de un proveedor, un chip decide si la tarea se crea también allí.
 
-**Establecer prioridad** en el menú de una fila (clic derecho en el escritorio, mantener pulsado en el teléfono) ofrece **alta**, **media**, **baja** y **ninguna**; una bandera delante del título la muestra. En la base de datos de tareas, la prioridad es una columna de selección: una base de datos creada ahora ya la tiene, una más antigua la recibe la primera vez que estableces una prioridad — nunca por el simple hecho de abrirla. Una casilla lleva la marca de prioridad conocida de Obsidian en su línea: Plainva lee 🔺 y ⏫ como alta, 🔼 como media, 🔽 y ⏬ como baja, y escribe ⏫, 🔼 o 🔽.
+**Establecer prioridad** en el menú de una fila (clic derecho en el escritorio, mantener pulsado en el teléfono) ofrece **alta**, **media**, **baja** y **ninguna**; una bandera delante del título la muestra. En la base de datos de tareas, la prioridad es una columna de selección: una base de datos creada ahora ya la tiene, una más antigua la recibe la primera vez que estableces una prioridad — nunca por el simple hecho de abrirla. Una casilla lleva la marca de prioridad conocida de Obsidian en su línea: Alviss lee 🔺 y ⏫ como alta, 🔼 como media, 🔽 y ⏬ como baja, y escribe ⏫, 🔼 o 🔽.
 
-`- [/]` (**En curso**) y `- [-]` (**Cancelada**) también son tareas. Reciben su propia casilla en el editor, en el modo de lectura y en cada lista; en curso cuenta como abierta, cancelada como cerrada. Un clic solo sigue alternando entre abierta y hecha — completa una tarea en curso y reabre una cancelada. **Establecer estado** en el menú de la fila fija los dos estados; Plainva no los escribe nunca por su cuenta.
+`- [/]` (**En curso**) y `- [-]` (**Cancelada**) también son tareas. Reciben su propia casilla en el editor, en el modo de lectura y en cada lista; en curso cuenta como abierta, cancelada como cerrada. Un clic solo sigue alternando entre abierta y hecha — completa una tarea en curso y reabre una cancelada. **Establecer estado** en el menú de la fila fija los dos estados; Alviss no los escribe nunca por su cuenta.
 
 **La fecha de una tarea es la forma de cambiarla.** Pulsa la fecha de una tarea (dentro de un día, su hora) y se abre el selector de fecha: bajo la fecha en el escritorio, como hoja en el teléfono. **Cambiar vencimiento** en el menú de la fila abre el mismo selector; así también recibe fecha una tarea que no la tiene. En el teléfono, **Nueva tarea** y la celda de fecha de una base de datos eligen su día en el mismo calendario, no en la rueda de fechas del sistema. Una casilla en una nota — en el editor, en la vista de lectura y en el diario — tiene en el teléfono un tamaño pensado para el dedo. Una entrada de la base de datos de tareas conserva su hora, una casilla recibe o cambia su fecha `📅`. Junto al título **Atrasadas**, **Todas a hoy** mueve de una vez todas las tareas atrasadas a hoy. Ambas acciones se confirman con un aviso que ofrece **Deshacer**. En el campo de captura, `[[` sugiere notas y `#` etiquetas, como en el editor: `Enter` o `Tab` toma la sugerencia resaltada, `Esc` cierra la lista.
 
-**Opciones rápidas y una hora.** Encima del calendario, el selector ofrece **Hoy**, **Mañana**, **Este fin de semana**, **La próxima semana** y **Sin fecha**, cada una con su día de la semana. Este fin de semana es el próximo sábado — hoy, si es sábado o domingo; la próxima semana es el primer día de la semana siguiente, según **Inicio de semana**. Abajo, **Hora** tiene un interruptor: apagado, la tarea vence todo el día; encendido, eliges la hora al lado. Una opción rápida o un día conservan una hora ya puesta; para cambiar solo la hora, pulsa **Listo**. Una entrada de la base de datos de tareas guarda la hora en su valor de vencimiento (`2026-10-26T10:00`). Para una casilla en una nota el selector solo fija el día — el `📅` de Obsidian no tiene hora — y lo dice ahí en lugar de ofrecer el interruptor; una hora que escribas tú tras la fecha (ver *Recordatorios para casillas*) se mantiene cuando cambia el día. Si la columna de vencimiento de la base de datos muestra solo días, Plainva ofrece una vez **Cambiar a fecha y hora**.
+**Opciones rápidas y una hora.** Encima del calendario, el selector ofrece **Hoy**, **Mañana**, **Este fin de semana**, **La próxima semana** y **Sin fecha**, cada una con su día de la semana. Este fin de semana es el próximo sábado — hoy, si es sábado o domingo; la próxima semana es el primer día de la semana siguiente, según **Inicio de semana**. Abajo, **Hora** tiene un interruptor: apagado, la tarea vence todo el día; encendido, eliges la hora al lado. Una opción rápida o un día conservan una hora ya puesta; para cambiar solo la hora, pulsa **Listo**. Una entrada de la base de datos de tareas guarda la hora en su valor de vencimiento (`2026-10-26T10:00`). Para una casilla en una nota el selector solo fija el día — el `📅` de Obsidian no tiene hora — y lo dice ahí en lugar de ofrecer el interruptor; una hora que escribas tú tras la fecha (ver *Recordatorios para casillas*) se mantiene cuando cambia el día. Si la columna de vencimiento de la base de datos muestra solo días, Alviss ofrece una vez **Cambiar a fecha y hora**.
 
-Más formas de entrada: **Nueva tarea** en el menú de la bandeja del sistema en el escritorio (cuando Plainva sigue ejecutándose en segundo plano), en Android el acceso directo del launcher **Nueva tarea** (mantén pulsado el icono de la app), y en el teléfono **Crear como tarea** cuando compartes algo con Plainva — el texto y los archivos adjuntos terminan en la nota de la tarea. Cómo te avisa una tarea con hora se describe en [Calendario y tareas externas](Calendar_and_Tasks.md).
+Más formas de entrada: **Nueva tarea** en el menú de la bandeja del sistema en el escritorio (cuando Alviss sigue ejecutándose en segundo plano), en Android el acceso directo del launcher **Nueva tarea** (mantén pulsado el icono de la app), y en el teléfono **Crear como tarea** cuando compartes algo con Alviss — el texto y los archivos adjuntos terminan en la nota de la tarea. Cómo te avisa una tarea con hora se describe en [Calendario y tareas externas](Calendar_and_Tasks.md).
 
 <!-- widgets-2026-09-23 -->
 ## Marcar desde un widget
 
-La casilla del widget **Hoy** recoge un encargo: la marca aparece enseguida, la nota cambia la próxima vez que abras Plainva y entonces ocurren también la repetición y la sincronización. Hasta entonces la fila dice **se aplicará al abrir Plainva**. Una tarea que hayas terminado, borrado o movido mientras tanto se deja en paz. En el iPhone esto requiere iOS 17; por debajo, un toque en la fila abre la tarea. Detalles: [La app móvil](Mobile_App.md).
+La casilla del widget **Hoy** recoge un encargo: la marca aparece enseguida, la nota cambia la próxima vez que abras Alviss y entonces ocurren también la repetición y la sincronización. Hasta entonces la fila dice **se aplicará al abrir Alviss**. Una tarea que hayas terminado, borrado o movido mientras tanto se deja en paz. En el iPhone esto requiere iOS 17; por debajo, un toque en la fila abre la tarea. Detalles: [La app móvil](Mobile_App.md).
 
 <!-- task-rows-2026-10-24 -->
 ## Subtareas, viñetas y lo hecho hoy
@@ -264,6 +264,6 @@ La casilla del widget **Hoy** recoge un encargo: la marca aparece enseguida, la 
 
 Ambas están activadas hasta que las desactives: **Subtareas** y **Viñetas** están junto a los demás filtros (casillas en el escritorio, chips en el teléfono) y se recuerdan con ellos.
 
-**Hechas hoy.** Bajo **Hoy**, una línea plegada **Hechas (n)** reúne lo que se marcó hoy — una casilla según su fecha de finalización `✅` (que Plainva escribe con cada marca), una entrada de la base de datos de tareas según el día en que su nota cambió por última vez, porque una base de datos no tiene fecha de finalización propia. Una casilla terminada sin fecha no cuenta: nada dice cuándo se terminó. El pliegue está cerrado hasta que lo abras; el dispositivo recuerda tu elección. La pantalla **Hoy** del teléfono muestra el mismo pliegue bajo **Vence**.
+**Hechas hoy.** Bajo **Hoy**, una línea plegada **Hechas (n)** reúne lo que se marcó hoy — una casilla según su fecha de finalización `✅` (que Alviss escribe con cada marca), una entrada de la base de datos de tareas según el día en que su nota cambió por última vez, porque una base de datos no tiene fecha de finalización propia. Una casilla terminada sin fecha no cuenta: nada dice cuándo se terminó. El pliegue está cerrado hasta que lo abras; el dispositivo recuerda tu elección. La pantalla **Hoy** del teléfono muestra el mismo pliegue bajo **Vence**.
 
 **La casilla en el teléfono.** En el editor, en el modo de lectura, en el área Tareas y bajo **Hoy**, el teléfono dibuja cada casilla de tarea igual: grande y redondeada, rellena con una marca si está hecha, medio rellena si está **En curso**, tachada si está **Cancelada**. El escritorio mantiene sus casillas más pequeñas, hechas para el ratón.

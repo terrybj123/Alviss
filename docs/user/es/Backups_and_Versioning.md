@@ -2,11 +2,11 @@
 
 Última actualización: 2026-10-30
 
-Plainva protege tu trabajo en dos niveles: **versiones de archivo** (snapshots automáticos de cada archivo individual al editar y eliminar) y **copias de seguridad del vault** (archivos ZIP periódicos de todo el vault, guardados fuera de la carpeta del vault). Ambos funcionan en segundo plano sin ninguna configuración y se pueden ajustar en la configuración bajo **Copias de seguridad y versionado**.
+Alviss protege tu trabajo en dos niveles: **versiones de archivo** (snapshots automáticos de cada archivo individual al editar y eliminar) y **copias de seguridad del vault** (archivos ZIP periódicos de todo el vault, guardados fuera de la carpeta del vault). Ambos funcionan en segundo plano sin ninguna configuración y se pueden ajustar en la configuración bajo **Copias de seguridad y versionado**.
 
 ## Versiones de archivo (snapshots)
 
-Antes de cada guardado, Plainva almacena un snapshot del estado anterior — como una copia de texto plano bajo `.plainva/backups/` dentro del vault (esta carpeta está oculta en el árbol de archivos, en la búsqueda y en la sincronización). Para evitar cientos de copias mientras escribes, se aplica un **Intervalo de snapshots** (predeterminado: como máximo una versión nueva cada 2 minutos). **Eliminar siempre crea un snapshot**, independientemente del intervalo.
+Antes de cada guardado, Alviss almacena un snapshot del estado anterior — como una copia de texto plano bajo `.plainva/backups/` dentro del vault (esta carpeta está oculta en el árbol de archivos, en la búsqueda y en la sincronización). Para evitar cientos de copias mientras escribes, se aplica un **Intervalo de snapshots** (predeterminado: como máximo una versión nueva cada 2 minutos). **Eliminar siempre crea un snapshot**, independientemente del intervalo.
 
 Retención (configurable por vault):
 
@@ -17,7 +17,7 @@ Retención (configurable por vault):
 
 Al renombrar o mover un archivo, su historial de versiones se traslada con él.
 
-**Por qué los archivos grandes reciben otro trato:** un adjunto de 90 MB editado una y otra vez podría llenar el vault con cien copias — nueve gigabytes para un solo archivo. Por encima del límite, Plainva conserva la versión más reciente en lugar del historial completo y lo indica una vez por vault. Las notas y las imágenes normales quedan muy por debajo y no se ven afectadas. **Una eliminación siempre se guarda por completo**, sea cual sea el tamaño: la nueva versión de un archivo guardado sigue en el disco, pero un archivo eliminado no — ahí el snapshot es la única forma de recuperarlo.
+**Por qué los archivos grandes reciben otro trato:** un adjunto de 90 MB editado una y otra vez podría llenar el vault con cien copias — nueve gigabytes para un solo archivo. Por encima del límite, Alviss conserva la versión más reciente en lugar del historial completo y lo indica una vez por vault. Las notas y las imágenes normales quedan muy por debajo y no se ven afectadas. **Una eliminación siempre se guarda por completo**, sea cual sea el tamaño: la nueva versión de un archivo guardado sigue en el disco, pero un archivo eliminado no — ahí el snapshot es la única forma de recuperarlo.
 
 ## Ver y restaurar versiones
 
@@ -31,22 +31,22 @@ Las imágenes también tienen versiones (con vista previa); otros archivos binar
 
 ## Restaurar archivos eliminados
 
-Como cada eliminación crea antes un snapshot del archivo, Plainva puede recuperar archivos eliminados: haz clic derecho en el nombre del vault en la parte superior del árbol de archivos → **Restaurar archivos eliminados…** (también accesible en **Configuración → Vault → Copias de seguridad y versionado → Historial de versiones**). La lista muestra todos los archivos cuyos snapshots todavía existen mientras el original ha desaparecido — **Restaurar** recrea el estado más reciente en la ubicación original (las carpetas se recrean según sea necesario), **Versiones…** abre el historial completo del archivo eliminado.
+Como cada eliminación crea antes un snapshot del archivo, Alviss puede recuperar archivos eliminados: haz clic derecho en el nombre del vault en la parte superior del árbol de archivos → **Restaurar archivos eliminados…** (también accesible en **Configuración → Vault → Copias de seguridad y versionado → Historial de versiones**). La lista muestra todos los archivos cuyos snapshots todavía existen mientras el original ha desaparecido — **Restaurar** recrea el estado más reciente en la ubicación original (las carpetas se recrean según sea necesario), **Versiones…** abre el historial completo del archivo eliminado.
 
-Nota: eliminar una **carpeta entera** la traslada a la papelera del sistema operativo — en ese caso la papelera del sistema es la vía principal de recuperación; en Plainva es posible que solo encuentres snapshots más antiguos de los archivos que contenía.
+Nota: eliminar una **carpeta entera** la traslada a la papelera del sistema operativo — en ese caso la papelera del sistema es la vía principal de recuperación; en Alviss es posible que solo encuentres snapshots más antiguos de los archivos que contenía.
 
 ## Copias de seguridad automáticas del vault (ZIP)
 
-Además, Plainva respalda todo el vault como un archivo ZIP — de forma predeterminada **diariamente** en segundo plano (al abrir el vault, si la última copia de seguridad tiene más de 24 horas). Esto te protege incluso si la propia carpeta del vault se pierde o se daña, porque los ZIP viven **fuera** del vault:
+Además, Alviss respalda todo el vault como un archivo ZIP — de forma predeterminada **diariamente** en segundo plano (al abrir el vault, si la última copia de seguridad tiene más de 24 horas). Esto te protege incluso si la propia carpeta del vault se pierde o se daña, porque los ZIP viven **fuera** del vault:
 
 - El destino predeterminado es la carpeta de datos de la aplicación (mostrada bajo **Carpeta de destino** en la configuración; **Abrir carpeta** te lleva directamente allí).
-- Mediante **Elegir carpeta…** puedes elegir en su lugar una unidad externa o un NAS; **Predeterminada** vuelve a la carpeta de datos de la aplicación. Si el destino no está disponible en ese momento (NAS apagado), la barra de estado lo indica discretamente y Plainva vuelve a intentarlo más tarde.
+- Mediante **Elegir carpeta…** puedes elegir en su lugar una unidad externa o un NAS; **Predeterminada** vuelve a la carpeta de datos de la aplicación. Si el destino no está disponible en ese momento (NAS apagado), la barra de estado lo indica discretamente y Alviss vuelve a intentarlo más tarde.
 - **Copias a conservar** (predeterminado: 7) limita la cantidad; los ZIP más antiguos del mismo vault se eliminan automáticamente. Los archivos ajenos en la carpeta de destino nunca se tocan.
 - **Crear copia de seguridad ahora** inicia una copia de seguridad manualmente en cualquier momento; la barra de estado muestra el proceso y su resultado.
 
 Los archivos ZIP se nombran `VaultName_2026-07-05_14-30-00.zip` y contienen todas las notas, archivos adjuntos y tu configuración de `.obsidian` — **no** contienen la carpeta interna `.plainva` (el índice de búsqueda se reconstruye la próxima vez que se abre; las versiones de archivo deliberadamente no forman parte del ZIP).
 
-**Restaurar desde un ZIP:** el ZIP es un archivo completamente normal. Extráelo donde quieras y abre la carpeta extraída en Plainva como un vault — listo.
+**Restaurar desde un ZIP:** el ZIP es un archivo completamente normal. Extráelo donde quieras y abre la carpeta extraída en Alviss como un vault — listo.
 
 ## Configuración de un vistazo
 
@@ -63,8 +63,8 @@ Configuración → **Vault** → **Copias de seguridad y versionado**:
 
 ## Bueno saberlo
 
-- Las versiones de archivo son copias normales bajo `.plainva/backups/` — si hace falta, puedes abrirlas sin Plainva en cualquier gestor de archivos.
-- La propia sincronización de Plainva nunca transfiere `.plainva`. Si sincronizas la carpeta del vault con un cliente de terceros (p. ej. la app de Nextcloud), los snapshots viajan también — eso cuesta algo de espacio, pero no hace daño.
+- Las versiones de archivo son copias normales bajo `.plainva/backups/` — si hace falta, puedes abrirlas sin Alviss en cualquier gestor de archivos.
+- La propia sincronización de Alviss nunca transfiere `.plainva`. Si sincronizas la carpeta del vault con un cliente de terceros (p. ej. la app de Nextcloud), los snapshots viajan también — eso cuesta algo de espacio, pero no hace daño.
 - Los conflictos de sincronización están protegidos adicionalmente mediante archivos `.CONFLICT` (ver [FAQ](FAQ.md)); el historial de versiones complementa eso con la línea temporal de cada archivo.
 
 En el teléfono, **Copias ZIP** es el primer grupo de la página **Copias de seguridad y versionado**; debajo sigue el **Historial de versiones**, con **Restaurar archivos eliminados** al final.
@@ -73,7 +73,7 @@ En móvil, si falla el guardado de una nota, se detiene el cambio, la recarga o 
 
 Una copia ZIP solo se considera correcta si se han podido leer todos los archivos seleccionados y guardar el archivo completo. Un intento fallido no elimina copias anteriores ni cambia la fecha de la última copia correcta. En móvil, los errores automáticos indican el vault; **Crear copia de seguridad ahora** en **Copias de seguridad y versionado** → **Copias ZIP** permite reintentar. La configuración oculta del usuario, como `.obsidian`, se incluye en ambas plataformas. Se excluyen los directorios `.plainva`, `.git`, `.trash` y `node_modules` a cualquier profundidad. Si se crean varias copias en el mismo segundo, el nuevo nombre recibe un sufijo como `_001`.
 
-El guardado solo se indica como completado cuando se confirma la escritura. El texto introducido durante un guardado permanece pendiente hasta que se escribe su propia versión. Los borradores de escritorio pertenecen a su sesión del editor: finalizar una sesión anterior no elimina el borrador de un editor recién abierto. Si llegan cambios externos al mismo tiempo, Plainva combina los cambios compatibles; el texto en conflicto se conserva como borrador y como copia de conflicto.
+El guardado solo se indica como completado cuando se confirma la escritura. El texto introducido durante un guardado permanece pendiente hasta que se escribe su propia versión. Los borradores de escritorio pertenecen a su sesión del editor: finalizar una sesión anterior no elimina el borrador de un editor recién abierto. Si llegan cambios externos al mismo tiempo, Alviss combina los cambios compatibles; el texto en conflicto se conserva como borrador y como copia de conflicto.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Decidir con claridad al comparar archivos
@@ -95,4 +95,4 @@ Fusionar línea por línea es una herramienta del escritorio; aquí adoptas una 
 
 ## Comparar la copia seleccionada
 
-La versión seleccionada muestra líneas añadidas y eliminadas respecto a la nota actual, aunque se oculte el diff. **Abrir en una ventana nueva** mantiene esa misma copia seleccionada en escritorio. Si desaparece, Plainva lo indica. Los archivos grandes pueden no tener recuentos; los binarios no tienen comparación de texto. Móvil muestra los mismos recuentos en la comparación completa.
+La versión seleccionada muestra líneas añadidas y eliminadas respecto a la nota actual, aunque se oculte el diff. **Abrir en una ventana nueva** mantiene esa misma copia seleccionada en escritorio. Si desaparece, Alviss lo indica. Los archivos grandes pueden no tener recuentos; los binarios no tienen comparación de texto. Móvil muestra los mismos recuentos en la comparación completa.

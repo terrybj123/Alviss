@@ -2,7 +2,7 @@
 
 Última revisão: 2026-10-30
 
-**Normalmente você não precisa desta página:** o Plainva já vem com seu próprio ID de app para OneDrive **e** Dropbox — você escolhe o provedor, clica em **Entrar com a Microsoft…** ou **Entrar com o Dropbox…** e faz login. Você só precisa de um registro de app **próprio** (gratuito) em dois casos: quando uma restrição corporativa bloqueia o login que acompanha o app, ou quando você quer colocar a conexão deliberadamente sob seu próprio controle. Para o **OneDrive**, você o informa em **Login neste dispositivo** → **Alterar** → **ID de cliente próprio** — na página da conta ou no assistente, tanto no desktop quanto no celular, só para este dispositivo. Para o **Dropbox** é igual: no assistente, em **Outro acesso** → **App Key própria**, ou na página da conta, em **Acesso neste dispositivo** → **Login neste dispositivo** → **Alterar**. A App Key vale para este dispositivo, os outros dispositivos mantêm a configuração deles; uma App Key que uma conta já tinha antes é adotada automaticamente. De qualquer forma, você informa um único valor público:
+**Normalmente você não precisa desta página:** o Alviss já vem com seu próprio ID de app para OneDrive **e** Dropbox — você escolhe o provedor, clica em **Entrar com a Microsoft…** ou **Entrar com o Dropbox…** e faz login. Você só precisa de um registro de app **próprio** (gratuito) em dois casos: quando uma restrição corporativa bloqueia o login que acompanha o app, ou quando você quer colocar a conexão deliberadamente sob seu próprio controle. Para o **OneDrive**, você o informa em **Login neste dispositivo** → **Alterar** → **ID de cliente próprio** — na página da conta ou no assistente, tanto no desktop quanto no celular, só para este dispositivo. Para o **Dropbox** é igual: no assistente, em **Outro acesso** → **App Key própria**, ou na página da conta, em **Acesso neste dispositivo** → **Login neste dispositivo** → **Alterar**. A App Key vale para este dispositivo, os outros dispositivos mantêm a configuração deles; uma App Key que uma conta já tinha antes é adotada automaticamente. De qualquer forma, você informa um único valor público:
 
 - **OneDrive** → um **Client ID** (formato `00000000-0000-0000-0000-000000000000`)
 - **Dropbox** → uma **App Key** (uma string curta)
@@ -27,8 +27,8 @@ Esta página é o complemento detalhado das versões resumidas em [Configurar Si
 ### 2. Crie um novo registro de app
 
 1. Menu **Identidade → Aplicativos → Registros de aplicativo**, depois **+ Novo registro**.
-2. **Nome:** livre escolha, por exemplo `Plainva` (apenas para exibição).
-3. **Tipos de conta com suporte:** escolha **"Contas em qualquer diretório organizacional … e contas pessoais da Microsoft"**. Somente essa opção corresponde ao endpoint de login do Plainva; "somente este diretório" faz contas pessoais do OneDrive falharem.
+2. **Nome:** livre escolha, por exemplo `Alviss` (apenas para exibição).
+3. **Tipos de conta com suporte:** escolha **"Contas em qualquer diretório organizacional … e contas pessoais da Microsoft"**. Somente essa opção corresponde ao endpoint de login do Alviss; "somente este diretório" faz contas pessoais do OneDrive falharem.
 4. **URI de redirecionamento** — resolva isso aqui mesmo:
    - Plataforma: **"Cliente público/nativo (para dispositivos móveis e desktop)"**.
    - Valor: `http://localhost` (exatamente assim — sem porta, sem barra no final).
@@ -38,7 +38,7 @@ Esta página é o complemento detalhado das versões resumidas em [Configurar Si
 
 ### 3. Copie o Client ID
 
-Na **Visão geral** do app, copie o valor **"ID do aplicativo (cliente)"** — esse é o seu valor para o Plainva. (Você não precisa do "ID do diretório (locatário)".)
+Na **Visão geral** do app, copie o valor **"ID do aplicativo (cliente)"** — esse é o seu valor para o Alviss. (Você não precisa do "ID do diretório (locatário)".)
 
 ### 4. Permita fluxos de cliente público
 
@@ -51,10 +51,10 @@ Na **Visão geral** do app, copie o valor **"ID do aplicativo (cliente)"** — e
 1. Menu **Permissões de API → + Adicionar uma permissão → Microsoft Graph → Permissões delegadas**.
 2. Marque as duas:
    - `Files.ReadWrite`
-   - `offline_access` (fornece o token de login de longa duração — **sem ele** o Plainva se recusa a conectar)
+   - `offline_access` (fornece o token de login de longa duração — **sem ele** o Alviss se recusa a conectar)
 3. **Adicionar**. O consentimento do administrador não é necessário para contas pessoais; você mesmo consente no momento do login.
 
-### Informe no Plainva
+### Informe no Alviss
 
 1. **Configurações → seu vault → Contas na nuvem**: abra a conta Microsoft ou inicie **Conectar conta…** com o bloco **Microsoft**.
 2. Em **Login neste dispositivo**, escolha **Alterar** e depois **ID de cliente próprio**.
@@ -78,14 +78,14 @@ Na **Visão geral** do app, copie o valor **"ID do aplicativo (cliente)"** — e
 2. **Type of access:** **Full Dropbox** — não "App folder".
 
    > ⚠️ **Full Dropbox** é obrigatório: "App folder" enxerga apenas uma subpasta isolada e não encontrará vaults já existentes no restante do seu Dropbox.
-3. **Name:** um nome globalmente único, por exemplo `Plainva-Sync-<seunome>` (apenas técnico, ninguém mais o vê).
+3. **Name:** um nome globalmente único, por exemplo `Alviss-Sync-<seunome>` (apenas técnico, ninguém mais o vê).
 4. **Create app**.
 
 ### 3. Registre a redirect URI
 
 Aba **Settings → OAuth 2 → Redirect URIs**: informe **exatamente** `http://127.0.0.1:41953` e clique em **Add**.
 
-> ⚠️ Precisa coincidir caractere por caractere: `127.0.0.1` (não `localhost`), porta `41953`, sem barra no final. O Plainva vincula exatamente essa porta; qualquer desvio interrompe o login.
+> ⚠️ Precisa coincidir caractere por caractere: `127.0.0.1` (não `localhost`), porta `41953`, sem barra no final. O Alviss vincula exatamente essa porta; qualquer desvio interrompe o login.
 
 ### 4. Defina as permissões
 
@@ -96,20 +96,20 @@ Aba **Permissions** — marque as seguintes e clique em **Submit** ao final:
 - `files.content.read`
 - `files.content.write`
 
-> ⚠️ Se você alterar as permissões depois, precisará **Entrar novamente** no Plainva; caso contrário, os direitos antigos continuam valendo.
+> ⚠️ Se você alterar as permissões depois, precisará **Entrar novamente** no Alviss; caso contrário, os direitos antigos continuam valendo.
 
 ### 5. Copie a App key
 
-Aba **Settings**: copie o valor **App key** — esse é o seu valor para o Plainva. (Você não precisa do "App secret".)
+Aba **Settings**: copie o valor **App key** — esse é o seu valor para o Alviss. (Você não precisa do "App secret".)
 
 > Seu app permanece no status "Development". Isso é suficiente para uso privado; "Apply for production" só é necessário se muitas outras pessoas forem usar a mesma App key.
 
-### Informe no Plainva
+### Informe no Alviss
 
 1. **Configurações → seu vault → Contas na nuvem**: abra a conta do Dropbox ou inicie **Conectar conta…** com o bloco **Dropbox**.
 2. No assistente, abra **Outro acesso** e escolha **App Key própria**; na página da conta, use **Acesso neste dispositivo** → **Login neste dispositivo** → **Alterar**.
 3. Cole a App Key copiada e escolha **Salvar**.
-4. **Entrar com o Dropbox…** (na página da conta: **Entrar novamente**) → faça login no navegador e confirme o acesso. A pasta na nuvem (padrão `/Plainva`) você escolhe depois com **Escolher pasta…**.
+4. **Entrar com o Dropbox…** (na página da conta: **Entrar novamente**) → faça login no navegador e confirme o acesso. A pasta na nuvem (padrão `/Alviss`) você escolhe depois com **Escolher pasta…**.
 
 ---
 

@@ -2,7 +2,7 @@
 
 Stand: 2026-09-30
 
-Plainva bietet drei Suchwege: die Volltextsuche über den ganzen Vault, den Schnellwechsel zum Datei-Öffnen und Suchen & Ersetzen innerhalb einer Notiz.
+Alviss bietet drei Suchwege: die Volltextsuche über den ganzen Vault, den Schnellwechsel zum Datei-Öffnen und Suchen & Ersetzen innerhalb einer Notiz.
 
 ## Volltextsuche im Vault
 
@@ -10,7 +10,7 @@ Das Suchfeld oben in der Seitenleiste durchsucht Titel und Inhalte im gesamten V
 
 Die Suche reagiert sofort beim Tippen: Schon Wortanfänge liefern Treffer („Projek" findet „Projektplan"), ohne dass Du Enter drücken musst. Das **X** rechts im Suchfeld löscht die aktuelle Suche (alternativ `Esc`); danach zeigt die Seitenleiste wieder den normalen Dateibaum.
 
-Im Chinesischen, Japanischen, Thai und anderen Schriften ohne Leerzeichen zwischen Wörtern findet die Suche einen Begriff überall im Text: `議事録` findet „今日は会議の議事録を書いた", `搜索` findet „全文搜索". Auch lateinische Wörter mitten in solchem Text werden gefunden („Plainva" in „…でPlainvaを使った").
+Im Chinesischen, Japanischen, Thai und anderen Schriften ohne Leerzeichen zwischen Wörtern findet die Suche einen Begriff überall im Text: `議事録` findet „今日は会議の議事録を書いた", `搜索` findet „全文搜索". Auch lateinische Wörter mitten in solchem Text werden gefunden („Alviss" in „…でAlvissを使った").
 
 Die Suche zeigt einzelne Fundstellen mit Textausschnitt, Überschriftenpfad und Zeilennummer. Ein Klick öffnet genau die gewählte Stelle; auch mehrere Treffer derselben Notiz erscheinen einzeln. Die angezeigte Zahl zählt nur bereits geladene Ergebnisse. Weitere Fundstellen lassen sich nachladen. Pfeiltasten wechseln zwischen Fundstellen, Enter öffnet die Auswahl. Ladezustand, leere Suche und Fehler werden ausdrücklich angezeigt; eine neue Eingabe verwirft alte Antworten. Ist die Stelle inzwischen verändert und nicht mehr eindeutig auffindbar, erscheint ein Hinweis. Diese Fundstellen stehen auch im Quick Switcher und in der mobilen Suche zur Verfügung. Beim Zurückgehen auf Mobil werden Suchtext, nachgeladene Ergebnisse und Listenposition wiederhergestellt. Die Treffer kommen nach **Relevanz**, solange Du nicht über den Sortierknopf neben dem Suchfeld (am Telefon: in der Leiste der Suche) **Zuletzt geändert**, **Titel** oder **Pfad** wählst; das Nachladen behält die gewählte Reihenfolge bei. Am Telefon bleibt das Sortier-Blatt offen, bis Du **Fertig** tippst: ein zweiter Tipp auf die gewählte Reihenfolge kehrt die Richtung um.
 
@@ -23,7 +23,7 @@ Das Suchfeld wirkt auch auf die anderen Seitenleisten-Ansichten: In **Tags** fil
 - `path:ordner` — nur Dateien, deren Pfad den Text enthält (z. B. `path:Projekte`; mit Leerzeichen: `path:"Mein Ordner"`).
 - `tag:name` — nur Notizen mit diesem Tag, inklusive Unter-Tags: `tag:projekt` findet auch `#projekt/intern`. `tag:#projekt` funktioniert ebenfalls.
 - Operatoren lassen sich negieren (`-path:Archiv`, `-tag:erledigt`) und frei mit Suchbegriffen kombinieren: `plan tag:projekt -entwurf`.
-- Mehrere Begriffe verknüpft die Suche mit UND. Sonderzeichen wie `- ( ) : *` in Suchbegriffen sind unproblematisch — Plainva behandelt die Eingabe wörtlich.
+- Mehrere Begriffe verknüpft die Suche mit UND. Sonderzeichen wie `- ( ) : *` in Suchbegriffen sind unproblematisch — Alviss behandelt die Eingabe wörtlich.
 
 ## Schnellwechsel (Quick Switcher)
 
@@ -31,7 +31,7 @@ Das Suchfeld wirkt auch auf die anderen Seitenleisten-Ansichten: In **Tags** fil
 
 Die Suche ist unscharf (Fuzzy): `prjplan` findet auch „Project Plan" — die Buchstaben müssen nur in der richtigen Reihenfolge vorkommen; Wortanfänge zählen mehr. Und wenn es die Notiz noch nicht gibt, zeigt die Liste **'…' erstellen**: `Enter` legt sie sofort an (im Vault-Stammordner) und öffnet sie — Name tippen, Enter, losschreiben.
 
-Unter den Namens-Treffern erscheint zusätzlich die Gruppe **Inhalt**: Notizen, deren Text zur Eingabe passt, mit hervorgehobenem Fundstellen-Ausschnitt. Öffnest Du so einen Treffer, springt Plainva direkt zur Fundstelle in der Notiz — wie bei der Seitenleisten-Suche.
+Unter den Namens-Treffern erscheint zusätzlich die Gruppe **Inhalt**: Notizen, deren Text zur Eingabe passt, mit hervorgehobenem Fundstellen-Ausschnitt. Öffnest Du so einen Treffer, springt Alviss direkt zur Fundstelle in der Notiz — wie bei der Seitenleisten-Suche.
 
 ## Suchen & Ersetzen in der Notiz
 
@@ -55,7 +55,7 @@ Die Seitenleisten-Ansicht **Tags** listet alle `#tags` des Vaults mit Trefferzah
 
 In der Notiz steht ein Tag als kleine Pille — beim Schreiben wie beim Lesen; der Text selbst bleibt `#projekt/website`. Ein Klick auf die Pille (am Telefon: ein Tipp im Lesemodus) öffnet die Notizen, die das Tag tragen. Was als Tag zählt, ist überall dasselbe — in der Tag-Liste, in einer Aufgabe und beim Umbenennen: ein `#` am Zeilenanfang oder nach einem Leerzeichen, gefolgt von Buchstaben, Ziffern, `_`, `-` oder `/`. Nur Ziffern sind kein Tag (`#42` bleibt eine Nummer), ebenso wenig alles in Code oder in einem Link. **Tags einfärben** unter **Einstellungen → App → Erscheinungsbild** gibt jedem Tag eine Farbe, die aus seinem Namen folgt; verschachtelte Tags teilen die Farbe ihres obersten Tags. Die Einstellung gehört zu diesem Gerät und speichert nichts in Deinen Notizen.
 
-**Ein Tag umbenennen** — im ganzen Vault: Rechtsklick auf ein Tag in der **Tags**-Ansicht und einen neuen Namen eingeben. Plainva schreibt das Tag überall um — in den Notiz-Texten (`#tag` und seine `#tag/kind`-Unter-Tags) und im Frontmatter (`tags:`) — und speichert jede betroffene Notiz über denselben sicheren Weg. Fremde Tags, die den Namen nur enthalten (etwa `#bereich/tag`), bleiben unangetastet.
+**Ein Tag umbenennen** — im ganzen Vault: Rechtsklick auf ein Tag in der **Tags**-Ansicht und einen neuen Namen eingeben. Alviss schreibt das Tag überall um — in den Notiz-Texten (`#tag` und seine `#tag/kind`-Unter-Tags) und im Frontmatter (`tags:`) — und speichert jede betroffene Notiz über denselben sicheren Weg. Fremde Tags, die den Namen nur enthalten (etwa `#bereich/tag`), bleiben unangetastet.
 
 ## Navigation in der Notiz
 

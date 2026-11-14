@@ -2,7 +2,7 @@
 
 Última actualización: 2026-11-02
 
-El grafo de Plainva es una herramienta de trabajo, no un póster: te muestra dónde estás, qué está conectado, qué falta — y puedes actuar directamente sobre ello. Hay UN único motor de grafo con tres caras.
+El grafo de Alviss es una herramienta de trabajo, no un póster: te muestra dónde estás, qué está conectado, qué falta — y puedes actuar directamente sobre ello. Hay UN único motor de grafo con tres caras.
 
 ## Grafo de contexto (barra lateral derecha)
 
@@ -22,14 +22,14 @@ Herramientas en la barra de encabezado:
 
 - Estilos de arista de un vistazo (leyenda, abajo a la izquierda): las **relaciones** son líneas de acento continuas con una etiqueta, los **enlaces** son discontinuos, las **incrustaciones** son punteadas.
 - **Buscar** atenúa todo lo que no coincide. Filtra por **tipo** (OKF) y **etiqueta**; los tipos de arista (**Enlaces**, **Relaciones**, **Incrustaciones**) se activan individualmente.
-- Las notas de resumen gestionadas por Plainva (`index.md` y `log.md`) se ocultan de forma predeterminada — enlazan a casi todo y sobrecargarían el grafo; esto también se aplica al grafo de contexto y al grafo de base de datos. En el mapa del vault, recupéralas mediante el botón **Filtros** con la casilla **Mostrar index.md**.
+- Las notas de resumen gestionadas por Alviss (`index.md` y `log.md`) se ocultan de forma predeterminada — enlazan a casi todo y sobrecargarían el grafo; esto también se aplica al grafo de contexto y al grafo de base de datos. En el mapa del vault, recupéralas mediante el botón **Filtros** con la casilla **Mostrar index.md**.
 - **Enfocar la selección** reduce el mapa a una nota seleccionada más 1–3 saltos de vecindario.
 - **Mapa de calor** ilumina las notas editadas recientemente (7/30/90 días) — "¿en qué estaba trabajando?".
 - **Viaje en el tiempo** muestra las notas por su fecha de creación; el deslizador reproduce el crecimiento de tu vault. La fecha proviene de una propiedad `date`/`datum`, si no, de la fecha de creación del archivo (una aproximación para vaults solo en la nube).
 
 Trabajando en el mapa:
 
-- Arrastra un nodo **sobre** otro: Plainva ofrece escribir un enlace de texto — o directamente una **relación** coincidente de tus bases de datos (si la relación permite exactamente una entrada, Plainva pregunta antes de reemplazarla).
+- Arrastra un nodo **sobre** otro: Alviss ofrece escribir un enlace de texto — o directamente una **relación** coincidente de tus bases de datos (si la relación permite exactamente una entrada, Alviss pregunta antes de reemplazarla).
 - Clic derecho en un nodo: Abrir, Vista rápida, Abrir en división, **Nueva nota conectada**, Renombrar (con actualización de enlaces en todo el vault), Marcador, Eliminar.
 - Clic derecho en un espacio vacío: **Nueva nota**, Restablecer disposición, **Exportar como PNG/SVG**.
 - Al hacer clic en un haz de aristas entre carpetas se listan los enlaces individuales; al pasar el cursor sobre una arista se muestra la frase en la que vive el enlace.

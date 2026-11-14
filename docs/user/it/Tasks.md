@@ -70,7 +70,7 @@ Ogni riga di attività porta un'icona di database: **Sposta nel database delle a
 
 ## Bloccare tempo per un'attività
 
-Un'attività ha una data di scadenza e può avere un **orario del giorno** (`2026-09-21T14:00`) — è il momento in cui Plainva te lo ricorda. Un orario è un istante, non un intervallo. Quando vuoi riservarle una finestra, Plainva crea un **evento** — è l'oggetto che possiede un intervallo di tempo, viene disegnato con le sovrapposizioni nella griglia e si sincronizza con il tuo account calendario.
+Un'attività ha una data di scadenza e può avere un **orario del giorno** (`2026-09-21T14:00`) — è il momento in cui Alviss te lo ricorda. Un orario è un istante, non un intervallo. Quando vuoi riservarle una finestra, Alviss crea un **evento** — è l'oggetto che possiede un intervallo di tempo, viene disegnato con le sovrapposizioni nella griglia e si sincronizza con il tuo account calendario.
 
 L'icona del calendario su una riga attività apre **Blocca tempo**: la data (precompilata con la scadenza), l'inizio e la **Durata** (15 min, 30 min, 1 h, 2 h o **Personalizzata**), più un selettore di calendario quando più di uno accetta scritture. L'evento porta il titolo dell'attività e rimanda alla nota. Un **clic destro** sulla riga mostra le stesse azioni del foglio sul telefono: completata/aperta, sposta nel database, ripetizione, blocca tempo.
 
@@ -78,12 +78,12 @@ Per un'attività del database, la nota ricorda anche il blocco nel frontmatter (
 
 ## Ripetere le attività
 
-Un'attività che ritorna regolarmente riceve una **ripetizione** tramite l'icona di ripetizione nella sezione **Database attività**. Plainva non crea una **serie**: spuntando l'attività si crea la **successiva** come nota propria accanto a quella completata, con la nuova scadenza. In questo modo c'è sempre esattamente un'attività aperta, quella completata resta come registro di ciò che è stato fatto, e non esiste una serie invisibile dalla quale eliminare tutto per sbaglio — elimina un'attività e la catena finisce.
+Un'attività che ritorna regolarmente riceve una **ripetizione** tramite l'icona di ripetizione nella sezione **Database attività**. Alviss non crea una **serie**: spuntando l'attività si crea la **successiva** come nota propria accanto a quella completata, con la nuova scadenza. In questo modo c'è sempre esattamente un'attività aperta, quella completata resta come registro di ciò che è stato fatto, e non esiste una serie invisibile dalla quale eliminare tutto per sbaglio — elimina un'attività e la catena finisce.
 
 Il dialogo offre tre elementi:
 
 - **Ritmo** — Giornaliera, Settimanale, Mensile o Annuale, più l'intervallo sotto **Ogni** (ad esempio "Ogni 3" + "Giornaliera" = ogni tre giorni).
-- **Contato da: Scadenza** — una cadenza fissa ("ogni lunedì"). Spunta con ritardo un'attività scaduta e Plainva passa alla prossima scadenza **nel futuro**, invece di riempire l'elenco con quelle che hai mancato.
+- **Contato da: Scadenza** — una cadenza fissa ("ogni lunedì"). Spunta con ritardo un'attività scaduta e Alviss passa alla prossima scadenza **nel futuro**, invece di riempire l'elenco con quelle che hai mancato.
 - **Contato da: Completamento** — il ritmo parte dal giorno in cui la spunti ("ogni tre giorni dopo aver annaffiato le piante").
 
 **Non ripetere** rimuove di nuovo la ripetizione. Le attività mensili non slittano mai oltre la fine di un mese: il 31 gennaio più un mese è il 28 o il 29 febbraio, non il 3 marzo.
@@ -122,15 +122,15 @@ Una casella di controllo ti avvisa quando la sua data di scadenza porta un orari
 
 Lo attivi in **Impostazioni → Calendario → Promemoria** con **Caselle di controllo con orario**: per vault e su questo dispositivo, spento finché non lo attivi. Il promemoria arriva a quell'orario, meno l'anticipo impostato in **Anticipo per attività con orario**. Sul telefono offre **Spunta**, **Tra 1 ora** e **Domani mattina**, come il promemoria di un'attività del database attività; sul desktop l'avviso accanto offre **Apri attività**. In entrambi i casi arrivi nella nota alla riga dell'attività, anche dopo che la nota è stata rinominata o spostata.
 
-Una casella che spunti, elimini o a cui dai un altro orario viene ripianificata in pochi secondi. Una casella con una data ma senza orario non avvisa, e le note con `plainva.tasks: false` restano fuori. Plainva non scrive nulla nella nota per un promemoria. Obsidian non conosce orari: non legge più una data `📅` seguita da un orario.
+Una casella che spunti, elimini o a cui dai un altro orario viene ripianificata in pochi secondi. Una casella con una data ma senza orario non avvisa, e le note con `plainva.tasks: false` restano fuori. Alviss non scrive nulla nella nota per un promemoria. Obsidian non conosce orari: non legge più una data `📅` seguita da un orario.
 
 ## Compatibilità con Obsidian
 
-Le attività sono normali caselle di controllo GFM (GitHub-Flavored Markdown). Plainva non aggiunge mai una sintassi speciale: le stesse righe `- [ ]` vengono renderizzate come caselle di controllo in Obsidian e si leggono correttamente in qualsiasi editor. Le convenzioni `📅 data` e `#tag` sono lo stile comune di Obsidian-Tasks, ma sono solo testo nella tua nota.
+Le attività sono normali caselle di controllo GFM (GitHub-Flavored Markdown). Alviss non aggiunge mai una sintassi speciale: le stesse righe `- [ ]` vengono renderizzate come caselle di controllo in Obsidian e si leggono correttamente in qualsiasi editor. Le convenzioni `📅 data` e `#tag` sono lo stile comune di Obsidian-Tasks, ma sono solo testo nella tua nota.
 
 ## Query Tasks da Obsidian
 
-Una nota proveniente da Obsidian può contenere un blocco di codice `tasks` con una query. Plainva lo disegna come elenco di attività — nell'anteprima dal vivo e nella modalità lettura, sul desktop e sul telefono, anche dentro una citazione o un callout:
+Una nota proveniente da Obsidian può contenere un blocco di codice `tasks` con una query. Alviss lo disegna come elenco di attività — nell'anteprima dal vivo e nella modalità lettura, sul desktop e sul telefono, anche dentro una citazione o un callout:
 
 ````markdown
 ```tasks
@@ -141,21 +141,21 @@ sort by filename reverse
 ```
 ````
 
-La query resta nella nota esattamente come l'hai scritta; Plainva non scrive mai nel blocco. La modalità sorgente mostra sempre il testo semplice.
+La query resta nella nota esattamente come l'hai scritta; Alviss non scrive mai nel blocco. La modalità sorgente mostra sempre il testo semplice.
 
 ### Lavorare con l'elenco
 
-- Spunta la casella di un'attività: Plainva scrive la riga dell'attività nella sua nota — con la data di completamento e la ricorrenza, come nella vista Attività.
+- Spunta la casella di un'attività: Alviss scrive la riga dell'attività nella sua nota — con la data di completamento e la ricorrenza, come nella vista Attività.
 - Clicca o tocca una riga: la nota si apre alla riga dell'attività.
 - Clic destro su una riga sul desktop, o tocco prolungato sul telefono, apre il menu della riga: **Completate**/**Aperte**, **Cambia scadenza**, **Imposta priorità**, **Imposta stato**.
 - In una nota incorporata (`![[…]]`) l'elenco è di sola lettura: niente casella, niente menu.
 - Con il cursore dentro il blocco, l'editor mostra la query come testo. **Modifica query** mette il cursore nella query; sul telefono prima passa alla modifica.
 
-In fondo al blocco compaiono il numero di attività («12 attività»), l'interruttore **Spiegazione** e **Modifica query**. **Spiegazione** mostra come Plainva ha letto ogni riga della query, con le date come giorni reali. Un risultato grande non viene tagliato in silenzio: Plainva mostra le prime 100 righe, poi **Mostra tutte (n)**.
+In fondo al blocco compaiono il numero di attività («12 attività»), l'interruttore **Spiegazione** e **Modifica query**. **Spiegazione** mostra come Alviss ha letto ogni riga della query, con le date come giorni reali. Un risultato grande non viene tagliato in silenzio: Alviss mostra le prime 100 righe, poi **Mostra tutte (n)**.
 
-### Che cosa capisce Plainva
+### Che cosa capisce Alviss
 
-Plainva legge queste righe del linguaggio di query di Tasks:
+Alviss legge queste righe del linguaggio di query di Tasks:
 
 | Argomento | Righe |
 |---|---|
@@ -173,12 +173,12 @@ Plainva legge queste righe del linguaggio di query di Tasks:
 | Layout e quantità | `show tree`, `hide backlink`, `hide task count` e simili, `limit 20`, `limit groups 5`, `explain` |
 | Commenti e segnaposto | righe che iniziano con `#`; segnaposto come `{{query.file.path}}`, che rimandano alla nota in cui si trova la query |
 
-### Righe che Plainva non può seguire
+### Righe che Alviss non può seguire
 
 Ogni riga di una query rientra in uno di tre casi:
 
-- Una riga che Obsidian conosce e Plainva non ancora — per esempio codice (`filter by function`; Plainva non esegue mai codice preso dalle note), espressioni regolari (`regex matches`), dipendenze (`is blocked`), preset o altre espressioni di data. Un avviso sopra l'elenco indica la riga e il motivo; la riga viene saltata, quindi l'elenco può mostrare più attività che in Obsidian — oppure in un altro ordine, per le righe `sort by` e `group by`.
-- Una riga di layout senza equivalente in Plainva (`hide edit button`, `short mode`, …) viene accettata in silenzio.
+- Una riga che Obsidian conosce e Alviss non ancora — per esempio codice (`filter by function`; Alviss non esegue mai codice preso dalle note), espressioni regolari (`regex matches`), dipendenze (`is blocked`), preset o altre espressioni di data. Un avviso sopra l'elenco indica la riga e il motivo; la riga viene saltata, quindi l'elenco può mostrare più attività che in Obsidian — oppure in un altro ordine, per le righe `sort by` e `group by`.
+- Una riga di layout senza equivalente in Alviss (`hide edit button`, `short mode`, …) viene accettata in silenzio.
 - Una riga che anche Obsidian rifiuta (un errore di battitura, parentesi miste, una data impossibile) mostra un errore con la riga e il motivo, e nessun elenco.
 
 ### Differenze rispetto a Obsidian
@@ -186,7 +186,7 @@ Ogni riga di una query rientra in uno di tre casi:
 - «Oggi» è il giorno del calendario.
 - Le note con `plainva.tasks: false` qui contano; Obsidian non conosce questa proprietà.
 - Un filtro globale e una query globale impostati in Obsidian sono nominati nella **Spiegazione**, ma non applicati.
-- I caratteri di stato personalizzati (`[>]`, `[!]`, …) in Plainva non sono attività.
+- I caratteri di stato personalizzati (`[>]`, `[!]`, …) in Alviss non sono attività.
 
 I blocchi Dataview restano testo semplice.
 
@@ -198,7 +198,7 @@ I blocchi Dataview restano testo semplice.
 
 ## Completare dalla panoramica
 
-Spuntando un’attività nella panoramica, Plainva scrive la casella nella nota sorgente e aggiorna la nota nell’indice prima di rileggere l’elenco. L’attività lascia subito **Aperte** e non riappare da un indice obsoleto.
+Spuntando un’attività nella panoramica, Alviss scrive la casella nella nota sorgente e aggiorna la nota nell’indice prima di rileggere l’elenco. L’attività lascia subito **Aperte** e non riappare da un indice obsoleto.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Separa attività con lo stesso titolo
@@ -212,11 +212,11 @@ Questi file appartengono ad attività diverse. Le attività ricorrenti con lo st
 <!-- task-names-2026-09-24 -->
 ## Come si chiamano le attività del provider
 
-Un'attività che Plainva rispecchia da una lista di attività del tuo provider prende il nome dal suo titolo: «Chiamare il dentista» diventa `Chiamare il dentista.md` nella cartella del tuo database delle attività. Se il nome è già occupato — da una tua nota o da una seconda attività con lo stesso titolo —, la nuova attività riceve il numero libero successivo, come qualsiasi altra nota: `Spesa 2.md`, `Spesa 3.md`.
+Un'attività che Alviss rispecchia da una lista di attività del tuo provider prende il nome dal suo titolo: «Chiamare il dentista» diventa `Chiamare il dentista.md` nella cartella del tuo database delle attività. Se il nome è già occupato — da una tua nota o da una seconda attività con lo stesso titolo —, la nuova attività riceve il numero libero successivo, come qualsiasi altra nota: `Spesa 2.md`, `Spesa 3.md`.
 
-Quale attività si trovi in quale file non lo dice il nome, ma la marcatura nel frontmatter (`plainva.pim`, vedi [File Format Reference](File_Format_Reference.md)). Per questo Plainva riusa un nome esistente solo se il file contiene la stessa attività, e crea le nuove attività nello stesso ordine su ogni dispositivo: così due dispositivi assegnano gli stessi numeri. Se il titolo cambia presso il provider, Plainva aggiorna l'intestazione della nota ma non rinomina il file, quindi i collegamenti alla nota continuano a funzionare. Puoi rinominarla o spostarla tu in qualsiasi momento; la marcatura mantiene il collegamento.
+Quale attività si trovi in quale file non lo dice il nome, ma la marcatura nel frontmatter (`plainva.pim`, vedi [File Format Reference](File_Format_Reference.md)). Per questo Alviss riusa un nome esistente solo se il file contiene la stessa attività, e crea le nuove attività nello stesso ordine su ogni dispositivo: così due dispositivi assegnano gli stessi numeri. Se il titolo cambia presso il provider, Alviss aggiorna l'intestazione della nota ma non rinomina il file, quindi i collegamenti alla nota continuano a funzionare. Puoi rinominarla o spostarla tu in qualsiasi momento; la marcatura mantiene il collegamento.
 
-**Pulire i nomi con identificativo.** Tra il 12 e il 24 settembre 2026 Plainva aggiungeva un identificativo al nome delle nuove note di attività (`Chiamare il dentista — 3f9a1c0b7d2e4a61.md`). Se il tuo vault ha ancora nomi di questo tipo, la vista delle attività — sul desktop e sul telefono — mostra una volta un avviso con l'elenco vecchio → nuovo e il numero di collegamenti aggiornati insieme. **Pulisci i nomi…** chiede ancora una conferma e poi rinomina le note in base al titolo, numerando quelle con lo stesso titolo come sopra; i collegamenti vengono aggiornati. **Nascondi** mette da parte l'avviso finché non compaiono altri nomi di questo tipo. Plainva riconosce solo i nomi che ha assegnato da sé: l'identificativo deve corrispondere alla marcatura dello stesso file. Nulla viene mai rinominato da solo. Gli altri tuoi dispositivi ricevono le rinomine come uno spostamento quando hanno la stessa versione; una versione precedente vi vede invece note eliminate e note nuove, e a volte chiede se eliminarle, a volte tiene il vecchio nome accanto al nuovo: meglio aggiornare prima quei dispositivi. Sul desktop l'avviso compare nella finestra principale.
+**Pulire i nomi con identificativo.** Tra il 12 e il 24 settembre 2026 Alviss aggiungeva un identificativo al nome delle nuove note di attività (`Chiamare il dentista — 3f9a1c0b7d2e4a61.md`). Se il tuo vault ha ancora nomi di questo tipo, la vista delle attività — sul desktop e sul telefono — mostra una volta un avviso con l'elenco vecchio → nuovo e il numero di collegamenti aggiornati insieme. **Pulisci i nomi…** chiede ancora una conferma e poi rinomina le note in base al titolo, numerando quelle con lo stesso titolo come sopra; i collegamenti vengono aggiornati. **Nascondi** mette da parte l'avviso finché non compaiono altri nomi di questo tipo. Alviss riconosce solo i nomi che ha assegnato da sé: l'identificativo deve corrispondere alla marcatura dello stesso file. Nulla viene mai rinominato da solo. Gli altri tuoi dispositivi ricevono le rinomine come uno spostamento quando hanno la stessa versione; una versione precedente vi vede invece note eliminate e note nuove, e a volte chiede se eliminarle, a volte tiene il vecchio nome accanto al nuovo: meglio aggiornare prima quei dispositivi. Sul desktop l'avviso compare nella finestra principale.
 
 <!-- tasks-jex-2026-09-14 -->
 ## Metadati Tasks e ripetizione
@@ -238,22 +238,22 @@ Stato, ricerca, cartella, tag, filtro di scadenza e visibilità delle attività 
 
 La vista Attività si apre su **Oggi**. Gli elenchi — una barra a sinistra sul desktop, un segmento sopra l'elenco sul telefono — sono **Oggi** (ciò che scade oggi, con **In ritardo** in cima), **Prossimamente** (i prossimi 14 giorni, per giorno), **In entrata** (attività aperte senza data), **Tutte** (le due sezioni descritte sopra, con il filtro **Aperte**/**Completate**/**Tutte**) e **Completate**. Ogni elenco attinge da entrambe le fonti, il database delle attività e le caselle nelle tue note, ordinate per priorità, poi per orario, poi per titolo. Gli altri filtri si applicano a ogni elenco, e l'elenco scelto viene ricordato per vault. Sul desktop la barra elenca anche i tag più frequenti come filtri a un clic; sul telefono la schermata **Oggi** porta all'**Oggi** del pianificatore.
 
-Sopra gli elenchi si trova il campo di cattura; sul telefono, **+ Nuova attività** e il pulsante **＋** lo aprono come foglio. Digita una riga — `Inviare offerta domani alle 14:00 !!! #cliente ogni settimana` — e premi Invio: Plainva crea l'attività nel database delle attività. Riconosce oggi, domani, dopodomani, i giorni della settimana, «tra 3 giorni», «la prossima settimana», le date in cifre, un orario (`14:30`, `14h`), una ricorrenza (giornaliera, settimanale, mensile, annuale, «ogni lunedì», «ogni 2 settimane»), `!`, `!!` e `!!!` per priorità bassa, media e alta, e `#tags` — le parole nella lingua dell'app, cifre e segni in qualsiasi lingua. Tutto ciò che riconosce viene evidenziato nel campo ed elencato sotto come un blocco rimovibile **prima** che venga salvato qualcosa; togli un blocco e le sue parole tornano semplicemente a contare come titolo. Sul telefono, dei pulsanti rapidi scrivono le stesse parole al posto tuo. Se il database delle attività indica un elenco di un provider, un chip decide se l'attività viene creata anche lì.
+Sopra gli elenchi si trova il campo di cattura; sul telefono, **+ Nuova attività** e il pulsante **＋** lo aprono come foglio. Digita una riga — `Inviare offerta domani alle 14:00 !!! #cliente ogni settimana` — e premi Invio: Alviss crea l'attività nel database delle attività. Riconosce oggi, domani, dopodomani, i giorni della settimana, «tra 3 giorni», «la prossima settimana», le date in cifre, un orario (`14:30`, `14h`), una ricorrenza (giornaliera, settimanale, mensile, annuale, «ogni lunedì», «ogni 2 settimane»), `!`, `!!` e `!!!` per priorità bassa, media e alta, e `#tags` — le parole nella lingua dell'app, cifre e segni in qualsiasi lingua. Tutto ciò che riconosce viene evidenziato nel campo ed elencato sotto come un blocco rimovibile **prima** che venga salvato qualcosa; togli un blocco e le sue parole tornano semplicemente a contare come titolo. Sul telefono, dei pulsanti rapidi scrivono le stesse parole al posto tuo. Se il database delle attività indica un elenco di un provider, un chip decide se l'attività viene creata anche lì.
 
-**Imposta priorità** nel menu di una riga (clic destro sul desktop, tocco prolungato sul telefono) offre **alta**, **media**, **bassa** e **nessuna**; una bandierina davanti al titolo la mostra. Nel database delle attività, la priorità è una colonna a selezione: un database creato ora ce l'ha già, uno più vecchio la riceve la prima volta che imposti una priorità — mai per il solo fatto di essere aperto. Una casella porta sulla sua riga il simbolo di priorità noto da Obsidian: Plainva legge 🔺 e ⏫ come alta, 🔼 come media, 🔽 e ⏬ come bassa, e scrive ⏫, 🔼 o 🔽.
+**Imposta priorità** nel menu di una riga (clic destro sul desktop, tocco prolungato sul telefono) offre **alta**, **media**, **bassa** e **nessuna**; una bandierina davanti al titolo la mostra. Nel database delle attività, la priorità è una colonna a selezione: un database creato ora ce l'ha già, uno più vecchio la riceve la prima volta che imposti una priorità — mai per il solo fatto di essere aperto. Una casella porta sulla sua riga il simbolo di priorità noto da Obsidian: Alviss legge 🔺 e ⏫ come alta, 🔼 come media, 🔽 e ⏬ come bassa, e scrive ⏫, 🔼 o 🔽.
 
-`- [/]` (**In corso**) e `- [-]` (**Annullata**) sono anch'esse attività. Ricevono una propria casella nell'editor, in modalità lettura e in ogni elenco; in corso conta come aperta, annullata come chiusa. Un clic continua a spostarsi solo tra aperta e completata — completa un'attività in corso e riapre una annullata. **Imposta stato** nel menu della riga imposta i due stati; Plainva non li scrive mai da sola.
+`- [/]` (**In corso**) e `- [-]` (**Annullata**) sono anch'esse attività. Ricevono una propria casella nell'editor, in modalità lettura e in ogni elenco; in corso conta come aperta, annullata come chiusa. Un clic continua a spostarsi solo tra aperta e completata — completa un'attività in corso e riapre una annullata. **Imposta stato** nel menu della riga imposta i due stati; Alviss non li scrive mai da sola.
 
 **La data di un'attività è il modo per cambiarla.** Premi la data di un'attività (dentro un giorno, il suo orario) e si apre il selettore di data — sotto la data sul desktop, come foglio sul telefono. **Cambia scadenza** nel menu della riga apre lo stesso selettore; così riceve una data anche un'attività che non ne ha. Sul telefono, **Nuova attività** e la cella data di un database scelgono il giorno dallo stesso calendario, non dalla rotella delle date del sistema. Una casella in una nota — nell'editor, nella vista di lettura e nel diario — ha sul telefono una dimensione pensata per il dito. Una voce del database delle attività conserva il suo orario, una casella riceve o cambia la sua data `📅`. Accanto al titolo **In ritardo**, **Tutte a oggi** sposta in un colpo tutte le attività in ritardo a oggi. Entrambe sono confermate da un avviso che offre **Annulla**. Nel campo di acquisizione `[[` suggerisce note e `#` tag, come nell'editor: `Invio` o `Tab` prende il suggerimento evidenziato, `Esc` chiude l'elenco.
 
-**Scelte rapide e un orario.** Sopra il calendario il selettore offre **Oggi**, **Domani**, **Questo fine settimana**, **La prossima settimana** e **Nessuna data**, ognuna con il suo giorno della settimana. Questo fine settimana è il prossimo sabato — oggi, se è sabato o domenica; la prossima settimana è il primo giorno della settimana seguente, secondo **Inizio settimana**. In basso, **Orario** ha un interruttore: spento, l'attività scade per tutto il giorno; acceso, scegli l'orario accanto. Una scelta rapida o un giorno mantengono un orario già impostato; per cambiare solo l'orario, premi **Fine**. Una voce del database attività salva l'orario nel suo valore di scadenza (`2026-10-26T10:00`). Per una casella in una nota il selettore imposta solo il giorno — il `📅` di Obsidian non ha orario — e lo dice lì invece di offrire l'interruttore; un orario che scrivi tu dopo la data (vedi *Promemoria per le caselle di controllo*) resta quando il giorno cambia. Se la colonna di scadenza del database mostra solo giorni, Plainva propone una volta **Passa a data e ora**.
+**Scelte rapide e un orario.** Sopra il calendario il selettore offre **Oggi**, **Domani**, **Questo fine settimana**, **La prossima settimana** e **Nessuna data**, ognuna con il suo giorno della settimana. Questo fine settimana è il prossimo sabato — oggi, se è sabato o domenica; la prossima settimana è il primo giorno della settimana seguente, secondo **Inizio settimana**. In basso, **Orario** ha un interruttore: spento, l'attività scade per tutto il giorno; acceso, scegli l'orario accanto. Una scelta rapida o un giorno mantengono un orario già impostato; per cambiare solo l'orario, premi **Fine**. Una voce del database attività salva l'orario nel suo valore di scadenza (`2026-10-26T10:00`). Per una casella in una nota il selettore imposta solo il giorno — il `📅` di Obsidian non ha orario — e lo dice lì invece di offrire l'interruttore; un orario che scrivi tu dopo la data (vedi *Promemoria per le caselle di controllo*) resta quando il giorno cambia. Se la colonna di scadenza del database mostra solo giorni, Alviss propone una volta **Passa a data e ora**.
 
-Altri modi per crearle: **Nuova attività** nel menu del vassoio di sistema sul desktop (quando Plainva continua a girare in background), su Android la scorciatoia del launcher **Nuova attività** (tocco prolungato sull'icona dell'app), e sul telefono **Crea come attività** quando condividi qualcosa con Plainva — il testo e gli allegati finiscono nella nota dell'attività. Come un'attività con orario te lo ricorda è descritto in [Calendario e attività esterne](Calendar_and_Tasks.md).
+Altri modi per crearle: **Nuova attività** nel menu del vassoio di sistema sul desktop (quando Alviss continua a girare in background), su Android la scorciatoia del launcher **Nuova attività** (tocco prolungato sull'icona dell'app), e sul telefono **Crea come attività** quando condividi qualcosa con Alviss — il testo e gli allegati finiscono nella nota dell'attività. Come un'attività con orario te lo ricorda è descritto in [Calendario e attività esterne](Calendar_and_Tasks.md).
 
 <!-- widgets-2026-09-23 -->
 ## Spuntare da un widget
 
-La casella del widget **Oggi** registra una richiesta: la spunta compare subito, la nota cambia alla prossima apertura di Plainva, ed è allora che avvengono anche la ricorrenza e la sincronizzazione. Fino a quel momento la riga dice **verrà applicato all’apertura di Plainva**. Un’attività completata, eliminata o spostata nel frattempo resta intatta. Su iPhone serve iOS 17; al di sotto, un tocco sulla riga apre l’attività. Dettagli: [L’app per dispositivi mobili](Mobile_App.md).
+La casella del widget **Oggi** registra una richiesta: la spunta compare subito, la nota cambia alla prossima apertura di Alviss, ed è allora che avvengono anche la ricorrenza e la sincronizzazione. Fino a quel momento la riga dice **verrà applicato all’apertura di Alviss**. Un’attività completata, eliminata o spostata nel frattempo resta intatta. Su iPhone serve iOS 17; al di sotto, un tocco sulla riga apre l’attività. Dettagli: [L’app per dispositivi mobili](Mobile_App.md).
 
 <!-- task-rows-2026-10-24 -->
 ## Sottoattività, elenchi puntati e ciò che è fatto oggi
@@ -264,6 +264,6 @@ La casella del widget **Oggi** registra una richiesta: la spunta compare subito,
 
 Entrambi sono attivi finché non li disattivi: **Sottoattività** ed **Elenchi puntati** stanno insieme agli altri filtri (caselle su desktop, chip su telefono) e vengono ricordati con essi.
 
-**Completate oggi.** Sotto **Oggi** una riga compressa **Completate (n)** raccoglie ciò che è stato spuntato oggi — una casella secondo la sua data di completamento `✅` (che Plainva scrive a ogni spunta), una voce del database attività secondo il giorno in cui la sua nota è stata modificata l'ultima volta, perché un database non ha una propria data di completamento. Una casella completata senza data non conta: niente dice quando è stata completata. La riga è chiusa finché non la apri; il dispositivo ricorda la tua scelta. La schermata **Oggi** del telefono mostra la stessa riga sotto **In scadenza**.
+**Completate oggi.** Sotto **Oggi** una riga compressa **Completate (n)** raccoglie ciò che è stato spuntato oggi — una casella secondo la sua data di completamento `✅` (che Alviss scrive a ogni spunta), una voce del database attività secondo il giorno in cui la sua nota è stata modificata l'ultima volta, perché un database non ha una propria data di completamento. Una casella completata senza data non conta: niente dice quando è stata completata. La riga è chiusa finché non la apri; il dispositivo ricorda la tua scelta. La schermata **Oggi** del telefono mostra la stessa riga sotto **In scadenza**.
 
 **La casella sul telefono.** Nell'editor, in modalità lettura, nell'area Attività e sotto **Oggi**, il telefono disegna ogni casella di attività allo stesso modo: grande e arrotondata, riempita con una spunta se completata, riempita a metà se **In corso**, barrata se **Annullata**. Il desktop mantiene le sue caselle più piccole, pensate per il mouse.

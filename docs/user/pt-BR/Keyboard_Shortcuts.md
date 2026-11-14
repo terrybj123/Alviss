@@ -13,7 +13,7 @@ Pressione `F1` (ou **Paleta de comandos → Mostrar atalhos de teclado**) para a
 | `Ctrl+,` | Abrir configurações |
 | `Ctrl+Plus` / `Ctrl+Minus` | Aumentar / diminuir o zoom da interface (80–150 %) |
 | `Ctrl+0` | Redefinir o zoom para 100 % |
-| `Ctrl+S` | Confirmar o salvamento (o Plainva salva automaticamente) |
+| `Ctrl+S` | Confirmar o salvamento (o Alviss salva automaticamente) |
 | `F1` | Mostrar esta janela |
 | `Esc` | Cancelar ação (fechar diálogo, cancelar renomeação) |
 
@@ -128,7 +128,7 @@ Mouse: a **roda do mouse** dá zoom; **arrastar com o botão do meio** ou `Ctrl`
 - **Abas:** arraste para reordenar, entre painéis, ou até uma borda para dividir; **clique com o botão direito** abre o menu da aba (**Fixar**, **Recarregar**, **Abrir na divisão**, grupo de fechamento). Uma aba **fixada** vai para o início e sobrevive a qualquer fechamento em massa.
 - **Barra de ações (extrema esquerda):** mantenha um botão pressionado por um instante e arraste para reordená-lo (o grupo de cima e o de baixo permanecem separados); `Esc` cancela.
 - **Links:** clique em um link wiki / Markdown para abri-lo (`Ctrl`+clique para uma nova aba).
-- **Clique com o botão direito** em uma seleção ou campo para abrir o menu próprio do Plainva de copiar / recortar / colar.
+- **Clique com o botão direito** em uma seleção ou campo para abrir o menu próprio do Alviss de copiar / recortar / colar.
 - **Janela de espiada:** arraste o cabeçalho para mover, a alça no canto para redimensionar; `◀ ▶` tem histórico próprio. Com várias janelas flutuantes abertas — uma janela de espiada, a prévia do evento, um e-mail que você está redigindo —, a que você clica vem para a frente, e `Esc` fecha a que está na frente.
 - **Calendário:** clique no título da aba de calendário ou no nome do mês na barra lateral (ou chegue com `Tab` e pressione `Enter`) para o seletor de data — as setas movem na grade, `PgUp/PgDn` mudam o mês, `Enter` vai, `Esc` fecha; clique em um dia para sua nota diária.
 - **Menus:** um menu aberto por um botão ou com o **clique com o botão direito** coloca o teclado na primeira opção — as setas, `Home` e `End` percorrem o menu, `Enter` escolhe uma opção, `Esc` fecha o menu e devolve o teclado para onde estava. Sobre um campo em que você está digitando e sobre um texto que você só pode ler, o teclado fica onde estava.

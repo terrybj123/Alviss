@@ -51,7 +51,7 @@ Hat sich eine Notiz seit dem Aufbau der Liste geändert, wird ein veraltetes Ums
 
 ## Standard-Aufgabendatenbank
 
-Checkboxen sind schnell notiert, aber manchmal wächst eine Zeile zu einer „richtigen" Aufgabe heran — mit Status, Fälligkeit und eigener Notiz. Dafür legst Du in den Einstellungen unter **Notizen & Ablage** eine **Standard-Aufgabendatenbank** fest: eine [Datenbank (`.base`)](Databases_Base.md), in der solche Aufgaben als eigene Notizen leben. Mit **Neue Datenbank anlegen…** erstellt Plainva eine fertige Datenbank (Ablage-Ordner plus `.base` mit einer **Erledigt-Checkbox-Spalte** (`erledigt`), Status-Spalte, Fälligkeits-Spalte sowie Tabellen-, Board- und Zeitleisten-Ansicht — die Zeitleiste setzt jede Aufgabe auf ihren Fälligkeitstag); genauso kannst Du eine bestehende Datenbank auswählen. Die Checkbox-Eigenschaft ist die Erledigt-Wahrheit einer Aufgabe (an/aus, wie bei den Anbietern); die Status-Spalte wird beim Abhaken konsistent mitgeführt. Hat eine Datenbank keine Checkbox-Spalte, gilt die Status-Konvention: erste Option = offen, letzte = erledigt.
+Checkboxen sind schnell notiert, aber manchmal wächst eine Zeile zu einer „richtigen" Aufgabe heran — mit Status, Fälligkeit und eigener Notiz. Dafür legst Du in den Einstellungen unter **Notizen & Ablage** eine **Standard-Aufgabendatenbank** fest: eine [Datenbank (`.base`)](Databases_Base.md), in der solche Aufgaben als eigene Notizen leben. Mit **Neue Datenbank anlegen…** erstellt Alviss eine fertige Datenbank (Ablage-Ordner plus `.base` mit einer **Erledigt-Checkbox-Spalte** (`erledigt`), Status-Spalte, Fälligkeits-Spalte sowie Tabellen-, Board- und Zeitleisten-Ansicht — die Zeitleiste setzt jede Aufgabe auf ihren Fälligkeitstag); genauso kannst Du eine bestehende Datenbank auswählen. Die Checkbox-Eigenschaft ist die Erledigt-Wahrheit einer Aufgabe (an/aus, wie bei den Anbietern); die Status-Spalte wird beim Abhaken konsistent mitgeführt. Hat eine Datenbank keine Checkbox-Spalte, gilt die Status-Konvention: erste Option = offen, letzte = erledigt.
 
 Ist sie festgelegt, zeigt die Aufgabenansicht zwei Bereiche: oben die Einträge der **Aufgaben-Datenbank**, darunter **Aus Notizen** — die gewohnte Checkbox-Liste. Der Status lässt sich direkt in der Übersicht ändern: das Kästchen ist die Erledigt-Checkbox-Eigenschaft der Notiz und schaltet sie um (die Status-Spalte folgt); ein Klick auf den Status-Chip öffnet ein Menü mit allen Optionen (**Status ändern**). Die Filter **Offen**/**Erledigt**/**Alle** wirken auf beide Bereiche, und **Als Datenbank öffnen** springt zur vollen Datenbank-Ansicht mit Board und Filtern. **Aktualisieren** stößt bei verbundenen Konten zusätzlich einen echten Abgleich mit dem Anbieter an.
 
@@ -70,7 +70,7 @@ Mit einem **Rechtsklick** auf das Symbol wählst Du stattdessen eine andere Date
 
 ## Zeit für eine Aufgabe blocken
 
-Eine Aufgabe hat ein Fälligkeitsdatum und kann eine **Uhrzeit** tragen (`2026-09-21T14:00`) — zu ihr erinnert Dich Plainva. Eine Uhrzeit ist ein Zeitpunkt, kein Zeitraum. Wenn Du Dir für eine Aufgabe ein Zeitfenster reservieren willst, legt Plainva dafür einen **Termin** an — das ist das Objekt, das einen Zeitraum kennt, im Raster mit Überschneidungen dargestellt wird und mit Deinem Kalender-Konto synchronisiert.
+Eine Aufgabe hat ein Fälligkeitsdatum und kann eine **Uhrzeit** tragen (`2026-09-21T14:00`) — zu ihr erinnert Dich Alviss. Eine Uhrzeit ist ein Zeitpunkt, kein Zeitraum. Wenn Du Dir für eine Aufgabe ein Zeitfenster reservieren willst, legt Alviss dafür einen **Termin** an — das ist das Objekt, das einen Zeitraum kennt, im Raster mit Überschneidungen dargestellt wird und mit Deinem Kalender-Konto synchronisiert.
 
 Das Kalender-Symbol an einer Aufgabenzeile öffnet **Zeit blocken**: Datum (mit der Fälligkeit vorbelegt), Beginn und **Dauer** (15 min, 30 min, 1 h, 2 h oder **Eigene**), bei mehreren beschreibbaren Kalendern zusätzlich die Kalenderauswahl. Der Termin trägt den Titel der Aufgabe und verlinkt zurück auf die Notiz. Ein **Rechtsklick** auf die Zeile zeigt dieselben Aktionen wie das Blatt am Telefon: Erledigt/Offen, In Datenbank verschieben, Wiederholung, Zeit blocken.
 
@@ -78,12 +78,12 @@ Bei einer Aufgabe aus der Datenbank merkt sich die Notiz den Block zusätzlich i
 
 ## Wiederkehrende Aufgaben
 
-Eine Aufgabe, die regelmäßig wiederkommt, bekommt über das Wiederhol-Symbol in der Sektion **Aufgaben-Datenbank** eine **Wiederholung**. Plainva legt dabei **keine Serie** an: Beim Abhaken entsteht die **nächste** Aufgabe als eigene Notiz neben der erledigten, mit der neuen Fälligkeit. Damit ist immer genau eine offene Aufgabe da, die erledigte bleibt als Nachweis liegen, und es gibt keine unsichtbare Serie, aus der man versehentlich alles löscht — löschst Du eine Aufgabe, endet die Kette.
+Eine Aufgabe, die regelmäßig wiederkommt, bekommt über das Wiederhol-Symbol in der Sektion **Aufgaben-Datenbank** eine **Wiederholung**. Alviss legt dabei **keine Serie** an: Beim Abhaken entsteht die **nächste** Aufgabe als eigene Notiz neben der erledigten, mit der neuen Fälligkeit. Damit ist immer genau eine offene Aufgabe da, die erledigte bleibt als Nachweis liegen, und es gibt keine unsichtbare Serie, aus der man versehentlich alles löscht — löschst Du eine Aufgabe, endet die Kette.
 
 Im Dialog stellst Du drei Dinge ein:
 
 - **Rhythmus** — Täglich, Wöchentlich, Monatlich oder Jährlich, dazu unter **Alle** das Intervall (z. B. „Alle 3" + „Täglich" = alle drei Tage).
-- **Gezählt ab: Fälligkeit** — fester Takt („jeden Montag"). Hakst Du eine überfällige Aufgabe spät ab, springt Plainva auf die nächste Fälligkeit **in der Zukunft** und legt nicht die verpassten Termine nach.
+- **Gezählt ab: Fälligkeit** — fester Takt („jeden Montag"). Hakst Du eine überfällige Aufgabe spät ab, springt Alviss auf die nächste Fälligkeit **in der Zukunft** und legt nicht die verpassten Termine nach.
 - **Gezählt ab: Erledigung** — der Takt beginnt an dem Tag, an dem Du abhakst („alle drei Tage, nachdem ich gegossen habe").
 
 **Nicht wiederholen** entfernt die Wiederholung wieder. Monatliche Aufgaben rutschen nie über das Monatsende: Der 31. Januar plus ein Monat ist der 28. bzw. 29. Februar, nicht der 3. März.
@@ -122,15 +122,15 @@ Eine Checkbox erinnert Dich, wenn ihr Fälligkeitsdatum eine Uhrzeit trägt: Sch
 
 Einschalten kannst Du das unter **Einstellungen → Kalender → Erinnerungen** mit **Checkboxen mit Uhrzeit** — je Vault und auf diesem Gerät, aus, bis Du es einschaltest. Die Erinnerung kommt zu dieser Uhrzeit, abzüglich des Vorlaufs unter **Vorlauf für Aufgaben mit Uhrzeit**. Am Telefon bietet sie **Abhaken**, **In 1 Stunde** und **Morgen früh** an, wie die Erinnerung einer Aufgabe aus der Aufgaben-Datenbank; am Desktop bietet der Hinweis daneben **Aufgabe öffnen** an. So oder so landest Du in der Notiz an der Zeile der Aufgabe, auch nachdem die Notiz umbenannt oder verschoben wurde.
 
-Eine Checkbox, die Du abhakst, löschst oder auf eine andere Uhrzeit setzt, wird binnen Sekunden neu eingeplant. Eine Checkbox mit Datum, aber ohne Uhrzeit erinnert nicht, und Notizen mit `plainva.tasks: false` bleiben draußen. Plainva schreibt für eine Erinnerung nichts in die Notiz. Obsidian kennt keine Uhrzeit: Ein `📅`-Datum, hinter dem eine Uhrzeit steht, liest es nicht mehr.
+Eine Checkbox, die Du abhakst, löschst oder auf eine andere Uhrzeit setzt, wird binnen Sekunden neu eingeplant. Eine Checkbox mit Datum, aber ohne Uhrzeit erinnert nicht, und Notizen mit `plainva.tasks: false` bleiben draußen. Alviss schreibt für eine Erinnerung nichts in die Notiz. Obsidian kennt keine Uhrzeit: Ein `📅`-Datum, hinter dem eine Uhrzeit steht, liest es nicht mehr.
 
 ## Obsidian-Kompatibilität
 
-Aufgaben sind gewöhnliche GFM-Checkboxen (GitHub Flavored Markdown). Plainva fügt nie eine Sondersyntax hinzu: Dieselben `- [ ]`-Zeilen werden in Obsidian als Checkboxen dargestellt und lesen sich in jedem Editor sauber. Die Konventionen `📅 Datum` und `#tag` sind der übliche Obsidian-Tasks-Stil, aber sie sind nur Text in Deiner Notiz.
+Aufgaben sind gewöhnliche GFM-Checkboxen (GitHub Flavored Markdown). Alviss fügt nie eine Sondersyntax hinzu: Dieselben `- [ ]`-Zeilen werden in Obsidian als Checkboxen dargestellt und lesen sich in jedem Editor sauber. Die Konventionen `📅 Datum` und `#tag` sind der übliche Obsidian-Tasks-Stil, aber sie sind nur Text in Deiner Notiz.
 
 ## Tasks-Abfragen aus Obsidian
 
-Eine Notiz aus Obsidian kann einen Codeblock `tasks` mit einer Abfrage enthalten. Plainva zeichnet ihn als Aufgabenliste — in der Live-Vorschau und im Lesemodus, am Desktop und am Telefon, auch innerhalb eines Zitats oder Callouts:
+Eine Notiz aus Obsidian kann einen Codeblock `tasks` mit einer Abfrage enthalten. Alviss zeichnet ihn als Aufgabenliste — in der Live-Vorschau und im Lesemodus, am Desktop und am Telefon, auch innerhalb eines Zitats oder Callouts:
 
 ````markdown
 ```tasks
@@ -141,21 +141,21 @@ sort by filename reverse
 ```
 ````
 
-Die Abfrage bleibt genau so in der Notiz, wie Du sie geschrieben hast; Plainva schreibt nie in den Block. Der Quelltext-Modus zeigt immer den Text.
+Die Abfrage bleibt genau so in der Notiz, wie Du sie geschrieben hast; Alviss schreibt nie in den Block. Der Quelltext-Modus zeigt immer den Text.
 
 ### Mit der Liste arbeiten
 
-- Hake das Kästchen einer Aufgabe ab: Plainva schreibt die Zeile der Aufgabe in ihrer eigenen Notiz — mit Erledigt-Datum und Wiederholung, wie in der Aufgabenansicht.
+- Hake das Kästchen einer Aufgabe ab: Alviss schreibt die Zeile der Aufgabe in ihrer eigenen Notiz — mit Erledigt-Datum und Wiederholung, wie in der Aufgabenansicht.
 - Klicke oder tippe auf eine Zeile: Die Notiz öffnet sich an der Zeile der Aufgabe.
 - Rechtsklick auf eine Zeile am Desktop oder gedrückt halten am Telefon öffnet das Zeilenmenü: **Erledigt**/**Offen**, **Fälligkeit ändern**, **Priorität setzen**, **Zustand setzen**.
 - In einer eingebetteten Notiz (`![[…]]`) ist die Liste nur zum Ansehen: kein Abhaken, kein Menü.
 - Steht die Schreibmarke im Block, zeigt der Editor die Abfrage als Text. **Abfrage bearbeiten** setzt die Schreibmarke in die Abfrage; am Telefon wechselt die Ansicht dafür zuerst ins Bearbeiten.
 
-Am Fuß des Blocks stehen die Anzahl der Aufgaben („12 Aufgaben“), der Schalter **Erklärung** und **Abfrage bearbeiten**. **Erklärung** zeigt, wie Plainva jede Zeile der Abfrage gelesen hat, Daten als echte Tage. Ein großes Ergebnis wird nicht stillschweigend abgeschnitten: Plainva zeigt die ersten 100 Zeilen, danach **Alle n zeigen**.
+Am Fuß des Blocks stehen die Anzahl der Aufgaben („12 Aufgaben“), der Schalter **Erklärung** und **Abfrage bearbeiten**. **Erklärung** zeigt, wie Alviss jede Zeile der Abfrage gelesen hat, Daten als echte Tage. Ein großes Ergebnis wird nicht stillschweigend abgeschnitten: Alviss zeigt die ersten 100 Zeilen, danach **Alle n zeigen**.
 
-### Was Plainva versteht
+### Was Alviss versteht
 
-Plainva liest diese Zeilen der Abfragesprache der `tasks`-Blöcke von Obsidian:
+Alviss liest diese Zeilen der Abfragesprache der `tasks`-Blöcke von Obsidian:
 
 | Thema | Zeilen |
 |---|---|
@@ -173,12 +173,12 @@ Plainva liest diese Zeilen der Abfragesprache der `tasks`-Blöcke von Obsidian:
 | Darstellung und Umfang | `show tree`, `hide backlink`, `hide task count` und Ähnliches, `limit 20`, `limit groups 5`, `explain` |
 | Kommentare und Platzhalter | Zeilen, die mit `#` beginnen; Platzhalter wie `{{query.file.path}}`, die sich auf die Notiz beziehen, in der die Abfrage steht |
 
-### Zeilen, denen Plainva nicht folgen kann
+### Zeilen, denen Alviss nicht folgen kann
 
 Jede Zeile einer Abfrage fällt in einen von drei Fällen:
 
-- Eine Zeile, die Obsidian kennt und Plainva noch nicht — etwa Code (`filter by function`; Plainva führt nie Code aus Notizen aus), reguläre Ausdrücke (`regex matches`), Abhängigkeiten (`is blocked`), Presets oder andere Datumsangaben. Ein Hinweis über der Liste nennt die Zeile und den Grund; die Zeile wird ausgelassen, die Liste zeigt dann womöglich mehr Aufgaben als in Obsidian — bei `sort by`- und `group by`-Zeilen eine andere Reihenfolge.
-- Eine Darstellungszeile ohne Gegenstück in Plainva (`hide edit button`, `short mode`, …) wird stillschweigend angenommen.
+- Eine Zeile, die Obsidian kennt und Alviss noch nicht — etwa Code (`filter by function`; Alviss führt nie Code aus Notizen aus), reguläre Ausdrücke (`regex matches`), Abhängigkeiten (`is blocked`), Presets oder andere Datumsangaben. Ein Hinweis über der Liste nennt die Zeile und den Grund; die Zeile wird ausgelassen, die Liste zeigt dann womöglich mehr Aufgaben als in Obsidian — bei `sort by`- und `group by`-Zeilen eine andere Reihenfolge.
+- Eine Darstellungszeile ohne Gegenstück in Alviss (`hide edit button`, `short mode`, …) wird stillschweigend angenommen.
 - Eine Zeile, die auch Obsidian ablehnt (Tippfehler, gemischte Klammern, ein unmögliches Datum), zeigt einen Fehler mit der Zeile und dem Grund — und keine Liste.
 
 ### Unterschiede zu Obsidian
@@ -186,7 +186,7 @@ Jede Zeile einer Abfrage fällt in einen von drei Fällen:
 - „Heute“ ist der Kalendertag.
 - Notizen mit `plainva.tasks: false` zählen hier mit; Obsidian kennt diese Eigenschaft nicht.
 - Ein in Obsidian gesetzter globaler Filter und eine globale Abfrage werden in der **Erklärung** genannt, aber nicht angewendet.
-- Eigene Zustandszeichen (`[>]`, `[!]`, …) sind in Plainva keine Aufgaben.
+- Eigene Zustandszeichen (`[>]`, `[!]`, …) sind in Alviss keine Aufgaben.
 
 Dataview-Blöcke bleiben einfacher Text.
 
@@ -198,7 +198,7 @@ Dataview-Blöcke bleiben einfacher Text.
 
 ## Abhaken in der Übersicht
 
-Wenn Du eine Aufgabe in der Übersicht abhakst, schreibt Plainva den Haken in die Quellnotiz und aktualisiert diese Notiz im Suchindex, bevor die Liste erneut abgefragt wird. Die Aufgabe verschwindet dadurch sofort aus **Offen** und erscheint nicht aus einem veralteten Index erneut.
+Wenn Du eine Aufgabe in der Übersicht abhakst, schreibt Alviss den Haken in die Quellnotiz und aktualisiert diese Notiz im Suchindex, bevor die Liste erneut abgefragt wird. Die Aufgabe verschwindet dadurch sofort aus **Offen** und erscheint nicht aus einem veralteten Index erneut.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Gleichnamige Aufgaben sicher trennen
@@ -212,22 +212,22 @@ Diese Dateien gehören zu unterschiedlichen Aufgaben. Gleiche Titel bedeuten bei
 <!-- task-names-2026-09-24 -->
 ## Wie Aufgaben vom Anbieter heißen
 
-Eine Aufgabe, die Plainva aus einer Aufgabenliste Deines Anbieters spiegelt, heißt wie ihr Titel: aus „Zahnarzt anrufen“ wird `Zahnarzt anrufen.md` im Ordner Deiner Aufgabendatenbank. Ist der Name schon vergeben — durch eine eigene Notiz oder eine zweite Aufgabe mit demselben Titel —, bekommt die neue Aufgabe die nächste freie Nummer, genau wie jede andere Notiz: `Einkaufen 2.md`, `Einkaufen 3.md`.
+Eine Aufgabe, die Alviss aus einer Aufgabenliste Deines Anbieters spiegelt, heißt wie ihr Titel: aus „Zahnarzt anrufen“ wird `Zahnarzt anrufen.md` im Ordner Deiner Aufgabendatenbank. Ist der Name schon vergeben — durch eine eigene Notiz oder eine zweite Aufgabe mit demselben Titel —, bekommt die neue Aufgabe die nächste freie Nummer, genau wie jede andere Notiz: `Einkaufen 2.md`, `Einkaufen 3.md`.
 
-Welche Aufgabe in welcher Datei steht, verrät nicht der Name, sondern die Frontmatter-Markierung (`plainva.pim`, siehe [Dateiformat-Referenz](File_Format_Reference.md)). Deshalb nimmt Plainva einen vorhandenen Namen nur, wenn die Datei dort dieselbe Aufgabe trägt, und legt neue Aufgaben auf jedem Gerät in derselben Reihenfolge an — zwei Geräte vergeben so dieselben Nummern. Ändert sich der Titel beim Anbieter, zieht Plainva die Überschrift der Notiz nach, benennt die Datei aber nicht um: Links auf die Notiz bleiben gültig. Umbenennen und verschieben darfst Du sie jederzeit selbst; die Markierung hält die Verbindung.
+Welche Aufgabe in welcher Datei steht, verrät nicht der Name, sondern die Frontmatter-Markierung (`plainva.pim`, siehe [Dateiformat-Referenz](File_Format_Reference.md)). Deshalb nimmt Alviss einen vorhandenen Namen nur, wenn die Datei dort dieselbe Aufgabe trägt, und legt neue Aufgaben auf jedem Gerät in derselben Reihenfolge an — zwei Geräte vergeben so dieselben Nummern. Ändert sich der Titel beim Anbieter, zieht Alviss die Überschrift der Notiz nach, benennt die Datei aber nicht um: Links auf die Notiz bleiben gültig. Umbenennen und verschieben darfst Du sie jederzeit selbst; die Markierung hält die Verbindung.
 
-**Namen mit Kennung bereinigen.** Zwischen dem 12. und dem 24.09.2026 hängte Plainva an die Namen neuer Aufgaben-Notizen eine Kennung an (`Zahnarzt anrufen — 3f9a1c0b7d2e4a61.md`). Trägt Dein Vault noch solche Namen, zeigt die Aufgabenansicht — am Desktop wie am Telefon — einmal einen Hinweis mit der Liste alt → neu und der Zahl der Links, die mit angepasst werden. **Namen bereinigen …** fragt noch einmal nach und benennt die Notizen dann nach ihrem Titel um, gleichnamige wie oben mit Nummer; Links auf sie werden mit angepasst. **Ausblenden** legt den Hinweis beiseite, bis weitere solche Namen auftauchen. Plainva erkennt nur Namen, die es selbst vergeben hat: die Kennung muss zur Markierung in derselben Datei passen. Von allein wird nichts umbenannt. Deine anderen Geräte erhalten die Umbenennungen als Verschiebung, sobald sie auf demselben Stand sind; eine ältere Fassung sieht dort gelöschte und neue Notizen, fragt womöglich, ob sie löschen soll, oder behält den alten Namen neben dem neuen — aktualisiere diese Geräte am besten vorher. Am Desktop erscheint der Hinweis im Hauptfenster.
+**Namen mit Kennung bereinigen.** Zwischen dem 12. und dem 24.09.2026 hängte Alviss an die Namen neuer Aufgaben-Notizen eine Kennung an (`Zahnarzt anrufen — 3f9a1c0b7d2e4a61.md`). Trägt Dein Vault noch solche Namen, zeigt die Aufgabenansicht — am Desktop wie am Telefon — einmal einen Hinweis mit der Liste alt → neu und der Zahl der Links, die mit angepasst werden. **Namen bereinigen …** fragt noch einmal nach und benennt die Notizen dann nach ihrem Titel um, gleichnamige wie oben mit Nummer; Links auf sie werden mit angepasst. **Ausblenden** legt den Hinweis beiseite, bis weitere solche Namen auftauchen. Alviss erkennt nur Namen, die es selbst vergeben hat: die Kennung muss zur Markierung in derselben Datei passen. Von allein wird nichts umbenannt. Deine anderen Geräte erhalten die Umbenennungen als Verschiebung, sobald sie auf demselben Stand sind; eine ältere Fassung sieht dort gelöschte und neue Notizen, fragt womöglich, ob sie löschen soll, oder behält den alten Namen neben dem neuen — aktualisiere diese Geräte am besten vorher. Am Desktop erscheint der Hinweis im Hauptfenster.
 
 <!-- tasks-jex-2026-09-14 -->
 ## Tasks-Metadaten und Wiederholungen
 
 Desktop, Mobil und Live-Vorschau verstehen ➕ erstellt, ✅ erledigt, 📅 fällig, ⏳ geplant, 🛫 Start, 🆔 ID und 🔁 Wiederholung. Datumswerte haben das Format YYYY-MM-DD. Vorhandene IDs bleiben bestehen; sie identifizieren die Aufgabe auch nach einem Zeilenwechsel. Unbekannte Angaben bleiben im Markdown.
 
-Automatisch unterstützt sind ausschließlich die englischen Regeln `every [N] day/week/month/year[s] [when done]` mit N von 1 bis 999. Ein Abschluss erzeugt genau die nächste Periode, auch wenn sie noch überfällig ist; `when done` zählt ab dem Erledigungstag. Relative Datumsabstände bleiben erhalten, Monatsenden werden begrenzt. Ohne Termin entsteht eine Folge ohne Termin. Komplexe Regeln, Abhängigkeiten, Block-IDs, doppelte IDs, ungültige Daten und eingerückte Inhalte werden nicht automatisch fortgesetzt. Notizen mit einer nativen Plainva-Wiederholung oder Anbieterbindung erhalten keine zweite Wiederholung aus Tasks.
+Automatisch unterstützt sind ausschließlich die englischen Regeln `every [N] day/week/month/year[s] [when done]` mit N von 1 bis 999. Ein Abschluss erzeugt genau die nächste Periode, auch wenn sie noch überfällig ist; `when done` zählt ab dem Erledigungstag. Relative Datumsabstände bleiben erhalten, Monatsenden werden begrenzt. Ohne Termin entsteht eine Folge ohne Termin. Komplexe Regeln, Abhängigkeiten, Block-IDs, doppelte IDs, ungültige Daten und eingerückte Inhalte werden nicht automatisch fortgesetzt. Notizen mit einer nativen Alviss-Wiederholung oder Anbieterbindung erhalten keine zweite Wiederholung aus Tasks.
 
 Das Abhaken ergänzt bei Tasks-Metadaten das Erledigt-Datum. Eine unterstützte Wiederholung ergänzt nötigenfalls eine ID; die Folge erhält eine eigene `pv-…`-ID. Checkbox und Folge sind eine Markdown-Änderung. Erneutes Öffnen der alten Aufgabe löscht eine vorhandene Folge nicht; erneutes Abhaken erhält sie einschließlich Deiner Änderungen. Editor-Rückgängig nimmt die gesamte Änderung zurück.
 
-Native Datenbankaufgaben behalten ihr eigenes Verhalten: überfällige Perioden werden übersprungen. Ein dauerhaft gespeicherter Zielplan verhindert doppelte Folgen beim erneuten Abhaken. Meldet Plainva einen unbestätigten Folgeschritt, prüfe den Aufgabenordner. Nach einem Schreibfehler kann erneutes Öffnen und Abhaken den gespeicherten Plan fortsetzen. Wurde die Quelle inzwischen geändert, wird keine abweichende Kopie geschrieben; prüfe dann die vorhandenen Notizen und lege die gewünschte Folge bei Bedarf manuell an. Eine bereits bestätigte und später gelöschte Folge wird nicht wiederhergestellt.
+Native Datenbankaufgaben behalten ihr eigenes Verhalten: überfällige Perioden werden übersprungen. Ein dauerhaft gespeicherter Zielplan verhindert doppelte Folgen beim erneuten Abhaken. Meldet Alviss einen unbestätigten Folgeschritt, prüfe den Aufgabenordner. Nach einem Schreibfehler kann erneutes Öffnen und Abhaken den gespeicherten Plan fortsetzen. Wurde die Quelle inzwischen geändert, wird keine abweichende Kopie geschrieben; prüfe dann die vorhandenen Notizen und lege die gewünschte Folge bei Bedarf manuell an. Eine bereits bestätigte und später gelöschte Folge wird nicht wiederhergestellt.
 
 ## Filter wiederherstellen
 
@@ -236,24 +236,24 @@ Status, Suchtext, Ordner, Tag, „Nur mit Fälligkeit“ und die Anzeige ausgebl
 <!-- planner-capture-2026-09-20 -->
 ## Planer, Schnellerfassung, Priorität und Zustände
 
-Die Aufgabenansicht öffnet sich auf **Heute**. Die Listen — am Desktop eine Leiste links, am Telefon ein Segment über der Liste — sind **Heute** (was heute fällig ist, mit **Überfällig** obenauf), **Demnächst** (die nächsten 14 Tage, nach Tag), **Eingang** (offene Aufgaben ohne Datum), **Alle** (die beiden oben beschriebenen Sektionen mit dem Filter **Offen**/**Erledigt**/**Alle**) und **Erledigt**. Jede Liste schöpft aus beiden Quellen, der Aufgaben-Datenbank und den Checkboxen in Deinen Notizen, geordnet nach Priorität, dann Uhrzeit, dann Titel. Die übrigen Filter wirken auf jede Liste, und die gewählte Liste merkt sich Plainva je Vault. Am Desktop führt die Leiste außerdem die häufigsten Tags als Ein-Klick-Filter; am Telefon führt der Bildschirm **Heute** in die Planer-Liste **Heute**.
+Die Aufgabenansicht öffnet sich auf **Heute**. Die Listen — am Desktop eine Leiste links, am Telefon ein Segment über der Liste — sind **Heute** (was heute fällig ist, mit **Überfällig** obenauf), **Demnächst** (die nächsten 14 Tage, nach Tag), **Eingang** (offene Aufgaben ohne Datum), **Alle** (die beiden oben beschriebenen Sektionen mit dem Filter **Offen**/**Erledigt**/**Alle**) und **Erledigt**. Jede Liste schöpft aus beiden Quellen, der Aufgaben-Datenbank und den Checkboxen in Deinen Notizen, geordnet nach Priorität, dann Uhrzeit, dann Titel. Die übrigen Filter wirken auf jede Liste, und die gewählte Liste merkt sich Alviss je Vault. Am Desktop führt die Leiste außerdem die häufigsten Tags als Ein-Klick-Filter; am Telefon führt der Bildschirm **Heute** in die Planer-Liste **Heute**.
 
-Über den Listen steht das Erfassungsfeld; am Telefon öffnen **+ Neue Aufgabe** und der **＋**-Knopf es als Blatt. Tippe eine Zeile — `Angebot abschicken morgen 14 Uhr !!! #kunde wöchentlich` — und drücke Enter: Plainva legt die Aufgabe in der Aufgaben-Datenbank an. Es versteht heute, morgen, übermorgen, Wochentage, „in 3 Tagen“, „nächste Woche“, Datumsangaben in Ziffern, eine Uhrzeit (`14:30`, `14 Uhr`), einen Rhythmus (täglich, wöchentlich, monatlich, jährlich, „jeden Montag“, „alle 2 Wochen“), `!`, `!!` und `!!!` für niedrige, mittlere und hohe Priorität sowie `#tags` — die Wörter in der Sprache der App, Ziffern und Zeichen in jeder Sprache. Alles Erkannte ist im Feld hinterlegt und steht darunter als abwählbarer Baustein, **bevor** etwas gespeichert wird; nimmst Du einen Baustein weg, zählen seine Wörter einfach wieder zum Titel. Am Telefon schreiben Schnellknöpfe dieselben Wörter für Dich. Nennt die Aufgaben-Datenbank eine Anbieter-Liste, entscheidet ein Chip, ob die Aufgabe auch dort angelegt wird.
+Über den Listen steht das Erfassungsfeld; am Telefon öffnen **+ Neue Aufgabe** und der **＋**-Knopf es als Blatt. Tippe eine Zeile — `Angebot abschicken morgen 14 Uhr !!! #kunde wöchentlich` — und drücke Enter: Alviss legt die Aufgabe in der Aufgaben-Datenbank an. Es versteht heute, morgen, übermorgen, Wochentage, „in 3 Tagen“, „nächste Woche“, Datumsangaben in Ziffern, eine Uhrzeit (`14:30`, `14 Uhr`), einen Rhythmus (täglich, wöchentlich, monatlich, jährlich, „jeden Montag“, „alle 2 Wochen“), `!`, `!!` und `!!!` für niedrige, mittlere und hohe Priorität sowie `#tags` — die Wörter in der Sprache der App, Ziffern und Zeichen in jeder Sprache. Alles Erkannte ist im Feld hinterlegt und steht darunter als abwählbarer Baustein, **bevor** etwas gespeichert wird; nimmst Du einen Baustein weg, zählen seine Wörter einfach wieder zum Titel. Am Telefon schreiben Schnellknöpfe dieselben Wörter für Dich. Nennt die Aufgaben-Datenbank eine Anbieter-Liste, entscheidet ein Chip, ob die Aufgabe auch dort angelegt wird.
 
-**Priorität setzen** im Menü einer Zeile (Rechtsklick am Desktop, gedrückt halten am Telefon) bietet **hoch**, **mittel**, **niedrig** und **keine**; eine Fahne vor dem Titel zeigt sie. In der Aufgaben-Datenbank ist die Priorität eine Auswahl-Spalte: eine jetzt angelegte Datenbank hat sie, eine ältere bekommt sie, wenn Du zum ersten Mal eine Priorität setzt — nie durch bloßes Öffnen. Eine Checkbox trägt das aus Obsidian bekannte Prioritätszeichen in ihrer Zeile: Plainva liest 🔺 und ⏫ als hoch, 🔼 als mittel, 🔽 und ⏬ als niedrig und schreibt ⏫, 🔼 oder 🔽.
+**Priorität setzen** im Menü einer Zeile (Rechtsklick am Desktop, gedrückt halten am Telefon) bietet **hoch**, **mittel**, **niedrig** und **keine**; eine Fahne vor dem Titel zeigt sie. In der Aufgaben-Datenbank ist die Priorität eine Auswahl-Spalte: eine jetzt angelegte Datenbank hat sie, eine ältere bekommt sie, wenn Du zum ersten Mal eine Priorität setzt — nie durch bloßes Öffnen. Eine Checkbox trägt das aus Obsidian bekannte Prioritätszeichen in ihrer Zeile: Alviss liest 🔺 und ⏫ als hoch, 🔼 als mittel, 🔽 und ⏬ als niedrig und schreibt ⏫, 🔼 oder 🔽.
 
-`- [/]` (**In Arbeit**) und `- [-]` (**Abgebrochen**) sind ebenfalls Aufgaben. Sie bekommen im Editor, im Lesemodus und in jeder Liste ein eigenes Kästchen; „in Arbeit“ zählt als offen, „abgebrochen“ als geschlossen. Ein Klick schaltet weiterhin nur zwischen offen und erledigt — er erledigt eine Aufgabe in Arbeit und öffnet eine abgebrochene wieder. **Zustand setzen** im Zeilenmenü setzt die beiden Zustände; von sich aus schreibt Plainva sie nie.
+`- [/]` (**In Arbeit**) und `- [-]` (**Abgebrochen**) sind ebenfalls Aufgaben. Sie bekommen im Editor, im Lesemodus und in jeder Liste ein eigenes Kästchen; „in Arbeit“ zählt als offen, „abgebrochen“ als geschlossen. Ein Klick schaltet weiterhin nur zwischen offen und erledigt — er erledigt eine Aufgabe in Arbeit und öffnet eine abgebrochene wieder. **Zustand setzen** im Zeilenmenü setzt die beiden Zustände; von sich aus schreibt Alviss sie nie.
 
 **Das Datum einer Aufgabe ist der Weg, es zu ändern.** Tippe oder klicke auf das Datum einer Aufgabe (innerhalb eines Tages: auf ihre Uhrzeit), und die Datumswahl öffnet sich — am Desktop unter dem Datum, am Telefon als Blatt. **Fälligkeit ändern** im Menü der Zeile öffnet dieselbe Datumswahl; so bekommt auch eine Aufgabe ohne Datum eines. Am Telefon wählen **Neue Aufgabe** und die Datumszelle einer Datenbank ihren Tag aus demselben Kalender, nicht aus dem Datumsrad des Systems. Eine Checkbox in einer Notiz — im Editor, in der Leseansicht und im Journal — ist am Telefon auf den Finger zugeschnitten. Ein Eintrag der Aufgaben-Datenbank behält seine Uhrzeit, eine Checkbox bekommt oder ändert ihr `📅`-Datum. An der Überschrift **Überfällig** verschiebt **Alle auf heute** alle überfälligen Aufgaben in einem Schritt auf heute. Beides bestätigt ein Hinweis, der **Rückgängig** anbietet. Im Erfassungsfeld schlägt `[[` Notizen vor und `#` Tags, wie im Editor: `Enter` oder `Tab` übernimmt den markierten Vorschlag, `Esc` schließt die Liste.
 
-**Schnellwahl und Uhrzeit.** Über dem Kalender stehen **Heute**, **Morgen**, **Dieses Wochenende**, **Nächste Woche** und **Kein Datum**, jeweils mit dem Wochentag. Dieses Wochenende ist der kommende Samstag — heute, wenn Samstag oder Sonntag ist; Nächste Woche ist der erste Tag der nächsten Woche, wie unter **Wochenbeginn** eingestellt. Unten hat **Uhrzeit** einen Schalter: aus ist die Aufgabe ganztägig fällig, an wählst Du daneben die Zeit. Eine Schnellwahl oder ein Tag behält eine schon gesetzte Uhrzeit; um nur die Uhrzeit zu ändern, tippe auf **Fertig**. Ein Eintrag der Aufgaben-Datenbank speichert die Uhrzeit in seinem Fälligkeitswert (`2026-10-26T10:00`). Für eine Checkbox in einer Notiz setzt der Wähler nur den Tag — das `📅` aus Obsidian kennt keine Uhrzeit — und sagt das dort, statt den Schalter anzubieten; eine Uhrzeit, die Du selbst hinter das Datum schreibst (siehe *Erinnerungen für Checkboxen*), bleibt stehen, wenn sich der Tag ändert. Zeigt die Fälligkeitsspalte der Datenbank nur Tage, bietet Plainva einmal **Auf Datum & Uhrzeit umstellen** an.
+**Schnellwahl und Uhrzeit.** Über dem Kalender stehen **Heute**, **Morgen**, **Dieses Wochenende**, **Nächste Woche** und **Kein Datum**, jeweils mit dem Wochentag. Dieses Wochenende ist der kommende Samstag — heute, wenn Samstag oder Sonntag ist; Nächste Woche ist der erste Tag der nächsten Woche, wie unter **Wochenbeginn** eingestellt. Unten hat **Uhrzeit** einen Schalter: aus ist die Aufgabe ganztägig fällig, an wählst Du daneben die Zeit. Eine Schnellwahl oder ein Tag behält eine schon gesetzte Uhrzeit; um nur die Uhrzeit zu ändern, tippe auf **Fertig**. Ein Eintrag der Aufgaben-Datenbank speichert die Uhrzeit in seinem Fälligkeitswert (`2026-10-26T10:00`). Für eine Checkbox in einer Notiz setzt der Wähler nur den Tag — das `📅` aus Obsidian kennt keine Uhrzeit — und sagt das dort, statt den Schalter anzubieten; eine Uhrzeit, die Du selbst hinter das Datum schreibst (siehe *Erinnerungen für Checkboxen*), bleibt stehen, wenn sich der Tag ändert. Zeigt die Fälligkeitsspalte der Datenbank nur Tage, bietet Alviss einmal **Auf Datum & Uhrzeit umstellen** an.
 
-Weitere Wege hinein: **Neue Aufgabe** im Tray-Menü am Desktop (wenn Plainva im Hintergrund weiterläuft), unter Android der Startmenü-Eintrag **Neue Aufgabe** (App-Symbol gedrückt halten) und am Telefon **Als Aufgabe anlegen**, wenn Du etwas an Plainva teilst — Text und Anhänge landen in der Notiz der Aufgabe. Wie eine Aufgabe mit Uhrzeit erinnert, steht unter [Kalender & externe Aufgaben](Calendar_and_Tasks.md).
+Weitere Wege hinein: **Neue Aufgabe** im Tray-Menü am Desktop (wenn Alviss im Hintergrund weiterläuft), unter Android der Startmenü-Eintrag **Neue Aufgabe** (App-Symbol gedrückt halten) und am Telefon **Als Aufgabe anlegen**, wenn Du etwas an Alviss teilst — Text und Anhänge landen in der Notiz der Aufgabe. Wie eine Aufgabe mit Uhrzeit erinnert, steht unter [Kalender & externe Aufgaben](Calendar_and_Tasks.md).
 
 <!-- widgets-2026-09-23 -->
 ## Abhaken im Widget
 
-Das Kästchen im Widget **Heute** nimmt einen Auftrag auf: der Haken erscheint sofort, die Notiz ändert sich beim nächsten Öffnen von Plainva, und dann passieren auch Wiederholung und Abgleich. Bis dahin sagt die Zeile **wird beim Öffnen übernommen**. Eine Aufgabe, die Du inzwischen erledigt, gelöscht oder verschoben hast, bleibt still unberührt. Am iPhone braucht das iOS 17; darunter öffnet ein Tipp auf die Zeile die Aufgabe. Einzelheiten: [Die mobile App](Mobile_App.md).
+Das Kästchen im Widget **Heute** nimmt einen Auftrag auf: der Haken erscheint sofort, die Notiz ändert sich beim nächsten Öffnen von Alviss, und dann passieren auch Wiederholung und Abgleich. Bis dahin sagt die Zeile **wird beim Öffnen übernommen**. Eine Aufgabe, die Du inzwischen erledigt, gelöscht oder verschoben hast, bleibt still unberührt. Am iPhone braucht das iOS 17; darunter öffnet ein Tipp auf die Zeile die Aufgabe. Einzelheiten: [Die mobile App](Mobile_App.md).
 
 <!-- task-rows-2026-10-24 -->
 ## Unteraufgaben, Stichpunkte und was heute erledigt ist
@@ -264,6 +264,6 @@ Das Kästchen im Widget **Heute** nimmt einen Auftrag auf: der Haken erscheint s
 
 Beides ist an, bis Du es abschaltest: **Unteraufgaben** und **Stichpunkte** stehen bei den anderen Filtern (am Desktop als Häkchen, am Telefon als Chips) und werden mit ihnen gemerkt.
 
-**Heute erledigt.** Unter **Heute** sammelt eine zugeklappte Zeile **Erledigt (n)**, was heute abgehakt wurde — ein Kästchen nach seinem Erledigt-Datum `✅` (das Plainva bei jedem Haken schreibt), ein Eintrag der Aufgaben-Datenbank nach dem Tag, an dem seine Notiz zuletzt geändert wurde, denn eine Datenbank hat kein eigenes Erledigt-Datum. Ein abgehaktes Kästchen ohne Datum zählt nicht mit: Nichts sagt, wann es erledigt wurde. Die Zeile ist zu, bis Du sie öffnest; das Gerät merkt sich Deine Wahl. Der Bildschirm **Heute** am Telefon zeigt dieselbe Zeile unter **Fällig**.
+**Heute erledigt.** Unter **Heute** sammelt eine zugeklappte Zeile **Erledigt (n)**, was heute abgehakt wurde — ein Kästchen nach seinem Erledigt-Datum `✅` (das Alviss bei jedem Haken schreibt), ein Eintrag der Aufgaben-Datenbank nach dem Tag, an dem seine Notiz zuletzt geändert wurde, denn eine Datenbank hat kein eigenes Erledigt-Datum. Ein abgehaktes Kästchen ohne Datum zählt nicht mit: Nichts sagt, wann es erledigt wurde. Die Zeile ist zu, bis Du sie öffnest; das Gerät merkt sich Deine Wahl. Der Bildschirm **Heute** am Telefon zeigt dieselbe Zeile unter **Fällig**.
 
 **Das Kästchen am Telefon.** Im Editor, im Lesemodus, im Bereich Aufgaben und unter **Heute** zeichnet das Telefon jedes Aufgaben-Kästchen gleich: groß und abgerundet, mit Haken gefüllt, wenn erledigt, halb gefüllt bei **In Arbeit**, durchgestrichen bei **Abgebrochen**. Der Desktop behält seine kleineren Kästchen, gemacht für die Maus.

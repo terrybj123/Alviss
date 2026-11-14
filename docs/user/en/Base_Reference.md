@@ -2,36 +2,36 @@
 
 Last reviewed: 2026-11-03
 
-This page lists everything a `.base` file can contain and what Plainva does with each part: every top-level key, every filter form, every view type with its options, summaries, sorting, limits, what happens to keys Plainva does not know, and where Plainva behaves differently from Obsidian Bases. It describes what Plainva's code reads, evaluates and writes today — not Obsidian's documentation.
+This page lists everything a `.base` file can contain and what Alviss does with each part: every top-level key, every filter form, every view type with its options, summaries, sorting, limits, what happens to keys Alviss does not know, and where Alviss behaves differently from Obsidian Bases. It describes what Alviss's code reads, evaluates and writes today — not Obsidian's documentation.
 
 For everyday use, read [Databases (.base)](Databases_Base.md) first. The rules a tool must keep when it writes vault files directly, and the full relation example, are in the [File Format Reference](File_Format_Reference.md).
 
 ## At a glance
 
-| Part of the file | What Plainva does |
+| Part of the file | What Alviss does |
 |---|---|
 | `filters` | Reads and applies the sources (folder, tag) and the conditions listed under [Filters](#filters) |
 | `views` | Reads all eight view types, their order, sort, filters and summaries |
-| `properties` | Reads the column schema, the display name and Plainva's `plainva` block |
+| `properties` | Reads the column schema, the display name and Alviss's `plainva` block |
 | `summaries` (view) | Computes the fourteen built-in summaries |
 | `formulas` | Keeps them in the file, does not compute them |
 | `summaries` (top level) | Keeps custom summary formulas, does not compute them |
 | `this` | Not supported yet |
-| Other keys | Keeps them in the file (see [Keys Plainva does not know](#keys-plainva-does-not-know)) |
+| Other keys | Keeps them in the file (see [Keys Alviss does not know](#keys-plainva-does-not-know)) |
 
 ## Top-level keys
 
 A `.base` file is YAML with these top-level keys. All of them are optional; a file without `views` opens with one table.
 
-| Key | Content | In Plainva |
+| Key | Content | In Alviss |
 |---|---|---|
 | `filters` | Which notes belong to the database (sources) | Read and applied |
-| `properties` | One entry per column, keyed by the property id | Read; Plainva's additions live in its `plainva` block |
+| `properties` | One entry per column, keyed by the property id | Read; Alviss's additions live in its `plainva` block |
 | `views` | The list of views | Read; every view needs a `name` |
 | `formulas` | Obsidian formulas, `name: expression` | Kept unchanged, not computed |
 | `summaries` | Obsidian custom summary formulas | Kept unchanged, not computed |
 
-Plainva never writes another top-level key: Obsidian refuses to open a `.base` with a key it does not know. A top-level `columns:` key written by very old Plainva versions is still read and moved into `properties` the next time the file is saved.
+Alviss never writes another top-level key: Obsidian refuses to open a `.base` with a key it does not know. A top-level `columns:` key written by very old Alviss versions is still read and moved into `properties` the next time the file is saved.
 
 ## Properties (`properties`)
 
@@ -47,15 +47,15 @@ A property id names a column. Three kinds exist:
 
 The keys of `properties`, a view's `order` and `sort[].property` use these ids. Inside a filter expression and inside a `plainva` block a frontmatter key is written bare (`status`); a filter expression understands `note.status` as well.
 
-When a note writes a key in a different case than the column (`Due` against the column `due`), Plainva still shows the value in that column and writes changes back under the note's own spelling.
+When a note writes a key in a different case than the column (`Due` against the column `due`), Alviss still shows the value in that column and writes changes back under the note's own spelling.
 
 ### Display name
 
-`properties.<id>.displayName` is Obsidian's column label. Plainva shows it as the column header and keeps it. Without it a frontmatter key is shown with a capital first letter (on screen only); the file fields have their own names, for example **Name**, **Modified**, **Size**, **Path**, **Checklist** and **Day from the file name**.
+`properties.<id>.displayName` is Obsidian's column label. Alviss shows it as the column header and keeps it. Without it a frontmatter key is shown with a capital first letter (on screen only); the file fields have their own names, for example **Name**, **Modified**, **Size**, **Path**, **Checklist** and **Day from the file name**.
 
 ### The `plainva` block of a column
 
-Everything Plainva adds to a column lives under `properties.<id>.plainva`. Obsidian ignores it.
+Everything Alviss adds to a column lives under `properties.<id>.plainva`. Obsidian ignores it.
 
 | Key | Value | Meaning |
 |---|---|---|
@@ -112,7 +112,7 @@ These values come from the file, not from its frontmatter. Each row of a databas
 
 ### Where filters live
 
-The top-level `filters` holds the **sources** — which notes belong to the database. Every view can carry its own `filters` with conditions that narrow that view only; Plainva writes the conditions there. Both levels apply together. Conditions a file keeps at the top level still work; the next save in Plainva moves them into each view.
+The top-level `filters` holds the **sources** — which notes belong to the database. Every view can carry its own `filters` with conditions that narrow that view only; Alviss writes the conditions there. Both levels apply together. Conditions a file keeps at the top level still work; the next save in Alviss moves them into each view.
 
 ### Sources
 
@@ -158,33 +158,33 @@ A `filters` object has exactly one of `and`, `or` and `not` on each level; its e
 | `or` | at least one entry matches |
 | `not` | no entry matches |
 
-Plainva evaluates any depth. The filter panel edits one level of groups under **All** or **Any** (**Add group**); a deeper structure appears as **Complex filter (not editable)**, stays in the file and is applied — a condition inside it that Plainva cannot read is named below it as not applied. An older file with `and` and `or` side by side on one level is read as "all of `and` and one of `or`" and written in the valid form on the next save.
+Alviss evaluates any depth. The filter panel edits one level of groups under **All** or **Any** (**Add group**); a deeper structure appears as **Complex filter (not editable)**, stays in the file and is applied — a condition inside it that Alviss cannot read is named below it as not applied. An older file with `and` and `or` side by side on one level is read as "all of `and` and one of `or`" and written in the valid form on the next save.
 
-### What Plainva cannot read
+### What Alviss cannot read
 
-Only the forms in the two tables above are understood. Anything else — `file.inFolder(…)`, `file.hasLink(…)`, `file.hasProperty(…)`, a number without quotes (`price > 2`), `&&` and `||` inside one string, arithmetic, date functions such as `now()`, or `this` — stays in the file and is shown in the filter panel as written, with the note **Not applied: Plainva cannot read this condition, so it filters nothing.** The view then shows more notes than the same filter does in Obsidian.
+Only the forms in the two tables above are understood. Anything else — `file.inFolder(…)`, `file.hasLink(…)`, `file.hasProperty(…)`, a number without quotes (`price > 2`), `&&` and `||` inside one string, arithmetic, date functions such as `now()`, or `this` — stays in the file and is shown in the filter panel as written, with the note **Not applied: Alviss cannot read this condition, so it filters nothing.** The view then shows more notes than the same filter does in Obsidian.
 
 ## Formulas
 
-Plainva does not compute Obsidian formulas. `formulas` stays in the file unchanged, and a `formula.<name>` column in a view's `order` is shown without values. **Export table** → **Formulas (.base)** writes some rollups as formulas so that Obsidian can compute them (see [Databases](Databases_Base.md)).
+Alviss does not compute Obsidian formulas. `formulas` stays in the file unchanged, and a `formula.<name>` column in a view's `order` is shown without values. **Export table** → **Formulas (.base)** writes some rollups as formulas so that Obsidian can compute them (see [Databases](Databases_Base.md)).
 
 ## Views
 
 ### Keys of every view
 
-| Key | Value | In Plainva |
+| Key | Value | In Alviss |
 |---|---|---|
 | `type` | `table`, `list`, `cards` | The view type; see the next table |
-| `name` | text | Required; Plainva gives a view without one a name when it saves |
+| `name` | text | Required; Alviss gives a view without one a name when it saves |
 | `order` | list of property ids | The visible columns, in this order |
 | `sort` | list of `{ property, direction }` | Sort rules, `ASC` or `DESC` |
 | `filters` | filter object | The view's own conditions |
 | `summaries` | map of property id → summary name | The footer of each column |
-| `plainva` | map | Plainva's view options, below |
+| `plainva` | map | Alviss's view options, below |
 
 ### The eight view types
 
-Obsidian knows `table`, `list` and `cards`. Plainva's other view types are stored as `type: table` plus `plainva.render`, so Obsidian shows them as a table.
+Obsidian knows `table`, `list` and `cards`. Alviss's other view types are stored as `type: table` plus `plainva.render`, so Obsidian shows them as a table.
 
 | View type | `type` on disk | `plainva.render` |
 |---|---|---|
@@ -197,7 +197,7 @@ Obsidian knows `table`, `list` and `cards`. Plainva's other view types are store
 | **Graph** (`graph`) | `table` | `graph` |
 | **Pinboard** (`pinboard`) | `table` | `pinboard` |
 
-Board, Calendar, Timeline, Graph and Pinboard are offered as a **View type** only while **Allow Plainva extensions for .base files** is on. A `type` Plainva does not know is shown as a table and stays in the file as written until you choose another **View type**.
+Board, Calendar, Timeline, Graph and Pinboard are offered as a **View type** only while **Allow Alviss extensions for .base files** is on. A `type` Alviss does not know is shown as a table and stays in the file as written until you choose another **View type**.
 
 ### View options (`views[i].plainva`)
 
@@ -229,7 +229,7 @@ Inside the `plainva` block a property is written bare (`status`), not as `note.s
 
 ### File-wide options (first view only)
 
-These keys belong to the whole database. Plainva writes them into the `plainva` block of the first view only and reads the first valid value of each.
+These keys belong to the whole database. Alviss writes them into the `plainva` block of the first view only and reads the first valid value of each.
 
 | Key | Value |
 |---|---|
@@ -243,7 +243,7 @@ These keys belong to the whole database. Plainva writes them into the `plainva` 
 
 `views[i].summaries` maps a column to one of these names; the footer computes it over the rows the view shows.
 
-| Name | In Plainva | Result |
+| Name | In Alviss | Result |
 |---|---|---|
 | `Average` | **Average** | Mean of the numbers |
 | `Min` | **Min** | Smallest number |
@@ -260,39 +260,39 @@ These keys belong to the whole database. Plainva writes them into the `plainva` 
 | `Filled` | **Filled** | Rows with a value |
 | `Unique` | **Unique** | Number of different values; list entries count one by one |
 
-Numbers are rounded to two decimals, and a decimal comma is read as well. A column without a usable value shows no footer rather than 0. Any other name is a custom formula from the top-level `summaries`: Plainva keeps it and shows **Custom: …** in the menu, but computes no value.
+Numbers are rounded to two decimals, and a decimal comma is read as well. A column without a usable value shows no footer rather than 0. Any other name is a custom formula from the top-level `summaries`: Alviss keeps it and shows **Custom: …** in the menu, but computes no value.
 
 ## Sorting and grouping
 
-- **Sort** — `sort` is a list of rules; the first rule decides first, the next one only between equal rows. Numbers sort as numbers, everything else as text (ISO dates in the right order). Rows without a value come last in both directions. Without a rule, the most recently changed notes come first. Plainva also reads `field` for `property`, and `asc`/`desc` in any case.
-- **Grouping** — the board groups by `plainva.groupBy`, with swimlanes by `plainva.boardLaneBy`. A view that carries Obsidian's own `groupBy` instead groups its board by that property, and a change of the grouping is written into it (its `direction` stays). Plainva does not group a table by it.
+- **Sort** — `sort` is a list of rules; the first rule decides first, the next one only between equal rows. Numbers sort as numbers, everything else as text (ISO dates in the right order). Rows without a value come last in both directions. Without a rule, the most recently changed notes come first. Alviss also reads `field` for `property`, and `asc`/`desc` in any case.
+- **Grouping** — the board groups by `plainva.groupBy`, with swimlanes by `plainva.boardLaneBy`. A view that carries Obsidian's own `groupBy` instead groups its board by that property, and a change of the grouping is written into it (its `direction` stays). Alviss does not group a table by it.
 
 ## Embedding a database, and `this`
 
 `![[Projects.base]]` in a note shows the database inside the note, in reading view and in the editor. A part after `#` (a view name, as in `![[Projects.base#Board]]`) is ignored: the embed shows the view last used for this database. A ` ```base ` code block in a note is shown as code, not as a database.
 
-**`this` is not supported yet.** A filter or formula that uses `this` stays in the file, but Plainva does not evaluate it. Two things cover the most common case, "show the entries that belong to this note": `contextFilters` (**This note** in the filter panel) limits an embedded database to the note it is embedded in through a relation property, and an embedded database that relates to the database of its host note offers **Filter this database to the current note** by itself. Both act only inside Plainva; Obsidian shows all rows.
+**`this` is not supported yet.** A filter or formula that uses `this` stays in the file, but Alviss does not evaluate it. Two things cover the most common case, "show the entries that belong to this note": `contextFilters` (**This note** in the filter panel) limits an embedded database to the note it is embedded in through a relation property, and an embedded database that relates to the database of its host note offers **Filter this database to the current note** by itself. Both act only inside Alviss; Obsidian shows all rows.
 
 ## Limits
 
 - Obsidian's `limit` of a view is kept but not applied: a view shows all its rows.
 - The filter panel edits one level of filter groups; deeper ones are applied but can only be deleted there.
-- A filter value must be in double quotes (see [What Plainva cannot read](#what-plainva-cannot-read)).
+- A filter value must be in double quotes (see [What Alviss cannot read](#what-plainva-cannot-read)).
 - A folder source always includes the subfolders.
 - `ratingMax` is drawn between 1 and 10, `previousKeys` keeps at most 8 names, a **WIP limit** only takes whole numbers above 0, and `relationLimit` only knows `one`.
 - A rollup cannot compute over another computed column.
 
-## Keys Plainva does not know
+## Keys Alviss does not know
 
-Plainva reads a `.base`, changes only what you changed in the app, and writes the whole file anew — as YAML with LF line endings and without a BOM, so comments and the spacing of a hand-written file are not kept. Of what it does not know:
+Alviss reads a `.base`, changes only what you changed in the app, and writes the whole file anew — as YAML with LF line endings and without a BOM, so comments and the spacing of a hand-written file are not kept. Of what it does not know:
 
-- **Kept:** any other top-level key, `formulas`, the top-level `summaries`, `displayName` and every other key of a `properties` entry, unknown keys in the `plainva` block of a column or a view, a rollup Plainva cannot read, the keys of a view Plainva does not use (`limit`, `image`, …), a view type it does not know, and filter conditions it cannot read. A value Plainva understands but you did not change keeps the spelling of the file (`status` or `note.status`, an option written as plain text).
-- **Rewritten:** only Plainva's own old forms — a top-level `columns:` map moves into `properties`, `and` and `or` side by side on one level become the valid form, and a view that very old versions saved as `type: board` becomes `type: table` with `plainva.render`.
-- **Position:** the keys a view keeps belong to that view. Deleting or moving a view in Plainva takes them along, and **Duplicate** copies them to the new view.
+- **Kept:** any other top-level key, `formulas`, the top-level `summaries`, `displayName` and every other key of a `properties` entry, unknown keys in the `plainva` block of a column or a view, a rollup Alviss cannot read, the keys of a view Alviss does not use (`limit`, `image`, …), a view type it does not know, and filter conditions it cannot read. A value Alviss understands but you did not change keeps the spelling of the file (`status` or `note.status`, an option written as plain text).
+- **Rewritten:** only Alviss's own old forms — a top-level `columns:` map moves into `properties`, `and` and `or` side by side on one level become the valid form, and a view that very old versions saved as `type: board` becomes `type: table` with `plainva.render`.
+- **Position:** the keys a view keeps belong to that view. Deleting or moving a view in Alviss takes them along, and **Duplicate** copies them to the new view.
 
 ## Differences to Obsidian Bases
 
-| Topic | Obsidian | Plainva |
+| Topic | Obsidian | Alviss |
 |---|---|---|
 | Formulas, custom summaries | Computed | Kept, not computed |
 | `this` | Supported | Not supported yet |
@@ -304,7 +304,7 @@ Plainva reads a `.base`, changes only what you changed in the app, and writes th
 | View types | `table`, `list`, `cards` and plugin types | Eight types; an unknown one is shown as a table and kept in the file |
 | `![[db.base#View]]` | Opens that view | The view last used |
 | ` ```base ` code block | A database | A code block |
-| Plainva's `plainva` blocks | Ignored | Board, calendar, timeline, graph, pinboard, relations, rollups, field types |
+| Alviss's `plainva` blocks | Ignored | Board, calendar, timeline, graph, pinboard, relations, rollups, field types |
 
 ## See also
 

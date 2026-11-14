@@ -13,7 +13,7 @@ Premi `F1` (oppure **Palette dei comandi → Mostra le scorciatoie da tastiera**
 | `Ctrl+,` | Apri le impostazioni |
 | `Ctrl+Plus` / `Ctrl+Minus` | Aumenta / riduci lo zoom dell'interfaccia (80–150 %) |
 | `Ctrl+0` | Ripristina lo zoom al 100 % |
-| `Ctrl+S` | Conferma il salvataggio (Plainva salva automaticamente) |
+| `Ctrl+S` | Conferma il salvataggio (Alviss salva automaticamente) |
 | `F1` | Mostra questa finestra |
 | `Esc` | Annulla l'azione (chiudi la finestra, annulla la rinomina) |
 
@@ -128,7 +128,7 @@ Mouse: **scorri** per lo zoom; **trascinamento con il tasto centrale** o `Ctrl`+
 - **Schede:** trascina per riordinare, tra i riquadri, o su un bordo per dividere; il **clic destro** apre il menu della scheda (**Blocca**, **Ricarica**, **Apri nella vista divisa**, gruppo di chiusura). Una scheda **bloccata** passa in primo piano e sopravvive a ogni chiusura di massa.
 - **Barra delle azioni (estrema sinistra):** tieni premuto brevemente un pulsante e trascinalo per riordinarlo (il gruppo superiore e quello inferiore restano separati); `Esc` annulla.
 - **Link:** fai clic su un link interno / Markdown per aprirlo (`Ctrl`+clic per una nuova scheda).
-- **Clic destro** su una selezione o un campo per il menu di copia / taglia / incolla proprio di Plainva.
+- **Clic destro** su una selezione o un campo per il menu di copia / taglia / incolla proprio di Alviss.
 - **Finestra di anteprima:** trascina l'intestazione per spostarla, l'angolo per ridimensionarla; `◀ ▶` hanno una cronologia propria. Con più finestre fluttuanti aperte — una finestra di anteprima, l'anteprima evento, un'e-mail che stai scrivendo —, quella su cui fai clic passa in primo piano, e `Esc` chiude quella in primo piano.
 - **Calendario:** fai clic sul titolo nella scheda calendario o sul nome del mese nella barra laterale (o raggiungilo con `Tab` e premi `Invio`) per il selettore di data: le frecce si muovono nella griglia, `PgSu/PgGiù` cambiano mese, `Invio` salta, `Esc` chiude; fai clic su un giorno per la sua nota giornaliera.
 - **Menu:** un menu aperto da un pulsante o con il **clic destro** porta la tastiera sulla sua prima voce: le frecce, `Home` e `Fine` si muovono al suo interno, `Invio` sceglie una voce, `Esc` lo chiude e riporta la tastiera dove si trovava. Sopra un campo in cui stai scrivendo e sopra un testo che puoi solo leggere, la tastiera resta dov'era.

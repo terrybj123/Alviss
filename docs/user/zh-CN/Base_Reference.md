@@ -2,36 +2,36 @@
 
 更新日期：2026-11-03
 
-本页列出`.base`文件可以包含的全部内容，以及Plainva对每一部分的处理方式：每个顶层键、每种筛选写法、每种视图类型及其选项、汇总、排序、限制，Plainva不认识的键会怎样，以及Plainva与Obsidian Bases行为不同的地方。它描述的是Plainva的代码目前读取、计算和写入的内容，而不是Obsidian的文档。
+本页列出`.base`文件可以包含的全部内容，以及Alviss对每一部分的处理方式：每个顶层键、每种筛选写法、每种视图类型及其选项、汇总、排序、限制，Alviss不认识的键会怎样，以及Alviss与Obsidian Bases行为不同的地方。它描述的是Alviss的代码目前读取、计算和写入的内容，而不是Obsidian的文档。
 
 日常使用请先阅读[数据库（.base）](Databases_Base.md)。工具直接写入仓库文件时必须遵守的规则，以及完整的关联示例，见[文件格式参考](File_Format_Reference.md)。
 
 ## 概览
 
-| 文件中的部分 | Plainva的处理 |
+| 文件中的部分 | Alviss的处理 |
 |---|---|
 | `filters` | 读取并应用[筛选](#筛选)下所列的数据来源（文件夹、标签）和条件 |
 | `views` | 读取全部八种视图类型，以及它们的顺序、排序、筛选和汇总 |
-| `properties` | 读取列的结构、显示名称和Plainva的`plainva`块 |
+| `properties` | 读取列的结构、显示名称和Alviss的`plainva`块 |
 | `summaries`（视图内） | 计算十四种内置汇总 |
 | `formulas` | 保留在文件中，不计算 |
 | `summaries`（顶层） | 保留自定义汇总公式，不计算 |
 | `this` | 暂不支持 |
-| 其他键 | 保留在文件中（见[Plainva不认识的键](#plainva不认识的键)） |
+| 其他键 | 保留在文件中（见[Alviss不认识的键](#plainva不认识的键)） |
 
 ## 顶层键
 
 `.base`文件是YAML，带有以下顶层键。它们全部可选；没有`views`的文件会打开为一个表格。
 
-| 键 | 内容 | 在Plainva中 |
+| 键 | 内容 | 在Alviss中 |
 |---|---|---|
 | `filters` | 哪些笔记属于该数据库（数据来源） | 读取并应用 |
-| `properties` | 每列一个条目，以属性ID为键 | 读取；Plainva的附加内容存放在其`plainva`块中 |
+| `properties` | 每列一个条目，以属性ID为键 | 读取；Alviss的附加内容存放在其`plainva`块中 |
 | `views` | 视图列表 | 读取；每个视图都需要`name` |
 | `formulas` | Obsidian公式，`name: expression` | 原样保留，不计算 |
 | `summaries` | Obsidian自定义汇总公式 | 原样保留，不计算 |
 
-Plainva从不写入其他顶层键：Obsidian会拒绝打开带有它不认识的键的`.base`。很旧的Plainva版本写入的顶层`columns:`键仍会被读取，并在下次保存文件时移入`properties`。
+Alviss从不写入其他顶层键：Obsidian会拒绝打开带有它不认识的键的`.base`。很旧的Alviss版本写入的顶层`columns:`键仍会被读取，并在下次保存文件时移入`properties`。
 
 ## 属性（`properties`）
 
@@ -47,15 +47,15 @@ Plainva从不写入其他顶层键：Obsidian会拒绝打开带有它不认识�
 
 `properties`的键、视图的`order`以及`sort[].property`都使用这些ID。在筛选表达式内部和`plainva`块内部，Frontmatter的键直接写作裸键（`status`）；筛选表达式同样认得`note.status`。
 
-当笔记中键的大小写与列不同时（`Due`对应列`due`），Plainva仍会在该列中显示这个值，并按笔记自己的写法把更改写回去。
+当笔记中键的大小写与列不同时（`Due`对应列`due`），Alviss仍会在该列中显示这个值，并按笔记自己的写法把更改写回去。
 
 ### 显示名称
 
-`properties.<id>.displayName`是Obsidian的列标签。Plainva把它显示为列标题并保留它。没有它时，Frontmatter的键会以首字母大写显示（仅在屏幕上）；文件字段有各自的名称，例如**名称**、**修改时间**、**大小**、**路径**、**待办清单**和**来自文件名的日期**。
+`properties.<id>.displayName`是Obsidian的列标签。Alviss把它显示为列标题并保留它。没有它时，Frontmatter的键会以首字母大写显示（仅在屏幕上）；文件字段有各自的名称，例如**名称**、**修改时间**、**大小**、**路径**、**待办清单**和**来自文件名的日期**。
 
 ### 列的`plainva`块
 
-Plainva为一列添加的所有内容都存放在`properties.<id>.plainva`之下。Obsidian会忽略它。
+Alviss为一列添加的所有内容都存放在`properties.<id>.plainva`之下。Obsidian会忽略它。
 
 | 键 | 值 | 含义 |
 |---|---|---|
@@ -112,7 +112,7 @@ Plainva为一列添加的所有内容都存放在`properties.<id>.plainva`之下
 
 ### 筛选条件存放在哪里
 
-顶层的`filters`保存**数据来源**——哪些笔记属于该数据库。每个视图还可以带有自己的`filters`，其中的条件只缩小该视图的范围；Plainva把条件写在那里。两个层级会同时生效。文件在顶层保留的条件依然有效；Plainva下一次保存时会把它们移入各个视图。
+顶层的`filters`保存**数据来源**——哪些笔记属于该数据库。每个视图还可以带有自己的`filters`，其中的条件只缩小该视图的范围；Alviss把条件写在那里。两个层级会同时生效。文件在顶层保留的条件依然有效；Alviss下一次保存时会把它们移入各个视图。
 
 ### 数据来源
 
@@ -158,33 +158,33 @@ Plainva为一列添加的所有内容都存放在`properties.<id>.plainva`之下
 | `or` | 至少一个条目匹配 |
 | `not` | 没有任何条目匹配 |
 
-Plainva可以计算任意深度。筛选面板在**全部**或**任一**之下编辑一层分组（**添加组**）；更深的结构会显示为 **复杂筛选（不可编辑）**，保留在文件中并且会生效——其中Plainva无法读取的条件会在它下方标明为未生效。同一层上并排带有`and`和`or`的旧文件，会被读作“`and`全部满足，且`or`中满足一个”，并在下次保存时以有效的形式写出。
+Alviss可以计算任意深度。筛选面板在**全部**或**任一**之下编辑一层分组（**添加组**）；更深的结构会显示为 **复杂筛选（不可编辑）**，保留在文件中并且会生效——其中Alviss无法读取的条件会在它下方标明为未生效。同一层上并排带有`and`和`or`的旧文件，会被读作“`and`全部满足，且`or`中满足一个”，并在下次保存时以有效的形式写出。
 
-### Plainva无法读取的内容
+### Alviss无法读取的内容
 
-只有以上两张表中的写法能被识别。其他任何内容——`file.inFolder(…)`、`file.hasLink(…)`、`file.hasProperty(…)`、不带引号的数字（`price > 2`）、同一个字符串中的`&&`和`||`、算术运算、`now()`之类的日期函数，或者`this`——都会保留在文件中，并在筛选面板中按原样显示，同时附有提示 **未生效：Plainva 无法读取此条件，因此它不会筛选任何内容。** 这样一来，视图显示的笔记会比Obsidian中同一个筛选显示的更多。
+只有以上两张表中的写法能被识别。其他任何内容——`file.inFolder(…)`、`file.hasLink(…)`、`file.hasProperty(…)`、不带引号的数字（`price > 2`）、同一个字符串中的`&&`和`||`、算术运算、`now()`之类的日期函数，或者`this`——都会保留在文件中，并在筛选面板中按原样显示，同时附有提示 **未生效：Alviss 无法读取此条件，因此它不会筛选任何内容。** 这样一来，视图显示的笔记会比Obsidian中同一个筛选显示的更多。
 
 ## 公式
 
-Plainva不计算Obsidian公式。`formulas`原样保留在文件中，视图`order`里的`formula.<name>`列显示时没有值。**导出表格** → **公式 (.base)** 会把一部分汇总写成公式，以便Obsidian可以计算它们（见[数据库](Databases_Base.md)）。
+Alviss不计算Obsidian公式。`formulas`原样保留在文件中，视图`order`里的`formula.<name>`列显示时没有值。**导出表格** → **公式 (.base)** 会把一部分汇总写成公式，以便Obsidian可以计算它们（见[数据库](Databases_Base.md)）。
 
 ## 视图
 
 ### 每个视图的键
 
-| 键 | 值 | 在Plainva中 |
+| 键 | 值 | 在Alviss中 |
 |---|---|---|
 | `type` | `table`、`list`、`cards` | 视图类型；见下一张表 |
-| `name` | 文本 | 必需；没有名称的视图，Plainva会在保存时为它取一个 |
+| `name` | 文本 | 必需；没有名称的视图，Alviss会在保存时为它取一个 |
 | `order` | 属性ID的列表 | 可见的列，按此顺序 |
 | `sort` | `{ property, direction }`的列表 | 排序规则，`ASC`或`DESC` |
 | `filters` | 筛选对象 | 该视图自己的条件 |
 | `summaries` | 属性ID → 汇总名称的映射 | 每列的页脚 |
-| `plainva` | 映射 | Plainva的视图选项，见下文 |
+| `plainva` | 映射 | Alviss的视图选项，见下文 |
 
 ### 八种视图类型
 
-Obsidian认识`table`、`list`和`cards`。Plainva的其他视图类型存储为`type: table`加上`plainva.render`，因此Obsidian会把它们显示为表格。
+Obsidian认识`table`、`list`和`cards`。Alviss的其他视图类型存储为`type: table`加上`plainva.render`，因此Obsidian会把它们显示为表格。
 
 | 视图类型 | 磁盘上的`type` | `plainva.render` |
 |---|---|---|
@@ -197,7 +197,7 @@ Obsidian认识`table`、`list`和`cards`。Plainva的其他视图类型存储为
 | **关系图**（`graph`） | `table` | `graph` |
 | **便签板**（`pinboard`） | `table` | `pinboard` |
 
-只有在**允许对.base文件使用Plainva扩展功能**开启时，看板、日历、时间轴、关系图和便签板才会作为**视图类型**提供。Plainva不认识的`type`会显示为表格，并按原样保留在文件中，直到你选择其他**视图类型**。
+只有在**允许对.base文件使用Alviss扩展功能**开启时，看板、日历、时间轴、关系图和便签板才会作为**视图类型**提供。Alviss不认识的`type`会显示为表格，并按原样保留在文件中，直到你选择其他**视图类型**。
 
 ### 视图选项（`views[i].plainva`）
 
@@ -229,7 +229,7 @@ Obsidian认识`table`、`list`和`cards`。Plainva的其他视图类型存储为
 
 ### 全文件选项（仅第一个视图）
 
-这些键属于整个数据库。Plainva只把它们写入第一个视图的`plainva`块，并读取每个键的第一个有效值。
+这些键属于整个数据库。Alviss只把它们写入第一个视图的`plainva`块，并读取每个键的第一个有效值。
 
 | 键 | 值 |
 |---|---|
@@ -243,7 +243,7 @@ Obsidian认识`table`、`list`和`cards`。Plainva的其他视图类型存储为
 
 `views[i].summaries`把一列映射到以下名称之一；页脚会针对视图显示的行计算它。
 
-| 名称 | 在Plainva中 | 结果 |
+| 名称 | 在Alviss中 | 结果 |
 |---|---|---|
 | `Average` | **平均值** | 数字的平均值 |
 | `Min` | **最小值** | 最小的数字 |
@@ -260,39 +260,39 @@ Obsidian认识`table`、`list`和`cards`。Plainva的其他视图类型存储为
 | `Filled` | **有值** | 有值的行 |
 | `Unique` | **不同值** | 不同值的数量；列表条目逐个计数 |
 
-数字四舍五入到两位小数，并且也会读取以逗号作小数点的写法。没有可用值的列显示的是空页脚，而不是0。其他任何名称都是顶层`summaries`中的自定义公式：Plainva会保留它，在菜单中显示为 **自定义：…**，但不计算任何值。
+数字四舍五入到两位小数，并且也会读取以逗号作小数点的写法。没有可用值的列显示的是空页脚，而不是0。其他任何名称都是顶层`summaries`中的自定义公式：Alviss会保留它，在菜单中显示为 **自定义：…**，但不计算任何值。
 
 ## 排序与分组
 
-- **排序**——`sort`是一个规则列表；第一条规则先起决定作用，下一条只在各行相等时才起作用。数字按数字排序，其他一切按文本排序（ISO日期顺序正确）。在两个方向上，没有值的行都排在最后。没有规则时，最近更改的笔记排在最前面。Plainva也会把`field`读作`property`，并且`asc`/`desc`不分大小写。
-- **分组**——看板按`plainva.groupBy`分组，泳道按`plainva.boardLaneBy`。如果视图带的是Obsidian自己的`groupBy`，看板就按该属性分组，更改分组时也会写入其中（其`direction`保持不变）。Plainva不会据此对表格分组。
+- **排序**——`sort`是一个规则列表；第一条规则先起决定作用，下一条只在各行相等时才起作用。数字按数字排序，其他一切按文本排序（ISO日期顺序正确）。在两个方向上，没有值的行都排在最后。没有规则时，最近更改的笔记排在最前面。Alviss也会把`field`读作`property`，并且`asc`/`desc`不分大小写。
+- **分组**——看板按`plainva.groupBy`分组，泳道按`plainva.boardLaneBy`。如果视图带的是Obsidian自己的`groupBy`，看板就按该属性分组，更改分组时也会写入其中（其`direction`保持不变）。Alviss不会据此对表格分组。
 
 ## 嵌入数据库与`this`
 
 笔记中的`![[Projects.base]]`会在笔记内部显示该数据库，阅读视图和编辑器中都是如此。`#`之后的部分（视图名称，例如`![[Projects.base#Board]]`）会被忽略：嵌入显示的是该数据库上次使用的视图。笔记中的 ` ```base ` 代码块显示为代码，而不是数据库。
 
-**`this`暂不支持。** 使用`this`的筛选或公式会保留在文件中，但Plainva不会计算它。有两个办法涵盖了最常见的情形，即“显示属于这篇笔记的条目”：`contextFilters`（筛选面板中的**当前笔记**）会通过一个关联属性把嵌入的数据库限定在它所嵌入的笔记范围内；而与宿主笔记所在数据库相关联的嵌入数据库，会自动提供**将此数据库筛选到当前笔记**。两者都只在Plainva内部起作用；Obsidian会显示所有行。
+**`this`暂不支持。** 使用`this`的筛选或公式会保留在文件中，但Alviss不会计算它。有两个办法涵盖了最常见的情形，即“显示属于这篇笔记的条目”：`contextFilters`（筛选面板中的**当前笔记**）会通过一个关联属性把嵌入的数据库限定在它所嵌入的笔记范围内；而与宿主笔记所在数据库相关联的嵌入数据库，会自动提供**将此数据库筛选到当前笔记**。两者都只在Alviss内部起作用；Obsidian会显示所有行。
 
 ## 限制
 
 - 视图的Obsidian`limit`会保留，但不会应用：视图显示它的所有行。
 - 筛选面板编辑一层筛选分组；更深的分组会生效，但在那里只能删除。
-- 筛选值必须放在双引号中（见[Plainva无法读取的内容](#plainva无法读取的内容)）。
+- 筛选值必须放在双引号中（见[Alviss无法读取的内容](#plainva无法读取的内容)）。
 - 文件夹来源始终包含子文件夹。
 - `ratingMax`绘制在1到10之间，`previousKeys`最多保留8个名称，**WIP限制**只接受大于0的整数，`relationLimit`只认`one`。
 - 汇总列不能基于另一个计算列进行计算。
 
-## Plainva不认识的键
+## Alviss不认识的键
 
-Plainva读取一个`.base`，只更改你在应用中更改的内容，然后把整个文件重新写出——格式为YAML，换行符为LF，不带BOM，因此手写文件中的注释和排版不会保留。对于它不认识的内容：
+Alviss读取一个`.base`，只更改你在应用中更改的内容，然后把整个文件重新写出——格式为YAML，换行符为LF，不带BOM，因此手写文件中的注释和排版不会保留。对于它不认识的内容：
 
-- **保留：** 任何其他顶层键、`formulas`、顶层`summaries`、`displayName`以及`properties`条目中的所有其他键、列或视图`plainva`块中的未知键、Plainva无法读取的汇总、Plainva不使用的视图键（`limit`、`image`……）、它不认识的视图类型，以及它无法读取的筛选条件。Plainva能理解但你没有更改的值会保留文件中的写法（`status`或`note.status`、以纯文本写出的选项）。
-- **重写：** 只有Plainva自己的旧形式——顶层`columns:`映射会移入`properties`，同一层上并排的`and`和`or`会改为有效形式，非常旧的版本以`type: board`保存的视图会变为带`plainva.render`的`type: table`。
-- **位置：** 视图保留的键属于该视图。在Plainva中删除或移动视图时，这些键会随之一起移动，**创建副本**会把它们复制到新视图。
+- **保留：** 任何其他顶层键、`formulas`、顶层`summaries`、`displayName`以及`properties`条目中的所有其他键、列或视图`plainva`块中的未知键、Alviss无法读取的汇总、Alviss不使用的视图键（`limit`、`image`……）、它不认识的视图类型，以及它无法读取的筛选条件。Alviss能理解但你没有更改的值会保留文件中的写法（`status`或`note.status`、以纯文本写出的选项）。
+- **重写：** 只有Alviss自己的旧形式——顶层`columns:`映射会移入`properties`，同一层上并排的`and`和`or`会改为有效形式，非常旧的版本以`type: board`保存的视图会变为带`plainva.render`的`type: table`。
+- **位置：** 视图保留的键属于该视图。在Alviss中删除或移动视图时，这些键会随之一起移动，**创建副本**会把它们复制到新视图。
 
 ## 与Obsidian Bases的差异
 
-| 主题 | Obsidian | Plainva |
+| 主题 | Obsidian | Alviss |
 |---|---|---|
 | 公式、自定义汇总 | 计算 | 保留，不计算 |
 | `this` | 支持 | 暂不支持 |
@@ -304,7 +304,7 @@ Plainva读取一个`.base`，只更改你在应用中更改的内容，然后把
 | 视图类型 | `table`、`list`、`cards`和插件类型 | 八种类型；未知的显示为表格并保留在文件中 |
 | `![[db.base#View]]` | 打开该视图 | 上次使用的视图 |
 | ` ```base ` 代码块 | 数据库 | 代码块 |
-| Plainva的`plainva`块 | 忽略 | 看板、日历、时间轴、关系图、便签板、关联、汇总、字段类型 |
+| Alviss的`plainva`块 | 忽略 | 看板、日历、时间轴、关系图、便签板、关联、汇总、字段类型 |
 
 ## 另请参阅
 

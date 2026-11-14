@@ -8,15 +8,15 @@ Respuestas a las preguntas más frecuentes — desde la compatibilidad con Obsid
 
 ### ¿Dónde viven mis datos?
 
-Exclusivamente contigo: un vault es una carpeta normal de archivos Markdown en tu equipo. Plainva no gestiona ningún servidor propio y no guarda copias en ningún sitio. Si sincronizas, va directamente entre tu equipo y *tu* almacenamiento (tu Nextcloud, tu OneDrive, tu bucket…). Las credenciales viven en el llavero del sistema operativo.
+Exclusivamente contigo: un vault es una carpeta normal de archivos Markdown en tu equipo. Alviss no gestiona ningún servidor propio y no guarda copias en ningún sitio. Si sincronizas, va directamente entre tu equipo y *tu* almacenamiento (tu Nextcloud, tu OneDrive, tu bucket…). Las credenciales viven en el llavero del sistema operativo.
 
-### ¿Puedo usar Plainva y Obsidian en paralelo?
+### ¿Puedo usar Alviss y Obsidian en paralelo?
 
-Sí — es una promesa central, con una salvedad honesta. Plainva escribe Markdown puro con frontmatter estándar; todo lo específico de Plainva se agrupa bajo claves `plainva:` (en notas y archivos `.base`), que Obsidian simplemente ignora al abrir los archivos. Obsidian muestra la clave `plainva` como un objeto no editable en sus propiedades — eso es inofensivo. Las vistas exclusivas de Plainva como Tablero o Calendario aparecen en Obsidian como una tabla normal.
+Sí — es una promesa central, con una salvedad honesta. Alviss escribe Markdown puro con frontmatter estándar; todo lo específico de Alviss se agrupa bajo claves `plainva:` (en notas y archivos `.base`), que Obsidian simplemente ignora al abrir los archivos. Obsidian muestra la clave `plainva` como un objeto no editable en sus propiedades — eso es inofensivo. Las vistas exclusivas de Alviss como Tablero o Calendario aparecen en Obsidian como una tabla normal.
 
-La salvedad: **abrir siempre es seguro, editar no siempre.** Un vault de Obsidian existente se puede abrir y editar en Plainva sin riesgo — nada se migra ni se reformatea. Pero en cuanto un vault usa funciones de Plainva (extensiones de base de datos como tableros, relaciones o columnas inversas, archivos `index.md` gestionados), editar esos archivos concretos en Obsidian puede romper la funcionalidad de Plainva, porque Obsidian no conoce las extensiones `plainva:`. Las notas sin extensiones de Plainva se pueden editar en cualquier lugar y en cualquier momento. La primera vez que usas una de estas extensiones, un diálogo recordatorio (**Extensión de Plainva**) lo señala; se puede desactivar en **Configuración → App → Inicio y comportamiento**.
+La salvedad: **abrir siempre es seguro, editar no siempre.** Un vault de Obsidian existente se puede abrir y editar en Alviss sin riesgo — nada se migra ni se reformatea. Pero en cuanto un vault usa funciones de Alviss (extensiones de base de datos como tableros, relaciones o columnas inversas, archivos `index.md` gestionados), editar esos archivos concretos en Obsidian puede romper la funcionalidad de Alviss, porque Obsidian no conoce las extensiones `plainva:`. Las notas sin extensiones de Alviss se pueden editar en cualquier lugar y en cualquier momento. La primera vez que usas una de estas extensiones, un diálogo recordatorio (**Extensión de Alviss**) lo señala; se puede desactivar en **Configuración → App → Inicio y comportamiento**.
 
-### ¿Plainva modifica mi vault existente?
+### ¿Alviss modifica mi vault existente?
 
 No sin preguntar. Los archivos existentes solo se tocan cuando inicias una acción explícitamente (p. ej. la [conversión OKF](OKF.md) — con vista previa y copias de seguridad). Solo los archivos recién creados reciben automáticamente el pequeño encabezado frontmatter OKF.
 
@@ -24,15 +24,15 @@ No sin preguntar. Los archivos existentes solo se tocan cuando inicias una acci�
 
 ### He eliminado algo — ¿ha desaparecido?
 
-No, por partida doble: antes de cada eliminación, Plainva guarda el archivo como un snapshot — clic derecho en el nombre del vault → **Restaurar archivos eliminados…** lo recupera dentro de la app. Además, los archivos y carpetas eliminados van a la papelera del sistema operativo (para carpetas enteras, la papelera es la vía principal de recuperación). Detalles: [Copias de seguridad e historial de versiones](Backups_and_Versioning.md).
+No, por partida doble: antes de cada eliminación, Alviss guarda el archivo como un snapshot — clic derecho en el nombre del vault → **Restaurar archivos eliminados…** lo recupera dentro de la app. Además, los archivos y carpetas eliminados van a la papelera del sistema operativo (para carpetas enteras, la papelera es la vía principal de recuperación). Detalles: [Copias de seguridad e historial de versiones](Backups_and_Versioning.md).
 
 ### ¿Hay versiones más antiguas de mis notas?
 
-Sí: Plainva crea automáticamente versiones de archivo mientras editas. Clic derecho en un archivo → **Historial de versiones…** muestra todos los snapshots con una vista de comparación y **Restaurar**. Además, Plainva respalda todo el vault diariamente como un ZIP fuera de la carpeta del vault. Detalles: [Copias de seguridad e historial de versiones](Backups_and_Versioning.md).
+Sí: Alviss crea automáticamente versiones de archivo mientras editas. Clic derecho en un archivo → **Historial de versiones…** muestra todos los snapshots con una vista de comparación y **Restaurar**. Además, Alviss respalda todo el vault diariamente como un ZIP fuera de la carpeta del vault. Detalles: [Copias de seguridad e historial de versiones](Backups_and_Versioning.md).
 
 ### ¿Por qué mi index.md es de solo lectura?
 
-Lo generó Plainva y se mantiene actualizado automáticamente (reconocible por el banner "Este index.md lo gestiona Plainva…"). **Editar de todos modos** lo pasa de forma permanente a tu cuidado manual — dejará de actualizarse automáticamente. Detalles: [OKF](OKF.md).
+Lo generó Alviss y se mantiene actualizado automáticamente (reconocible por el banner "Este index.md lo gestiona Alviss…"). **Editar de todos modos** lo pasa de forma permanente a tu cuidado manual — dejará de actualizarse automáticamente. Detalles: [OKF](OKF.md).
 
 ### ¿Qué pasa al renombrar una propiedad en una base de datos?
 
@@ -50,13 +50,13 @@ Una nota que hayas creado a partir de una plantilla hasta la versión 0.8.5 — 
 
 ### Una nota desapareció después de moverla o renombrarla
 
-Con la sincronización por WebDAV o S3, Plainva 0.8.3 eliminaba una nota sincronizada que movías o renombrabas dentro de la app: el primer ciclo de sincronización posterior interpretaba la nota en su nuevo lugar como eliminada en el servidor y la quitaba aquí, justo antes de enviar el movimiento. Con Google Drive, Dropbox y OneDrive ocurría solo de vez en cuando. En 0.8.3, el ciclo siguiente también la borraba en el servidor. Plainva 0.8.4 lo corrige en el escritorio y en el teléfono.
+Con la sincronización por WebDAV o S3, Alviss 0.8.3 eliminaba una nota sincronizada que movías o renombrabas dentro de la app: el primer ciclo de sincronización posterior interpretaba la nota en su nuevo lugar como eliminada en el servidor y la quitaba aquí, justo antes de enviar el movimiento. Con Google Drive, Dropbox y OneDrive ocurría solo de vez en cuando. En 0.8.3, el ciclo siguiente también la borraba en el servidor. Alviss 0.8.4 lo corrige en el escritorio y en el teléfono.
 
 **Actualiza todos los dispositivos que trabajan con el mismo vault.** Un dispositivo que sigue en 0.8.3 continúa eliminando las notas sincronizadas que se mueven o renombran en él, y replica las eliminaciones sin preguntar.
 
 Si te ocurrió, la nota sigue existiendo en hasta tres lugares:
 
-- **El snapshot dentro del vault.** Antes de quitar un archivo, Plainva lo guarda como `.plainva/backups/<carpeta>/<nombre>.md.<marca de tiempo>.bak`, donde `<carpeta>` es la carpeta a la que moviste la nota. En el escritorio, clic derecho en el nombre del vault → **Restaurar archivos eliminados…**; en el teléfono, **Ajustes** → **Copias de seguridad y versionado** → **Restaurar archivos eliminados**. La lista muestra la nota con su nueva ruta y **Restaurar** la devuelve allí. El archivo `.bak` es texto plano, así que también puedes abrirlo con cualquier gestor de archivos o editor de texto.
+- **El snapshot dentro del vault.** Antes de quitar un archivo, Alviss lo guarda como `.plainva/backups/<carpeta>/<nombre>.md.<marca de tiempo>.bak`, donde `<carpeta>` es la carpeta a la que moviste la nota. En el escritorio, clic derecho en el nombre del vault → **Restaurar archivos eliminados…**; en el teléfono, **Ajustes** → **Copias de seguridad y versionado** → **Restaurar archivos eliminados**. La lista muestra la nota con su nueva ruta y **Restaurar** la devuelve allí. El archivo `.bak` es texto plano, así que también puedes abrirlo con cualquier gestor de archivos o editor de texto.
 - **La papelera del sistema** (escritorio): el propio archivo fue a la papelera de tu sistema operativo.
 - **La papelera de tu servidor**, si la nota también se borró allí (en Nextcloud, por ejemplo, en los archivos eliminados).
 
@@ -64,21 +64,21 @@ Si con 0.8.3 moviste o renombraste otras notas sincronizadas, vale la pena busca
 
 ### ¿Qué es un archivo .CONFLICT?
 
-Si el mismo archivo se cambió aquí y en otro dispositivo al mismo tiempo, Plainva primero intenta combinar automáticamente ambas versiones. Si eso no es posible, **tu** versión se guarda de forma segura como un archivo `.CONFLICT` junto al original — nunca se pierde nada. Los archivos en conflicto están marcados en el árbol de archivos; con clic derecho eliges **Conservar esta versión** (la versión en conflicto sustituye al original) o **Descartar conflicto**.
+Si el mismo archivo se cambió aquí y en otro dispositivo al mismo tiempo, Alviss primero intenta combinar automáticamente ambas versiones. Si eso no es posible, **tu** versión se guarda de forma segura como un archivo `.CONFLICT` junto al original — nunca se pierde nada. Los archivos en conflicto están marcados en el árbol de archivos; con clic derecho eliges **Conservar esta versión** (la versión en conflicto sustituye al original) o **Descartar conflicto**.
 
 Para resolverlo, **Comparar versiones** (clic derecho en el archivo de conflicto, el aviso en la nota o el diálogo de error de sincronización) muestra ambas versiones lado a lado —la nota a la izquierda, la copia a la derecha— con las salidas **adoptar**, **conservar ambas**, **descartar copia** y **más tarde**; en el escritorio el lado derecho también se puede fusionar línea a línea. Cada salida que descarta algo pregunta antes.
 
 ### Mi inicio de sesión de Google caduca constantemente
 
-Con la configuración "Bring Your Own", tu proyecto de Google permanece en modo de prueba; Google entonces termina la sesión a los 7 días. Plainva renueva los tokens automáticamente en segundo plano, pero una vez caducados, usa **Volver a conectar** en la página de la cuenta bajo **Cuentas en la nube**. Detalles: [Google Drive (BYO)](Google_Drive_BYO_Guide.md).
+Con la configuración "Bring Your Own", tu proyecto de Google permanece en modo de prueba; Google entonces termina la sesión a los 7 días. Alviss renueva los tokens automáticamente en segundo plano, pero una vez caducados, usa **Volver a conectar** en la página de la cuenta bajo **Cuentas en la nube**. Detalles: [Google Drive (BYO)](Google_Drive_BYO_Guide.md).
 
-### Mi vault vive en una carpeta de OneDrive/Dropbox/iCloud y Plainva se comporta de forma extraña
+### Mi vault vive en una carpeta de OneDrive/Dropbox/iCloud y Alviss se comporta de forma extraña
 
 Configura la carpeta del vault como "mantener siempre en este dispositivo" / "disponible sin conexión" en el cliente de sincronización del proveedor. Los archivos marcador de posición solo en línea (Files On-Demand, "solo en línea") interfieren con la indexación y la sincronización. Detalles: [Compatibilidad de sincronización](Sync_Compatibility.md).
 
 ### Estoy sin conexión — ¿qué pasa con mis cambios?
 
-Se guardan localmente como de costumbre y se acumulan en una cola; en cuanto vuelve la conexión, Plainva los transfiere automáticamente. La barra de estado muestra **En línea**/**Sin conexión**.
+Se guardan localmente como de costumbre y se acumulan en una cola; en cuanto vuelve la conexión, Alviss los transfiere automáticamente. La barra de estado muestra **En línea**/**Sin conexión**.
 
 ### La barra de estado dice Sin conexión aunque tengo internet
 
@@ -86,51 +86,51 @@ Entonces la propia conexión de sincronización está rota — a menudo porque e
 
 ### ¿Por qué falta el proveedor X (Proton, Tuta, iCloud Drive …)?
 
-Plainva conecta con cualquier proveedor que ofrezca una interfaz abierta (IMAP, CalDAV, WebDAV, S3 o una API documentada). Algunos servicios simplemente no ofrecen acceso para otras apps — eso no es una decisión de Plainva: **Proton Mail** está cifrado de extremo a extremo y solo habla IMAP a través del Proton Mail Bridge local de pago (hay un ajuste preconfigurado para ello); Proton Calendar y Proton Drive no tienen ninguna interfaz utilizable. **Tuta** no ofrece deliberadamente ni IMAP ni CalDAV. **iCloud Drive** no tiene interfaz para apps de terceros (iCloud **Mail** y **Calendario**, en cambio, sí funcionan a través de la ficha de Apple). **Baidu Netdisk/TeraBox** y **NAVER MYBOX** cerraron o desactivaron sus interfaces para desarrolladores independientes. Si echas en falta un proveedor con interfaz abierta, cuéntanoslo en GitHub.
+Alviss conecta con cualquier proveedor que ofrezca una interfaz abierta (IMAP, CalDAV, WebDAV, S3 o una API documentada). Algunos servicios simplemente no ofrecen acceso para otras apps — eso no es una decisión de Alviss: **Proton Mail** está cifrado de extremo a extremo y solo habla IMAP a través del Proton Mail Bridge local de pago (hay un ajuste preconfigurado para ello); Proton Calendar y Proton Drive no tienen ninguna interfaz utilizable. **Tuta** no ofrece deliberadamente ni IMAP ni CalDAV. **iCloud Drive** no tiene interfaz para apps de terceros (iCloud **Mail** y **Calendario**, en cambio, sí funcionan a través de la ficha de Apple). **Baidu Netdisk/TeraBox** y **NAVER MYBOX** cerraron o desactivaron sus interfaces para desarrolladores independientes. Si echas en falta un proveedor con interfaz abierta, cuéntanoslo en GitHub.
 
 ## Aplicación
 
 ### ¿Qué hace F5, y dónde está el menú contextual del navegador?
 
-Plainva es una aplicación de escritorio, no una página web. Por eso `F5` (y Ctrl+R) no recarga la ventana — eso descartaría tus pestañas abiertas y los cambios sin guardar. En su lugar, la tecla **vuelve a leer el vault**: Plainva concilia el índice con la carpeta y, en vaults en línea, también obtiene los archivos de la nube. El menú contextual integrado de la WebView permanece oculto; hacer clic derecho sobre texto seleccionado sigue ofreciendo **Copiar**, y el árbol de archivos, las pestañas y las tablas conservan sus propios menús contextuales.
+Alviss es una aplicación de escritorio, no una página web. Por eso `F5` (y Ctrl+R) no recarga la ventana — eso descartaría tus pestañas abiertas y los cambios sin guardar. En su lugar, la tecla **vuelve a leer el vault**: Alviss concilia el índice con la carpeta y, en vaults en línea, también obtiene los archivos de la nube. El menú contextual integrado de la WebView permanece oculto; hacer clic derecho sobre texto seleccionado sigue ofreciendo **Copiar**, y el árbol de archivos, las pestañas y las tablas conservan sus propios menús contextuales.
 
 ### ¿Por qué no veo de inmediato los archivos creados externamente?
 
-Normalmente Plainva se da cuenta por sí solo cuando otro programa cambia algo en la carpeta de tu vault. Cuando eso falla — por ejemplo en unidades de red, en carpetas de la nube o cuando el archivo llegó desde otro ordenador — usa **Volver a leer el vault**:
+Normalmente Alviss se da cuenta por sí solo cuando otro programa cambia algo en la carpeta de tu vault. Cuando eso falla — por ejemplo en unidades de red, en carpetas de la nube o cuando el archivo llegó desde otro ordenador — usa **Volver a leer el vault**:
 
 * `F5`, o la flecha circular en el encabezado del árbol de archivos,
 * **Volver a leer esta carpeta** en el menú contextual de una carpeta (más rápido en vaults muy grandes),
 * el comando **Volver a leer el vault** en la paleta de comandos (`Ctrl/Cmd+P`).
 
-Plainva muestra entonces un breve informe: cuántos archivos eran nuevos, se modificaron o se eliminaron — y **qué entradas se omitieron**. Una carpeta omitida es el motivo más frecuente por el que un archivo nunca "llega": Plainva no pudo leerla (faltan permisos, unidad de red desconectada) o se enlaza a sí misma en un bucle. En vaults en línea, el informe también indica que se solicitó una sincronización completa con la nube.
+Alviss muestra entonces un breve informe: cuántos archivos eran nuevos, se modificaron o se eliminaron — y **qué entradas se omitieron**. Una carpeta omitida es el motivo más frecuente por el que un archivo nunca "llega": Alviss no pudo leerla (faltan permisos, unidad de red desconectada) o se enlaza a sí misma en un bucle. En vaults en línea, el informe también indica que se solicitó una sincronización completa con la nube.
 
-Además, Plainva concilia automáticamente cada vez que vuelves a la ventana desde otro programa (como máximo cada 30 segundos; la nube como máximo cada 5 minutos). Si un archivo sigue invisible aun así, usa **Reconstruir el índice por completo** en Configuración → Vault → Mantenimiento.
+Además, Alviss concilia automáticamente cada vez que vuelves a la ventana desde otro programa (como máximo cada 30 segundos; la nube como máximo cada 5 minutos). Si un archivo sigue invisible aun así, usa **Reconstruir el índice por completo** en Configuración → Vault → Mantenimiento.
 
 ### A la búsqueda, las etiquetas o las bases de datos les falta parte de mi vault
 
-Al leer el vault, Plainva sigue los enlaces como lo hace el sistema: un enlace a una carpeta se lee como esa carpeta y un enlace a un archivo como ese archivo, en el escritorio y en una carpeta que hayas elegido en el iPhone. Lo que no puede leer lo deja fuera y lo nombra: un enlace a un lugar que no existe en este dispositivo (por ejemplo, una carpeta que solo existe en otro ordenador y llegó aquí como enlace) o una carpeta sin acceso. Un aviso los nombra una vez —**queda fuera del índice de búsqueda**— y el resto del vault se indexa como siempre. Nada de lo que hay bajo una entrada así se trata como eliminado, ni por el índice ni por la sincronización de un espacio de trabajo cifrado.
+Al leer el vault, Alviss sigue los enlaces como lo hace el sistema: un enlace a una carpeta se lee como esa carpeta y un enlace a un archivo como ese archivo, en el escritorio y en una carpeta que hayas elegido en el iPhone. Lo que no puede leer lo deja fuera y lo nombra: un enlace a un lugar que no existe en este dispositivo (por ejemplo, una carpeta que solo existe en otro ordenador y llegó aquí como enlace) o una carpeta sin acceso. Un aviso los nombra una vez —**queda fuera del índice de búsqueda**— y el resto del vault se indexa como siempre. Nada de lo que hay bajo una entrada así se trata como eliminado, ni por el índice ni por la sincronización de un espacio de trabajo cifrado.
 
-Si el índice no se puede actualizar en absoluto, el aviso dice por qué (**No se pudo actualizar el índice de búsqueda: …**); el vault sigue abierto con lo que el índice ya contiene y, la próxima vez que se lea el vault, Plainva lo vuelve a intentar. En el teléfono también se nombra un índice de búsqueda que no se puede abrir: la búsqueda, las etiquetas, las bases de datos, la sincronización y el calendario quedan desactivados hasta que Plainva pueda abrirlo.
+Si el índice no se puede actualizar en absoluto, el aviso dice por qué (**No se pudo actualizar el índice de búsqueda: …**); el vault sigue abierto con lo que el índice ya contiene y, la próxima vez que se lea el vault, Alviss lo vuelve a intentar. En el teléfono también se nombra un índice de búsqueda que no se puede abrir: la búsqueda, las etiquetas, las bases de datos, la sincronización y el calendario quedan desactivados hasta que Alviss pueda abrirlo.
 
 Elimina o repara la entrada que nombra el aviso y usa después **Volver a leer el vault** (en el teléfono: desliza una lista hacia abajo).
 
-### He movido un archivo fuera de Plainva
+### He movido un archivo fuera de Alviss
 
-Plainva lo sigue. El árbol de archivos muestra el archivo en su nuevo lugar, aunque lo hayas movido en el Finder, en el Explorador o en otro programa. Si la nota está abierta (o la abres en su lugar anterior, por ejemplo desde un marcador), Plainva la busca: si exactamente un archivo en otro lugar tiene el mismo contenido y la misma fecha de modificación, la pestaña lo sigue, un breve mensaje indica la nueva carpeta, y los marcadores, los lugares en el tablón y los comentarios de la nota se mudan con él. Los cambios sin guardar van con él al nuevo lugar. Si no está claro, por ejemplo porque el mismo contenido está en varios lugares, **¿Movido?** pregunta y eliges el archivo correcto. Si Plainva no encuentra ninguno, la pestaña sigue mostrando **Este archivo ya no existe**, y Plainva elimina por sí mismo la entrada obsoleta del índice. Si tenías cambios sin guardar, se conservan, y **Guardar aquí de nuevo** vuelve a crear el archivo en su lugar anterior; Plainva nunca escribe allí por su cuenta. Mientras la búsqueda recorre todo el vault, lo indica **Todavía buscando en otras partes del vault…**.
+Alviss lo sigue. El árbol de archivos muestra el archivo en su nuevo lugar, aunque lo hayas movido en el Finder, en el Explorador o en otro programa. Si la nota está abierta (o la abres en su lugar anterior, por ejemplo desde un marcador), Alviss la busca: si exactamente un archivo en otro lugar tiene el mismo contenido y la misma fecha de modificación, la pestaña lo sigue, un breve mensaje indica la nueva carpeta, y los marcadores, los lugares en el tablón y los comentarios de la nota se mudan con él. Los cambios sin guardar van con él al nuevo lugar. Si no está claro, por ejemplo porque el mismo contenido está en varios lugares, **¿Movido?** pregunta y eliges el archivo correcto. Si Alviss no encuentra ninguno, la pestaña sigue mostrando **Este archivo ya no existe**, y Alviss elimina por sí mismo la entrada obsoleta del índice. Si tenías cambios sin guardar, se conservan, y **Guardar aquí de nuevo** vuelve a crear el archivo en su lugar anterior; Alviss nunca escribe allí por su cuenta. Mientras la búsqueda recorre todo el vault, lo indica **Todavía buscando en otras partes del vault…**.
 
-Lo mismo vale para una pestaña abierta con una base de datos (`.base`) o una imagen, y en el teléfono para las pantallas de base de datos e imagen: siguen al archivo movido, preguntan **¿Movido?** o muestran **Este archivo ya no existe**. Un cambio en una base de datos cuyo archivo faltaba en ese momento va con él al nuevo lugar; si Plainva no encuentra el archivo, el cambio se conserva hasta que eliges **Guardar aquí de nuevo**. Las ediciones sin terminar de una imagen pasan a la pestaña del nuevo lugar y solo se escriben cuando eliges **Guardar**. Los PDF y otros archivos que Plainva entrega a la aplicación del sistema no tienen pestaña.
+Lo mismo vale para una pestaña abierta con una base de datos (`.base`) o una imagen, y en el teléfono para las pantallas de base de datos e imagen: siguen al archivo movido, preguntan **¿Movido?** o muestran **Este archivo ya no existe**. Un cambio en una base de datos cuyo archivo faltaba en ese momento va con él al nuevo lugar; si Alviss no encuentra el archivo, el cambio se conserva hasta que eliges **Guardar aquí de nuevo**. Las ediciones sin terminar de una imagen pasan a la pestaña del nuevo lugar y solo se escriben cuando eliges **Guardar**. Los PDF y otros archivos que Alviss entrega a la aplicación del sistema no tienen pestaña.
 
-En el teléfono nada vigila la carpeta mientras trabajas. En su lugar, Plainva vuelve a leer el vault cada vez que **regresas a la app** (como máximo una vez por minuto) y cada vez que **deslizas hacia abajo** una lista, en todos los vaults, incluido el que está dentro de la app y que en iOS muestra la app Archivos. Allí una nota movida sigue a su archivo de la misma manera, también una que está abierta; si Plainva no la encuentra, aparece **No se encontró esta nota.**
+En el teléfono nada vigila la carpeta mientras trabajas. En su lugar, Alviss vuelve a leer el vault cada vez que **regresas a la app** (como máximo una vez por minuto) y cada vez que **deslizas hacia abajo** una lista, en todos los vaults, incluido el que está dentro de la app y que en iOS muestra la app Archivos. Allí una nota movida sigue a su archivo de la misma manera, también una que está abierta; si Alviss no la encuentra, aparece **No se encontró esta nota.**
 
-Plainva omite los archivos del sistema: `.DS_Store`, `Thumbs.db`, `desktop.ini`, `Icon` (iconos de carpeta), `.Spotlight-V100`, `.Trashes`, `.fseventsd`, `$RECYCLE.BIN`, `System Volume Information` (ambos en la raíz de una unidad en Windows) y los archivos AppleDouble que macOS coloca junto a cada archivo en unidades de red y memorias USB (`._Nota.md`). No aparecen en el árbol de archivos y no se suben ni se descargan. Una copia que una versión anterior ya subió permanece intacta en la nube. Una nota tuya cuyo nombre simplemente empieza por `._` sigue visible: Plainva reconoce los archivos AppleDouble por su contenido, no por su nombre.
+Alviss omite los archivos del sistema: `.DS_Store`, `Thumbs.db`, `desktop.ini`, `Icon` (iconos de carpeta), `.Spotlight-V100`, `.Trashes`, `.fseventsd`, `$RECYCLE.BIN`, `System Volume Information` (ambos en la raíz de una unidad en Windows) y los archivos AppleDouble que macOS coloca junto a cada archivo en unidades de red y memorias USB (`._Nota.md`). No aparecen en el árbol de archivos y no se suben ni se descargan. Una copia que una versión anterior ya subió permanece intacta en la nube. Una nota tuya cuyo nombre simplemente empieza por `._` sigue visible: Alviss reconoce los archivos AppleDouble por su contenido, no por su nombre.
 
 ### ¿Por qué no veo animaciones?
 
-Plainva respeta el ajuste "reducir movimiento" de tu sistema. Si faltan las transiciones y los efectos (los botones, menús y resaltados no se mueven), las animaciones están desactivadas en tu sistema operativo. En **Windows**: Configuración → Accesibilidad → Efectos visuales → activa **Efectos de animación**. En **macOS**: Ajustes del Sistema → Accesibilidad → Pantalla → desactiva **Reducir movimiento**.
+Alviss respeta el ajuste "reducir movimiento" de tu sistema. Si faltan las transiciones y los efectos (los botones, menús y resaltados no se mueven), las animaciones están desactivadas en tu sistema operativo. En **Windows**: Configuración → Accesibilidad → Efectos visuales → activa **Efectos de animación**. En **macOS**: Ajustes del Sistema → Accesibilidad → Pantalla → desactiva **Reducir movimiento**.
 
 ### ¿Cómo cambio el idioma?
 
-**Configuración → App → Apariencia → Idioma**; en el teléfono, **Ajustes → Apariencia → Idioma**. Plainva habla diez idiomas: inglés, alemán, español, francés, italiano, japonés, neerlandés, polaco, portugués (Brasil) y chino simplificado.
+**Configuración → App → Apariencia → Idioma**; en el teléfono, **Ajustes → Apariencia → Idioma**. Alviss habla diez idiomas: inglés, alemán, español, francés, italiano, japonés, neerlandés, polaco, portugués (Brasil) y chino simplificado.
 
 ### "Buscar actualizaciones" no encuentra nada
 
@@ -138,7 +138,7 @@ Mientras no haya releases públicas todavía, la búsqueda de actualizaciones in
 
 ### ¿Hay funciones ocultas?
 
-La Flota Estelar, por principio, no comenta rumores. Pero se dice que el logo de la barra de título responde a llamadas persistentes — y quien conozca después las palabras adecuadas verá Plainva bajo una luz completamente nueva. Algunos dicen: en cuatro.
+La Flota Estelar, por principio, no comenta rumores. Pero se dice que el logo de la barra de título responde a llamadas persistentes — y quien conozca después las palabras adecuadas verá Alviss bajo una luz completamente nueva. Algunos dicen: en cuatro.
 
 ## Ver también
 

@@ -1,8 +1,8 @@
-# Plainva Nutzerhandbuch
+# Alviss Nutzerhandbuch
 
 Stand: 2026-09-20
 
-Plainva ist ein Markdown-Vault-Editor: Deine Notizen sind gewöhnliche Markdown-Dateien in einem Ordner („Vault") auf Deinem Rechner — kein Datenbank-Silo, kein Zwang zu einem Cloud-Konto. Dieses Handbuch erklärt, wie Du mit Plainva arbeitest und wie die Dateiformate funktionieren.
+Alviss ist ein Markdown-Vault-Editor: Deine Notizen sind gewöhnliche Markdown-Dateien in einem Ordner („Vault") auf Deinem Rechner — kein Datenbank-Silo, kein Zwang zu einem Cloud-Konto. Dieses Handbuch erklärt, wie Du mit Alviss arbeitest und wie die Dateiformate funktionieren.
 
 ## Inhalt
 
@@ -11,13 +11,13 @@ Plainva ist ein Markdown-Vault-Editor: Deine Notizen sind gewöhnliche Markdown-
 | [Erste Schritte](Getting_Started.md) | Vault öffnen oder anlegen, die Oberfläche, Editor-Modi, Tabs und Split |
 | [Notizen & Markdown](Notes_and_Markdown.md) | Wie Markdown-Dateien funktionieren: Schreiben, Formatieren, Eigenschaften (Frontmatter), Icons, Links, Vorlagen, Bilder |
 | [Datenbanken (.base)](Databases_Base.md) | Notizen als Datenbank ansehen — Ansichten, Filter, Eigenschaften, Relationen, neue Einträge (ähnlich Notion, aber dateibasiert) |
-| [Datenbank-Referenz (.base)](Base_Reference.md) | Alles, was eine `.base`-Datei enthalten kann und was Plainva damit macht: Schlüssel, Filter, Ansichtstypen, Zusammenfassungen, Grenzen, Unterschiede zu Obsidian |
+| [Datenbank-Referenz (.base)](Base_Reference.md) | Alles, was eine `.base`-Datei enthalten kann und was Alviss damit macht: Schlüssel, Filter, Ansichtstypen, Zusammenfassungen, Grenzen, Unterschiede zu Obsidian |
 | [Aus einer anderen App importieren](Import.md) | Notizen aus Notion, Evernote, Google Keep, Simplenote, Logseq oder einem Markdown-Ordner übernehmen — und was jeder Import nicht mitnehmen kann |
 | [OKF](OKF.md) | Das Open Knowledge Format (0.2): `type`, Herkunft und Prüfvermerk, die Bundle-Version, index.md-Verwaltung und die optionale Vault-Konvertierung |
 | [Dateiformat-Referenz](File_Format_Reference.md) | Das genaue Dateiformat jeder Vault-Datei — für Werkzeuge, Skripte oder eine KI, die Notizen und `.base`-Dateien direkt bearbeitet |
-| [Automatisierung & Skripte](Automation_and_Scripts.md) | Plainva ohne Plugins erweitern: wie Skripte, CLI-Werkzeuge und KI-Agenten einen Vault sicher lesen und schreiben |
+| [Automatisierung & Skripte](Automation_and_Scripts.md) | Alviss ohne Plugins erweitern: wie Skripte, CLI-Werkzeuge und KI-Agenten einen Vault sicher lesen und schreiben |
 | [Backups & Versionsverlauf](Backups_and_Versioning.md) | Automatische Datei-Versionen, Wiederherstellen (auch gelöschter Dateien) und tägliche ZIP-Sicherungen des Vaults |
-| [Die mobile App](Mobile_App.md) | Plainva auf Android und iOS: Aufbau, Bearbeiten, Datenbanken, Sync und Sicherheitsnetz |
+| [Die mobile App](Mobile_App.md) | Alviss auf Android und iOS: Aufbau, Bearbeiten, Datenbanken, Sync und Sicherheitsnetz |
 | [Sync einrichten](Sync_Setup.md) | Schritt für Schritt je Anbieter: WebDAV/Nextcloud, Google Drive, OneDrive, Dropbox, S3 |
 | [Sicherheit & Freigaben](Security_and_Sharing.md) | Persönlicher verschlüsselter Workspace, Recovery-Sicherung, Migration und Sperren |
 | [Kommentare & Vorschläge](Comments_and_Suggestions.md) | Kommentare, Vorschlagsmodus, Übersicht und Benachrichtigungen — in jedem Vault, mit oder ohne Verschlüsselung |
@@ -37,4 +37,4 @@ Plainva ist ein Markdown-Vault-Editor: Deine Notizen sind gewöhnliche Markdown-
 
 - **Deine Dateien gehören Dir.** Ein Vault ist ein normaler Ordner mit Markdown-Dateien. Du kannst ihn jederzeit mit anderen Programmen öffnen, kopieren oder sichern.
 - **Reines Markdown als kanonisches Format.** Auch Zusatzfunktionen (Eigenschaften, Icons, Datenbanken) werden in offenen, lesbaren Text-Formaten gespeichert.
-- **Obsidian-kompatibel.** Bestehende Obsidian-Vaults werden nicht beschädigt oder umformatiert; Obsidian kann alle von Plainva erzeugten Dateien öffnen.
+- **Obsidian-kompatibel.** Bestehende Obsidian-Vaults werden nicht beschädigt oder umformatiert; Obsidian kann alle von Alviss erzeugten Dateien öffnen.

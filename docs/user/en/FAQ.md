@@ -8,15 +8,15 @@ Answers to the most common questions — from Obsidian compatibility to conflict
 
 ### Where does my data live?
 
-Exclusively with you: a vault is a plain folder of Markdown files on your computer. Plainva runs no server of its own and keeps no copies anywhere. If you sync, it goes directly between your computer and *your* storage (your Nextcloud, your OneDrive, your bucket …). Credentials live in the operating system's keychain.
+Exclusively with you: a vault is a plain folder of Markdown files on your computer. Alviss runs no server of its own and keeps no copies anywhere. If you sync, it goes directly between your computer and *your* storage (your Nextcloud, your OneDrive, your bucket …). Credentials live in the operating system's keychain.
 
-### Can I use Plainva and Obsidian side by side?
+### Can I use Alviss and Obsidian side by side?
 
-Yes — that is a core promise, with one honest caveat. Plainva writes plain Markdown with standard frontmatter; everything Plainva-specific is bundled under `plainva:` keys (in notes and `.base` files), which Obsidian simply ignores when opening files. Obsidian shows the `plainva` key as a non-editable object in its properties — that is harmless. Plainva-only views such as Board or Calendar appear in Obsidian as a plain table.
+Yes — that is a core promise, with one honest caveat. Alviss writes plain Markdown with standard frontmatter; everything Alviss-specific is bundled under `plainva:` keys (in notes and `.base` files), which Obsidian simply ignores when opening files. Obsidian shows the `plainva` key as a non-editable object in its properties — that is harmless. Alviss-only views such as Board or Calendar appear in Obsidian as a plain table.
 
-The caveat: **opening is always safe, editing is not always.** An existing Obsidian vault can be opened and edited in Plainva without risk — nothing is migrated or reformatted. But once a vault uses Plainva features (database extensions such as boards, relations or reverse columns, managed `index.md` files), editing those specific files in Obsidian can break the Plainva functionality, because Obsidian does not know the `plainva:` extensions. Notes without Plainva extensions can be edited anywhere, anytime. The first time you use such an extension, a reminder dialog (**Plainva extension**) points it out; it can be disabled under **Settings → App → Startup & behavior**.
+The caveat: **opening is always safe, editing is not always.** An existing Obsidian vault can be opened and edited in Alviss without risk — nothing is migrated or reformatted. But once a vault uses Alviss features (database extensions such as boards, relations or reverse columns, managed `index.md` files), editing those specific files in Obsidian can break the Alviss functionality, because Obsidian does not know the `plainva:` extensions. Notes without Alviss extensions can be edited anywhere, anytime. The first time you use such an extension, a reminder dialog (**Alviss extension**) points it out; it can be disabled under **Settings → App → Startup & behavior**.
 
-### Does Plainva modify my existing vault?
+### Does Alviss modify my existing vault?
 
 Not unasked. Existing files are only touched when you explicitly start an action (e.g. the [OKF conversion](OKF.md) — with preview and backups). Only newly created files automatically get the small OKF frontmatter header.
 
@@ -24,15 +24,15 @@ Not unasked. Existing files are only touched when you explicitly start an action
 
 ### I deleted something — is it gone?
 
-No, twice over: before every deletion Plainva saves the file as a snapshot — right-click the vault name → **Restore deleted files…** brings it back inside the app. In addition, deleted files and folders go to the operating system's trash (for whole folders the trash is the primary way back). Details: [Backups & Version History](Backups_and_Versioning.md).
+No, twice over: before every deletion Alviss saves the file as a snapshot — right-click the vault name → **Restore deleted files…** brings it back inside the app. In addition, deleted files and folders go to the operating system's trash (for whole folders the trash is the primary way back). Details: [Backups & Version History](Backups_and_Versioning.md).
 
 ### Are there older versions of my notes?
 
-Yes: Plainva automatically creates file versions as you edit. Right-click a file → **Version history…** shows all snapshots with a comparison view and **Restore**. In addition, Plainva backs up the whole vault daily as a ZIP outside the vault folder. Details: [Backups & Version History](Backups_and_Versioning.md).
+Yes: Alviss automatically creates file versions as you edit. Right-click a file → **Version history…** shows all snapshots with a comparison view and **Restore**. In addition, Alviss backs up the whole vault daily as a ZIP outside the vault folder. Details: [Backups & Version History](Backups_and_Versioning.md).
 
 ### Why is my index.md read-only?
 
-It was generated by Plainva and is kept up to date automatically (recognizable by the banner "This index.md is managed by Plainva…"). **Edit anyway** hands it over to your manual care permanently — it will no longer update automatically. Details: [OKF](OKF.md).
+It was generated by Alviss and is kept up to date automatically (recognizable by the banner "This index.md is managed by Alviss…"). **Edit anyway** hands it over to your manual care permanently — it will no longer update automatically. Details: [OKF](OKF.md).
 
 ### What happens when I rename a property in a database?
 
@@ -50,13 +50,13 @@ A note you created from a template up to version 0.8.5 — a daily note included
 
 ### A note disappeared after I moved or renamed it
 
-With WebDAV or S3 sync, Plainva 0.8.3 removed a synced note that you moved or renamed inside the app: the first sync cycle afterwards read the note at its new place as deleted on the server and removed it here — a moment before it would have sent the move. With Google Drive, Dropbox and OneDrive this happened only now and then. In 0.8.3 the next cycle then deleted the note on the server as well. Plainva 0.8.4 fixes this on the desktop and on the phone.
+With WebDAV or S3 sync, Alviss 0.8.3 removed a synced note that you moved or renamed inside the app: the first sync cycle afterwards read the note at its new place as deleted on the server and removed it here — a moment before it would have sent the move. With Google Drive, Dropbox and OneDrive this happened only now and then. In 0.8.3 the next cycle then deleted the note on the server as well. Alviss 0.8.4 fixes this on the desktop and on the phone.
 
 **Update every device that works with the same vault.** A device still on 0.8.3 keeps deleting synced notes that are moved or renamed on it, and it mirrors deletions without asking.
 
 If it happened to you, the note still exists in up to three places:
 
-- **The snapshot inside the vault.** Before Plainva removes a file it saves it as `.plainva/backups/<folder>/<name>.md.<timestamp>.bak`, where `<folder>` is the folder you moved the note *to*. On the desktop, right-click the vault name → **Restore deleted files…**; on the phone **Settings** → **Backup & version history** → **Restore deleted files**. The list shows the note under its new path, and **Restore** puts it back there. The `.bak` file is plain text, so any file manager or text editor can open it too.
+- **The snapshot inside the vault.** Before Alviss removes a file it saves it as `.plainva/backups/<folder>/<name>.md.<timestamp>.bak`, where `<folder>` is the folder you moved the note *to*. On the desktop, right-click the vault name → **Restore deleted files…**; on the phone **Settings** → **Backup & version history** → **Restore deleted files**. The list shows the note under its new path, and **Restore** puts it back there. The `.bak` file is plain text, so any file manager or text editor can open it too.
 - **The system trash** (desktop): the file itself went to your operating system's trash.
 - **Your server's trash**, if the note was deleted there too (in Nextcloud, for example, under deleted files).
 
@@ -64,21 +64,21 @@ If you moved or renamed other synced notes with 0.8.3, it is worth looking for t
 
 ### What is a .CONFLICT file?
 
-If the same file was changed here and on another device at the same time, Plainva first tries to merge both versions automatically. If that is not possible, **your** version is safely saved as a `.CONFLICT` file next to the original — nothing is ever lost. Conflict files are marked in the file tree; right-click to choose **Keep this Version** (the conflict version replaces the original) or **Discard Conflict**.
+If the same file was changed here and on another device at the same time, Alviss first tries to merge both versions automatically. If that is not possible, **your** version is safely saved as a `.CONFLICT` file next to the original — nothing is ever lost. Conflict files are marked in the file tree; right-click to choose **Keep this Version** (the conflict version replaces the original) or **Discard Conflict**.
 
 To resolve it, **Compare versions** (right-click on the conflict file, the banner in the note, or the sync error dialog) shows both versions side by side — the note on the left, the copy on the right — with the exits **adopt**, **keep both**, **discard copy** and **later**; on the desktop the right side can also be merged line by line. Every exit that discards something asks first.
 
 ### My Google sign-in keeps expiring
 
-With the "Bring Your Own" setup, your Google project stays in testing mode; Google then ends the session after 7 days. Plainva renews tokens automatically in the background, but once expired, use **Sign in again** on the account's page under **Cloud accounts**. Details: [Google Drive (BYO)](Google_Drive_BYO_Guide.md).
+With the "Bring Your Own" setup, your Google project stays in testing mode; Google then ends the session after 7 days. Alviss renews tokens automatically in the background, but once expired, use **Sign in again** on the account's page under **Cloud accounts**. Details: [Google Drive (BYO)](Google_Drive_BYO_Guide.md).
 
-### My vault lives in a OneDrive/Dropbox/iCloud folder and Plainva behaves strangely
+### My vault lives in a OneDrive/Dropbox/iCloud folder and Alviss behaves strangely
 
 Set the vault folder to "always keep on this device" / "available offline" in the provider's sync client. Online-only placeholder files (Files On-Demand, "online-only") interfere with indexing and sync. Details: [Sync Compatibility](Sync_Compatibility.md).
 
 ### I am offline — what happens to my changes?
 
-They are saved locally as usual and collected in a queue; as soon as the connection returns, Plainva transfers them automatically. The status bar shows **Online**/**Offline**.
+They are saved locally as usual and collected in a queue; as soon as the connection returns, Alviss transfers them automatically. The status bar shows **Online**/**Offline**.
 
 ### The status bar says Offline even though I have internet
 
@@ -86,51 +86,51 @@ Then the sync connection itself is broken — often because the sign-in expired 
 
 ### Why is provider X missing (Proton, Tuta, iCloud Drive …)?
 
-Plainva connects every provider that offers an open interface (IMAP, CalDAV, WebDAV, S3 or a documented API). Some services simply offer no access for other apps — that is not Plainva's choice: **Proton Mail** is end-to-end encrypted and speaks IMAP only through the locally running, paid Proton Mail Bridge (there is a preset for it); Proton Calendar and Proton Drive have no usable interface. **Tuta** deliberately offers neither IMAP nor CalDAV. **iCloud Drive** has no interface for third-party apps (iCloud **Mail** and **Calendar** do work through the Apple tile). **Baidu Netdisk/TeraBox** and **NAVER MYBOX** closed or shut down their interfaces for independent developers. If you miss a provider that has an open interface, let us know on GitHub.
+Alviss connects every provider that offers an open interface (IMAP, CalDAV, WebDAV, S3 or a documented API). Some services simply offer no access for other apps — that is not Alviss's choice: **Proton Mail** is end-to-end encrypted and speaks IMAP only through the locally running, paid Proton Mail Bridge (there is a preset for it); Proton Calendar and Proton Drive have no usable interface. **Tuta** deliberately offers neither IMAP nor CalDAV. **iCloud Drive** has no interface for third-party apps (iCloud **Mail** and **Calendar** do work through the Apple tile). **Baidu Netdisk/TeraBox** and **NAVER MYBOX** closed or shut down their interfaces for independent developers. If you miss a provider that has an open interface, let us know on GitHub.
 
 ## App
 
 ### What does F5 do, and where is the browser right-click menu?
 
-Plainva is a desktop app, not a web page. **F5** (and Ctrl+R) therefore does not reload the window — that would throw away your open tabs and unsaved edits. Instead the key **reads the vault again**: Plainva reconciles the index with the folder and, on online vaults, also fetches the files from the cloud. The WebView's built-in right-click menu is hidden; right-clicking selected text still offers **Copy**, and the file tree, tabs and tables keep their own right-click menus.
+Alviss is a desktop app, not a web page. **F5** (and Ctrl+R) therefore does not reload the window — that would throw away your open tabs and unsaved edits. Instead the key **reads the vault again**: Alviss reconciles the index with the folder and, on online vaults, also fetches the files from the cloud. The WebView's built-in right-click menu is hidden; right-clicking selected text still offers **Copy**, and the file tree, tabs and tables keep their own right-click menus.
 
 ### Why don't I see externally created files right away?
 
-Normally Plainva notices by itself when another program changes something in your vault folder. When that fails — on network drives, in cloud folders, or when the file arrived from another computer — use **Read the vault again**:
+Normally Alviss notices by itself when another program changes something in your vault folder. When that fails — on network drives, in cloud folders, or when the file arrived from another computer — use **Read the vault again**:
 
 * **F5**, or the circular arrow in the file tree's heading,
 * **Read this folder again** in a folder's right-click menu (faster on very large vaults),
 * the **Read the vault again** command in the command palette (`Ctrl/Cmd+P`).
 
-Plainva then shows a short report: how many files were new, changed or removed — and **which entries were skipped**. A skipped folder is the most common reason a file never "arrives": Plainva could not read it (missing permissions, a disconnected network drive) or it links back to itself in a circle. On online vaults the report also states that a full cloud sync was requested.
+Alviss then shows a short report: how many files were new, changed or removed — and **which entries were skipped**. A skipped folder is the most common reason a file never "arrives": Alviss could not read it (missing permissions, a disconnected network drive) or it links back to itself in a circle. On online vaults the report also states that a full cloud sync was requested.
 
-Plainva additionally reconciles automatically whenever you return to the window from another program (at most every 30 seconds; the cloud at most every 5 minutes). If a file stays invisible even then, use **Rebuild the index from scratch** under Settings → Vault → Maintenance.
+Alviss additionally reconciles automatically whenever you return to the window from another program (at most every 30 seconds; the cloud at most every 5 minutes). If a file stays invisible even then, use **Rebuild the index from scratch** under Settings → Vault → Maintenance.
 
 ### Search, tags or databases miss part of my vault
 
-When Plainva reads the vault it follows links the way the system does: a link to a folder is read as that folder, a link to a file as that file — on the desktop and in a folder you picked on the iPhone. What it cannot read, it leaves out and names: a link to a place that does not exist on this device (for example a folder that exists only on another computer and arrived here as a link), or a folder without access. A notice names them once — **could not be read and is left out of the search index** — and the rest of the vault is indexed as usual. Nothing under such an entry is treated as deleted, neither by the index nor by the sync of an encrypted workspace.
+When Alviss reads the vault it follows links the way the system does: a link to a folder is read as that folder, a link to a file as that file — on the desktop and in a folder you picked on the iPhone. What it cannot read, it leaves out and names: a link to a place that does not exist on this device (for example a folder that exists only on another computer and arrived here as a link), or a folder without access. A notice names them once — **could not be read and is left out of the search index** — and the rest of the vault is indexed as usual. Nothing under such an entry is treated as deleted, neither by the index nor by the sync of an encrypted workspace.
 
-If the index cannot be updated at all, the notice says why (**The search index could not be updated: …**); the vault stays open with what the index already holds, and the next time the vault is read Plainva tries again. On the phone a search index that cannot be opened is named as well: search, tags, databases, the sync and the calendar then stay off until Plainva can open it.
+If the index cannot be updated at all, the notice says why (**The search index could not be updated: …**); the vault stays open with what the index already holds, and the next time the vault is read Alviss tries again. On the phone a search index that cannot be opened is named as well: search, tags, databases, the sync and the calendar then stay off until Alviss can open it.
 
 Remove or repair the entry the notice names, then use **Read the vault again** (on the phone: pull down a list).
 
-### I moved a file outside Plainva
+### I moved a file outside Alviss
 
-Plainva follows it. The file tree shows the file at its new place, even when you moved it in Finder, Explorer or another program. If the note is open — or you open it at its old place, say from a bookmark — Plainva looks for it: when exactly one file elsewhere has the same content and the same modification time, the tab follows it, a short message names the new folder, and bookmarks, places on the pinboard and the note's comments move along. Unsaved changes go with it to the new place. When that is not clear-cut, for example because the same content exists in several places, **Moved?** asks and you pick the right file. When Plainva finds none, the tab stays at **This file no longer exists**, and Plainva removes the outdated index entry by itself. If you had unsaved changes, they are kept, and **Save here again** puts the file back at its old place — Plainva never writes there on its own. While the search still goes through the whole vault, **Still looking elsewhere in the vault…** says so.
+Alviss follows it. The file tree shows the file at its new place, even when you moved it in Finder, Explorer or another program. If the note is open — or you open it at its old place, say from a bookmark — Alviss looks for it: when exactly one file elsewhere has the same content and the same modification time, the tab follows it, a short message names the new folder, and bookmarks, places on the pinboard and the note's comments move along. Unsaved changes go with it to the new place. When that is not clear-cut, for example because the same content exists in several places, **Moved?** asks and you pick the right file. When Alviss finds none, the tab stays at **This file no longer exists**, and Alviss removes the outdated index entry by itself. If you had unsaved changes, they are kept, and **Save here again** puts the file back at its old place — Alviss never writes there on its own. While the search still goes through the whole vault, **Still looking elsewhere in the vault…** says so.
 
-The same goes for an open tab with a database (`.base`) or an image, and on the phone for the database and image screens: they follow the moved file, ask **Moved?**, or show **This file no longer exists**. A change to a database whose file was missing at that moment goes along to the new place; if Plainva cannot find the file, the change is kept until you choose **Save here again**. Unfinished edits of an image move along into the tab at the new place and are written only when you choose **Save**. PDFs and other files that Plainva hands to the system app have no tab.
+The same goes for an open tab with a database (`.base`) or an image, and on the phone for the database and image screens: they follow the moved file, ask **Moved?**, or show **This file no longer exists**. A change to a database whose file was missing at that moment goes along to the new place; if Alviss cannot find the file, the change is kept until you choose **Save here again**. Unfinished edits of an image move along into the tab at the new place and are written only when you choose **Save**. PDFs and other files that Alviss hands to the system app have no tab.
 
-On the phone nothing watches the folder while you work. Instead, Plainva reads the vault again whenever you **return to the app** (at most once a minute) and whenever you **pull down** a list — for every vault, including the one inside the app, which the Files app shows on iOS. A moved note follows its file there the same way, an open one included; if Plainva cannot find it, **This note could not be found.** appears.
+On the phone nothing watches the folder while you work. Instead, Alviss reads the vault again whenever you **return to the app** (at most once a minute) and whenever you **pull down** a list — for every vault, including the one inside the app, which the Files app shows on iOS. A moved note follows its file there the same way, an open one included; if Alviss cannot find it, **This note could not be found.** appears.
 
-Plainva skips system files: `.DS_Store`, `Thumbs.db`, `desktop.ini`, `Icon` (folder icons), `.Spotlight-V100`, `.Trashes`, `.fseventsd`, `$RECYCLE.BIN` and `System Volume Information` (both at the root of a drive on Windows), and the AppleDouble files macOS puts next to every file on network drives and USB sticks (`._Note.md`). They do not appear in the file tree and are neither uploaded nor downloaded. A copy an earlier version already uploaded stays in the cloud untouched. A note of your own whose name merely starts with `._` stays visible — Plainva recognises AppleDouble files by their content, not by their name.
+Alviss skips system files: `.DS_Store`, `Thumbs.db`, `desktop.ini`, `Icon` (folder icons), `.Spotlight-V100`, `.Trashes`, `.fseventsd`, `$RECYCLE.BIN` and `System Volume Information` (both at the root of a drive on Windows), and the AppleDouble files macOS puts next to every file on network drives and USB sticks (`._Note.md`). They do not appear in the file tree and are neither uploaded nor downloaded. A copy an earlier version already uploaded stays in the cloud untouched. A note of your own whose name merely starts with `._` stays visible — Alviss recognises AppleDouble files by their content, not by their name.
 
 ### Why don't I see any animations?
 
-Plainva honors your system's "reduce motion" setting. If transitions and effects are missing (buttons, menus and highlights don't move), animations are turned off in your operating system. On **Windows**: Settings → Accessibility → Visual effects → turn **Animation effects** on. On **macOS**: System Settings → Accessibility → Display → turn **Reduce motion** off.
+Alviss honors your system's "reduce motion" setting. If transitions and effects are missing (buttons, menus and highlights don't move), animations are turned off in your operating system. On **Windows**: Settings → Accessibility → Visual effects → turn **Animation effects** on. On **macOS**: System Settings → Accessibility → Display → turn **Reduce motion** off.
 
 ### How do I change the language?
 
-**Settings → App → Appearance → Language**; on the phone **Settings → Appearance → Language**. Plainva speaks ten languages: English, German, Spanish, French, Italian, Japanese, Dutch, Polish, Portuguese (Brazil) and Simplified Chinese.
+**Settings → App → Appearance → Language**; on the phone **Settings → Appearance → Language**. Alviss speaks ten languages: English, German, Spanish, French, Italian, Japanese, Dutch, Polish, Portuguese (Brazil) and Simplified Chinese.
 
 ### "Check for Updates" finds nothing
 
@@ -138,7 +138,7 @@ As long as there are no public releases yet, the update check reports: "No publi
 
 ### Are there hidden features?
 
-Starfleet does not comment on rumors. But word is the logo in the title bar responds to persistent knocking — and whoever knows the right words afterwards will see Plainva in a whole new light. Some say: four of them.
+Starfleet does not comment on rumors. But word is the logo in the title bar responds to persistent knocking — and whoever knows the right words afterwards will see Alviss in a whole new light. Some say: four of them.
 
 ## See also
 

@@ -2,11 +2,11 @@
 
 Última revisão: 2026-10-30
 
-O Plainva protege seu trabalho em dois níveis: **versões de arquivo** (snapshots automáticos de cada arquivo individual ao editar e excluir) e **backups do vault** (arquivos ZIP regulares de todo o vault, armazenados fora da pasta do vault). Ambos rodam em segundo plano sem qualquer configuração e podem ser ajustados nas configurações em **Backup e versionamento**.
+O Alviss protege seu trabalho em dois níveis: **versões de arquivo** (snapshots automáticos de cada arquivo individual ao editar e excluir) e **backups do vault** (arquivos ZIP regulares de todo o vault, armazenados fora da pasta do vault). Ambos rodam em segundo plano sem qualquer configuração e podem ser ajustados nas configurações em **Backup e versionamento**.
 
 ## Versões de arquivo (snapshots)
 
-Antes de cada salvamento, o Plainva armazena um snapshot do estado anterior — como uma cópia em texto simples em `.plainva/backups/` dentro do vault (esta pasta fica oculta na árvore de arquivos, na busca e na sincronização). Para evitar centenas de cópias enquanto você digita, aplica-se um **Intervalo de snapshot** (padrão: no máximo uma nova versão a cada 2 minutos). **Excluir sempre gera um snapshot**, independentemente do intervalo.
+Antes de cada salvamento, o Alviss armazena um snapshot do estado anterior — como uma cópia em texto simples em `.plainva/backups/` dentro do vault (esta pasta fica oculta na árvore de arquivos, na busca e na sincronização). Para evitar centenas de cópias enquanto você digita, aplica-se um **Intervalo de snapshot** (padrão: no máximo uma nova versão a cada 2 minutos). **Excluir sempre gera um snapshot**, independentemente do intervalo.
 
 Retenção (configurável por vault):
 
@@ -17,7 +17,7 @@ Retenção (configurável por vault):
 
 Ao renomear ou mover um arquivo, o histórico de versões dele se move junto.
 
-**Por que arquivos grandes são tratados de outra forma:** um anexo de 90 MB editado repetidamente poderia encher o vault com cem cópias — nove gigabytes para um único arquivo. Acima do limite, o Plainva mantém a versão mais recente em vez do histórico completo e avisa uma vez por vault. Notas e imagens comuns ficam bem abaixo disso e não são afetadas. **Uma exclusão é sempre salva por completo**, seja qual for o tamanho: a nova versão de um arquivo salvo continua no disco, mas um arquivo excluído não — ali o snapshot é o único caminho de volta.
+**Por que arquivos grandes são tratados de outra forma:** um anexo de 90 MB editado repetidamente poderia encher o vault com cem cópias — nove gigabytes para um único arquivo. Acima do limite, o Alviss mantém a versão mais recente em vez do histórico completo e avisa uma vez por vault. Notas e imagens comuns ficam bem abaixo disso e não são afetadas. **Uma exclusão é sempre salva por completo**, seja qual for o tamanho: a nova versão de um arquivo salvo continua no disco, mas um arquivo excluído não — ali o snapshot é o único caminho de volta.
 
 ## Visualizando e restaurando versões
 
@@ -31,22 +31,22 @@ Imagens também têm versões (com pré-visualização); outros arquivos binári
 
 ## Restaurando arquivos excluídos
 
-Como toda exclusão gera um snapshot do arquivo antes, o Plainva pode trazer arquivos excluídos de volta: clique com o botão direito no nome do vault no topo da árvore de arquivos → **Restaurar arquivos excluídos…** (também acessível em **Configurações → Vault → Backup e versionamento → Histórico de versões**). A lista mostra todos os arquivos cujos snapshots ainda existem enquanto o original desapareceu — **Restaurar** recria o estado mais recente no local original (pastas são recriadas conforme necessário), **Versões…** abre o histórico completo do arquivo excluído.
+Como toda exclusão gera um snapshot do arquivo antes, o Alviss pode trazer arquivos excluídos de volta: clique com o botão direito no nome do vault no topo da árvore de arquivos → **Restaurar arquivos excluídos…** (também acessível em **Configurações → Vault → Backup e versionamento → Histórico de versões**). A lista mostra todos os arquivos cujos snapshots ainda existem enquanto o original desapareceu — **Restaurar** recria o estado mais recente no local original (pastas são recriadas conforme necessário), **Versões…** abre o histórico completo do arquivo excluído.
 
-Observação: excluir uma **pasta inteira** a move para a lixeira do sistema operacional — nesse caso, a lixeira do sistema é o meio principal de recuperação; no Plainva você pode encontrar apenas snapshots mais antigos dos arquivos contidos.
+Observação: excluir uma **pasta inteira** a move para a lixeira do sistema operacional — nesse caso, a lixeira do sistema é o meio principal de recuperação; no Alviss você pode encontrar apenas snapshots mais antigos dos arquivos contidos.
 
 ## Backups automáticos do vault (ZIP)
 
-Além disso, o Plainva faz backup de todo o vault como um arquivo ZIP — por padrão **diariamente** em segundo plano (ao abrir o vault, se o último backup tiver mais de 24 horas). Isso protege você mesmo que a pasta do vault em si seja perdida ou danificada, porque os ZIPs ficam **fora** do vault:
+Além disso, o Alviss faz backup de todo o vault como um arquivo ZIP — por padrão **diariamente** em segundo plano (ao abrir o vault, se o último backup tiver mais de 24 horas). Isso protege você mesmo que a pasta do vault em si seja perdida ou danificada, porque os ZIPs ficam **fora** do vault:
 
 - O destino padrão é a pasta de dados do aplicativo (exibida em **Pasta de destino** nas configurações; **Abrir pasta** leva você direto até lá).
-- Por meio de **Escolher pasta…** você pode escolher um disco externo ou um NAS; **Padrão** volta para a pasta de dados do aplicativo. Se o destino estiver momentaneamente inacessível (NAS desligado), a barra de status menciona isso discretamente e o Plainva tenta novamente mais tarde.
+- Por meio de **Escolher pasta…** você pode escolher um disco externo ou um NAS; **Padrão** volta para a pasta de dados do aplicativo. Se o destino estiver momentaneamente inacessível (NAS desligado), a barra de status menciona isso discretamente e o Alviss tenta novamente mais tarde.
 - **Backups a manter** (padrão: 7) limita a quantidade; ZIPs mais antigos do mesmo vault são excluídos automaticamente. Arquivos de terceiros na pasta de destino nunca são tocados.
 - **Fazer backup agora** inicia um backup manualmente a qualquer momento; a barra de status mostra a execução e o resultado.
 
 Os arquivos ZIP são nomeados `VaultName_2026-07-05_14-30-00.zip` e contêm todas as notas, anexos e sua configuração `.obsidian` — eles **não** contêm a pasta interna `.plainva` (o índice de busca é reconstruído na próxima abertura; as versões de arquivo deliberadamente não fazem parte do ZIP).
 
-**Restaurando a partir de um ZIP:** o ZIP é um arquivo compactado completamente normal. Extraia-o em qualquer lugar e abra a pasta extraída no Plainva como um vault — pronto.
+**Restaurando a partir de um ZIP:** o ZIP é um arquivo compactado completamente normal. Extraia-o em qualquer lugar e abra a pasta extraída no Alviss como um vault — pronto.
 
 ## Configurações em resumo
 
@@ -63,8 +63,8 @@ Configurações → **Vault** → **Backup e versionamento**:
 
 ## Bom saber
 
-- As versões de arquivo são cópias comuns em `.plainva/backups/` — em último caso, você pode abri-las sem o Plainva em qualquer gerenciador de arquivos.
-- A sincronização própria do Plainva nunca transfere `.plainva`. Se você sincronizar a pasta do vault com um cliente de terceiros (por exemplo, o app do Nextcloud), os snapshots viajam junto — isso custa algum espaço de armazenamento, mas não causa dano.
+- As versões de arquivo são cópias comuns em `.plainva/backups/` — em último caso, você pode abri-las sem o Alviss em qualquer gerenciador de arquivos.
+- A sincronização própria do Alviss nunca transfere `.plainva`. Se você sincronizar a pasta do vault com um cliente de terceiros (por exemplo, o app do Nextcloud), os snapshots viajam junto — isso custa algum espaço de armazenamento, mas não causa dano.
 - Conflitos de sincronização são adicionalmente protegidos por arquivos `.CONFLICT` (veja a [FAQ](FAQ.md)); o histórico de versões complementa isso com a linha do tempo de cada arquivo.
 
 No celular, **Backups ZIP** é o primeiro grupo da página **Backup e versionamento**; depois vem o **Histórico de versões**, com **Restaurar arquivos excluídos** no final.
@@ -73,7 +73,7 @@ No celular, uma falha ao salvar a nota interrompe a troca, o recarregamento ou a
 
 Um backup ZIP só é considerado concluído depois que todos os arquivos selecionados foram lidos e o arquivo completo foi salvo. Uma tentativa com falha não remove backups anteriores nem altera o horário do último backup bem-sucedido. No celular, o aviso de falha automática informa o vault; **Fazer backup agora** em **Backup e versionamento** → **Backups ZIP** inicia outra tentativa. A configuração oculta do usuário, como `.obsidian`, é incluída nas duas plataformas. Os diretórios `.plainva`, `.git`, `.trash` e `node_modules` são excluídos em qualquer nível. Quando vários backups são criados no mesmo segundo, o novo nome recebe um sufixo como `_001`.
 
-O salvamento só é indicado como concluído após a confirmação da gravação. O texto digitado durante um salvamento continua pendente até que sua própria versão seja gravada. Os rascunhos no desktop pertencem à respectiva sessão do editor: concluir uma sessão antiga não exclui o rascunho de um editor recém-aberto. Quando alterações externas chegam ao mesmo tempo, o Plainva combina as alterações compatíveis; o texto em conflito permanece disponível como rascunho e cópia de conflito.
+O salvamento só é indicado como concluído após a confirmação da gravação. O texto digitado durante um salvamento continua pendente até que sua própria versão seja gravada. Os rascunhos no desktop pertencem à respectiva sessão do editor: concluir uma sessão antiga não exclui o rascunho de um editor recém-aberto. Quando alterações externas chegam ao mesmo tempo, o Alviss combina as alterações compatíveis; o texto em conflito permanece disponível como rascunho e cópia de conflito.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Decidir com clareza ao comparar arquivos
@@ -95,4 +95,4 @@ Mesclar linha por linha é uma ferramenta do computador; aqui você adota uma ve
 
 ## Comparar a cópia selecionada
 
-A versão selecionada mostra linhas adicionadas e removidas em relação à nota atual, mesmo com o diff oculto. **Abrir em nova janela** mantém essa mesma cópia selecionada no desktop. Se ela desaparecer, o Plainva informa. Arquivos grandes podem não ter contagens; binários não têm comparação de texto. O celular mostra as mesmas contagens na comparação completa.
+A versão selecionada mostra linhas adicionadas e removidas em relação à nota atual, mesmo com o diff oculto. **Abrir em nova janela** mantém essa mesma cópia selecionada no desktop. Se ela desaparecer, o Alviss informa. Arquivos grandes podem não ter contagens; binários não têm comparação de texto. O celular mostra as mesmas contagens na comparação completa.

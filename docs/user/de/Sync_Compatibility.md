@@ -1,22 +1,22 @@
-# Plainva Sync-Kompatibilität
+# Alviss Sync-Kompatibilität
 
 Stand: 2026-11-03
 
-Antwortet ein WebDAV-, CalDAV- oder S3-Dienst mit einer Anmeldeseite oder einer unvollständigen Bestandsliste, meldet Plainva einen Abgleichfehler. Diese Antwort gilt nicht als leerer Ordner oder Kalenderbestand und löst keine daraus abgeleiteten Löschungen aus. Das gilt auf Desktop und Mobil.
+Antwortet ein WebDAV-, CalDAV- oder S3-Dienst mit einer Anmeldeseite oder einer unvollständigen Bestandsliste, meldet Alviss einen Abgleichfehler. Diese Antwort gilt nicht als leerer Ordner oder Kalenderbestand und löst keine daraus abgeleiteten Löschungen aus. Das gilt auf Desktop und Mobil.
 
 Kann eine lokale Datei wegen fehlender Rechte oder eines Lesefehlers nicht hochgeladen werden, bleibt der Auftrag mit seinem Fehler in der Warteschlange. Stelle den Dateizugriff wieder her und starte den Abgleich erneut. Nur eine tatsächlich fehlende Datei gilt als nicht mehr vorhanden; ein Zugriffsfehler wird nicht als erfolgreicher Upload verbucht.
 
-Offline vorgenommene Änderungen bleiben auch bei mehreren Umbenennungen erhalten. Plainva führt zusammengehörige Verschiebungen vor dem Upload des aktuellen Inhalts aus; ein fehlgeschlagener Vorgang hält die davon abhängigen Aufträge zurück. Fehlt die entfernte Quelle beim Umbenennen, lädt Plainva die noch vorhandene lokale Datei oder den Ordnerinhalt am neuen Ort hoch. Unlesbare Inhalte bleiben als Fehler zur Wiederholung vorgemerkt.
+Offline vorgenommene Änderungen bleiben auch bei mehreren Umbenennungen erhalten. Alviss führt zusammengehörige Verschiebungen vor dem Upload des aktuellen Inhalts aus; ein fehlgeschlagener Vorgang hält die davon abhängigen Aufträge zurück. Fehlt die entfernte Quelle beim Umbenennen, lädt Alviss die noch vorhandene lokale Datei oder den Ordnerinhalt am neuen Ort hoch. Unlesbare Inhalte bleiben als Fehler zur Wiederholung vorgemerkt.
 
 Eine Löschbestätigung gilt nur für den tatsächlich ausgeführten Löschvorgang. Sie bleibt für dessen Wiederholung nach einem Verbindungsfehler oder Neustart erhalten; neu angelegte Dateien am gleichen Ort übernehmen sie nicht. Die zusätzliche Nachfrage bei einer angehaltenen Massenlöschung und die Wahl zur Wiederherstellung betreffen nur die dort angezeigten Aufträge. Für größere Löschungen, die schon vor dem Update in der Warteschlange lagen, kann einmalig eine erneute Bestätigung nötig sein.
 
-Journal-Einträge, die zwei Geräte an dieselbe Tagesnotiz anhängen, bevor sie sich abgeglichen haben, sind kein Konflikt: Plainva vereinigt sie nach Uhrzeit und behält jede Zeile beider Geräte — auch wenn beide Geräte die Notiz des Tages unabhängig voneinander angelegt haben. Jede andere gleichzeitige Änderung an einer Notiz wird behandelt wie bisher. Siehe [Journal](Journal.md).
+Journal-Einträge, die zwei Geräte an dieselbe Tagesnotiz anhängen, bevor sie sich abgeglichen haben, sind kein Konflikt: Alviss vereinigt sie nach Uhrzeit und behält jede Zeile beider Geräte — auch wenn beide Geräte die Notiz des Tages unabhängig voneinander angelegt haben. Jede andere gleichzeitige Änderung an einer Notiz wird behandelt wie bisher. Siehe [Journal](Journal.md).
 
-Einen Ordner, den Du in Plainva anlegst, legt Plainva in der Cloud innerhalb des Vault-Ordners an. Bis Version 0.8.3 entstand dabei zusätzlich ein leerer Ordner gleichen Namens auf der obersten Ebene von Google Drive, OneDrive oder Dropbox bzw. des S3-Buckets, wenn der Vault ein Präfix nutzt. Plainva entfernt diese Kopien nicht selbst; wenn Du geprüft hast, dass ein solcher Ordner auf oberster Ebene leer ist und nicht zu Deinem Vault-Ordner gehört, kannst Du ihn löschen.
+Einen Ordner, den Du in Alviss anlegst, legt Alviss in der Cloud innerhalb des Vault-Ordners an. Bis Version 0.8.3 entstand dabei zusätzlich ein leerer Ordner gleichen Namens auf der obersten Ebene von Google Drive, OneDrive oder Dropbox bzw. des S3-Buckets, wenn der Vault ein Präfix nutzt. Alviss entfernt diese Kopien nicht selbst; wenn Du geprüft hast, dass ein solcher Ordner auf oberster Ebene leer ist und nicht zu Deinem Vault-Ordner gehört, kannst Du ihn löschen.
 
-Umlaute und Akzente lassen sich auf zwei Arten speichern: `ü` als ein Zeichen oder als `u` mit nachgestelltem Trema. macOS und iOS behalten meist die zweite Form (etwa für einen im Finder angelegten Ordner), viele Server und andere Systeme die erste. Plainva behandelt beide als denselben Namen: Es liest und schreibt die Datei oder den Ordner, der schon da ist, in der Form, in der dieses Gerät oder die Cloud ihn speichert, und benennt nichts um. Namen, die Du in Plainva anlegst, werden in der ersten Form gespeichert. Nur wenn ein Ordner wirklich beide Formen nebeneinander enthält oder sich zwei Namen in Groß- und Kleinschreibung unterscheiden, zeigt Plainva den Namen unter **Gleicher Name, zwei Dateien**: Es lässt die zweite Datei beim Abgleich aus und löscht nichts von selbst, weder hier noch in der Cloud. Auf der Karte entfernst Du mit **Doppelte entfernen** eine zweite Datei, die der abgeglichenen gleicht, und gibst mit **Beide behalten** einer abweichenden einen eigenen Namen.
+Umlaute und Akzente lassen sich auf zwei Arten speichern: `ü` als ein Zeichen oder als `u` mit nachgestelltem Trema. macOS und iOS behalten meist die zweite Form (etwa für einen im Finder angelegten Ordner), viele Server und andere Systeme die erste. Alviss behandelt beide als denselben Namen: Es liest und schreibt die Datei oder den Ordner, der schon da ist, in der Form, in der dieses Gerät oder die Cloud ihn speichert, und benennt nichts um. Namen, die Du in Alviss anlegst, werden in der ersten Form gespeichert. Nur wenn ein Ordner wirklich beide Formen nebeneinander enthält oder sich zwei Namen in Groß- und Kleinschreibung unterscheiden, zeigt Alviss den Namen unter **Gleicher Name, zwei Dateien**: Es lässt die zweite Datei beim Abgleich aus und löscht nichts von selbst, weder hier noch in der Cloud. Auf der Karte entfernst Du mit **Doppelte entfernen** eine zweite Datei, die der abgeglichenen gleicht, und gibst mit **Beide behalten** einer abweichenden einen eigenen Namen.
 
-Plainva synchronisiert Vaults über austauschbare Sync-Adapter. Diese Seite zeigt, welche Dienste Du heute schon nutzen kannst — direkt integriert, über das WebDAV-Protokoll oder über den Desktop-Sync-Client des jeweiligen Anbieters.
+Alviss synchronisiert Vaults über austauschbare Sync-Adapter. Diese Seite zeigt, welche Dienste Du heute schon nutzen kannst — direkt integriert, über das WebDAV-Protokoll oder über den Desktop-Sync-Client des jeweiligen Anbieters.
 
 ## Direkt integriert
 
@@ -25,8 +25,8 @@ Plainva synchronisiert Vaults über austauschbare Sync-Adapter. Diese Seite zeig
 | Lokaler Ordner | Verfügbar | Keine Einrichtung nötig; externe Änderungen (z. B. durch andere Sync-Tools) werden automatisch erkannt. |
 | WebDAV / Nextcloud | Verfügbar, mit Nextcloud verifiziert | Server-URL, Benutzername und (empfohlen) App-Passwort. |
 | Google Drive | Verfügbar (BYO-Credentials) | Eigenes Google-Cloud-Projekt nötig, siehe [Google-Drive-BYO-Anleitung](Google_Drive_BYO_Guide.md). |
-| OneDrive | Verfügbar | Anmeldung per Browser (PKCE, kein Secret). Plainva liefert eine eigene App-Registrierung mit — einfach OneDrive wählen und verbinden, keine Einrichtung nötig. Eine eigene (kostenlose) Entra-App-Registrierung zu verwenden bleibt optional (siehe [OneDrive- & Dropbox-BYO-Anleitung](OneDrive_and_Dropbox_BYO_Guide.md)). |
-| Dropbox | Verfügbar | Anmeldung per Browser (PKCE, kein Secret). Plainva liefert eine eigene Dropbox-App mit — einfach Dropbox wählen und verbinden, keine Einrichtung nötig. Eine eigene (kostenlose) Dropbox-App zu verwenden bleibt optional (siehe [OneDrive- & Dropbox-BYO-Anleitung](OneDrive_and_Dropbox_BYO_Guide.md)). |
+| OneDrive | Verfügbar | Anmeldung per Browser (PKCE, kein Secret). Alviss liefert eine eigene App-Registrierung mit — einfach OneDrive wählen und verbinden, keine Einrichtung nötig. Eine eigene (kostenlose) Entra-App-Registrierung zu verwenden bleibt optional (siehe [OneDrive- & Dropbox-BYO-Anleitung](OneDrive_and_Dropbox_BYO_Guide.md)). |
+| Dropbox | Verfügbar | Anmeldung per Browser (PKCE, kein Secret). Alviss liefert eine eigene Dropbox-App mit — einfach Dropbox wählen und verbinden, keine Einrichtung nötig. Eine eigene (kostenlose) Dropbox-App zu verwenden bleibt optional (siehe [OneDrive- & Dropbox-BYO-Anleitung](OneDrive_and_Dropbox_BYO_Guide.md)). |
 | S3-kompatibler Object Storage | Verfügbar (neu 2026-07-04, native Abnahme ausstehend) | AWS S3, Cloudflare R2, Backblaze B2, MinIO, Wasabi, Hetzner u. a. — nur Endpoint, Bucket, Region und ein API-Schlüsselpaar nötig, keine Browser-Anmeldung. |
 
 ## Über WebDAV nutzbare Dienste
@@ -49,11 +49,11 @@ Der WebDAV-Adapter spricht Standard-WebDAV. Damit sollten unter anderem die folg
 
 ## Über den Desktop-Sync-Client des Anbieters (lokaler Ordner)
 
-Bis native Integrationen kommen, kannst Du jeden Dienst nutzen, dessen Desktop-Client einen lokalen Ordner synchron hält. Plainva behandelt den Vault dann als lokalen Ordner und erkennt externe Änderungen automatisch.
+Bis native Integrationen kommen, kannst Du jeden Dienst nutzen, dessen Desktop-Client einen lokalen Ordner synchron hält. Alviss behandelt den Vault dann als lokalen Ordner und erkennt externe Änderungen automatisch.
 
 **Wichtig:** Stelle den Vault-Ordner auf „immer auf diesem Gerät behalten" / „offline verfügbar". Online-only-Platzhalterdateien (Files On-Demand, online-only, Streaming-Modus) können Indexierung und Sync stören.
 
-**Ein Weg pro Ordner:** Nutze für einen Vault-Ordner entweder den Desktop-Client des Anbieters oder Plainvas eigenen Sync, nie beides zugleich. Zwei Sync-Werkzeuge im selben Ordner laden jede Änderung doppelt hoch und können Ordner doppelt anlegen — etwa wenn eines Umlaute in einer anderen Unicode-Form schreibt als das andere.
+**Ein Weg pro Ordner:** Nutze für einen Vault-Ordner entweder den Desktop-Client des Anbieters oder Alvisss eigenen Sync, nie beides zugleich. Zwei Sync-Werkzeuge im selben Ordner laden jede Änderung doppelt hoch und können Ordner doppelt anlegen — etwa wenn eines Umlaute in einer anderen Unicode-Form schreibt als das andere.
 
 - **OneDrive** (Explorer-Integration; Files On-Demand für den Vault-Ordner deaktivieren)
 - **Dropbox** (Desktop-Client; „online-only" für den Vault-Ordner vermeiden)
@@ -63,11 +63,11 @@ Bis native Integrationen kommen, kannst Du jeden Dienst nutzen, dessen Desktop-C
 
 ## Hinweis zu den neuen Integrationen (2026-07-04)
 
-OneDrive, Dropbox und S3-kompatibler Storage sind seit dem 2026-07-04 direkt integriert (siehe Tabelle oben). Plainva liefert eigene App-Registrierungen für OneDrive und Dropbox mit — Du brauchst also keine eigene Client-ID und keinen eigenen App-Key; die Felder sind vorbefüllt und Du verbindest einfach. Eine eigene App-ID zu hinterlegen bleibt optional (z. B. bei Firmen-Sperren); siehe [OneDrive- & Dropbox-BYO-Anleitung](OneDrive_and_Dropbox_BYO_Guide.md). Der Desktop-Sync-Client-Weg (siehe oben) bleibt als Alternative bestehen.
+OneDrive, Dropbox und S3-kompatibler Storage sind seit dem 2026-07-04 direkt integriert (siehe Tabelle oben). Alviss liefert eigene App-Registrierungen für OneDrive und Dropbox mit — Du brauchst also keine eigene Client-ID und keinen eigenen App-Key; die Felder sind vorbefüllt und Du verbindest einfach. Eine eigene App-ID zu hinterlegen bleibt optional (z. B. bei Firmen-Sperren); siehe [OneDrive- & Dropbox-BYO-Anleitung](OneDrive_and_Dropbox_BYO_Guide.md). Der Desktop-Sync-Client-Weg (siehe oben) bleibt als Alternative bestehen.
 
 ## Bewusst nicht geplant
 
 - **iCloud als API-Integration:** Apple bietet keine offizielle Drittanbieter-API für iCloud Drive. Nutze stattdessen den lokalen iCloud-Ordner (siehe oben).
-- **Syncthing als eingebauter Anbieter:** nicht nötig — Plainva arbeitet mit jedem lokalen Ordner, den Syncthing (auf iPhone und iPad Synctrain) synchron hält (siehe oben).
+- **Syncthing als eingebauter Anbieter:** nicht nötig — Alviss arbeitet mit jedem lokalen Ordner, den Syncthing (auf iPhone und iPad Synctrain) synchron hält (siehe oben).
 - **Proton Drive / Mega:** keine offizielle bzw. nur schwer integrierbare API (E2E-Verschlüsselung, C++-SDK). Wird weiter beobachtet.
 - **Watchlist** (bei Bedarf/Nachfrage): pCloud, Box, Filen, SFTP.

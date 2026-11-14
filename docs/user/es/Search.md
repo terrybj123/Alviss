@@ -2,7 +2,7 @@
 
 Última actualización: 2026-09-30
 
-Plainva ofrece tres formas de buscar: búsqueda de texto completo en todo el vault, el selector rápido para abrir archivos, y buscar y reemplazar dentro de una nota.
+Alviss ofrece tres formas de buscar: búsqueda de texto completo en todo el vault, el selector rápido para abrir archivos, y buscar y reemplazar dentro de una nota.
 
 ## Búsqueda de texto completo en el vault
 
@@ -10,7 +10,7 @@ El campo superior de la barra lateral busca títulos y contenidos en todo el vau
 
 La búsqueda reacciona mientras escribes: los prefijos de palabra ya coinciden ("Proy" encuentra "Proyecto plan") — no hace falta pulsar Enter. La **X** a la derecha del campo borra la búsqueda actual (o pulsa `Esc`); la barra lateral vuelve entonces a mostrar el árbol de archivos normal.
 
-En chino, japonés, tailandés y otras escrituras sin espacios entre palabras, la búsqueda encuentra un término en cualquier parte del texto: `議事録` encuentra "今日は会議の議事録を書いた", `搜索` encuentra "全文搜索". También se encuentran palabras latinas dentro de ese texto ("Plainva" en "…でPlainvaを使った").
+En chino, japonés, tailandés y otras escrituras sin espacios entre palabras, la búsqueda encuentra un término en cualquier parte del texto: `議事録` encuentra "今日は会議の議事録を書いた", `搜索` encuentra "全文搜索". También se encuentran palabras latinas dentro de ese texto ("Alviss" en "…でAlvissを使った").
 
 La búsqueda muestra cada aparición con un fragmento, la ruta de encabezados y el número de línea. Al abrir una fila se selecciona esa aparición concreta; varias coincidencias de una misma nota aparecen por separado. El contador incluye solo los resultados ya cargados. Puedes cargar más apariciones. Las flechas cambian la selección y Enter la abre. Se indican la carga, los resultados vacíos y los errores; una nueva consulta descarta respuestas anteriores. Si una edición impide identificar la aparición de forma inequívoca, se muestra un aviso. Estas apariciones también están disponibles en el selector rápido y la búsqueda móvil. Al volver a la búsqueda en el teléfono se recuperan la consulta, los resultados cargados y la posición de la lista. Los resultados llegan por **Relevancia**, salvo que elijas **Última modificación**, **Título** o **Ruta** con el botón de ordenar junto al campo de búsqueda (en el teléfono: en la barra de la búsqueda); al cargar más se mantiene el orden elegido. En el teléfono la hoja de orden sigue abierta hasta que tocas **Listo**: tocar otra vez el orden elegido invierte la dirección.
 
@@ -23,7 +23,7 @@ El campo de búsqueda también se aplica a las demás vistas de la barra lateral
 - `path:carpeta` — solo archivos cuya ruta contiene el texto (p. ej. `path:Proyectos`; con espacios: `path:"Mi Carpeta"`).
 - `tag:nombre` — solo notas con esa etiqueta, incluidas las etiquetas anidadas: `tag:proyecto` también encuentra `#proyecto/interno`. `tag:#proyecto` también funciona.
 - Los operadores pueden negarse (`-path:Archivo`, `-tag:hecho`) y combinarse libremente con términos de búsqueda: `plan tag:proyecto -borrador`.
-- Varios términos se combinan con AND. Los caracteres especiales como `- ( ) : *` dentro de los términos son inofensivos — Plainva trata la entrada de forma literal.
+- Varios términos se combinan con AND. Los caracteres especiales como `- ( ) : *` dentro de los términos son inofensivos — Alviss trata la entrada de forma literal.
 
 ## Selector rápido
 
@@ -55,7 +55,7 @@ La vista **Etiquetas** de la barra lateral lista todas las `#etiquetas` del vaul
 
 En la nota, una etiqueta se dibuja como una pequeña píldora, tanto al escribir como al leer; el texto sigue siendo `#proyecto/web`. Un clic en la píldora (en el teléfono: un toque en modo lectura) abre las notas que llevan la etiqueta. Lo que cuenta como etiqueta es lo mismo en todas partes — en la lista de etiquetas, en una tarea y al renombrar: un `#` al inicio de la línea o tras un espacio, seguido de letras, dígitos, `_`, `-` o `/`. Solo dígitos no es una etiqueta (`#42` sigue siendo un número), y tampoco lo es nada dentro de código o de un enlace. **Colorear etiquetas** en **Configuración → App → Apariencia** da a cada etiqueta un color que se deriva de su nombre; las etiquetas anidadas comparten el color de su etiqueta superior. El ajuste pertenece a este dispositivo y no guarda nada en tus notas.
 
-**Renombrar una etiqueta** en todo el vault: haz clic derecho en una etiqueta de la vista **Etiquetas** e introduce un nuevo nombre. Plainva reescribe la etiqueta en todas partes — en el cuerpo de las notas (`#tag` y sus etiquetas anidadas `#tag/child`) y en el frontmatter (`tags:`) — guardando cada nota afectada por la misma vía segura. Las etiquetas no relacionadas que simplemente contienen ese nombre (por ejemplo, `#area/tag`) permanecen intactas.
+**Renombrar una etiqueta** en todo el vault: haz clic derecho en una etiqueta de la vista **Etiquetas** e introduce un nuevo nombre. Alviss reescribe la etiqueta en todas partes — en el cuerpo de las notas (`#tag` y sus etiquetas anidadas `#tag/child`) y en el frontmatter (`tags:`) — guardando cada nota afectada por la misma vía segura. Las etiquetas no relacionadas que simplemente contienen ese nombre (por ejemplo, `#area/tag`) permanecen intactas.
 
 ## Navegar dentro de una nota
 

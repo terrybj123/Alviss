@@ -2,7 +2,7 @@
 
 Stan na: 2026-09-30
 
-Plainva oferuje trzy sposoby wyszukiwania: wyszukiwanie pełnotekstowe w całym vaulcie, szybkie przełączanie do otwierania plików oraz znajdź i zamień wewnątrz notatki.
+Alviss oferuje trzy sposoby wyszukiwania: wyszukiwanie pełnotekstowe w całym vaulcie, szybkie przełączanie do otwierania plików oraz znajdź i zamień wewnątrz notatki.
 
 ## Wyszukiwanie pełnotekstowe w vaulcie
 
@@ -10,7 +10,7 @@ Pole u góry panelu bocznego przeszukuje tytuły i treść w całym sejfie. Loka
 
 Wyszukiwanie reaguje w trakcie pisania: prefiksy słów pasują już od razu ("Projek" znajduje "Projekt plan") — bez potrzeby naciskania Enter. **X** po prawej stronie pola czyści bieżące wyszukiwanie (albo naciśnij `Esc`); pasek boczny pokazuje wtedy znowu zwykłe drzewo plików.
 
-W chińskim, japońskim, tajskim i innych pismach bez spacji między słowami wyszukiwanie znajduje termin w dowolnym miejscu tekstu: `議事録` znajduje "今日は会議の議事録を書いた", `搜索` znajduje "全文搜索". Znajdowane są też słowa łacińskie wewnątrz takiego tekstu ("Plainva" w "…でPlainvaを使った").
+W chińskim, japońskim, tajskim i innych pismach bez spacji między słowami wyszukiwanie znajduje termin w dowolnym miejscu tekstu: `議事録` znajduje "今日は会議の議事録を書いた", `搜索` znajduje "全文搜索". Znajdowane są też słowa łacińskie wewnątrz takiego tekstu ("Alviss" w "…でAlvissを使った").
 
 Lista pokazuje poszczególne wystąpienia wraz z fragmentem tekstu, ścieżką nagłówków i numerem wiersza. Otwarcie pozycji zaznacza dokładnie wybrane wystąpienie; kilka dopasowań w tej samej notatce jest pokazanych osobno. Licznik obejmuje tylko załadowane wyniki. Można wczytać kolejne wystąpienia. Strzałki zmieniają wybór, a Enter go otwiera. Ładowanie, brak wyników i błędy są wyraźnie wskazane; nowe zapytanie odrzuca stare odpowiedzi. Gdy po edycji nie można jednoznacznie odnaleźć wystąpienia, pojawia się komunikat. Te same wystąpienia są dostępne w szybkim przełączniku i wyszukiwaniu mobilnym. Powrót do wyszukiwania na telefonie przywraca zapytanie, wczytane wyniki i pozycję listy. Wyniki są ułożone według pola **Trafność**, chyba że przyciskiem sortowania obok pola wyszukiwania (na telefonie: na pasku ekranu wyszukiwania) wybierzesz **Ostatnia zmiana**, **Tytuł** lub **Ścieżka**; doładowanie kolejnych zachowuje wybraną kolejność. Na telefonie arkusz sortowania pozostaje otwarty, dopóki nie stukniesz **Gotowe**: ponowne stuknięcie wybranej kolejności odwraca kierunek.
 
@@ -23,7 +23,7 @@ Pole wyszukiwania działa też w pozostałych widokach paska bocznego: w **Tagi*
 - `path:folder` — tylko pliki, których ścieżka zawiera dany tekst (np. `path:Projekty`; ze spacjami: `path:"Mój Folder"`).
 - `tag:nazwa` — tylko notatki z danym tagiem, wliczając tagi zagnieżdżone: `tag:projekt` znajduje też `#projekt/wewnetrzny`. `tag:#projekt` działa równie dobrze.
 - Operatory można zanegować (`-path:Archiwum`, `-tag:zrobione`) i dowolnie łączyć z terminami wyszukiwania: `plan tag:projekt -szkic`.
-- Wiele terminów łączonych jest operatorem AND. Znaki specjalne takie jak `- ( ) : *` wewnątrz terminów są nieszkodliwe — Plainva traktuje wpis dosłownie.
+- Wiele terminów łączonych jest operatorem AND. Znaki specjalne takie jak `- ( ) : *` wewnątrz terminów są nieszkodliwe — Alviss traktuje wpis dosłownie.
 
 ## Szybkie przełączanie (Quick Switcher)
 
@@ -55,7 +55,7 @@ Widok paska bocznego **Tagi** wyświetla wszystkie `#tagi` w vaulcie z liczbą w
 
 W notatce tag jest rysowany jako mała pigułka — podczas pisania i podczas czytania; sam tekst pozostaje `#projekt/strona`. Kliknięcie pigułki (na telefonie: dotknięcie w trybie czytania) otwiera notatki, które noszą ten tag. To, co liczy się jako tag, jest wszędzie takie samo — na liście tagów, w zadaniu i przy zmianie nazwy: `#` na początku wiersza lub po spacji, a po nim litery, cyfry, `_`, `-` lub `/`. Same cyfry nie są tagiem (`#42` pozostaje numerem), podobnie jak wszystko wewnątrz kodu lub linku. **Koloruj tagi** w **Ustawienia → Aplikacja → Wygląd** nadaje każdemu tagowi kolor wynikający z jego nazwy; tagi zagnieżdżone dzielą kolor tagu najwyższego poziomu. Ustawienie należy do tego urządzenia i niczego nie zapisuje w Twoich notatkach.
 
-**Zmiana nazwy tagu** obejmuje od razu cały vault: kliknij prawym przyciskiem myszy tag w widoku **Tagi** i wpisz nową nazwę. Plainva przepisuje tag wszędzie — w tekście notatek (`#tag` oraz jego podtagi `#tag/child`) i we frontmatter (`tags:`) — zapisując każdą dotkniętą notatkę z powrotem tą samą bezpieczną drogą. Niepowiązane tagi, które jedynie zawierają tę nazwę (na przykład `#area/tag`), pozostają nietknięte.
+**Zmiana nazwy tagu** obejmuje od razu cały vault: kliknij prawym przyciskiem myszy tag w widoku **Tagi** i wpisz nową nazwę. Alviss przepisuje tag wszędzie — w tekście notatek (`#tag` oraz jego podtagi `#tag/child`) i we frontmatter (`tags:`) — zapisując każdą dotkniętą notatkę z powrotem tą samą bezpieczną drogą. Niepowiązane tagi, które jedynie zawierają tę nazwę (na przykład `#area/tag`), pozostają nietknięte.
 
 ## Nawigacja w notatce
 

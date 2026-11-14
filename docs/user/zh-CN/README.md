@@ -1,10 +1,10 @@
-# Plainva用户手册
+# Alviss用户手册
 
 更新日期：2026-09-24
 
 本翻译由机器自动生成，欢迎指正。
 
-Plainva是一款Markdown仓库编辑器：你的笔记就是电脑上某个文件夹（一个"仓库"）里普通的Markdown文件——没有数据库孤岛，也不强制使用云账户。本手册说明如何使用Plainva，以及各种文件格式是如何工作的。
+Alviss是一款Markdown仓库编辑器：你的笔记就是电脑上某个文件夹（一个"仓库"）里普通的Markdown文件——没有数据库孤岛，也不强制使用云账户。本手册说明如何使用Alviss，以及各种文件格式是如何工作的。
 
 ## 目录
 
@@ -13,13 +13,13 @@ Plainva是一款Markdown仓库编辑器：你的笔记就是电脑上某个文�
 | [快速上手](Getting_Started.md) | 打开或新建仓库、界面介绍、编辑器模式、标签页与分屏 |
 | [笔记与Markdown](Notes_and_Markdown.md) | Markdown文件如何工作：写作、格式化、属性（Frontmatter）、图标、链接、模板、图片 |
 | [数据库（.base）](Databases_Base.md) | 把笔记当作数据库查看——视图、筛选、属性、关联、新建条目（类似Notion，但基于文件） |
-| [数据库参考（.base）](Base_Reference.md) | `.base`文件可以包含的一切，以及Plainva对它们的处理：键、筛选、视图类型、汇总、限制，以及与Obsidian的差异 |
+| [数据库参考（.base）](Base_Reference.md) | `.base`文件可以包含的一切，以及Alviss对它们的处理：键、筛选、视图类型、汇总、限制，以及与Obsidian的差异 |
 | [从其他应用导入](Import.md) | 从Notion、Evernote、Google Keep、Simplenote、Logseq或一个Markdown文件夹中导入笔记——以及每种导入方式无法迁移的内容 |
 | [OKF](OKF.md) | Open Knowledge Format（0.2 版）：`type`、来源与审阅标记、bundle 版本、index.md管理与可选的仓库转换 |
 | [文件格式参考](File_Format_Reference.md) | 仓库中每个文件在磁盘上的精确格式——面向直接编辑笔记和`.base`文件的工具、脚本或AI |
-| [自动化与脚本](Automation_and_Scripts.md) | 无需插件即可扩展Plainva：脚本、CLI工具和AI助手如何安全地读写仓库 |
+| [自动化与脚本](Automation_and_Scripts.md) | 无需插件即可扩展Alviss：脚本、CLI工具和AI助手如何安全地读写仓库 |
 | [Backups与版本历史](Backups_and_Versioning.md) | 自动文件版本、恢复（包括已删除的文件）以及仓库的每日ZIP备份 |
-| [移动应用](Mobile_App.md) | Android 和 iOS 上的 Plainva：布局、编辑、数据库、同步与安全网 |
+| [移动应用](Mobile_App.md) | Android 和 iOS 上的 Alviss：布局、编辑、数据库、同步与安全网 |
 | [设置同步](Sync_Setup.md) | 各服务商的分步指南：WebDAV/Nextcloud、Google Drive、OneDrive、Dropbox、S3 |
 | [安全与共享](Security_and_Sharing.md) | 个人加密工作区、恢复备份、迁移与锁定 |
 | [评论与建议](Comments_and_Suggestions.md) | 评论、建议模式、总览和通知——在每个保险库中，无论是否加密 |
@@ -39,4 +39,4 @@ Plainva是一款Markdown仓库编辑器：你的笔记就是电脑上某个文�
 
 - **你的文件属于你。** 仓库就是一个普通的Markdown文件文件夹。你可以随时用任何其他程序打开、复制或备份它。
 - **纯Markdown是标准格式。** 就连额外功能（属性、图标、数据库）也以开放、可读的文本格式存储。
-- **兼容Obsidian。** 已有的Obsidian仓库不会被破坏或重新格式化；Obsidian可以打开Plainva创建的每一个文件。
+- **兼容Obsidian。** 已有的Obsidian仓库不会被破坏或重新格式化；Obsidian可以打开Alviss创建的每一个文件。

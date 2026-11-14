@@ -70,7 +70,7 @@ Every checkbox row carries a database icon: **Move to the task database**. One c
 
 ## Blocking time for a task
 
-A task has a due date and may carry a **time of day** (`2026-09-21T14:00`) — that is when Plainva reminds you. A time is a moment, not a span. When you want to reserve a window for one, Plainva creates a **calendar event** — that is the object which owns a time range, renders with overlaps in the grid and syncs with your calendar account.
+A task has a due date and may carry a **time of day** (`2026-09-21T14:00`) — that is when Alviss reminds you. A time is a moment, not a span. When you want to reserve a window for one, Alviss creates a **calendar event** — that is the object which owns a time range, renders with overlaps in the grid and syncs with your calendar account.
 
 The calendar icon on a task row opens **Block time**: the date (prefilled with the due date), the start, and the duration (15 min, 30 min, 1 h, 2 h or **Custom**), plus a calendar picker when more than one calendar accepts writes. The event carries the task's title and links back to the note. A **right-click** on the row shows the same actions as the sheet on the phone: done/open, move to database, repeat, block time.
 
@@ -78,12 +78,12 @@ For a task from the database, the note also remembers the block in its frontmatt
 
 ## Repeating tasks
 
-A task that comes back regularly gets a **repeat** via the repeat icon in the **Task database** section. Plainva does not create a **series**: checking the task off creates the **next** one as its own note beside the finished one, with the new due date. That way exactly one task is ever open, the finished one stays as the record of what was done, and there is no invisible series you can delete everything from by accident — delete a task and the chain ends.
+A task that comes back regularly gets a **repeat** via the repeat icon in the **Task database** section. Alviss does not create a **series**: checking the task off creates the **next** one as its own note beside the finished one, with the new due date. That way exactly one task is ever open, the finished one stays as the record of what was done, and there is no invisible series you can delete everything from by accident — delete a task and the chain ends.
 
 The dialog offers three things:
 
 - **Rhythm** — Daily, Weekly, Monthly or Yearly, plus the interval under **Every** (for example "Every 3" + "Daily" = every three days).
-- **Counted from: Due date** — a fixed cadence ("every Monday"). Check an overdue task off late and Plainva jumps to the next due date **in the future** instead of filling the list with the ones you missed.
+- **Counted from: Due date** — a fixed cadence ("every Monday"). Check an overdue task off late and Alviss jumps to the next due date **in the future** instead of filling the list with the ones you missed.
 - **Counted from: Completion** — the rhythm starts on the day you check it off ("every three days after I water the plants").
 
 **Do not repeat** removes the repeat again. Monthly tasks never slide past the end of a month: 31 January plus one month is 28 or 29 February, not 3 March.
@@ -122,15 +122,15 @@ A checkbox reminds you when its due date carries a time: write the time right af
 
 Switch it on under **Settings → Calendar → Reminders** with **Checkboxes with a time** — per vault and on this device, off until you switch it on. The reminder comes at that time, minus the lead under **Lead time for tasks with a time**. On the phone it offers **Tick off**, **In 1 hour** and **Tomorrow morning**, like the reminder of a task from the task database; on the desktop the notice beside it offers **Open task**. Either way you land in the note at the task's line, also after the note was renamed or moved.
 
-A checkbox you tick off, delete or give another time is planned anew within seconds. A checkbox with a date but no time does not remind, and notes with `plainva.tasks: false` stay out. Plainva writes nothing into the note for a reminder. Obsidian knows no time of day: it no longer reads a `📅` date that is followed by a time.
+A checkbox you tick off, delete or give another time is planned anew within seconds. A checkbox with a date but no time does not remind, and notes with `plainva.tasks: false` stay out. Alviss writes nothing into the note for a reminder. Obsidian knows no time of day: it no longer reads a `📅` date that is followed by a time.
 
 ## Obsidian compatibility
 
-Tasks are ordinary GFM (GitHub-Flavored Markdown) checkboxes. Plainva never adds a special syntax: the same `- [ ]` lines render as checkboxes in Obsidian and read cleanly in any editor. The `📅 date` and `#tag` conventions are the common Obsidian-Tasks style, but they are just text in your note.
+Tasks are ordinary GFM (GitHub-Flavored Markdown) checkboxes. Alviss never adds a special syntax: the same `- [ ]` lines render as checkboxes in Obsidian and read cleanly in any editor. The `📅 date` and `#tag` conventions are the common Obsidian-Tasks style, but they are just text in your note.
 
 ## Tasks queries from Obsidian
 
-A note that comes from Obsidian may hold a fenced `tasks` block with a query. Plainva draws it as a task list — in Live Preview and in reading mode, on the desktop and on the phone, also inside a quote or callout:
+A note that comes from Obsidian may hold a fenced `tasks` block with a query. Alviss draws it as a task list — in Live Preview and in reading mode, on the desktop and on the phone, also inside a quote or callout:
 
 ````markdown
 ```tasks
@@ -141,21 +141,21 @@ sort by filename reverse
 ```
 ````
 
-The query stays in the note exactly as you wrote it; Plainva never writes into the block. Source mode always shows the plain text.
+The query stays in the note exactly as you wrote it; Alviss never writes into the block. Source mode always shows the plain text.
 
 ### Working with the list
 
-- Tick a task's checkbox: Plainva writes the task's own line in its note — with the done date and the recurrence, as in the Tasks view.
+- Tick a task's checkbox: Alviss writes the task's own line in its note — with the done date and the recurrence, as in the Tasks view.
 - Click or tap a row: the note opens at the task's line.
 - Right-click a row on the desktop, or press and hold it on the phone, to open the row menu: **Done**/**Open**, **Change due date**, **Set priority**, **Set state**.
 - In an embedded note (`![[…]]`) the list is read-only: no tick, no menu.
 - With the caret inside the block, the editor shows the query as text. **Edit query** puts the caret into the query; on the phone it first switches to editing.
 
-The foot of the block shows the number of tasks ("12 tasks"), the **Explanation** switch and **Edit query**. **Explanation** shows how Plainva read each line of the query, with dates as real days. A large result is not cut silently: Plainva shows the first 100 rows, then **Show all n**.
+The foot of the block shows the number of tasks ("12 tasks"), the **Explanation** switch and **Edit query**. **Explanation** shows how Alviss read each line of the query, with dates as real days. A large result is not cut silently: Alviss shows the first 100 rows, then **Show all n**.
 
-### What Plainva understands
+### What Alviss understands
 
-Plainva reads these lines of the Tasks query language:
+Alviss reads these lines of the Tasks query language:
 
 | Topic | Lines |
 |---|---|
@@ -173,12 +173,12 @@ Plainva reads these lines of the Tasks query language:
 | Layout and size | `show tree`, `hide backlink`, `hide task count` and the like, `limit 20`, `limit groups 5`, `explain` |
 | Comments and placeholders | lines starting with `#`; placeholders such as `{{query.file.path}}`, which refer to the note the query stands in |
 
-### Lines Plainva cannot follow
+### Lines Alviss cannot follow
 
 A line of a query falls into one of three cases:
 
-- A line Obsidian knows and Plainva does not yet — for example code (`filter by function`; Plainva never runs code from notes), regular expressions (`regex matches`), dependencies (`is blocked`), presets or other date phrases. A hint above the list names the line and the reason; the line is left out, so the list may show more tasks than in Obsidian — or in a different order, for `sort by` and `group by` lines.
-- A layout line without a counterpart in Plainva (`hide edit button`, `short mode`, …) is accepted silently.
+- A line Obsidian knows and Alviss does not yet — for example code (`filter by function`; Alviss never runs code from notes), regular expressions (`regex matches`), dependencies (`is blocked`), presets or other date phrases. A hint above the list names the line and the reason; the line is left out, so the list may show more tasks than in Obsidian — or in a different order, for `sort by` and `group by` lines.
+- A layout line without a counterpart in Alviss (`hide edit button`, `short mode`, …) is accepted silently.
 - A line Obsidian rejects too (a typo, mixed brackets, an impossible date) shows an error with the line and the reason, and no list.
 
 ### Differences from Obsidian
@@ -186,7 +186,7 @@ A line of a query falls into one of three cases:
 - "Today" is the calendar day.
 - Notes with `plainva.tasks: false` count here; Obsidian does not know that property.
 - A global filter and a global query set in Obsidian are named in the **Explanation** but not applied.
-- Custom status characters (`[>]`, `[!]`, …) are not tasks in Plainva.
+- Custom status characters (`[>]`, `[!]`, …) are not tasks in Alviss.
 
 Dataview blocks stay plain text.
 
@@ -212,18 +212,18 @@ These files belong to different tasks. Recurring tasks with the same title can b
 <!-- task-names-2026-09-24 -->
 ## How provider tasks are named
 
-A task Plainva mirrors from one of your provider's task lists is named after its title: “Call the dentist” becomes `Call the dentist.md` in the folder of your task database. If the name is already taken — by a note of your own or by a second task with the same title — the new task gets the next free number, just like any other note: `Groceries 2.md`, `Groceries 3.md`.
+A task Alviss mirrors from one of your provider's task lists is named after its title: “Call the dentist” becomes `Call the dentist.md` in the folder of your task database. If the name is already taken — by a note of your own or by a second task with the same title — the new task gets the next free number, just like any other note: `Groceries 2.md`, `Groceries 3.md`.
 
-Which task lives in which file is not told by the name but by the frontmatter marker (`plainva.pim`, see the [File Format Reference](File_Format_Reference.md)). So Plainva only reuses an existing name when the file there carries the same task, and it creates new tasks in the same order on every device — two devices hand out the same numbers. If the title changes at the provider, Plainva updates the note's heading but does not rename the file, so links to the note keep working. You can rename and move the note yourself at any time; the marker keeps the link.
+Which task lives in which file is not told by the name but by the frontmatter marker (`plainva.pim`, see the [File Format Reference](File_Format_Reference.md)). So Alviss only reuses an existing name when the file there carries the same task, and it creates new tasks in the same order on every device — two devices hand out the same numbers. If the title changes at the provider, Alviss updates the note's heading but does not rename the file, so links to the note keep working. You can rename and move the note yourself at any time; the marker keeps the link.
 
-**Cleaning up names with an id.** Between 12 and 24 September 2026, Plainva appended an id to the names of new task notes (`Call the dentist — 3f9a1c0b7d2e4a61.md`). If your vault still has such names, the tasks view — on the desktop and on the phone — shows a notice once, listing old → new and the number of links that are updated along with them. **Clean up names…** asks once more and then renames the notes after their titles, numbering same-titled ones as above; links to them are updated. **Hide** puts the notice away until further such names turn up. Plainva only recognises names it gave itself: the id must match the marker in the same file. Nothing is ever renamed on its own. Your other devices receive the renames as a move once they run the same version; an older version sees deleted and new notes there instead, and either asks whether to delete them or keeps the old name next to the new one — best update those devices first. On the desktop the notice appears in the main window.
+**Cleaning up names with an id.** Between 12 and 24 September 2026, Alviss appended an id to the names of new task notes (`Call the dentist — 3f9a1c0b7d2e4a61.md`). If your vault still has such names, the tasks view — on the desktop and on the phone — shows a notice once, listing old → new and the number of links that are updated along with them. **Clean up names…** asks once more and then renames the notes after their titles, numbering same-titled ones as above; links to them are updated. **Hide** puts the notice away until further such names turn up. Alviss only recognises names it gave itself: the id must match the marker in the same file. Nothing is ever renamed on its own. Your other devices receive the renames as a move once they run the same version; an older version sees deleted and new notes there instead, and either asks whether to delete them or keeps the old name next to the new one — best update those devices first. On the desktop the notice appears in the main window.
 
 <!-- tasks-jex-2026-09-14 -->
 ## Tasks metadata and recurrence
 
 Desktop, mobile and Live Preview understand ➕ created, ✅ completed, 📅 due, ⏳ scheduled, 🛫 start, 🆔 ID and 🔁 recurrence. Dates use YYYY-MM-DD. Existing IDs survive line moves. Unknown fields stay in the Markdown.
 
-Automatic recurrence supports only English `every [N] day/week/month/year[s] [when done]`, with N from 1 to 999. Completion advances one period, even if still overdue; `when done` counts from completion. Relative date distances survive, with month-end clamping. An undated task stays undated. Complex rules, dependencies, block IDs, duplicate IDs, invalid dates and indented content do not generate a successor. Native Plainva recurrence or provider ownership also disables the Tasks generator.
+Automatic recurrence supports only English `every [N] day/week/month/year[s] [when done]`, with N from 1 to 999. Completion advances one period, even if still overdue; `when done` counts from completion. Relative date distances survive, with month-end clamping. An undated task stays undated. Complex rules, dependencies, block IDs, duplicate IDs, invalid dates and indented content do not generate a successor. Native Alviss recurrence or provider ownership also disables the Tasks generator.
 
 Checking a task with metadata adds its completion date. Supported recurrence adds an ID if needed and gives the successor a distinct `pv-…` ID. Checkbox and successor form one Markdown edit. Reopening the original keeps the successor; checking again preserves its edits. Editor Undo reverses the entire edit.
 
@@ -238,22 +238,22 @@ Status, search text, folder, tag, “Only with due date” and hidden-task visib
 
 The Tasks view opens on **Today**. The lists — a rail on the left on the desktop, a segment above the list on the phone — are **Today** (what is due today, with **Overdue** on top), **Upcoming** (the next 14 days, by day), **Inbox** (open tasks without a date), **All** (the two sections described above, with the **Open**/**Done**/**All** filter) and **Done**. Every list draws from both sources, the task database and the checkboxes in your notes, ordered by priority, then time, then title. The other filters apply to every list, and the chosen list is remembered per vault. On the desktop the rail also lists the most frequent tags as one-click filters; on the phone the **Today** screen leads into the planner's **Today**.
 
-Above the lists sits the capture field; on the phone **+ New task** and the **＋** button open it as a sheet. Type one line — `Send offer tomorrow 2pm !!! #client weekly` — and press Enter: Plainva creates the task in the task database. It understands today, tomorrow, the day after tomorrow, weekdays, "in 3 days", "next week", dates in digits, a time (`14:30`, `2pm`), a rhythm (daily, weekly, monthly, yearly, "every Monday", "every 2 weeks"), `!`, `!!` and `!!!` for low, medium and high priority, and `#tags` — the words in the language of the app, digits and signs in any language. Everything it recognised is marked inside the field and listed below it as a removable brick **before** anything is saved; take a brick away and its words simply count as title again. On the phone, quick buttons write the same words for you. If the task database names a provider list, a chip decides whether the task is created there too.
+Above the lists sits the capture field; on the phone **+ New task** and the **＋** button open it as a sheet. Type one line — `Send offer tomorrow 2pm !!! #client weekly` — and press Enter: Alviss creates the task in the task database. It understands today, tomorrow, the day after tomorrow, weekdays, "in 3 days", "next week", dates in digits, a time (`14:30`, `2pm`), a rhythm (daily, weekly, monthly, yearly, "every Monday", "every 2 weeks"), `!`, `!!` and `!!!` for low, medium and high priority, and `#tags` — the words in the language of the app, digits and signs in any language. Everything it recognised is marked inside the field and listed below it as a removable brick **before** anything is saved; take a brick away and its words simply count as title again. On the phone, quick buttons write the same words for you. If the task database names a provider list, a chip decides whether the task is created there too.
 
-**Set priority** in a row's menu (right-click on the desktop, press and hold on the phone) offers **high**, **medium**, **low** and **none**; a flag in front of the title shows it. In the task database the priority is a select column: a database created now has it, an older one gets it the first time you set a priority — never by merely being opened. A checkbox carries the priority mark known from Obsidian on its line: Plainva reads 🔺 and ⏫ as high, 🔼 as medium, 🔽 and ⏬ as low, and writes ⏫, 🔼 or 🔽.
+**Set priority** in a row's menu (right-click on the desktop, press and hold on the phone) offers **high**, **medium**, **low** and **none**; a flag in front of the title shows it. In the task database the priority is a select column: a database created now has it, an older one gets it the first time you set a priority — never by merely being opened. A checkbox carries the priority mark known from Obsidian on its line: Alviss reads 🔺 and ⏫ as high, 🔼 as medium, 🔽 and ⏬ as low, and writes ⏫, 🔼 or 🔽.
 
-`- [/]` (**In progress**) and `- [-]` (**Cancelled**) are tasks too. They get a box of their own in the editor, in reading mode and in every list; in progress counts as open, cancelled as closed. A click still only moves between open and done — it completes a task in progress and reopens a cancelled one. **Set state** in the row menu sets the two states; Plainva never writes them on its own.
+`- [/]` (**In progress**) and `- [-]` (**Cancelled**) are tasks too. They get a box of their own in the editor, in reading mode and in every list; in progress counts as open, cancelled as closed. A click still only moves between open and done — it completes a task in progress and reopens a cancelled one. **Set state** in the row menu sets the two states; Alviss never writes them on its own.
 
 **A task's date is the way to change it.** Press the date on a task (inside a day, its time) and the date picker opens — under the date on the desktop, as a sheet on the phone. **Change due date** in the row's menu opens the same picker; that is also how a task without a date gets one. On the phone, **New task** and the date cell of a database pick their day from the same calendar, not from the system's date wheel. A checkbox in a note — in the editor, the reading view and the journal — is sized for a finger on the phone. An entry of the task database keeps its time of day, a checkbox gets or changes its `📅` date. At the **Overdue** heading, **All to today** moves every overdue task to today in one step. Both are confirmed by a notice that offers **Undo**. In the capture field, `[[` suggests notes and `#` suggests tags, as in the editor: `Enter` or `Tab` takes the highlighted suggestion, `Esc` closes the list.
 
-**Quick choices and a time.** Above the calendar the picker lists **Today**, **Tomorrow**, **This weekend**, **Next week** and **No date**, each with its weekday. This weekend is the coming Saturday — today, if it is Saturday or Sunday; next week is the first day of next week as set under **Week starts on**. At the bottom, **Time** has a switch: off, the task is due all day; on, you pick the time beside it. A quick choice or a day keeps a time that is already set; to change only the time, press **Done**. An entry of the task database stores the time in its due value (`2026-10-26T10:00`). For a checkbox in a note the picker sets the day only — the `📅` of Obsidian has no time — and says so there instead of offering the switch; a time you write after the date yourself (see *Reminders for checkboxes*) stays when the day moves. If the database's due column shows days only, Plainva offers once to **Switch to date & time**.
+**Quick choices and a time.** Above the calendar the picker lists **Today**, **Tomorrow**, **This weekend**, **Next week** and **No date**, each with its weekday. This weekend is the coming Saturday — today, if it is Saturday or Sunday; next week is the first day of next week as set under **Week starts on**. At the bottom, **Time** has a switch: off, the task is due all day; on, you pick the time beside it. A quick choice or a day keeps a time that is already set; to change only the time, press **Done**. An entry of the task database stores the time in its due value (`2026-10-26T10:00`). For a checkbox in a note the picker sets the day only — the `📅` of Obsidian has no time — and says so there instead of offering the switch; a time you write after the date yourself (see *Reminders for checkboxes*) stays when the day moves. If the database's due column shows days only, Alviss offers once to **Switch to date & time**.
 
-More ways in: **New task** in the tray menu on the desktop (when Plainva keeps running in the background), on Android the launcher shortcut **New task** (press and hold the app icon), and on the phone **Create as a task** when you share something to Plainva — the text and the attachments end up in the task's note. How a task with a time reminds you is described under [Calendar & external tasks](Calendar_and_Tasks.md).
+More ways in: **New task** in the tray menu on the desktop (when Alviss keeps running in the background), on Android the launcher shortcut **New task** (press and hold the app icon), and on the phone **Create as a task** when you share something to Alviss — the text and the attachments end up in the task's note. How a task with a time reminds you is described under [Calendar & external tasks](Calendar_and_Tasks.md).
 
 <!-- widgets-2026-09-23 -->
 ## Ticking off from a widget
 
-The checkbox in the **Today** widget records a request: the tick appears at once, the note changes the next time you open Plainva, and that is when the recurrence and the sync happen. Until then the row says **applied when you open Plainva**. A task you have finished, deleted or moved in the meantime is quietly left alone. On an iPhone this needs iOS 17; below that a tap on the row opens the task. Details: [The mobile app](Mobile_App.md).
+The checkbox in the **Today** widget records a request: the tick appears at once, the note changes the next time you open Alviss, and that is when the recurrence and the sync happen. Until then the row says **applied when you open Alviss**. A task you have finished, deleted or moved in the meantime is quietly left alone. On an iPhone this needs iOS 17; below that a tap on the row opens the task. Details: [The mobile app](Mobile_App.md).
 
 <!-- task-rows-2026-10-24 -->
 ## Subtasks, bullet points and what was done today
@@ -264,6 +264,6 @@ The checkbox in the **Today** widget records a request: the tick appears at once
 
 Both are on until you switch them off: **Subtasks** and **Bullet points** sit with the other filters (checkboxes on the desktop, chips on the phone) and are remembered with them.
 
-**Done today.** Under **Today**, a folded line **Done (n)** collects what was ticked off today — a checkbox by its completion date `✅` (which Plainva writes with every tick), an entry of the task database by the day its note last changed, because a database has no completion date of its own. A finished checkbox without a date is not counted: nothing says when it was done. The fold is closed until you open it; the device remembers your choice. The phone's **Today** screen shows the same fold under **Due**.
+**Done today.** Under **Today**, a folded line **Done (n)** collects what was ticked off today — a checkbox by its completion date `✅` (which Alviss writes with every tick), an entry of the task database by the day its note last changed, because a database has no completion date of its own. A finished checkbox without a date is not counted: nothing says when it was done. The fold is closed until you open it; the device remembers your choice. The phone's **Today** screen shows the same fold under **Due**.
 
 **The box on the phone.** In the editor, in reading mode, in the Tasks area and under **Today**, the phone draws every task box the same way: large and rounded, filled with a tick when done, half filled when **In progress**, struck through when **Cancelled**. The desktop keeps its smaller boxes, made for a mouse.

@@ -2,11 +2,11 @@
 
 Dernière mise à jour : 2026-11-02
 
-Plainva protège votre travail à deux niveaux : les **versions de fichiers** (instantanés automatiques de chaque fichier lors de l'édition et de la suppression) et les **sauvegardes du vault** (archives ZIP régulières de tout le vault, stockées en dehors du dossier du vault). Les deux fonctionnent en arrière-plan sans aucune configuration et peuvent être ajustés dans les paramètres sous **Sauvegarde & historique des versions**.
+Alviss protège votre travail à deux niveaux : les **versions de fichiers** (instantanés automatiques de chaque fichier lors de l'édition et de la suppression) et les **sauvegardes du vault** (archives ZIP régulières de tout le vault, stockées en dehors du dossier du vault). Les deux fonctionnent en arrière-plan sans aucune configuration et peuvent être ajustés dans les paramètres sous **Sauvegarde & historique des versions**.
 
 ## Versions de fichiers (instantanés)
 
-Avant chaque enregistrement, Plainva stocke un instantané de l'état précédent — sous forme de copie texte ordinaire dans `.plainva/backups/` à l'intérieur du vault (ce dossier est masqué dans l'arborescence de fichiers, la recherche et la synchronisation). Pour éviter des centaines de copies pendant que vous tapez, un **Intervalle des instantanés** s'applique (par défaut : au plus une nouvelle version toutes les 2 minutes). **La suppression crée toujours un instantané**, quel que soit l'intervalle.
+Avant chaque enregistrement, Alviss stocke un instantané de l'état précédent — sous forme de copie texte ordinaire dans `.plainva/backups/` à l'intérieur du vault (ce dossier est masqué dans l'arborescence de fichiers, la recherche et la synchronisation). Pour éviter des centaines de copies pendant que vous tapez, un **Intervalle des instantanés** s'applique (par défaut : au plus une nouvelle version toutes les 2 minutes). **La suppression crée toujours un instantané**, quel que soit l'intervalle.
 
 Conservation (configurable par vault) :
 
@@ -17,7 +17,7 @@ Conservation (configurable par vault) :
 
 Lorsque vous renommez ou déplacez un fichier, son historique de versions le suit.
 
-**Pourquoi les fichiers volumineux sont traités différemment :** une pièce jointe de 90 Mo modifiée à répétition pourrait sinon remplir le vault de cent copies — neuf gigaoctets pour un seul fichier. Au-delà de la limite, Plainva conserve la version la plus récente plutôt que tout l'historique, et le signale une fois par vault. Les notes et les images ordinaires sont bien en dessous et ne sont pas concernées. **Une suppression est toujours sauvegardée intégralement**, quelle que soit la taille : la nouvelle version d'un fichier enregistré est encore sur le disque, un fichier supprimé ne l'est plus — l'instantané est alors le seul retour possible.
+**Pourquoi les fichiers volumineux sont traités différemment :** une pièce jointe de 90 Mo modifiée à répétition pourrait sinon remplir le vault de cent copies — neuf gigaoctets pour un seul fichier. Au-delà de la limite, Alviss conserve la version la plus récente plutôt que tout l'historique, et le signale une fois par vault. Les notes et les images ordinaires sont bien en dessous et ne sont pas concernées. **Une suppression est toujours sauvegardée intégralement**, quelle que soit la taille : la nouvelle version d'un fichier enregistré est encore sur le disque, un fichier supprimé ne l'est plus — l'instantané est alors le seul retour possible.
 
 ## Consulter et restaurer des versions
 
@@ -31,22 +31,22 @@ Les images ont aussi des versions (avec aperçu) ; les autres fichiers binaires 
 
 ## Restaurer des fichiers supprimés
 
-Comme chaque suppression crée d'abord un instantané du fichier, Plainva peut ramener des fichiers supprimés : un clic droit sur le nom du vault en haut de l'arborescence → **Restaurer les fichiers supprimés…** (également accessible sous **Paramètres → Vault → Sauvegarde & historique des versions → Historique des versions**). La liste affiche tous les fichiers dont les instantanés existent encore alors que l'original a disparu — **Restaurer** recrée l'état le plus récent à l'emplacement d'origine (les dossiers sont recréés si nécessaire), **Versions…** ouvre l'historique complet du fichier supprimé.
+Comme chaque suppression crée d'abord un instantané du fichier, Alviss peut ramener des fichiers supprimés : un clic droit sur le nom du vault en haut de l'arborescence → **Restaurer les fichiers supprimés…** (également accessible sous **Paramètres → Vault → Sauvegarde & historique des versions → Historique des versions**). La liste affiche tous les fichiers dont les instantanés existent encore alors que l'original a disparu — **Restaurer** recrée l'état le plus récent à l'emplacement d'origine (les dossiers sont recréés si nécessaire), **Versions…** ouvre l'historique complet du fichier supprimé.
 
-Remarque : la suppression de tout un **dossier** le déplace vers la corbeille du système d'exploitation — dans ce cas, la corbeille du système est le premier moyen de récupération ; dans Plainva, vous ne trouverez éventuellement que d'anciens instantanés des fichiers qu'il contenait.
+Remarque : la suppression de tout un **dossier** le déplace vers la corbeille du système d'exploitation — dans ce cas, la corbeille du système est le premier moyen de récupération ; dans Alviss, vous ne trouverez éventuellement que d'anciens instantanés des fichiers qu'il contenait.
 
 ## Sauvegardes automatiques du vault (ZIP)
 
-De plus, Plainva sauvegarde tout le vault sous forme de fichier ZIP — par défaut **une fois par jour** en arrière-plan (à l'ouverture du vault, si la dernière sauvegarde date de plus de 24 heures). Cela vous protège même si le dossier du vault lui-même est perdu ou endommagé, car les ZIP se trouvent **en dehors** du vault :
+De plus, Alviss sauvegarde tout le vault sous forme de fichier ZIP — par défaut **une fois par jour** en arrière-plan (à l'ouverture du vault, si la dernière sauvegarde date de plus de 24 heures). Cela vous protège même si le dossier du vault lui-même est perdu ou endommagé, car les ZIP se trouvent **en dehors** du vault :
 
 - La destination par défaut est le dossier de données de l'application (affiché sous **Dossier de destination** dans les paramètres ; **Ouvrir le dossier** vous y mène directement).
-- Via **Choisir un dossier…**, vous pouvez à la place choisir un disque externe ou un NAS ; **Par défaut** revient au dossier de données de l'application. Si la destination est actuellement inaccessible (NAS éteint), la barre d'état le signale discrètement et Plainva réessaiera plus tard.
+- Via **Choisir un dossier…**, vous pouvez à la place choisir un disque externe ou un NAS ; **Par défaut** revient au dossier de données de l'application. Si la destination est actuellement inaccessible (NAS éteint), la barre d'état le signale discrètement et Alviss réessaiera plus tard.
 - **Sauvegardes à conserver** (par défaut : 7) limite le nombre ; les ZIP les plus anciens du même vault sont supprimés automatiquement. Les fichiers étrangers dans le dossier de destination ne sont jamais touchés.
 - **Sauvegarder maintenant** démarre une sauvegarde manuellement à tout moment ; la barre d'état affiche l'exécution et son résultat.
 
 Les fichiers ZIP sont nommés `VaultName_2026-07-05_14-30-00.zip` et contiennent toutes les notes, les pièces jointes et votre configuration `.obsidian` — ils ne contiennent **pas** le dossier interne `.plainva` (l'index de recherche est reconstruit à la prochaine ouverture ; les versions de fichiers ne font délibérément pas partie du ZIP).
 
-**Restaurer à partir d'un ZIP :** le ZIP est une archive tout à fait normale. Extrayez-la où vous voulez et ouvrez le dossier extrait dans Plainva comme vault — c'est terminé.
+**Restaurer à partir d'un ZIP :** le ZIP est une archive tout à fait normale. Extrayez-la où vous voulez et ouvrez le dossier extrait dans Alviss comme vault — c'est terminé.
 
 ## Paramètres en un coup d'œil
 
@@ -63,8 +63,8 @@ Paramètres → **Vault** → **Sauvegarde & historique des versions** :
 
 ## Bon à savoir
 
-- Les versions de fichiers sont de simples copies dans `.plainva/backups/` — en cas de besoin, vous pouvez les ouvrir sans Plainva dans n'importe quel gestionnaire de fichiers.
-- La synchronisation propre de Plainva ne transfère jamais `.plainva`. Si vous synchronisez le dossier du vault avec un client tiers (p. ex. l'application Nextcloud), les instantanés voyagent avec lui — cela coûte un peu d'espace de stockage, mais ne cause aucun dommage.
+- Les versions de fichiers sont de simples copies dans `.plainva/backups/` — en cas de besoin, vous pouvez les ouvrir sans Alviss dans n'importe quel gestionnaire de fichiers.
+- La synchronisation propre de Alviss ne transfère jamais `.plainva`. Si vous synchronisez le dossier du vault avec un client tiers (p. ex. l'application Nextcloud), les instantanés voyagent avec lui — cela coûte un peu d'espace de stockage, mais ne cause aucun dommage.
 - Les conflits de synchronisation sont en plus protégés via des fichiers `.CONFLICT` (voir la [FAQ](FAQ.md)) ; l'historique des versions complète cela avec la chronologie de chaque fichier.
 
 Sur le téléphone, **Sauvegardes ZIP** est le premier groupe de la page **Sauvegarde & historique des versions** ; l’**Historique des versions** vient ensuite, avec **Restaurer les fichiers supprimés** à sa fin.
@@ -73,7 +73,7 @@ Sur mobile, l’échec de l’enregistrement d’une note interrompt le changeme
 
 Une sauvegarde ZIP n’est considérée comme réussie qu’après la lecture de tous les fichiers sélectionnés et l’enregistrement de l’archive complète. Un échec ne supprime aucune archive antérieure et ne change pas la date de la dernière sauvegarde réussie. Sur mobile, le message d’échec automatique nomme le vault ; **Sauvegarder maintenant** sous **Sauvegarde & historique des versions** → **Sauvegardes ZIP** permet de réessayer. Les réglages utilisateur cachés, comme `.obsidian`, sont inclus sur les deux plateformes. Les dossiers `.plainva`, `.git`, `.trash` et `node_modules` sont exclus à tous les niveaux. Plusieurs archives créées dans la même seconde reçoivent un suffixe tel que `_001`.
 
-L’enregistrement n’est indiqué comme terminé qu’après confirmation de l’écriture. Le texte saisi pendant un enregistrement reste en attente jusqu’à l’écriture de sa propre version. Sur ordinateur, chaque brouillon appartient à sa session d’édition : la fin d’une ancienne session ne supprime pas le brouillon d’un éditeur nouvellement ouvert. Si des modifications externes arrivent en même temps, Plainva fusionne les changements compatibles ; en cas de conflit, le texte reste disponible dans le brouillon et une copie de conflit.
+L’enregistrement n’est indiqué comme terminé qu’après confirmation de l’écriture. Le texte saisi pendant un enregistrement reste en attente jusqu’à l’écriture de sa propre version. Sur ordinateur, chaque brouillon appartient à sa session d’édition : la fin d’une ancienne session ne supprime pas le brouillon d’un éditeur nouvellement ouvert. Si des modifications externes arrivent en même temps, Alviss fusionne les changements compatibles ; en cas de conflit, le texte reste disponible dans le brouillon et une copie de conflit.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Des choix clairs pour comparer les fichiers
@@ -95,4 +95,4 @@ La fusion ligne par ligne est un outil de bureau ; ici, vous adoptez une version
 
 ## Comparer la sauvegarde sélectionnée
 
-La version sélectionnée affiche les lignes ajoutées et supprimées par rapport à la note actuelle, même lorsque le diff est masqué. **Ouvrir dans une nouvelle fenêtre** conserve exactement cette sauvegarde sur ordinateur. Si elle disparaît, Plainva l’indique. Les gros fichiers peuvent ne pas afficher de nombre de lignes ; les fichiers binaires n’ont pas de comparaison textuelle. Les mêmes nombres figurent dans la comparaison mobile complète.
+La version sélectionnée affiche les lignes ajoutées et supprimées par rapport à la note actuelle, même lorsque le diff est masqué. **Ouvrir dans une nouvelle fenêtre** conserve exactement cette sauvegarde sur ordinateur. Si elle disparaît, Alviss l’indique. Les gros fichiers peuvent ne pas afficher de nombre de lignes ; les fichiers binaires n’ont pas de comparaison textuelle. Les mêmes nombres figurent dans la comparaison mobile complète.

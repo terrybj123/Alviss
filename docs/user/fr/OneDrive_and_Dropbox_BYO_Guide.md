@@ -2,7 +2,7 @@
 
 Dernière mise à jour : 2026-10-30
 
-**Vous n'avez normalement pas besoin de cette page :** Plainva fournit son propre ID d'application pour OneDrive **et** Dropbox — vous choisissez le fournisseur, cliquez sur **Se connecter avec Microsoft…** ou **Se connecter avec Dropbox…** et vous vous connectez. Vous n'avez besoin de votre **propre** inscription d'application (gratuite) que dans deux cas : lorsqu'une restriction d'entreprise bloque la connexion fournie, ou lorsque vous souhaitez délibérément placer la connexion sous votre propre contrôle. Pour **OneDrive**, vous le saisissez sous **Connexion sur cet appareil** → **Modifier** → **ID client personnel** — sur la page du compte ou dans l'assistant, sur le bureau comme sur le téléphone, pour cet appareil uniquement. Pour **Dropbox**, c'est pareil : dans l'assistant sous **Autre connexion** → **Clé d'application personnelle**, ou sur la page du compte sous **Accès sur cet appareil** → **Connexion sur cet appareil** → **Modifier**. La clé d'application vaut pour cet appareil, les autres appareils gardent leur réglage ; une clé d'application qu'un compte avait déjà auparavant est reprise automatiquement. Dans les deux cas, saisissez une seule valeur publique :
+**Vous n'avez normalement pas besoin de cette page :** Alviss fournit son propre ID d'application pour OneDrive **et** Dropbox — vous choisissez le fournisseur, cliquez sur **Se connecter avec Microsoft…** ou **Se connecter avec Dropbox…** et vous vous connectez. Vous n'avez besoin de votre **propre** inscription d'application (gratuite) que dans deux cas : lorsqu'une restriction d'entreprise bloque la connexion fournie, ou lorsque vous souhaitez délibérément placer la connexion sous votre propre contrôle. Pour **OneDrive**, vous le saisissez sous **Connexion sur cet appareil** → **Modifier** → **ID client personnel** — sur la page du compte ou dans l'assistant, sur le bureau comme sur le téléphone, pour cet appareil uniquement. Pour **Dropbox**, c'est pareil : dans l'assistant sous **Autre connexion** → **Clé d'application personnelle**, ou sur la page du compte sous **Accès sur cet appareil** → **Connexion sur cet appareil** → **Modifier**. La clé d'application vaut pour cet appareil, les autres appareils gardent leur réglage ; une clé d'application qu'un compte avait déjà auparavant est reprise automatiquement. Dans les deux cas, saisissez une seule valeur publique :
 
 - **OneDrive** → un **ID client** (format `00000000-0000-0000-0000-000000000000`)
 - **Dropbox** → une **Clé d'application** (une courte chaîne de caractères)
@@ -27,8 +27,8 @@ Cette page est le complément détaillé aux versions courtes sous [Configurer l
 ### 2. Créer une nouvelle inscription d'application
 
 1. Menu **Identité → Applications → Inscriptions d'applications**, puis **+ Nouvelle inscription**.
-2. **Nom :** libre, p. ex. `Plainva` (affichage uniquement).
-3. **Types de comptes pris en charge :** choisissez **« Comptes dans un annuaire organisationnel quelconque … et comptes Microsoft personnels »**. Seule cette option correspond au point de terminaison de connexion de Plainva ; « cet annuaire uniquement » fait échouer les comptes OneDrive personnels.
+2. **Nom :** libre, p. ex. `Alviss` (affichage uniquement).
+3. **Types de comptes pris en charge :** choisissez **« Comptes dans un annuaire organisationnel quelconque … et comptes Microsoft personnels »**. Seule cette option correspond au point de terminaison de connexion de Alviss ; « cet annuaire uniquement » fait échouer les comptes OneDrive personnels.
 4. **URI de redirection** — à faire directement ici :
    - Plateforme : **« Client public/natif (mobile et bureau) »**.
    - Valeur : `http://localhost` (exactement ainsi — sans port, sans barre oblique finale).
@@ -38,7 +38,7 @@ Cette page est le complément détaillé aux versions courtes sous [Configurer l
 
 ### 3. Copier l'ID client
 
-Sur la page **Vue d'ensemble** de l'application, copiez la valeur **« ID d'application (client) »** — c'est votre valeur pour Plainva. (L'« ID de répertoire (locataire) » n'est pas nécessaire.)
+Sur la page **Vue d'ensemble** de l'application, copiez la valeur **« ID d'application (client) »** — c'est votre valeur pour Alviss. (L'« ID de répertoire (locataire) » n'est pas nécessaire.)
 
 ### 4. Autoriser les flux de client public
 
@@ -51,10 +51,10 @@ Sur la page **Vue d'ensemble** de l'application, copiez la valeur **« ID d'appl
 1. Menu **Autorisations API → + Ajouter une autorisation → Microsoft Graph → Autorisations déléguées**.
 2. Cochez les deux :
    - `Files.ReadWrite`
-   - `offline_access` (fournit le jeton de connexion longue durée — **sans lui**, Plainva refuse de se connecter)
+   - `offline_access` (fournit le jeton de connexion longue durée — **sans lui**, Alviss refuse de se connecter)
 3. **Ajouter**. Le consentement de l'administrateur n'est pas requis pour les comptes personnels ; vous y consentez vous-même lors de la connexion.
 
-### Le saisir dans Plainva
+### Le saisir dans Alviss
 
 1. **Paramètres → votre vault → Comptes cloud** : ouvrez le compte Microsoft, ou lancez **Connecter un compte…** avec la tuile **Microsoft**.
 2. Sous **Connexion sur cet appareil**, choisissez **Modifier**, puis **ID client personnel**.
@@ -78,14 +78,14 @@ Sur la page **Vue d'ensemble** de l'application, copiez la valeur **« ID d'appl
 2. **Type of access :** **Full Dropbox** — pas « App folder ».
 
    > ⚠️ **Full Dropbox** est requis : « App folder » ne voit qu'un sous-dossier isolé et ne trouvera pas les vaults existants ailleurs dans votre Dropbox.
-3. **Name :** un nom unique au niveau mondial, p. ex. `Plainva-Sync-<votrenom>` (purement technique, personne d'autre ne le voit).
+3. **Name :** un nom unique au niveau mondial, p. ex. `Alviss-Sync-<votrenom>` (purement technique, personne d'autre ne le voit).
 4. **Create app**.
 
 ### 3. Enregistrer l'URI de redirection
 
 Onglet **Settings → OAuth 2 → Redirect URIs** : saisissez **exactement** `http://127.0.0.1:41953` et cliquez sur **Add**.
 
-> ⚠️ Doit correspondre caractère pour caractère : `127.0.0.1` (pas `localhost`), port `41953`, pas de barre oblique finale. Plainva se lie exactement à ce port ; toute déviation interrompt la connexion.
+> ⚠️ Doit correspondre caractère pour caractère : `127.0.0.1` (pas `localhost`), port `41953`, pas de barre oblique finale. Alviss se lie exactement à ce port ; toute déviation interrompt la connexion.
 
 ### 4. Définir les autorisations
 
@@ -96,20 +96,20 @@ Onglet **Permissions** — cochez ce qui suit et cliquez sur **Submit** en bas :
 - `files.content.read`
 - `files.content.write`
 
-> ⚠️ Si vous modifiez les autorisations plus tard, vous devez **vous reconnecter** dans Plainva, sinon les anciens droits restent appliqués.
+> ⚠️ Si vous modifiez les autorisations plus tard, vous devez **vous reconnecter** dans Alviss, sinon les anciens droits restent appliqués.
 
 ### 5. Copier l'App key
 
-Onglet **Settings** : copiez la valeur **App key** — c'est votre valeur pour Plainva. (L'« App secret » n'est pas nécessaire.)
+Onglet **Settings** : copiez la valeur **App key** — c'est votre valeur pour Alviss. (L'« App secret » n'est pas nécessaire.)
 
 > Votre application reste au statut « Development ». C'est suffisant pour un usage privé ; « Apply for production » n'est nécessaire que si de nombreuses autres personnes utilisent la même App key.
 
-### Le saisir dans Plainva
+### Le saisir dans Alviss
 
 1. **Paramètres → Vault → Comptes cloud** : ouvrez le compte Dropbox ou démarrez **Connecter un compte…** avec la tuile **Dropbox**.
 2. Dans l'assistant, ouvrez **Autre connexion** et choisissez **Clé d'application personnelle** ; sur la page du compte, utilisez à la place **Accès sur cet appareil** → **Connexion sur cet appareil** → **Modifier**.
 3. Collez la clé d'application copiée et **Enregistrer**.
-4. **Se connecter avec Dropbox…** (sur la page du compte **Se reconnecter**) → connectez-vous dans le navigateur et confirmez l'accès. Vous choisissez ensuite le dossier cloud (par défaut `/Plainva`) via **Choisir un dossier…**.
+4. **Se connecter avec Dropbox…** (sur la page du compte **Se reconnecter**) → connectez-vous dans le navigateur et confirmez l'accès. Vous choisissez ensuite le dossier cloud (par défaut `/Alviss`) via **Choisir un dossier…**.
 
 ---
 

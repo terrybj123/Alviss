@@ -2,7 +2,7 @@
 
 Dernière mise à jour : 2026-09-30
 
-Plainva propose trois façons de rechercher : la recherche en texte intégral dans tout le vault, le sélecteur rapide pour ouvrir des fichiers, et rechercher & remplacer dans une note.
+Alviss propose trois façons de rechercher : la recherche en texte intégral dans tout le vault, le sélecteur rapide pour ouvrir des fichiers, et rechercher & remplacer dans une note.
 
 ## Recherche en texte intégral dans le vault
 
@@ -10,7 +10,7 @@ Le champ en haut de la barre latérale recherche les titres et les contenus dans
 
 La recherche réagit au fur et à mesure que vous tapez : les préfixes de mots correspondent déjà ("Proj" trouve "Projet plan") — pas besoin d'appuyer sur Entrée. Le **X** à droite du champ efface la recherche en cours (ou appuyez sur `Esc`) ; la barre latérale réaffiche alors l'arborescence de fichiers normale.
 
-En chinois, en japonais, en thaï et dans d'autres écritures sans espaces entre les mots, la recherche trouve un terme n'importe où dans le texte : `議事録` trouve "今日は会議の議事録を書いた", `搜索` trouve "全文搜索". Les mots latins au milieu d'un tel texte sont trouvés aussi ("Plainva" dans "…でPlainvaを使った").
+En chinois, en japonais, en thaï et dans d'autres écritures sans espaces entre les mots, la recherche trouve un terme n'importe où dans le texte : `議事録` trouve "今日は会議の議事録を書いた", `搜索` trouve "全文搜索". Les mots latins au milieu d'un tel texte sont trouvés aussi ("Alviss" dans "…でAlvissを使った").
 
 La recherche affiche chaque occurrence avec un extrait, le chemin des titres et le numéro de ligne. Ouvrir une ligne sélectionne cette occurrence précise ; les correspondances d’une même note sont présentées séparément. Le compteur ne comprend que les résultats déjà chargés. Vous pouvez charger d’autres occurrences. Les flèches déplacent la sélection et Entrée l’ouvre. Le chargement, les résultats vides et les erreurs sont indiqués ; une nouvelle saisie écarte les anciennes réponses. Si une modification empêche de retrouver une occurrence sans ambiguïté, un message le signale. Ces occurrences sont aussi disponibles dans le sélecteur rapide et la recherche mobile. Sur le téléphone, revenir à la recherche restaure la requête, les résultats chargés et la position dans la liste. Les résultats arrivent par **Pertinence**, sauf si tu choisis **Dernière modification**, **Titre** ou **Chemin** avec le bouton de tri à côté du champ de recherche (sur le téléphone : dans la barre de la recherche) ; le chargement suivant conserve l'ordre choisi. Sur le téléphone, la feuille de tri reste ouverte jusqu'à ce que tu touches **Terminé** : toucher à nouveau l'ordre choisi inverse le sens.
 
@@ -23,7 +23,7 @@ Le champ de recherche s'applique aussi aux autres vues de la barre latérale : d
 - `path:dossier` — uniquement les fichiers dont le chemin contient le texte (par ex. `path:Projets` ; avec des espaces : `path:"Mon Dossier"`).
 - `tag:nom` — uniquement les notes portant ce tag, y compris les tags imbriqués : `tag:projet` trouve aussi `#projet/interne`. `tag:#projet` fonctionne également.
 - Les opérateurs peuvent être niés (`-path:Archives`, `-tag:fait`) et combinés librement avec des termes de recherche : `plan tag:projet -brouillon`.
-- Plusieurs termes sont combinés avec ET. Les caractères spéciaux comme `- ( ) : *` à l'intérieur des termes sont sans danger — Plainva traite la saisie littéralement.
+- Plusieurs termes sont combinés avec ET. Les caractères spéciaux comme `- ( ) : *` à l'intérieur des termes sont sans danger — Alviss traite la saisie littéralement.
 
 ## Sélecteur rapide
 
@@ -55,7 +55,7 @@ La vue **Tags** de la barre latérale liste tous les `#tags` du vault avec un no
 
 Dans la note, un tag s'affiche comme une petite pastille — à l'écriture comme à la lecture ; le texte lui-même reste `#projet/site`. Un clic sur la pastille (sur le téléphone : un appui en mode lecture) ouvre les notes qui portent le tag. Ce qui compte comme tag est identique partout — dans la liste des tags, dans une tâche et lors du renommage : un `#` en début de ligne ou après une espace, suivi de lettres, de chiffres, de `_`, `-` ou `/`. Des chiffres seuls ne sont pas un tag (`#42` reste un numéro), pas plus que ce qui se trouve dans du code ou dans un lien. **Colorer les tags** sous **Paramètres → App → Apparence** donne à chaque tag une couleur qui découle de son nom ; les tags imbriqués partagent la couleur de leur tag de premier niveau. Le réglage appartient à cet appareil et n'enregistre rien dans vos notes.
 
-**Renommer un tag** dans tout le vault : faites un clic droit sur un tag dans la vue **Tags** et saisissez un nouveau nom. Plainva réécrit le tag partout — dans le corps des notes (`#tag` et ses sous-tags `#tag/child`) et dans le frontmatter (`tags:`) — en réécrivant chaque note concernée par le même chemin sûr. Les tags sans rapport qui contiennent simplement le nom (par exemple `#area/tag`) restent inchangés.
+**Renommer un tag** dans tout le vault : faites un clic droit sur un tag dans la vue **Tags** et saisissez un nouveau nom. Alviss réécrit le tag partout — dans le corps des notes (`#tag` et ses sous-tags `#tag/child`) et dans le frontmatter (`tags:`) — en réécrivant chaque note concernée par le même chemin sûr. Les tags sans rapport qui contiennent simplement le nom (par exemple `#area/tag`) restent inchangés.
 
 ## Naviguer dans une note
 

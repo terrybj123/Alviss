@@ -1,10 +1,10 @@
-# Plainva-gebruikershandleiding
+# Alviss-gebruikershandleiding
 
 Laatst bijgewerkt: 2026-09-20
 
 Deze vertaling is automatisch gegenereerd — correcties zijn welkom.
 
-Plainva is een Markdown-vault-editor: je notities zijn gewone Markdown-bestanden in een map (een "vault") op je computer — geen database-silo, geen verplicht cloudaccount. Deze handleiding legt uit hoe je met Plainva werkt en hoe de bestandsformaten werken.
+Alviss is een Markdown-vault-editor: je notities zijn gewone Markdown-bestanden in een map (een "vault") op je computer — geen database-silo, geen verplicht cloudaccount. Deze handleiding legt uit hoe je met Alviss werkt en hoe de bestandsformaten werken.
 
 ## Inhoud
 
@@ -13,13 +13,13 @@ Plainva is een Markdown-vault-editor: je notities zijn gewone Markdown-bestanden
 | [Aan de slag](Getting_Started.md) | Een vault openen of aanmaken, de interface, editormodi, tabbladen en gesplitste weergave |
 | [Notities & Markdown](Notes_and_Markdown.md) | Hoe Markdown-bestanden werken: schrijven, opmaak, eigenschappen (frontmatter), iconen, links, sjablonen, afbeeldingen |
 | [Databases (.base)](Databases_Base.md) | Notities als database bekijken — weergaven, filters, eigenschappen, relaties, nieuwe items (vergelijkbaar met Notion, maar bestandsgebaseerd) |
-| [Database-referentie (.base)](Base_Reference.md) | Alles wat een `.base`-bestand kan bevatten en wat Plainva ermee doet: sleutels, filters, weergavetypen, samenvattingen, beperkingen, verschillen met Obsidian |
+| [Database-referentie (.base)](Base_Reference.md) | Alles wat een `.base`-bestand kan bevatten en wat Alviss ermee doet: sleutels, filters, weergavetypen, samenvattingen, beperkingen, verschillen met Obsidian |
 | [Importeren uit een andere app](Import.md) | Notities overnemen uit Notion, Evernote, Google Keep, Simplenote, Logseq of een Markdown-map — en wat elke import niet kan meenemen |
 | [OKF](OKF.md) | Het Open Knowledge Format (0.2): `type`, herkomst- en controlemarkeringen, de bundleversie, index.md-beheer en de optionele vault-conversie |
 | [Bestandsformaat-referentie](File_Format_Reference.md) | Het exacte bestandsformaat van elk vault-bestand op schijf — voor tools, scripts of een KI die notities en `.base`-bestanden rechtstreeks bewerkt |
-| [Automatisering & scripts](Automation_and_Scripts.md) | Plainva uitbreiden zonder plugins: hoe scripts, CLI-tools en KI-agents een vault veilig lezen en schrijven |
+| [Automatisering & scripts](Automation_and_Scripts.md) | Alviss uitbreiden zonder plugins: hoe scripts, CLI-tools en KI-agents een vault veilig lezen en schrijven |
 | [Back-ups & versiegeschiedenis](Backups_and_Versioning.md) | Automatische bestandsversies, herstellen (ook van verwijderde bestanden) en dagelijkse ZIP-back-ups van de vault |
-| [De mobiele app](Mobile_App.md) | Plainva op Android en iOS: opbouw, bewerken, databases, synchronisatie en het vangnet |
+| [De mobiele app](Mobile_App.md) | Alviss op Android en iOS: opbouw, bewerken, databases, synchronisatie en het vangnet |
 | [Sync instellen](Sync_Setup.md) | Stap voor stap per provider: WebDAV/Nextcloud, Google Drive, OneDrive, Dropbox, S3 |
 | [Beveiliging en delen](Security_and_Sharing.md) | Persoonlijke versleutelde workspace, herstel, migratie en vergrendeling |
 | [Opmerkingen en voorstellen](Comments_and_Suggestions.md) | Opmerkingen, voorstelmodus, overzicht en meldingen — in elke kluis, met of zonder versleuteling |
@@ -39,4 +39,4 @@ Plainva is een Markdown-vault-editor: je notities zijn gewone Markdown-bestanden
 
 - **Je bestanden zijn van jou.** Een vault is gewoon een map met Markdown-bestanden. Je kunt hem op elk moment openen, kopiëren of back-uppen met elk ander programma.
 - **Puur Markdown is het canonieke formaat.** Zelfs extra functies (eigenschappen, iconen, databases) worden opgeslagen in open, leesbare tekstformaten.
-- **Obsidian-compatibel.** Bestaande Obsidian-vaults worden nooit beschadigd of geherformatteerd; Obsidian kan elk bestand openen dat Plainva aanmaakt.
+- **Obsidian-compatibel.** Bestaande Obsidian-vaults worden nooit beschadigd of geherformatteerd; Obsidian kan elk bestand openen dat Alviss aanmaakt.

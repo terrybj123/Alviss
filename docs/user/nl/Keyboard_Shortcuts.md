@@ -13,7 +13,7 @@ Druk op `F1` (of **Opdrachtenpalet → Sneltoetsen tonen**) om op elk moment het
 | `Ctrl+,` | Instellingen openen |
 | `Ctrl+Plus` / `Ctrl+Minus` | Interface in- / uitzoomen (80–150 %) |
 | `Ctrl+0` | Zoom terugzetten naar 100 % |
-| `Ctrl+S` | Opslaan bevestigen (Plainva slaat automatisch op) |
+| `Ctrl+S` | Opslaan bevestigen (Alviss slaat automatisch op) |
 | `F1` | Dit venster tonen |
 | `Esc` | Actie annuleren (dialoog sluiten, hernoemen annuleren) |
 
@@ -128,7 +128,7 @@ Muis: **scrollen** om te zoomen; **middelste muisknop + slepen** of `Ctrl`+slepe
 - **Tabbladen:** slepen om te herordenen, tussen panelen, of naar een rand om te splitsen; **rechtsklik** opent het tabbladmenu (**Vastzetten**, **Vernieuwen**, **In split openen**, sluitgroep). Een **vastgezet** tabblad rukt naar voren en overleeft elke massasluiting.
 - **Actiebalk (uiterst links):** een knop kort ingedrukt houden en slepen om hem te herordenen (bovenste en onderste groep blijven gescheiden); `Esc` breekt af.
 - **Links:** klik op een wiki-/Markdown-link om hem te openen (`Ctrl`+klik voor een nieuw tabblad).
-- **Rechtsklik** op een selectie of een veld voor Plainva's eigen kopieer-/knip-/plakmenu.
+- **Rechtsklik** op een selectie of een veld voor Alviss's eigen kopieer-/knip-/plakmenu.
 - **Peek-venster:** kop slepen om te verplaatsen, hoekgreep om het formaat te wijzigen; `◀ ▶` is een eigen geschiedenis. Staan er meerdere zwevende vensters open — een peek-venster, het afspraakvoorbeeld, een e-mail die je aan het schrijven bent —, dan komt het venster waarop je klikt naar voren, en `Esc` sluit het voorste.
 - **Kalender:** klik op de titel in het kalendertabblad of op de maandnaam in de zijbalk (of bereik hem met `Tab` en druk op `Enter`) voor de datumkiezer — de pijltoetsen bewegen door het raster, `PgUp/PgDn` bladeren maanden, `Enter` springt, `Esc` sluit; klik op een dag voor zijn dagnotitie.
 - **Menu's:** een menu dat je via een knop of met een **rechtsklik** opent, zet het toetsenbord op het eerste item — de pijltoetsen, `Home` en `End` bewegen erdoorheen, `Enter` kiest een item, `Esc` sluit het en zet het toetsenbord terug waar het was. Boven een veld waarin je aan het typen bent en boven tekst die je alleen kunt lezen, blijft het toetsenbord waar het was.

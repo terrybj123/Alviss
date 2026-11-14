@@ -2,7 +2,7 @@
 
 Ultimo aggiornamento: 2026-09-30
 
-Plainva offre tre modi per cercare: ricerca full-text in tutto il vault, il selettore rapido per aprire i file e trova e sostituisci all'interno di una nota.
+Alviss offre tre modi per cercare: ricerca full-text in tutto il vault, il selettore rapido per aprire i file e trova e sostituisci all'interno di una nota.
 
 ## Ricerca full-text in tutto il vault
 
@@ -10,7 +10,7 @@ Il campo in alto nella barra laterale cerca titoli e contenuti nell’intero vau
 
 La ricerca reagisce mentre digiti: i prefissi delle parole trovano già corrispondenza ("Proget" trova "Progetto piano") — non serve premere Invio. La **X** a destra del campo cancella la ricerca corrente (oppure premi `Esc`); la barra laterale mostra quindi di nuovo il normale albero dei file.
 
-In cinese, giapponese, thai e nelle altre scritture senza spazi tra le parole, la ricerca trova un termine in qualsiasi punto del testo: `議事録` trova "今日は会議の議事録を書いた", `搜索` trova "全文搜索". Anche le parole latine all'interno di questo testo vengono trovate ("Plainva" in "…でPlainvaを使った").
+In cinese, giapponese, thai e nelle altre scritture senza spazi tra le parole, la ricerca trova un termine in qualsiasi punto del testo: `議事録` trova "今日は会議の議事録を書いた", `搜索` trova "全文搜索". Anche le parole latine all'interno di questo testo vengono trovate ("Alviss" in "…でAlvissを使った").
 
 La ricerca elenca le singole occorrenze con un estratto, il percorso delle intestazioni e il numero di riga. Aprendo una riga viene selezionata proprio quell’occorrenza; più corrispondenze nella stessa nota compaiono separatamente. Il conteggio comprende solo i risultati già caricati. Puoi caricare altre occorrenze. Le frecce cambiano la selezione e Invio la apre. Caricamento, risultati vuoti ed errori sono indicati; una nuova ricerca scarta le vecchie risposte. Se una modifica impedisce di identificare un’occorrenza senza ambiguità, compare un avviso. Le stesse occorrenze sono disponibili nel selettore rapido e nella ricerca mobile. Tornando alla ricerca sul telefono vengono ripristinati la query, i risultati caricati e la posizione della lista. I risultati arrivano per **Pertinenza**, a meno che tu non scelga **Ultima modifica**, **Titolo** o **Percorso** con il pulsante di ordinamento accanto al campo di ricerca (sul telefono: nella barra della ricerca); caricandone altri l'ordine scelto resta. Sul telefono il foglio di ordinamento resta aperto finché non tocchi **Fine**: toccare di nuovo l'ordine scelto ne inverte la direzione.
 
@@ -23,7 +23,7 @@ Il campo di ricerca si applica anche alle altre viste della barra laterale: in *
 - `path:cartella` — solo i file il cui percorso contiene il testo (es. `path:Progetti`; con spazi: `path:"La mia cartella"`).
 - `tag:nome` — solo le note che portano quel tag, inclusi i tag annidati: `tag:progetto` trova anche `#progetto/interno`. Funziona anche `tag:#progetto`.
 - Gli operatori possono essere negati (`-path:Archivio`, `-tag:fatto`) e combinati liberamente con i termini di ricerca: `piano tag:progetto -bozza`.
-- Più termini vengono combinati con AND. Caratteri speciali come `- ( ) : *` all'interno dei termini sono innocui — Plainva tratta l'input in modo letterale.
+- Più termini vengono combinati con AND. Caratteri speciali come `- ( ) : *` all'interno dei termini sono innocui — Alviss tratta l'input in modo letterale.
 
 ## Selettore rapido
 
@@ -55,7 +55,7 @@ La vista della barra laterale **Tag** elenca tutti i `#tag` nel vault con un con
 
 Nella nota un tag è disegnato come una piccola pillola — mentre scrivi e mentre leggi; il testo resta `#project/website`. Un clic sulla pillola (sul telefono: un tocco in modalità lettura) apre le note che portano il tag. Che cosa conta come tag è uguale ovunque — nell'elenco dei tag, in un'attività e durante la rinomina: un `#` a inizio riga o dopo uno spazio, seguito da lettere, cifre, `_`, `-` o `/`. Le sole cifre non sono un tag (`#42` resta un numero), e nemmeno ciò che sta dentro il codice o un link. **Colora i tag** in **Impostazioni → App → Aspetto** dà a ogni tag un colore che deriva dal suo nome; i tag annidati condividono il colore del tag di primo livello. L'impostazione appartiene a questo dispositivo e non salva nulla nelle tue note.
 
-**Rinomina un tag** in tutto il vault: fai clic destro su un tag nella vista **Tag** e inserisci un nuovo nome. Plainva riscrive il tag ovunque — nel corpo delle note (`#tag` e i suoi sottotag `#tag/child`) e nel frontmatter (`tags:`) — salvando ogni nota interessata attraverso lo stesso percorso sicuro. I tag non correlati che contengono semplicemente il nome (per esempio `#area/tag`) restano invariati.
+**Rinomina un tag** in tutto il vault: fai clic destro su un tag nella vista **Tag** e inserisci un nuovo nome. Alviss riscrive il tag ovunque — nel corpo delle note (`#tag` e i suoi sottotag `#tag/child`) e nel frontmatter (`tags:`) — salvando ogni nota interessata attraverso lo stesso percorso sicuro. I tag non correlati che contengono semplicemente il nome (per esempio `#area/tag`) restano invariati.
 
 ## Navigare all'interno di una nota
 

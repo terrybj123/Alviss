@@ -70,7 +70,7 @@ Elke taakregel draagt een database-icoon: **Naar de takendatabase verplaatsen**.
 
 ## Tijd blokkeren voor een taak
 
-Een taak heeft een vervaldatum en kan een **tijdstip** dragen (`2026-09-21T14:00`) — dat is het moment waarop Plainva je eraan herinnert. Een tijdstip is een moment, geen periode. Wil je er tijd voor vrijmaken, dan maakt Plainva daarvoor een **afspraak** aan — dat is het object met een tijdsbereik, dat overlappingen in het raster toont en met je agenda-account synchroniseert.
+Een taak heeft een vervaldatum en kan een **tijdstip** dragen (`2026-09-21T14:00`) — dat is het moment waarop Alviss je eraan herinnert. Een tijdstip is een moment, geen periode. Wil je er tijd voor vrijmaken, dan maakt Alviss daarvoor een **afspraak** aan — dat is het object met een tijdsbereik, dat overlappingen in het raster toont en met je agenda-account synchroniseert.
 
 Het agendapictogram op een taakregel opent **Tijd blokkeren**: de datum (vooringevuld met de vervaldatum), de starttijd en de **Duur** (15 min, 30 min, 1 u, 2 u of **Aangepast**), plus een agendakeuze als meerdere agenda's schrijfbaar zijn. De afspraak krijgt de titel van de taak en verwijst terug naar de notitie. Een **rechtsklik** op de regel toont dezelfde acties als het blad op de telefoon: afgerond/open, naar database verplaatsen, herhaling, tijd blokkeren.
 
@@ -78,12 +78,12 @@ Bij een taak uit de database onthoudt de notitie het blok ook in haar frontmatte
 
 ## Taken herhalen
 
-Een taak die regelmatig terugkomt, krijgt een **herhaling** via het herhalingsicoon in de sectie **Takendatabase**. Plainva maakt geen **reeks** aan: het afvinken van de taak maakt de **volgende** taak aan als eigen notitie naast de voltooide, met de nieuwe vervaldatum. Zo staat er altijd precies één taak open, blijft de voltooide taak staan als bewijs van wat is gedaan, en is er geen onzichtbare reeks waaruit je per ongeluk alles kunt verwijderen — verwijder je een taak, dan stopt de keten.
+Een taak die regelmatig terugkomt, krijgt een **herhaling** via het herhalingsicoon in de sectie **Takendatabase**. Alviss maakt geen **reeks** aan: het afvinken van de taak maakt de **volgende** taak aan als eigen notitie naast de voltooide, met de nieuwe vervaldatum. Zo staat er altijd precies één taak open, blijft de voltooide taak staan als bewijs van wat is gedaan, en is er geen onzichtbare reeks waaruit je per ongeluk alles kunt verwijderen — verwijder je een taak, dan stopt de keten.
 
 Het dialoogvenster biedt drie dingen:
 
 - **Ritme** — Dagelijks, Wekelijks, Maandelijks of Jaarlijks, plus het interval onder **Elke** (bijvoorbeeld "Elke 3" + "Dagelijks" = om de drie dagen).
-- **Geteld vanaf: Vervaldatum** — een vast ritme ("elke maandag"). Vink je een verlopen taak laat af, dan springt Plainva naar de eerstvolgende vervaldatum **in de toekomst**, in plaats van de lijst te vullen met de gemiste data.
+- **Geteld vanaf: Vervaldatum** — een vast ritme ("elke maandag"). Vink je een verlopen taak laat af, dan springt Alviss naar de eerstvolgende vervaldatum **in de toekomst**, in plaats van de lijst te vullen met de gemiste data.
 - **Geteld vanaf: Afvinken** — het ritme begint op de dag dat je de taak afvinkt ("om de drie dagen nadat ik de planten water heb gegeven").
 
 **Niet herhalen** verwijdert de herhaling weer. Maandelijkse taken schuiven nooit voorbij het einde van een maand: 31 januari plus één maand is 28 of 29 februari, niet 3 maart.
@@ -122,15 +122,15 @@ Een selectievakje herinnert je wanneer de vervaldatum een tijd draagt: schrijf d
 
 Je zet het aan onder **Instellingen → Agenda → Herinneringen** met **Selectievakjes met een tijd** — per vault en op dit apparaat, uit tot je het aanzet. De herinnering komt op die tijd, min wat je instelt bij **Herinnering vooraf voor taken met een tijd**. Op de telefoon biedt ze **Afvinken**, **Over 1 uur** en **Morgenochtend**, zoals de herinnering van een taak uit de takendatabase; op de desktop biedt de melding ernaast **Taak openen**. Hoe dan ook kom je in de notitie op de regel van de taak, ook nadat de notitie is hernoemd of verplaatst.
 
-Een selectievakje dat je afvinkt, verwijdert of een andere tijd geeft, wordt binnen enkele seconden opnieuw ingepland. Een selectievakje met een datum maar zonder tijd herinnert niet, en notities met `plainva.tasks: false` blijven erbuiten. Plainva schrijft voor een herinnering niets in de notitie. Obsidian kent geen tijd: een `📅`-datum met een tijd erachter leest die niet meer.
+Een selectievakje dat je afvinkt, verwijdert of een andere tijd geeft, wordt binnen enkele seconden opnieuw ingepland. Een selectievakje met een datum maar zonder tijd herinnert niet, en notities met `plainva.tasks: false` blijven erbuiten. Alviss schrijft voor een herinnering niets in de notitie. Obsidian kent geen tijd: een `📅`-datum met een tijd erachter leest die niet meer.
 
 ## Obsidian-compatibiliteit
 
-Taken zijn gewone GFM-selectievakjes (GitHub-Flavored Markdown). Plainva voegt nooit een speciale syntax toe: dezelfde `- [ ]`-regels worden in Obsidian weergegeven als selectievakjes en zijn in elke editor gewoon leesbaar. De conventies `📅 datum` en `#tag` zijn de gangbare Obsidian-Tasks-stijl, maar ze zijn gewoon tekst in je notitie.
+Taken zijn gewone GFM-selectievakjes (GitHub-Flavored Markdown). Alviss voegt nooit een speciale syntax toe: dezelfde `- [ ]`-regels worden in Obsidian weergegeven als selectievakjes en zijn in elke editor gewoon leesbaar. De conventies `📅 datum` en `#tag` zijn de gangbare Obsidian-Tasks-stijl, maar ze zijn gewoon tekst in je notitie.
 
 ## Tasks-query's uit Obsidian
 
-Een notitie uit Obsidian kan een codeblok `tasks` met een query bevatten. Plainva tekent het als takenlijst — in het live-voorbeeld en in leesmodus, op de desktop en op de telefoon, ook binnen een citaat of callout:
+Een notitie uit Obsidian kan een codeblok `tasks` met een query bevatten. Alviss tekent het als takenlijst — in het live-voorbeeld en in leesmodus, op de desktop en op de telefoon, ook binnen een citaat of callout:
 
 ````markdown
 ```tasks
@@ -141,21 +141,21 @@ sort by filename reverse
 ```
 ````
 
-De query blijft precies zo in de notitie staan als je haar hebt geschreven; Plainva schrijft nooit in het blok. De broncodemodus toont altijd de platte tekst.
+De query blijft precies zo in de notitie staan als je haar hebt geschreven; Alviss schrijft nooit in het blok. De broncodemodus toont altijd de platte tekst.
 
 ### Werken met de lijst
 
-- Vink het selectievakje van een taak aan: Plainva schrijft de regel van de taak in haar eigen notitie — met de voltooiingsdatum en de herhaling, zoals in de Taken-weergave.
+- Vink het selectievakje van een taak aan: Alviss schrijft de regel van de taak in haar eigen notitie — met de voltooiingsdatum en de herhaling, zoals in de Taken-weergave.
 - Klik of tik op een rij: de notitie opent bij de regel van de taak.
 - Rechtsklikken op een rij op de desktop, of ingedrukt houden op de telefoon, opent het menu van de rij: **Klaar**/**Open**, **Vervaldatum wijzigen**, **Prioriteit instellen**, **Status instellen**.
 - In een ingesloten notitie (`![[…]]`) is de lijst alleen-lezen: geen vinkje, geen menu.
 - Staat de cursor in het blok, dan toont de editor de query als tekst. **Query bewerken** zet de cursor in de query; op de telefoon schakelt de notitie daarvoor eerst naar bewerken.
 
-Onderaan het blok staan het aantal taken ("12 taken"), de schakelaar **Uitleg** en **Query bewerken**. **Uitleg** laat zien hoe Plainva elke regel van de query heeft gelezen, met datums als echte dagen. Een groot resultaat wordt niet stilletjes afgekapt: Plainva toont de eerste 100 rijen, daarna **Alle n tonen**.
+Onderaan het blok staan het aantal taken ("12 taken"), de schakelaar **Uitleg** en **Query bewerken**. **Uitleg** laat zien hoe Alviss elke regel van de query heeft gelezen, met datums als echte dagen. Een groot resultaat wordt niet stilletjes afgekapt: Alviss toont de eerste 100 rijen, daarna **Alle n tonen**.
 
-### Wat Plainva begrijpt
+### Wat Alviss begrijpt
 
-Plainva leest deze regels van de querytaal van Tasks:
+Alviss leest deze regels van de querytaal van Tasks:
 
 | Onderwerp | Regels |
 |---|---|
@@ -173,12 +173,12 @@ Plainva leest deze regels van de querytaal van Tasks:
 | Weergave en aantal | `show tree`, `hide backlink`, `hide task count` en dergelijke, `limit 20`, `limit groups 5`, `explain` |
 | Opmerkingen en plaatshouders | regels die met `#` beginnen; plaatshouders zoals `{{query.file.path}}`, die verwijzen naar de notitie waarin de query staat |
 
-### Regels die Plainva niet kan volgen
+### Regels die Alviss niet kan volgen
 
 Elke regel van een query valt in een van drie gevallen:
 
-- Een regel die Obsidian kent en Plainva nog niet — bijvoorbeeld code (`filter by function`; Plainva voert nooit code uit notities uit), reguliere expressies (`regex matches`), afhankelijkheden (`is blocked`), presets of andere datumuitdrukkingen. Een aanwijzing boven de lijst noemt de regel en de reden; de regel wordt overgeslagen, dus de lijst kan meer taken tonen dan in Obsidian — of in een andere volgorde, bij `sort by`- en `group by`-regels.
-- Een weergaveregel zonder tegenhanger in Plainva (`hide edit button`, `short mode`, …) wordt stilzwijgend aanvaard.
+- Een regel die Obsidian kent en Alviss nog niet — bijvoorbeeld code (`filter by function`; Alviss voert nooit code uit notities uit), reguliere expressies (`regex matches`), afhankelijkheden (`is blocked`), presets of andere datumuitdrukkingen. Een aanwijzing boven de lijst noemt de regel en de reden; de regel wordt overgeslagen, dus de lijst kan meer taken tonen dan in Obsidian — of in een andere volgorde, bij `sort by`- en `group by`-regels.
+- Een weergaveregel zonder tegenhanger in Alviss (`hide edit button`, `short mode`, …) wordt stilzwijgend aanvaard.
 - Een regel die ook Obsidian afwijst (een typfout, door elkaar gebruikte haakjes, een onmogelijke datum) toont een fout met de regel en de reden, en geen lijst.
 
 ### Verschillen met Obsidian
@@ -186,7 +186,7 @@ Elke regel van een query valt in een van drie gevallen:
 - "Vandaag" is de kalenderdag.
 - Notities met `plainva.tasks: false` tellen hier mee; Obsidian kent die eigenschap niet.
 - Een in Obsidian ingesteld globaal filter en een globale query worden in de **Uitleg** genoemd, maar niet toegepast.
-- Eigen statustekens (`[>]`, `[!]`, …) zijn in Plainva geen taken.
+- Eigen statustekens (`[>]`, `[!]`, …) zijn in Alviss geen taken.
 
 Dataview-blokken blijven gewone tekst.
 
@@ -212,11 +212,11 @@ Deze bestanden horen bij verschillende taken. Terugkerende taken met dezelfde ti
 <!-- task-names-2026-09-24 -->
 ## Hoe taken van de aanbieder heten
 
-Een taak die Plainva uit een takenlijst van je aanbieder spiegelt, heet zoals haar titel: „Tandarts bellen” wordt `Tandarts bellen.md` in de map van je takendatabase. Is de naam al bezet — door een eigen notitie of door een tweede taak met dezelfde titel —, dan krijgt de nieuwe taak het volgende vrije nummer, net als elke andere notitie: `Boodschappen 2.md`, `Boodschappen 3.md`.
+Een taak die Alviss uit een takenlijst van je aanbieder spiegelt, heet zoals haar titel: „Tandarts bellen” wordt `Tandarts bellen.md` in de map van je takendatabase. Is de naam al bezet — door een eigen notitie of door een tweede taak met dezelfde titel —, dan krijgt de nieuwe taak het volgende vrije nummer, net als elke andere notitie: `Boodschappen 2.md`, `Boodschappen 3.md`.
 
-Welke taak in welk bestand staat, zegt niet de naam, maar de frontmatter-markering (`plainva.pim`, zie de [Bestandsformaat-referentie](File_Format_Reference.md)). Daarom gebruikt Plainva een bestaande naam alleen opnieuw als het bestand daar dezelfde taak bevat, en maakt het nieuwe taken op elk apparaat in dezelfde volgorde aan — zo geven twee apparaten dezelfde nummers. Verandert de titel bij de aanbieder, dan werkt Plainva de kop van de notitie bij, maar hernoemt het bestand niet: links naar de notitie blijven werken. Je kunt de notitie altijd zelf hernoemen en verplaatsen; de markering houdt de koppeling in stand.
+Welke taak in welk bestand staat, zegt niet de naam, maar de frontmatter-markering (`plainva.pim`, zie de [Bestandsformaat-referentie](File_Format_Reference.md)). Daarom gebruikt Alviss een bestaande naam alleen opnieuw als het bestand daar dezelfde taak bevat, en maakt het nieuwe taken op elk apparaat in dezelfde volgorde aan — zo geven twee apparaten dezelfde nummers. Verandert de titel bij de aanbieder, dan werkt Alviss de kop van de notitie bij, maar hernoemt het bestand niet: links naar de notitie blijven werken. Je kunt de notitie altijd zelf hernoemen en verplaatsen; de markering houdt de koppeling in stand.
 
-**Namen met een kenmerk opschonen.** Tussen 12 en 24 september 2026 voegde Plainva een kenmerk toe aan de naam van nieuwe taaknotities (`Tandarts bellen — 3f9a1c0b7d2e4a61.md`). Heeft je vault nog zulke namen, dan toont de takenweergave — op de desktop en op de telefoon — eenmalig een melding met de lijst oud → nieuw en het aantal links dat mee wordt aangepast. **Namen opschonen…** vraagt nog één keer om bevestiging en hernoemt de notities daarna naar hun titel, met nummers voor dezelfde titel zoals hierboven; links ernaar worden aangepast. **Verbergen** legt de melding opzij tot er weer zulke namen opduiken. Plainva herkent alleen namen die het zelf heeft gegeven: het kenmerk moet passen bij de markering in hetzelfde bestand. Er wordt nooit iets vanzelf hernoemd. Je andere apparaten ontvangen de hernoemingen als verplaatsing zodra ze dezelfde versie hebben; een oudere versie ziet daar in plaats daarvan verwijderde en nieuwe notities, en vraagt misschien of ze moet verwijderen of houdt de oude naam naast de nieuwe — werk die apparaten het liefst eerst bij. Op de desktop verschijnt de melding in het hoofdvenster.
+**Namen met een kenmerk opschonen.** Tussen 12 en 24 september 2026 voegde Alviss een kenmerk toe aan de naam van nieuwe taaknotities (`Tandarts bellen — 3f9a1c0b7d2e4a61.md`). Heeft je vault nog zulke namen, dan toont de takenweergave — op de desktop en op de telefoon — eenmalig een melding met de lijst oud → nieuw en het aantal links dat mee wordt aangepast. **Namen opschonen…** vraagt nog één keer om bevestiging en hernoemt de notities daarna naar hun titel, met nummers voor dezelfde titel zoals hierboven; links ernaar worden aangepast. **Verbergen** legt de melding opzij tot er weer zulke namen opduiken. Alviss herkent alleen namen die het zelf heeft gegeven: het kenmerk moet passen bij de markering in hetzelfde bestand. Er wordt nooit iets vanzelf hernoemd. Je andere apparaten ontvangen de hernoemingen als verplaatsing zodra ze dezelfde versie hebben; een oudere versie ziet daar in plaats daarvan verwijderde en nieuwe notities, en vraagt misschien of ze moet verwijderen of houdt de oude naam naast de nieuwe — werk die apparaten het liefst eerst bij. Op de desktop verschijnt de melding in het hoofdvenster.
 
 <!-- tasks-jex-2026-09-14 -->
 ## Tasks-metagegevens en herhaling
@@ -238,22 +238,22 @@ Status, zoektekst, map, tag, vervaldatumfilter en zichtbaarheid van verborgen ta
 
 De takenweergave opent op **Vandaag**. De lijsten — op de desktop een balk links, op de telefoon een segment boven de lijst — zijn **Vandaag** (wat vandaag moet, met **Te laat** bovenaan), **Binnenkort** (de komende 14 dagen, per dag), **Inbox** (open taken zonder datum), **Alle** (de twee hierboven beschreven secties, met het filter **Open**/**Klaar**/**Alle**) en **Klaar**. Elke lijst put uit beide bronnen, de takendatabase en de selectievakjes in je notities, gesorteerd op prioriteit, dan tijd, dan titel. De overige filters gelden voor elke lijst, en de gekozen lijst wordt per vault onthouden. Op de desktop toont de balk ook de meest gebruikte tags als filters met één klik; op de telefoon leidt het scherm **Vandaag** naar de plannerlijst **Vandaag**.
 
-Boven de lijsten staat het invoerveld; op de telefoon openen **+ Nieuwe taak** en de **＋**-knop het als een blad. Typ één regel — `Offerte versturen morgen 14:00 !!! #klant wekelijks` — en druk op Enter: Plainva maakt de taak aan in de takendatabase. Het herkent vandaag, morgen, overmorgen, dagen van de week, ‘over 3 dagen’, ‘volgende week’, datums in cijfers, een tijdstip (`14:30`, `2pm`), een ritme (dagelijks, wekelijks, maandelijks, jaarlijks, ‘elke maandag’, ‘elke 2 weken’), `!`, `!!` en `!!!` voor lage, gemiddelde en hoge prioriteit, en `#tags` — de woorden in de taal van de app, cijfers en tekens in elke taal. Alles wat herkend is, wordt in het veld gemarkeerd en eronder als verwijderbaar blokje getoond **voordat** er iets wordt opgeslagen; haal je een blokje weg, dan telt de tekst ervan gewoon weer mee als titel. Op de telefoon schrijven snelknoppen dezelfde woorden voor je. Noemt de takendatabase een providerlijst, dan bepaalt een chip of de taak ook daar wordt aangemaakt.
+Boven de lijsten staat het invoerveld; op de telefoon openen **+ Nieuwe taak** en de **＋**-knop het als een blad. Typ één regel — `Offerte versturen morgen 14:00 !!! #klant wekelijks` — en druk op Enter: Alviss maakt de taak aan in de takendatabase. Het herkent vandaag, morgen, overmorgen, dagen van de week, ‘over 3 dagen’, ‘volgende week’, datums in cijfers, een tijdstip (`14:30`, `2pm`), een ritme (dagelijks, wekelijks, maandelijks, jaarlijks, ‘elke maandag’, ‘elke 2 weken’), `!`, `!!` en `!!!` voor lage, gemiddelde en hoge prioriteit, en `#tags` — de woorden in de taal van de app, cijfers en tekens in elke taal. Alles wat herkend is, wordt in het veld gemarkeerd en eronder als verwijderbaar blokje getoond **voordat** er iets wordt opgeslagen; haal je een blokje weg, dan telt de tekst ervan gewoon weer mee als titel. Op de telefoon schrijven snelknoppen dezelfde woorden voor je. Noemt de takendatabase een providerlijst, dan bepaalt een chip of de taak ook daar wordt aangemaakt.
 
-**Prioriteit instellen** in het menu van een rij (rechtsklikken op de desktop, ingedrukt houden op de telefoon) biedt **hoog**, **gemiddeld**, **laag** en **geen**; een vlaggetje voor de titel toont dit. In de takendatabase is prioriteit een keuzekolom: een nu aangemaakte database heeft hem al, een oudere krijgt hem zodra je voor het eerst een prioriteit instelt — nooit door hem enkel te openen. Een selectievakje draagt op zijn regel het prioriteitsteken uit Obsidian: Plainva leest 🔺 en ⏫ als hoog, 🔼 als gemiddeld, 🔽 en ⏬ als laag, en schrijft ⏫, 🔼 of 🔽.
+**Prioriteit instellen** in het menu van een rij (rechtsklikken op de desktop, ingedrukt houden op de telefoon) biedt **hoog**, **gemiddeld**, **laag** en **geen**; een vlaggetje voor de titel toont dit. In de takendatabase is prioriteit een keuzekolom: een nu aangemaakte database heeft hem al, een oudere krijgt hem zodra je voor het eerst een prioriteit instelt — nooit door hem enkel te openen. Een selectievakje draagt op zijn regel het prioriteitsteken uit Obsidian: Alviss leest 🔺 en ⏫ als hoog, 🔼 als gemiddeld, 🔽 en ⏬ als laag, en schrijft ⏫, 🔼 of 🔽.
 
-`- [/]` (**Bezig**) en `- [-]` (**Geannuleerd**) zijn ook taken. Ze krijgen een eigen vakje in de editor, in de leesmodus en in elke lijst; bezig telt als open, geannuleerd als afgerond. Een klik wisselt nog steeds alleen tussen open en klaar — hij rondt een taak die bezig is af en heropent een geannuleerde. **Status instellen** in het rijmenu zet de twee statussen; Plainva schrijft ze nooit uit zichzelf.
+`- [/]` (**Bezig**) en `- [-]` (**Geannuleerd**) zijn ook taken. Ze krijgen een eigen vakje in de editor, in de leesmodus en in elke lijst; bezig telt als open, geannuleerd als afgerond. Een klik wisselt nog steeds alleen tussen open en klaar — hij rondt een taak die bezig is af en heropent een geannuleerde. **Status instellen** in het rijmenu zet de twee statussen; Alviss schrijft ze nooit uit zichzelf.
 
 **De datum van een taak is de manier om hem te wijzigen.** Druk op de datum van een taak (binnen een dag: op het tijdstip) en de datumkiezer opent — op de desktop onder de datum, op de telefoon als blad. **Vervaldatum wijzigen** in het menu van de rij opent dezelfde kiezer; zo krijgt ook een taak zonder datum er een. Op de telefoon kiezen **Nieuwe taak** en de datumcel van een database hun dag uit dezelfde agenda, niet uit het datumwiel van het systeem. Een selectievakje in een notitie — in de editor, de leesweergave en het journaal — is op de telefoon op een vinger afgestemd. Een item van de takendatabase houdt zijn tijdstip, een selectievakje krijgt of wijzigt zijn `📅`-datum. Bij de kop **Te laat** verplaatst **Alles naar vandaag** alle te late taken in één keer naar vandaag. Beide worden bevestigd met een melding die **Ongedaan maken** aanbiedt. In het invoerveld stelt `[[` notities voor en `#` tags, net als in de editor: `Enter` of `Tab` neemt het gemarkeerde voorstel over, `Esc` sluit de lijst.
 
-**Snelkeuzes en een tijd.** Boven de kalender staan **Vandaag**, **Morgen**, **Dit weekend**, **Volgende week** en **Geen datum**, elk met de weekdag. Dit weekend is de komende zaterdag — vandaag, als het zaterdag of zondag is; volgende week is de eerste dag van de volgende week, zoals ingesteld bij **Week begint op**. Onderaan heeft **Tijd** een schakelaar: uit, dan vervalt de taak de hele dag; aan, dan kies je ernaast de tijd. Een snelkeuze of een dag houdt een al ingestelde tijd; om alleen de tijd te wijzigen, druk je op **Klaar**. Een item van de takendatabase bewaart de tijd in zijn vervaldatum (`2026-10-26T10:00`). Voor een selectievakje in een notitie zet de kiezer alleen de dag — de `📅` uit Obsidian kent geen tijd — en zegt dat daar in plaats van de schakelaar aan te bieden; een tijd die je zelf na de datum schrijft (zie *Herinneringen voor selectievakjes*) blijft staan als de dag verandert. Toont de vervaldatumkolom van de database alleen dagen, dan biedt Plainva één keer **Omzetten naar datum & tijd** aan.
+**Snelkeuzes en een tijd.** Boven de kalender staan **Vandaag**, **Morgen**, **Dit weekend**, **Volgende week** en **Geen datum**, elk met de weekdag. Dit weekend is de komende zaterdag — vandaag, als het zaterdag of zondag is; volgende week is de eerste dag van de volgende week, zoals ingesteld bij **Week begint op**. Onderaan heeft **Tijd** een schakelaar: uit, dan vervalt de taak de hele dag; aan, dan kies je ernaast de tijd. Een snelkeuze of een dag houdt een al ingestelde tijd; om alleen de tijd te wijzigen, druk je op **Klaar**. Een item van de takendatabase bewaart de tijd in zijn vervaldatum (`2026-10-26T10:00`). Voor een selectievakje in een notitie zet de kiezer alleen de dag — de `📅` uit Obsidian kent geen tijd — en zegt dat daar in plaats van de schakelaar aan te bieden; een tijd die je zelf na de datum schrijft (zie *Herinneringen voor selectievakjes*) blijft staan als de dag verandert. Toont de vervaldatumkolom van de database alleen dagen, dan biedt Alviss één keer **Omzetten naar datum & tijd** aan.
 
-Meer manieren om een taak toe te voegen: **Nieuwe taak** in het systeemvakmenu op de desktop (wanneer Plainva op de achtergrond actief blijft), op Android de launcher-snelkoppeling **Nieuwe taak** (app-icoon ingedrukt houden), en op de telefoon **Als taak aanmaken** wanneer je iets met Plainva deelt — de tekst en de bijlagen komen terecht in de notitie van de taak. Hoe een taak met een tijdstip je eraan herinnert, staat beschreven onder [Agenda & externe taken](Calendar_and_Tasks.md).
+Meer manieren om een taak toe te voegen: **Nieuwe taak** in het systeemvakmenu op de desktop (wanneer Alviss op de achtergrond actief blijft), op Android de launcher-snelkoppeling **Nieuwe taak** (app-icoon ingedrukt houden), en op de telefoon **Als taak aanmaken** wanneer je iets met Alviss deelt — de tekst en de bijlagen komen terecht in de notitie van de taak. Hoe een taak met een tijdstip je eraan herinnert, staat beschreven onder [Agenda & externe taken](Calendar_and_Tasks.md).
 
 <!-- widgets-2026-09-23 -->
 ## Afvinken vanuit een widget
 
-Het vakje in de widget **Vandaag** neemt een verzoek op: het vinkje verschijnt meteen, de notitie verandert bij het volgende openen van Plainva, en dan gebeuren ook de herhaling en de synchronisatie. Tot dan zegt de regel **wordt toegepast bij het openen van Plainva**. Een taak die je intussen hebt afgerond, verwijderd of verplaatst blijft ongemoeid. Op de iPhone vereist dit iOS 17; daaronder opent een tik op de regel de taak. Details: [De mobiele app](Mobile_App.md).
+Het vakje in de widget **Vandaag** neemt een verzoek op: het vinkje verschijnt meteen, de notitie verandert bij het volgende openen van Alviss, en dan gebeuren ook de herhaling en de synchronisatie. Tot dan zegt de regel **wordt toegepast bij het openen van Alviss**. Een taak die je intussen hebt afgerond, verwijderd of verplaatst blijft ongemoeid. Op de iPhone vereist dit iOS 17; daaronder opent een tik op de regel de taak. Details: [De mobiele app](Mobile_App.md).
 
 <!-- task-rows-2026-10-24 -->
 ## Subtaken, opsommingen en wat vandaag klaar is
@@ -264,6 +264,6 @@ Het vakje in de widget **Vandaag** neemt een verzoek op: het vinkje verschijnt m
 
 Beide staan aan tot je ze uitzet: **Subtaken** en **Opsommingen** staan bij de andere filters (selectievakjes op de desktop, chips op de telefoon) en worden samen met die onthouden.
 
-**Vandaag klaar.** Onder **Vandaag** verzamelt een ingeklapte regel **Klaar (n)** wat vandaag is afgevinkt — een vakje op zijn afrondingsdatum `✅` (die Plainva bij elk vinkje schrijft), een item van de takendatabase op de dag waarop zijn notitie voor het laatst is gewijzigd, omdat een database geen eigen afrondingsdatum heeft. Een afgevinkt vakje zonder datum telt niet mee: niets zegt wanneer het is afgerond. De regel is dicht tot je hem opent; het apparaat onthoudt je keuze. Het scherm **Vandaag** van de telefoon toont dezelfde regel onder **Vervalt**.
+**Vandaag klaar.** Onder **Vandaag** verzamelt een ingeklapte regel **Klaar (n)** wat vandaag is afgevinkt — een vakje op zijn afrondingsdatum `✅` (die Alviss bij elk vinkje schrijft), een item van de takendatabase op de dag waarop zijn notitie voor het laatst is gewijzigd, omdat een database geen eigen afrondingsdatum heeft. Een afgevinkt vakje zonder datum telt niet mee: niets zegt wanneer het is afgerond. De regel is dicht tot je hem opent; het apparaat onthoudt je keuze. Het scherm **Vandaag** van de telefoon toont dezelfde regel onder **Vervalt**.
 
 **Het vakje op de telefoon.** In de editor, in de leesmodus, in het onderdeel Taken en onder **Vandaag** tekent de telefoon elk taakvakje hetzelfde: groot en afgerond, gevuld met een vinkje als het klaar is, half gevuld bij **Bezig**, doorgestreept bij **Geannuleerd**. De desktop houdt zijn kleinere vakjes, gemaakt voor de muis.

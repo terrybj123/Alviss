@@ -2,7 +2,7 @@
 
 Última revisão: 2026-11-03
 
-OKF (Open Knowledge Format) é uma convenção aberta para coleções de conhecimento em Markdown: arquivos Markdown puros com um cabeçalho de frontmatter pequeno e uniforme. Esta página explica o que é o OKF, o que o Plainva faz automaticamente por ele — e por que você não *precisa* usar nada disso.
+OKF (Open Knowledge Format) é uma convenção aberta para coleções de conhecimento em Markdown: arquivos Markdown puros com um cabeçalho de frontmatter pequeno e uniforme. Esta página explica o que é o OKF, o que o Alviss faz automaticamente por ele — e por que você não *precisa* usar nada disso.
 
 ## O que é o OKF?
 
@@ -21,9 +21,9 @@ type: Note
 
 > Vai escrever arquivos com uma ferramenta ou script? O contrato exato de campos — valores permitidos, como cada tipo de propriedade é serializado e as regras de nomes reservados — está na [Referência do Formato de Arquivo](File_Format_Reference.md).
 
-**De onde vem o OKF:** o OKF é uma especificação aberta do Google Cloud ([`GoogleCloudPlatform/knowledge-catalog`](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md), licença Apache-2.0). O Plainva segue o **OKF 0.2** (publicado em 25 de julho de 2026). Novos na 0.2 são cinco campos opcionais com os quais uma nota diz de onde veio, se alguém a revisou e se ela ainda vale — `generated`, `verified`, `sources`, `stale_after` e `status`. O que o Plainva mostra e escreve deles está descrito abaixo, em "Proveniência, revisão e ciclo de vida".
+**De onde vem o OKF:** o OKF é uma especificação aberta do Google Cloud ([`GoogleCloudPlatform/knowledge-catalog`](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md), licença Apache-2.0). O Alviss segue o **OKF 0.2** (publicado em 25 de julho de 2026). Novos na 0.2 são cinco campos opcionais com os quais uma nota diz de onde veio, se alguém a revisou e se ela ainda vale — `generated`, `verified`, `sources`, `stale_after` e `status`. O que o Alviss mostra e escreve deles está descrito abaixo, em "Proveniência, revisão e ciclo de vida".
 
-## Por que o Plainva usa o OKF?
+## Por que o Alviss usa o OKF?
 
 O Markdown puro é maravilhosamente portátil — mas, sozinho, não tem nenhuma estrutura confiável. O OKF acrescenta exatamente a estrutura que falta, e tudo continua sendo Markdown comum com frontmatter padrão:
 
@@ -32,30 +32,30 @@ O Markdown puro é maravilhosamente portátil — mas, sozinho, não tem nenhuma
 - **Scripts e assistentes de IA podem trabalhar com o seu vault com segurança**, porque o formato em disco é uniforme e documentado.
 - **Sem aprisionamento (lock-in).** O OKF é uma convenção aberta sobre o Markdown puro — outras ferramentas OKF entendem seus arquivos, hoje e daqui a dez anos.
 
-## O que o Plainva faz automaticamente
+## O que o Alviss faz automaticamente
 
-**Arquivos novos** recebem o cabeçalho OKF automaticamente: toda nota criada no Plainva recebe `type` no frontmatter — desde o OKF 0.2, o marcador de versão `okf_version` mora uma vez no `index.md` raiz, não mais em cada nota. Você configura os valores por vault: **type para novas notas** (padrão `Note`) em **Configurações → Vault → Notas e organização → Novas notas** e **type para notas diárias** (padrão `Daily Note`) em **Configurações → Vault → Notas diárias e diário → Notas diárias**. Se um modelo traz seu próprio `type`, o modelo prevalece.
+**Arquivos novos** recebem o cabeçalho OKF automaticamente: toda nota criada no Alviss recebe `type` no frontmatter — desde o OKF 0.2, o marcador de versão `okf_version` mora uma vez no `index.md` raiz, não mais em cada nota. Você configura os valores por vault: **type para novas notas** (padrão `Note`) em **Configurações → Vault → Notas e organização → Novas notas** e **type para notas diárias** (padrão `Daily Note`) em **Configurações → Vault → Notas diárias e diário → Notas diárias**. Se um modelo traz seu próprio `type`, o modelo prevalece.
 
-**Arquivos existentes nunca são alterados sem que você peça.** O Plainva só adiciona campos OKF ao criar novos arquivos ou quando você inicia explicitamente a conversão.
+**Arquivos existentes nunca são alterados sem que você peça.** O Alviss só adiciona campos OKF ao criar novos arquivos ou quando você inicia explicitamente a conversão.
 
-**Campos de sistema protegidos:** no painel de **Propriedades**, `type` e — onde notas mais antigas ainda o carregam — `okf_version` são marcados como campos de sistema do OKF ("Campo de sistema do OKF – gerenciado pelo Plainva"): o valor de `type` é selecionável em uma lista suspensa de tipos conhecidos, `okf_version` é somente exibição; renomear, trocar o tipo e excluir ficam travados para que a convenção não se quebre por acidente.
+**Campos de sistema protegidos:** no painel de **Propriedades**, `type` e — onde notas mais antigas ainda o carregam — `okf_version` são marcados como campos de sistema do OKF ("Campo de sistema do OKF – gerenciado pelo Alviss"): o valor de `type` é selecionável em uma lista suspensa de tipos conhecidos, `okf_version` é somente exibição; renomear, trocar o tipo e excluir ficam travados para que a convenção não se quebre por acidente.
 
-**A versão resumida nas configurações:** o botão de informação (ⓘ) do grupo **Formato OKF** em **Configurações → Vault → Manutenção** te dá a explicação em três frases, além de um link para esta página. Ela não abre sozinha; se um vault contém arquivos que não seguem o formato OKF, o Plainva avisa isso uma vez em uma pequena mensagem com um botão que leva direto à conversão.
+**A versão resumida nas configurações:** o botão de informação (ⓘ) do grupo **Formato OKF** em **Configurações → Vault → Manutenção** te dá a explicação em três frases, além de um link para esta página. Ela não abre sozinha; se um vault contém arquivos que não seguem o formato OKF, o Alviss avisa isso uma vez em uma pequena mensagem com um botão que leva direto à conversão.
 
 ## Proveniência, revisão e ciclo de vida (OKF 0.2)
 
-Desde o OKF 0.2, uma nota pode dizer de onde veio, quem a revisou e se ela ainda vale. O Plainva transforma isso em três coisas:
+Desde o OKF 0.2, uma nota pode dizer de onde veio, quem a revisou e se ela ainda vale. O Alviss transforma isso em três coisas:
 
-**O que o Plainva mostra.**
+**O que o Alviss mostra.**
 
 - Uma nota com `status: draft` ou `status: deprecated` carrega um selo no cabeçalho do documento — **Rascunho** ou **Descontinuada**. `stable` permanece silencioso; uma coluna `status` própria com outros valores (digamos, `Open` em um banco de tarefas) não é um estado de ciclo de vida e não recebe nenhum selo.
-- Depois que `stale_after` passa, o aviso **Marcada como desatualizada (desde …)** fica acima da nota com um atalho para as propriedades. O aviso é apenas exibição — o Plainva não altera nada na nota.
+- Depois que `stale_after` passa, o aviso **Marcada como desatualizada (desde …)** fica acima da nota com um atalho para as propriedades. O aviso é apenas exibição — o Alviss não altera nada na nota.
 - A seção **Confiança e origem** do painel de propriedades (no celular: no painel de contexto da nota) resume os campos e deriva deles um nível de confiança: **Não verificada**, **Confirmada pela máquina** ou **Revisada por uma pessoa** — além de quem gerou, a lista de verificações, as fontes como links clicáveis, o status e a data de desatualização. As linhas **Status**, **Desatualizada após** e **Versão OKF** trazem rótulos traduzidos; a chave gravada no arquivo (`status`, `stale_after`, `okf_version`) aparece como dica no ícone do cadeado e nunca muda.
 
-**O que o Plainva escreve.**
+**O que o Alviss escreve.**
 
 - `generated` (e, quando uma fonte é conhecida, `sources`) é definido por exatamente três caminhos de escrita automáticos: o **importador** (`plainva-import/<version>`, um instante por execução — o relatório de importação também o traz), a **captura de e-mail** (`plainva-mail-capture/<version>`, com o Message-ID da mensagem como fonte) e a **sincronização de tarefas** (`plainva-task-sync/<version>`, somente quando ela cria uma nota).
-- `verified` é escrito apenas por **Marcar como revisada**, na seção **Confiança e origem**: o Plainva acrescenta `human:<seu nome>` com o instante atual à lista — uma segunda revisão nunca sobrescreve a primeira. Seu nome é pedido uma vez por vault; ele fica neste dispositivo e pode ser alterado em **Configurações → Vault → Notas e organização → Anotações → Seu nome (anotações e revisões)**.
+- `verified` é escrito apenas por **Marcar como revisada**, na seção **Confiança e origem**: o Alviss acrescenta `human:<seu nome>` com o instante atual à lista — uma segunda revisão nunca sobrescreve a primeira. Seu nome é pedido uma vez por vault; ele fica neste dispositivo e pode ser alterado em **Configurações → Vault → Notas e organização → Anotações → Seu nome (anotações e revisões)**.
 - O editor nunca toca nesses campos por conta própria, e notas existentes nunca são seladas retroativamente. `status` e `stale_after` são seus para definir, como propriedade ou no frontmatter.
 
 **Atualizando a versão do bundle.** A versão da convenção mora uma vez no `index.md` raiz. Um vault que ainda declara `"0.1"` continua funcionando sem alterações — em **Configurações → Vault → Manutenção → Formato OKF → Versão do bundle** (no celular igualmente) você a atualiza para 0.2 com **Atualizar…**. O diálogo mostra de antemão o que muda: a linha no `index.md` raiz e, como uma caixa de seleção (ativada por padrão), a remoção do campo legado `okf_version` das notas que ainda o carregam. Todo arquivo é copiado como backup antes de ser alterado; **Limpar…** faz apenas a segunda parte. A tabela de campos e as regras de escrita em detalhe estão na [Referência do Formato de Arquivo](File_Format_Reference.md).
@@ -66,16 +66,16 @@ Um `index.md` é o sumário de uma pasta: uma lista das notas e subpastas que el
 
 - **Gerando** — sempre por sua ação, nunca do nada: clique com o botão direito em uma pasta → **Criar visão geral** / **Atualizar visão geral**, ou em lote pelo **gerenciador de index.md** (**Configurações → Vault → Manutenção → Formato OKF**). Um link em outra nota que indica a visão geral de outra pasta só como `index` levaria ao novo `index.md`: quando uma visão geral nova atrairia esses links, **Criar visão geral** pergunta antes e oferece **Escrever os links para outras visões gerais com a pasta, para que continuem levando até lá**, marcado por padrão — como ao adotar. Gerar em todas as pastas sem `index.md` de uma vez dá um só número para toda a execução, pois qualquer uma das novas visões gerais pode atrair um link; os links são gravados antes de a primeira visão geral existir, e a linha de resultado os conta. Quando nenhuma visão geral nova atrairia um link, nada mais é perguntado.
 - **Adotando em vez de gerar** — se você já tem notas de visão geral (MOC, Visão geral, nota de pasta, README …), o gerenciador as sugere como candidatas. **Adotar** renomeia o arquivo para `index.md` (os links são atualizados em todo o vault). Com **Preparar os arquivos adotados para o OKF (remover frontmatter, converter os wikilinks deste arquivo em links Markdown)** — marcado por padrão — a nota é preparada no mesmo passo: seu frontmatter é removido (antes, a nota como estava é salva em backup) e seus wikilinks viram links Markdown relativos, cada um no seu lugar; nada mais muda na nota. Os links da nota para ela mesma passam a levar ao novo `index.md`, e um link de outra nota que chegava a ela pelo `title` do seu frontmatter — que vai embora com o frontmatter — passa a nomear o arquivo. Incorporações, wikilinks que não levam a nenhuma nota e um wikilink dentro do texto de outro link não são convertidos; a linha de resultado os conta. Uma pasta que já tem um `index.md` não recebe candidatos — nada pode ser adotado ali, e a nota fica intacta. Se uma adoção não puder ser feita — porque a nota tem um conflito aberto, por exemplo —, o resultado diz o porquê, em palavras. Links para um título da própria nota (`[[#Título]]`) ficam como estão e são contados à parte. Um link em outra nota que indica a visão geral de outra pasta só como `index` levaria ao novo `index.md`; quando uma adoção capturaria esses links, o gerenciador os conta e oferece **Escrever os links para outras visões gerais com a pasta, para que continuem levando até lá**, marcado por padrão — antes de mover qualquer coisa, cada um desses links é gravado com a pasta (`[[Projetos/index]]`), e a linha de resultado os conta. A pergunta no telefone oferece o mesmo.
-- **Manutenção automática** — listagens *geradas* pelo Plainva carregam um marcador invisível no final do arquivo (um comentário HTML). Somente esses arquivos marcados são mantidos atualizados automaticamente sempre que a pasta muda — e apenas em vaults OKF (reconhecíveis pelo `okf_version` no `index.md` raiz).
-- **Somente leitura com uma saída** — arquivos index.md gerenciados abrem no modo de leitura com o aviso "Este index.md é gerenciado pelo Plainva e atualizado automaticamente." Ali você pode **Atualizar** — ou escolher **Editar mesmo assim**: isso remove o marcador e o arquivo volta a ser totalmente seu (sem mais atualizações automáticas).
+- **Manutenção automática** — listagens *geradas* pelo Alviss carregam um marcador invisível no final do arquivo (um comentário HTML). Somente esses arquivos marcados são mantidos atualizados automaticamente sempre que a pasta muda — e apenas em vaults OKF (reconhecíveis pelo `okf_version` no `index.md` raiz).
+- **Somente leitura com uma saída** — arquivos index.md gerenciados abrem no modo de leitura com o aviso "Este index.md é gerenciado pelo Alviss e atualizado automaticamente." Ali você pode **Atualizar** — ou escolher **Editar mesmo assim**: isso remove o marcador e o arquivo volta a ser totalmente seu (sem mais atualizações automáticas).
 - **Tudo de uma vez** — **Atualizar todos os arquivos index.md** está disponível no menu de contexto da raiz do vault e nas configurações; arquivos sem o marcador são ignorados.
 - **Preenchendo as lacunas** — dentro do gerenciador de index.md, o botão **Gerar index.md nas pastas que não têm** pré-seleciona toda pasta que ainda não tem um index.md, para que você possa criá-los todos de uma vez.
 - **No telefone** — o mesmo, por duas portas: manter uma pasta pressionada oferece **Criar visão geral** ou **Atualizar visão geral**, conforme o que aquela pasta precisa. Para a passada ocasional pelo cofre inteiro existe **Configurações → Vault → Manutenção → Visões gerais**: as pastas sem visão geral vêm primeiro, e **Gerar index.md nas N pastas que não têm** cria todas de uma vez. Uma pasta cujo `index.md` você mesmo escreveu é listada e deixada em paz — adotar é uma decisão com nome nessa lista, nunca o efeito colateral de um toque. Antes ele pergunta, e a pergunta oferece a mesma preparação do diálogo do desktop, marcada por padrão. A manutenção automática também roda no telefone agora: um cofre editado ali não fica mais desatualizado até que um desktop o abra.
-- No modo de leitura, listagens gerenciadas são renderizadas como cartões com ícones de arquivo/pasta; os links abrem direto dentro do Plainva.
+- No modo de leitura, listagens gerenciadas são renderizadas como cartões com ícones de arquivo/pasta; os links abrem direto dentro do Alviss.
 
 ## Convertendo um vault existente (opt-in)
 
-Se arquivos no vault não seguem o formato OKF (campo `type` ausente, ou nomes reservados usados como notas comuns), o Plainva oferece a conversão — uma vez ao abrir o vault, e permanentemente em **Configurações → Vault → Manutenção → Formato OKF** (o item só aparece enquanto houver algo a fazer).
+Se arquivos no vault não seguem o formato OKF (campo `type` ausente, ou nomes reservados usados como notas comuns), o Alviss oferece a conversão — uma vez ao abrir o vault, e permanentemente em **Configurações → Vault → Manutenção → Formato OKF** (o item só aparece enquanto houver algo a fazer).
 
 O assistente **Converter para o formato OKF** trabalha em etapas claras:
 
@@ -93,9 +93,9 @@ O mesmo caminho existe no celular: **Configurações → Vault → Manutenção 
 Duas coisas se somam, porque um telefone pode tirar um app da memória a qualquer momento:
 
 - **Pausar e continuar.** A execução para no próximo arquivo quando você toca em **Pausar** ou o app vai para segundo plano. Continuar escreve na mesma pasta de backup — nenhuma segunda aparece. Continuar também mantém as opções com que a execução começou, e uma nota já convertida não é convertida uma segunda vez.
-- **Perguntado na inicialização.** Se uma execução ficar inacabada, o Plainva avisa na próxima vez que você abrir o vault e oferece **Continuar** ou **Reverter**; **Depois** é uma resposta válida. Uma execução interrompida deixa um vault parcialmente convertido, não quebrado: apenas campos de frontmatter são adicionados e cada nota continua sendo Markdown válido.
+- **Perguntado na inicialização.** Se uma execução ficar inacabada, o Alviss avisa na próxima vez que você abrir o vault e oferece **Continuar** ou **Reverter**; **Depois** é uma resposta válida. Uma execução interrompida deixa um vault parcialmente convertido, não quebrado: apenas campos de frontmatter são adicionados e cada nota continua sendo Markdown válido.
 
-**Reverter** restaura os arquivos a partir da pasta de backup — no desktop também, pelo relatório ao final da execução. A pasta de backup permanece depois; ela é a única cópia do estado anterior à conversão. Uma nota que você alterou, moveu ou excluiu depois da conversão fica como está; o Plainva informa quantas são, e o texto anterior continua na pasta de backup.
+**Reverter** restaura os arquivos a partir da pasta de backup — no desktop também, pelo relatório ao final da execução. A pasta de backup permanece depois; ela é a única cópia do estado anterior à conversão. Uma nota que você alterou, moveu ou excluiu depois da conversão fica como está; o Alviss informa quantas são, e o texto anterior continua na pasta de backup.
 
 ## Preciso usar o OKF?
 
@@ -103,7 +103,7 @@ Não. O OKF é um padrão suave:
 
 - Arquivos novos recebem o cabeçalho automaticamente — isso nunca atrapalha e não custa nada.
 - Vaults existentes (por exemplo, vindos do Obsidian) continuam funcionando sem alterações; a conversão é estritamente opt-in.
-- Um `okf_version` ausente — ou um que notas mais antigas ainda carreguem — não conta como uma violação; você pode usar o Plainva e o Obsidian lado a lado permanentemente, sem avisos incômodos.
+- Um `okf_version` ausente — ou um que notas mais antigas ainda carreguem — não conta como uma violação; você pode usar o Alviss e o Obsidian lado a lado permanentemente, sem avisos incômodos.
 - O Obsidian e qualquer outro editor ainda conseguem abrir todo arquivo: ele é e continua sendo Markdown puro.
 
 ## Veja também

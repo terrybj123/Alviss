@@ -13,7 +13,7 @@ Appuyez sur `F1` (ou **Palette de commandes → Afficher les raccourcis clavier*
 | `Ctrl+,` | Ouvrir les paramètres |
 | `Ctrl+Plus` / `Ctrl+Minus` | Zoom avant / arrière sur l'interface (80–150 %) |
 | `Ctrl+0` | Réinitialiser le zoom à 100 % |
-| `Ctrl+S` | Confirmer l'enregistrement (Plainva enregistre automatiquement) |
+| `Ctrl+S` | Confirmer l'enregistrement (Alviss enregistre automatiquement) |
 | `F1` | Afficher cette fenêtre |
 | `Esc` | Annuler l'action (fermer la boîte de dialogue, annuler le renommage) |
 
@@ -128,7 +128,7 @@ Souris : la **molette** zoome ; le **clic molette + glisser** ou `Ctrl`+glisser 
 - **Onglets :** glisser pour réorganiser, entre les volets, ou vers un bord pour scinder ; le **clic droit** ouvre le menu de l'onglet (**Épingler**, **Recharger**, **Ouvrir dans la vue scindée**, groupe de fermeture). Un onglet **épinglé** passe au premier plan et survit à toute fermeture groupée.
 - **Barre d'actions (tout à gauche) :** maintenez brièvement un bouton puis faites-le glisser pour le réorganiser (les groupes du haut et du bas restent séparés) ; `Esc` annule.
 - **Liens :** cliquer sur un lien interne / Markdown pour l'ouvrir (`Ctrl`+clic pour un nouvel onglet).
-- **Clic droit** sur une sélection ou un champ pour le menu copier / couper / coller propre à Plainva.
+- **Clic droit** sur une sélection ou un champ pour le menu copier / couper / coller propre à Alviss.
 - **Fenêtre d'aperçu :** en-tête pour déplacer, angle pour redimensionner ; `◀ ▶` est son propre historique. Si plusieurs fenêtres flottantes sont ouvertes — une fenêtre d'aperçu, l'aperçu de l'événement, un e-mail en cours de rédaction —, celle sur laquelle vous cliquez passe au premier plan, et `Esc` ferme celle qui est au premier plan.
 - **Calendrier :** cliquer sur le titre de l'onglet calendrier ou sur le nom du mois dans la barre latérale (ou l'atteindre avec `Tab` et appuyer sur `Entrée`) pour le sélecteur de date — les flèches se déplacent dans la grille, `Pg.préc/suiv` changent de mois, `Entrée` saute, `Échap` ferme ; cliquer sur un jour pour sa note quotidienne.
 - **Menus :** un menu ouvert depuis un bouton ou par **clic droit** place le clavier sur son premier élément — les flèches, `Origine` et `Fin` s'y déplacent, `Entrée` choisit un élément, `Échap` le ferme et rend le clavier là où il était. Au-dessus d'un champ en cours de saisie et d'un texte en lecture seule, le clavier reste là où il était.

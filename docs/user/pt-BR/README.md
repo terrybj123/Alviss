@@ -1,10 +1,10 @@
-# Guia do Usuário do Plainva
+# Guia do Usuário do Alviss
 
 Última revisão: 2026-09-20
 
 Esta tradução foi gerada automaticamente — correções são bem-vindas.
 
-O Plainva é um editor de vault Markdown: suas notas são arquivos Markdown comuns em uma pasta (um "vault") no seu computador — sem silo de banco de dados, sem conta na nuvem obrigatória. Este guia explica como trabalhar com o Plainva e como os formatos de arquivo funcionam.
+O Alviss é um editor de vault Markdown: suas notas são arquivos Markdown comuns em uma pasta (um "vault") no seu computador — sem silo de banco de dados, sem conta na nuvem obrigatória. Este guia explica como trabalhar com o Alviss e como os formatos de arquivo funcionam.
 
 ## Conteúdo
 
@@ -13,13 +13,13 @@ O Plainva é um editor de vault Markdown: suas notas são arquivos Markdown comu
 | [Primeiros Passos](Getting_Started.md) | Abrir ou criar um vault, a interface, os modos do editor, abas e visualização dividida |
 | [Notas & Markdown](Notes_and_Markdown.md) | Como os arquivos Markdown funcionam: escrever, formatar, propriedades (frontmatter), ícones, links, modelos, imagens |
 | [Bancos de Dados (.base)](Databases_Base.md) | Ver notas como um banco de dados — visualizações, filtros, propriedades, relações, novos itens (parecido com o Notion, mas baseado em arquivos) |
-| [Referência de Bancos de Dados (.base)](Base_Reference.md) | Tudo o que um arquivo `.base` pode conter e o que o Plainva faz com isso: chaves, filtros, tipos de visualização, resumos, limites, diferenças em relação ao Obsidian |
+| [Referência de Bancos de Dados (.base)](Base_Reference.md) | Tudo o que um arquivo `.base` pode conter e o que o Alviss faz com isso: chaves, filtros, tipos de visualização, resumos, limites, diferenças em relação ao Obsidian |
 | [Importar de outro aplicativo](Import.md) | Trazer notas do Notion, Evernote, Google Keep, Simplenote, Logseq ou uma pasta Markdown — e o que cada importador não consegue trazer |
 | [OKF](OKF.md) | O Open Knowledge Format (0.2): `type`, marcas de proveniência e revisão, a versão do bundle, o gerenciamento de index.md e a conversão opcional do vault |
 | [Referência do Formato de Arquivo](File_Format_Reference.md) | O formato exato em disco de cada arquivo do vault — para ferramentas, scripts ou uma IA editando notas e arquivos `.base` diretamente |
-| [Automação & Scripts](Automation_and_Scripts.md) | Estendendo o Plainva sem plugins: como scripts, ferramentas CLI e agentes de IA leem e escrevem em um vault com segurança |
+| [Automação & Scripts](Automation_and_Scripts.md) | Estendendo o Alviss sem plugins: como scripts, ferramentas CLI e agentes de IA leem e escrevem em um vault com segurança |
 | [Backups & Histórico de Versões](Backups_and_Versioning.md) | Versões automáticas de arquivo, restauração (inclusive de arquivos excluídos) e backups diários em ZIP do vault |
-| [O aplicativo móvel](Mobile_App.md) | Plainva no Android e iOS: estrutura, edição, bancos de dados, sincronização e rede de segurança |
+| [O aplicativo móvel](Mobile_App.md) | Alviss no Android e iOS: estrutura, edição, bancos de dados, sincronização e rede de segurança |
 | [Configurar Sincronização](Sync_Setup.md) | Passo a passo por provedor: WebDAV/Nextcloud, Google Drive, OneDrive, Dropbox, S3 |
 | [Segurança e compartilhamento](Security_and_Sharing.md) | Workspace pessoal criptografado, recuperação, migração e bloqueio |
 | [Comentários e sugestões](Comments_and_Suggestions.md) | Comentários, modo de sugestão, visão geral e notificações — em todo cofre, com ou sem criptografia |
@@ -39,4 +39,4 @@ O Plainva é um editor de vault Markdown: suas notas são arquivos Markdown comu
 
 - **Seus arquivos pertencem a você.** Um vault é apenas uma pasta comum com arquivos Markdown. Você pode abri-la, copiá-la ou fazer backup dela com qualquer outro programa a qualquer momento.
 - **Markdown puro é o formato canônico.** Até os recursos extras (propriedades, ícones, bancos de dados) são armazenados em formatos de texto abertos e legíveis.
-- **Compatível com o Obsidian.** Vaults existentes do Obsidian nunca são danificados ou reformatados; o Obsidian consegue abrir todos os arquivos criados pelo Plainva.
+- **Compatível com o Obsidian.** Vaults existentes do Obsidian nunca são danificados ou reformatados; o Obsidian consegue abrir todos os arquivos criados pelo Alviss.

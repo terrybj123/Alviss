@@ -2,36 +2,36 @@
 
 Laatst bijgewerkt: 2026-11-03
 
-Deze pagina somt op wat een `.base`-bestand allemaal kan bevatten en wat Plainva met elk onderdeel doet: elke sleutel op het hoogste niveau, elke filtervorm, elk weergavetype met zijn opties, samenvattingen, sortering, beperkingen, wat er gebeurt met sleutels die Plainva niet kent, en waar Plainva zich anders gedraagt dan Obsidian Bases. De pagina beschrijft wat de code van Plainva vandaag leest, evalueert en schrijft — niet de documentatie van Obsidian.
+Deze pagina somt op wat een `.base`-bestand allemaal kan bevatten en wat Alviss met elk onderdeel doet: elke sleutel op het hoogste niveau, elke filtervorm, elk weergavetype met zijn opties, samenvattingen, sortering, beperkingen, wat er gebeurt met sleutels die Alviss niet kent, en waar Alviss zich anders gedraagt dan Obsidian Bases. De pagina beschrijft wat de code van Alviss vandaag leest, evalueert en schrijft — niet de documentatie van Obsidian.
 
 Lees voor dagelijks gebruik eerst [Databases (.base)](Databases_Base.md). De regels die een tool moet aanhouden wanneer hij vaultbestanden rechtstreeks schrijft, en het volledige relatievoorbeeld, staan in de [Bestandsformaat-referentie](File_Format_Reference.md).
 
 ## In één oogopslag
 
-| Onderdeel van het bestand | Wat Plainva doet |
+| Onderdeel van het bestand | Wat Alviss doet |
 |---|---|
 | `filters` | Leest en past de bronnen (map, tag) en de voorwaarden toe die onder [Filters](#filters) staan |
 | `views` | Leest alle acht weergavetypen, hun volgorde, sortering, filters en samenvattingen |
-| `properties` | Leest het kolomschema, de weergavenaam en het `plainva`-blok van Plainva |
+| `properties` | Leest het kolomschema, de weergavenaam en het `plainva`-blok van Alviss |
 | `summaries` (weergave) | Berekent de veertien ingebouwde samenvattingen |
 | `formulas` | Bewaart ze in het bestand, berekent ze niet |
 | `summaries` (hoogste niveau) | Bewaart eigen samenvattingsformules, berekent ze niet |
 | `this` | Nog niet ondersteund |
-| Andere sleutels | Bewaart ze in het bestand (zie [Sleutels die Plainva niet kent](#sleutels-die-plainva-niet-kent)) |
+| Andere sleutels | Bewaart ze in het bestand (zie [Sleutels die Alviss niet kent](#sleutels-die-plainva-niet-kent)) |
 
 ## Sleutels op het hoogste niveau
 
 Een `.base`-bestand is YAML met deze sleutels op het hoogste niveau. Ze zijn allemaal optioneel; een bestand zonder `views` opent met één tabel.
 
-| Sleutel | Inhoud | In Plainva |
+| Sleutel | Inhoud | In Alviss |
 |---|---|---|
 | `filters` | Welke notities bij de database horen (bronnen) | Gelezen en toegepast |
-| `properties` | Eén item per kolom, met de eigenschaps-id als sleutel | Gelezen; de toevoegingen van Plainva staan in zijn `plainva`-blok |
+| `properties` | Eén item per kolom, met de eigenschaps-id als sleutel | Gelezen; de toevoegingen van Alviss staan in zijn `plainva`-blok |
 | `views` | De lijst met weergaven | Gelezen; elke weergave heeft een `name` nodig |
 | `formulas` | Obsidian-formules, `name: expression` | Ongewijzigd bewaard, niet berekend |
 | `summaries` | Eigen samenvattingsformules van Obsidian | Ongewijzigd bewaard, niet berekend |
 
-Plainva schrijft nooit een andere sleutel op het hoogste niveau: Obsidian weigert een `.base` te openen met een sleutel die het niet kent. Een sleutel `columns:` op het hoogste niveau, zoals zeer oude Plainva-versies die schreven, wordt nog steeds gelezen en bij het volgende opslaan van het bestand naar `properties` verplaatst.
+Alviss schrijft nooit een andere sleutel op het hoogste niveau: Obsidian weigert een `.base` te openen met een sleutel die het niet kent. Een sleutel `columns:` op het hoogste niveau, zoals zeer oude Alviss-versies die schreven, wordt nog steeds gelezen en bij het volgende opslaan van het bestand naar `properties` verplaatst.
 
 ## Eigenschappen (`properties`)
 
@@ -47,15 +47,15 @@ Een eigenschaps-id geeft een kolom een naam. Er zijn drie soorten:
 
 De sleutels van `properties`, de `order` van een weergave en `sort[].property` gebruiken deze id's. In een filteruitdrukking en in een `plainva`-blok wordt een frontmattersleutel kaal geschreven (`status`); een filteruitdrukking begrijpt ook `note.status`.
 
-Schrijft een notitie een sleutel in een andere schrijfwijze dan de kolom (`Due` tegenover de kolom `due`), dan toont Plainva de waarde toch in die kolom en schrijft het wijzigingen terug onder de eigen schrijfwijze van de notitie.
+Schrijft een notitie een sleutel in een andere schrijfwijze dan de kolom (`Due` tegenover de kolom `due`), dan toont Alviss de waarde toch in die kolom en schrijft het wijzigingen terug onder de eigen schrijfwijze van de notitie.
 
 ### Weergavenaam
 
-`properties.<id>.displayName` is het kolomlabel van Obsidian. Plainva toont het als kolomkop en bewaart het. Zonder dit label toont een frontmattersleutel een hoofdletter vooraan (alleen op het scherm); de bestandsvelden hebben hun eigen namen, bijvoorbeeld **Naam**, **Gewijzigd**, **Grootte**, **Pad**, **Takenlijst** en **Dag uit de bestandsnaam**.
+`properties.<id>.displayName` is het kolomlabel van Obsidian. Alviss toont het als kolomkop en bewaart het. Zonder dit label toont een frontmattersleutel een hoofdletter vooraan (alleen op het scherm); de bestandsvelden hebben hun eigen namen, bijvoorbeeld **Naam**, **Gewijzigd**, **Grootte**, **Pad**, **Takenlijst** en **Dag uit de bestandsnaam**.
 
 ### Het `plainva`-blok van een kolom
 
-Alles wat Plainva aan een kolom toevoegt, staat onder `properties.<id>.plainva`. Obsidian negeert het.
+Alles wat Alviss aan een kolom toevoegt, staat onder `properties.<id>.plainva`. Obsidian negeert het.
 
 | Sleutel | Waarde | Betekenis |
 |---|---|---|
@@ -112,7 +112,7 @@ Deze waarden komen uit het bestand, niet uit de frontmatter. Elke rij van een da
 
 ### Waar filters staan
 
-De `filters` op het hoogste niveau bevatten de **bronnen** — welke notities bij de database horen. Elke weergave kan haar eigen `filters` dragen met voorwaarden die alleen die weergave verder beperken; Plainva schrijft de voorwaarden daar. Beide niveaus gelden samen. Voorwaarden die een bestand op het hoogste niveau bewaart, werken nog steeds; bij het volgende opslaan in Plainva worden ze naar elke weergave verplaatst.
+De `filters` op het hoogste niveau bevatten de **bronnen** — welke notities bij de database horen. Elke weergave kan haar eigen `filters` dragen met voorwaarden die alleen die weergave verder beperken; Alviss schrijft de voorwaarden daar. Beide niveaus gelden samen. Voorwaarden die een bestand op het hoogste niveau bewaart, werken nog steeds; bij het volgende opslaan in Alviss worden ze naar elke weergave verplaatst.
 
 ### Bronnen
 
@@ -158,33 +158,33 @@ Een `filters`-object heeft op elk niveau precies één van `and`, `or` en `not`;
 | `or` | minstens één item overeenkomt |
 | `not` | geen enkel item overeenkomt |
 
-Plainva evalueert elke diepte. Het filterpaneel bewerkt één niveau groepen onder **Alle** of **Minstens één** (**Groep toevoegen**); een diepere structuur verschijnt als **Complex filter (niet bewerkbaar)**, blijft in het bestand staan en wordt toegepast — een voorwaarde daarin die Plainva niet kan lezen, wordt eronder als niet toegepast genoemd. Een ouder bestand met `and` en `or` naast elkaar op één niveau wordt gelezen als "alles van `and` en één van `or`" en bij het volgende opslaan in de geldige vorm geschreven.
+Alviss evalueert elke diepte. Het filterpaneel bewerkt één niveau groepen onder **Alle** of **Minstens één** (**Groep toevoegen**); een diepere structuur verschijnt als **Complex filter (niet bewerkbaar)**, blijft in het bestand staan en wordt toegepast — een voorwaarde daarin die Alviss niet kan lezen, wordt eronder als niet toegepast genoemd. Een ouder bestand met `and` en `or` naast elkaar op één niveau wordt gelezen als "alles van `and` en één van `or`" en bij het volgende opslaan in de geldige vorm geschreven.
 
-### Wat Plainva niet kan lezen
+### Wat Alviss niet kan lezen
 
-Alleen de vormen in de twee tabellen hierboven worden begrepen. Al het andere — `file.inFolder(…)`, `file.hasLink(…)`, `file.hasProperty(…)`, een getal zonder aanhalingstekens (`price > 2`), `&&` en `||` binnen één tekenreeks, rekenkunde, datumfuncties zoals `now()`, of `this` — blijft in het bestand staan en wordt in het filterpaneel getoond zoals het er staat, met de opmerking **Niet toegepast: Plainva kan deze voorwaarde niet lezen, dus ze filtert niets.** De weergave toont dan meer notities dan hetzelfde filter in Obsidian.
+Alleen de vormen in de twee tabellen hierboven worden begrepen. Al het andere — `file.inFolder(…)`, `file.hasLink(…)`, `file.hasProperty(…)`, een getal zonder aanhalingstekens (`price > 2`), `&&` en `||` binnen één tekenreeks, rekenkunde, datumfuncties zoals `now()`, of `this` — blijft in het bestand staan en wordt in het filterpaneel getoond zoals het er staat, met de opmerking **Niet toegepast: Alviss kan deze voorwaarde niet lezen, dus ze filtert niets.** De weergave toont dan meer notities dan hetzelfde filter in Obsidian.
 
 ## Formules
 
-Plainva berekent geen Obsidian-formules. `formulas` blijft ongewijzigd in het bestand staan, en een kolom `formula.<name>` in de `order` van een weergave wordt zonder waarden getoond. **Tabel exporteren** → **Formules (.base)** schrijft sommige aggregaties als formules, zodat Obsidian ze kan berekenen (zie [Databases](Databases_Base.md)).
+Alviss berekent geen Obsidian-formules. `formulas` blijft ongewijzigd in het bestand staan, en een kolom `formula.<name>` in de `order` van een weergave wordt zonder waarden getoond. **Tabel exporteren** → **Formules (.base)** schrijft sommige aggregaties als formules, zodat Obsidian ze kan berekenen (zie [Databases](Databases_Base.md)).
 
 ## Weergaven
 
 ### Sleutels van elke weergave
 
-| Sleutel | Waarde | In Plainva |
+| Sleutel | Waarde | In Alviss |
 |---|---|---|
 | `type` | `table`, `list`, `cards` | Het weergavetype; zie de volgende tabel |
-| `name` | tekst | Verplicht; Plainva geeft een weergave zonder naam er bij het opslaan een |
+| `name` | tekst | Verplicht; Alviss geeft een weergave zonder naam er bij het opslaan een |
 | `order` | lijst met eigenschaps-id's | De zichtbare kolommen, in deze volgorde |
 | `sort` | lijst met `{ property, direction }` | Sorteerregels, `ASC` of `DESC` |
 | `filters` | filterobject | De eigen voorwaarden van de weergave |
 | `summaries` | map van eigenschaps-id → naam van de samenvatting | De kolomvoet van elke kolom |
-| `plainva` | map | De weergaveopties van Plainva, hieronder |
+| `plainva` | map | De weergaveopties van Alviss, hieronder |
 
 ### De acht weergavetypen
 
-Obsidian kent `table`, `list` en `cards`. De andere weergavetypen van Plainva worden opgeslagen als `type: table` plus `plainva.render`, zodat Obsidian ze als tabel toont.
+Obsidian kent `table`, `list` en `cards`. De andere weergavetypen van Alviss worden opgeslagen als `type: table` plus `plainva.render`, zodat Obsidian ze als tabel toont.
 
 | Weergavetype | `type` op schijf | `plainva.render` |
 |---|---|---|
@@ -197,7 +197,7 @@ Obsidian kent `table`, `list` en `cards`. De andere weergavetypen van Plainva wo
 | **Graaf** (`graph`) | `table` | `graph` |
 | **Prikbord** (`pinboard`) | `table` | `pinboard` |
 
-Bord, Kalender, Tijdlijn, Graaf en Prikbord worden alleen als **Weergavetype** aangeboden zolang **Plainva-extensies voor .base-bestanden toestaan** aan staat. Een `type` dat Plainva niet kent, wordt als tabel getoond en blijft zoals het er staat in het bestand totdat je een ander **Weergavetype** kiest.
+Bord, Kalender, Tijdlijn, Graaf en Prikbord worden alleen als **Weergavetype** aangeboden zolang **Alviss-extensies voor .base-bestanden toestaan** aan staat. Een `type` dat Alviss niet kent, wordt als tabel getoond en blijft zoals het er staat in het bestand totdat je een ander **Weergavetype** kiest.
 
 ### Weergaveopties (`views[i].plainva`)
 
@@ -229,7 +229,7 @@ Binnen het `plainva`-blok wordt een eigenschap kaal geschreven (`status`), niet 
 
 ### Bestandsbrede opties (alleen eerste weergave)
 
-Deze sleutels horen bij de hele database. Plainva schrijft ze alleen in het `plainva`-blok van de eerste weergave en leest van elke sleutel de eerste geldige waarde.
+Deze sleutels horen bij de hele database. Alviss schrijft ze alleen in het `plainva`-blok van de eerste weergave en leest van elke sleutel de eerste geldige waarde.
 
 | Sleutel | Waarde |
 |---|---|
@@ -243,7 +243,7 @@ Deze sleutels horen bij de hele database. Plainva schrijft ze alleen in het `pla
 
 `views[i].summaries` koppelt een kolom aan een van deze namen; de kolomvoet berekent het over de rijen die de weergave toont.
 
-| Naam | In Plainva | Resultaat |
+| Naam | In Alviss | Resultaat |
 |---|---|---|
 | `Average` | **Gemiddelde** | Gemiddelde van de getallen |
 | `Min` | **Min** | Kleinste getal |
@@ -260,39 +260,39 @@ Deze sleutels horen bij de hele database. Plainva schrijft ze alleen in het `pla
 | `Filled` | **Met waarde** | Rijen met een waarde |
 | `Unique` | **Verschillend** | Aantal verschillende waarden; items van een lijst tellen één voor één |
 
-Getallen worden op twee decimalen afgerond, en een decimale komma wordt ook gelezen. Een kolom zonder bruikbare waarde toont geen kolomvoet in plaats van 0. Elke andere naam is een eigen formule uit de `summaries` op het hoogste niveau: Plainva bewaart hem en toont **Aangepast: …** in het menu, maar berekent geen waarde.
+Getallen worden op twee decimalen afgerond, en een decimale komma wordt ook gelezen. Een kolom zonder bruikbare waarde toont geen kolomvoet in plaats van 0. Elke andere naam is een eigen formule uit de `summaries` op het hoogste niveau: Alviss bewaart hem en toont **Aangepast: …** in het menu, maar berekent geen waarde.
 
 ## Sorteren en groeperen
 
-- **Sortering** — `sort` is een lijst met regels; de eerste regel beslist eerst, de volgende alleen tussen gelijke rijen. Getallen sorteren als getallen, al het andere als tekst (ISO-datums in de juiste volgorde). Rijen zonder waarde komen in beide richtingen laatst. Zonder regel komen de recentst gewijzigde notities eerst. Plainva leest ook `field` voor `property`, en `asc`/`desc` in elke schrijfwijze met hoofd- of kleine letters.
-- **Groepering** — het bord groepeert op `plainva.groupBy`, met banen op `plainva.boardLaneBy`. Een weergave die in plaats daarvan de eigen `groupBy` van Obsidian heeft, groepeert haar bord op die eigenschap, en een wijziging van de groepering wordt daarin geschreven (de `direction` ervan blijft). Plainva groepeert een tabel er niet mee.
+- **Sortering** — `sort` is een lijst met regels; de eerste regel beslist eerst, de volgende alleen tussen gelijke rijen. Getallen sorteren als getallen, al het andere als tekst (ISO-datums in de juiste volgorde). Rijen zonder waarde komen in beide richtingen laatst. Zonder regel komen de recentst gewijzigde notities eerst. Alviss leest ook `field` voor `property`, en `asc`/`desc` in elke schrijfwijze met hoofd- of kleine letters.
+- **Groepering** — het bord groepeert op `plainva.groupBy`, met banen op `plainva.boardLaneBy`. Een weergave die in plaats daarvan de eigen `groupBy` van Obsidian heeft, groepeert haar bord op die eigenschap, en een wijziging van de groepering wordt daarin geschreven (de `direction` ervan blijft). Alviss groepeert een tabel er niet mee.
 
 ## Een database insluiten, en `this`
 
 `![[Projects.base]]` in een notitie toont de database in de notitie, in de leesweergave en in de editor. Een deel na `#` (een weergavenaam, zoals in `![[Projects.base#Board]]`) wordt genegeerd: de insluiting toont de weergave die voor deze database het laatst is gebruikt. Een codeblok ` ```base ` in een notitie wordt als code getoond, niet als database.
 
-**`this` wordt nog niet ondersteund.** Een filter of formule die `this` gebruikt, blijft in het bestand staan, maar Plainva evalueert het niet. Twee dingen dekken het meest voorkomende geval, "toon de items die bij deze notitie horen": `contextFilters` (**Deze notitie** in het filterpaneel) beperkt een ingesloten database via een relatie-eigenschap tot de notitie waarin hij is ingesloten, en een ingesloten database die een relatie heeft met de database van zijn hostnotitie biedt zelf **Deze database op de huidige notitie filteren** aan. Beide werken alleen binnen Plainva; Obsidian toont alle rijen.
+**`this` wordt nog niet ondersteund.** Een filter of formule die `this` gebruikt, blijft in het bestand staan, maar Alviss evalueert het niet. Twee dingen dekken het meest voorkomende geval, "toon de items die bij deze notitie horen": `contextFilters` (**Deze notitie** in het filterpaneel) beperkt een ingesloten database via een relatie-eigenschap tot de notitie waarin hij is ingesloten, en een ingesloten database die een relatie heeft met de database van zijn hostnotitie biedt zelf **Deze database op de huidige notitie filteren** aan. Beide werken alleen binnen Alviss; Obsidian toont alle rijen.
 
 ## Beperkingen
 
 - De `limit` van Obsidian voor een weergave wordt bewaard maar niet toegepast: een weergave toont al haar rijen.
 - Het filterpaneel bewerkt één niveau filtergroepen; diepere worden toegepast maar kunnen daar alleen worden verwijderd.
-- Een filterwaarde moet tussen dubbele aanhalingstekens staan (zie [Wat Plainva niet kan lezen](#wat-plainva-niet-kan-lezen)).
+- Een filterwaarde moet tussen dubbele aanhalingstekens staan (zie [Wat Alviss niet kan lezen](#wat-plainva-niet-kan-lezen)).
 - Een mapbron omvat altijd de submappen.
 - `ratingMax` wordt tussen 1 en 10 getekend, `previousKeys` bewaart maximaal 8 namen, een **WIP-limiet** neemt alleen gehele getallen boven 0 aan, en `relationLimit` kent alleen `one`.
 - Een aggregatie kan niet rekenen over een andere berekende kolom.
 
-## Sleutels die Plainva niet kent
+## Sleutels die Alviss niet kent
 
-Plainva leest een `.base`, wijzigt alleen wat je in de app hebt gewijzigd, en schrijft het hele bestand opnieuw — als YAML met LF-regeleinden en zonder BOM, dus opmerkingen en de opmaak van een met de hand geschreven bestand blijven niet behouden. Van wat het niet kent:
+Alviss leest een `.base`, wijzigt alleen wat je in de app hebt gewijzigd, en schrijft het hele bestand opnieuw — als YAML met LF-regeleinden en zonder BOM, dus opmerkingen en de opmaak van een met de hand geschreven bestand blijven niet behouden. Van wat het niet kent:
 
-- **Bewaard:** elke andere sleutel op het hoogste niveau, `formulas`, de `summaries` op het hoogste niveau, `displayName` en elke andere sleutel van een item in `properties`, onbekende sleutels in het `plainva`-blok van een kolom of een weergave, een aggregatie die Plainva niet kan lezen, de sleutels van een weergave die Plainva niet gebruikt (`limit`, `image`, …), een weergavetype dat het niet kent, en filtervoorwaarden die het niet kan lezen. Een waarde die Plainva begrijpt maar die je niet hebt gewijzigd, behoudt de schrijfwijze van het bestand (`status` of `note.status`, een optie geschreven als platte tekst).
-- **Herschreven:** alleen Plainva's eigen oude vormen — een `columns:`-map op het hoogste niveau verhuist naar `properties`, `and` en `or` naast elkaar op één niveau krijgen de geldige vorm, en een weergave die heel oude versies als `type: board` opsloegen, wordt `type: table` met `plainva.render`.
-- **Positie:** de sleutels die een weergave bewaart, horen bij die weergave. Het verwijderen of verplaatsen van een weergave in Plainva neemt ze mee, en **Dupliceren** kopieert ze naar de nieuwe weergave.
+- **Bewaard:** elke andere sleutel op het hoogste niveau, `formulas`, de `summaries` op het hoogste niveau, `displayName` en elke andere sleutel van een item in `properties`, onbekende sleutels in het `plainva`-blok van een kolom of een weergave, een aggregatie die Alviss niet kan lezen, de sleutels van een weergave die Alviss niet gebruikt (`limit`, `image`, …), een weergavetype dat het niet kent, en filtervoorwaarden die het niet kan lezen. Een waarde die Alviss begrijpt maar die je niet hebt gewijzigd, behoudt de schrijfwijze van het bestand (`status` of `note.status`, een optie geschreven als platte tekst).
+- **Herschreven:** alleen Alviss's eigen oude vormen — een `columns:`-map op het hoogste niveau verhuist naar `properties`, `and` en `or` naast elkaar op één niveau krijgen de geldige vorm, en een weergave die heel oude versies als `type: board` opsloegen, wordt `type: table` met `plainva.render`.
+- **Positie:** de sleutels die een weergave bewaart, horen bij die weergave. Het verwijderen of verplaatsen van een weergave in Alviss neemt ze mee, en **Dupliceren** kopieert ze naar de nieuwe weergave.
 
 ## Verschillen met Obsidian Bases
 
-| Onderwerp | Obsidian | Plainva |
+| Onderwerp | Obsidian | Alviss |
 |---|---|---|
 | Formules, eigen samenvattingen | Berekend | Bewaard, niet berekend |
 | `this` | Ondersteund | Nog niet ondersteund |
@@ -304,7 +304,7 @@ Plainva leest een `.base`, wijzigt alleen wat je in de app hebt gewijzigd, en sc
 | Weergavetypen | `table`, `list`, `cards` en plug-intypen | Acht typen; een onbekend type wordt als tabel getoond en blijft in het bestand |
 | `![[db.base#View]]` | Opent die weergave | De laatst gebruikte weergave |
 | Codeblok ` ```base ` | Een database | Een codeblok |
-| De `plainva`-blokken van Plainva | Genegeerd | Bord, kalender, tijdlijn, graaf, prikbord, relaties, aggregaties, veldtypen |
+| De `plainva`-blokken van Alviss | Genegeerd | Bord, kalender, tijdlijn, graaf, prikbord, relaties, aggregaties, veldtypen |
 
 ## Zie ook
 

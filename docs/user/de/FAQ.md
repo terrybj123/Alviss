@@ -8,15 +8,15 @@ Antworten auf die häufigsten Fragen — von Obsidian-Kompatibilität über Konf
 
 ### Wo liegen meine Daten?
 
-Ausschließlich bei Dir: Ein Vault ist ein normaler Ordner mit Markdown-Dateien auf Deinem Rechner. Plainva betreibt keinen eigenen Server und legt keine Kopien irgendwo ab. Synchronisierst Du, dann direkt zwischen Deinem Rechner und *Deinem* Speicher (Dein Nextcloud, Dein OneDrive, Dein Bucket …). Zugangsdaten liegen im Schlüsselbund des Betriebssystems.
+Ausschließlich bei Dir: Ein Vault ist ein normaler Ordner mit Markdown-Dateien auf Deinem Rechner. Alviss betreibt keinen eigenen Server und legt keine Kopien irgendwo ab. Synchronisierst Du, dann direkt zwischen Deinem Rechner und *Deinem* Speicher (Dein Nextcloud, Dein OneDrive, Dein Bucket …). Zugangsdaten liegen im Schlüsselbund des Betriebssystems.
 
-### Kann ich Plainva und Obsidian parallel nutzen?
+### Kann ich Alviss und Obsidian parallel nutzen?
 
-Ja — das ist ein Kernversprechen, mit einer ehrlichen Einschränkung. Plainva schreibt reines Markdown mit Standard-Frontmatter; alles Plainva-Spezifische liegt gebündelt unter `plainva:`-Schlüsseln (in Notizen und `.base`-Dateien), die Obsidian beim Öffnen einfach ignoriert. Obsidian zeigt den `plainva`-Schlüssel als nicht editierbares Objekt in den Properties — das ist harmlos. Plainva-Ansichten wie Board oder Kalender erscheinen in Obsidian als einfache Tabelle.
+Ja — das ist ein Kernversprechen, mit einer ehrlichen Einschränkung. Alviss schreibt reines Markdown mit Standard-Frontmatter; alles Alviss-Spezifische liegt gebündelt unter `plainva:`-Schlüsseln (in Notizen und `.base`-Dateien), die Obsidian beim Öffnen einfach ignoriert. Obsidian zeigt den `plainva`-Schlüssel als nicht editierbares Objekt in den Properties — das ist harmlos. Alviss-Ansichten wie Board oder Kalender erscheinen in Obsidian als einfache Tabelle.
 
-Die Einschränkung: **Öffnen ist immer sicher, Bearbeiten nicht immer.** Ein bestehender Obsidian-Vault lässt sich in Plainva gefahrlos öffnen und bearbeiten — nichts wird migriert oder umformatiert. Nutzt ein Vault aber Plainva-Funktionen (Datenbank-Erweiterungen wie Boards, Relationen oder Rückspalten, verwaltete `index.md`-Dateien), kann das Bearbeiten genau dieser Dateien in Obsidian die Plainva-Funktionalität beschädigen, weil Obsidian die `plainva:`-Erweiterungen nicht kennt. Notizen ohne Plainva-Erweiterungen kannst Du jederzeit überall bearbeiten. Beim ersten Einsatz einer solchen Erweiterung erinnert ein Hinweis-Dialog (**Plainva-Erweiterung**) daran; abschaltbar unter **Einstellungen → App → Start & Verhalten**.
+Die Einschränkung: **Öffnen ist immer sicher, Bearbeiten nicht immer.** Ein bestehender Obsidian-Vault lässt sich in Alviss gefahrlos öffnen und bearbeiten — nichts wird migriert oder umformatiert. Nutzt ein Vault aber Alviss-Funktionen (Datenbank-Erweiterungen wie Boards, Relationen oder Rückspalten, verwaltete `index.md`-Dateien), kann das Bearbeiten genau dieser Dateien in Obsidian die Alviss-Funktionalität beschädigen, weil Obsidian die `plainva:`-Erweiterungen nicht kennt. Notizen ohne Alviss-Erweiterungen kannst Du jederzeit überall bearbeiten. Beim ersten Einsatz einer solchen Erweiterung erinnert ein Hinweis-Dialog (**Alviss-Erweiterung**) daran; abschaltbar unter **Einstellungen → App → Start & Verhalten**.
 
-### Verändert Plainva meinen bestehenden Vault?
+### Verändert Alviss meinen bestehenden Vault?
 
 Nicht ungefragt. Bestehende Dateien werden nur angefasst, wenn Du eine Aktion ausdrücklich startest (z. B. die [OKF-Konvertierung](OKF.md) — mit Vorschau und Backups). Nur neu angelegte Dateien bekommen automatisch den kleinen OKF-Frontmatter-Kopf.
 
@@ -24,15 +24,15 @@ Nicht ungefragt. Bestehende Dateien werden nur angefasst, wenn Du eine Aktion au
 
 ### Ich habe etwas gelöscht — ist es weg?
 
-Nein, gleich doppelt nicht: Vor jedem Löschen sichert Plainva die Datei als Snapshot — per Rechtsklick auf den Vault-Namen → **Gelöschte Dateien wiederherstellen…** holst Du sie in der App zurück. Zusätzlich landen gelöschte Dateien und Ordner im Papierkorb des Betriebssystems (bei ganzen Ordnern ist der Papierkorb der erste Weg). Details: [Backups & Versionsverlauf](Backups_and_Versioning.md).
+Nein, gleich doppelt nicht: Vor jedem Löschen sichert Alviss die Datei als Snapshot — per Rechtsklick auf den Vault-Namen → **Gelöschte Dateien wiederherstellen…** holst Du sie in der App zurück. Zusätzlich landen gelöschte Dateien und Ordner im Papierkorb des Betriebssystems (bei ganzen Ordnern ist der Papierkorb der erste Weg). Details: [Backups & Versionsverlauf](Backups_and_Versioning.md).
 
 ### Gibt es ältere Fassungen meiner Notizen?
 
-Ja: Plainva legt beim Bearbeiten automatisch Datei-Versionen an. Rechtsklick auf die Datei → **Versionsverlauf…** zeigt alle Snapshots mit Vergleichsansicht und **Wiederherstellen**. Zusätzlich sichert Plainva den ganzen Vault täglich als ZIP außerhalb des Vault-Ordners. Details: [Backups & Versionsverlauf](Backups_and_Versioning.md).
+Ja: Alviss legt beim Bearbeiten automatisch Datei-Versionen an. Rechtsklick auf die Datei → **Versionsverlauf…** zeigt alle Snapshots mit Vergleichsansicht und **Wiederherstellen**. Zusätzlich sichert Alviss den ganzen Vault täglich als ZIP außerhalb des Vault-Ordners. Details: [Backups & Versionsverlauf](Backups_and_Versioning.md).
 
 ### Warum ist meine index.md schreibgeschützt?
 
-Sie wurde von Plainva erzeugt und wird automatisch aktuell gehalten (erkennbar am Banner „Diese index.md wird von Plainva verwaltet…"). Mit **Trotzdem bearbeiten** übernimmst Du sie dauerhaft in eigene Pflege — sie wird dann nicht mehr automatisch aktualisiert. Details: [OKF](OKF.md).
+Sie wurde von Alviss erzeugt und wird automatisch aktuell gehalten (erkennbar am Banner „Diese index.md wird von Alviss verwaltet…"). Mit **Trotzdem bearbeiten** übernimmst Du sie dauerhaft in eigene Pflege — sie wird dann nicht mehr automatisch aktualisiert. Details: [OKF](OKF.md).
 
 ### Was passiert beim Umbenennen einer Eigenschaft in einer Datenbank?
 
@@ -50,13 +50,13 @@ Eine Notiz, die Du bis Version 0.8.5 aus einer Vorlage erstellt hast — auch ei
 
 ### Eine Notiz ist nach dem Verschieben oder Umbenennen verschwunden
 
-Mit Sync über WebDAV oder S3 hat Plainva 0.8.3 eine synchronisierte Notiz entfernt, die Du in der App verschoben oder umbenannt hast: Der erste Sync-Zyklus danach hielt die Notiz am neuen Ort für auf dem Server gelöscht und entfernte sie hier — einen Augenblick, bevor er das Verschieben hochgeschickt hätte. Mit Google Drive, Dropbox und OneDrive geschah das nur ab und zu. In 0.8.3 löschte der nächste Zyklus die Notiz dann auch auf dem Server. Plainva 0.8.4 behebt das am Desktop und am Telefon.
+Mit Sync über WebDAV oder S3 hat Alviss 0.8.3 eine synchronisierte Notiz entfernt, die Du in der App verschoben oder umbenannt hast: Der erste Sync-Zyklus danach hielt die Notiz am neuen Ort für auf dem Server gelöscht und entfernte sie hier — einen Augenblick, bevor er das Verschieben hochgeschickt hätte. Mit Google Drive, Dropbox und OneDrive geschah das nur ab und zu. In 0.8.3 löschte der nächste Zyklus die Notiz dann auch auf dem Server. Alviss 0.8.4 behebt das am Desktop und am Telefon.
 
 **Aktualisiere jedes Gerät, das mit demselben Vault arbeitet.** Ein Gerät mit 0.8.3 löscht weiterhin synchronisierte Notizen, die dort verschoben oder umbenannt werden, und spiegelt Löschungen ohne Rückfrage.
 
 Hat es Dich getroffen, liegt die Notiz noch an bis zu drei Orten:
 
-- **Der Snapshot im Vault.** Bevor Plainva eine Datei entfernt, sichert es sie als `.plainva/backups/<Ordner>/<Name>.md.<Zeitstempel>.bak`; `<Ordner>` ist der Ordner, in den Du die Notiz verschoben hast. Am Desktop Rechtsklick auf den Vault-Namen → **Gelöschte Dateien wiederherstellen…**, am Telefon **Einstellungen** → **Backup & Versionierung** → **Gelöschte Dateien wiederherstellen**. Die Liste zeigt die Notiz unter ihrem neuen Pfad, **Wiederherstellen** legt sie dort wieder ab. Die `.bak`-Datei ist reiner Text, Du kannst sie also auch in jedem Dateimanager oder Texteditor öffnen.
+- **Der Snapshot im Vault.** Bevor Alviss eine Datei entfernt, sichert es sie als `.plainva/backups/<Ordner>/<Name>.md.<Zeitstempel>.bak`; `<Ordner>` ist der Ordner, in den Du die Notiz verschoben hast. Am Desktop Rechtsklick auf den Vault-Namen → **Gelöschte Dateien wiederherstellen…**, am Telefon **Einstellungen** → **Backup & Versionierung** → **Gelöschte Dateien wiederherstellen**. Die Liste zeigt die Notiz unter ihrem neuen Pfad, **Wiederherstellen** legt sie dort wieder ab. Die `.bak`-Datei ist reiner Text, Du kannst sie also auch in jedem Dateimanager oder Texteditor öffnen.
 - **Der Papierkorb des Systems** (Desktop): Die Datei selbst liegt im Papierkorb Deines Betriebssystems.
 - **Der Papierkorb Deines Servers**, falls die Notiz auch dort gelöscht wurde (in Nextcloud etwa unter „Gelöschte Dateien“).
 
@@ -64,21 +64,21 @@ Hast Du mit 0.8.3 weitere synchronisierte Notizen verschoben oder umbenannt, loh
 
 ### Was ist eine .CONFLICT-Datei?
 
-Wurde dieselbe Datei gleichzeitig hier und auf einem anderen Gerät geändert, versucht Plainva zuerst, beide Fassungen automatisch zusammenzuführen. Geht das nicht, wird **Deine** Fassung sicher als `.CONFLICT`-Datei neben dem Original gespeichert — es geht nie etwas verloren. Konfliktdateien sind im Dateibaum markiert; per Rechtsklick wählst Du **Diese Version übernehmen** (die Konfliktfassung ersetzt das Original) oder **Konflikt verwerfen**.
+Wurde dieselbe Datei gleichzeitig hier und auf einem anderen Gerät geändert, versucht Alviss zuerst, beide Fassungen automatisch zusammenzuführen. Geht das nicht, wird **Deine** Fassung sicher als `.CONFLICT`-Datei neben dem Original gespeichert — es geht nie etwas verloren. Konfliktdateien sind im Dateibaum markiert; per Rechtsklick wählst Du **Diese Version übernehmen** (die Konfliktfassung ersetzt das Original) oder **Konflikt verwerfen**.
 
 Zum Auflösen öffnet **Fassungen vergleichen** (Rechtsklick auf die Konfliktdatei, der Hinweis in der Notiz oder der Sync-Fehlerdialog) beide Fassungen nebeneinander — links die Notiz, rechts die Kopie — mit den Ausgängen **übernehmen**, **beide behalten**, **Kopie verwerfen** und **später**; am Desktop lässt sich rechts auch zeilenweise zusammenführen. Jeder Ausgang, der etwas verwirft, fragt vorher nach.
 
 ### Meine Google-Anmeldung läuft ständig ab
 
-Beim „Bring Your Own"-Setup bleibt Dein Google-Projekt im Testing-Modus; Google beendet die Anmeldung dann nach 7 Tagen. Plainva erneuert Tokens automatisch im Hintergrund, aber nach Ablauf hilft **Erneut anmelden** auf der Seite des Kontos unter **Cloud-Konten**. Details: [Google Drive (BYO)](Google_Drive_BYO_Guide.md).
+Beim „Bring Your Own"-Setup bleibt Dein Google-Projekt im Testing-Modus; Google beendet die Anmeldung dann nach 7 Tagen. Alviss erneuert Tokens automatisch im Hintergrund, aber nach Ablauf hilft **Erneut anmelden** auf der Seite des Kontos unter **Cloud-Konten**. Details: [Google Drive (BYO)](Google_Drive_BYO_Guide.md).
 
-### Mein Vault liegt in einem OneDrive-/Dropbox-/iCloud-Ordner und Plainva verhält sich seltsam
+### Mein Vault liegt in einem OneDrive-/Dropbox-/iCloud-Ordner und Alviss verhält sich seltsam
 
 Stelle den Vault-Ordner im Sync-Client des Anbieters auf „immer auf diesem Gerät behalten" / „offline verfügbar". Online-only-Platzhalterdateien (Files On-Demand, „online-only") stören Indexierung und Sync. Details: [Sync-Kompatibilität](Sync_Compatibility.md).
 
 ### Ich bin offline — was passiert mit meinen Änderungen?
 
-Sie werden ganz normal lokal gespeichert und in einer Warteschlange gesammelt; sobald wieder Verbindung besteht, überträgt Plainva sie automatisch. Die Statusleiste zeigt **Online**/**Offline**.
+Sie werden ganz normal lokal gespeichert und in einer Warteschlange gesammelt; sobald wieder Verbindung besteht, überträgt Alviss sie automatisch. Die Statusleiste zeigt **Online**/**Offline**.
 
 ### Die Statusleiste zeigt Offline, obwohl ich Internet habe
 
@@ -86,51 +86,51 @@ Dann ist die Sync-Verbindung selbst gestört — häufig, weil die Anmeldung abg
 
 ### Warum fehlt Anbieter X (Proton, Tuta, iCloud Drive …)?
 
-Plainva bindet jeden Anbieter an, der eine offene Schnittstelle bietet (IMAP, CalDAV, WebDAV, S3 oder eine dokumentierte API). Einige Dienste bieten technisch schlicht keinen Zugang für andere Apps — das ist keine Entscheidung von Plainva: **Proton Mail** ist Ende-zu-Ende-verschlüsselt und spricht IMAP nur über die lokal laufende, kostenpflichtige Proton Mail Bridge (dafür gibt es eine Voreinstellung); Proton Kalender und Proton Drive haben keine nutzbare Schnittstelle. **Tuta** bietet bewusst weder IMAP noch CalDAV an. **iCloud Drive** hat keine Schnittstelle für Drittanbieter-Apps (iCloud **Mail** und **Kalender** funktionieren dagegen über die Apple-Kachel). **Baidu Netdisk/TeraBox** und **NAVER MYBOX** haben ihre Schnittstellen für unabhängige Entwickler geschlossen bzw. abgeschaltet. Fehlt Dir ein Anbieter mit offener Schnittstelle, freuen wir uns über einen Hinweis auf GitHub.
+Alviss bindet jeden Anbieter an, der eine offene Schnittstelle bietet (IMAP, CalDAV, WebDAV, S3 oder eine dokumentierte API). Einige Dienste bieten technisch schlicht keinen Zugang für andere Apps — das ist keine Entscheidung von Alviss: **Proton Mail** ist Ende-zu-Ende-verschlüsselt und spricht IMAP nur über die lokal laufende, kostenpflichtige Proton Mail Bridge (dafür gibt es eine Voreinstellung); Proton Kalender und Proton Drive haben keine nutzbare Schnittstelle. **Tuta** bietet bewusst weder IMAP noch CalDAV an. **iCloud Drive** hat keine Schnittstelle für Drittanbieter-Apps (iCloud **Mail** und **Kalender** funktionieren dagegen über die Apple-Kachel). **Baidu Netdisk/TeraBox** und **NAVER MYBOX** haben ihre Schnittstellen für unabhängige Entwickler geschlossen bzw. abgeschaltet. Fehlt Dir ein Anbieter mit offener Schnittstelle, freuen wir uns über einen Hinweis auf GitHub.
 
 ## App
 
 ### Was macht F5, und wo ist das Rechtsklick-Menü des Browsers?
 
-Plainva ist eine Desktop-App, keine Webseite. **F5** (und Strg+R) lädt deshalb nicht das Fenster neu — das würde Deine offenen Tabs und ungespeicherten Änderungen verwerfen. Stattdessen liest die Taste den **Vault neu ein**: Plainva gleicht den Index mit dem Ordner ab und holt bei Online-Vaults zusätzlich die Dateien aus der Cloud. Das eingebaute Rechtsklick-Menü der WebView ist ausgeblendet; ein Rechtsklick auf markierten Text bietet weiterhin **Kopieren**, und Dateibaum, Tabs und Tabellen behalten ihre eigenen Rechtsklick-Menüs.
+Alviss ist eine Desktop-App, keine Webseite. **F5** (und Strg+R) lädt deshalb nicht das Fenster neu — das würde Deine offenen Tabs und ungespeicherten Änderungen verwerfen. Stattdessen liest die Taste den **Vault neu ein**: Alviss gleicht den Index mit dem Ordner ab und holt bei Online-Vaults zusätzlich die Dateien aus der Cloud. Das eingebaute Rechtsklick-Menü der WebView ist ausgeblendet; ein Rechtsklick auf markierten Text bietet weiterhin **Kopieren**, und Dateibaum, Tabs und Tabellen behalten ihre eigenen Rechtsklick-Menüs.
 
 ### Warum sehe ich extern angelegte Dateien nicht sofort?
 
-Normalerweise merkt Plainva von selbst, wenn ein anderes Programm etwas in Deinem Vault-Ordner ändert. Klappt das nicht — etwa auf Netzlaufwerken, in Cloud-Ordnern oder wenn die Datei über einen anderen Rechner kam — hilft **Vault neu einlesen**:
+Normalerweise merkt Alviss von selbst, wenn ein anderes Programm etwas in Deinem Vault-Ordner ändert. Klappt das nicht — etwa auf Netzlaufwerken, in Cloud-Ordnern oder wenn die Datei über einen anderen Rechner kam — hilft **Vault neu einlesen**:
 
 * **F5** oder der Kreispfeil in der Kopfzeile des Dateibaums,
 * **Ordner neu einlesen** im Rechtsklick-Menü eines Ordners (schneller bei sehr großen Vaults),
 * der Befehl **Vault neu einlesen** in der Befehlspalette (`Strg/Cmd+P`).
 
-Danach zeigt Plainva einen kurzen Bericht: wie viele Dateien neu, geändert oder entfernt waren — und **welche Einträge übersprungen wurden**. Ein übersprungener Ordner ist der häufigste Grund dafür, dass eine Datei „nicht ankommt": Plainva konnte ihn nicht lesen (fehlende Rechte, getrenntes Netzlaufwerk) oder er verweist im Kreis auf sich selbst. Bei Online-Vaults nennt der Bericht zusätzlich, dass ein voller Cloud-Abgleich angefordert wurde.
+Danach zeigt Alviss einen kurzen Bericht: wie viele Dateien neu, geändert oder entfernt waren — und **welche Einträge übersprungen wurden**. Ein übersprungener Ordner ist der häufigste Grund dafür, dass eine Datei „nicht ankommt": Alviss konnte ihn nicht lesen (fehlende Rechte, getrenntes Netzlaufwerk) oder er verweist im Kreis auf sich selbst. Bei Online-Vaults nennt der Bericht zusätzlich, dass ein voller Cloud-Abgleich angefordert wurde.
 
-Zusätzlich gleicht Plainva automatisch ab, sobald Du aus einem anderen Programm ins Fenster zurückkehrst (höchstens alle 30 Sekunden; die Cloud höchstens alle 5 Minuten). Bleibt eine Datei auch danach unsichtbar, hilft **Index vollständig neu aufbauen** unter Einstellungen → Vault → Wartung.
+Zusätzlich gleicht Alviss automatisch ab, sobald Du aus einem anderen Programm ins Fenster zurückkehrst (höchstens alle 30 Sekunden; die Cloud höchstens alle 5 Minuten). Bleibt eine Datei auch danach unsichtbar, hilft **Index vollständig neu aufbauen** unter Einstellungen → Vault → Wartung.
 
 ### Suche, Tags oder Datenbanken fehlt ein Teil meines Vaults
 
-Beim Einlesen folgt Plainva Links so, wie das System es tut: Ein Link auf einen Ordner wird als dieser Ordner gelesen, ein Link auf eine Datei als diese Datei — am Desktop und in einem Ordner, den Du am iPhone ausgewählt hast. Was sich nicht lesen lässt, lässt Plainva aus und nennt es: einen Link auf einen Ort, den es auf diesem Gerät nicht gibt (etwa einen Ordner, der nur auf einem anderen Rechner liegt und hier als Link angekommen ist) oder einen Ordner ohne Zugriff. Ein Hinweis nennt sie einmal — **ließ sich nicht lesen und fehlt im Suchindex** —, der Rest des Vaults wird wie gewohnt erfasst. Nichts unter einem solchen Eintrag gilt als gelöscht, weder für den Index noch für den Sync eines verschlüsselten Workspace.
+Beim Einlesen folgt Alviss Links so, wie das System es tut: Ein Link auf einen Ordner wird als dieser Ordner gelesen, ein Link auf eine Datei als diese Datei — am Desktop und in einem Ordner, den Du am iPhone ausgewählt hast. Was sich nicht lesen lässt, lässt Alviss aus und nennt es: einen Link auf einen Ort, den es auf diesem Gerät nicht gibt (etwa einen Ordner, der nur auf einem anderen Rechner liegt und hier als Link angekommen ist) oder einen Ordner ohne Zugriff. Ein Hinweis nennt sie einmal — **ließ sich nicht lesen und fehlt im Suchindex** —, der Rest des Vaults wird wie gewohnt erfasst. Nichts unter einem solchen Eintrag gilt als gelöscht, weder für den Index noch für den Sync eines verschlüsselten Workspace.
 
-Lässt sich der Index gar nicht aktualisieren, sagt der Hinweis, warum (**Der Suchindex konnte nicht aktualisiert werden: …**); der Vault bleibt mit dem offen, was der Index schon enthält, und beim nächsten Einlesen versucht Plainva es erneut. Am Telefon wird auch ein Suchindex genannt, der sich nicht öffnen lässt: Suche, Tags, Datenbanken, die Synchronisation und der Kalender bleiben dann aus, bis Plainva ihn öffnen kann.
+Lässt sich der Index gar nicht aktualisieren, sagt der Hinweis, warum (**Der Suchindex konnte nicht aktualisiert werden: …**); der Vault bleibt mit dem offen, was der Index schon enthält, und beim nächsten Einlesen versucht Alviss es erneut. Am Telefon wird auch ein Suchindex genannt, der sich nicht öffnen lässt: Suche, Tags, Datenbanken, die Synchronisation und der Kalender bleiben dann aus, bis Alviss ihn öffnen kann.
 
 Entferne oder repariere den Eintrag, den der Hinweis nennt, und wähle dann **Vault neu einlesen** (am Telefon: eine Liste nach unten ziehen).
 
-### Ich habe eine Datei außerhalb von Plainva verschoben
+### Ich habe eine Datei außerhalb von Alviss verschoben
 
-Plainva folgt ihr. Der Dateibaum zeigt die Datei am neuen Ort, auch wenn Du sie im Finder, im Explorer oder in einem anderen Programm verschoben hast. Ist die Notiz gerade offen — oder öffnest Du sie noch am alten Ort, etwa über ein Lesezeichen —, sucht Plainva sie: Liegt genau eine Datei mit demselben Inhalt und derselben Änderungszeit woanders, folgt der Tab ihr, eine kurze Meldung nennt den neuen Ordner, und Lesezeichen, Plätze auf der Pinnwand und Kommentare der Notiz ziehen mit um. Ungespeicherte Änderungen wandern mit an den neuen Ort. Ist das nicht eindeutig, etwa weil derselbe Inhalt an mehreren Stellen liegt, fragt **Verschoben?**, und Du wählst die richtige Datei aus. Findet Plainva keine, bleibt es bei **Diese Datei existiert nicht mehr**; den veralteten Eintrag im Index räumt Plainva dabei von selbst weg. Hattest Du ungespeicherte Änderungen, bleiben sie erhalten, und **Hier erneut speichern** legt die Datei am alten Ort wieder an — von selbst schreibt Plainva dort nichts. Solange die Suche noch den ganzen Vault durchgeht, steht **Suche noch an anderer Stelle im Vault …** dabei.
+Alviss folgt ihr. Der Dateibaum zeigt die Datei am neuen Ort, auch wenn Du sie im Finder, im Explorer oder in einem anderen Programm verschoben hast. Ist die Notiz gerade offen — oder öffnest Du sie noch am alten Ort, etwa über ein Lesezeichen —, sucht Alviss sie: Liegt genau eine Datei mit demselben Inhalt und derselben Änderungszeit woanders, folgt der Tab ihr, eine kurze Meldung nennt den neuen Ordner, und Lesezeichen, Plätze auf der Pinnwand und Kommentare der Notiz ziehen mit um. Ungespeicherte Änderungen wandern mit an den neuen Ort. Ist das nicht eindeutig, etwa weil derselbe Inhalt an mehreren Stellen liegt, fragt **Verschoben?**, und Du wählst die richtige Datei aus. Findet Alviss keine, bleibt es bei **Diese Datei existiert nicht mehr**; den veralteten Eintrag im Index räumt Alviss dabei von selbst weg. Hattest Du ungespeicherte Änderungen, bleiben sie erhalten, und **Hier erneut speichern** legt die Datei am alten Ort wieder an — von selbst schreibt Alviss dort nichts. Solange die Suche noch den ganzen Vault durchgeht, steht **Suche noch an anderer Stelle im Vault …** dabei.
 
-Das gilt genauso für einen geöffneten Tab mit einer Datenbank (`.base`) oder einem Bild und am Telefon für die Datenbank- und die Bildansicht: Sie folgen der verschobenen Datei, fragen **Verschoben?** oder zeigen **Diese Datei existiert nicht mehr**. Eine Änderung an einer Datenbank, deren Datei in diesem Moment fehlte, geht mit an den neuen Ort; findet Plainva die Datei nicht, bleibt die Änderung erhalten, bis Du **Hier erneut speichern** wählst. Unfertige Bearbeitungen eines Bildes ziehen mit in den Tab am neuen Ort und werden erst geschrieben, wenn Du **Speichern** wählst. PDFs und andere Dateien, die Plainva an das Systemprogramm übergibt, haben keinen Tab.
+Das gilt genauso für einen geöffneten Tab mit einer Datenbank (`.base`) oder einem Bild und am Telefon für die Datenbank- und die Bildansicht: Sie folgen der verschobenen Datei, fragen **Verschoben?** oder zeigen **Diese Datei existiert nicht mehr**. Eine Änderung an einer Datenbank, deren Datei in diesem Moment fehlte, geht mit an den neuen Ort; findet Alviss die Datei nicht, bleibt die Änderung erhalten, bis Du **Hier erneut speichern** wählst. Unfertige Bearbeitungen eines Bildes ziehen mit in den Tab am neuen Ort und werden erst geschrieben, wenn Du **Speichern** wählst. PDFs und andere Dateien, die Alviss an das Systemprogramm übergibt, haben keinen Tab.
 
-Am Telefon gibt es keine laufende Beobachtung des Ordners. Stattdessen liest Plainva den Vault neu ein, sobald Du **in die App zurückkehrst** (höchstens einmal pro Minute), und wenn Du eine Liste **herunterziehst** — das gilt für jeden Vault, auch für den in der App selbst, den unter iOS die Dateien-App zeigt. Eine verschobene Notiz folgt ihrer Datei dort genauso, auch eine gerade offene; findet Plainva sie nicht, erscheint **Diese Notiz wurde nicht gefunden.**
+Am Telefon gibt es keine laufende Beobachtung des Ordners. Stattdessen liest Alviss den Vault neu ein, sobald Du **in die App zurückkehrst** (höchstens einmal pro Minute), und wenn Du eine Liste **herunterziehst** — das gilt für jeden Vault, auch für den in der App selbst, den unter iOS die Dateien-App zeigt. Eine verschobene Notiz folgt ihrer Datei dort genauso, auch eine gerade offene; findet Alviss sie nicht, erscheint **Diese Notiz wurde nicht gefunden.**
 
-Systemdateien übergeht Plainva: `.DS_Store`, `Thumbs.db`, `desktop.ini`, `Icon` (Ordnersymbole), `.Spotlight-V100`, `.Trashes`, `.fseventsd`, `$RECYCLE.BIN`, `System Volume Information` (beide unter Windows im Stammverzeichnis eines Laufwerks) und die AppleDouble-Dateien, die macOS auf Netzlaufwerken und USB-Sticks neben jede Datei legt (`._Notiz.md`). Sie erscheinen nicht im Dateibaum und werden weder hoch- noch heruntergeladen. Eine Kopie, die eine frühere Version schon in die Cloud geladen hat, bleibt dort unangetastet. Eine eigene Notiz, deren Name nur zufällig mit `._` beginnt, bleibt sichtbar — Plainva erkennt AppleDouble-Dateien an ihrem Inhalt, nicht am Namen.
+Systemdateien übergeht Alviss: `.DS_Store`, `Thumbs.db`, `desktop.ini`, `Icon` (Ordnersymbole), `.Spotlight-V100`, `.Trashes`, `.fseventsd`, `$RECYCLE.BIN`, `System Volume Information` (beide unter Windows im Stammverzeichnis eines Laufwerks) und die AppleDouble-Dateien, die macOS auf Netzlaufwerken und USB-Sticks neben jede Datei legt (`._Notiz.md`). Sie erscheinen nicht im Dateibaum und werden weder hoch- noch heruntergeladen. Eine Kopie, die eine frühere Version schon in die Cloud geladen hat, bleibt dort unangetastet. Eine eigene Notiz, deren Name nur zufällig mit `._` beginnt, bleibt sichtbar — Alviss erkennt AppleDouble-Dateien an ihrem Inhalt, nicht am Namen.
 
 ### Warum sehe ich keine Animationen?
 
-Plainva respektiert die System-Einstellung „Animationen reduzieren". Wenn Übergänge und Effekte fehlen (Buttons, Menüs und Hervorhebungen bewegen sich nicht), sind in Deinem Betriebssystem die Animationen abgeschaltet. Unter **Windows**: Einstellungen → Barrierefreiheit → Visuelle Effekte → **Animationseffekte** einschalten. Unter **macOS**: Systemeinstellungen → Bedienungshilfen → Anzeige → **Bewegung reduzieren** ausschalten.
+Alviss respektiert die System-Einstellung „Animationen reduzieren". Wenn Übergänge und Effekte fehlen (Buttons, Menüs und Hervorhebungen bewegen sich nicht), sind in Deinem Betriebssystem die Animationen abgeschaltet. Unter **Windows**: Einstellungen → Barrierefreiheit → Visuelle Effekte → **Animationseffekte** einschalten. Unter **macOS**: Systemeinstellungen → Bedienungshilfen → Anzeige → **Bewegung reduzieren** ausschalten.
 
 ### Wie ändere ich die Sprache?
 
-**Einstellungen → App → Erscheinungsbild → Sprache**; am Telefon **Einstellungen → Erscheinungsbild → Sprache**. Plainva spricht zehn Sprachen: Deutsch, Englisch, Spanisch, Französisch, Italienisch, Japanisch, Niederländisch, Polnisch, Portugiesisch (Brasilien) und vereinfachtes Chinesisch.
+**Einstellungen → App → Erscheinungsbild → Sprache**; am Telefon **Einstellungen → Erscheinungsbild → Sprache**. Alviss spricht zehn Sprachen: Deutsch, Englisch, Spanisch, Französisch, Italienisch, Japanisch, Niederländisch, Polnisch, Portugiesisch (Brasilien) und vereinfachtes Chinesisch.
 
 ### „Nach Updates suchen" findet nichts
 
@@ -138,7 +138,7 @@ Solange es noch keine öffentlichen Releases gibt, meldet die Update-Suche: „A
 
 ### Gibt es versteckte Funktionen?
 
-Die Sternenflotte kommentiert Gerüchte grundsätzlich nicht. Aber es heißt, das Logo in der Titelleiste reagiere auf beharrliches Klopfen — und wer dann die richtigen Worte kennt, sieht Plainva danach in einem völlig neuen Licht. Manche sagen: in vieren.
+Die Sternenflotte kommentiert Gerüchte grundsätzlich nicht. Aber es heißt, das Logo in der Titelleiste reagiere auf beharrliches Klopfen — und wer dann die richtigen Worte kennt, sieht Alviss danach in einem völlig neuen Licht. Manche sagen: in vieren.
 
 ## Siehe auch
 

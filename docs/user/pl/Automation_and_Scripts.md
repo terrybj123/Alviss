@@ -2,17 +2,17 @@
 
 Stan na: 2026-10-22
 
-Plainva nie ma systemu wtyczek, który uruchamiałby cudzy kod. Zamiast tego interfejsem rozszerzeń jest sam vault: Twoje notatki to zwykły Markdown, bazy danych to zwykły YAML (`.base`), a [konwencje OKF](OKF.md) nadają każdemu plikowi przewidywalną strukturę. Wszystko, co potrafi czytać i zapisywać pliki — skrypt powłoki, program w Pythonie, narzędzie CLI, zaplanowane zadanie czy agent AI — może rozszerzać, generować lub reorganizować Twój vault bez żadnego API specyficznego dla Plainva.
+Alviss nie ma systemu wtyczek, który uruchamiałby cudzy kod. Zamiast tego interfejsem rozszerzeń jest sam vault: Twoje notatki to zwykły Markdown, bazy danych to zwykły YAML (`.base`), a [konwencje OKF](OKF.md) nadają każdemu plikowi przewidywalną strukturę. Wszystko, co potrafi czytać i zapisywać pliki — skrypt powłoki, program w Pythonie, narzędzie CLI, zaplanowane zadanie czy agent AI — może rozszerzać, generować lub reorganizować Twój vault bez żadnego API specyficznego dla Alviss.
 
 Ta strona wyjaśnia, jak robić to **bezpiecznie**. Dokładny format każdego pliku na poziomie bajtów jest udokumentowany osobno w [Dokumentacji formatu plików](File_Format_Reference.md); ta strona jest praktycznym uzupełnieniem: zasady, przebieg pracy i to, co przekazać asystentowi AI.
 
 ## Dlaczego pliki zamiast piaskownicy wtyczek
 
 - **Bezpieczeństwo.** System wtyczek z kodem oznacza uruchomienie cudzego programu wewnątrz Twojego edytora, z dostępem do Twoich notatek. Zwykłe pliki nie wymagają takiego zaufania: skrypt dotyka tylko folderu, na który go wskażesz, z normalnymi uprawnieniami Twojego systemu operacyjnego.
-- **Trwałość.** Format przeżywa aplikację. Plik Markdown wygenerowany skryptem pięć lat temu wciąż otwiera się dziś — w Plainva, w Obsidian, w dowolnym edytorze tekstu. Nie ma żadnego API wtyczek, które mogłoby zostać wycofane.
+- **Trwałość.** Format przeżywa aplikację. Plik Markdown wygenerowany skryptem pięć lat temu wciąż otwiera się dziś — w Alviss, w Obsidian, w dowolnym edytorze tekstu. Nie ma żadnego API wtyczek, które mogłoby zostać wycofane.
 - **Format jest kontraktem.** Ponieważ format na dysku jest otwarty i udokumentowany, „API” jest stabilne i możliwe do zbadania. Możesz je porównywać (diff), wersjonować w Git i analizować.
 
-Jeśli chcesz czegoś, czego Plainva nie robi od razu po wyjęciu z pudełka, nie czekasz na wtyczkę — piszesz mały skrypt działający na plikach.
+Jeśli chcesz czegoś, czego Alviss nie robi od razu po wyjęciu z pudełka, nie czekasz na wtyczkę — piszesz mały skrypt działający na plikach.
 
 ## Bezpieczne odczytywanie vaultu
 
@@ -26,20 +26,20 @@ Odczyt nigdy nie wymaga ostrożności — plików tekstowych nie da się „uszk
 
 ## Bezpieczne zapisywanie do vaultu
 
-Trzymaj się tych zasad, a Plainva (i Obsidian) przyjmą Twoje zmiany bez problemów. Plainva obserwuje folder vaultu: zewnętrzny zapis jest wykrywany i automatycznie ponownie indeksowany, zwykle w ciągu sekundy.
+Trzymaj się tych zasad, a Alviss (i Obsidian) przyjmą Twoje zmiany bez problemów. Alviss obserwuje folder vaultu: zewnętrzny zapis jest wykrywany i automatycznie ponownie indeksowany, zwykle w ciągu sekundy.
 
-1. **Zapisuj UTF-8.** Nowemu plikowi daj zakończenia linii LF i nie dawaj BOM — tak zapisuje sama Plainva. Plik, który ma już zakończenia linii CRLF albo BOM, może je zachować: Plainva czyta jedno i drugie i zostawia je bez zmian, także wtedy, gdy notatka jest edytowana lub synchronizowana. Wyjątkiem jest sam znak powrotu karetki (CR) jako zakończenie linii — tak kończą się linie w starych plikach z Maca: Plainva czyta taki plik, ale przy pierwszej zmianie zapisuje go z LF. Nie potrafi natomiast czytać innego kodowania — UTF-16 lub Windows-1252, w których niektóre narzędzia Windows zapisują domyślnie. Takiego pliku Plainva nie otwiera: pokazuje **Ten plik nie jest tekstem** i proponuje przekazanie go programowi systemu (**Otwórz w domyślnej aplikacji**, na telefonie **Udostępnij**), a nic w Plainva nie zapisuje na nim tekstu — ani zapisanie, ani właściwość, ani link przepisywany przy zmianie nazwy. **Historia wersji** przechowuje go bajt po bajcie, a przywrócenie lub zduplikowanie kopiuje jego bajty. Aby edytować go w Plainva, zapisz go w drugim programie jako UTF-8. Jeśli inny program zapisze plik w innym kodowaniu, gdy masz w nim niezapisane zmiany, Plainva zachowuje Twoje zmiany obok jako plik `.CONFLICT`; porównanie oferuje wtedy **Zastąp bieżący plik kopią konfliktową**, **Zachowaj oba pliki** i **Usuń kopię konfliktową**. Synchronizacja mimo to przenosi go w nienaruszonym stanie — bajt po bajcie, jak obraz: nie jest scalany, a jeśli dwa urządzenia zmieniły go jednocześnie, Twoja wersja zostaje zachowana jako plik `.CONFLICT`.
-2. **Zapisuj atomowo.** Zapisz do pliku tymczasowego w tym samym folderze, a następnie zmień jego nazwę na docelową (rename). Notatka zapisana w połowie (na przykład po awarii) jest gorsza niż brak zmiany. Sama Plainva zapisuje w ten sposób każdą notatkę.
+1. **Zapisuj UTF-8.** Nowemu plikowi daj zakończenia linii LF i nie dawaj BOM — tak zapisuje sama Alviss. Plik, który ma już zakończenia linii CRLF albo BOM, może je zachować: Alviss czyta jedno i drugie i zostawia je bez zmian, także wtedy, gdy notatka jest edytowana lub synchronizowana. Wyjątkiem jest sam znak powrotu karetki (CR) jako zakończenie linii — tak kończą się linie w starych plikach z Maca: Alviss czyta taki plik, ale przy pierwszej zmianie zapisuje go z LF. Nie potrafi natomiast czytać innego kodowania — UTF-16 lub Windows-1252, w których niektóre narzędzia Windows zapisują domyślnie. Takiego pliku Alviss nie otwiera: pokazuje **Ten plik nie jest tekstem** i proponuje przekazanie go programowi systemu (**Otwórz w domyślnej aplikacji**, na telefonie **Udostępnij**), a nic w Alviss nie zapisuje na nim tekstu — ani zapisanie, ani właściwość, ani link przepisywany przy zmianie nazwy. **Historia wersji** przechowuje go bajt po bajcie, a przywrócenie lub zduplikowanie kopiuje jego bajty. Aby edytować go w Alviss, zapisz go w drugim programie jako UTF-8. Jeśli inny program zapisze plik w innym kodowaniu, gdy masz w nim niezapisane zmiany, Alviss zachowuje Twoje zmiany obok jako plik `.CONFLICT`; porównanie oferuje wtedy **Zastąp bieżący plik kopią konfliktową**, **Zachowaj oba pliki** i **Usuń kopię konfliktową**. Synchronizacja mimo to przenosi go w nienaruszonym stanie — bajt po bajcie, jak obraz: nie jest scalany, a jeśli dwa urządzenia zmieniły go jednocześnie, Twoja wersja zostaje zachowana jako plik `.CONFLICT`.
+2. **Zapisuj atomowo.** Zapisz do pliku tymczasowego w tym samym folderze, a następnie zmień jego nazwę na docelową (rename). Notatka zapisana w połowie (na przykład po awarii) jest gorsza niż brak zmiany. Sama Alviss zapisuje w ten sposób każdą notatkę.
 3. **Zachowaj frontmatter OKF i nieznane klucze.** Podczas przepisywania notatki zachowaj `type` i `okf_version`, a kluczy frontmatter, których nie rozpoznajesz, nigdy nie usuwaj — muszą przetrwać cykl odczytu/zapisu bez zmian. Nie „porządkuj” kluczy, których nie rozumiesz.
-4. **Nigdy nie dotykaj `.plainva/`.** Ten folder przechowuje lokalny na urządzeniu indeks Plainva, kopie zapasowe, przypięcia grafu i stan synchronizacji. Nie jest częścią Twojej treści — Twoje skrypty nigdy nie powinny do niego zapisywać, synchronizować go ani dodawać do commitów Git.
-5. **Przestrzegaj zasad `.base`.** Plik `.base` używa tylko czterech kluczy najwyższego poziomu Obsidian (`filters`, `formulas`, `properties`, `views`); każdy widok potrzebuje `name`; filtry są jednokorzeniowe. Wszystkie dane specyficzne dla Plainva znajdują się pod zagnieżdżonymi podkluczami `plainva:`. Pełny kontrakt, wraz z przykładem dwustronnych relacji, znajduje się w [Dokumentacji formatu plików](File_Format_Reference.md#databases-base).
-6. **Nie walcz z edytorem.** Jeśli notatka jest otwarta *i* ma niezapisane zmiany w Plainva, lepiej nie przepisywać jej w tym samym momencie ze skryptu. Plainva ma mechanizm rozwiązywania konfliktów jako siatkę bezpieczeństwa, ale najczystszą drogą jest pozwolić aplikacji zapisać jako pierwszej (albo edytować notatki, które akurat nie są otwarte).
+4. **Nigdy nie dotykaj `.plainva/`.** Ten folder przechowuje lokalny na urządzeniu indeks Alviss, kopie zapasowe, przypięcia grafu i stan synchronizacji. Nie jest częścią Twojej treści — Twoje skrypty nigdy nie powinny do niego zapisywać, synchronizować go ani dodawać do commitów Git.
+5. **Przestrzegaj zasad `.base`.** Plik `.base` używa tylko czterech kluczy najwyższego poziomu Obsidian (`filters`, `formulas`, `properties`, `views`); każdy widok potrzebuje `name`; filtry są jednokorzeniowe. Wszystkie dane specyficzne dla Alviss znajdują się pod zagnieżdżonymi podkluczami `plainva:`. Pełny kontrakt, wraz z przykładem dwustronnych relacji, znajduje się w [Dokumentacji formatu plików](File_Format_Reference.md#databases-base).
+6. **Nie walcz z edytorem.** Jeśli notatka jest otwarta *i* ma niezapisane zmiany w Alviss, lepiej nie przepisywać jej w tym samym momencie ze skryptu. Alviss ma mechanizm rozwiązywania konfliktów jako siatkę bezpieczeństwa, ale najczystszą drogą jest pozwolić aplikacji zapisać jako pierwszej (albo edytować notatki, które akurat nie są otwarte).
 
 ## Wzorce
 
 Kilka typowych zadań — wszystkie to zwykłe operacje na plikach:
 
-- **Masowe tworzenie notatek** — generuj pliki `.md` z blokiem frontmatter OKF (`type`, najlepiej z `generated: { by: <twoje-narzędzie>/<wersja>, at: … }`, oraz własnymi właściwościami) i treścią Markdown. Od OKF 0.2 `okf_version` należy wyłącznie do głównej `index.md`, a nie do notatek. Plainva indeksuje je w miarę pojawiania się.
+- **Masowe tworzenie notatek** — generuj pliki `.md` z blokiem frontmatter OKF (`type`, najlepiej z `generated: { by: <twoje-narzędzie>/<wersja>, at: … }`, oraz własnymi właściwościami) i treścią Markdown. Od OKF 0.2 `okf_version` należy wyłącznie do głównej `index.md`, a nie do notatek. Alviss indeksuje je w miarę pojawiania się.
 - **Generatory notatek dziennych lub raportów** — zaplanowany skrypt, który zapisuje datowaną notatkę w Twoim folderze notatek dziennych, wypełnioną danymi z innego źródła.
 - **Przeglądy właściwości** — odczytaj frontmatter każdej notatki, przekształć pole, zapisz z powrotem (atomowo, zachowując nieznane klucze).
 - **Eksport / publikacja** — odczytaj vault i wyrenderuj go do HTML, statycznej strony lub PDF. Tylko odczyt — bez zasad, o które trzeba dbać.
@@ -64,7 +64,7 @@ Ponieważ kontrakt jest dokumentem, a nie żywym API, te same instrukcje działa
 - Zachowaj `type`, `okf_version` i nieznane klucze.
 - Nigdy nie zapisuj do `.plainva/`.
 - `.base`: cztery klucze najwyższego poziomu, nazwane widoki, jednokorzeniowe filtry, podklucze `plainva:` na wszystko inne.
-- Vault jest obserwowany — zewnętrzne zmiany pojawiają się w Plainva automatycznie.
+- Vault jest obserwowany — zewnętrzne zmiany pojawiają się w Alviss automatycznie.
 
 ## Zobacz też
 

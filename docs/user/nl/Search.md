@@ -2,7 +2,7 @@
 
 Laatst bijgewerkt: 2026-10-30
 
-Plainva biedt drie manieren om te zoeken: volledige-tekstzoekfunctie over de hele vault, de snelkiezer om bestanden te openen, en zoeken & vervangen binnen een notitie.
+Alviss biedt drie manieren om te zoeken: volledige-tekstzoekfunctie over de hele vault, de snelkiezer om bestanden te openen, en zoeken & vervangen binnen een notitie.
 
 ## Volledige-tekstzoekfunctie in de vault
 
@@ -10,7 +10,7 @@ Het veld bovenaan de zijbalk doorzoekt titels en inhoud in de hele vault. Een lo
 
 Zoeken reageert terwijl je typt: woordvoorvoegsels leveren al treffers op ("Projec" vindt "Projectplan") — je hoeft niet op Enter te drukken. De **X** rechts in het veld wist de huidige zoekopdracht (of druk op `Esc`); de zijbalk toont dan weer de normale bestandsboom.
 
-In het Chinees, Japans, Thai en andere schriften zonder spaties tussen woorden vindt de zoekfunctie een term overal in de tekst: `議事録` vindt "今日は会議の議事録を書いた", `搜索` vindt "全文搜索". Ook Latijnse woorden midden in zulke tekst worden gevonden ("Plainva" in "…でPlainvaを使った").
+In het Chinees, Japans, Thai en andere schriften zonder spaties tussen woorden vindt de zoekfunctie een term overal in de tekst: `議事録` vindt "今日は会議の議事録を書いた", `搜索` vindt "全文搜索". Ook Latijnse woorden midden in zulke tekst worden gevonden ("Alviss" in "…でAlvissを使った").
 
 De zoeklijst toont afzonderlijke vindplaatsen met een tekstfragment, het pad van koppen en het regelnummer. Een rij opent precies de gekozen vindplaats; meerdere treffers in dezelfde notitie staan apart. De teller telt alleen reeds geladen resultaten. Je kunt meer vindplaatsen laden. Pijltjestoetsen verplaatsen de selectie en Enter opent deze. Laden, lege resultaten en fouten worden vermeld; nieuwe invoer verwerpt verouderde antwoorden. Als een gewijzigde vindplaats niet meer eenduidig te herkennen is, verschijnt een melding. Dezelfde vindplaatsen zijn beschikbaar in de snelkiezer en mobiel zoeken. Teruggaan naar zoeken op de telefoon herstelt de zoekopdracht, geladen resultaten en lijstpositie. De treffers komen op **Relevantie**, tenzij je met de sorteerknop naast het zoekveld (op de telefoon: in de balk van het zoekscherm) **Laatst gewijzigd**, **Titel** of **Pad** kiest; meer laden houdt de gekozen volgorde aan. Op de telefoon blijft het sorteerblad open tot je op **Klaar** tikt: nog eens op de gekozen volgorde tikken draait de richting om.
 
@@ -23,7 +23,7 @@ Het zoekveld werkt ook op de andere zijbalkweergaven: in **Tags** filtert het de
 - `path:map` — alleen bestanden waarvan het pad de tekst bevat (bijv. `path:Projecten`; met spaties: `path:"Mijn Map"`).
 - `tag:naam` — alleen notities met die tag, inclusief geneste tags: `tag:project` vindt ook `#project/intern`. `tag:#project` werkt ook.
 - Operatoren kunnen ontkend worden (`-path:Archief`, `-tag:klaar`) en vrij gecombineerd worden met zoektermen: `plan tag:project -concept`.
-- Meerdere termen worden met EN gecombineerd. Speciale tekens zoals `- ( ) : *` binnen termen zijn onschadelijk — Plainva behandelt de invoer letterlijk.
+- Meerdere termen worden met EN gecombineerd. Speciale tekens zoals `- ( ) : *` binnen termen zijn onschadelijk — Alviss behandelt de invoer letterlijk.
 
 ## Snelkiezer
 
@@ -55,7 +55,7 @@ De zijbalkweergave **Tags** toont alle `#tags` van de vault met trefferaantal; e
 
 In de notitie staat een tag als een kleine pil — tijdens het schrijven en tijdens het lezen; de tekst zelf blijft `#project/website`. Een klik op de pil (op de telefoon: een tik in de leesmodus) opent de notities die de tag dragen. Wat als tag telt, is overal hetzelfde — in de taglijst, in een taak en bij het hernoemen: een `#` aan het begin van een regel of na een spatie, gevolgd door letters, cijfers, `_`, `-` of `/`. Alleen cijfers zijn geen tag (`#42` blijft een nummer), en alles binnen code of een link evenmin. **Tags kleuren** onder **Instellingen → App → Uiterlijk** geeft elke tag een kleur die uit zijn naam volgt; geneste tags delen de kleur van hun bovenste tag. De instelling hoort bij dit apparaat en slaat niets op in je notities.
 
-**Een tag hernoemen** werkt in de hele vault ineens: rechtsklik op een tag in de weergave **Tags** en voer een nieuwe naam in. Plainva herschrijft de tag overal — in de tekst van notities (`#tag` en de geneste `#tag/child`-tags) en in de frontmatter (`tags:`) — en schrijft elke betrokken notitie terug via hetzelfde veilige pad. Tags die de naam toevallig alleen bevatten (bijvoorbeeld `#area/tag`) blijven ongemoeid.
+**Een tag hernoemen** werkt in de hele vault ineens: rechtsklik op een tag in de weergave **Tags** en voer een nieuwe naam in. Alviss herschrijft de tag overal — in de tekst van notities (`#tag` en de geneste `#tag/child`-tags) en in de frontmatter (`tags:`) — en schrijft elke betrokken notitie terug via hetzelfde veilige pad. Tags die de naam toevallig alleen bevatten (bijvoorbeeld `#area/tag`) blijven ongemoeid.
 
 ## Navigeren binnen een notitie
 

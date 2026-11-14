@@ -13,7 +13,7 @@ Press `F1` (or **Command palette → Show keyboard shortcuts**) to open the shor
 | `Ctrl+,` | Open settings |
 | `Ctrl+Plus` / `Ctrl+Minus` | Zoom the interface in / out (80–150 %) |
 | `Ctrl+0` | Reset zoom to 100 % |
-| `Ctrl+S` | Confirm save (Plainva saves automatically) |
+| `Ctrl+S` | Confirm save (Alviss saves automatically) |
 | `F1` | Show this window |
 | `Esc` | Cancel action (close dialog, cancel renaming) |
 
@@ -128,7 +128,7 @@ Mouse: **scroll** to zoom; **middle-mouse drag** or `Ctrl`+drag to pan (even ove
 - **Tabs:** drag to reorder, between panes, or to an edge to split; **right-click** opens the tab menu (**Pin**, **Reload**, **Open in split**, closing group). A **pinned** tab moves to the front and survives every mass close.
 - **Action bar (far left):** hold a button briefly and drag to reorder it (top and bottom group stay separate); `Esc` cancels.
 - **Links:** click a wiki / Markdown link to open it (`Ctrl`+click for a new tab).
-- **Right-click** a selection or field for Plainva's own copy / cut / paste menu.
+- **Right-click** a selection or field for Alviss's own copy / cut / paste menu.
 - **Peek window:** drag the header to move, the corner grip to resize; `◀ ▶` is its own history. With several floating windows open — a peek, the event preview, a mail being written — the one you click comes to the front, and `Esc` closes the one in front.
 - **Calendar:** click the title in the calendar tab or the month name in the sidebar (or reach it with `Tab` and press `Enter`) for the date picker — the arrow keys move inside the grid, `PgUp/PgDn` page months, `Enter` jumps, `Esc` closes; click a day for its daily note.
 - **Menus:** a menu you open from a button or with a **right-click** puts the keyboard on its first entry — the arrow keys, `Home` and `End` move through it, `Enter` picks an entry, `Esc` closes it and returns the keyboard to where it was. Over a field you are typing in, and over text you can only read, the keyboard stays where it was.

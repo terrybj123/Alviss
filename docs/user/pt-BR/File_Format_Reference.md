@@ -2,7 +2,7 @@
 
 Última revisão: 2026-11-03
 
-Esta página é o contrato exato, tal como gravado em disco, para **todo arquivo em um vault do Plainva**. Ela é escrita para que uma ferramenta — outro programa, script ou assistente de IA — possa ler e editar arquivos do vault diretamente, com segurança, sem passar pela interface do Plainva. Se você só usa o app, nunca precisa desta página; as [demais páginas do guia](README.md) cobrem o uso normal.
+Esta página é o contrato exato, tal como gravado em disco, para **todo arquivo em um vault do Alviss**. Ela é escrita para que uma ferramenta — outro programa, script ou assistente de IA — possa ler e editar arquivos do vault diretamente, com segurança, sem passar pela interface do Alviss. Se você só usa o app, nunca precisa desta página; as [demais páginas do guia](README.md) cobrem o uso normal.
 
 Tudo aqui é texto UTF-8 puro. Notas são Markdown com frontmatter YAML; bancos de dados são YAML. Nada é proprietário e nada é oculto.
 
@@ -10,9 +10,9 @@ Tudo aqui é texto UTF-8 puro. Notas são Markdown com frontmatter YAML; bancos 
 
 1. **A nota é a fonte da verdade. Uma `.base` é apenas uma visualização.** Os *valores* das propriedades vivem no frontmatter das notas individuais — nunca dentro da `.base`. Para alterar um valor, edite a nota.
 2. **Notas continuam nativas do Obsidian.** No frontmatter de uma nota, escreva sempre escalares e listas simples (string, número, booleano, data ISO, lista YAML). Nunca escreva um objeto aninhado ou uma flag "ativo/selecionado" em uma nota.
-3. **Uma `.base` usa apenas as cinco chaves de nível superior do Obsidian** (`filters`, `formulas`, `properties`, `summaries`, `views`). O Obsidian não entende nenhuma outra chave de nível superior. É por isso que tudo o que é específico do Plainva vive sob subchaves aninhadas `plainva:`.
+3. **Uma `.base` usa apenas as cinco chaves de nível superior do Obsidian** (`filters`, `formulas`, `properties`, `summaries`, `views`). O Obsidian não entende nenhuma outra chave de nível superior. É por isso que tudo o que é específico do Alviss vive sob subchaves aninhadas `plainva:`.
 4. **Preserve o que você não entende.** Chaves desconhecidas devem sobreviver a um ciclo de leitura/escrita sem alterações. Não "limpe" chaves que você não reconhece.
-5. **Escreva UTF-8. Um arquivo novo recebe quebras de linha LF e nenhum BOM; um arquivo que já existe mantém as que tem.** O Plainva faz o mesmo: o que ele cria começa com LF e sem BOM, e o que ele encontra mantém suas quebras de linha e seu BOM — ao editar uma nota, só mudam as linhas que você alterou. Um arquivo que mistura os dois tipos de quebra de linha passa, na primeira edição, ao tipo que a maioria das suas linhas tem. Um retorno de carro sozinho como quebra de linha — o que os arquivos antigos de Mac têm — é lido, mas não é mantido: na primeira vez que um arquivo assim é alterado, o Plainva o salva com LF (com CRLF, se a maioria das outras quebras de linha for CRLF) e avisa você.
+5. **Escreva UTF-8. Um arquivo novo recebe quebras de linha LF e nenhum BOM; um arquivo que já existe mantém as que tem.** O Alviss faz o mesmo: o que ele cria começa com LF e sem BOM, e o que ele encontra mantém suas quebras de linha e seu BOM — ao editar uma nota, só mudam as linhas que você alterou. Um arquivo que mistura os dois tipos de quebra de linha passa, na primeira edição, ao tipo que a maioria das suas linhas tem. Um retorno de carro sozinho como quebra de linha — o que os arquivos antigos de Mac têm — é lido, mas não é mantido: na primeira vez que um arquivo assim é alterado, o Alviss o salva com LF (com CRLF, se a maioria das outras quebras de linha for CRLF) e avisa você.
 
 ## O vault em um relance
 
@@ -25,11 +25,11 @@ Um vault é uma pasta comum. Os tipos de arquivo que você vai encontrar:
 | `index.md` | O sumário gerenciado de uma pasta (nome reservado) | Sim, com cuidado — veja [index.md](#indexmd-sumário-de-uma-pasta) |
 | `log.md` | Nome reservado, atualmente sem uso | Deixe intocado |
 | imagens, PDFs, … | Anexos | Não (binário) |
-| `.plainva/` | Pasta interna do Plainva (backups, estado) | **Não — nunca toque** |
+| `.plainva/` | Pasta interna do Alviss (backups, estado) | **Não — nunca toque** |
 
 Os nomes reservados `index.md` e `log.md` nunca são notas comuns; não crie conteúdo comum sob esses nomes.
 
-Arquivos e pastas cujo nome começa com ponto — como `.notas.md` ou `.attachments/` — fazem parte do cofre: o Plainva os mantém no índice e os sincroniza como qualquer outro arquivo, mas não os mostra, assim como o Obsidian. Eles não aparecem em nenhuma busca, lista de arquivos, grafo, sugestão, lista de backlinks, lista de tags ou de tarefas, nem em banco de dados. Um link que aponta para um deles continua abrindo-o. A pasta própria do Plainva `.plainva/` e a `.obsidian/` do Obsidian mantêm suas próprias regras.
+Arquivos e pastas cujo nome começa com ponto — como `.notas.md` ou `.attachments/` — fazem parte do cofre: o Alviss os mantém no índice e os sincroniza como qualquer outro arquivo, mas não os mostra, assim como o Obsidian. Eles não aparecem em nenhuma busca, lista de arquivos, grafo, sugestão, lista de backlinks, lista de tags ou de tarefas, nem em banco de dados. Um link que aponta para um deles continua abrindo-o. A pasta própria do Alviss `.plainva/` e a `.obsidian/` do Obsidian mantêm suas próprias regras.
 
 ---
 
@@ -54,35 +54,35 @@ A **bold** thought that links to [[Another Note]].
 - [ ] First task
 ```
 
-Um bloco pode estar vazio: `---` seguido diretamente de `---` é um bloco sem propriedades, não dois divisores — o texto da nota começa na linha seguinte. O Plainva não deixa nenhum bloco vazio para trás: quando a última propriedade é removida, as duas linhas `---` somem junto. Elas só permanecem quando o próprio texto começa com uma linha `---`, que de outra forma seria lida como o início de um bloco. Um bloco que só contém um comentário permanece, com o comentário.
+Um bloco pode estar vazio: `---` seguido diretamente de `---` é um bloco sem propriedades, não dois divisores — o texto da nota começa na linha seguinte. O Alviss não deixa nenhum bloco vazio para trás: quando a última propriedade é removida, as duas linhas `---` somem junto. Elas só permanecem quando o próprio texto começa com uma linha `---`, que de outra forma seria lida como o início de um bloco. Um bloco que só contém um comentário permanece, com o comentário.
 
-Um bloco que o Plainva não consegue ler como propriedades é deixado exatamente como está: texto entre as duas linhas `---` que não é YAML, ou YAML que é uma lista em vez de linhas `chave: valor`. Uma única linha de texto, um número ou um conjunto (`!!set`) entre as duas linhas também é um bloco assim: a busca, os links e os bancos de dados também não leem dele nenhuma propriedade. **Propriedades** avisa isso em vez de não mostrar nenhuma propriedade, e alterar uma propriedade de uma nota assim — ali, em um banco de dados, em um mural, na lista de tarefas, ou o ícone e a cor dela — não muda nada, e o Plainva avisa: **Não foi possível salvar a propriedade**, seguido do motivo. Corrija o bloco no texto da nota e a alteração será aplicada. Um único valor em um formato inesperado não torna um bloco ilegível: o Plainva o lê como está escrito — um `tags:` vazio é uma nota sem tags, um número entre as tags (`- 2024`) é a tag `2024`, um número como `title` é esse título, e um `timestamp` que é uma data é uma propriedade como qualquer outra. `tag` e `alias` no singular são propriedades comuns — como no Obsidian desde a 1.9 —, então uma tag é só o que está em `tags`.
+Um bloco que o Alviss não consegue ler como propriedades é deixado exatamente como está: texto entre as duas linhas `---` que não é YAML, ou YAML que é uma lista em vez de linhas `chave: valor`. Uma única linha de texto, um número ou um conjunto (`!!set`) entre as duas linhas também é um bloco assim: a busca, os links e os bancos de dados também não leem dele nenhuma propriedade. **Propriedades** avisa isso em vez de não mostrar nenhuma propriedade, e alterar uma propriedade de uma nota assim — ali, em um banco de dados, em um mural, na lista de tarefas, ou o ícone e a cor dela — não muda nada, e o Alviss avisa: **Não foi possível salvar a propriedade**, seguido do motivo. Corrija o bloco no texto da nota e a alteração será aplicada. Um único valor em um formato inesperado não torna um bloco ilegível: o Alviss o lê como está escrito — um `tags:` vazio é uma nota sem tags, um número entre as tags (`- 2024`) é a tag `2024`, um número como `title` é esse título, e um `timestamp` que é uma data é uma propriedade como qualquer outra. `tag` e `alias` no singular são propriedades comuns — como no Obsidian desde a 1.9 —, então uma tag é só o que está em `tags`.
 
 ### Campos de frontmatter do OKF
 
-O Plainva segue o OKF (Open Knowledge Format), uma convenção mínima — atualmente na **versão 0.2**. Um campo de nível superior é obrigatório, todo o resto é opcional:
+O Alviss segue o OKF (Open Knowledge Format), uma convenção mínima — atualmente na **versão 0.2**. Um campo de nível superior é obrigatório, todo o resto é opcional:
 
 | Campo | Tipo | Significado |
 |---|---|---|
 | `type` | string | Que tipo de documento é este (`Note`, `Daily Note`, `Project`, …). O único campo que o OKF realmente exige. |
 | `generated`, `verified`, `sources`, `stale_after`, `status` | veja abaixo | Os campos de confiança e ciclo de vida do OKF 0.2 — todos opcionais; veja "Confiança e ciclo de vida" logo após esta seção. |
-| `okf_version` | string | **Somente no `index.md` raiz**: a versão da convenção que todo o vault segue, por exemplo `"0.2"` (entre aspas para o YAML mantê-la como string). Até o OKF 0.1, o Plainva escrevia esse campo em cada nota individual; desde a 0.2, não faz mais isso. Entradas existentes não são um erro — a atualização do bundle pode removê-las, se solicitado. |
+| `okf_version` | string | **Somente no `index.md` raiz**: a versão da convenção que todo o vault segue, por exemplo `"0.2"` (entre aspas para o YAML mantê-la como string). Até o OKF 0.1, o Alviss escrevia esse campo em cada nota individual; desde a 0.2, não faz mais isso. Entradas existentes não são um erro — a atualização do bundle pode removê-las, se solicitado. |
 
 Um arquivo **sem** `type` ainda abre normalmente; ele simplesmente "não é conformante com o OKF". Um `okf_version` ausente de uma nota — ou ainda presente nela — não é uma violação. Ao criar uma nova nota, adicionar `type` é uma boa prática — nada mais é necessário. Veja [OKF](OKF.md) para a justificativa completa.
 
 ### Confiança e ciclo de vida (OKF 0.2)
 
-O OKF 0.2 acrescenta cinco campos de nível superior **opcionais** com os quais uma nota diz de onde veio, se alguém a revisou e se ela ainda vale. O Plainva lê todos eles; ele os escreve sob regras fixas (veja abaixo).
+O OKF 0.2 acrescenta cinco campos de nível superior **opcionais** com os quais uma nota diz de onde veio, se alguém a revisou e se ela ainda vale. O Alviss lê todos eles; ele os escreve sob regras fixas (veja abaixo).
 
 | Campo | Formato | Significado |
 |---|---|---|
 | `generated` | objeto `{ by, at }` | Quem produziu a nota e quando. `at` é um instante ISO 8601 em UTC (`2026-08-21T10:11:12Z`). |
 | `verified` | lista de `{ by, at }` | Quem revisou a nota. Uma lista, porque cada revisão é acrescentada — o histórico de revisões permanece; a entrada mais recente é a que vale. |
 | `sources` | lista de `{ resource, id?, title?, … }` | Do que a nota foi feita. `resource` é um identificador (uma URL, `mid:<Message-ID>` de um e-mail, um caminho de arquivo); outras chaves são permitidas. |
-| `stale_after` | data (`2026-12-31`) ou instante | A partir de quando o conteúdo conta como desatualizado. Informação pura — o Plainva mostra um aviso e não altera nada. |
+| `stale_after` | data (`2026-12-31`) ou instante | A partir de quando o conteúdo conta como desatualizado. Informação pura — o Alviss mostra um aviso e não altera nada. |
 | `status` | `draft` \| `stable` \| `deprecated` | O estado do ciclo de vida. Exatamente esses três valores; `draft` e `deprecated` aparecem como um selo, `stable` permanece silencioso. |
 
-**Autores** (`by` em `generated` e `verified`) seguem uma convenção: uma pessoa é `human:<nome>`, um programa é `<produtor>/<versão>`. O Plainva escreve `plainva-import/<version>`, `plainva-mail-capture/<version>` e `plainva-task-sync/<version>` — e, para uma revisão, `human:<seu nome>`.
+**Autores** (`by` em `generated` e `verified`) seguem uma convenção: uma pessoa é `human:<nome>`, um programa é `<produtor>/<versão>`. O Alviss escreve `plainva-import/<version>`, `plainva-mail-capture/<version>` e `plainva-task-sync/<version>` — e, para uma revisão, `human:<seu nome>`.
 
 Exemplo de uma nota importada e depois revisada:
 
@@ -105,10 +105,10 @@ stale_after: 2027-08-21
 
 **Regras de escrita — quem define o quê:**
 
-- `generated` e `sources` são escritos apenas pelos caminhos de escrita **automáticos** do Plainva: o importador (um instante por execução; o relatório de importação também o traz), a captura de e-mail (com `sources: [{ resource: "mid:<Message-ID>" }]` quando a mensagem tem um Message-ID estável) e a sincronização de tarefas (somente quando ela cria uma nota — uma sincronização posterior deixa o selo intacto).
+- `generated` e `sources` são escritos apenas pelos caminhos de escrita **automáticos** do Alviss: o importador (um instante por execução; o relatório de importação também o traz), a captura de e-mail (com `sources: [{ resource: "mid:<Message-ID>" }]` quando a mensagem tem um Message-ID estável) e a sincronização de tarefas (somente quando ela cria uma nota — uma sincronização posterior deixa o selo intacto).
 - `verified` é escrito apenas por **Marcar como revisada** (desktop: a seção **Confiança e origem** do painel de propriedades; celular: o painel de contexto da nota) — e ele é acrescentado em vez de sobrescrito.
 - O editor nunca toca nesses campos por conta própria, e **notas existentes nunca são seladas retroativamente**. Um campo ausente significa apenas: nenhuma declaração.
-- `status` e `stale_after` são seus para definir (como propriedade ou diretamente no frontmatter). Um valor fora de `draft`/`stable`/`deprecated` — digamos, a coluna `status: Open` de um banco de tarefas — **não** é um estado de ciclo de vida, mas uma propriedade comum; o Plainva não mostra nenhum selo para ela.
+- `status` e `stale_after` são seus para definir (como propriedade ou diretamente no frontmatter). Um valor fora de `draft`/`stable`/`deprecated` — digamos, a coluna `status: Open` de um banco de tarefas — **não** é um estado de ciclo de vida, mas uma propriedade comum; o Alviss não mostra nenhum selo para ela.
 - Ferramentas e scripts que criam notas devem definir `generated` com seu próprio autor (`<sua-ferramenta>/<versão>`) e preservar sem alteração os campos de confiança que não conhecem.
 
 ### Serialização dos valores de propriedade
@@ -136,7 +136,7 @@ O valor "ativo" de uma propriedade de Seleção/Status é apenas esse escalar si
 
 ### O namespace `plainva:` em notas
 
-Extras específicos do Plainva para notas são agrupados sob uma única chave `plainva:` para que outros editores possam ignorá-los:
+Extras específicos do Alviss para notas são agrupados sob uma única chave `plainva:` para que outros editores possam ignorá-los:
 
 | Chave | Valor | Significado |
 |---|---|---|
@@ -149,7 +149,7 @@ Extras específicos do Plainva para notas são agrupados sob uma única chave `p
 
 Todos são opcionais. Se você não escrever nenhum deles, omita a chave `plainva:` inteiramente. Valores inválidos são ignorados na leitura, nunca tratados como erro.
 
-`pim` é a âncora das integrações de PIM (veja [Calendário & tarefas externas](Calendar_and_Tasks.md) e [Captura de e-mail](Email_Capture.md)). É um pequeno mapeamento gravado pelo Plainva quando uma nota espelha um objeto externo: `uid` mais a origem, e, dependendo do tipo, `calendar` (notas de reunião), `kind: task` + `list` (tarefas sincronizadas) ou `kind: email` + `mailbox` (e-mails capturados). Ferramentas devem preservá-lo inalterado; excluir a âncora apenas desvincula a nota do seu objeto remoto (nada é excluído remotamente com isso). Exemplo:
+`pim` é a âncora das integrações de PIM (veja [Calendário & tarefas externas](Calendar_and_Tasks.md) e [Captura de e-mail](Email_Capture.md)). É um pequeno mapeamento gravado pelo Alviss quando uma nota espelha um objeto externo: `uid` mais a origem, e, dependendo do tipo, `calendar` (notas de reunião), `kind: task` + `list` (tarefas sincronizadas) ou `kind: email` + `mailbox` (e-mails capturados). Ferramentas devem preservá-lo inalterado; excluir a âncora apenas desvincula a nota do seu objeto remoto (nada é excluído remotamente com isso). Exemplo:
 
 ```yaml
 plainva:
@@ -162,17 +162,17 @@ plainva:
     account: 3f9c21ab
 ```
 
-**O que descreve a origem.** Para uma tarefa, o que conta é `uid` e `list` — um `uid` é único em UM provedor, não entre dois. `provider` (`google`, `microsoft`, `caldav`) e `identity` (a identidade verificada da conta, quando o provedor oferece uma) restringem ainda mais, e ambos sobrevivem a uma reconexão. `account` é o id LOCAL da conta: o Plainva ainda o grava para que versões mais antigas consigam ler a âncora, mas não o compara mais — ele é gerado novamente a cada conexão, e é exatamente por isso que uma conta reconectada costumava importar suas tarefas uma segunda vez. Se você mesmo escrever âncoras, defina `uid` e `list`; `provider`/`identity` são recomendados, `account` não é necessário. O Plainva acrescenta `recurring: true` a uma âncora de tarefa assim que vê o provedor trazer a tarefa de volta (concluída e depois reaberta com o mesmo `uid` e uma data posterior — ou, quando o próprio provedor indica que a tarefa se repete, como faz um lembrete no iPhone, simplesmente aberta com o mesmo `uid` e uma data posterior). A chave é puramente informativa, nunca é comparada e pode ser removida.
+**O que descreve a origem.** Para uma tarefa, o que conta é `uid` e `list` — um `uid` é único em UM provedor, não entre dois. `provider` (`google`, `microsoft`, `caldav`) e `identity` (a identidade verificada da conta, quando o provedor oferece uma) restringem ainda mais, e ambos sobrevivem a uma reconexão. `account` é o id LOCAL da conta: o Alviss ainda o grava para que versões mais antigas consigam ler a âncora, mas não o compara mais — ele é gerado novamente a cada conexão, e é exatamente por isso que uma conta reconectada costumava importar suas tarefas uma segunda vez. Se você mesmo escrever âncoras, defina `uid` e `list`; `provider`/`identity` são recomendados, `account` não é necessário. O Alviss acrescenta `recurring: true` a uma âncora de tarefa assim que vê o provedor trazer a tarefa de volta (concluída e depois reaberta com o mesmo `uid` e uma data posterior — ou, quando o próprio provedor indica que a tarefa se repete, como faz um lembrete no iPhone, simplesmente aberta com o mesmo `uid` e uma data posterior). A chave é puramente informativa, nunca é comparada e pode ser removida.
 
-**O nome do arquivo não faz parte da identidade.** Uma tarefa espelhada tem o nome do seu título (`<título>.md`, com o mesmo título `<título> 2.md` e assim por diante); a associação é feita apenas pela âncora. Ferramentas podem renomear e mover o arquivo desde que a âncora permaneça. Nomes no formato `<título> — <16 ou 64 dígitos hexadecimais>.md` vêm das versões do Plainva de 12 a 24 de setembro de 2026: os dígitos são o início de um SHA-256 sobre provedor, identidade, lista e `uid`. A visualização de tarefas oferece uma vez renomeá-los pelo título — só quando os dígitos correspondem à âncora no mesmo arquivo.
+**O nome do arquivo não faz parte da identidade.** Uma tarefa espelhada tem o nome do seu título (`<título>.md`, com o mesmo título `<título> 2.md` e assim por diante); a associação é feita apenas pela âncora. Ferramentas podem renomear e mover o arquivo desde que a âncora permaneça. Nomes no formato `<título> — <16 ou 64 dígitos hexadecimais>.md` vêm das versões do Alviss de 12 a 24 de setembro de 2026: os dígitos são o início de um SHA-256 sobre provedor, identidade, lista e `uid`. A visualização de tarefas oferece uma vez renomeá-los pelo título — só quando os dígitos correspondem à âncora no mesmo arquivo.
 
-`templateFor` é o contrato de campo da atribuição de modelo (veja [Bancos de Dados (.base)](Databases_Base.md)): em uma nota dentro da pasta de modelos, ele lista os bancos de dados cujo menu **Entrada** mostra o modelo por padrão. Os valores são links wiki completos, incluindo a extensão `.base` — sem qualificação (`"[[Tasks.base]]"` corresponde ao arquivo desse nome em qualquer pasta, portanto continua funcionando mesmo que o arquivo apenas mude de pasta) ou qualificados por caminho (`"[[Projekte/Tasks.base]]"` corresponde exatamente a esse caminho). O Plainva grava links sem qualificação e só os qualifica por caminho quando existem dois arquivos `.base` com o mesmo nome. Um escalar em vez de uma lista é tolerado. Ao criar um item a partir do modelo, `templateFor` — diferente das demais chaves `plainva:` — **não** é copiado para a nova nota.
+`templateFor` é o contrato de campo da atribuição de modelo (veja [Bancos de Dados (.base)](Databases_Base.md)): em uma nota dentro da pasta de modelos, ele lista os bancos de dados cujo menu **Entrada** mostra o modelo por padrão. Os valores são links wiki completos, incluindo a extensão `.base` — sem qualificação (`"[[Tasks.base]]"` corresponde ao arquivo desse nome em qualquer pasta, portanto continua funcionando mesmo que o arquivo apenas mude de pasta) ou qualificados por caminho (`"[[Projekte/Tasks.base]]"` corresponde exatamente a esse caminho). O Alviss grava links sem qualificação e só os qualifica por caminho quando existem dois arquivos `.base` com o mesmo nome. Um escalar em vez de uma lista é tolerado. Ao criar um item a partir do modelo, `templateFor` — diferente das demais chaves `plainva:` — **não** é copiado para a nova nota.
 
 ### Links
 
 - **Link wiki:** `[[Nome da nota]]` — resolvido pelo nome da nota em todo o vault. Com âncora de título: `[[Nota#Seção]]` — um clique abre a nota **naquele título**; `[[#Seção]]` salta dentro da nota atual, e um slug no estilo do GitHub (`[[Nota#cool-header]]`) também é resolvido. Com referência de bloco: `[[Nota#^id]]` para uma linha que termina em `^id`. Com texto de exibição: `[[Nota|texto exibido]]`.
-- **Como o destino de um link wiki é resolvido** — do mesmo jeito para um clique, uma incorporação, uma relação, o grafo e os backlinks, no desktop e no celular. Nesta ordem: (1) um caminho explícito — `/Pasta/Nota` a partir da raiz do vault, `./Nota` ou `../Pasta/Nota` a partir da pasta da nota que contém o link — e nada mais para um destino assim; (2) o caminho no vault como está escrito — um arquivo escrito exatamente assim —, depois a nota nesse caminho (`.md`); (3) o final do caminho de uma nota: o nome do arquivo sozinho ou com pastas na frente (`Clientes/Carta` encontra `Projetos/Clientes/Carta.md`); (4) um arquivo que não é uma nota (`plan.pdf`, `Tasks.base`, `LICENSE`), pelo caminho ou pelo final do caminho — depois das notas, de modo que um destino sem extensão é uma nota sempre que houver uma; (5) o `title` das propriedades de uma nota. Os nomes são comparados sem diferenciar maiúsculas de minúsculas, e a forma composta e a decomposta de uma letra contam como o mesmo nome. Se vários arquivos correspondem: primeiro a grafia como está escrita, depois o caminho lido a partir da pasta da nota que contém o link (para um nome simples, a nota ao lado), depois o caminho mais curto, depois a ordem alfabética. Os passos 1 a 4 também são a forma como o Obsidian encontra um arquivo, embora ele possa escolher outro quando vários têm o mesmo nome; um link pelo `title` (passo 5) só funciona no Plainva — por isso os seletores do Plainva escrevem o nome do arquivo.
-- **Link Markdown:** `[texto](destino)`. O destino é lido primeiro a partir da pasta da nota que contém o link — o arquivo escrito exatamente assim, depois a nota nesse caminho (`.md`); se não houver nada ali, ele é resolvido como o destino de um link wiki (passos 2 a 5 acima: o caminho a partir da raiz do vault, o final de um caminho, um arquivo que não é uma nota, o `title`). Um caminho explícito — `/Pasta/Arquivo`, `./Arquivo`, `../Pasta/Arquivo` — indica um lugar, e nada mais é tentado para ele. Um destino que termina em `/` indica uma pasta e leva ao `index.md` dela. A codificação percentual é decodificada (`Minha%20carta.md`), colchetes angulares e um título são lidos como no CommonMark (`[x](<Minha carta.md> "Título")`), e o primeiro `#` escrito começa um fragmento: com `[texto](#cool-header)` ou `[texto](outra.md#cool-header)` o clique cai no título; um `#` que faz parte do nome de um arquivo se escreve `%23`. Links em qualquer um dos três formatos do Obsidian — caminho mais curto, caminho relativo, caminho absoluto no vault — são resolvidos assim; quando um arquivo está no caminho a partir da pasta da nota que contém o link e outro no mesmo caminho a partir da raiz do vault, o Plainva fica com o primeiro, como faz um leitor de Markdown fora do app. O próprio Plainva escreve links Markdown relativos e com codificação percentual (visões gerais de pasta, visões gerais preparadas). A resposta é a mesma para um clique, o grafo e os backlinks, no desktop e no celular.
+- **Como o destino de um link wiki é resolvido** — do mesmo jeito para um clique, uma incorporação, uma relação, o grafo e os backlinks, no desktop e no celular. Nesta ordem: (1) um caminho explícito — `/Pasta/Nota` a partir da raiz do vault, `./Nota` ou `../Pasta/Nota` a partir da pasta da nota que contém o link — e nada mais para um destino assim; (2) o caminho no vault como está escrito — um arquivo escrito exatamente assim —, depois a nota nesse caminho (`.md`); (3) o final do caminho de uma nota: o nome do arquivo sozinho ou com pastas na frente (`Clientes/Carta` encontra `Projetos/Clientes/Carta.md`); (4) um arquivo que não é uma nota (`plan.pdf`, `Tasks.base`, `LICENSE`), pelo caminho ou pelo final do caminho — depois das notas, de modo que um destino sem extensão é uma nota sempre que houver uma; (5) o `title` das propriedades de uma nota. Os nomes são comparados sem diferenciar maiúsculas de minúsculas, e a forma composta e a decomposta de uma letra contam como o mesmo nome. Se vários arquivos correspondem: primeiro a grafia como está escrita, depois o caminho lido a partir da pasta da nota que contém o link (para um nome simples, a nota ao lado), depois o caminho mais curto, depois a ordem alfabética. Os passos 1 a 4 também são a forma como o Obsidian encontra um arquivo, embora ele possa escolher outro quando vários têm o mesmo nome; um link pelo `title` (passo 5) só funciona no Alviss — por isso os seletores do Alviss escrevem o nome do arquivo.
+- **Link Markdown:** `[texto](destino)`. O destino é lido primeiro a partir da pasta da nota que contém o link — o arquivo escrito exatamente assim, depois a nota nesse caminho (`.md`); se não houver nada ali, ele é resolvido como o destino de um link wiki (passos 2 a 5 acima: o caminho a partir da raiz do vault, o final de um caminho, um arquivo que não é uma nota, o `title`). Um caminho explícito — `/Pasta/Arquivo`, `./Arquivo`, `../Pasta/Arquivo` — indica um lugar, e nada mais é tentado para ele. Um destino que termina em `/` indica uma pasta e leva ao `index.md` dela. A codificação percentual é decodificada (`Minha%20carta.md`), colchetes angulares e um título são lidos como no CommonMark (`[x](<Minha carta.md> "Título")`), e o primeiro `#` escrito começa um fragmento: com `[texto](#cool-header)` ou `[texto](outra.md#cool-header)` o clique cai no título; um `#` que faz parte do nome de um arquivo se escreve `%23`. Links em qualquer um dos três formatos do Obsidian — caminho mais curto, caminho relativo, caminho absoluto no vault — são resolvidos assim; quando um arquivo está no caminho a partir da pasta da nota que contém o link e outro no mesmo caminho a partir da raiz do vault, o Alviss fica com o primeiro, como faz um leitor de Markdown fora do app. O próprio Alviss escreve links Markdown relativos e com codificação percentual (visões gerais de pasta, visões gerais preparadas). A resposta é a mesma para um clique, o grafo e os backlinks, no desktop e no celular.
 - **Backlinks** são derivados automaticamente, inclusive a partir de links wiki no frontmatter (é isso que faz relações aparecerem como backlinks).
 
 ---
@@ -189,9 +189,9 @@ blockedBy:
 ```
 
 - Armazene **apenas uma direção** (o sucessor nomeia seus predecessores). A inversa é derivada; um par armazenado são dois fatos que podem se contradizer.
-- `reltype` pode ser `FINISHTOSTART`, `FINISHTOFINISH`, `STARTTOSTART` ou `STARTTOFINISH`. O Plainva **avalia e desenha apenas `FINISHTOSTART`**; os demais permanecem intactos.
+- `reltype` pode ser `FINISHTOSTART`, `FINISHTOFINISH`, `STARTTOSTART` ou `STARTTOFINISH`. O Alviss **avalia e desenha apenas `FINISHTOSTART`**; os demais permanecem intactos.
 - `gap` é uma duração ISO-8601 e é opcional.
-- Não escreva um ciclo. O Plainva o recusa e nomeia o caminho que ele fecharia.
+- Não escreva um ciclo. O Alviss o recusa e nomeia o caminho que ele fecharia.
 
 ## Bancos de dados (`.base`)
 
@@ -203,7 +203,7 @@ Um arquivo `.base` é YAML. Ele armazena uma *visualização* sobre notas — qu
 - **Toda visualização precisa de um `name` em string não vazia.**
 - **Um objeto `filters` carrega exatamente um entre `and` / `or` / `not` em cada nível** — nunca dois lado a lado.
 
-O próprio Plainva corrige arquivos mais antigos que violam as duas últimas regras na próxima vez que os salva, mas uma ferramenta que escreve diretamente precisa acertá-las de antemão.
+O próprio Alviss corrige arquivos mais antigos que violam as duas últimas regras na próxima vez que os salva, mas uma ferramenta que escreve diretamente precisa acertá-las de antemão.
 
 ### Identificadores de propriedade: quando usar o prefixo `note.`
 
@@ -221,14 +221,14 @@ Regra geral: os campos estruturais *voltados para o Obsidian* usam `note.<key>` 
 
 ### Chaves de nível superior
 
-- **`filters`** — quais notas pertencem a este banco de dados. No Plainva, isso contém apenas as **fontes** (pasta/tag); as condições de filtro de propriedade são armazenadas por visualização em `views[i].filters`. Veja [Filtros](#filtros).
-- **`properties`** — o esquema de colunas, indexado pelo id da propriedade. Subchaves nativas do Obsidian como `displayName` (rótulo do cabeçalho da coluna) são permitidas e preservadas; toda a riqueza do Plainva vive sob `properties[id].plainva`.
+- **`filters`** — quais notas pertencem a este banco de dados. No Alviss, isso contém apenas as **fontes** (pasta/tag); as condições de filtro de propriedade são armazenadas por visualização em `views[i].filters`. Veja [Filtros](#filtros).
+- **`properties`** — o esquema de colunas, indexado pelo id da propriedade. Subchaves nativas do Obsidian como `displayName` (rótulo do cabeçalho da coluna) são permitidas e preservadas; toda a riqueza do Alviss vive sob `properties[id].plainva`.
 - **`views`** — uma lista ordenada de visualizações. Cada uma precisa de `name` e `type`.
-- **`formulas`** — um recurso do Obsidian. O Plainva não cria essas entradas, mas as preserva intocadas.
+- **`formulas`** — um recurso do Obsidian. O Alviss não cria essas entradas, mas as preserva intocadas.
 
 ### O mapa de subchaves `plainva:`
 
-Tudo o que é específico do Plainva tem namespace. Três locais:
+Tudo o que é específico do Alviss tem namespace. Três locais:
 
 **`properties[<note.key>].plainva`** — por coluna:
 
@@ -246,7 +246,7 @@ Tudo o que é específico do Plainva tem namespace. Três locais:
 
 | Chave | Valor | Significado |
 |---|---|---|
-| `render` | `board` / `calendar` / `timeline` / `graph` / `pinboard` | Tipo de visualização exclusivo do Plainva (veja abaixo) |
+| `render` | `board` / `calendar` / `timeline` / `graph` / `pinboard` | Tipo de visualização exclusivo do Alviss (veja abaixo) |
 | `groupBy` | chave de propriedade sem prefixo | Coluna de agrupamento do quadro |
 | `dateField` | chave de propriedade sem prefixo | Data de início do calendário/linha do tempo |
 | `endField` | chave de propriedade sem prefixo | Data de término da linha do tempo |
@@ -262,7 +262,7 @@ Tudo o que é específico do Plainva tem namespace. Três locais:
 | `pinboardPinned` | lista de caminhos vault-relativos | Cartões fixados; a ordem da lista é a ordem da seção |
 | `pinboardFilterBy` | `tags` ou uma chave de seleção múltipla sem prefixo | Origem dos marcadores da barra de chips do mural (`tags` é implícito — omita) |
 
-Além do bloco `plainva`, uma visualização pode carregar um objeto nativo **`views[i].filters`** — os **filtros de propriedade por visualização** (a mesma gramática de raiz única `and`/`or`/`not` do `filters` no nível do arquivo). O Plainva armazena aqui as regras de filtro de propriedade, um conjunto por visualização, de modo que cada visualização filtra de forma independente; o `filters` no nível do arquivo então mantém apenas as fontes. O Obsidian aplica `views[i].filters` nativamente, por visualização.
+Além do bloco `plainva`, uma visualização pode carregar um objeto nativo **`views[i].filters`** — os **filtros de propriedade por visualização** (a mesma gramática de raiz única `and`/`or`/`not` do `filters` no nível do arquivo). O Alviss armazena aqui as regras de filtro de propriedade, um conjunto por visualização, de modo que cada visualização filtra de forma independente; o `filters` no nível do arquivo então mantém apenas as fontes. O Obsidian aplica `views[i].filters` nativamente, por visualização.
 
 **`views[0].plainva`** — chaves válidas para o arquivo inteiro, permitidas **somente na primeira visualização**:
 
@@ -274,9 +274,9 @@ Além do bloco `plainva`, uma visualização pode carregar um objeto nativo **`v
 | `contextFilters` | lista de chaves de propriedade simples | Filtros de autorreferência ("Esta nota") — veja abaixo |
 | `taskList` | `"<id da conta> <id da lista>"` | Lista de tarefas do provedor onde as tarefas novas também são criadas — veja abaixo |
 
-`contextFilters` é o equivalente do Plainva ao filtro "this page" do Notion. Cada entrada é uma chave de propriedade; quando o banco de dados está incorporado em uma nota, suas linhas ficam filtradas para essa nota hospedeira através dessa propriedade (resolvido através do índice de links — uma propriedade de relação própria ou de link wiki simples corresponde a linhas que apontam para o hospedeiro, uma coluna reversa calculada corresponde ao que o hospedeiro aponta). Ele deliberadamente **não** é gravado nos `filters` nativos, então o Obsidian o ignora e mostra todas as linhas; se aberto de forma autônoma no Plainva, ele também é descartado (sem hospedeiro) e mostra todas as linhas. Várias entradas se combinam com E.
+`contextFilters` é o equivalente do Alviss ao filtro "this page" do Notion. Cada entrada é uma chave de propriedade; quando o banco de dados está incorporado em uma nota, suas linhas ficam filtradas para essa nota hospedeira através dessa propriedade (resolvido através do índice de links — uma propriedade de relação própria ou de link wiki simples corresponde a linhas que apontam para o hospedeiro, uma coluna reversa calculada corresponde ao que o hospedeiro aponta). Ele deliberadamente **não** é gravado nos `filters` nativos, então o Obsidian o ignora e mostra todas as linhas; se aberto de forma autônoma no Alviss, ele também é descartado (sem hospedeiro) e mostra todas as linhas. Várias entradas se combinam com E.
 
-`taskList` indica a lista de tarefas do provedor onde uma tarefa **criada no Plainva** também é criada (Google Tasks, lembretes do iCloud, Microsoft). O valor é o id da conta e o id da lista separados pelo **primeiro** espaço — um id de lista do CalDAV pode conter espaços por si só. Sem a chave, uma tarefa nova continua sendo apenas uma nota. Se o valor deixar de se resolver (conta removida, lista excluída), o Plainva se comporta como se a chave estivesse ausente, em vez de adivinhar outra lista. O Obsidian a ignora.
+`taskList` indica a lista de tarefas do provedor onde uma tarefa **criada no Alviss** também é criada (Google Tasks, lembretes do iCloud, Microsoft). O valor é o id da conta e o id da lista separados pelo **primeiro** espaço — um id de lista do CalDAV pode conter espaços por si só. Sem a chave, uma tarefa nova continua sendo apenas uma nota. Se o valor deixar de se resolver (conta removida, lista excluída), o Alviss se comporta como se a chave estivesse ausente, em vez de adivinhar outra lista. O Obsidian a ignora.
 
 ### Tipos de entrada
 
@@ -347,7 +347,7 @@ options:
 
 ### Tipos de visualização
 
-`views[i].type` em disco é um tipo nativo do Obsidian. Renderizações exclusivas do Plainva são escritas como `type: table` mais uma dica `plainva.render`, para que o Obsidian as degrade a uma tabela simples:
+`views[i].type` em disco é um tipo nativo do Obsidian. Renderizações exclusivas do Alviss são escritas como `type: table` mais uma dica `plainva.render`, para que o Obsidian as degrade a uma tabela simples:
 
 | Você quer | `type` em disco | `plainva.render` |
 |---|---|---|
@@ -369,7 +369,7 @@ options:
 
 Múltiplas fontes são simplesmente múltiplas entradas. Nenhum `filters` = toda nota no vault.
 
-**Onde vivem as condições de propriedade:** no nível do arquivo, `filters` se aplica a todas as visualizações. O Plainva, em vez disso, armazena as regras de filtro de propriedade **por visualização** em `views[i].filters` (mesma estrutura de raiz única) e mantém apenas as fontes no nível do arquivo, de modo que cada visualização possa filtrar de forma independente. Ambos são válidos para o Obsidian; uma ferramenta pode escrever qualquer um dos dois. Um arquivo legado com condições de propriedade no nível do arquivo continua funcionando — o Plainva as distribui para cada visualização no próximo salvamento.
+**Onde vivem as condições de propriedade:** no nível do arquivo, `filters` se aplica a todas as visualizações. O Alviss, em vez disso, armazena as regras de filtro de propriedade **por visualização** em `views[i].filters` (mesma estrutura de raiz única) e mantém apenas as fontes no nível do arquivo, de modo que cada visualização possa filtrar de forma independente. Ambos são válidos para o Obsidian; uma ferramenta pode escrever qualquer um dos dois. Um arquivo legado com condições de propriedade no nível do arquivo continua funcionando — o Alviss as distribui para cada visualização no próximo salvamento.
 
 **Condições de propriedade** usam nomes de propriedade sem prefixo e estes operadores:
 
@@ -551,10 +551,10 @@ Para uma relação cujo destino é o mesmo banco de dados, aponte `relationBase`
 `index.md` é um nome reservado para o sumário de uma pasta.
 
 - **Somente o `index.md` da raiz pode carregar frontmatter**, e apenas `okf_version` — a versão da convenção que o vault segue (atualmente `"0.2"`; ele marca o vault como ativo no OKF). Um vault que ainda declara `"0.1"` é atualizado em **Configurações → Vault → Manutenção → Formato OKF → Versão do bundle → Atualizar…**; o campo legado `okf_version` pode ser removido das notas na mesma etapa. Um `index.md` fora da raiz precisa ser **livre de frontmatter** — frontmatter ali é uma violação de nome reservado.
-- Um `index.md` **gerenciado** pelo Plainva termina com o marcador `<!-- plainva:index generated -->` (um comentário HTML, invisível no modo de leitura). Sua presença significa que o Plainva mantém o arquivo atualizado automaticamente. Se você editar esse arquivo à mão, preserve o marcador (e mantenha a forma gerada) ou remova-o deliberadamente para assumir o arquivo permanentemente.
+- Um `index.md` **gerenciado** pelo Alviss termina com o marcador `<!-- plainva:index generated -->` (um comentário HTML, invisível no modo de leitura). Sua presença significa que o Alviss mantém o arquivo atualizado automaticamente. Se você editar esse arquivo à mão, preserve o marcador (e mantenha a forma gerada) ou remova-o deliberadamente para assumir o arquivo permanentemente.
 - Listagens geradas são seções de links no formato `* [Título](url/relativa) - descrição`.
 
-Se você estiver gerando uma visão geral de pasta à mão, a escolha segura é **não** adicionar o marcador — assim o Plainva nunca a sobrescreverá.
+Se você estiver gerando uma visão geral de pasta à mão, a escolha segura é **não** adicionar o marcador — assim o Alviss nunca a sobrescreverá.
 
 ---
 
@@ -596,15 +596,15 @@ views:
       pinboardFilterBy: note.labels   # origem dos marcadores da barra de chips; omitir = tags
 ```
 
-Regras: caminhos fixados não são repetidos em `pinboardOrder`. Cartões que não estão em nenhuma das duas listas são renderizados no topo, do mais recente para o mais antigo (data de criação). Itens cujo arquivo não existe mais ou saiu do conjunto de fontes são ignorados e removidos no próximo salvamento. Quando uma nota é renomeada ou movida, o Plainva reajusta os caminhos em ambas as listas automaticamente; ferramentas externas precisam fazer o mesmo. O Obsidian ignora as chaves e mostra a visualização como uma tabela.
+Regras: caminhos fixados não são repetidos em `pinboardOrder`. Cartões que não estão em nenhuma das duas listas são renderizados no topo, do mais recente para o mais antigo (data de criação). Itens cujo arquivo não existe mais ou saiu do conjunto de fontes são ignorados e removidos no próximo salvamento. Quando uma nota é renomeada ou movida, o Alviss reajusta os caminhos em ambas as listas automaticamente; ferramentas externas precisam fazer o mesmo. O Obsidian ignora as chaves e mostra a visualização como uma tabela.
 
 ## O que não tocar e segurança
 
 - **`.plainva/`** guarda backups e estado interno. Nunca leia lógica de programa dali nem escreva ali.
-- **Chaves desconhecidas são sagradas.** Ao reescrever uma `.base` ou uma nota, carregue adiante toda chave que você não pretendia alterar. O próprio Plainva preserva chaves desconhecidas de `.base` por meio de uma cópia bruta interna; um escritor de terceiros deve fazer o mesmo (analisar → alterar apenas o que você pretende → serializar).
+- **Chaves desconhecidas são sagradas.** Ao reescrever uma `.base` ou uma nota, carregue adiante toda chave que você não pretendia alterar. O próprio Alviss preserva chaves desconhecidas de `.base` por meio de uma cópia bruta interna; um escritor de terceiros deve fazer o mesmo (analisar → alterar apenas o que você pretende → serializar).
 - **Os valores mudam na nota, não na `.base`.** Para definir uma célula, edite o frontmatter da nota. A `.base` só decide quais notas e colunas são exibidas.
 - **Não adicione chaves de nível superior em `.base`** além de `filters` / `formulas` / `properties` / `summaries` / `views`.
-- **Codificação:** UTF-8. Arquivos novos: quebras de linha LF, sem BOM. Uma nota ou um arquivo de texto que já tem quebras de linha CRLF ou um BOM os mantém — o Plainva não os altera, e uma ferramenta também não deveria. A única exceção é um `.base`: o Plainva o escreve de novo, com LF e sem BOM, sempre que sua configuração muda. Um retorno de carro sozinho como quebra de linha (arquivos antigos de Mac) é lido, mas não é mantido: o Plainva salva um arquivo assim com LF na primeira vez que o altera.
+- **Codificação:** UTF-8. Arquivos novos: quebras de linha LF, sem BOM. Uma nota ou um arquivo de texto que já tem quebras de linha CRLF ou um BOM os mantém — o Alviss não os altera, e uma ferramenta também não deveria. A única exceção é um `.base`: o Alviss o escreve de novo, com LF e sem BOM, sempre que sua configuração muda. Um retorno de carro sozinho como quebra de linha (arquivos antigos de Mac) é lido, mas não é mantido: o Alviss salva um arquivo assim com LF na primeira vez que o altera.
 
 ## Veja também
 
@@ -637,10 +637,10 @@ views:
 <!-- planner-capture-2026-09-20 -->
 ## Propriedades da tarefa: horário, prioridade, lembrete, estados
 
-- **Horário de vencimento.** A propriedade de vencimento de uma tarefa — a coluna de data do banco, `vencimento` em um vault em português — pode ter um horário: `vencimento: 2026-09-21T14:00`. O Plainva lê o horário seja qual for o tipo da coluna; um dia puro (`2026-09-21`) e a meia-noite (`T00:00`) significam ambos “sem horário”. Um banco de tarefas criado pelo Plainva tipa a coluna como data e hora; um mais antigo mantém sua coluna de data simples até você aceitar a oferta única de mudar. Para Google, Microsoft e CalDAV, uma tarefa ainda viaja só com o seu dia.
-- **Prioridade.** Uma coluna de seleção cujo nome significa “prioridade” em um dos dez idiomas do Plainva (`priority`, `priorität`, `prioridad`, `priorité`, `priorità`, `優先度`, `prioriteit`, `priorytet`, `prioridade`, `优先级`). O nível é dado pela posição da opção: a primeira = alta, a segunda = média, a terceira = baixa; vazia = nenhuma. O texto das opções é você quem decide.
+- **Horário de vencimento.** A propriedade de vencimento de uma tarefa — a coluna de data do banco, `vencimento` em um vault em português — pode ter um horário: `vencimento: 2026-09-21T14:00`. O Alviss lê o horário seja qual for o tipo da coluna; um dia puro (`2026-09-21`) e a meia-noite (`T00:00`) significam ambos “sem horário”. Um banco de tarefas criado pelo Alviss tipa a coluna como data e hora; um mais antigo mantém sua coluna de data simples até você aceitar a oferta única de mudar. Para Google, Microsoft e CalDAV, uma tarefa ainda viaja só com o seu dia.
+- **Prioridade.** Uma coluna de seleção cujo nome significa “prioridade” em um dos dez idiomas do Alviss (`priority`, `priorität`, `prioridad`, `priorité`, `priorità`, `優先度`, `prioriteit`, `priorytet`, `prioridade`, `优先级`). O nível é dado pela posição da opção: a primeira = alta, a segunda = média, a terceira = baixa; vazia = nenhuma. O texto das opções é você quem decide.
 - **Exceção de lembrete.** `remind: off` silencia o lembrete de uma tarefa; `remind: 30` avisa 30 minutos antes do seu horário (só faz sentido para uma tarefa com horário). Sem a propriedade, valem as configurações.
-- **Estados da caixa de seleção.** `- [ ]` aberta, `- [x]` concluída, `- [/]` em andamento, `- [-]` cancelada. Em andamento conta como aberta, cancelada como fechada; uma subtarefa cancelada sai da contagem `file.tasks`. O Plainva só escreve `[/]` e `[-]` quando você escolhe **Definir estado**.
+- **Estados da caixa de seleção.** `- [ ]` aberta, `- [x]` concluída, `- [/]` em andamento, `- [-]` cancelada. Em andamento conta como aberta, cancelada como fechada; uma subtarefa cancelada sai da contagem `file.tasks`. O Alviss só escreve `[/]` e `[-]` quando você escolhe **Definir estado**.
 - **Marcas de prioridade em uma caixa de seleção.** Lidas: 🔺 ⏫ (alta), 🔼 (média), 🔽 ⏬ (baixa). Escritas: ⏫, 🔼 ou 🔽, colocadas na frente do primeiro campo com data.
 
 <!-- journal-2026-09-20 -->

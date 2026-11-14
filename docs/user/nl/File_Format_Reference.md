@@ -2,7 +2,7 @@
 
 Laatst bijgewerkt: 2026-11-03
 
-Deze pagina is het exacte, op-de-schijf-contract voor **elk bestand in een Plainva-vault**. Ze is zo geschreven dat een tool — een ander programma, script of KI-assistent — vault-bestanden rechtstreeks kan lezen en veilig bewerken, zonder de omweg via Plainva's gebruikersinterface. Gebruik je alleen de app, dan heb je deze pagina nooit nodig; de [overige handleidingpagina's](README.md) behandelen normaal gebruik.
+Deze pagina is het exacte, op-de-schijf-contract voor **elk bestand in een Alviss-vault**. Ze is zo geschreven dat een tool — een ander programma, script of KI-assistent — vault-bestanden rechtstreeks kan lezen en veilig bewerken, zonder de omweg via Alviss's gebruikersinterface. Gebruik je alleen de app, dan heb je deze pagina nooit nodig; de [overige handleidingpagina's](README.md) behandelen normaal gebruik.
 
 Alles hier is puur UTF-8-tekst. Notities zijn Markdown met YAML-frontmatter; databases zijn YAML. Niets is eigendomsrechtelijk, niets is verborgen.
 
@@ -10,9 +10,9 @@ Alles hier is puur UTF-8-tekst. Notities zijn Markdown met YAML-frontmatter; dat
 
 1. **De notitie is de bron van waarheid. Een `.base` is alleen een weergave.** Eigenschaps-*waarden* staan in de frontmatter van de individuele notities — nooit in de `.base`. Om een waarde te wijzigen, bewerk je de notitie.
 2. **Notities blijven Obsidian-native.** Schrijf in notitie-frontmatter uitsluitend eenvoudige scalars en lijsten (string, getal, boolean, ISO-datum, YAML-lijst). Schrijf nooit een genest object of een "actief/geselecteerd"-vlag in een notitie.
-3. **Een `.base` gebruikt alleen Obsidians vijf top-level sleutels** (`filters`, `formulas`, `properties`, `summaries`, `views`). Obsidian begrijpt geen enkele andere top-level sleutel. Daarom staat alle Plainva-specifieke data onder geneste `plainva:`-subsleutels.
+3. **Een `.base` gebruikt alleen Obsidians vijf top-level sleutels** (`filters`, `formulas`, `properties`, `summaries`, `views`). Obsidian begrijpt geen enkele andere top-level sleutel. Daarom staat alle Alviss-specifieke data onder geneste `plainva:`-subsleutels.
 4. **Bewaar wat je niet begrijpt.** Onbekende sleutels moeten een lees-/schrijfronde ongewijzigd doorstaan. "Ruim" geen sleutels op die je niet herkent.
-5. **Schrijf UTF-8. Een nieuw bestand krijgt LF-regeleinden en geen BOM; een bestand dat er al is, houdt wat het heeft.** Plainva doet hetzelfde: wat het aanmaakt, begint met LF en zonder BOM, en wat het aantreft, houdt zijn regeleinden en zijn BOM — bewerk je een notitie, dan veranderen alleen de regels die je hebt gewijzigd. Een bestand dat beide soorten regeleinden mengt, krijgt bij de eerste bewerking overal de soort die de meeste regels hebben. Een regeleinde dat alleen uit een wagenterugloop (CR) bestaat — wat oude Mac-bestanden hebben — wordt gelezen, maar niet bewaard: de eerste keer dat zo'n bestand wordt gewijzigd, slaat Plainva het op met LF (met CRLF als de meeste andere regeleinden CRLF zijn) en meldt je dat.
+5. **Schrijf UTF-8. Een nieuw bestand krijgt LF-regeleinden en geen BOM; een bestand dat er al is, houdt wat het heeft.** Alviss doet hetzelfde: wat het aanmaakt, begint met LF en zonder BOM, en wat het aantreft, houdt zijn regeleinden en zijn BOM — bewerk je een notitie, dan veranderen alleen de regels die je hebt gewijzigd. Een bestand dat beide soorten regeleinden mengt, krijgt bij de eerste bewerking overal de soort die de meeste regels hebben. Een regeleinde dat alleen uit een wagenterugloop (CR) bestaat — wat oude Mac-bestanden hebben — wordt gelezen, maar niet bewaard: de eerste keer dat zo'n bestand wordt gewijzigd, slaat Alviss het op met LF (met CRLF als de meeste andere regeleinden CRLF zijn) en meldt je dat.
 
 ## De vault in vogelvlucht
 
@@ -25,11 +25,11 @@ Een vault is een gewone map. De bestandstypen die je tegenkomt:
 | `index.md` | Het beheerde inhoudsoverzicht van een map (gereserveerde naam) | Ja, met zorg — zie [index.md](#indexmd-map-inhoudsopgave) |
 | `log.md` | Gereserveerde naam, momenteel ongebruikt | Met rust laten |
 | afbeeldingen, PDF's, … | Bijlagen | Nee (binair) |
-| `.plainva/` | Plainva's interne map (back-ups, status) | **Nee — nooit aanraken** |
+| `.plainva/` | Alviss's interne map (back-ups, status) | **Nee — nooit aanraken** |
 
 De gereserveerde namen `index.md` en `log.md` zijn nooit gewone notities; maak onder die namen geen gewone inhoud aan.
 
-Bestanden en mappen waarvan de naam met een punt begint — zoals `.notities.md` of `.attachments/` — horen bij de kluis: Plainva houdt ze in zijn index en synchroniseert ze zoals elk ander bestand, maar toont ze niet, net als Obsidian. Ze verschijnen in geen enkele zoekopdracht, bestandslijst, graaf, suggestie, lijst met backlinks, tag- of takenlijst en in geen database. Een link die zo'n bestand noemt, opent het toch. Plainva's eigen `.plainva/` en Obsidians `.obsidian/` houden hun eigen regels.
+Bestanden en mappen waarvan de naam met een punt begint — zoals `.notities.md` of `.attachments/` — horen bij de kluis: Alviss houdt ze in zijn index en synchroniseert ze zoals elk ander bestand, maar toont ze niet, net als Obsidian. Ze verschijnen in geen enkele zoekopdracht, bestandslijst, graaf, suggestie, lijst met backlinks, tag- of takenlijst en in geen database. Een link die zo'n bestand noemt, opent het toch. Alviss's eigen `.plainva/` en Obsidians `.obsidian/` houden hun eigen regels.
 
 ---
 
@@ -54,35 +54,35 @@ A **bold** thought that links to [[Another Note]].
 - [ ] First task
 ```
 
-Een blok mag leeg zijn: `---` direct gevolgd door `---` is een blok zonder eigenschappen, niet twee scheidingslijnen — de tekst van de notitie begint op de regel erna. Plainva laat geen leeg blok achter: wordt de laatste eigenschap verwijderd, dan verdwijnen de twee `---`-regels mee. Ze blijven alleen staan als de tekst zelf met een `---`-regel begint, die anders als het begin van een blok zou worden gelezen. Een blok waarin alleen nog een opmerking staat, blijft staan, met de opmerking.
+Een blok mag leeg zijn: `---` direct gevolgd door `---` is een blok zonder eigenschappen, niet twee scheidingslijnen — de tekst van de notitie begint op de regel erna. Alviss laat geen leeg blok achter: wordt de laatste eigenschap verwijderd, dan verdwijnen de twee `---`-regels mee. Ze blijven alleen staan als de tekst zelf met een `---`-regel begint, die anders als het begin van een blok zou worden gelezen. Een blok waarin alleen nog een opmerking staat, blijft staan, met de opmerking.
 
-Een blok dat Plainva niet als eigenschappen kan lezen, blijft precies zoals het is: tekst tussen de twee `---`-regels die geen YAML is, of YAML dat een lijst is in plaats van `sleutel: waarde`-regels. Eén regel tekst, een getal of een verzameling (`!!set`) tussen de twee lijnen is ook zo'n blok: ook zoeken, links en databases lezen er geen eigenschap uit. **Eigenschappen** meldt dat in plaats van geen eigenschappen te tonen, en wijzig je bij zo'n notitie een eigenschap — daar, in een database, op een prikbord, in de takenlijst, of het pictogram en de kleur ervan —, dan verandert er niets, en Plainva meldt dat: **Eigenschap kon niet worden opgeslagen**, gevolgd door de reden. Corrigeer het blok in de tekst van de notitie, dan lukt de wijziging. Eén waarde in een onverwachte vorm maakt een blok niet onleesbaar: Plainva leest haar zoals ze er staat — een lege `tags:` is een notitie zonder tags, een getal tussen de tags (`- 2024`) is de tag `2024`, een getal als `title` is die titel, en een `timestamp` die een datum is, is een eigenschap als elke andere. `tag` en `alias` in het enkelvoud zijn gewone eigenschappen — zoals in Obsidian sinds 1.9 —, een tag is dus alleen wat onder `tags` staat.
+Een blok dat Alviss niet als eigenschappen kan lezen, blijft precies zoals het is: tekst tussen de twee `---`-regels die geen YAML is, of YAML dat een lijst is in plaats van `sleutel: waarde`-regels. Eén regel tekst, een getal of een verzameling (`!!set`) tussen de twee lijnen is ook zo'n blok: ook zoeken, links en databases lezen er geen eigenschap uit. **Eigenschappen** meldt dat in plaats van geen eigenschappen te tonen, en wijzig je bij zo'n notitie een eigenschap — daar, in een database, op een prikbord, in de takenlijst, of het pictogram en de kleur ervan —, dan verandert er niets, en Alviss meldt dat: **Eigenschap kon niet worden opgeslagen**, gevolgd door de reden. Corrigeer het blok in de tekst van de notitie, dan lukt de wijziging. Eén waarde in een onverwachte vorm maakt een blok niet onleesbaar: Alviss leest haar zoals ze er staat — een lege `tags:` is een notitie zonder tags, een getal tussen de tags (`- 2024`) is de tag `2024`, een getal als `title` is die titel, en een `timestamp` die een datum is, is een eigenschap als elke andere. `tag` en `alias` in het enkelvoud zijn gewone eigenschappen — zoals in Obsidian sinds 1.9 —, een tag is dus alleen wat onder `tags` staat.
 
 ### OKF-frontmattervelden
 
-Plainva volgt OKF (Open Knowledge Format), een minimale conventie — momenteel **versie 0.2**. Eén top-level veld is verplicht, de rest is optioneel:
+Alviss volgt OKF (Open Knowledge Format), een minimale conventie — momenteel **versie 0.2**. Eén top-level veld is verplicht, de rest is optioneel:
 
 | Veld | Type | Betekenis |
 |---|---|---|
 | `type` | string | Welk soort document dit is (`Note`, `Daily Note`, `Project`, …). Het enige veld dat OKF daadwerkelijk vereist. |
 | `generated`, `verified`, `sources`, `stale_after`, `status` | zie hieronder | De vertrouwens- en levenscyclusvelden van OKF 0.2 — allemaal optioneel; zie "Vertrouwen en levenscyclus" direct na deze sectie. |
-| `okf_version` | string | **Alleen de root-`index.md`**: de conventieversie die de hele vault volgt, bijv. `"0.2"` (tussen aanhalingstekens zodat YAML het als string behoudt). Plainva schreef dit veld tot en met OKF 0.1 nog in afzonderlijke notities; sinds 0.2 doet het dat niet meer. Bestaande vermeldingen zijn geen fout — de bundle-upgrade kan ze op verzoek verwijderen. |
+| `okf_version` | string | **Alleen de root-`index.md`**: de conventieversie die de hele vault volgt, bijv. `"0.2"` (tussen aanhalingstekens zodat YAML het als string behoudt). Alviss schreef dit veld tot en met OKF 0.1 nog in afzonderlijke notities; sinds 0.2 doet het dat niet meer. Bestaande vermeldingen zijn geen fout — de bundle-upgrade kan ze op verzoek verwijderen. |
 
 Een bestand **zonder** `type` opent nog steeds prima; het is alleen "niet OKF-conform". Een `okf_version` die in een notitie ontbreekt — of er nog steeds in staat — is geen overtreding. Als je een nieuwe notitie aanmaakt, is het goede praktijk om `type` toe te voegen — meer is niet nodig. Zie [OKF](OKF.md) voor de volledige onderbouwing.
 
 ### Vertrouwen en levenscyclus (OKF 0.2)
 
-OKF 0.2 voegt vijf **optionele** top-level velden toe waarmee een notitie kan zeggen waar ze vandaan komt, of iemand haar heeft gecontroleerd, en of ze nog geldig is. Plainva leest ze allemaal; het schrijft ze volgens vaste regels (zie hieronder).
+OKF 0.2 voegt vijf **optionele** top-level velden toe waarmee een notitie kan zeggen waar ze vandaan komt, of iemand haar heeft gecontroleerd, en of ze nog geldig is. Alviss leest ze allemaal; het schrijft ze volgens vaste regels (zie hieronder).
 
 | Veld | Vorm | Betekenis |
 |---|---|---|
 | `generated` | object `{ by, at }` | Wie de notitie heeft gemaakt en wanneer. `at` is een ISO 8601-moment in UTC (`2026-08-21T10:11:12Z`). |
 | `verified` | lijst van `{ by, at }` | Wie de notitie heeft gecontroleerd. Een lijst, omdat elke controle wordt toegevoegd — de controlegeschiedenis blijft bewaard; de nieuwste vermelding telt. |
 | `sources` | lijst van `{ resource, id?, title?, … }` | Waar de notitie van is gemaakt. `resource` is een identifier (een URL, `mid:<Message-ID>` van een e-mail, een bestandspad); verdere sleutels zijn toegestaan. |
-| `stale_after` | datum (`2026-12-31`) of moment | Vanaf wanneer de inhoud als verouderd geldt. Pure informatie — Plainva toont een melding en verandert niets. |
+| `stale_after` | datum (`2026-12-31`) of moment | Vanaf wanneer de inhoud als verouderd geldt. Pure informatie — Alviss toont een melding en verandert niets. |
 | `status` | `draft` \| `stable` \| `deprecated` | De levenscyclusstatus. Uitsluitend deze drie waarden; `draft` en `deprecated` verschijnen als badge, `stable` blijft stil. |
 
-**Actoren** (`by` in `generated` en `verified`) volgen een conventie: een persoon is `human:<naam>`, een programma is `<producent>/<versie>`. Plainva schrijft `plainva-import/<versie>`, `plainva-mail-capture/<versie>` en `plainva-task-sync/<versie>` — en, bij een controle, `human:<jouw naam>`.
+**Actoren** (`by` in `generated` en `verified`) volgen een conventie: een persoon is `human:<naam>`, een programma is `<producent>/<versie>`. Alviss schrijft `plainva-import/<versie>`, `plainva-mail-capture/<versie>` en `plainva-task-sync/<versie>` — en, bij een controle, `human:<jouw naam>`.
 
 Voorbeeld van een geïmporteerde, later gecontroleerde notitie:
 
@@ -105,10 +105,10 @@ stale_after: 2027-08-21
 
 **Schrijfregels — wie zet wat:**
 
-- `generated` en `sources` worden alleen geschreven door Plainva's **machinale** schrijfpaden: de import (één moment per run; het importrapport draagt het ook), e-mail vastleggen (met `sources: [{ resource: "mid:<Message-ID>" }]` wanneer het bericht een stabiel Message-ID heeft) en de takensynchronisatie (alleen wanneer die een notitie aanmaakt — een latere synchronisatie laat de stempel met rust).
+- `generated` en `sources` worden alleen geschreven door Alviss's **machinale** schrijfpaden: de import (één moment per run; het importrapport draagt het ook), e-mail vastleggen (met `sources: [{ resource: "mid:<Message-ID>" }]` wanneer het bericht een stabiel Message-ID heeft) en de takensynchronisatie (alleen wanneer die een notitie aanmaakt — een latere synchronisatie laat de stempel met rust).
 - `verified` wordt alleen geschreven door **Markeren als gecontroleerd** (desktop: de sectie **Vertrouwen en herkomst** van het eigenschappenpaneel; telefoon: de contextkaart van de notitie) — en dat voegt toe in plaats van te overschrijven.
 - De editor raakt geen van deze velden ooit uit zichzelf aan, en **bestaande notities krijgen nooit achteraf een stempel**. Een ontbrekend veld betekent alleen: geen uitspraak.
-- `status` en `stale_after` stel je zelf in (als eigenschap of rechtstreeks in de frontmatter). Een waarde buiten `draft`/`stable`/`deprecated` — zeg de `status: Open`-kolom van een takendatabase — is **geen** levenscyclusstatus maar een gewone eigenschap; Plainva toont er geen badge voor.
+- `status` en `stale_after` stel je zelf in (als eigenschap of rechtstreeks in de frontmatter). Een waarde buiten `draft`/`stable`/`deprecated` — zeg de `status: Open`-kolom van een takendatabase — is **geen** levenscyclusstatus maar een gewone eigenschap; Alviss toont er geen badge voor.
 - Tools en scripts die notities aanmaken, zetten `generated` met hun eigen actor (`<jouw-tool>/<versie>`) en laten vertrouwensvelden die ze niet kennen ongewijzigd door een lees-/schrijfronde gaan.
 
 ### Serialisatie van eigenschapswaarden
@@ -136,7 +136,7 @@ De "actieve" waarde van een Selectie-/Status-eigenschap is precies die platte sc
 
 ### De `plainva:`-namespace in notities
 
-Plainva-specifieke extra's voor notities zijn gebundeld onder één enkele `plainva:`-sleutel, zodat andere editors ze kunnen negeren:
+Alviss-specifieke extra's voor notities zijn gebundeld onder één enkele `plainva:`-sleutel, zodat andere editors ze kunnen negeren:
 
 | Sleutel | Waarde | Betekenis |
 |---|---|---|
@@ -149,7 +149,7 @@ Plainva-specifieke extra's voor notities zijn gebundeld onder één enkele `plai
 
 Ze zijn allemaal optioneel. Schrijf je er geen enkele, laat dan de `plainva:`-sleutel helemaal weg. Ongeldige waarden worden bij het lezen genegeerd, nooit als fout behandeld.
 
-`pim` is het anker van de PIM-integraties (zie [Agenda & externe taken](Calendar_and_Tasks.md) en [E-mail vastleggen](Email_Capture.md)). Het is een kleine mapping die Plainva schrijft wanneer een notitie een extern object spiegelt: `uid` plus waar het vandaan komt, en afhankelijk van het soort `calendar` (vergadernotities), `kind: task` + `list` (gesynchroniseerde taken) of `kind: email` + `mailbox` (vastgelegde e-mails). Tools moeten hem ongewijzigd bewaren; het anker verwijderen ontkoppelt de notitie alleen van het externe object (er wordt extern niets verwijderd). Voorbeeld:
+`pim` is het anker van de PIM-integraties (zie [Agenda & externe taken](Calendar_and_Tasks.md) en [E-mail vastleggen](Email_Capture.md)). Het is een kleine mapping die Alviss schrijft wanneer een notitie een extern object spiegelt: `uid` plus waar het vandaan komt, en afhankelijk van het soort `calendar` (vergadernotities), `kind: task` + `list` (gesynchroniseerde taken) of `kind: email` + `mailbox` (vastgelegde e-mails). Tools moeten hem ongewijzigd bewaren; het anker verwijderen ontkoppelt de notitie alleen van het externe object (er wordt extern niets verwijderd). Voorbeeld:
 
 ```yaml
 plainva:
@@ -162,17 +162,17 @@ plainva:
     account: 3f9c21ab
 ```
 
-**Wat de herkomst beschrijft.** Voor een taak tellen `uid` en `list` — een `uid` is uniek bij ÉÉN provider, niet over twee heen. `provider` (`google`, `microsoft`, `caldav`) en `identity` (de geverifieerde account-identiteit, waar de provider die aanbiedt) bakenen het verder af, en beide overleven een herverbinding. `account` is de LOKALE account-id: Plainva schrijft hem nog steeds zodat oudere versies het anker kunnen lezen, maar vergelijkt hem niet meer — hij wordt bij elke verbinding opnieuw geslagen, en dat is precies waarom een opnieuw verbonden account zijn taken vroeger een tweede keer importeerde. Schrijf je zelf ankers, zet dan `uid` en `list`; `provider`/`identity` worden aanbevolen, `account` is niet nodig. `recurring: true` voegt Plainva aan een taakanker toe zodra het heeft gezien dat de aanbieder de taak laat terugkomen (afgerond, daarna onder dezelfde `uid` weer open met een latere datum — of, waar de aanbieder zelf zegt dat de taak zich herhaalt, zoals een herinnering op de iPhone, gewoon open onder dezelfde `uid` met een latere datum). De sleutel is puur informatief, wordt nooit vergeleken en mag worden verwijderd.
+**Wat de herkomst beschrijft.** Voor een taak tellen `uid` en `list` — een `uid` is uniek bij ÉÉN provider, niet over twee heen. `provider` (`google`, `microsoft`, `caldav`) en `identity` (de geverifieerde account-identiteit, waar de provider die aanbiedt) bakenen het verder af, en beide overleven een herverbinding. `account` is de LOKALE account-id: Alviss schrijft hem nog steeds zodat oudere versies het anker kunnen lezen, maar vergelijkt hem niet meer — hij wordt bij elke verbinding opnieuw geslagen, en dat is precies waarom een opnieuw verbonden account zijn taken vroeger een tweede keer importeerde. Schrijf je zelf ankers, zet dan `uid` en `list`; `provider`/`identity` worden aanbevolen, `account` is niet nodig. `recurring: true` voegt Alviss aan een taakanker toe zodra het heeft gezien dat de aanbieder de taak laat terugkomen (afgerond, daarna onder dezelfde `uid` weer open met een latere datum — of, waar de aanbieder zelf zegt dat de taak zich herhaalt, zoals een herinnering op de iPhone, gewoon open onder dezelfde `uid` met een latere datum). De sleutel is puur informatief, wordt nooit vergeleken en mag worden verwijderd.
 
-**De bestandsnaam hoort niet bij de identiteit.** Een gespiegelde taak heet zoals haar titel (`<titel>.md`, bij dezelfde titel `<titel> 2.md` enzovoort); gekoppeld wordt uitsluitend via het anker. Tools mogen het bestand hernoemen en verplaatsen zolang het anker blijft. Namen van de vorm `<titel> — <16 of 64 hextekens>.md` stammen uit de Plainva-versies van 12 tot 24 september 2026: de tekens zijn het begin van een SHA-256 over aanbieder, identiteit, lijst en `uid`. De takenweergave biedt eenmalig aan ze naar hun titel te hernoemen — alleen als de tekens bij het anker in hetzelfde bestand passen.
+**De bestandsnaam hoort niet bij de identiteit.** Een gespiegelde taak heet zoals haar titel (`<titel>.md`, bij dezelfde titel `<titel> 2.md` enzovoort); gekoppeld wordt uitsluitend via het anker. Tools mogen het bestand hernoemen en verplaatsen zolang het anker blijft. Namen van de vorm `<titel> — <16 of 64 hextekens>.md` stammen uit de Alviss-versies van 12 tot 24 september 2026: de tekens zijn het begin van een SHA-256 over aanbieder, identiteit, lijst en `uid`. De takenweergave biedt eenmalig aan ze naar hun titel te hernoemen — alleen als de tekens bij het anker in hetzelfde bestand passen.
 
-`templateFor` is het veldcontract van de sjabloontoewijzing (zie [Databases (.base)](Databases_Base.md)): op een notitie in de sjablonenmap vermeldt het de databases waarvan het **Item**-menu het sjabloon standaard toont. Waarden zijn volledige wiki-links inclusief de `.base`-extensie — bare (`"[[Tasks.base]]"` komt overeen met het bestand met die naam in elke map, waardoor het een zuivere mapverplaatsing overleeft) of padgekwalificeerd (`"[[Projekte/Tasks.base]]"` komt overeen met precies dat pad). Plainva schrijft bare links en kwalificeert alleen wanneer er twee gelijknamige `.base`-bestanden bestaan. Een scalar in plaats van een lijst wordt getolereerd. Wanneer een item vanuit het sjabloon wordt aangemaakt, wordt `templateFor` — in tegenstelling tot de andere `plainva:`-sleutels — **niet** naar de nieuwe notitie gekopieerd.
+`templateFor` is het veldcontract van de sjabloontoewijzing (zie [Databases (.base)](Databases_Base.md)): op een notitie in de sjablonenmap vermeldt het de databases waarvan het **Item**-menu het sjabloon standaard toont. Waarden zijn volledige wiki-links inclusief de `.base`-extensie — bare (`"[[Tasks.base]]"` komt overeen met het bestand met die naam in elke map, waardoor het een zuivere mapverplaatsing overleeft) of padgekwalificeerd (`"[[Projekte/Tasks.base]]"` komt overeen met precies dat pad). Alviss schrijft bare links en kwalificeert alleen wanneer er twee gelijknamige `.base`-bestanden bestaan. Een scalar in plaats van een lijst wordt getolereerd. Wanneer een item vanuit het sjabloon wordt aangemaakt, wordt `templateFor` — in tegenstelling tot de andere `plainva:`-sleutels — **niet** naar de nieuwe notitie gekopieerd.
 
 ### Links
 
 - **Wiki-link:** `[[Notitienaam]]` — vault-breed opgelost via de notitienaam. Met een kop-anker: `[[Notitie#Sectie]]` — een klik opent de notitie **bij die kop**; `[[#Sectie]]` springt binnen de huidige notitie, en een slug in GitHub-stijl (`[[Notitie#cool-header]]`) wordt ook opgelost. Met een blokverwijzing: `[[Notitie#^id]]` voor een regel die eindigt op `^id`. Met weergavetekst: `[[Notitie|getoonde tekst]]`.
-- **Hoe het doel van een wiki-link wordt opgelost** — hetzelfde voor een klik, een insluiting, een relatie, de graaf en de backlinks, op de desktop en op de telefoon. In deze volgorde: (1) een expliciet pad — `/Map/Notitie` vanaf de vault-root, `./Notitie` of `../Map/Notitie` vanaf de map van de notitie met de link — en voor zo'n doel niets anders; (2) het vaultpad zoals geschreven — een bestand dat precies zo gespeld is —, daarna de notitie op dat pad (`.md`); (3) het einde van het pad van een notitie: de bestandsnaam alleen of met mappen ervoor (`Klanten/Brief` vindt `Projecten/Klanten/Brief.md`); (4) een bestand dat geen notitie is (`plan.pdf`, `Tasks.base`, `LICENSE`), via zijn pad of het einde van zijn pad — na de notities, dus een doel zonder extensie is een notitie waar er een bestaat; (5) de `title` uit de eigenschappen van een notitie. Namen worden vergeleken zonder onderscheid tussen hoofdletters en kleine letters, en de samengestelde en de ontlede schrijfwijze van een letter gelden als dezelfde naam. Passen er meerdere bestanden: eerst de schrijfwijze zoals geschreven, dan het pad gelezen vanaf de map van de notitie met de link (bij een kale naam de notitie ernaast), dan het kortste pad, dan de alfabetische volgorde. De stappen 1 tot en met 4 zijn ook de manier waarop Obsidian een bestand vindt, al kan het een ander kiezen wanneer meerdere dezelfde naam hebben; een link via `title` (stap 5) werkt alleen in Plainva — daarom schrijven de keuzelijsten van Plainva de bestandsnaam.
-- **Markdown-link:** `[tekst](doel)`. Het doel wordt eerst gelezen vanaf de map van de notitie met de link — het bestand dat precies zo gespeld is, daarna de notitie op dat pad (`.md`); ligt daar niets, dan wordt het opgelost als het doel van een wiki-link (stappen 2 tot en met 5 hierboven: het pad vanaf de vault-root, het einde van een pad, een bestand dat geen notitie is, de `title`). Een expliciet pad — `/Map/Bestand`, `./Bestand`, `../Map/Bestand` — noemt één plek, en er wordt niets anders voor geprobeerd. Een doel dat op `/` eindigt, noemt een map en leidt naar de `index.md` daarvan. De procentcodering wordt gedecodeerd (`Mijn%20brief.md`), punthaken en een titel worden gelezen zoals in CommonMark (`[x](<Mijn brief.md> "Titel")`), en de eerste `#` die er staat begint een fragment: met `[tekst](#cool-header)` of `[tekst](andere.md#cool-header)` landt de klik op de kop; een `#` die bij een bestandsnaam hoort, wordt als `%23` geschreven. Links in elk van de drie formaten van Obsidian — kortste pad, relatief pad, absoluut pad in de vault — worden zo opgelost; ligt er één bestand op het pad vanaf de map van de notitie met de link en een ander op hetzelfde pad vanaf de vault-root, dan neemt Plainva het eerste, zoals een Markdown-lezer buiten de app dat doet. Plainva zelf schrijft relatieve Markdown-links met procentcodering (mapoverzichten, voorbereide overzichten). Het antwoord is hetzelfde voor een klik, de graaf en de backlinks, op de desktop en op de telefoon.
+- **Hoe het doel van een wiki-link wordt opgelost** — hetzelfde voor een klik, een insluiting, een relatie, de graaf en de backlinks, op de desktop en op de telefoon. In deze volgorde: (1) een expliciet pad — `/Map/Notitie` vanaf de vault-root, `./Notitie` of `../Map/Notitie` vanaf de map van de notitie met de link — en voor zo'n doel niets anders; (2) het vaultpad zoals geschreven — een bestand dat precies zo gespeld is —, daarna de notitie op dat pad (`.md`); (3) het einde van het pad van een notitie: de bestandsnaam alleen of met mappen ervoor (`Klanten/Brief` vindt `Projecten/Klanten/Brief.md`); (4) een bestand dat geen notitie is (`plan.pdf`, `Tasks.base`, `LICENSE`), via zijn pad of het einde van zijn pad — na de notities, dus een doel zonder extensie is een notitie waar er een bestaat; (5) de `title` uit de eigenschappen van een notitie. Namen worden vergeleken zonder onderscheid tussen hoofdletters en kleine letters, en de samengestelde en de ontlede schrijfwijze van een letter gelden als dezelfde naam. Passen er meerdere bestanden: eerst de schrijfwijze zoals geschreven, dan het pad gelezen vanaf de map van de notitie met de link (bij een kale naam de notitie ernaast), dan het kortste pad, dan de alfabetische volgorde. De stappen 1 tot en met 4 zijn ook de manier waarop Obsidian een bestand vindt, al kan het een ander kiezen wanneer meerdere dezelfde naam hebben; een link via `title` (stap 5) werkt alleen in Alviss — daarom schrijven de keuzelijsten van Alviss de bestandsnaam.
+- **Markdown-link:** `[tekst](doel)`. Het doel wordt eerst gelezen vanaf de map van de notitie met de link — het bestand dat precies zo gespeld is, daarna de notitie op dat pad (`.md`); ligt daar niets, dan wordt het opgelost als het doel van een wiki-link (stappen 2 tot en met 5 hierboven: het pad vanaf de vault-root, het einde van een pad, een bestand dat geen notitie is, de `title`). Een expliciet pad — `/Map/Bestand`, `./Bestand`, `../Map/Bestand` — noemt één plek, en er wordt niets anders voor geprobeerd. Een doel dat op `/` eindigt, noemt een map en leidt naar de `index.md` daarvan. De procentcodering wordt gedecodeerd (`Mijn%20brief.md`), punthaken en een titel worden gelezen zoals in CommonMark (`[x](<Mijn brief.md> "Titel")`), en de eerste `#` die er staat begint een fragment: met `[tekst](#cool-header)` of `[tekst](andere.md#cool-header)` landt de klik op de kop; een `#` die bij een bestandsnaam hoort, wordt als `%23` geschreven. Links in elk van de drie formaten van Obsidian — kortste pad, relatief pad, absoluut pad in de vault — worden zo opgelost; ligt er één bestand op het pad vanaf de map van de notitie met de link en een ander op hetzelfde pad vanaf de vault-root, dan neemt Alviss het eerste, zoals een Markdown-lezer buiten de app dat doet. Alviss zelf schrijft relatieve Markdown-links met procentcodering (mapoverzichten, voorbereide overzichten). Het antwoord is hetzelfde voor een klik, de graaf en de backlinks, op de desktop en op de telefoon.
 - **Backlinks** worden automatisch afgeleid, ook uit frontmatter-wiki-links (dat is wat relaties als backlinks laat verschijnen).
 
 ---
@@ -189,9 +189,9 @@ blockedBy:
 ```
 
 - Sla **maar één richting** op (de opvolger noemt zijn voorgangers). De omgekeerde wordt afgeleid; een opgeslagen paar zijn twee feiten die elkaar kunnen tegenspreken.
-- `reltype` mag `FINISHTOSTART`, `FINISHTOFINISH`, `STARTTOSTART` of `STARTTOFINISH` zijn. Plainva **evalueert en tekent alleen `FINISHTOSTART`**; de rest blijft onaangeroerd behouden.
+- `reltype` mag `FINISHTOSTART`, `FINISHTOFINISH`, `STARTTOSTART` of `STARTTOFINISH` zijn. Alviss **evalueert en tekent alleen `FINISHTOSTART`**; de rest blijft onaangeroerd behouden.
 - `gap` is een ISO-8601-duur en optioneel.
-- Schrijf geen cyclus. Plainva weigert er een en noemt het pad dat hij zou sluiten.
+- Schrijf geen cyclus. Alviss weigert er een en noemt het pad dat hij zou sluiten.
 
 ## Databases (`.base`)
 
@@ -203,7 +203,7 @@ Een `.base`-bestand is YAML. Het bewaart een *weergave* over notities — welke 
 - **Elke weergave heeft een niet-lege string-`name`.**
 - **Een `filters`-object draagt op elk niveau exact één van `and` / `or` / `not`** — nooit twee naast elkaar.
 
-Plainva zelf herstelt oudere bestanden die tegen de laatste twee regels ingaan de volgende keer dat ze worden opgeslagen, maar een tool die rechtstreeks schrijft moet ze meteen goed hebben.
+Alviss zelf herstelt oudere bestanden die tegen de laatste twee regels ingaan de volgende keer dat ze worden opgeslagen, maar een tool die rechtstreeks schrijft moet ze meteen goed hebben.
 
 ### Eigenschaps-identifiers: wanneer het `note.`-voorvoegsel gebruiken
 
@@ -221,14 +221,14 @@ Vuistregel: de *Obsidian-gerichte* structurele velden gebruiken `note.<key>` (en
 
 ### Top-level sleutels
 
-- **`filters`** — welke notities tot deze database behoren. In Plainva staan hier alleen de **bronnen** (map/tag); eigenschaps-filtervoorwaarden worden per weergave opgeslagen onder `views[i].filters`. Zie [Filters](#filters).
-- **`properties`** — het kolomschema, geïndexeerd op eigenschaps-id. Native Obsidian-subsleutels zoals `displayName` (kolomkoplabel) zijn toegestaan en blijven behouden; alle Plainva-rijkdom staat onder `properties[id].plainva`.
+- **`filters`** — welke notities tot deze database behoren. In Alviss staan hier alleen de **bronnen** (map/tag); eigenschaps-filtervoorwaarden worden per weergave opgeslagen onder `views[i].filters`. Zie [Filters](#filters).
+- **`properties`** — het kolomschema, geïndexeerd op eigenschaps-id. Native Obsidian-subsleutels zoals `displayName` (kolomkoplabel) zijn toegestaan en blijven behouden; alle Alviss-rijkdom staat onder `properties[id].plainva`.
 - **`views`** — een geordende lijst van weergaven. Elke heeft een `name` en een `type` nodig.
-- **`formulas`** — een Obsidian-functie. Plainva maakt deze niet aan, maar bewaart ze ongewijzigd.
+- **`formulas`** — een Obsidian-functie. Alviss maakt deze niet aan, maar bewaart ze ongewijzigd.
 
 ### De `plainva:`-subsleutelkaart
 
-Alles wat Plainva-specifiek is, is namespaced. Drie plekken:
+Alles wat Alviss-specifiek is, is namespaced. Drie plekken:
 
 **`properties[<note.key>].plainva`** — per kolom:
 
@@ -246,7 +246,7 @@ Alles wat Plainva-specifiek is, is namespaced. Drie plekken:
 
 | Sleutel | Waarde | Betekenis |
 |---|---|---|
-| `render` | `board` / `calendar` / `timeline` / `graph` / `pinboard` | Plainva-only weergavesoort (zie hieronder) |
+| `render` | `board` / `calendar` / `timeline` / `graph` / `pinboard` | Alviss-only weergavesoort (zie hieronder) |
 | `groupBy` | bare eigenschapssleutel | Groeperingskolom van het bord |
 | `dateField` | bare eigenschapssleutel | Startdatum voor kalender/tijdlijn |
 | `endField` | bare eigenschapssleutel | Einddatum van de tijdlijn |
@@ -262,7 +262,7 @@ Alles wat Plainva-specifiek is, is namespaced. Drie plekken:
 | `pinboardPinned` | lijst van vault-relatieve paden | Vastgezette kaarten; de lijstvolgorde is de sectievolgorde |
 | `pinboardFilterBy` | `tags` of een bare multiselectie-sleutel | Labelbron van de chipbalk van het prikbord (`tags` is impliciet — weglaten) |
 
-Naast het `plainva`-blok kan een weergave een native **`views[i].filters`**-object dragen — de **filters per weergave** (dezelfde eenwortelige `and`/`or`/`not`-grammatica als het dossierwijde `filters`). Plainva slaat hier eigenschaps-filterregels op, één set per weergave, zodat elke weergave onafhankelijk filtert; het dossierwijde `filters` behoudt dan alleen de bronnen. Obsidian past `views[i].filters` native per weergave toe.
+Naast het `plainva`-blok kan een weergave een native **`views[i].filters`**-object dragen — de **filters per weergave** (dezelfde eenwortelige `and`/`or`/`not`-grammatica als het dossierwijde `filters`). Alviss slaat hier eigenschaps-filterregels op, één set per weergave, zodat elke weergave onafhankelijk filtert; het dossierwijde `filters` behoudt dan alleen de bronnen. Obsidian past `views[i].filters` native per weergave toe.
 
 **`views[0].plainva`** — dossierwijde sleutels, alleen toegestaan op de **eerste** weergave:
 
@@ -274,9 +274,9 @@ Naast het `plainva`-blok kan een weergave een native **`views[i].filters`**-obje
 | `contextFilters` | lijst van kale eigenschapssleutels | Zelfreferentie-filters ("Deze notitie") — zie hieronder |
 | `taskList` | `"<account-id> <lijst-id>"` | Taaklijst bij de provider waarin nieuwe taken ook worden aangemaakt — zie hieronder |
 
-`contextFilters` is Plainva's equivalent van Notions "this page"-filter. Elk item is een eigenschapssleutel; wanneer de database in een notitie is ingesloten, worden de rijen ervan via die eigenschap afgestemd op die host-notitie (opgelost via de linkindex — een eigenschap die de link bezit of een gewone linkeigenschap komt overeen met rijen die naar de host verwijzen, een berekende omgekeerde kolom komt overeen met waarnaar de host zelf verwijst). Het wordt bewust **niet** in de native `filters` geschreven, dus negeert Obsidian het en toont alle rijen; ook los geopend in Plainva wordt het genegeerd (geen host) en toont de weergave alle rijen. Meerdere items worden met EN gecombineerd.
+`contextFilters` is Alviss's equivalent van Notions "this page"-filter. Elk item is een eigenschapssleutel; wanneer de database in een notitie is ingesloten, worden de rijen ervan via die eigenschap afgestemd op die host-notitie (opgelost via de linkindex — een eigenschap die de link bezit of een gewone linkeigenschap komt overeen met rijen die naar de host verwijzen, een berekende omgekeerde kolom komt overeen met waarnaar de host zelf verwijst). Het wordt bewust **niet** in de native `filters` geschreven, dus negeert Obsidian het en toont alle rijen; ook los geopend in Alviss wordt het genegeerd (geen host) en toont de weergave alle rijen. Meerdere items worden met EN gecombineerd.
 
-`taskList` geeft de taaklijst aan waarin een **in Plainva aangemaakte** taak ook bij de provider wordt aangemaakt (Google Tasks, iCloud-herinneringen, Microsoft). De waarde is de account-id en de lijst-id gescheiden door de **eerste** spatie — een CalDAV-lijst-id kan zelf spaties bevatten. Zonder de sleutel blijft een nieuwe taak een gewone notitie. Als de waarde niet meer oplosbaar is (account verwijderd, lijst verwijderd), gedraagt Plainva zich alsof de sleutel ontbreekt, in plaats van een andere lijst te gokken. Obsidian negeert de sleutel.
+`taskList` geeft de taaklijst aan waarin een **in Alviss aangemaakte** taak ook bij de provider wordt aangemaakt (Google Tasks, iCloud-herinneringen, Microsoft). De waarde is de account-id en de lijst-id gescheiden door de **eerste** spatie — een CalDAV-lijst-id kan zelf spaties bevatten. Zonder de sleutel blijft een nieuwe taak een gewone notitie. Als de waarde niet meer oplosbaar is (account verwijderd, lijst verwijderd), gedraagt Alviss zich alsof de sleutel ontbreekt, in plaats van een andere lijst te gokken. Obsidian negeert de sleutel.
 
 ### Invoertypen
 
@@ -347,7 +347,7 @@ options:
 
 ### Weergavetypen
 
-`views[i].type` is op de schijf een native Obsidian-type. Plainva-only weergaven worden geschreven als `type: table` plus een `plainva.render`-hint, zodat Obsidian ze degradeert tot een gewone tabel:
+`views[i].type` is op de schijf een native Obsidian-type. Alviss-only weergaven worden geschreven als `type: table` plus een `plainva.render`-hint, zodat Obsidian ze degradeert tot een gewone tabel:
 
 | Je wilt | `type` op de schijf | `plainva.render` |
 |---|---|---|
@@ -369,7 +369,7 @@ options:
 
 Meerdere bronnen zijn gewoon meerdere items. Helemaal geen `filters` = elke notitie in de vault.
 
-**Waar eigenschapsvoorwaarden staan:** op dossierniveau geldt `filters` voor elke weergave. Plainva slaat eigenschaps-filterregels in plaats daarvan **per weergave** op in `views[i].filters` (dezelfde eenwortelige structuur) en behoudt op dossierniveau alleen de bronnen, zodat elke weergave onafhankelijk kan filteren. Beide zijn geldig voor Obsidian; een tool mag beide schrijven. Een ouder bestand met eigenschapsvoorwaarden op dossierniveau blijft werken — Plainva verdeelt ze de volgende keer dat het wordt opgeslagen over elke weergave.
+**Waar eigenschapsvoorwaarden staan:** op dossierniveau geldt `filters` voor elke weergave. Alviss slaat eigenschaps-filterregels in plaats daarvan **per weergave** op in `views[i].filters` (dezelfde eenwortelige structuur) en behoudt op dossierniveau alleen de bronnen, zodat elke weergave onafhankelijk kan filteren. Beide zijn geldig voor Obsidian; een tool mag beide schrijven. Een ouder bestand met eigenschapsvoorwaarden op dossierniveau blijft werken — Alviss verdeelt ze de volgende keer dat het wordt opgeslagen over elke weergave.
 
 **Eigenschapsvoorwaarden** gebruiken bare eigenschapsnamen en deze operatoren:
 
@@ -551,10 +551,10 @@ Voor een relatie waarvan het doel dezelfde database is, wijst `relationBase` naa
 `index.md` is een gereserveerde naam voor het inhoudsoverzicht van een map.
 
 - **Alleen de root-`index.md` mag frontmatter dragen**, en alleen `okf_version` — de conventieversie die de vault volgt (momenteel `"0.2"`; het markeert de vault als OKF-actief). Een vault die nog `"0.1"` declareert, wordt getild onder **Instellingen → Vault → Onderhoud → OKF-formaat → Bundleversie → Bijwerken…**; het verouderde `okf_version`-veld kan in dezelfde stap uit de notities worden verwijderd. Een niet-root-`index.md` moet **frontmatter-vrij** zijn — frontmatter daar is een schending van de gereserveerde naam.
-- Een Plainva-**beheerde** `index.md` eindigt met de marker `<!-- plainva:index generated -->` (een HTML-commentaar, onzichtbaar in de leesmodus). De aanwezigheid ervan betekent dat Plainva het bestand automatisch actueel houdt. Bewerk je zo'n bestand met de hand, bewaar dan ofwel de marker (en houd de gegenereerde vorm aan) of verwijder hem bewust om het bestand permanent over te nemen.
+- Een Alviss-**beheerde** `index.md` eindigt met de marker `<!-- plainva:index generated -->` (een HTML-commentaar, onzichtbaar in de leesmodus). De aanwezigheid ervan betekent dat Alviss het bestand automatisch actueel houdt. Bewerk je zo'n bestand met de hand, bewaar dan ofwel de marker (en houd de gegenereerde vorm aan) of verwijder hem bewust om het bestand permanent over te nemen.
 - Gegenereerde listings zijn secties van links in de vorm `* [Titel](relatief/url) - beschrijving`.
 
-Genereer je een mapoverzicht met de hand, dan is de veilige keuze om de marker **niet** toe te voegen — dan zal Plainva het nooit overschrijven.
+Genereer je een mapoverzicht met de hand, dan is de veilige keuze om de marker **niet** toe te voegen — dan zal Alviss het nooit overschrijven.
 
 ---
 
@@ -596,15 +596,15 @@ views:
       pinboardFilterBy: note.labels   # labelbron van de chipbalk; weglaten = tags
 ```
 
-Regels: vastgezette paden worden niet herhaald in `pinboardOrder`. Kaarten die in geen van beide lijsten staan, renderen bovenaan, nieuwste eerst (aanmaaktijd). Items waarvan het bestand niet meer bestaat of de bronset heeft verlaten, worden genegeerd en bij de volgende keer opslaan opgeruimd. Wanneer een notitie wordt hernoemd of verplaatst, werkt Plainva de paden in beide lijsten automatisch bij; externe tools moeten hetzelfde doen. Obsidian negeert de sleutels en toont de weergave als een tabel.
+Regels: vastgezette paden worden niet herhaald in `pinboardOrder`. Kaarten die in geen van beide lijsten staan, renderen bovenaan, nieuwste eerst (aanmaaktijd). Items waarvan het bestand niet meer bestaat of de bronset heeft verlaten, worden genegeerd en bij de volgende keer opslaan opgeruimd. Wanneer een notitie wordt hernoemd of verplaatst, werkt Alviss de paden in beide lijsten automatisch bij; externe tools moeten hetzelfde doen. Obsidian negeert de sleutels en toont de weergave als een tabel.
 
 ## Niet-aanraken en veiligheid
 
 - **`.plainva/`** bevat back-ups en interne status. Lees er nooit programmalogica uit en schrijf er nooit naar.
-- **Onbekende sleutels zijn heilig.** Als je een `.base` of een notitie herschrijft, draag dan elke sleutel mee die je niet van plan was te wijzigen. Plainva zelf bewaart onbekende `.base`-sleutels via een interne rauwe kopie; een externe schrijver zou hetzelfde moeten doen (parsen → alleen wijzigen wat je bedoelt → serialiseren).
+- **Onbekende sleutels zijn heilig.** Als je een `.base` of een notitie herschrijft, draag dan elke sleutel mee die je niet van plan was te wijzigen. Alviss zelf bewaart onbekende `.base`-sleutels via een interne rauwe kopie; een externe schrijver zou hetzelfde moeten doen (parsen → alleen wijzigen wat je bedoelt → serialiseren).
 - **Waarden veranderen in de notitie, niet in de `.base`.** Om een cel te zetten, bewerk je de frontmatter van de notitie. De `.base` bepaalt alleen welke notities en kolommen worden getoond.
 - **Voeg geen top-level `.base`-sleutels toe** boven `filters` / `formulas` / `properties` / `summaries` / `views`.
-- **Encoding:** UTF-8. Nieuwe bestanden: LF-regeleinden, geen BOM. Een notitie of tekstbestand dat al CRLF-regeleinden of een BOM heeft, houdt die — Plainva verandert ze niet, en een tool hoort dat ook niet te doen. De enige uitzondering is een `.base`: Plainva schrijft die opnieuw, met LF en zonder BOM, zodra de configuratie verandert. Een regeleinde dat alleen uit een wagenterugloop (CR) bestaat (oude Mac-bestanden), wordt gelezen, maar niet bewaard: Plainva slaat zo'n bestand met LF op zodra het dat bestand voor het eerst wijzigt.
+- **Encoding:** UTF-8. Nieuwe bestanden: LF-regeleinden, geen BOM. Een notitie of tekstbestand dat al CRLF-regeleinden of een BOM heeft, houdt die — Alviss verandert ze niet, en een tool hoort dat ook niet te doen. De enige uitzondering is een `.base`: Alviss schrijft die opnieuw, met LF en zonder BOM, zodra de configuratie verandert. Een regeleinde dat alleen uit een wagenterugloop (CR) bestaat (oude Mac-bestanden), wordt gelezen, maar niet bewaard: Alviss slaat zo'n bestand met LF op zodra het dat bestand voor het eerst wijzigt.
 
 ## Zie ook
 
@@ -637,10 +637,10 @@ views:
 <!-- planner-capture-2026-09-20 -->
 ## Taakeigenschappen: tijd, prioriteit, herinnering, statussen
 
-- **Vervaltijdstip.** De vervaleigenschap van een taak — de datumkolom van de database, `vervaldatum` in een Nederlandse vault — kan een tijdstip dragen: `vervaldatum: 2026-09-21T14:00`. Plainva leest het tijdstip ongeacht het type van de kolom; een kale dag (`2026-09-21`) en middernacht (`T00:00`) betekenen beide ‘geen tijdstip’. Een door Plainva aangemaakte takendatabase typeert de kolom als datum & tijd; een oudere behoudt zijn gewone datumkolom totdat je het eenmalige aanbod om over te schakelen accepteert. Naar Google, Microsoft en CalDAV reist een taak nog altijd met alleen zijn dag.
-- **Prioriteit.** Een keuzekolom waarvan de naam in een van Plainva's tien talen ‘prioriteit’ betekent (`priority`, `priorität`, `prioridad`, `priorité`, `priorità`, `優先度`, `prioriteit`, `priorytet`, `prioridade`, `优先级`). De rang is de positie van de optie: eerste = hoog, tweede = gemiddeld, derde = laag; leeg = geen. De bewoording van de opties bepaal je zelf.
+- **Vervaltijdstip.** De vervaleigenschap van een taak — de datumkolom van de database, `vervaldatum` in een Nederlandse vault — kan een tijdstip dragen: `vervaldatum: 2026-09-21T14:00`. Alviss leest het tijdstip ongeacht het type van de kolom; een kale dag (`2026-09-21`) en middernacht (`T00:00`) betekenen beide ‘geen tijdstip’. Een door Alviss aangemaakte takendatabase typeert de kolom als datum & tijd; een oudere behoudt zijn gewone datumkolom totdat je het eenmalige aanbod om over te schakelen accepteert. Naar Google, Microsoft en CalDAV reist een taak nog altijd met alleen zijn dag.
+- **Prioriteit.** Een keuzekolom waarvan de naam in een van Alviss's tien talen ‘prioriteit’ betekent (`priority`, `priorität`, `prioridad`, `priorité`, `priorità`, `優先度`, `prioriteit`, `priorytet`, `prioridade`, `优先级`). De rang is de positie van de optie: eerste = hoog, tweede = gemiddeld, derde = laag; leeg = geen. De bewoording van de opties bepaal je zelf.
 - **Uitzondering op de herinnering.** `remind: off` schakelt de herinnering van één taak uit; `remind: 30` herinnert 30 minuten voor het tijdstip (alleen zinvol bij een taak met een tijdstip). Zonder deze eigenschap gelden de instellingen.
-- **Statussen van selectievakjes.** `- [ ]` open, `- [x]` klaar, `- [/]` bezig, `- [-]` geannuleerd. Bezig telt als open, geannuleerd als afgerond; een geannuleerde subtaak verlaat de telling `file.tasks`. Plainva schrijft `[/]` en `[-]` alleen wanneer je **Status instellen** kiest.
+- **Statussen van selectievakjes.** `- [ ]` open, `- [x]` klaar, `- [/]` bezig, `- [-]` geannuleerd. Bezig telt als open, geannuleerd als afgerond; een geannuleerde subtaak verlaat de telling `file.tasks`. Alviss schrijft `[/]` en `[-]` alleen wanneer je **Status instellen** kiest.
 - **Prioriteitstekens op een selectievakje.** Gelezen: 🔺 ⏫ (hoog), 🔼 (gemiddeld), 🔽 ⏬ (laag). Geschreven: ⏫, 🔼 of 🔽, geplaatst voor het eerste datumveld.
 
 <!-- journal-2026-09-20 -->

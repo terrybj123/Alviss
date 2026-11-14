@@ -2,7 +2,7 @@
 
 Dernière mise à jour : 2026-11-02
 
-Le graphe de Plainva est un outil de travail, pas une affiche : il vous montre où vous en êtes, ce qui est connecté, ce qui manque — et vous pouvez agir directement dessus. Il y a UN seul moteur de graphe avec trois visages.
+Le graphe de Alviss est un outil de travail, pas une affiche : il vous montre où vous en êtes, ce qui est connecté, ce qui manque — et vous pouvez agir directement dessus. Il y a UN seul moteur de graphe avec trois visages.
 
 ## Graphe contextuel (barre latérale droite)
 
@@ -22,14 +22,14 @@ Outils dans la barre d'en-tête :
 
 - Styles d'arête en un coup d'œil (légende, en bas à gauche) : les **relations** sont des lignes d'accent pleines avec une étiquette, les **liens** sont en tirets, les **intégrations** en pointillés.
 - **Rechercher** atténue tout ce qui ne correspond pas. Filtrez par **type** (OKF) et **tag** ; les types d'arêtes (**Liens**, **Relations**, **Intégrations**) se basculent individuellement.
-- Les notes de synthèse gérées par Plainva (`index.md` et `log.md`) sont masquées par défaut — elles renvoient vers presque tout et surchargeraient sinon le graphe ; cela vaut aussi pour le graphe contextuel et le graphe de base de données. Dans la carte du vault, réaffichez-les via le bouton **Filtres** avec la case **Afficher index.md**.
+- Les notes de synthèse gérées par Alviss (`index.md` et `log.md`) sont masquées par défaut — elles renvoient vers presque tout et surchargeraient sinon le graphe ; cela vaut aussi pour le graphe contextuel et le graphe de base de données. Dans la carte du vault, réaffichez-les via le bouton **Filtres** avec la case **Afficher index.md**.
 - **Focus sur la sélection** réduit la carte à une note sélectionnée plus 1 à 3 sauts de voisinage.
 - **Carte de chaleur** met en lumière les notes modifiées récemment (7/30/90 jours) — « sur quoi je travaillais ? ».
 - **Voyage dans le temps** affiche les notes selon leur date de création ; le curseur rejoue la croissance de votre vault. La date provient d'une propriété `date`/`datum`, sinon de la date de création du fichier (une approximation pour les vaults uniquement dans le cloud).
 
 Travailler sur la carte :
 
-- Faites glisser un nœud **sur** un autre : Plainva propose d'écrire un lien texte — ou directement une **relation** correspondante de vos bases de données (si la relation n'autorise qu'une seule entrée, Plainva demande confirmation avant de remplacer).
+- Faites glisser un nœud **sur** un autre : Alviss propose d'écrire un lien texte — ou directement une **relation** correspondante de vos bases de données (si la relation n'autorise qu'une seule entrée, Alviss demande confirmation avant de remplacer).
 - Clic droit sur un nœud : Ouvrir, Aperçu, Ouvrir dans le split, **Nouvelle note liée**, Renommer (avec mise à jour des liens dans tout le vault), Signet, Supprimer.
 - Clic droit sur un espace vide : **Nouvelle note**, Réinitialiser la disposition, **Exporter en PNG/SVG**.
 - Cliquer sur un faisceau d'arêtes entre des dossiers liste les liens individuels ; survoler une arête montre la phrase où vit le lien.

@@ -2,36 +2,36 @@
 
 Stand: 2026-11-03
 
-Diese Seite listet auf, was eine `.base`-Datei enthalten kann und was Plainva mit jedem Teil macht: jeden Schlüssel der obersten Ebene, jede Filterform, jeden Ansichtstyp mit seinen Optionen, Zusammenfassungen, Sortierung, Grenzen, was mit Schlüsseln geschieht, die Plainva nicht kennt, und wo sich Plainva anders verhält als Obsidian Bases. Sie beschreibt, was der Code von Plainva heute liest, auswertet und schreibt — nicht die Dokumentation von Obsidian.
+Diese Seite listet auf, was eine `.base`-Datei enthalten kann und was Alviss mit jedem Teil macht: jeden Schlüssel der obersten Ebene, jede Filterform, jeden Ansichtstyp mit seinen Optionen, Zusammenfassungen, Sortierung, Grenzen, was mit Schlüsseln geschieht, die Alviss nicht kennt, und wo sich Alviss anders verhält als Obsidian Bases. Sie beschreibt, was der Code von Alviss heute liest, auswertet und schreibt — nicht die Dokumentation von Obsidian.
 
 Für den Alltag lies zuerst [Datenbanken (.base)](Databases_Base.md). Die Regeln, die ein Werkzeug einhalten muss, wenn es Vault-Dateien direkt schreibt, und das vollständige Relations-Beispiel stehen in der [Dateiformat-Referenz](File_Format_Reference.md).
 
 ## Auf einen Blick
 
-| Teil der Datei | Was Plainva damit macht |
+| Teil der Datei | Was Alviss damit macht |
 |---|---|
 | `filters` | Liest und wendet die Quellen (Ordner, Tag) und die Bedingungen an, die unter [Filter](#filter) stehen |
 | `views` | Liest alle acht Ansichtstypen, ihre Reihenfolge, Sortierung, Filter und Zusammenfassungen |
-| `properties` | Liest das Spaltenschema, den Anzeigenamen und den `plainva`-Block von Plainva |
+| `properties` | Liest das Spaltenschema, den Anzeigenamen und den `plainva`-Block von Alviss |
 | `summaries` (Ansicht) | Berechnet die vierzehn eingebauten Zusammenfassungen |
 | `formulas` | Behält sie in der Datei, berechnet sie nicht |
 | `summaries` (oberste Ebene) | Behält eigene Zusammenfassungsformeln, berechnet sie nicht |
 | `this` | Noch nicht unterstützt |
-| Andere Schlüssel | Behält sie in der Datei (siehe [Schlüssel, die Plainva nicht kennt](#schlüssel-die-plainva-nicht-kennt)) |
+| Andere Schlüssel | Behält sie in der Datei (siehe [Schlüssel, die Alviss nicht kennt](#schlüssel-die-plainva-nicht-kennt)) |
 
 ## Schlüssel der obersten Ebene
 
 Eine `.base`-Datei ist YAML mit diesen Schlüsseln auf oberster Ebene. Alle sind optional; eine Datei ohne `views` öffnet sich mit einer Tabelle.
 
-| Schlüssel | Inhalt | In Plainva |
+| Schlüssel | Inhalt | In Alviss |
 |---|---|---|
 | `filters` | Welche Notizen zur Datenbank gehören (Quellen) | Gelesen und angewendet |
-| `properties` | Ein Eintrag je Spalte, benannt nach der Eigenschafts-ID | Gelesen; die Ergänzungen von Plainva stehen in ihrem `plainva`-Block |
+| `properties` | Ein Eintrag je Spalte, benannt nach der Eigenschafts-ID | Gelesen; die Ergänzungen von Alviss stehen in ihrem `plainva`-Block |
 | `views` | Die Liste der Ansichten | Gelesen; jede Ansicht braucht einen `name` |
 | `formulas` | Obsidian-Formeln, `name: expression` | Unverändert behalten, nicht berechnet |
 | `summaries` | Eigene Zusammenfassungsformeln von Obsidian | Unverändert behalten, nicht berechnet |
 
-Plainva schreibt nie einen weiteren Schlüssel auf oberster Ebene: Obsidian öffnet eine `.base` mit einem Schlüssel, den es nicht kennt, nicht. Ein Schlüssel `columns:` auf oberster Ebene, den sehr alte Plainva-Versionen geschrieben haben, wird weiterhin gelesen und beim nächsten Speichern der Datei nach `properties` verschoben.
+Alviss schreibt nie einen weiteren Schlüssel auf oberster Ebene: Obsidian öffnet eine `.base` mit einem Schlüssel, den es nicht kennt, nicht. Ein Schlüssel `columns:` auf oberster Ebene, den sehr alte Alviss-Versionen geschrieben haben, wird weiterhin gelesen und beim nächsten Speichern der Datei nach `properties` verschoben.
 
 ## Eigenschaften (`properties`)
 
@@ -47,15 +47,15 @@ Eine Eigenschafts-ID benennt eine Spalte. Es gibt drei Arten:
 
 Die Schlüssel von `properties`, das `order` einer Ansicht und `sort[].property` verwenden diese IDs. In einem Filterausdruck und in einem `plainva`-Block steht ein Frontmatter-Schlüssel ohne Präfix (`status`); ein Filterausdruck versteht auch `note.status`.
 
-Schreibt eine Notiz einen Schlüssel in anderer Groß-/Kleinschreibung als die Spalte (`Due` gegenüber der Spalte `due`), zeigt Plainva den Wert trotzdem in dieser Spalte und schreibt Änderungen unter der Schreibweise der Notiz zurück.
+Schreibt eine Notiz einen Schlüssel in anderer Groß-/Kleinschreibung als die Spalte (`Due` gegenüber der Spalte `due`), zeigt Alviss den Wert trotzdem in dieser Spalte und schreibt Änderungen unter der Schreibweise der Notiz zurück.
 
 ### Anzeigename
 
-`properties.<id>.displayName` ist die Spaltenbeschriftung von Obsidian. Plainva zeigt sie als Spaltenkopf und behält sie. Ohne sie wird ein Frontmatter-Schlüssel mit großem Anfangsbuchstaben gezeigt (nur auf dem Bildschirm); die Dateifelder haben eigene Namen, zum Beispiel **Name**, **Geändert**, **Größe**, **Pfad**, **Checkliste** und **Tag aus dem Dateinamen**.
+`properties.<id>.displayName` ist die Spaltenbeschriftung von Obsidian. Alviss zeigt sie als Spaltenkopf und behält sie. Ohne sie wird ein Frontmatter-Schlüssel mit großem Anfangsbuchstaben gezeigt (nur auf dem Bildschirm); die Dateifelder haben eigene Namen, zum Beispiel **Name**, **Geändert**, **Größe**, **Pfad**, **Checkliste** und **Tag aus dem Dateinamen**.
 
 ### Der `plainva`-Block einer Spalte
 
-Alles, was Plainva zu einer Spalte hinzufügt, steht unter `properties.<id>.plainva`. Obsidian ignoriert es.
+Alles, was Alviss zu einer Spalte hinzufügt, steht unter `properties.<id>.plainva`. Obsidian ignoriert es.
 
 | Schlüssel | Wert | Bedeutung |
 |---|---|---|
@@ -112,7 +112,7 @@ Diese Werte stammen aus der Datei, nicht aus ihrem Frontmatter. Jede Zeile einer
 
 ### Wo Filter stehen
 
-Der `filters`-Schlüssel auf oberster Ebene enthält die **Quellen** — welche Notizen zur Datenbank gehören. Jede Ansicht kann eigene `filters` mit Bedingungen tragen, die nur diese Ansicht eingrenzen; Plainva schreibt die Bedingungen dorthin. Beide Ebenen gelten zusammen. Bedingungen, die eine Datei auf oberster Ebene behält, funktionieren weiterhin; beim nächsten Speichern in Plainva werden sie in jede Ansicht verschoben.
+Der `filters`-Schlüssel auf oberster Ebene enthält die **Quellen** — welche Notizen zur Datenbank gehören. Jede Ansicht kann eigene `filters` mit Bedingungen tragen, die nur diese Ansicht eingrenzen; Alviss schreibt die Bedingungen dorthin. Beide Ebenen gelten zusammen. Bedingungen, die eine Datei auf oberster Ebene behält, funktionieren weiterhin; beim nächsten Speichern in Alviss werden sie in jede Ansicht verschoben.
 
 ### Quellen
 
@@ -158,33 +158,33 @@ Ein `filters`-Objekt hat auf jeder Ebene genau eines von `and`, `or` und `not`; 
 | `or` | mindestens ein Eintrag zutrifft |
 | `not` | kein Eintrag zutrifft |
 
-Plainva wertet jede Tiefe aus. Das Filter-Panel bearbeitet eine Ebene von Gruppen unter **Alle** oder **Beliebige** (**Gruppe hinzufügen**); eine tiefere Struktur erscheint als **Komplexer Filter (nicht editierbar)**, bleibt in der Datei und wird angewendet — eine Bedingung darin, die Plainva nicht lesen kann, wird darunter als nicht angewendet genannt. Eine ältere Datei mit `and` und `or` nebeneinander auf einer Ebene wird als „alle aus `and` und eines aus `or`“ gelesen und beim nächsten Speichern in der gültigen Form geschrieben.
+Alviss wertet jede Tiefe aus. Das Filter-Panel bearbeitet eine Ebene von Gruppen unter **Alle** oder **Beliebige** (**Gruppe hinzufügen**); eine tiefere Struktur erscheint als **Komplexer Filter (nicht editierbar)**, bleibt in der Datei und wird angewendet — eine Bedingung darin, die Alviss nicht lesen kann, wird darunter als nicht angewendet genannt. Eine ältere Datei mit `and` und `or` nebeneinander auf einer Ebene wird als „alle aus `and` und eines aus `or`“ gelesen und beim nächsten Speichern in der gültigen Form geschrieben.
 
-### Was Plainva nicht lesen kann
+### Was Alviss nicht lesen kann
 
-Verstanden werden nur die Formen in den beiden Tabellen oben. Alles andere — `file.inFolder(…)`, `file.hasLink(…)`, `file.hasProperty(…)`, eine Zahl ohne Anführungszeichen (`price > 2`), `&&` und `||` innerhalb einer Zeichenkette, Arithmetik, Datumsfunktionen wie `now()` oder `this` — bleibt in der Datei und wird im Filter-Panel wie geschrieben angezeigt, mit dem Hinweis **Nicht angewendet: Plainva kann diese Bedingung nicht lesen, sie filtert nichts.** Die Ansicht zeigt dann mehr Notizen als derselbe Filter in Obsidian.
+Verstanden werden nur die Formen in den beiden Tabellen oben. Alles andere — `file.inFolder(…)`, `file.hasLink(…)`, `file.hasProperty(…)`, eine Zahl ohne Anführungszeichen (`price > 2`), `&&` und `||` innerhalb einer Zeichenkette, Arithmetik, Datumsfunktionen wie `now()` oder `this` — bleibt in der Datei und wird im Filter-Panel wie geschrieben angezeigt, mit dem Hinweis **Nicht angewendet: Alviss kann diese Bedingung nicht lesen, sie filtert nichts.** Die Ansicht zeigt dann mehr Notizen als derselbe Filter in Obsidian.
 
 ## Formeln
 
-Plainva berechnet keine Obsidian-Formeln. `formulas` bleibt unverändert in der Datei, und eine Spalte `formula.<name>` im `order` einer Ansicht wird ohne Werte angezeigt. **Tabelle exportieren** → **Formeln (.base)** schreibt einige Auswertungen als Formeln, damit Obsidian sie berechnen kann (siehe [Datenbanken](Databases_Base.md)).
+Alviss berechnet keine Obsidian-Formeln. `formulas` bleibt unverändert in der Datei, und eine Spalte `formula.<name>` im `order` einer Ansicht wird ohne Werte angezeigt. **Tabelle exportieren** → **Formeln (.base)** schreibt einige Auswertungen als Formeln, damit Obsidian sie berechnen kann (siehe [Datenbanken](Databases_Base.md)).
 
 ## Ansichten
 
 ### Schlüssel jeder Ansicht
 
-| Schlüssel | Wert | In Plainva |
+| Schlüssel | Wert | In Alviss |
 |---|---|---|
 | `type` | `table`, `list`, `cards` | Der Ansichtstyp; siehe die nächste Tabelle |
-| `name` | Text | Pflicht; eine Ansicht ohne Namen bekommt beim Speichern von Plainva einen |
+| `name` | Text | Pflicht; eine Ansicht ohne Namen bekommt beim Speichern von Alviss einen |
 | `order` | Liste von Eigenschafts-IDs | Die sichtbaren Spalten in dieser Reihenfolge |
 | `sort` | Liste von `{ property, direction }` | Sortierregeln, `ASC` oder `DESC` |
 | `filters` | Filterobjekt | Die eigenen Bedingungen der Ansicht |
 | `summaries` | Zuordnung Eigenschafts-ID → Name der Zusammenfassung | Die Fußzeile jeder Spalte |
-| `plainva` | Zuordnung | Die Ansichtsoptionen von Plainva, unten |
+| `plainva` | Zuordnung | Die Ansichtsoptionen von Alviss, unten |
 
 ### Die acht Ansichtstypen
 
-Obsidian kennt `table`, `list` und `cards`. Die übrigen Ansichtstypen von Plainva werden als `type: table` plus `plainva.render` gespeichert, sodass Obsidian sie als Tabelle zeigt.
+Obsidian kennt `table`, `list` und `cards`. Die übrigen Ansichtstypen von Alviss werden als `type: table` plus `plainva.render` gespeichert, sodass Obsidian sie als Tabelle zeigt.
 
 | Ansichtstyp | `type` auf dem Datenträger | `plainva.render` |
 |---|---|---|
@@ -197,7 +197,7 @@ Obsidian kennt `table`, `list` und `cards`. Die übrigen Ansichtstypen von Plain
 | **Graph** (`graph`) | `table` | `graph` |
 | **Pinnwand** (`pinboard`) | `table` | `pinboard` |
 
-Board, Kalender, Zeitleiste, Graph und Pinnwand werden als **Ansichtstyp** nur angeboten, solange **Plainva-Erweiterungen für .base Dateien erlauben** eingeschaltet ist. Ein `type`, den Plainva nicht kennt, wird als Tabelle gezeigt und bleibt wie geschrieben in der Datei, bis Du einen anderen **Ansichtstyp** wählst.
+Board, Kalender, Zeitleiste, Graph und Pinnwand werden als **Ansichtstyp** nur angeboten, solange **Alviss-Erweiterungen für .base Dateien erlauben** eingeschaltet ist. Ein `type`, den Alviss nicht kennt, wird als Tabelle gezeigt und bleibt wie geschrieben in der Datei, bis Du einen anderen **Ansichtstyp** wählst.
 
 ### Ansichtsoptionen (`views[i].plainva`)
 
@@ -229,7 +229,7 @@ Innerhalb des `plainva`-Blocks steht eine Eigenschaft ohne Präfix (`status`), n
 
 ### Optionen für die ganze Datei (nur erste Ansicht)
 
-Diese Schlüssel gehören zur ganzen Datenbank. Plainva schreibt sie nur in den `plainva`-Block der ersten Ansicht und liest von jedem den ersten gültigen Wert.
+Diese Schlüssel gehören zur ganzen Datenbank. Alviss schreibt sie nur in den `plainva`-Block der ersten Ansicht und liest von jedem den ersten gültigen Wert.
 
 | Schlüssel | Wert |
 |---|---|
@@ -243,7 +243,7 @@ Diese Schlüssel gehören zur ganzen Datenbank. Plainva schreibt sie nur in den 
 
 `views[i].summaries` ordnet einer Spalte einen dieser Namen zu; die Fußzeile berechnet ihn über die Zeilen, die die Ansicht zeigt.
 
-| Name | In Plainva | Ergebnis |
+| Name | In Alviss | Ergebnis |
 |---|---|---|
 | `Average` | **Durchschnitt** | Mittelwert der Zahlen |
 | `Min` | **Kleinster** | Kleinste Zahl |
@@ -260,39 +260,39 @@ Diese Schlüssel gehören zur ganzen Datenbank. Plainva schreibt sie nur in den 
 | `Filled` | **Mit Wert** | Zeilen mit Wert |
 | `Unique` | **Verschiedene** | Anzahl verschiedener Werte; Listeneinträge zählen einzeln |
 
-Zahlen werden auf zwei Dezimalstellen gerundet, und auch ein Dezimalkomma wird gelesen. Eine Spalte ohne brauchbaren Wert zeigt keine Fußzeile statt 0. Jeder andere Name ist eine eigene Formel aus den `summaries` der obersten Ebene: Plainva behält sie und zeigt **Benutzerdefiniert: …** im Menü, berechnet aber keinen Wert.
+Zahlen werden auf zwei Dezimalstellen gerundet, und auch ein Dezimalkomma wird gelesen. Eine Spalte ohne brauchbaren Wert zeigt keine Fußzeile statt 0. Jeder andere Name ist eine eigene Formel aus den `summaries` der obersten Ebene: Alviss behält sie und zeigt **Benutzerdefiniert: …** im Menü, berechnet aber keinen Wert.
 
 ## Sortierung und Gruppierung
 
-- **Sortierung** — `sort` ist eine Liste von Regeln; die erste Regel entscheidet zuerst, die nächste nur zwischen gleichen Zeilen. Zahlen werden als Zahlen sortiert, alles andere als Text (ISO-Daten in der richtigen Reihenfolge). Zeilen ohne Wert stehen in beiden Richtungen zuletzt. Ohne Regel stehen die zuletzt geänderten Notizen zuerst. Plainva liest außerdem `field` für `property` und `asc`/`desc` in beliebiger Schreibweise.
-- **Gruppierung** — das Board gruppiert nach `plainva.groupBy`, mit Spuren nach `plainva.boardLaneBy`. Eine Ansicht, die stattdessen das eigene `groupBy` von Obsidian trägt, gruppiert ihr Board nach dieser Eigenschaft, und eine Änderung der Gruppierung wird dort hineingeschrieben (dessen `direction` bleibt). Plainva gruppiert eine Tabelle nicht danach.
+- **Sortierung** — `sort` ist eine Liste von Regeln; die erste Regel entscheidet zuerst, die nächste nur zwischen gleichen Zeilen. Zahlen werden als Zahlen sortiert, alles andere als Text (ISO-Daten in der richtigen Reihenfolge). Zeilen ohne Wert stehen in beiden Richtungen zuletzt. Ohne Regel stehen die zuletzt geänderten Notizen zuerst. Alviss liest außerdem `field` für `property` und `asc`/`desc` in beliebiger Schreibweise.
+- **Gruppierung** — das Board gruppiert nach `plainva.groupBy`, mit Spuren nach `plainva.boardLaneBy`. Eine Ansicht, die stattdessen das eigene `groupBy` von Obsidian trägt, gruppiert ihr Board nach dieser Eigenschaft, und eine Änderung der Gruppierung wird dort hineingeschrieben (dessen `direction` bleibt). Alviss gruppiert eine Tabelle nicht danach.
 
 ## Eine Datenbank einbetten, und `this`
 
 `![[Projects.base]]` in einer Notiz zeigt die Datenbank in der Notiz, in der Leseansicht und im Editor. Ein Teil nach `#` (ein Ansichtsname, wie in `![[Projects.base#Board]]`) wird ignoriert: Die Einbettung zeigt die Ansicht, die zuletzt für diese Datenbank verwendet wurde. Ein ` ```base `-Codeblock in einer Notiz wird als Code gezeigt, nicht als Datenbank.
 
-**`this` wird noch nicht unterstützt.** Ein Filter oder eine Formel, die `this` verwendet, bleibt in der Datei, aber Plainva wertet sie nicht aus. Zwei Dinge decken den häufigsten Fall ab, „zeige die Einträge, die zu dieser Notiz gehören“: `contextFilters` (**Diese Notiz** im Filter-Panel) begrenzt eine eingebettete Datenbank über eine Relations-Eigenschaft auf die Notiz, in die sie eingebettet ist, und eine eingebettete Datenbank, die sich auf die Datenbank ihrer Wirtsnotiz bezieht, bietet von sich aus **Diese Datenbank auf die aktuelle Notiz filtern** an. Beides wirkt nur innerhalb von Plainva; Obsidian zeigt alle Zeilen.
+**`this` wird noch nicht unterstützt.** Ein Filter oder eine Formel, die `this` verwendet, bleibt in der Datei, aber Alviss wertet sie nicht aus. Zwei Dinge decken den häufigsten Fall ab, „zeige die Einträge, die zu dieser Notiz gehören“: `contextFilters` (**Diese Notiz** im Filter-Panel) begrenzt eine eingebettete Datenbank über eine Relations-Eigenschaft auf die Notiz, in die sie eingebettet ist, und eine eingebettete Datenbank, die sich auf die Datenbank ihrer Wirtsnotiz bezieht, bietet von sich aus **Diese Datenbank auf die aktuelle Notiz filtern** an. Beides wirkt nur innerhalb von Alviss; Obsidian zeigt alle Zeilen.
 
 ## Grenzen
 
 - Das `limit` einer Ansicht von Obsidian wird behalten, aber nicht angewendet: Eine Ansicht zeigt alle ihre Zeilen.
 - Das Filter-Panel bearbeitet eine Ebene von Filtergruppen; tiefere werden angewendet, lassen sich dort aber nur löschen.
-- Ein Filterwert muss in doppelten Anführungszeichen stehen (siehe [Was Plainva nicht lesen kann](#was-plainva-nicht-lesen-kann)).
+- Ein Filterwert muss in doppelten Anführungszeichen stehen (siehe [Was Alviss nicht lesen kann](#was-plainva-nicht-lesen-kann)).
 - Eine Ordnerquelle schließt immer die Unterordner ein.
 - `ratingMax` wird zwischen 1 und 10 gezeichnet, `previousKeys` behält höchstens 8 Namen, ein **WIP-Limit** nimmt nur ganze Zahlen über 0, und `relationLimit` kennt nur `one`.
 - Eine Auswertung kann nicht über eine andere berechnete Spalte rechnen.
 
-## Schlüssel, die Plainva nicht kennt
+## Schlüssel, die Alviss nicht kennt
 
-Plainva liest eine `.base`, ändert nur, was Du in der App geändert hast, und schreibt die ganze Datei neu — als YAML mit LF-Zeilenenden und ohne BOM, sodass Kommentare und die Abstände einer von Hand geschriebenen Datei nicht erhalten bleiben. Von dem, was es nicht kennt:
+Alviss liest eine `.base`, ändert nur, was Du in der App geändert hast, und schreibt die ganze Datei neu — als YAML mit LF-Zeilenenden und ohne BOM, sodass Kommentare und die Abstände einer von Hand geschriebenen Datei nicht erhalten bleiben. Von dem, was es nicht kennt:
 
-- **Behalten:** jeder andere Schlüssel auf oberster Ebene, `formulas`, die `summaries` der obersten Ebene, `displayName` und jeder andere Schlüssel eines `properties`-Eintrags, unbekannte Schlüssel im `plainva`-Block einer Spalte oder einer Ansicht, eine Auswertung, die Plainva nicht lesen kann, die Schlüssel einer Ansicht, die Plainva nicht verwendet (`limit`, `image`, …), ein Ansichtstyp, den es nicht kennt, und Filterbedingungen, die es nicht lesen kann. Ein Wert, den Plainva versteht, den Du aber nicht geändert hast, behält die Schreibweise der Datei (`status` oder `note.status`, eine als reiner Text geschriebene Option).
-- **Neu geschrieben:** nur Plainvas eigene alte Formen — eine `columns:`-Map auf oberster Ebene wandert nach `properties`, `and` und `or` nebeneinander auf einer Ebene werden zur gültigen Form, und eine Ansicht, die sehr alte Versionen als `type: board` gespeichert haben, wird zu `type: table` mit `plainva.render`.
-- **Position:** Die Schlüssel, die eine Ansicht behält, gehören zu dieser Ansicht. Beim Löschen oder Verschieben einer Ansicht in Plainva wandern sie mit, und **Duplizieren** kopiert sie in die neue Ansicht.
+- **Behalten:** jeder andere Schlüssel auf oberster Ebene, `formulas`, die `summaries` der obersten Ebene, `displayName` und jeder andere Schlüssel eines `properties`-Eintrags, unbekannte Schlüssel im `plainva`-Block einer Spalte oder einer Ansicht, eine Auswertung, die Alviss nicht lesen kann, die Schlüssel einer Ansicht, die Alviss nicht verwendet (`limit`, `image`, …), ein Ansichtstyp, den es nicht kennt, und Filterbedingungen, die es nicht lesen kann. Ein Wert, den Alviss versteht, den Du aber nicht geändert hast, behält die Schreibweise der Datei (`status` oder `note.status`, eine als reiner Text geschriebene Option).
+- **Neu geschrieben:** nur Alvisss eigene alte Formen — eine `columns:`-Map auf oberster Ebene wandert nach `properties`, `and` und `or` nebeneinander auf einer Ebene werden zur gültigen Form, und eine Ansicht, die sehr alte Versionen als `type: board` gespeichert haben, wird zu `type: table` mit `plainva.render`.
+- **Position:** Die Schlüssel, die eine Ansicht behält, gehören zu dieser Ansicht. Beim Löschen oder Verschieben einer Ansicht in Alviss wandern sie mit, und **Duplizieren** kopiert sie in die neue Ansicht.
 
 ## Unterschiede zu Obsidian Bases
 
-| Thema | Obsidian | Plainva |
+| Thema | Obsidian | Alviss |
 |---|---|---|
 | Formeln, eigene Zusammenfassungen | Berechnet | Behalten, nicht berechnet |
 | `this` | Unterstützt | Noch nicht unterstützt |
@@ -304,7 +304,7 @@ Plainva liest eine `.base`, ändert nur, was Du in der App geändert hast, und s
 | Ansichtstypen | `table`, `list`, `cards` und Plugin-Typen | Acht Typen; ein unbekannter wird als Tabelle gezeigt und bleibt in der Datei |
 | `![[db.base#View]]` | Öffnet diese Ansicht | Die zuletzt verwendete Ansicht |
 | ` ```base `-Codeblock | Eine Datenbank | Ein Codeblock |
-| `plainva`-Blöcke von Plainva | Ignoriert | Board, Kalender, Zeitleiste, Graph, Pinnwand, Relationen, Auswertungen, Feldtypen |
+| `plainva`-Blöcke von Alviss | Ignoriert | Board, Kalender, Zeitleiste, Graph, Pinnwand, Relationen, Auswertungen, Feldtypen |
 
 ## Siehe auch
 

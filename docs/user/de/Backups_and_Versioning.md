@@ -2,11 +2,11 @@
 
 Stand: 2026-10-30
 
-Plainva sichert Deine Arbeit auf zwei Ebenen: **Datei-Versionen** (automatische Snapshots jeder einzelnen Datei beim Bearbeiten und Löschen) und **Vault-Backups** (regelmäßige ZIP-Sicherungen des ganzen Vaults außerhalb des Vault-Ordners). Beides läuft ohne Zutun im Hintergrund und lässt sich in den Einstellungen unter **Backup & Versionierung** anpassen.
+Alviss sichert Deine Arbeit auf zwei Ebenen: **Datei-Versionen** (automatische Snapshots jeder einzelnen Datei beim Bearbeiten und Löschen) und **Vault-Backups** (regelmäßige ZIP-Sicherungen des ganzen Vaults außerhalb des Vault-Ordners). Beides läuft ohne Zutun im Hintergrund und lässt sich in den Einstellungen unter **Backup & Versionierung** anpassen.
 
 ## Datei-Versionen (Snapshots)
 
-Bei jedem Speichern legt Plainva vorher einen Snapshot der alten Fassung an — als normale Textkopie unter `.plainva/backups/` im Vault (dieser Ordner ist im Dateibaum, in der Suche und im Sync ausgeblendet). Damit beim schnellen Tippen nicht hunderte Kopien entstehen, gilt ein **Snapshot-Intervall** (Standard: höchstens alle 2 Minuten eine neue Version). **Löschen sichert immer**, unabhängig vom Intervall.
+Bei jedem Speichern legt Alviss vorher einen Snapshot der alten Fassung an — als normale Textkopie unter `.plainva/backups/` im Vault (dieser Ordner ist im Dateibaum, in der Suche und im Sync ausgeblendet). Damit beim schnellen Tippen nicht hunderte Kopien entstehen, gilt ein **Snapshot-Intervall** (Standard: höchstens alle 2 Minuten eine neue Version). **Löschen sichert immer**, unabhängig vom Intervall.
 
 Aufbewahrung (je Vault einstellbar):
 
@@ -17,7 +17,7 @@ Aufbewahrung (je Vault einstellbar):
 
 Beim Umbenennen oder Verschieben einer Datei wandert ihre Versions-Historie mit.
 
-**Warum große Dateien anders behandelt werden:** Ein 90-MB-Anhang, den Du immer wieder änderst, könnte den Vault sonst mit hundert Kopien füllen — neun Gigabyte für eine Datei. Oberhalb der Grenze behält Plainva die neueste Version statt des vollen Verlaufs und sagt das einmal pro Vault. Notizen und gewöhnliche Bilder liegen weit darunter und sind nicht betroffen. **Eine Löschung wird immer vollständig gesichert**, egal wie groß die Datei ist: Die neue Fassung einer gespeicherten Datei liegt noch auf der Platte, eine gelöschte nicht — dort ist der Snapshot der einzige Weg zurück.
+**Warum große Dateien anders behandelt werden:** Ein 90-MB-Anhang, den Du immer wieder änderst, könnte den Vault sonst mit hundert Kopien füllen — neun Gigabyte für eine Datei. Oberhalb der Grenze behält Alviss die neueste Version statt des vollen Verlaufs und sagt das einmal pro Vault. Notizen und gewöhnliche Bilder liegen weit darunter und sind nicht betroffen. **Eine Löschung wird immer vollständig gesichert**, egal wie groß die Datei ist: Die neue Fassung einer gespeicherten Datei liegt noch auf der Platte, eine gelöschte nicht — dort ist der Snapshot der einzige Weg zurück.
 
 ## Versionsverlauf ansehen und wiederherstellen
 
@@ -31,22 +31,22 @@ Auch Bilder haben Versionen (mit Vorschau); andere Binärdateien lassen sich ohn
 
 ## Gelöschte Dateien wiederherstellen
 
-Da jedes Löschen vorher einen Snapshot anlegt, kann Plainva gelöschte Dateien zurückholen: Rechtsklick auf den Vault-Namen ganz oben im Dateibaum → **Gelöschte Dateien wiederherstellen…** (auch unter **Einstellungen → Vault → Backup & Versionierung → Versionsverlauf** erreichbar). Die Liste zeigt alle Dateien, deren Snapshots noch da sind, das Original aber fehlt — **Wiederherstellen** legt die jüngste Fassung am ursprünglichen Ort wieder an (Ordner werden bei Bedarf neu erstellt), **Versionen…** öffnet die komplette Historie der gelöschten Datei.
+Da jedes Löschen vorher einen Snapshot anlegt, kann Alviss gelöschte Dateien zurückholen: Rechtsklick auf den Vault-Namen ganz oben im Dateibaum → **Gelöschte Dateien wiederherstellen…** (auch unter **Einstellungen → Vault → Backup & Versionierung → Versionsverlauf** erreichbar). Die Liste zeigt alle Dateien, deren Snapshots noch da sind, das Original aber fehlt — **Wiederherstellen** legt die jüngste Fassung am ursprünglichen Ort wieder an (Ordner werden bei Bedarf neu erstellt), **Versionen…** öffnet die komplette Historie der gelöschten Datei.
 
-Hinweis: Wird ein **ganzer Ordner** gelöscht, landet er im Papierkorb des Betriebssystems — für diesen Fall ist der System-Papierkorb der erste Weg; in Plainva findest Du dann ggf. nur ältere Snapshots der enthaltenen Dateien.
+Hinweis: Wird ein **ganzer Ordner** gelöscht, landet er im Papierkorb des Betriebssystems — für diesen Fall ist der System-Papierkorb der erste Weg; in Alviss findest Du dann ggf. nur ältere Snapshots der enthaltenen Dateien.
 
 ## Automatische Vault-Backups (ZIP)
 
-Zusätzlich sichert Plainva den ganzen Vault als ZIP-Datei — standardmäßig **täglich** im Hintergrund (beim Öffnen des Vaults, wenn die letzte Sicherung älter als 24 Stunden ist). Das schützt auch dann, wenn der Vault-Ordner selbst verloren geht oder beschädigt wird, denn die ZIPs liegen **außerhalb** des Vaults:
+Zusätzlich sichert Alviss den ganzen Vault als ZIP-Datei — standardmäßig **täglich** im Hintergrund (beim Öffnen des Vaults, wenn die letzte Sicherung älter als 24 Stunden ist). Das schützt auch dann, wenn der Vault-Ordner selbst verloren geht oder beschädigt wird, denn die ZIPs liegen **außerhalb** des Vaults:
 
 - Standard-Zielordner ist der App-Datenordner (unter **Zielordner** in den Einstellungen angezeigt; **Ordner öffnen** führt direkt hin).
-- Über **Ordner wählen…** kannst Du stattdessen z. B. eine externe Platte oder ein NAS wählen; **Standard** stellt den App-Datenordner wieder ein. Ist das Ziel gerade nicht erreichbar (NAS aus), meldet die Statusleiste das dezent und Plainva versucht es später erneut.
+- Über **Ordner wählen…** kannst Du stattdessen z. B. eine externe Platte oder ein NAS wählen; **Standard** stellt den App-Datenordner wieder ein. Ist das Ziel gerade nicht erreichbar (NAS aus), meldet die Statusleiste das dezent und Alviss versucht es später erneut.
 - **Aufbewahrte Sicherungen** (Standard: 7) begrenzt die Anzahl; ältere ZIPs desselben Vaults werden automatisch gelöscht. Fremde Dateien im Zielordner bleiben unangetastet.
 - **Jetzt sichern** stößt jederzeit manuell eine Sicherung an; die Statusleiste zeigt den Lauf und das Ergebnis.
 
 Die ZIP-Dateien heißen `VaultName_2026-07-05_14-30-00.zip` und enthalten alle Notizen, Anhänge und auch Deine `.obsidian`-Konfiguration — **nicht** enthalten ist der interne `.plainva`-Ordner (der Suchindex wird beim nächsten Öffnen neu aufgebaut; die Datei-Versionen sind bewusst nicht Teil des ZIPs).
 
-**Wiederherstellen aus einem ZIP:** Das ZIP ist eine ganz normale Archivdatei. Entpacke sie an einen beliebigen Ort und öffne den entpackten Ordner in Plainva als Vault — fertig.
+**Wiederherstellen aus einem ZIP:** Das ZIP ist eine ganz normale Archivdatei. Entpacke sie an einen beliebigen Ort und öffne den entpackten Ordner in Alviss als Vault — fertig.
 
 ## Einstellungen im Überblick
 
@@ -63,8 +63,8 @@ Einstellungen → **Vault** → **Backup & Versionierung**:
 
 ## Gut zu wissen
 
-- Die Datei-Versionen sind gewöhnliche Kopien unter `.plainva/backups/` — Du kannst sie zur Not auch ohne Plainva im Dateimanager öffnen.
-- Plainvas eigener Sync überträgt `.plainva` nie. Synchronisierst Du den Vault-Ordner aber mit einem Drittanbieter-Client (z. B. der Nextcloud-App), wandern die Snapshots dort mit — das kostet etwas Speicher, schadet aber nicht.
+- Die Datei-Versionen sind gewöhnliche Kopien unter `.plainva/backups/` — Du kannst sie zur Not auch ohne Alviss im Dateimanager öffnen.
+- Alvisss eigener Sync überträgt `.plainva` nie. Synchronisierst Du den Vault-Ordner aber mit einem Drittanbieter-Client (z. B. der Nextcloud-App), wandern die Snapshots dort mit — das kostet etwas Speicher, schadet aber nicht.
 - Sync-Konflikte sind zusätzlich über `.CONFLICT`-Dateien abgesichert (siehe [FAQ](FAQ.md)); der Versionsverlauf ergänzt das um die zeitliche Historie jeder Datei.
 
 Am Telefon steht **ZIP-Backups** als erste Gruppe der Seite **Backup & Versionierung**, darunter folgt der **Versionsverlauf** mit **Gelöschte Dateien wiederherstellen** an seinem Ende.
@@ -73,7 +73,7 @@ Mobil wird ein Vault bei einem fehlgeschlagenen Notizspeichervorgang nicht gewec
 
 Eine ZIP-Sicherung gilt erst als erfolgreich, wenn alle ausgewählten Dateien lesbar waren und das vollständige Archiv gespeichert wurde. Bei einem Fehler werden keine älteren Archive durch diesen Lauf entfernt und der letzte erfolgreiche Sicherungszeitpunkt bleibt unverändert. Mobil werden automatische Fehler mit dem Vault-Namen gemeldet; **Jetzt sichern** unter **Backup & Versionierung** → **ZIP-Backups** startet einen neuen Versuch. Versteckte Nutzerkonfiguration wie `.obsidian` gehört auf beiden Plattformen dazu. Die Verzeichnisse `.plainva`, `.git`, `.trash` und `node_modules` bleiben auf jeder Ordnerebene ausgeschlossen. Entstehen mehrere Archive in derselben Sekunde, erhält der neue Dateiname einen Zusatz wie `_001`.
 
-Ein Speichervorgang wird erst nach bestätigtem Schreiben als abgeschlossen gemeldet. Neue Eingaben während einer laufenden Speicherung bleiben ungespeichert, bis auch ihr eigener Stand geschrieben wurde. Desktop-Entwürfe gehören zur jeweiligen Editor-Sitzung: Der Abschluss einer alten Sitzung löscht keinen Entwurf einer neu geöffneten Notiz. Werden gleichzeitig fremde Änderungen eingelesen, führt Plainva vereinbare Änderungen zusammen; bei einem Widerspruch bleibt Dein Text als Entwurf und Konfliktkopie erhalten.
+Ein Speichervorgang wird erst nach bestätigtem Schreiben als abgeschlossen gemeldet. Neue Eingaben während einer laufenden Speicherung bleiben ungespeichert, bis auch ihr eigener Stand geschrieben wurde. Desktop-Entwürfe gehören zur jeweiligen Editor-Sitzung: Der Abschluss einer alten Sitzung löscht keinen Entwurf einer neu geöffneten Notiz. Werden gleichzeitig fremde Änderungen eingelesen, führt Alviss vereinbare Änderungen zusammen; bei einem Widerspruch bleibt Dein Text als Entwurf und Konfliktkopie erhalten.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Beim Dateivergleich genau entscheiden
@@ -95,4 +95,4 @@ Zeilenweises Zusammenführen ist ein Werkzeug für den Rechner; hier übernimmst
 
 ## Die ausgewählte Sicherung vergleichen
 
-Zur ausgewählten Version erscheinen hinzugefügte und entfernte Zeilen gegenüber der aktuellen Notiz, auch bei ausgeblendetem Diff. **In neuem Fenster öffnen** behält am Desktop genau diese Sicherung ausgewählt. Verschwindet sie, zeigt Plainva einen entsprechenden Hinweis. Für große Dateien fehlen gegebenenfalls Zeilenzahlen; Binärdateien haben keinen Textvergleich. Mobil stehen dieselben Zahlen im vollständigen Vergleich.
+Zur ausgewählten Version erscheinen hinzugefügte und entfernte Zeilen gegenüber der aktuellen Notiz, auch bei ausgeblendetem Diff. **In neuem Fenster öffnen** behält am Desktop genau diese Sicherung ausgewählt. Verschwindet sie, zeigt Alviss einen entsprechenden Hinweis. Für große Dateien fehlen gegebenenfalls Zeilenzahlen; Binärdateien haben keinen Textvergleich. Mobil stehen dieselben Zahlen im vollständigen Vergleich.

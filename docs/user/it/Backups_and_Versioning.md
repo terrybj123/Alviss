@@ -2,11 +2,11 @@
 
 Ultimo aggiornamento: 2026-10-30
 
-Plainva protegge il tuo lavoro su due livelli: **versioni dei file** (snapshot automatici di ogni singolo file durante la modifica e l'eliminazione) e **backup del vault** (archivi ZIP regolari dell'intero vault, salvati fuori dalla cartella del vault). Entrambi funzionano in background senza alcuna configurazione e possono essere regolati nelle impostazioni sotto **Backup e cronologia delle versioni**.
+Alviss protegge il tuo lavoro su due livelli: **versioni dei file** (snapshot automatici di ogni singolo file durante la modifica e l'eliminazione) e **backup del vault** (archivi ZIP regolari dell'intero vault, salvati fuori dalla cartella del vault). Entrambi funzionano in background senza alcuna configurazione e possono essere regolati nelle impostazioni sotto **Backup e cronologia delle versioni**.
 
 ## Versioni dei file (snapshot)
 
-Prima di ogni salvataggio, Plainva memorizza uno snapshot dello stato precedente — come semplice copia di testo sotto `.plainva/backups/` all'interno del vault (questa cartella è nascosta nell'albero dei file, nella ricerca e nella sincronizzazione). Per evitare centinaia di copie mentre digiti, si applica un **Intervallo degli snapshot** (predefinito: al massimo una nuova versione ogni 2 minuti). **L'eliminazione crea sempre uno snapshot**, indipendentemente dall'intervallo.
+Prima di ogni salvataggio, Alviss memorizza uno snapshot dello stato precedente — come semplice copia di testo sotto `.plainva/backups/` all'interno del vault (questa cartella è nascosta nell'albero dei file, nella ricerca e nella sincronizzazione). Per evitare centinaia di copie mentre digiti, si applica un **Intervallo degli snapshot** (predefinito: al massimo una nuova versione ogni 2 minuti). **L'eliminazione crea sempre uno snapshot**, indipendentemente dall'intervallo.
 
 Conservazione (configurabile per vault):
 
@@ -17,7 +17,7 @@ Conservazione (configurabile per vault):
 
 Quando rinomini o sposti un file, la sua cronologia delle versioni lo segue.
 
-**Perché i file grandi vengono trattati diversamente:** un allegato da 90 MB modificato ripetutamente potrebbe altrimenti riempire il vault di cento copie — nove gigabyte per un solo file. Oltre il limite Plainva conserva la versione più recente anziché l'intera cronologia e lo comunica una volta per vault. Le note e le immagini normali restano molto al di sotto e non sono interessate. **Un'eliminazione viene sempre salvata per intero**, qualunque sia la dimensione: la nuova versione di un file salvato è ancora su disco, un file eliminato no — lì lo snapshot è l'unica via di ritorno.
+**Perché i file grandi vengono trattati diversamente:** un allegato da 90 MB modificato ripetutamente potrebbe altrimenti riempire il vault di cento copie — nove gigabyte per un solo file. Oltre il limite Alviss conserva la versione più recente anziché l'intera cronologia e lo comunica una volta per vault. Le note e le immagini normali restano molto al di sotto e non sono interessate. **Un'eliminazione viene sempre salvata per intero**, qualunque sia la dimensione: la nuova versione di un file salvato è ancora su disco, un file eliminato no — lì lo snapshot è l'unica via di ritorno.
 
 ## Visualizzare e ripristinare le versioni
 
@@ -31,22 +31,22 @@ Anche le immagini hanno versioni (con anteprima); gli altri file binari possono 
 
 ## Ripristinare i file eliminati
 
-Poiché ogni eliminazione crea prima uno snapshot del file, Plainva può recuperare i file eliminati: clic destro sul nome del vault in cima all'albero dei file → **Ripristina i file eliminati…** (raggiungibile anche in **Impostazioni → Vault → Backup e cronologia delle versioni → Cronologia delle versioni**). L'elenco mostra tutti i file i cui snapshot esistono ancora mentre l'originale è sparito — **Ripristina** ricrea lo stato più recente nella posizione originale (le cartelle vengono ricreate se necessario), **Versioni…** apre la cronologia completa del file eliminato.
+Poiché ogni eliminazione crea prima uno snapshot del file, Alviss può recuperare i file eliminati: clic destro sul nome del vault in cima all'albero dei file → **Ripristina i file eliminati…** (raggiungibile anche in **Impostazioni → Vault → Backup e cronologia delle versioni → Cronologia delle versioni**). L'elenco mostra tutti i file i cui snapshot esistono ancora mentre l'originale è sparito — **Ripristina** ricrea lo stato più recente nella posizione originale (le cartelle vengono ricreate se necessario), **Versioni…** apre la cronologia completa del file eliminato.
 
-Nota: eliminare un'**intera cartella** la sposta nel cestino del sistema operativo — in questo caso il cestino di sistema è il modo principale per recuperarla; in Plainva potresti trovare solo snapshot più vecchi dei file contenuti.
+Nota: eliminare un'**intera cartella** la sposta nel cestino del sistema operativo — in questo caso il cestino di sistema è il modo principale per recuperarla; in Alviss potresti trovare solo snapshot più vecchi dei file contenuti.
 
 ## Backup automatici del vault (ZIP)
 
-Inoltre, Plainva esegue il backup dell'intero vault come file ZIP — per impostazione predefinita **giornalmente** in background (all'apertura del vault, se l'ultimo backup è più vecchio di 24 ore). Questo ti protegge anche se la cartella del vault stessa viene persa o danneggiata, perché gli ZIP si trovano **fuori** dal vault:
+Inoltre, Alviss esegue il backup dell'intero vault come file ZIP — per impostazione predefinita **giornalmente** in background (all'apertura del vault, se l'ultimo backup è più vecchio di 24 ore). Questo ti protegge anche se la cartella del vault stessa viene persa o danneggiata, perché gli ZIP si trovano **fuori** dal vault:
 
 - La destinazione predefinita è la cartella dati dell'app (mostrata sotto **Cartella di destinazione** nelle impostazioni; **Apri cartella** ti porta direttamente lì).
-- Tramite **Scegli cartella…** puoi scegliere invece un disco esterno o un NAS; **Predefinita** torna alla cartella dati dell'app. Se la destinazione al momento non è raggiungibile (NAS spento), la barra di stato lo segnala in modo discreto e Plainva riprova più tardi.
+- Tramite **Scegli cartella…** puoi scegliere invece un disco esterno o un NAS; **Predefinita** torna alla cartella dati dell'app. Se la destinazione al momento non è raggiungibile (NAS spento), la barra di stato lo segnala in modo discreto e Alviss riprova più tardi.
 - **Backup da conservare** (predefinito: 7) limita il numero; gli ZIP più vecchi dello stesso vault vengono eliminati automaticamente. I file estranei nella cartella di destinazione non vengono mai toccati.
 - **Esegui backup ora** avvia manualmente un backup in qualsiasi momento; la barra di stato mostra l'esecuzione e il suo risultato.
 
 I file ZIP si chiamano `VaultName_2026-07-05_14-30-00.zip` e contengono tutte le note, gli allegati e la tua configurazione `.obsidian` — **non** contengono la cartella interna `.plainva` (l'indice di ricerca viene ricostruito alla prossima apertura; le versioni dei file non fanno volutamente parte dello ZIP).
 
-**Ripristinare da uno ZIP:** lo ZIP è un archivio del tutto normale. Estrailo ovunque e apri la cartella estratta in Plainva come vault — fatto.
+**Ripristinare da uno ZIP:** lo ZIP è un archivio del tutto normale. Estrailo ovunque e apri la cartella estratta in Alviss come vault — fatto.
 
 ## Impostazioni in sintesi
 
@@ -63,8 +63,8 @@ Impostazioni → **Vault** → **Backup e cronologia delle versioni**:
 
 ## Buono a sapersi
 
-- Le versioni dei file sono normali copie sotto `.plainva/backups/` — in caso di necessità puoi aprirle anche senza Plainva in qualsiasi file manager.
-- La sincronizzazione propria di Plainva non trasferisce mai `.plainva`. Se sincronizzi la cartella del vault con un client di terze parti (ad es. l'app di Nextcloud), gli snapshot viaggiano insieme — questo costa un po' di spazio, ma non causa danni.
+- Le versioni dei file sono normali copie sotto `.plainva/backups/` — in caso di necessità puoi aprirle anche senza Alviss in qualsiasi file manager.
+- La sincronizzazione propria di Alviss non trasferisce mai `.plainva`. Se sincronizzi la cartella del vault con un client di terze parti (ad es. l'app di Nextcloud), gli snapshot viaggiano insieme — questo costa un po' di spazio, ma non causa danni.
 - I conflitti di sincronizzazione sono protetti aggiuntivamente tramite file `.CONFLICT` (vedi le [FAQ](FAQ.md)); la cronologia delle versioni completa questo con la storia temporale di ogni file.
 
 Sul telefono **Backup ZIP** è il primo gruppo della pagina **Backup e cronologia delle versioni**; segue la **Cronologia delle versioni**, che termina con **Ripristina i file eliminati**.
@@ -73,7 +73,7 @@ Su mobile, un errore nel salvataggio di una nota interrompe il cambio, il ricari
 
 Un backup ZIP risulta riuscito solo dopo la lettura di tutti i file selezionati e il salvataggio dell’archivio completo. Un tentativo fallito non elimina gli archivi precedenti e non modifica l’ora dell’ultimo backup riuscito. Su mobile, gli errori automatici indicano il vault; **Esegui backup ora** in **Backup e cronologia delle versioni** → **Backup ZIP** avvia un nuovo tentativo. La configurazione nascosta dell’utente, come `.obsidian`, è inclusa su entrambe le piattaforme. Le cartelle `.plainva`, `.git`, `.trash` e `node_modules` restano escluse a ogni livello. Se vengono creati più archivi nello stesso secondo, il nuovo nome riceve un suffisso come `_001`.
 
-Il salvataggio viene indicato come completato solo dopo la conferma della scrittura. Il testo inserito durante un salvataggio rimane in attesa finché non viene scritta la sua versione. Le bozze desktop appartengono alla rispettiva sessione dell’editor: il completamento di una vecchia sessione non elimina la bozza di un editor appena aperto. Se arrivano contemporaneamente modifiche esterne, Plainva unisce quelle compatibili; il testo in conflitto rimane disponibile nella bozza e in una copia di conflitto.
+Il salvataggio viene indicato come completato solo dopo la conferma della scrittura. Il testo inserito durante un salvataggio rimane in attesa finché non viene scritta la sua versione. Le bozze desktop appartengono alla rispettiva sessione dell’editor: il completamento di una vecchia sessione non elimina la bozza di un editor appena aperto. Se arrivano contemporaneamente modifiche esterne, Alviss unisce quelle compatibili; il testo in conflitto rimane disponibile nella bozza e in una copia di conflitto.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Scelte chiare nel confronto dei file
@@ -95,4 +95,4 @@ Unire riga per riga è uno strumento del computer; qui adotti una versione inter
 
 ## Confrontare la copia selezionata
 
-La versione selezionata mostra le righe aggiunte e rimosse rispetto alla nota corrente, anche con il diff nascosto. **Apri in una nuova finestra** mantiene selezionata esattamente quella copia sul desktop. Se scompare, Plainva lo segnala. Per i file grandi il conteggio potrebbe mancare; i file binari non hanno un confronto testuale. Gli stessi conteggi sono presenti nel confronto completo su mobile.
+La versione selezionata mostra le righe aggiunte e rimosse rispetto alla nota corrente, anche con il diff nascosto. **Apri in una nuova finestra** mantiene selezionata esattamente quella copia sul desktop. Se scompare, Alviss lo segnala. Per i file grandi il conteggio potrebbe mancare; i file binari non hanno un confronto testuale. Gli stessi conteggi sono presenti nel confronto completo su mobile.

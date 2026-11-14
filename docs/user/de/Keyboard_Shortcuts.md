@@ -13,7 +13,7 @@ Mit `F1` (oder **Befehlspalette → Tastenkombinationen anzeigen**) öffnest Du 
 | `Strg+,` | Einstellungen öffnen |
 | `Strg+Plus` / `Strg+Minus` | Oberfläche vergrößern / verkleinern (80–150 %) |
 | `Strg+0` | Zoom auf 100 % zurücksetzen |
-| `Strg+S` | Speichern bestätigen (Plainva speichert automatisch) |
+| `Strg+S` | Speichern bestätigen (Alviss speichert automatisch) |
 | `F1` | Dieses Fenster anzeigen |
 | `Esc` | Aktion abbrechen (Dialog schließen, Umbenennen abbrechen) |
 
@@ -128,7 +128,7 @@ Maus: **Mausrad** zoomt; **mittlere Maustaste + ziehen** oder `Strg`+ziehen vers
 - **Tabs:** ziehen zum Umsortieren, zwischen Bereichen oder an den Rand zum Teilen; **Rechtsklick** öffnet das Tab-Menü (**Anheften**, **Neu laden**, **Im Split öffnen**, Schließen-Gruppe). Ein **angehefteter** Tab rückt nach vorn und überlebt jedes Massen-Schließen.
 - **Aktionsleiste (ganz links):** einen Knopf kurz halten und ziehen sortiert ihn um (obere und untere Gruppe getrennt); `Esc` bricht ab.
 - **Links:** einen Wiki-/Markdown-Link anklicken zum Öffnen (`Strg`+Klick für neuen Tab).
-- **Rechtsklick** auf eine Auswahl oder ein Feld öffnet Plainvas eigenes Kopieren-/Ausschneiden-/Einfügen-Menü.
+- **Rechtsklick** auf eine Auswahl oder ein Feld öffnet Alvisss eigenes Kopieren-/Ausschneiden-/Einfügen-Menü.
 - **Peek-Fenster:** Kopf ziehen zum Verschieben, Eck-Griff zum Anpassen der Größe; `◀ ▶` ist ein eigener Verlauf. Sind mehrere freischwebende Fenster offen — ein Peek-Fenster, die Termin-Vorschau, eine Mail, die Du gerade schreibst —, kommt das angeklickte nach vorn, und `Esc` schließt das vorderste.
 - **Kalender:** Titel im Kalender-Tab oder Monatsnamen in der Seitenleiste anklicken (oder mit `Tab` erreichen und `Enter` drücken) für die Datumsauswahl — Pfeiltasten bewegen im Raster, `Bild↑/↓` blättern Monate, `Enter` springt, `Esc` schließt; einen Tag anklicken für seine Tagesnotiz.
 - **Menüs:** Ein Menü, das Du über einen Knopf oder per **Rechtsklick** öffnest, setzt die Tastatur auf seinen ersten Eintrag — die Pfeiltasten, `Pos1` und `Ende` bewegen darin, `Enter` wählt einen Eintrag, `Esc` schließt es und gibt die Tastatur dorthin zurück, wo sie vorher war. Über einem Feld, in dem Du gerade schreibst, und über Text, den Du nur lesen kannst, bleibt die Tastatur, wo sie war.

@@ -2,7 +2,7 @@
 
 Stan na: 2026-10-30
 
-**Zwykle nie potrzebujesz tej strony:** Plainva dostarcza własny identyfikator aplikacji zarówno dla OneDrive, **jak i** dla Dropbox — wybierasz dostawcę, klikasz **Zaloguj się przez Microsoft…** albo **Zaloguj się przez Dropbox…** i logujesz się. **Własnej** (darmowej) rejestracji aplikacji potrzebujesz tylko w dwóch przypadkach: gdy ograniczenia firmowe blokują dołączone logowanie, albo gdy świadomie chcesz mieć połączenie pod własną kontrolą. Dla **OneDrive** wpisujesz go w **Logowanie na tym urządzeniu** → **Zmień** → **Własny identyfikator klienta** — na stronie konta lub w kreatorze, na komputerze i na telefonie tak samo, tylko dla tego urządzenia. Dla **Dropbox** jest tak samo: w kreatorze w **Inne logowanie** → **Własny App Key**, albo na stronie konta w **Dostęp na tym urządzeniu** → **Logowanie na tym urządzeniu** → **Zmień**. App Key dotyczy tego urządzenia, inne urządzenia zachowują swoje ustawienie; App Key, który konto miało już wcześniej, zostaje przejęty automatycznie. Wpisujesz tam dokładnie jedną publiczną wartość:
+**Zwykle nie potrzebujesz tej strony:** Alviss dostarcza własny identyfikator aplikacji zarówno dla OneDrive, **jak i** dla Dropbox — wybierasz dostawcę, klikasz **Zaloguj się przez Microsoft…** albo **Zaloguj się przez Dropbox…** i logujesz się. **Własnej** (darmowej) rejestracji aplikacji potrzebujesz tylko w dwóch przypadkach: gdy ograniczenia firmowe blokują dołączone logowanie, albo gdy świadomie chcesz mieć połączenie pod własną kontrolą. Dla **OneDrive** wpisujesz go w **Logowanie na tym urządzeniu** → **Zmień** → **Własny identyfikator klienta** — na stronie konta lub w kreatorze, na komputerze i na telefonie tak samo, tylko dla tego urządzenia. Dla **Dropbox** jest tak samo: w kreatorze w **Inne logowanie** → **Własny App Key**, albo na stronie konta w **Dostęp na tym urządzeniu** → **Logowanie na tym urządzeniu** → **Zmień**. App Key dotyczy tego urządzenia, inne urządzenia zachowują swoje ustawienie; App Key, który konto miało już wcześniej, zostaje przejęty automatycznie. Wpisujesz tam dokładnie jedną publiczną wartość:
 
 - **OneDrive** → **Client ID** (format `00000000-0000-0000-0000-000000000000`)
 - **Dropbox** → **App Key** (krótki ciąg znaków)
@@ -27,8 +27,8 @@ Ta strona to szczegółowe uzupełnienie skróconych wersji pod [Konfiguracja sy
 ### 2. Utwórz nową rejestrację aplikacji
 
 1. Menu **Tożsamość → Aplikacje → Rejestracje aplikacji**, następnie **+ Nowa rejestracja**.
-2. **Nazwa:** dowolna, np. `Plainva` (tylko do wyświetlania).
-3. **Obsługiwane typy kont:** wybierz **„Konta w dowolnym katalogu organizacyjnym … oraz konta osobiste Microsoft"**. Tylko ta opcja pasuje do punktu logowania Plainva; „tylko ten katalog" powoduje, że osobiste konta OneDrive nie działają.
+2. **Nazwa:** dowolna, np. `Alviss` (tylko do wyświetlania).
+3. **Obsługiwane typy kont:** wybierz **„Konta w dowolnym katalogu organizacyjnym … oraz konta osobiste Microsoft"**. Tylko ta opcja pasuje do punktu logowania Alviss; „tylko ten katalog" powoduje, że osobiste konta OneDrive nie działają.
 4. **Identyfikator URI przekierowania (Redirect URI)** — załatw od razu w tym miejscu:
    - Platforma: **„Klient publiczny/natywny (aplikacje mobilne i klasyczne)"**.
    - Wartość: `http://localhost` (dokładnie tak — bez portu, bez ukośnika na końcu).
@@ -38,7 +38,7 @@ Ta strona to szczegółowe uzupełnienie skróconych wersji pod [Konfiguracja sy
 
 ### 3. Skopiuj Client ID
 
-Na stronie **Przegląd** aplikacji skopiuj wartość **„Identyfikator aplikacji (klienta)"** — to jest Twoja wartość dla Plainva. („Identyfikator katalogu (dzierżawy)" nie jest potrzebny.)
+Na stronie **Przegląd** aplikacji skopiuj wartość **„Identyfikator aplikacji (klienta)"** — to jest Twoja wartość dla Alviss. („Identyfikator katalogu (dzierżawy)" nie jest potrzebny.)
 
 ### 4. Zezwól na przepływy klienta publicznego
 
@@ -51,10 +51,10 @@ Na stronie **Przegląd** aplikacji skopiuj wartość **„Identyfikator aplikacj
 1. Menu **Uprawnienia interfejsu API → + Dodaj uprawnienie → Microsoft Graph → Uprawnienia delegowane**.
 2. Zaznacz oba:
    - `Files.ReadWrite`
-   - `offline_access` (dostarcza długotrwały token logowania — **bez niego** Plainva odmawia połączenia)
+   - `offline_access` (dostarcza długotrwały token logowania — **bez niego** Alviss odmawia połączenia)
 3. **Dodaj**. Zgoda administratora nie jest potrzebna dla kont osobistych; wyrażasz ją sam/sama podczas logowania.
 
-### Wpisz to w Plainva
+### Wpisz to w Alviss
 
 1. **Ustawienia → Twój vault → Konta w chmurze**: otwórz konto Microsoft albo zacznij **Połącz konto…** od kafelka **Microsoft**.
 2. Przy **Logowanie na tym urządzeniu** wybierz **Zmień**, a potem **Własny identyfikator klienta**.
@@ -78,14 +78,14 @@ Na stronie **Przegląd** aplikacji skopiuj wartość **„Identyfikator aplikacj
 2. **Type of access:** **Full Dropbox** — nie „App folder".
 
    > ⚠️ **Full Dropbox** jest wymagany: „App folder" widzi tylko odizolowany podfolder i nie znajdzie istniejących vaultów gdzie indziej w Twoim Dropbox.
-3. **Name:** globalnie unikatowa nazwa, np. `Plainva-Sync-<twojenazwisko>` (czysto techniczna, nikt inny jej nie zobaczy).
+3. **Name:** globalnie unikatowa nazwa, np. `Alviss-Sync-<twojenazwisko>` (czysto techniczna, nikt inny jej nie zobaczy).
 4. **Create app**.
 
 ### 3. Zarejestruj redirect URI
 
 Zakładka **Settings → OAuth 2 → Redirect URIs**: wpisz **dokładnie** `http://127.0.0.1:41953` i kliknij **Add**.
 
-> ⚠️ Musi się zgadzać znak w znak: `127.0.0.1` (nie `localhost`), port `41953`, bez ukośnika na końcu. Plainva wiąże się z dokładnie tym portem; każde odstępstwo przerywa logowanie.
+> ⚠️ Musi się zgadzać znak w znak: `127.0.0.1` (nie `localhost`), port `41953`, bez ukośnika na końcu. Alviss wiąże się z dokładnie tym portem; każde odstępstwo przerywa logowanie.
 
 ### 4. Ustaw uprawnienia
 
@@ -96,20 +96,20 @@ Zakładka **Permissions** — zaznacz poniższe i kliknij **Submit** na dole:
 - `files.content.read`
 - `files.content.write`
 
-> ⚠️ Jeśli zmienisz uprawnienia później, musisz w Plainva kliknąć **Zaloguj się ponownie**, inaczej nadal obowiązują stare prawa dostępu.
+> ⚠️ Jeśli zmienisz uprawnienia później, musisz w Alviss kliknąć **Zaloguj się ponownie**, inaczej nadal obowiązują stare prawa dostępu.
 
 ### 5. Skopiuj App key
 
-Zakładka **Settings**: skopiuj wartość **App key** — to jest Twoja wartość dla Plainva. („App secret" nie jest potrzebny.)
+Zakładka **Settings**: skopiuj wartość **App key** — to jest Twoja wartość dla Alviss. („App secret" nie jest potrzebny.)
 
 > Twoja aplikacja pozostaje w statusie „Development". To wystarcza do prywatnego użytku; „Apply for production" jest potrzebne tylko wtedy, gdy z tego samego App key ma korzystać wielu innych użytkowników.
 
-### Wpisz to w Plainva
+### Wpisz to w Alviss
 
 1. **Ustawienia → Twój vault → Konta w chmurze**: otwórz konto Dropbox albo zacznij **Połącz konto…** kafelkiem **Dropbox**.
 2. W kreatorze otwórz **Inne logowanie** i wybierz **Własny App Key**; na stronie konta zamiast tego **Dostęp na tym urządzeniu** → **Logowanie na tym urządzeniu** → **Zmień**.
 3. Wklej skopiowany App key i wybierz **Zapisz**.
-4. **Zaloguj się przez Dropbox…** (na stronie konta **Zaloguj się ponownie**) → zaloguj się w przeglądarce i potwierdź dostęp. Folder w chmurze (domyślnie `/Plainva`) wybierzesz potem przez **Wybierz folder…**.
+4. **Zaloguj się przez Dropbox…** (na stronie konta **Zaloguj się ponownie**) → zaloguj się w przeglądarce i potwierdź dostęp. Folder w chmurze (domyślnie `/Alviss`) wybierzesz potem przez **Wybierz folder…**.
 
 ---
 

@@ -1,10 +1,10 @@
-# Podręcznik użytkownika Plainva
+# Podręcznik użytkownika Alviss
 
 Stan na: 2026-09-20
 
 To tłumaczenie zostało wygenerowane automatycznie — poprawki są mile widziane.
 
-Plainva to edytor vaultów Markdown: Twoje notatki to zwykłe pliki Markdown w folderze (nazywanym „vault") na Twoim komputerze — bez silosu baz danych, bez wymuszonego konta w chmurze. Ten podręcznik wyjaśnia, jak pracować z Plainva i jak działają formaty plików.
+Alviss to edytor vaultów Markdown: Twoje notatki to zwykłe pliki Markdown w folderze (nazywanym „vault") na Twoim komputerze — bez silosu baz danych, bez wymuszonego konta w chmurze. Ten podręcznik wyjaśnia, jak pracować z Alviss i jak działają formaty plików.
 
 ## Spis treści
 
@@ -13,13 +13,13 @@ Plainva to edytor vaultów Markdown: Twoje notatki to zwykłe pliki Markdown w f
 | [Pierwsze kroki](Getting_Started.md) | Otwieranie lub tworzenie vaultu, interfejs, tryby edytora, karty i podział widoku |
 | [Notatki i Markdown](Notes_and_Markdown.md) | Jak działają pliki Markdown: pisanie, formatowanie, właściwości (frontmatter), ikony, linki, szablony, obrazy |
 | [Bazy danych (.base)](Databases_Base.md) | Wyświetlanie notatek jako bazy danych — widoki, filtry, właściwości, relacje, nowe wpisy (podobnie do Notion, ale w oparciu o pliki) |
-| [Dokumentacja baz danych (.base)](Base_Reference.md) | Wszystko, co może zawierać plik `.base`, i co Plainva z tym robi: klucze, filtry, typy widoków, podsumowania, ograniczenia, różnice względem Obsidian |
+| [Dokumentacja baz danych (.base)](Base_Reference.md) | Wszystko, co może zawierać plik `.base`, i co Alviss z tym robi: klucze, filtry, typy widoków, podsumowania, ograniczenia, różnice względem Obsidian |
 | [Import z innej aplikacji](Import.md) | Przenoszenie notatek z Notion, Evernote, Google Keep, Simplenote, Logseq lub folderu Markdown — i czego każdy import nie potrafi przenieść |
 | [OKF](OKF.md) | Open Knowledge Format (0.2): `type`, znaczniki pochodzenia i weryfikacji, wersja pakietu, zarządzanie index.md i opcjonalna konwersja vaultu |
 | [Dokumentacja formatu plików](File_Format_Reference.md) | Dokładny format każdego pliku vaultu na dysku — dla narzędzi, skryptów lub AI edytujących notatki i pliki `.base` bezpośrednio |
-| [Automatyzacja i skrypty](Automation_and_Scripts.md) | Rozszerzanie Plainva bez wtyczek: jak skrypty, narzędzia CLI i agenci AI bezpiecznie czytają i zapisują vault |
+| [Automatyzacja i skrypty](Automation_and_Scripts.md) | Rozszerzanie Alviss bez wtyczek: jak skrypty, narzędzia CLI i agenci AI bezpiecznie czytają i zapisują vault |
 | [Backup i historia wersji](Backups_and_Versioning.md) | Automatyczne wersje plików, przywracanie (również usuniętych plików) i codzienne kopie zapasowe ZIP całego vaultu |
-| [Aplikacja mobilna](Mobile_App.md) | Plainva na Androidzie i iOS: układ, edycja, bazy danych, synchronizacja i siatka bezpieczeństwa |
+| [Aplikacja mobilna](Mobile_App.md) | Alviss na Androidzie i iOS: układ, edycja, bazy danych, synchronizacja i siatka bezpieczeństwa |
 | [Konfiguracja synchronizacji](Sync_Setup.md) | Krok po kroku dla każdego dostawcy: WebDAV/Nextcloud, Google Drive, OneDrive, Dropbox, S3 |
 | [Bezpieczeństwo i udostępnianie](Security_and_Sharing.md) | Osobisty szyfrowany workspace, odzyskiwanie, migracja i blokowanie |
 | [Komentarze i propozycje](Comments_and_Suggestions.md) | Komentarze, tryb propozycji, przegląd i powiadomienia — w każdym sejfie, z szyfrowaniem lub bez |
@@ -39,4 +39,4 @@ Plainva to edytor vaultów Markdown: Twoje notatki to zwykłe pliki Markdown w f
 
 - **Twoje pliki należą do Ciebie.** Vault to zwykły folder z plikami Markdown. Można go w każdej chwili otworzyć, skopiować lub zapisać w dowolnym innym programie.
 - **Czysty Markdown jako format kanoniczny.** Nawet dodatkowe funkcje (właściwości, ikony, bazy danych) są zapisywane w otwartych, czytelnych formatach tekstowych.
-- **Zgodność z Obsidian.** Istniejące vaulty Obsidian nigdy nie są uszkadzane ani przeformatowywane; Obsidian może otworzyć każdy plik utworzony przez Plainva.
+- **Zgodność z Obsidian.** Istniejące vaulty Obsidian nigdy nie są uszkadzane ani przeformatowywane; Obsidian może otworzyć każdy plik utworzony przez Alviss.

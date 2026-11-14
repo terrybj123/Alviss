@@ -1,22 +1,22 @@
-# Plainva Sync Compatibility
+# Alviss Sync Compatibility
 
 Last reviewed: 2026-11-03
 
-If a WebDAV, CalDAV or S3 service returns a sign-in page or an incomplete inventory, Plainva reports a sync error. It does not treat that response as an empty folder or calendar inventory or infer deletions from it. This applies on desktop and mobile.
+If a WebDAV, CalDAV or S3 service returns a sign-in page or an incomplete inventory, Alviss reports a sync error. It does not treat that response as an empty folder or calendar inventory or infer deletions from it. This applies on desktop and mobile.
 
 If a local file cannot be uploaded because of a permission or read error, its task and error stay in the queue. Restore file access and retry sync. Only a genuinely missing file counts as absent; an access failure is not recorded as a successful upload.
 
-Offline edits are preserved across repeated renames. Plainva completes related moves before uploading the current content; a failed operation holds back dependent tasks. If a remote rename source is missing, Plainva uploads the remaining local file or folder contents at the new location. Unreadable content stays queued with an error for retry.
+Offline edits are preserved across repeated renames. Alviss completes related moves before uploading the current content; a failed operation holds back dependent tasks. If a remote rename source is missing, Alviss uploads the remaining local file or folder contents at the new location. Unreadable content stays queued with an error for retry.
 
 A deletion confirmation applies only to the deletion actually performed. It survives retries after connection errors or a restart; new files created at the same location do not inherit it. The additional prompt for a paused mass deletion and its restore option affect only the tasks shown there. Large deletions already queued before this update may need confirmation once more.
 
-Journal entries that two devices append to the same daily note before they have synced are not a conflict: Plainva merges them by time and keeps every line of both devices — also when both devices created the day's note independently. Every other simultaneous change to a note is handled as before. See [Journal](Journal.md).
+Journal entries that two devices append to the same daily note before they have synced are not a conflict: Alviss merges them by time and keeps every line of both devices — also when both devices created the day's note independently. Every other simultaneous change to a note is handled as before. See [Journal](Journal.md).
 
-A folder you create in Plainva is created inside the vault folder in the cloud. Up to version 0.8.3, Plainva also created an empty folder of the same name at the top level of Google Drive, OneDrive or Dropbox, or of the S3 bucket when the vault uses a prefix. Plainva does not remove these copies itself; once you have checked that such a top-level folder is empty and is not part of your vault folder, you can delete it.
+A folder you create in Alviss is created inside the vault folder in the cloud. Up to version 0.8.3, Alviss also created an empty folder of the same name at the top level of Google Drive, OneDrive or Dropbox, or of the S3 bucket when the vault uses a prefix. Alviss does not remove these copies itself; once you have checked that such a top-level folder is empty and is not part of your vault folder, you can delete it.
 
-Letters with accents can be stored in two ways: `ü` as one character or as `u` followed by a combining diaeresis. macOS and iOS usually keep the second form (for example for a folder made in Finder), many servers and other systems the first. Plainva treats both as the same name: it reads and writes the file or folder that already exists, in whatever form this device or the cloud stores it, and renames nothing. Names you create in Plainva are stored in the first form. Only when one folder really holds both forms side by side, or when two names differ in letter case, does Plainva list the name under **Same name, two files**: it keeps the second file out of the sync and deletes nothing on its own, neither here nor in the cloud. On the card, **Remove duplicates** removes a second file that is the same as the synced one, and **Keep both** gives a differing one a name of its own.
+Letters with accents can be stored in two ways: `ü` as one character or as `u` followed by a combining diaeresis. macOS and iOS usually keep the second form (for example for a folder made in Finder), many servers and other systems the first. Alviss treats both as the same name: it reads and writes the file or folder that already exists, in whatever form this device or the cloud stores it, and renames nothing. Names you create in Alviss are stored in the first form. Only when one folder really holds both forms side by side, or when two names differ in letter case, does Alviss list the name under **Same name, two files**: it keeps the second file out of the sync and deletes nothing on its own, neither here nor in the cloud. On the card, **Remove duplicates** removes a second file that is the same as the synced one, and **Keep both** gives a differing one a name of its own.
 
-Plainva syncs vaults through interchangeable sync adapters. This page shows which services you can use today — directly integrated, via the WebDAV protocol, or via the provider's own desktop sync client.
+Alviss syncs vaults through interchangeable sync adapters. This page shows which services you can use today — directly integrated, via the WebDAV protocol, or via the provider's own desktop sync client.
 
 ## Directly integrated
 
@@ -25,8 +25,8 @@ Plainva syncs vaults through interchangeable sync adapters. This page shows whic
 | Local folder | Available | No setup needed; external changes (e.g. by other sync tools) are detected automatically. |
 | WebDAV / Nextcloud | Available, verified with Nextcloud | Server URL, username and (recommended) an app password. |
 | Google Drive | Available (BYO credentials) | Requires your own Google Cloud project, see the [Google Drive BYO guide](Google_Drive_BYO_Guide.md). |
-| OneDrive | Available | Sign-in via browser (PKCE, no secret). Plainva ships its own app registration — just pick OneDrive and connect, no setup needed. Using your own (free) Entra app registration stays optional (see the [OneDrive & Dropbox BYO guide](OneDrive_and_Dropbox_BYO_Guide.md)). |
-| Dropbox | Available | Sign-in via browser (PKCE, no secret). Plainva ships its own Dropbox app — just pick Dropbox and connect, no setup needed. Using your own (free) Dropbox app stays optional (see the [OneDrive & Dropbox BYO guide](OneDrive_and_Dropbox_BYO_Guide.md)). |
+| OneDrive | Available | Sign-in via browser (PKCE, no secret). Alviss ships its own app registration — just pick OneDrive and connect, no setup needed. Using your own (free) Entra app registration stays optional (see the [OneDrive & Dropbox BYO guide](OneDrive_and_Dropbox_BYO_Guide.md)). |
+| Dropbox | Available | Sign-in via browser (PKCE, no secret). Alviss ships its own Dropbox app — just pick Dropbox and connect, no setup needed. Using your own (free) Dropbox app stays optional (see the [OneDrive & Dropbox BYO guide](OneDrive_and_Dropbox_BYO_Guide.md)). |
 | S3-compatible object storage | Available (new 2026-07-04, native acceptance pending) | AWS S3, Cloudflare R2, Backblaze B2, MinIO, Wasabi, Hetzner and others — just an endpoint, bucket, region and an API key pair; no browser sign-in. |
 
 ## Services usable via WebDAV
@@ -49,11 +49,11 @@ The WebDAV adapter speaks standard WebDAV, so the following services should work
 
 ## Via the provider's desktop sync client (local folder)
 
-Until native integrations arrive, you can use any service whose desktop client keeps a local folder in sync. Plainva then treats the vault as a local folder and detects external changes automatically.
+Until native integrations arrive, you can use any service whose desktop client keeps a local folder in sync. Alviss then treats the vault as a local folder and detects external changes automatically.
 
 **Important:** Set the vault folder to "always keep on this device" / "available offline". Online-only placeholder files (Files On-Demand, online-only, streaming mode) can interfere with indexing and sync.
 
-**One route per folder:** Use either the provider's desktop client or Plainva's own sync for a vault folder, never both at the same time. Two sync tools in the same folder upload every change twice and can create folders twice — for example when one of them writes accented letters in a different Unicode form than the other.
+**One route per folder:** Use either the provider's desktop client or Alviss's own sync for a vault folder, never both at the same time. Two sync tools in the same folder upload every change twice and can create folders twice — for example when one of them writes accented letters in a different Unicode form than the other.
 
 - **OneDrive** (Explorer integration; disable Files On-Demand for the vault folder)
 - **Dropbox** (desktop client; avoid "online-only" for the vault folder)
@@ -63,11 +63,11 @@ Until native integrations arrive, you can use any service whose desktop client k
 
 ## Note on the new integrations (2026-07-04)
 
-OneDrive, Dropbox and S3-compatible storage have been directly integrated since 2026-07-04 (see the table above). Plainva ships its own app registrations for OneDrive and Dropbox, so you don't need your own client ID or app key — the fields come pre-filled and you just connect. Bringing your own app ID stays optional (e.g. for corporate restrictions); see the [OneDrive & Dropbox BYO guide](OneDrive_and_Dropbox_BYO_Guide.md). The desktop-sync-client route (see above) remains available as an alternative.
+OneDrive, Dropbox and S3-compatible storage have been directly integrated since 2026-07-04 (see the table above). Alviss ships its own app registrations for OneDrive and Dropbox, so you don't need your own client ID or app key — the fields come pre-filled and you just connect. Bringing your own app ID stays optional (e.g. for corporate restrictions); see the [OneDrive & Dropbox BYO guide](OneDrive_and_Dropbox_BYO_Guide.md). The desktop-sync-client route (see above) remains available as an alternative.
 
 ## Deliberately not planned
 
 - **iCloud as an API integration:** Apple offers no official third-party API for iCloud Drive. Use the local iCloud folder instead (see above).
-- **Syncthing as a built-in provider:** not needed — Plainva works with any local folder that Syncthing, or Synctrain on iPhone and iPad, keeps in sync (see above).
+- **Syncthing as a built-in provider:** not needed — Alviss works with any local folder that Syncthing, or Synctrain on iPhone and iPad, keeps in sync (see above).
 - **Proton Drive / Mega:** no official or only hard-to-integrate APIs (E2E encryption, C++ SDK). Kept under observation.
 - **Watchlist** (on demand): pCloud, Box, Filen, SFTP.

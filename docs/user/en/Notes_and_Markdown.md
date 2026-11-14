@@ -2,11 +2,11 @@
 
 Last updated: 2026-11-04
 
-Every note in Plainva is an ordinary Markdown file (`.md`). This page explains how to write comfortably and what actually ends up in the file — because that is exactly what makes your notes portable: any text editor, Obsidian, or a git diff can read them.
+Every note in Alviss is an ordinary Markdown file (`.md`). This page explains how to write comfortably and what actually ends up in the file — because that is exactly what makes your notes portable: any text editor, Obsidian, or a git diff can read them.
 
 ## The core principle: everything is text
 
-Whatever you see in Plainva — formatted text, tables, properties, icons — is stored as open text:
+Whatever you see in Alviss — formatted text, tables, properties, icons — is stored as open text:
 
 ```markdown
 ---
@@ -23,7 +23,7 @@ A **bold** thought with a link to [[Another Note]].
 - [ ] First task
 ```
 
-The block between the `---` lines is the **frontmatter** (YAML): that is where the note's properties live. Below it comes the regular Markdown text. Plainva-specific presentation (icon, header color) is bundled under the single `plainva:` key — other programs simply ignore it.
+The block between the `---` lines is the **frontmatter** (YAML): that is where the note's properties live. Below it comes the regular Markdown text. Alviss-specific presentation (icon, header color) is bundled under the single `plainva:` key — other programs simply ignore it.
 
 ## Writing in Live Preview
 
@@ -43,14 +43,14 @@ Type `/` at the start of a line to open the insert menu. It is grouped into sect
 
 - **Selection toolbar** — select some text and a small bar offers **Bold**, **Italic**, **Strikethrough**, **Inline code**, **Highlight** and **Link**.
 - **`@` mentions** — type `@` anywhere in the text to insert a **Date** (Today, Tomorrow, Yesterday, or **Pick a date…**, stored as an ISO date), a link to a **Note**, or a **Database** embed.
-- **Emoji** — the **Emoji** slash command (`/emoji`) opens an emoji picker at the cursor; or type `:name` (for example `:rocket`) for inline suggestions. Either way Plainva inserts the actual emoji **character** (portable Unicode), never a `:shortcode:` — so the note stays readable in Obsidian, on GitHub and everywhere else. (This is separate from the note's **Document icon**, which is stored in the frontmatter.)
-- **Block handles** — a handle appears to the left of each paragraph on hover: drag it to move the block, click it to open **Block actions** (**Turn into** Text/Heading/List/To-do/Quote/Code block, **Duplicate**, **Move up**/**Move down**, **Delete block**). If you drag a list next to another list of the same kind, Plainva inserts an invisible separator line `<!-- -->` so both lists stay separate — in Markdown, same-style lists would otherwise merge despite the blank line (in Obsidian too).
+- **Emoji** — the **Emoji** slash command (`/emoji`) opens an emoji picker at the cursor; or type `:name` (for example `:rocket`) for inline suggestions. Either way Alviss inserts the actual emoji **character** (portable Unicode), never a `:shortcode:` — so the note stays readable in Obsidian, on GitHub and everywhere else. (This is separate from the note's **Document icon**, which is stored in the frontmatter.)
+- **Block handles** — a handle appears to the left of each paragraph on hover: drag it to move the block, click it to open **Block actions** (**Turn into** Text/Heading/List/To-do/Quote/Code block, **Duplicate**, **Move up**/**Move down**, **Delete block**). If you drag a list next to another list of the same kind, Alviss inserts an invisible separator line `<!-- -->` so both lists stay separate — in Markdown, same-style lists would otherwise merge despite the blank line (in Obsidian too).
 - **Tables** — rendered as a widget with click-to-edit cells. The cell display renders formatting (**bold**, *italic*, `code`, highlight), clickable links (`[[Internal Link]]`, web addresses) and `<br>` as a line break; while editing you see the raw text. The table menu offers inserting/deleting rows and columns plus alignment (**Align left**/**Align center**/**Align right**). The cell opens in a field that grows and wraps with its text: **Enter** saves, **Shift+Enter** adds a line break (written as `<br>`), **Esc** discards.
 - **Lists continue themselves** (Enter inserts the next list marker), code blocks get language-aware highlighting (in the reading view as well), pasted content is converted to Markdown (smart paste), and headings can be folded.
 - **Fold lists** — clicking the bullet of a list item with nested items folds them; the bullet turns accent-colored and a “…” marks the spot, a second click unfolds. The file never changes. Bullets alternate per level (• ◦ ▪), continuation lines sit exactly under their item's text — on the phone too, where the bullet is the only fold control.
 - **Scroll position** — every note opens where you left it; remembered per device, not synchronized.
 - **Find & replace** inside the current note: `Ctrl+F` (see [Search](Search.md)).
-- **Spell checking** — off by default. Switch it on under **Settings → App → Editor & notes** and misspelled words are underlined in notes, table cells, emails, comments, journal entries and tasks; code, web addresses, keys and passwords are never checked. Plainva uses your system's spell checker and its languages and brings no dictionaries of its own. While it is on, a right-click in such text opens the system's menu with the suggestions instead of Plainva's own; a table cell keeps its table menu. The setting belongs to this device. On Linux, Plainva does not switch on the system WebView's checker yet, so it has no effect there.
+- **Spell checking** — off by default. Switch it on under **Settings → App → Editor & notes** and misspelled words are underlined in notes, table cells, emails, comments, journal entries and tasks; code, web addresses, keys and passwords are never checked. Alviss uses your system's spell checker and its languages and brings no dictionaries of its own. While it is on, a right-click in such text opens the system's menu with the suggestions instead of Alviss's own; a table cell keeps its table menu. The setting belongs to this device. On Linux, Alviss does not switch on the system WebView's checker yet, so it has no effect there.
 
 ## Links and backlinks
 
@@ -59,9 +59,9 @@ Type `/` at the start of a line to open the insert menu. It is grouped into sect
 - **How a Markdown link finds its file**: A Markdown link `[text](target)` is read from the folder of the current note first — `[Letter](Filing/Letter.md)` in `Projects/Plan.md` is `Projects/Filing/Letter.md`, as every Markdown reader reads it. Where nothing lies there, it leads where the wiki link of the same text leads: the path from the top of the vault, then the file's name or the end of its path anywhere in the vault, last a note's `title`. So `[Letter](Letter.md)` and `[Letter](Letter)` find the note in any folder. `.md` may be left out, upper and lower case do not matter, and a space is written `%20` — or the target goes into angle brackets: `[x](<My letter.md>)`. `/Folder/File`, `./File` and `../Folder/File` name exactly one place. A target that ends in a slash names a **folder** (`[Filing](Filing/)`): the link opens the folder's `index.md`, or shows the folder where it has none. The answer is the same on desktop and phone — in the editor and the reading mode, in table cells, the journal and comments —, in the graph and in the backlinks.
 - **Links to a section**: `[[Note#Heading]]` opens the note at that heading, `[[#Heading]]` jumps within the current note, and `[text](#heading)` in GitHub style works the same — both the literal heading text and the slug (`cool-header`) resolve; `[[Note#^id]]` reaches a line that ends in `^id`. Typing `[[Note#` offers the note's headings. A heading that no longer exists says so in a message instead of doing nothing.
 - **Targets that don't exist yet**: A wiki link to a note that hasn't been created yet is shown **muted with a dashed underline** (both in live preview and reading mode). **Clicking it creates the note** and opens it — placed in the current note's folder (or at the given path if the link contains one, e.g. `[[Folder/New note]]`). To be asked first, enable **Settings → App → Editor & Notes → Ask before creating empty links**. A Markdown link does the same when its target is a bare note name (`[x](New note)`, `[x](New note.md)`). A Markdown link that names a path, a folder or another kind of file and leads nowhere reports that the target was not found, and creates nothing.
-- **Links out of the app**: Plainva opens only web links (`http://`, `https://`), mail addresses (`mailto:`) and phone numbers (`tel:`) — from a note, a table cell, a URL, email or phone property, the journal or a mail. Any other scheme (`javascript:`, `file:`, links into other apps such as `obsidian://`) does not open, and a message says so; on the desktop and on the phone alike.
+- **Links out of the app**: Alviss opens only web links (`http://`, `https://`), mail addresses (`mailto:`) and phone numbers (`tel:`) — from a note, a table cell, a URL, email or phone property, the journal or a mail. Any other scheme (`javascript:`, `file:`, links into other apps such as `obsidian://`) does not open, and a message says so; on the desktop and on the phone alike.
 - **Backlinks**: The **Backlinks** section in the right sidebar shows which notes link to the active one — grouped per source file, with a counter for multiple occurrences. Under each file every occurrence is listed with the headings and list items above it and the line itself; a click jumps right there. On the phone the note's context sheet shows the same places. The rows are ordered by **Title**; the sort button above them switches to **Last modified** or **Number of links**, choosing the same key again reverses the direction, and the choice is remembered on this device.
-- **Rename with link care**: When you rename a file in the file tree, Plainva updates every link to it across the whole vault (anchors like `#Section` are preserved) and reports: "N link(s) in M file(s) were updated to the new name." A link that reaches the note through the `title` of its properties stays as it is — that title does not change with the file's name.
+- **Rename with link care**: When you rename a file in the file tree, Alviss updates every link to it across the whole vault (anchors like `#Section` are preserved) and reports: "N link(s) in M file(s) were updated to the new name." A link that reaches the note through the `title` of its properties stays as it is — that title does not change with the file's name.
 - **Tags**: `#project` — or nested, `#project/website` — anywhere in the text is a tag. It is drawn as a small pill while you write and while you read, and a click on it opens the notes that carry it (on the phone: a tap while reading). What counts as a tag and how tags get a colour: [Search](Search.md).
 
 ## Properties (frontmatter)
@@ -77,18 +77,18 @@ The **Properties** section in the right sidebar shows the note's frontmatter as 
 
 Choice types can carry fixed options with a **Color** and (for **Status**) a **Group**/stage — these option lists are managed in databases (`.base`), see [Databases (.base)](Databases_Base.md).
 
-Protected are the **OKF system fields** Plainva manages: `type` (the value is selectable from a dropdown of known types, name/field type/delete are locked) and — where older notes still carry it — `okf_version` (display only; since OKF 0.2 the field belongs in the root `index.md` alone). Background: [OKF](OKF.md).
+Protected are the **OKF system fields** Alviss manages: `type` (the value is selectable from a dropdown of known types, name/field type/delete are locked) and — where older notes still carry it — `okf_version` (display only; since OKF 0.2 the field belongs in the root `index.md` alone). Background: [OKF](OKF.md).
 
 ### Status, stale notice and review mark (OKF 0.2)
 
-Five optional properties from OKF 0.2 let a note say where it came from and whether it still holds — Plainva shows them without any setup:
+Five optional properties from OKF 0.2 let a note say where it came from and whether it still holds — Alviss shows them without any setup:
 
 - **Status badge:** if a note carries `status: draft` or `status: deprecated`, the document header shows the badge **Draft** or **Deprecated**. `stable` stays silent. A `status` column of your own with other values (say `Open`) is unaffected — it is an ordinary property and gets no badge.
 - **Stale notice:** once `stale_after` has passed, **Marked as stale (since …)** appears above the note with **Open properties**. The notice changes nothing in the note; it only reminds.
 - **Trust & provenance:** a section of its own in the properties panel summarises `generated` (Generated), `verified` (Verified), `sources` (Sources, clickable), `status` and `stale_after` (Stale after) and derives a level from them — **Not verified**, **Machine-confirmed** or **Reviewed by a person**.
-- **Mark as reviewed:** the button in that section appends your name with the current instant to the verified list (`human:<name>`); Plainva asks for the name once per vault and keeps it on this device only (changeable under **Settings → Vault → Notes & filing → Annotations → Your name (remarks and reviews)**). On the phone the same action lives in the note's context sheet.
+- **Mark as reviewed:** the button in that section appends your name with the current instant to the verified list (`human:<name>`); Alviss asks for the name once per vault and keeps it on this device only (changeable under **Settings → Vault → Notes & filing → Annotations → Your name (remarks and reviews)**). On the phone the same action lives in the note's context sheet.
 
-Plainva sets `generated` and `sources` only where it creates notes itself — in the importer, in mail capture and in the task sync; the editor never stamps, and existing notes are not stamped after the fact. The field contract is in the [File Format Reference](File_Format_Reference.md), the background under [OKF](OKF.md).
+Alviss sets `generated` and `sources` only where it creates notes itself — in the importer, in mail capture and in the task sync; the editor never stamps, and existing notes are not stamped after the fact. The field contract is in the [File Format Reference](File_Format_Reference.md), the background under [OKF](OKF.md).
 
 ## Document icon and header color
 
@@ -97,7 +97,7 @@ Every note can carry an icon (Notion-style above the title, also visible in tabs
 - In Live Preview, hover above the title: **Add icon** / **Add header color** (later: **Change icon** / **Change header color**) — or use the slash commands **Document icon** and **Header color**.
 - The icon picker has two modes — **Emoji** and **Icons** — that work the same way: one head zone, one search, **categories** (tabs) in both modes, and a **Recently used** section that survives a restart.
 - The icon set is about **400 curated icons** in ten categories (Knowledge & files, Work & tasks, Tech, People & contact, Creative & media, Everyday & home, Nature & weather, Travel & places, Money & numbers, Symbols & states). Search matches names and keywords.
-- In icon mode you pick a **colour** at the top — the same palette as the header stripe, **A** for the default, the disc with the hue ring (**Custom colour …**) for a free value; it applies to the icon you tap next. The same grid appears wherever Plainva asks for a colour — on the phone too.
+- In icon mode you pick a **colour** at the top — the same palette as the header stripe, **A** for the default, the disc with the hue ring (**Custom colour …**) for a free value; it applies to the icon you tap next. The same grid appears wherever Alviss asks for a colour — on the phone too.
 - Both are stored in the frontmatter under `plainva:` (`icon`, `icon_color`, `header_color`) — pure presentation that does not affect other programs.
 
 ## Templates
@@ -123,9 +123,9 @@ Set a **Template Folder** under **Settings → Vault → Notes & filing** (**Cho
 | `{{clipboard}}` | The clipboard — it arrives as a **pre-filled question**, never unnoticed in the note |
 | `\{{date}}` | The placeholder itself, unresolved |
 
-**Language of dates**: weekday and month names (`dddd`, `MMMM`) follow the app language — in a German interface `{{date:dddd, D. MMMM YYYY}}` writes *Mittwoch, 29. Juli 2026*. A daily note's **file name** deliberately stays English: it has to match the format that created it, or Plainva stops finding the daily notes you already have.
+**Language of dates**: weekday and month names (`dddd`, `MMMM`) follow the app language — in a German interface `{{date:dddd, D. MMMM YYYY}}` writes *Mittwoch, 29. Juli 2026*. A daily note's **file name** deliberately stays English: it has to match the format that created it, or Alviss stops finding the daily notes you already have.
 
-When a template asks something, Plainva asks **everything** in one dialog before the note is written — whether you insert or create; cancelling creates nothing. Only notes created in the background (the task sync, for instance) are never asked about: there the answers stay empty. A placeholder Plainva does not know stays visible — so a typo looks like a typo.
+When a template asks something, Alviss asks **everything** in one dialog before the note is written — whether you insert or create; cancelling creates nothing. Only notes created in the background (the task sync, for instance) are never asked about: there the answers stay empty. A placeholder Alviss does not know stays visible — so a typo looks like a typo.
 
 **On the phone** the same engine runs: placeholders are filled in, a template's questions arrive together in one sheet (cancelling creates nothing), and the folder → template and note type → template rules apply there as well — so a note in `Projekte/` starts the same way on both devices. The rules can be set on the phone too (**Settings → Notes & filing**), and `{{weekday:…}}` follows **Week starts on** under **Settings → Appearance** there; the setting belongs to the open vault and travels with it to your other devices, so the same template gives the same date on both.
 
@@ -143,7 +143,7 @@ A daily note can also hold a **journal**: short entries with a time (`- 14:05 Te
 
 ## Tasks, formulas, diagrams and footnotes
 
-- **Task checkboxes**: `- [ ] task` renders as a checkbox everywhere — and in **read mode** you can click it: Plainva writes `[x]` or `[ ]` back into the file. A done task is shown muted and struck through — in the note just as in the task view.
+- **Task checkboxes**: `- [ ] task` renders as a checkbox everywhere — and in **read mode** you can click it: Alviss writes `[x]` or `[ ]` back into the file. A done task is shown muted and struck through — in the note just as in the task view.
 - **Callouts**: a quote that starts with `> [!tip] Title` (or any of the 13 variants from the slash menu) is drawn as one card — a fine line in the callout's colour, a light tint and the title in that colour; without a title the card shows the name of its variant. It looks the same in the live preview, in read mode and on the phone; a plain quote keeps its bar.
 - **Nested lists**: from the second level on, a fine line under each parent bullet shows which items belong together — in the live preview and in read mode.
 - **Math (LaTeX)**: `$E = mc^2$` inline and `$$…$$` as a block render as formulas in read mode AND in the live preview (KaTeX). With the caret inside a formula you see the syntax; clicking a rendered formula opens it for editing. Only source mode always shows the raw syntax. You do not have to memorize the `$$…$$` block — the **Formula (LaTeX)** slash command (`/katex`) inserts it and places the caret inside.
@@ -170,27 +170,27 @@ Arabic, Hebrew, Persian and other right-to-left scripts are set from right to le
 
 ## Printing and saving as PDF
 
-The editor's **⋮** menu and the command palette (`Ctrl+P`) have **Print / Save as PDF…**: printing always uses the read view (from live/source, Plainva switches into it first). In the system dialog you can pick "Save as PDF" instead of a printer.
+The editor's **⋮** menu and the command palette (`Ctrl+P`) have **Print / Save as PDF…**: printing always uses the read view (from live/source, Alviss switches into it first). In the system dialog you can pick "Save as PDF" instead of a printer.
 
 ## Exporting a note
 
-- **Export as Markdown…** (editor **⋮** menu or command palette): saves a copy of the note anywhere via the system dialog — for example to hand it to another program. Linked attachments (images) are not copied along; Plainva shows a short notice when the note references any. If the note carries open annotations, Plainva asks first: **Include annotations?** — **As a list at the end (readable everywhere)** or **Marked in the text (CriticMarkup)**; the invisible anchor markers come out either way.
+- **Export as Markdown…** (editor **⋮** menu or command palette): saves a copy of the note anywhere via the system dialog — for example to hand it to another program. Linked attachments (images) are not copied along; Alviss shows a short notice when the note references any. If the note carries open annotations, Alviss asks first: **Include annotations?** — **As a list at the end (readable everywhere)** or **Marked in the text (CriticMarkup)**; the invisible anchor markers come out either way.
 - **PDF**: use **Print / Save as PDF…** (above) and choose "Save as PDF" in the system dialog.
 
 ## Opening a note in another editor
 
-Your notes are plain `.md` files, so any Markdown editor can open them. The editor's **⋮** menu has **Open in default app**, which hands the current note to the app your system uses for Markdown files (Byword, MacDown, VS Code and so on). Plainva keeps watching the file, so edits you make there appear here automatically.
+Your notes are plain `.md` files, so any Markdown editor can open them. The editor's **⋮** menu has **Open in default app**, which hands the current note to the app your system uses for Markdown files (Byword, MacDown, VS Code and so on). Alviss keeps watching the file, so edits you make there appear here automatically.
 
 ## Images and attachments
 
-- **Inserting**: slash commands **Internal image** (search & embed from the vault) or **Image (web)** (by URL). Also: simply **paste** a file from the clipboard (Ctrl+V) — an image just as much as a PDF or a spreadsheet. And you can **drag files from the file explorer into the editor**: images embed (`![[…]]`), other files are copied in and linked (`[[…]]`). Where these files land is a setting: **Settings → Your vault → Notes & filing → Attachments folder** (default `Attachments`, with a folder browser). Leave it empty to keep them beside the note, the way Plainva did before this setting existed. The folder travels with the settings sync, so both your computer and your phone file attachments in the same place.
+- **Inserting**: slash commands **Internal image** (search & embed from the vault) or **Image (web)** (by URL). Also: simply **paste** a file from the clipboard (Ctrl+V) — an image just as much as a PDF or a spreadsheet. And you can **drag files from the file explorer into the editor**: images embed (`![[…]]`), other files are copied in and linked (`[[…]]`). Where these files land is a setting: **Settings → Your vault → Notes & filing → Attachments folder** (default `Attachments`, with a folder browser). Leave it empty to keep them beside the note, the way Alviss did before this setting existed. The folder travels with the settings sync, so both your computer and your phone file attachments in the same place.
 - **Attach file…**: the slash command **Attach file…** and the same entry in the note's **⋮** menu open your system's file dialog; on the phone it is in the **＋** sheet as **File from device…**. The file is copied into the attachments folder — images embed (`![[…]]`), everything else is linked (`[[…]]`).
-- **Sound plays**: an embedded audio file (`.m4a`, `.mp3`, `.wav`, `.ogg`, `.opus`, `.webm`, `.flac`, `.aac`) shows a player instead of its name — in the editor, in reading mode, on pinboard cards and in journal lines. Attached audio is therefore embedded like a picture (`![[…]]`) rather than just linked. Plainva plays no video; an `.mp4` stays a link.
+- **Sound plays**: an embedded audio file (`.m4a`, `.mp3`, `.wav`, `.ogg`, `.opus`, `.webm`, `.flac`, `.aac`) shows a player instead of its name — in the editor, in reading mode, on pinboard cards and in journal lines. Attached audio is therefore embedded like a picture (`![[…]]`) rather than just linked. Alviss plays no video; an `.mp4` stays a link.
 - **Embeds inside HTML** — an embed between HTML tags (`<p align="center">`, `<details>`) stays text in the editor as in reading mode and in Obsidian, which renders no Markdown inside HTML. Leave a blank line inside the element and the picture shows.
-- **Linking**: type `[[` and Plainva suggests notes first, with your vault's files below them under **Attachments**.
+- **Linking**: type `[[` and Alviss suggests notes first, with your vault's files below them under **Attachments**.
 - **Viewing**: image files (PNG, JPG, GIF, WebP, SVG, BMP, AVIF) open in the built-in image viewer with **Zoom in**/**Zoom out**, **Fit** and **Actual size (1:1)**.
 - **Editing**: the **Edit** button opens the image editor with **Crop**, rotate/flip, **Resize**, drawing tools (**Pen**, **Arrow**, **Rectangle**, **Text**) plus **Undo**/**Redo**. Save in place or **Save as copy…**. Editable formats are PNG, JPG and WebP; other formats open view-only.
-- **Text files** open inside Plainva: `.txt`, `.csv`, `.json`, `.yaml`, source code and the like. If your vault needs more, add the extensions under **Settings → Your vault → Notes & filing → More text files** — the list can only add, never take away. If the start of a file shows it is not text after all, Plainva does not display it and offers the default program instead: showing and saving it would damage the file. So does a file — a note included — that is written in another encoding than UTF-8, such as Windows-1252: Plainva shows **This file is not text** and writes nothing over it. A file opened this way keeps its line endings and its BOM when saved, as a note does — it is yours, not Plainva's. The one exception is a file with old Mac line endings (a carriage return on its own): Plainva saves it with LF the first time it is changed, and tells you so. While you edit, Plainva colours the text by its file extension — the same highlighting a fenced code block inside a note gets. The note tools stay off: no live preview, no properties header, no `[[links]]`, no "/" menu. Find and replace stays, because that is a text feature and not a note feature. On the phone, **More text files** sits in the same place.
+- **Text files** open inside Alviss: `.txt`, `.csv`, `.json`, `.yaml`, source code and the like. If your vault needs more, add the extensions under **Settings → Your vault → Notes & filing → More text files** — the list can only add, never take away. If the start of a file shows it is not text after all, Alviss does not display it and offers the default program instead: showing and saving it would damage the file. So does a file — a note included — that is written in another encoding than UTF-8, such as Windows-1252: Alviss shows **This file is not text** and writes nothing over it. A file opened this way keeps its line endings and its BOM when saved, as a note does — it is yours, not Alviss's. The one exception is a file with old Mac line endings (a carriage return on its own): Alviss saves it with LF the first time it is changed, and tells you so. While you edit, Alviss colours the text by its file extension — the same highlighting a fenced code block inside a note gets. The note tools stay off: no live preview, no properties header, no `[[links]]`, no "/" menu. Find and replace stays, because that is a text feature and not a note feature. On the phone, **More text files** sits in the same place.
 - Other attachments open in the system's default program on a single click — in the file tree just as via a `[[link]]`, a bookmark or search.
 
 ## What about Obsidian?
@@ -207,7 +207,7 @@ Everything stays standard Markdown with standard frontmatter. Obsidian opens the
 
 When a selection spans multiple lines, **bold**, *italic*, strikethrough, highlight, and inline code are applied separately to every non-empty line. List, quote, heading, and task prefixes stay outside the inline markers. Links remain single-line because a multiline link label is not portable Markdown.
 
-An ATX heading and a GFM task are alternative block types, so Plainva does not write an invalid hybrid. Inline formatting works in both; use `- [ ] **Important task**` for an emphasized task title.
+An ATX heading and a GFM task are alternative block types, so Alviss does not write an invalid hybrid. Inline formatting works in both; use `- [ ] **Important task**` for an emphasized task title.
 
 ## Embed sections and blocks
 

@@ -2,7 +2,7 @@
 
 Ultimo aggiornamento: 2026-11-04
 
-Plainva importa note da altre app in un nuovo vault o in una sottocartella con un nome nuovo del vault aperto. Il resto rimane invariato; puoi poi spostare o eliminare la cartella importata.
+Alviss importa note da altre app in un nuovo vault o in una sottocartella con un nome nuovo del vault aperto. Il resto rimane invariato; puoi poi spostare o eliminare la cartella importata.
 
 **L'importazione funziona su entrambi i dispositivi, con le stesse sorgenti.** Sul desktop ci si arriva dalla schermata di benvenuto, dalla palette dei comandi e dal menu contestuale di una cartella; sul telefono la trovi in **Impostazioni → Manutenzione → Importa da un'altra app**. Anche le sorgenti che richiedono l'accesso a un servizio — Notion tramite la sua API — sono disponibili lì. Anche la palette dei comandi del telefono (`>` nel campo di ricerca) porta lì.
 
@@ -16,13 +16,13 @@ Tre modi per iniziare:
 
 Il primo passaggio chiede la tua esportazione — **Scegli file...** oppure **Scegli cartella...**, a seconda di ciò che hai. La procedura guidata indica poi l'app che ha riconosciuto e tu decidi dove scrive l'importazione. Segue un'anteprima con i numeri dell'esecuzione, i limiti di questa importazione e le opzioni per l'origine. Nulla viene scritto finché non premi **Avvia importazione**.
 
-**Non devi sapere quale voce corrisponde alla tua esportazione.** Scegli i file, e Plainva riconosce l'origine — un'esportazione Notion dagli ID lunghi nei suoi percorsi, un grafo Logseq dalle sue cartelle `journals/` e `pages/`, un'esportazione Keep o Simplenote dal contenuto del JSON. La procedura guidata indica cosa ha riconosciuto; se ha sbagliato, modificalo nell'elenco sopra e la tua scelta resterà valida.
+**Non devi sapere quale voce corrisponde alla tua esportazione.** Scegli i file, e Alviss riconosce l'origine — un'esportazione Notion dagli ID lunghi nei suoi percorsi, un grafo Logseq dalle sue cartelle `journals/` e `pages/`, un'esportazione Keep o Simplenote dal contenuto del JSON. La procedura guidata indica cosa ha riconosciuto; se ha sbagliato, modificalo nell'elenco sopra e la tua scelta resterà valida.
 
 ## Dove scrive l'importazione
 
 Esattamente uno dei due per ogni importazione — mai entrambi:
 
-- **Nuovo vault**: scegli una cartella vuota, Plainva vi crea un vault nuovo e importa lì. Nulla di ciò che hai già può essere toccato, e annullare l'intera importazione significa eliminare quella cartella. È la scelta giusta se stai provando Plainva. Sul telefono un vault non è una cartella che scegli ma un'area dell'app: gli dai soltanto un nome. Annullare l'importazione significa allora rimuovere quel vault in **Altro → Vault**.
+- **Nuovo vault**: scegli una cartella vuota, Alviss vi crea un vault nuovo e importa lì. Nulla di ciò che hai già può essere toccato, e annullare l'intera importazione significa eliminare quella cartella. È la scelta giusta se stai provando Alviss. Sul telefono un vault non è una cartella che scegli ma un'area dell'app: gli dai soltanto un nome. Annullare l'importazione significa allora rimuovere quel vault in **Altro → Vault**.
 - **Sottocartella del vault aperto**: tutto finisce in un'unica sottocartella appena creata, che tu nomini. Il resto del tuo vault resta intatto.
 
 La riga di destinazione sotto la scelta indica sempre la cartella esatta, così dove finiranno le cose non è mai una supposizione.
@@ -79,7 +79,7 @@ Un'area di lavoro grande può richiedere tempo, perciò un'importazione può ess
 | **Cartella / ZIP HTML** | Una cartella, dei file o uno ZIP di pagine HTML | Le pagine come note Markdown, con i collegamenti fra loro riorientati |
 | **Cartella Markdown / ZIP** | Una cartella, dei file o uno ZIP | I file `.md` e la loro struttura di cartelle |
 
-**Obsidian** è presente anche nell'elenco, ma non avvia alcuna importazione — e non ne serve nessuna. Plainva lavora con gli stessi file Markdown: la voce lo spiega e ti offre **Apri vault**. Wiki-link, tag, frontmatter e file `.base` continuano a funzionare, e il tuo vault resta utilizzabile in Obsidian. Onestamente: non c'è un ecosistema di plugin, non c'è Canvas e non c'è Dataview — al loro posto hai i filtri in `.base`, e la sintassi dei plugin nelle tue note resta lì come testo semplice. L'eccezione è un blocco `tasks` di Obsidian: Plainva lo mostra come elenco di attività ([Query Tasks da Obsidian](Tasks.md#query-tasks-da-obsidian)).
+**Obsidian** è presente anche nell'elenco, ma non avvia alcuna importazione — e non ne serve nessuna. Alviss lavora con gli stessi file Markdown: la voce lo spiega e ti offre **Apri vault**. Wiki-link, tag, frontmatter e file `.base` continuano a funzionare, e il tuo vault resta utilizzabile in Obsidian. Onestamente: non c'è un ecosistema di plugin, non c'è Canvas e non c'è Dataview — al loro posto hai i filtri in `.base`, e la sintassi dei plugin nelle tue note resta lì come testo semplice. L'eccezione è un blocco `tasks` di Obsidian: Alviss lo mostra come elenco di attività ([Query Tasks da Obsidian](Tasks.md#query-tasks-da-obsidian)).
 
 ## Perché manca la mia app?
 
@@ -98,9 +98,9 @@ Notion è l'unica origine in cui i due percorsi differiscono molto.
 
 **Con un token di integrazione (consigliato).** Crea un token su `notion.so/my-integrations` — la procedura guidata indica i tre passaggi e ti apre la pagina. Poi apri ogni pagina di Notion che vuoi importare, scegli **"..."** in alto a destra → **Connessioni**, e aggiungi la tua integrazione — Notion espone solo le pagine che hai collegato esplicitamente.
 
-**Plainva non memorizza il token.** Viene usato per quella singola esecuzione e poi sparisce; non viene creato alcun account collegato. Per la prossima importazione dovrai incollarlo di nuovo.
+**Alviss non memorizza il token.** Viene usato per quella singola esecuzione e poi sparisce; non viene creato alcun account collegato. Per la prossima importazione dovrai incollarlo di nuovo.
 
-Tramite l'API, Plainva vede la struttura, non solo il testo:
+Tramite l'API, Alviss vede la struttura, non solo il testo:
 
 - La gerarchia delle pagine diventa una struttura di cartelle.
 - Ogni database diventa un file `.base` più una cartella con **una nota per riga**.
@@ -109,7 +109,7 @@ Tramite l'API, Plainva vede la struttura, non solo il testo:
 - Le viste Tabella, Bacheca, Calendario ed Elenco vengono generate dallo schema del database.
 - I database incorporati in una pagina diventano incorporamenti dal vivo `![[Database.base]]`.
 
-**Da un'esportazione ZIP.** Funziona offline e non richiede alcun token, ma l'esportazione di Notion non contiene lo schema del database né gli ID delle pagine. Le pagine e le loro cartelle vengono trasferite, e **i link tra le pagine importate continuano a funzionare** — Notion li scrive con un ID lungo in ogni segmento del percorso, e Plainva li indirizza alle note che ha effettivamente scritto. Il `.csv` accanto a ogni cartella di database viene letto per ciò che le pagine stesse non portano: le colonne, i loro tipi e i valori di ogni riga come frontmatter. Le righe per cui l'esportazione non ha una pagina vengono scritte come note. L'abbinamento avviene per titolo — la via API è quella con ID reali e resta la scelta migliore per uno spazio costruito sulle relazioni.
+**Da un'esportazione ZIP.** Funziona offline e non richiede alcun token, ma l'esportazione di Notion non contiene lo schema del database né gli ID delle pagine. Le pagine e le loro cartelle vengono trasferite, e **i link tra le pagine importate continuano a funzionare** — Notion li scrive con un ID lungo in ogni segmento del percorso, e Alviss li indirizza alle note che ha effettivamente scritto. Il `.csv` accanto a ogni cartella di database viene letto per ciò che le pagine stesse non portano: le colonne, i loro tipi e i valori di ogni riga come frontmatter. Le righe per cui l'esportazione non ha una pagina vengono scritte come note. L'abbinamento avviene per titolo — la via API è quella con ID reali e resta la scelta migliore per uno spazio costruito sulle relazioni.
 
 ## Cosa le importazioni non possono trasferire
 
@@ -118,18 +118,18 @@ Ogni importatore indica i propri limiti nell'anteprima e di nuovo nel rapporto. 
 - **Gli allegati vengono trasferiti.** Da uno ZIP o da una cartella mantengono la posizione che avevano nell'esportazione, così un link relativo a un'immagine dentro una nota continua a funzionare. Da Notion tramite l'API vengono scaricati durante l'importazione — Notion firma quei link e scadono nel giro di un'ora — e finiscono in una cartella `Attachments`; le immagini che una pagina richiama da altrove sul web restano link. Due eccezioni restano nella tua esportazione e vengono elencate una per una nel rapporto: gli allegati dentro un `.enex` di Evernote e le immagini di Google Keep.
 - **Alcune voci dell'archivio vengono saltate di proposito:** file molto grandi, collegamenti simbolici e voci con un percorso non sicuro. Appaiono con un motivo nell'anteprima, prima che tu avvii l'importazione.
 - **Le pagine Notion molto lunghe** vengono lette per intero, ma il contenuto annidato all'interno di toggle, colonne o sotto-elenchi non viene seguito.
-- **I file Logseq vengono copiati invariati** — le proprietà `key:: value` e i riferimenti ai blocchi non vengono convertiti in proprietà o link di Plainva.
+- **I file Logseq vengono copiati invariati** — le proprietà `key:: value` e i riferimenti ai blocchi non vengono convertiti in proprietà o link di Alviss.
 - **Le note eliminate restano eliminate.** Il cestino di Simplenote e di Google Keep viene saltato — hai deciso una volta di fare a meno di quelle note, e un'importazione non dovrebbe restituirtele di nascosto. Compaiono per nome nel rapporto, così vedi cosa è rimasto indietro.
 - **Le esportazioni ZIP di Notion** abbinano righe e pagine per titolo (vedi sopra) e non trasferiscono relazioni tra database.
 - **Le tabelle e i blocchi di codice HTML perdono la loro struttura.** La conversione legge titoli, elenchi, formattazione, collegamenti e immagini; una tabella diventa il testo delle sue celle. Ogni pagina interessata è indicata nel rapporto.
 
 ## Anche le date vengono trasferite
 
-Una raccolta cresciuta nel corso degli anni perde il proprio riferimento temporale se, dopo un'importazione, tutto risulta datato a oggi. Per questo Plainva trasferisce le date dell'origine:
+Una raccolta cresciuta nel corso degli anni perde il proprio riferimento temporale se, dopo un'importazione, tutto risulta datato a oggi. Per questo Alviss trasferisce le date dell'origine:
 
 - Compaiono come `created` e `updated` nel frontmatter della nota importata, che è anche il punto in cui l'asse temporale del grafo le legge.
 - Anche il file stesso riceve la data di modifica dell'origine, così l'ordinamento per data e **Aperti di recente** risultano corretti. La data di creazione del file può essere impostata solo su Windows; sugli altri sistemi è il frontmatter a farsene carico.
-- Se un'origine non fornisce alcuna data, Plainva usa la data del file di esportazione. Non ne inventa mai una: se non c'è alcuna indicazione, il campo resta vuoto.
+- Se un'origine non fornisce alcuna data, Alviss usa la data del file di esportazione. Non ne inventa mai una: se non c'è alcuna indicazione, il campo resta vuoto.
 
 ## Un errore non interrompe l'intera importazione
 
@@ -140,7 +140,7 @@ Se una singola nota non può essere scritta, l'importazione prosegue e il rappor
 L'importazione scrive nel vault che hai aperto, quindi è pensata per essere non distruttiva:
 
 - Se il nome di una nota è già in uso, la nota importata viene **numerata** (`Meeting (2).md`) invece di sostituire quella esistente. Questo vale anche quando due note di origine condividono un nome.
-- Le note importate ricevono il consueto frontmatter OKF — `type` più un timbro `generated` con l'attore di importazione di Plainva (`plainva-import/<version>`) e l'istante dell'esecuzione, e `sources` dove l'origine è nota — così si comportano come qualsiasi altra nota di Plainva nei filtri e nelle viste `.base`. Il timbro ti permette di trovare tutto ciò che è arrivato insieme.
+- Le note importate ricevono il consueto frontmatter OKF — `type` più un timbro `generated` con l'attore di importazione di Alviss (`plainva-import/<version>`) e l'istante dell'esecuzione, e `sources` dove l'origine è nota — così si comportano come qualsiasi altra nota di Alviss nei filtri e nelle viste `.base`. Il timbro ti permette di trovare tutto ciò che è arrivato insieme.
 - Nulla al di fuori della sottocartella di destinazione viene modificato.
 
 Se preferisci mantenere l'importazione completamente separata, crea prima un nuovo vault (**Nuovo vault** sulla schermata di benvenuto) e importa lì.
@@ -183,4 +183,4 @@ JEX richiede una nuova destinazione. Archivi invalidi, percorsi in conflitto, li
 
 ## Quando un file HTML non può essere convertito
 
-Se l’HTML supera la profondità di annidamento supportata, il rapporto di importazione indica il file come saltato. Plainva non salva una nota troncata al suo posto. Gli altri file validi possono continuare a essere importati. Prova un’esportazione HTML più semplice o esporta la nota interessata come Markdown; conserva l’esportazione originale finché non hai controllato il risultato.
+Se l’HTML supera la profondità di annidamento supportata, il rapporto di importazione indica il file come saltato. Alviss non salva una nota troncata al suo posto. Gli altri file validi possono continuare a essere importati. Prova un’esportazione HTML più semplice o esporta la nota interessata come Markdown; conserva l’esportazione originale finché non hai controllato il risultato.

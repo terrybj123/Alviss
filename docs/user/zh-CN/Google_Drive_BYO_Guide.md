@@ -2,7 +2,7 @@
 
 更新日期：2026-10-26
 
-Plainva通过**此设备的登录方式**登录Google。如果你的版本为Google包含了**标准登录**，你无需输入任何内容，也不需要这一页。否则——或者你更愿意用自己的项目——就使用你自己的Google API凭据：这种**自备凭据（BYO）** 方式为同步你的私人文件提供了一种安全的途径。
+Alviss通过**此设备的登录方式**登录Google。如果你的版本为Google包含了**标准登录**，你无需输入任何内容，也不需要这一页。否则——或者你更愿意用自己的项目——就使用你自己的Google API凭据：这种**自备凭据（BYO）** 方式为同步你的私人文件提供了一种安全的途径。
 
 你实际上是在Google那边为自己搭建了一个只属于你自己、也只有你能访问的小型"开发者项目"。
 
@@ -12,7 +12,7 @@ Plainva通过**此设备的登录方式**登录Google。如果你的版本为Goo
 1. 前往[Google Cloud Console](https://console.cloud.google.com/)。
 2. 使用你的Google账户登录。
 3. 在左上角（Google Cloud标志旁边），打开项目下拉菜单，选择**新建项目**。
-4. 输入一个名称（例如"Plainva Sync"），然后点击**创建**。
+4. 输入一个名称（例如"Alviss Sync"），然后点击**创建**。
 
 ### 2. 启用Google Drive API
 1. 在顶部的下拉菜单中选择你刚创建的项目。
@@ -20,44 +20,44 @@ Plainva通过**此设备的登录方式**登录Google。如果你的版本为Goo
 3. 点击**启用**。
 
 ### 3. 配置OAuth同意屏幕
-为了让Plainva使用你的凭据，需要设置一个同意屏幕（"OAuth Consent Screen"）。由于只有你自己使用这个应用，它可以一直保持在"测试"模式。
+为了让Alviss使用你的凭据，需要设置一个同意屏幕（"OAuth Consent Screen"）。由于只有你自己使用这个应用，它可以一直保持在"测试"模式。
 
 1. 在左侧菜单的**APIs & Services**下，打开**OAuth consent screen**。
 2. 在"User Type"下选择**External**（外部，除非你使用Google Workspace），然后点击**创建**。
 3. **应用信息：**
-   - 应用名称：例如"Plainva"
+   - 应用名称：例如"Alviss"
    - 用户支持电子邮件：你自己的邮箱
    - 开发者联系信息：你自己的邮箱
    - 点击**保存并继续**。
 4. **权限范围（Scopes）：**
    - 点击**添加或移除范围**。
    - 搜索`.../auth/drive`（Google Drive API，完全访问权限）并勾选。
-   - *背景说明：需要完全访问权限，这样Plainva才能同步你通过Google Drive网页界面直接放入同步文件夹的文件。*
+   - *背景说明：需要完全访问权限，这样Alviss才能同步你通过Google Drive网页界面直接放入同步文件夹的文件。*
    - 点击更新，然后**保存并继续**。
 5. **测试用户：**
    - 点击**添加用户**。
-   - 准确输入你之后将在Plainva中用于同步的那个Google邮箱地址。
+   - 准确输入你之后将在Alviss中用于同步的那个Google邮箱地址。
    - 点击**保存并继续**，然后返回控制台首页。
 
-*重要提示：你**不需要**发布这个应用——保持在"测试中"状态，它就能完全正常工作。但请注意：在这种模式下，Google 会让登录在**7天**后过期，而且是永久性的——因为该模式下刷新令牌也会一并失效，Plainva 在后台便无法为你续期。Plainva 会用明确的文字告诉你（"登录已过期"），在账户详情中点击**重新登录**，就能一次性恢复该账户的所有服务。*
+*重要提示：你**不需要**发布这个应用——保持在"测试中"状态，它就能完全正常工作。但请注意：在这种模式下，Google 会让登录在**7天**后过期，而且是永久性的——因为该模式下刷新令牌也会一并失效，Alviss 在后台便无法为你续期。Alviss 会用明确的文字告诉你（"登录已过期"），在账户详情中点击**重新登录**，就能一次性恢复该账户的所有服务。*
 
 **已发布**状态会取消测试模式的固定有效期，但不保证永久登录：Google仍可能使访问权限过期或撤销访问权限。发布和验证要求取决于用途及所请求的权限。[Google：刷新令牌过期](https://developers.google.com/identity/protocols/oauth2#expiration)。
 
 ### 4. 创建凭据（客户端ID和密钥）
 1. 在左侧菜单中打开**凭据**。
 2. 点击顶部的**创建凭据**，选择**OAuth客户端ID**。
-3. 在电脑上使用Plainva时，"应用类型"选择**桌面应用**。手机（Android和iPhone）则改为创建**iOS**类型的客户端——见本页末尾。
-4. 名称：例如"Plainva Desktop Client"。
+3. 在电脑上使用Alviss时，"应用类型"选择**桌面应用**。手机（Android和iPhone）则改为创建**iOS**类型的客户端——见本页末尾。
+4. 名称：例如"Alviss Desktop Client"。
 5. 点击**创建**。
 6. 弹出窗口会显示你的**客户端ID**和**客户端密钥**。
 
-### 5. 在Plainva中填入
+### 5. 在Alviss中填入
 1. 打开**设置 → 仓库 → 云账户**。
 2. 新账户：选择**连接账户…** → **Google**图块并勾选服务；已有的账户：打开它，在**此设备的登录方式**处选择**更改**。
 3. 选择**自有客户端 ID**，粘贴复制好的**客户端ID**和**客户端密钥**——手机上只填iOS客户端的**客户端ID**，它没有密钥。然后点击**保存**。
 4. 点击**使用 Google 登录…**（已有的账户：**重新登录**）。
 5. 会打开一个Google浏览器窗口。使用你在"测试用户"中添加的账户登录。
-6. Google可能会提示该应用未经验证。点击**高级**，然后点击**继续前往Plainva（不安全）**。
+6. Google可能会提示该应用未经验证。点击**高级**，然后点击**继续前往Alviss（不安全）**。
 7. 确认所请求的权限——一次同意涵盖你勾选的每项服务。
 8. 自有客户端 ID 只适用于此设备；其他设备保留各自的设置。请在每台要使用你的项目的设备上填写它。
 
@@ -66,7 +66,7 @@ Plainva通过**此设备的登录方式**登录Google。如果你的版本为Goo
 <!-- accounts-tasks-2026-09-11 -->
 ## Google OAuth — Desktop / Android / iOS
 
-上面的桌面端步骤需要桌面客户端的客户端 ID 及其对应的密钥。在手机上，无论 Android 还是 iOS，Plainva 都在浏览器中登录 Google：请在你的 Google 项目中创建一个 **iOS** 类型的 OAuth 客户端(Android 也是如此)，软件包 ID 填写 `com.plainva.app`。Plainva 通过 `com.plainva.app:/oauth2redirect` 返回；没有客户端密钥。请在手机上把客户端 ID 填入**此设备的登录方式** → **自有客户端 ID**。不要创建 Android 类型的客户端：Google 在全球只允许一个项目登记 Play 版本的软件包名称和证书指纹，其他项目一律被拒绝(“Android 软件包名称和指纹已被使用”)。为 Plainva 0.8.3 或 0.8.4 配置的 Android 客户端无法用于新的登录；已登录的账号继续可用。桌面客户端不能替代移动端注册。使用日历时，还需启用 Google Calendar API 和 Google Tasks API。如果手机上 Google 显示“错误 400：redirect_uri_mismatch”，说明该客户端 ID 的类型是“桌面应用”：请按此处说明创建类型为 **iOS** 的客户端，并改为填写它的客户端 ID。在客户端 ID 输入框下方，**打开 Google 指南** 会跳转到本节。
+上面的桌面端步骤需要桌面客户端的客户端 ID 及其对应的密钥。在手机上，无论 Android 还是 iOS，Alviss 都在浏览器中登录 Google：请在你的 Google 项目中创建一个 **iOS** 类型的 OAuth 客户端(Android 也是如此)，软件包 ID 填写 `com.plainva.app`。Alviss 通过 `com.plainva.app:/oauth2redirect` 返回；没有客户端密钥。请在手机上把客户端 ID 填入**此设备的登录方式** → **自有客户端 ID**。不要创建 Android 类型的客户端：Google 在全球只允许一个项目登记 Play 版本的软件包名称和证书指纹，其他项目一律被拒绝(“Android 软件包名称和指纹已被使用”)。为 Alviss 0.8.3 或 0.8.4 配置的 Android 客户端无法用于新的登录；已登录的账号继续可用。桌面客户端不能替代移动端注册。使用日历时，还需启用 Google Calendar API 和 Google Tasks API。如果手机上 Google 显示“错误 400：redirect_uri_mismatch”，说明该客户端 ID 的类型是“桌面应用”：请按此处说明创建类型为 **iOS** 的客户端，并改为填写它的客户端 ID。在客户端 ID 输入框下方，**打开 Google 指南** 会跳转到本节。
 
 [Google: iOS / Desktop](https://developers.google.com/identity/protocols/oauth2/native-app) · [Google: Android](https://developer.android.com/identity/authorization)
 

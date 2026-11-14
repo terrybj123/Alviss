@@ -2,11 +2,11 @@
 
 Laatst bijgewerkt: 2026-10-30
 
-Plainva beschermt je werk op twee niveaus: **bestandsversies** (automatische snapshots van elk afzonderlijk bestand terwijl je bewerkt en verwijdert) en **vault-back-ups** (regelmatige ZIP-archieven van de hele vault, opgeslagen buiten de vault-map). Beide draaien op de achtergrond zonder enige instelling en zijn af te stemmen in de instellingen onder **Backup & versiegeschiedenis**.
+Alviss beschermt je werk op twee niveaus: **bestandsversies** (automatische snapshots van elk afzonderlijk bestand terwijl je bewerkt en verwijdert) en **vault-back-ups** (regelmatige ZIP-archieven van de hele vault, opgeslagen buiten de vault-map). Beide draaien op de achtergrond zonder enige instelling en zijn af te stemmen in de instellingen onder **Backup & versiegeschiedenis**.
 
 ## Bestandsversies (snapshots)
 
-Vóór elke opslagactie bewaart Plainva een snapshot van de vorige staat — als gewone tekstkopie onder `.plainva/backups/` binnen de vault (deze map is verborgen voor de bestandsboom, het zoeken en de sync). Om te voorkomen dat er honderden kopieën ontstaan terwijl je typt, geldt een **Snapshot-interval** (standaard: hoogstens één nieuwe versie per 2 minuten). **Verwijderen maakt altijd een snapshot**, ongeacht het interval.
+Vóór elke opslagactie bewaart Alviss een snapshot van de vorige staat — als gewone tekstkopie onder `.plainva/backups/` binnen de vault (deze map is verborgen voor de bestandsboom, het zoeken en de sync). Om te voorkomen dat er honderden kopieën ontstaan terwijl je typt, geldt een **Snapshot-interval** (standaard: hoogstens één nieuwe versie per 2 minuten). **Verwijderen maakt altijd een snapshot**, ongeacht het interval.
 
 Bewaartermijn (per vault instelbaar):
 
@@ -17,7 +17,7 @@ Bewaartermijn (per vault instelbaar):
 
 Wanneer je een bestand hernoemt of verplaatst, verhuist de versiegeschiedenis mee.
 
-**Waarom grote bestanden anders worden behandeld:** een bijlage van 90 MB die je telkens weer bewerkt, zou de vault anders vullen met honderd kopieën — negen gigabyte voor één bestand. Boven de grens bewaart Plainva de nieuwste versie in plaats van de volledige geschiedenis, en zegt dat één keer per vault. Notities en gewone afbeeldingen liggen daar ver onder en blijven ongemoeid. **Een verwijdering wordt altijd volledig bewaard**, hoe groot het bestand ook is: de nieuwe versie van een opgeslagen bestand staat nog op schijf, een verwijderd bestand niet — daar is de snapshot de enige weg terug.
+**Waarom grote bestanden anders worden behandeld:** een bijlage van 90 MB die je telkens weer bewerkt, zou de vault anders vullen met honderd kopieën — negen gigabyte voor één bestand. Boven de grens bewaart Alviss de nieuwste versie in plaats van de volledige geschiedenis, en zegt dat één keer per vault. Notities en gewone afbeeldingen liggen daar ver onder en blijven ongemoeid. **Een verwijdering wordt altijd volledig bewaard**, hoe groot het bestand ook is: de nieuwe versie van een opgeslagen bestand staat nog op schijf, een verwijderd bestand niet — daar is de snapshot de enige weg terug.
 
 ## Versies bekijken en herstellen
 
@@ -31,22 +31,22 @@ Ook afbeeldingen hebben versies (met voorbeeld); andere binaire bestanden kunnen
 
 ## Verwijderde bestanden herstellen
 
-Omdat elke verwijdering eerst een snapshot van het bestand maakt, kan Plainva verwijderde bestanden terughalen: rechtsklik op de vaultnaam bovenaan de bestandsboom → **Verwijderde bestanden herstellen…** (ook bereikbaar onder **Instellingen → Vault → Backup & versiegeschiedenis → Versiegeschiedenis**). De lijst toont alle bestanden waarvan de snapshots nog bestaan terwijl het origineel weg is — **Herstellen** maakt de nieuwste staat opnieuw aan op de oorspronkelijke locatie (mappen worden zo nodig opnieuw aangemaakt), **Versies…** opent de volledige geschiedenis van het verwijderde bestand.
+Omdat elke verwijdering eerst een snapshot van het bestand maakt, kan Alviss verwijderde bestanden terughalen: rechtsklik op de vaultnaam bovenaan de bestandsboom → **Verwijderde bestanden herstellen…** (ook bereikbaar onder **Instellingen → Vault → Backup & versiegeschiedenis → Versiegeschiedenis**). De lijst toont alle bestanden waarvan de snapshots nog bestaan terwijl het origineel weg is — **Herstellen** maakt de nieuwste staat opnieuw aan op de oorspronkelijke locatie (mappen worden zo nodig opnieuw aangemaakt), **Versies…** opent de volledige geschiedenis van het verwijderde bestand.
 
-Let op: het verwijderen van een **hele map** verplaatst deze naar de prullenbak van het besturingssysteem — in dat geval is de systeemprullenbak de eerste weg terug; in Plainva vind je dan mogelijk alleen oudere snapshots van de bevatte bestanden.
+Let op: het verwijderen van een **hele map** verplaatst deze naar de prullenbak van het besturingssysteem — in dat geval is de systeemprullenbak de eerste weg terug; in Alviss vind je dan mogelijk alleen oudere snapshots van de bevatte bestanden.
 
 ## Automatische vault-back-ups (ZIP)
 
-Daarnaast maakt Plainva een back-up van de hele vault als ZIP-bestand — standaard **dagelijks** op de achtergrond (bij het openen van de vault, als de laatste back-up ouder is dan 24 uur). Dit beschermt je zelfs als de vault-map zelf verloren gaat of beschadigd raakt, omdat de ZIP's **buiten** de vault staan:
+Daarnaast maakt Alviss een back-up van de hele vault als ZIP-bestand — standaard **dagelijks** op de achtergrond (bij het openen van de vault, als de laatste back-up ouder is dan 24 uur). Dit beschermt je zelfs als de vault-map zelf verloren gaat of beschadigd raakt, omdat de ZIP's **buiten** de vault staan:
 
 - De standaardbestemming is de app-datamap (te zien onder **Doelmap** in de instellingen; **Map openen** brengt je er direct heen).
-- Via **Map kiezen…** kun je in plaats daarvan een externe schijf of een NAS kiezen; **Standaard** schakelt terug naar de app-datamap. Is de bestemming momenteel onbereikbaar (NAS uit), dan meldt de statusbalk dit rustig en probeert Plainva het later opnieuw.
+- Via **Map kiezen…** kun je in plaats daarvan een externe schijf of een NAS kiezen; **Standaard** schakelt terug naar de app-datamap. Is de bestemming momenteel onbereikbaar (NAS uit), dan meldt de statusbalk dit rustig en probeert Alviss het later opnieuw.
 - **Te bewaren back-ups** (standaard: 7) begrenst het aantal; oudere ZIP's van dezelfde vault worden automatisch verwijderd. Bestanden van derden in de doelmap worden nooit aangeraakt.
 - **Nu back-uppen** start op elk moment handmatig een back-up; de statusbalk toont het verloop en het resultaat.
 
 De ZIP-bestanden heten `VaultName_2026-07-05_14-30-00.zip` en bevatten alle notities, bijlagen en je `.obsidian`-configuratie — ze bevatten **niet** de interne `.plainva`-map (de zoekindex wordt bij de volgende keer openen opnieuw opgebouwd; bestandsversies maken bewust geen deel uit van de ZIP).
 
-**Herstellen vanuit een ZIP:** de ZIP is een heel gewoon archief. Pak hem uit op een willekeurige locatie en open de uitgepakte map in Plainva als vault — klaar.
+**Herstellen vanuit een ZIP:** de ZIP is een heel gewoon archief. Pak hem uit op een willekeurige locatie en open de uitgepakte map in Alviss als vault — klaar.
 
 ## Instellingen in één oogopslag
 
@@ -63,8 +63,8 @@ Instellingen → **Vault** → **Backup & versiegeschiedenis**:
 
 ## Goed om te weten
 
-- Bestandsversies zijn gewone kopieën onder `.plainva/backups/` — in geval van nood kun je ze ook zonder Plainva openen in elke bestandsbeheerder.
-- Plainva's eigen sync draagt `.plainva` nooit over. Synchroniseer je de vault-map met een externe client (bijv. de Nextcloud-app), dan gaan de snapshots wel mee — dat kost wat opslagruimte, maar is verder onschadelijk.
+- Bestandsversies zijn gewone kopieën onder `.plainva/backups/` — in geval van nood kun je ze ook zonder Alviss openen in elke bestandsbeheerder.
+- Alviss's eigen sync draagt `.plainva` nooit over. Synchroniseer je de vault-map met een externe client (bijv. de Nextcloud-app), dan gaan de snapshots wel mee — dat kost wat opslagruimte, maar is verder onschadelijk.
 - Sync-conflicten zijn bovendien beschermd via `.CONFLICT`-bestanden (zie de [FAQ](FAQ.md)); de versiegeschiedenis vult dit aan met de tijdlijn van elk bestand.
 
 Op de telefoon staat **ZIP-backups** als eerste groep op de pagina **Backup & versiegeschiedenis**; daaronder volgt de **Versiegeschiedenis** met **Verwijderde bestanden herstellen** aan het einde.
@@ -73,7 +73,7 @@ Op mobiel stopt een mislukte notitieopslag het wisselen, opnieuw laden of verwij
 
 Een ZIP-back-up telt pas als geslaagd wanneer alle geselecteerde bestanden leesbaar waren en het volledige archief is opgeslagen. Een mislukte poging verwijdert geen eerdere archieven en verandert het tijdstip van de laatste geslaagde back-up niet. Op mobiel noemt een automatische fout de vault; **Nu back-uppen** onder **Backup & versiegeschiedenis** → **ZIP-backups** start een nieuwe poging. Verborgen gebruikersconfiguratie zoals `.obsidian` wordt op beide platforms meegenomen. De mappen `.plainva`, `.git`, `.trash` en `node_modules` blijven op elk niveau uitgesloten. Bij meerdere archieven in dezelfde seconde krijgt de nieuwe bestandsnaam een achtervoegsel zoals `_001`.
 
-Een opslag wordt pas als voltooid gemeld nadat het schrijven is bevestigd. Tekst die je tijdens het opslaan invoert, blijft onopgeslagen totdat ook die versie is geschreven. Desktopconcepten horen bij hun eigen editorsessie: het afronden van een oude sessie verwijdert geen concept van een pas geopende editor. Als er tegelijk externe wijzigingen binnenkomen, voegt Plainva verenigbare wijzigingen samen; conflicterende tekst blijft beschikbaar als concept en conflictkopie.
+Een opslag wordt pas als voltooid gemeld nadat het schrijven is bevestigd. Tekst die je tijdens het opslaan invoert, blijft onopgeslagen totdat ook die versie is geschreven. Desktopconcepten horen bij hun eigen editorsessie: het afronden van een oude sessie verwijdert geen concept van een pas geopende editor. Als er tegelijk externe wijzigingen binnenkomen, voegt Alviss verenigbare wijzigingen samen; conflicterende tekst blijft beschikbaar als concept en conflictkopie.
 
 <!-- accounts-tasks-2026-09-11 -->
 ## Duidelijk kiezen bij bestandsvergelijking
@@ -95,4 +95,4 @@ Regel voor regel samenvoegen is een hulpmiddel voor de computer; hier neem je é
 
 ## De geselecteerde kopie vergelijken
 
-De geselecteerde versie toont toegevoegde en verwijderde regels ten opzichte van de huidige notitie, ook als de diff verborgen is. **Openen in nieuw venster** houdt op de desktop precies die kopie geselecteerd. Als deze verdwijnt, meldt Plainva dat. Grote bestanden hebben mogelijk geen regelaantallen; binaire bestanden hebben geen tekstvergelijking. Mobiel toont dezelfde aantallen in het volledige vergelijkingsscherm.
+De geselecteerde versie toont toegevoegde en verwijderde regels ten opzichte van de huidige notitie, ook als de diff verborgen is. **Openen in nieuw venster** houdt op de desktop precies die kopie geselecteerd. Als deze verdwijnt, meldt Alviss dat. Grote bestanden hebben mogelijk geen regelaantallen; binaire bestanden hebben geen tekstvergelijking. Mobiel toont dezelfde aantallen in het volledige vergelijkingsscherm.

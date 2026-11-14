@@ -1,8 +1,8 @@
-# Plainva User Guide
+# Alviss User Guide
 
 Last reviewed: 2026-09-20
 
-Plainva is a Markdown vault editor: your notes are ordinary Markdown files in a folder (a "vault") on your computer — no database silo, no forced cloud account. This guide explains how to work with Plainva and how the file formats work.
+Alviss is a Markdown vault editor: your notes are ordinary Markdown files in a folder (a "vault") on your computer — no database silo, no forced cloud account. This guide explains how to work with Alviss and how the file formats work.
 
 ## Contents
 
@@ -11,13 +11,13 @@ Plainva is a Markdown vault editor: your notes are ordinary Markdown files in a 
 | [Getting Started](Getting_Started.md) | Opening or creating a vault, the interface, editor modes, tabs and split view |
 | [Notes & Markdown](Notes_and_Markdown.md) | How Markdown files work: writing, formatting, properties (frontmatter), icons, links, templates, images |
 | [Databases (.base)](Databases_Base.md) | Viewing notes as a database — views, filters, properties, relations, new entries (similar to Notion, but file-based) |
-| [Database Reference (.base)](Base_Reference.md) | Everything a `.base` file can contain and what Plainva does with it: keys, filters, view types, summaries, limits, differences to Obsidian |
+| [Database Reference (.base)](Base_Reference.md) | Everything a `.base` file can contain and what Alviss does with it: keys, filters, view types, summaries, limits, differences to Obsidian |
 | [Import from another app](Import.md) | Bringing notes over from Notion, Evernote, Google Keep, Simplenote, Logseq or a Markdown folder — and what each importer cannot carry over |
 | [OKF](OKF.md) | The Open Knowledge Format (0.2): `type`, provenance and review marks, the bundle version, index.md management and the optional vault conversion |
 | [File Format Reference](File_Format_Reference.md) | The exact on-disk format of every vault file — for tools, scripts or an AI editing notes and `.base` files directly |
-| [Automation & Scripts](Automation_and_Scripts.md) | Extending Plainva without plugins: how scripts, CLI tools and AI agents read and write a vault safely |
+| [Automation & Scripts](Automation_and_Scripts.md) | Extending Alviss without plugins: how scripts, CLI tools and AI agents read and write a vault safely |
 | [Backups & Version History](Backups_and_Versioning.md) | Automatic file versions, restoring (including deleted files) and daily ZIP backups of the vault |
-| [The mobile app](Mobile_App.md) | Plainva on Android and iOS: layout, editing, databases, sync and the safety net |
+| [The mobile app](Mobile_App.md) | Why there is no phone build yet |
 | [Sync Setup](Sync_Setup.md) | Step by step per provider: WebDAV/Nextcloud, Google Drive, OneDrive, Dropbox, S3 |
 | [Security & Sharing](Security_and_Sharing.md) | Personal encrypted workspace, recovery backup, migration and locking |
 | [Comments & Suggestions](Comments_and_Suggestions.md) | Comments, suggest mode, overview and notifications — in every vault, with or without encryption |
@@ -37,4 +37,4 @@ Plainva is a Markdown vault editor: your notes are ordinary Markdown files in a 
 
 - **Your files belong to you.** A vault is a plain folder of Markdown files. You can open, copy or back it up with any other program at any time.
 - **Plain Markdown is the canonical format.** Even extra features (properties, icons, databases) are stored in open, readable text formats.
-- **Obsidian-compatible.** Existing Obsidian vaults are never damaged or reformatted; Obsidian can open every file Plainva creates.
+- **Obsidian-compatible.** Existing Obsidian vaults are never damaged or reformatted; Obsidian can open every file Alviss creates.

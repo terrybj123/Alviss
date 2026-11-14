@@ -2,17 +2,17 @@
 
 Laatst bijgewerkt: 2026-10-22
 
-Plainva heeft geen pluginsysteem dat code van derden uitvoert. In plaats daarvan is de vault zelf de uitbreidingsinterface: je notities zijn gewone Markdown, databases zijn gewone YAML (`.base`), en de [OKF-conventies](OKF.md) geven elk bestand een voorspelbare structuur. Alles wat bestanden kan lezen en schrijven — een shellscript, een Python-programma, een CLI-tool, een geplande taak of een KI-agent — kan je vault uitbreiden, genereren of herstructureren zonder ook maar één Plainva-specifieke API.
+Alviss heeft geen pluginsysteem dat code van derden uitvoert. In plaats daarvan is de vault zelf de uitbreidingsinterface: je notities zijn gewone Markdown, databases zijn gewone YAML (`.base`), en de [OKF-conventies](OKF.md) geven elk bestand een voorspelbare structuur. Alles wat bestanden kan lezen en schrijven — een shellscript, een Python-programma, een CLI-tool, een geplande taak of een KI-agent — kan je vault uitbreiden, genereren of herstructureren zonder ook maar één Alviss-specifieke API.
 
 Deze pagina legt uit hoe je dat **veilig** doet. Het exacte bestandsformaat, tot op byte-niveau, is voor elk bestand apart gedocumenteerd in de [Bestandsformaat-referentie](File_Format_Reference.md); deze pagina is de praktische aanvulling: de regels, de werkwijze, en wat je een KI-assistent moet meegeven.
 
 ## Waarom bestanden in plaats van een plugin-sandbox
 
 - **Beveiliging.** Een systeem voor code-plugins voert het programma van iemand anders uit binnen je editor, met toegang tot je notities. Gewone bestanden vragen geen zulk vertrouwen: een script raakt alleen de map aan waar je het naartoe wijst, met de normale rechten van je besturingssysteem.
-- **Levensduur.** Het formaat overleeft de app. Een Markdown-bestand dat je vijf jaar geleden met een script hebt gegenereerd, opent vandaag nog gewoon — in Plainva, in Obsidian, in elke teksteditor. Er is geen plugin-API die kan verouderen.
+- **Levensduur.** Het formaat overleeft de app. Een Markdown-bestand dat je vijf jaar geleden met een script hebt gegenereerd, opent vandaag nog gewoon — in Alviss, in Obsidian, in elke teksteditor. Er is geen plugin-API die kan verouderen.
 - **Het formaat is het contract.** Omdat het formaat op schijf open en gedocumenteerd is, is de "API" stabiel en inspecteerbaar. Je kunt hem diffen, in Git versioneren en erover redeneren.
 
-Wil je iets wat Plainva niet standaard doet, dan wacht je niet op een plugin — je schrijft een klein script tegen de bestanden.
+Wil je iets wat Alviss niet standaard doet, dan wacht je niet op een plugin — je schrijft een klein script tegen de bestanden.
 
 ## Een vault veilig lezen
 
@@ -26,20 +26,20 @@ Lezen vraagt nooit om voorzichtigheid — tekstbestanden kunnen niet "beschadigd
 
 ## Een vault veilig schrijven
 
-Volg deze regels en Plainva (en Obsidian) accepteren je wijzigingen probleemloos. Plainva houdt de vaultmap in de gaten: een externe schrijfactie wordt automatisch opgemerkt en opnieuw geïndexeerd, meestal binnen een seconde.
+Volg deze regels en Alviss (en Obsidian) accepteren je wijzigingen probleemloos. Alviss houdt de vaultmap in de gaten: een externe schrijfactie wordt automatisch opgemerkt en opnieuw geïndexeerd, meestal binnen een seconde.
 
-1. **Schrijf UTF-8.** Geef een nieuw bestand LF-regeleinden en geen BOM — zo schrijft Plainva zelf. Een bestand dat al CRLF-regeleinden of een BOM heeft, mag die houden: Plainva leest beide en laat ze zoals ze zijn, ook wanneer de notitie wordt bewerkt of gesynchroniseerd. De uitzondering is een regeleinde dat alleen uit een wagenterugloop (CR) bestaat — wat oude Mac-bestanden hebben: Plainva leest zo'n bestand, maar slaat het met LF op zodra het dat bestand voor het eerst wijzigt. Wat het niet kan lezen, is een andere codering — UTF-16 of Windows-1252, die sommige Windows-tools standaard schrijven. Zo'n bestand opent Plainva niet: het toont **Dit bestand is geen tekst** en biedt het aan het programma van het systeem aan (**Openen in standaardapp**; op de telefoon **Delen**), en niets in Plainva schrijft er een tekst overheen — geen opslaan, geen eigenschap, geen link die een hernoeming herschrijft. De **Versiegeschiedenis** bewaart het byte voor byte, en herstellen of dupliceren kopieert de bytes. Om het in Plainva te bewerken, sla je het in het andere programma op als UTF-8. Slaat een ander programma een bestand op in een andere codering terwijl je er niet-opgeslagen wijzigingen in hebt, dan bewaart Plainva je wijzigingen ernaast als een `.CONFLICT`-bestand; de vergelijking biedt dan **Huidig bestand vervangen door conflictkopie**, **Beide bestanden behouden** en **Conflictkopie verwijderen**. Een sync brengt het toch ongeschonden over — byte voor byte, zoals een afbeelding: het wordt niet samengevoegd, en als twee apparaten het tegelijk hebben gewijzigd, blijft jouw versie bewaard als een `.CONFLICT`-bestand.
-2. **Schrijf atomair.** Schrijf naar een tijdelijk bestand in dezelfde map en hernoem dat vervolgens naar de doelnaam. Een half geschreven notitie (bijvoorbeeld na een crash) is erger dan helemaal geen wijziging. Plainva schrijft zelf elke notitie op deze manier.
+1. **Schrijf UTF-8.** Geef een nieuw bestand LF-regeleinden en geen BOM — zo schrijft Alviss zelf. Een bestand dat al CRLF-regeleinden of een BOM heeft, mag die houden: Alviss leest beide en laat ze zoals ze zijn, ook wanneer de notitie wordt bewerkt of gesynchroniseerd. De uitzondering is een regeleinde dat alleen uit een wagenterugloop (CR) bestaat — wat oude Mac-bestanden hebben: Alviss leest zo'n bestand, maar slaat het met LF op zodra het dat bestand voor het eerst wijzigt. Wat het niet kan lezen, is een andere codering — UTF-16 of Windows-1252, die sommige Windows-tools standaard schrijven. Zo'n bestand opent Alviss niet: het toont **Dit bestand is geen tekst** en biedt het aan het programma van het systeem aan (**Openen in standaardapp**; op de telefoon **Delen**), en niets in Alviss schrijft er een tekst overheen — geen opslaan, geen eigenschap, geen link die een hernoeming herschrijft. De **Versiegeschiedenis** bewaart het byte voor byte, en herstellen of dupliceren kopieert de bytes. Om het in Alviss te bewerken, sla je het in het andere programma op als UTF-8. Slaat een ander programma een bestand op in een andere codering terwijl je er niet-opgeslagen wijzigingen in hebt, dan bewaart Alviss je wijzigingen ernaast als een `.CONFLICT`-bestand; de vergelijking biedt dan **Huidig bestand vervangen door conflictkopie**, **Beide bestanden behouden** en **Conflictkopie verwijderen**. Een sync brengt het toch ongeschonden over — byte voor byte, zoals een afbeelding: het wordt niet samengevoegd, en als twee apparaten het tegelijk hebben gewijzigd, blijft jouw versie bewaard als een `.CONFLICT`-bestand.
+2. **Schrijf atomair.** Schrijf naar een tijdelijk bestand in dezelfde map en hernoem dat vervolgens naar de doelnaam. Een half geschreven notitie (bijvoorbeeld na een crash) is erger dan helemaal geen wijziging. Alviss schrijft zelf elke notitie op deze manier.
 3. **Bewaar de OKF-frontmatter en onbekende sleutels.** Behoud `type` en `okf_version` wanneer je een notitie herschrijft, en laat nooit frontmattersleutels vallen die je niet herkent — ze moeten een lees-/schrijfronde ongewijzigd doorstaan. "Ruim" geen sleutels op die je niet begrijpt.
-4. **Raak `.plainva/` nooit aan.** Die map bevat Plainva's lokale (per-apparaat) index, back-ups, vastzettingen in de graaf en sync-status. Het is geen onderdeel van je inhoud en mag door je scripts nooit worden beschreven, gesynchroniseerd of naar Git gecommit.
-5. **Houd je aan de `.base`-regels.** Een `.base` gebruikt alleen Obsidians vier top-level sleutels (`filters`, `formulas`, `properties`, `views`); elke weergave heeft een `name` nodig; filters zijn eenwortelig. Alle Plainva-specifieke data staat onder geneste `plainva:`-subsleutels. De [Bestandsformaat-referentie](File_Format_Reference.md#databases-base) bevat het volledige contract, inclusief een tweezijdig relatievoorbeeld.
-6. **Werk niet tegen de editor in.** Is een notitie open *en* heeft ze niet-opgeslagen wijzigingen in Plainva, herschrijf haar dan liever niet op datzelfde moment vanuit een script. Plainva heeft een conflictoplosser als vangnet, maar de schoonste weg is de app eerst te laten opslaan (of notities te bewerken die op dat moment niet open staan).
+4. **Raak `.plainva/` nooit aan.** Die map bevat Alviss's lokale (per-apparaat) index, back-ups, vastzettingen in de graaf en sync-status. Het is geen onderdeel van je inhoud en mag door je scripts nooit worden beschreven, gesynchroniseerd of naar Git gecommit.
+5. **Houd je aan de `.base`-regels.** Een `.base` gebruikt alleen Obsidians vier top-level sleutels (`filters`, `formulas`, `properties`, `views`); elke weergave heeft een `name` nodig; filters zijn eenwortelig. Alle Alviss-specifieke data staat onder geneste `plainva:`-subsleutels. De [Bestandsformaat-referentie](File_Format_Reference.md#databases-base) bevat het volledige contract, inclusief een tweezijdig relatievoorbeeld.
+6. **Werk niet tegen de editor in.** Is een notitie open *en* heeft ze niet-opgeslagen wijzigingen in Alviss, herschrijf haar dan liever niet op datzelfde moment vanuit een script. Alviss heeft een conflictoplosser als vangnet, maar de schoonste weg is de app eerst te laten opslaan (of notities te bewerken die op dat moment niet open staan).
 
 ## Patronen
 
 Een paar veelvoorkomende taken, allemaal gewoon bestandsbewerkingen:
 
-- **Notities in bulk aanmaken** — genereer `.md`-bestanden met een OKF-frontmatterblok (`type`, idealiter `generated: { by: <jouw-tool>/<versie>, at: … }`, plus je eigen eigenschappen) en een Markdown-tekst. Sinds OKF 0.2 hoort `okf_version` alleen thuis in de root-`index.md`, niet in de notities. Plainva indexeert ze zodra ze verschijnen.
+- **Notities in bulk aanmaken** — genereer `.md`-bestanden met een OKF-frontmatterblok (`type`, idealiter `generated: { by: <jouw-tool>/<versie>, at: … }`, plus je eigen eigenschappen) en een Markdown-tekst. Sinds OKF 0.2 hoort `okf_version` alleen thuis in de root-`index.md`, niet in de notities. Alviss indexeert ze zodra ze verschijnen.
 - **Generatoren voor dagelijkse notities of rapporten** — een geplande taak die een gedateerde notitie in je map voor dagelijkse notities schrijft, gevuld vanuit een andere bron.
 - **Eigenschappen doorlopen** — lees de frontmatter van elke notitie, transformeer een veld en schrijf het terug (atomair, met behoud van onbekende sleutels).
 - **Exporteren / publiceren** — lees de vault en render hem naar HTML, een statische site of een PDF. Alleen lezen — geen regels om je zorgen over te maken.
@@ -64,7 +64,7 @@ Omdat het contract een document is en geen live API, werken dezelfde instructies
 - Bewaar `type`, `okf_version` en onbekende sleutels.
 - Schrijf nooit naar `.plainva/`.
 - `.base`: vier top-level sleutels, benoemde weergaven, eenwortelige filters, `plainva:`-subsleutels voor al het andere.
-- De vault wordt in de gaten gehouden — externe wijzigingen verschijnen automatisch in Plainva.
+- De vault wordt in de gaten gehouden — externe wijzigingen verschijnen automatisch in Alviss.
 
 ## Zie ook
 
