@@ -264,9 +264,8 @@ existing areas, so the phone layout and the settings search pick it up for free.
   manage. The file form is Phase 2, and the scope key already carries the vault, so the migration
   is a copy **out** of the settings store, not a redesign.
 
-- Rendering: answers are shown as plain text with preserved whitespace. Markdown rendering of an
-  answer (code blocks, lists, links) is a follow-up: it needs a renderer with the same sanitising
-  rules the reading view uses, not `dangerouslySetInnerHTML` in a panel.
+- Rendering: answers go through `markdownToHtml` — the same escaped renderer the reading view
+  uses — so a model that writes `<img onerror=…>` produces text, not markup. A test pins that.
 
 ### 5.4 Prompt assembly
 
@@ -477,11 +476,11 @@ Estimates assume one focused developer; they are ranges, not commitments.
 | M0 Foundation | done — baseline v0.8.7, toolchain, rebrand, CI |
 | M1 LLM core | done — two protocols, SSE, errors, keychain egress, 16 tests |
 | M2 Chat UI | done — panel, presets, custom server, streaming, stop, context, persistence |
-| M3 Hardening | partial — errors, tests, parity catalog; markdown rendering and a conversation list are open |
+| M3 Hardening | near done — errors, escaping, tests, parity catalog; a conversation list is open |
 | M4 Release | not started — needs the Apple Developer account (§8.1); a local `.app` builds and runs |
 
-Known gaps at this point, all recorded above: markdown rendering of answers, a conversation list
-over `.plainva/chats/`, and notarisation (blocked on the Apple account).
+Known gaps at this point, all recorded above: a conversation list over `.plainva/chats/` (Phase 2),
+and notarisation (blocked on the Apple Developer account).
 
 **First paid macOS release: roughly 7–8 weeks from approval.**
 

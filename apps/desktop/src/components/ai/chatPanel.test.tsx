@@ -181,6 +181,30 @@ describe("the chat panel", () => {
     expect(container.textContent).toContain("Hello");
   });
 
+  it("renders the answer as escaped markdown, never as markup from the model", async () => {
+    await act(async () => {
+      setInput(input(), "Hello");
+    });
+    await act(async () => {
+      buttonWithText("Send")?.click();
+    });
+    await act(async () => {
+      handler!({
+        type: "chunk",
+        requestId: started!.requestId,
+        text: 'data: {"choices":[{"delta":{"content":"**bold** and <img src=x onerror=alert(1)>"}}]}\n\ndata: [DONE]\n\n',
+      });
+    });
+    await act(async () => {
+      handler!({ type: "done", requestId: started!.requestId });
+    });
+    const answer = container.querySelector('[data-testid="llm-answer"]')!;
+    expect(answer.innerHTML).toContain("<strong>bold</strong>");
+    // The tag arrives escaped: it is text the model wrote, not markup.
+    expect(answer.innerHTML).toContain("&lt;img");
+    expect(answer.querySelector("img")).toBeNull();
+  });
+
   it("names the fix when the provider rejects the key", async () => {
     await act(async () => {
       setInput(input(), "Hello");

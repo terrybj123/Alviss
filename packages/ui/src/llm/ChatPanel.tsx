@@ -18,6 +18,7 @@ import { Button } from "../components/ui/Button";
 import { EmptyState } from "../components/ui/EmptyState";
 import { SelectField, TextInput } from "../components/ui/Field";
 import { ICON } from "../lib/iconSizes";
+import { markdownToHtml } from "../lib/markdownToHtml";
 import { getPlatformServices } from "../platform/services";
 import {
   EMPTY_LLM_CONFIG,
@@ -455,9 +456,13 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
         {turns.map((turn, index) => (
           <div key={index} style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)", alignItems: turn.role === "user" ? "flex-end" : "flex-start" }}>
             <span style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)" }}>{turn.role === "user" ? "You" : active?.label ?? "AI"}</span>
-            <div style={{ whiteSpace: "pre-wrap", padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: turn.role === "user" ? "var(--accent-color)" : "var(--bg-secondary)", color: turn.role === "user" ? "var(--on-accent-color)" : "var(--text-main)" }}>
-              {turn.text}
-            </div>
+            <div
+              data-testid={turn.role === "assistant" ? "llm-answer" : "llm-question"}
+              style={{ whiteSpace: turn.role === "user" ? "pre-wrap" : undefined, padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: turn.role === "user" ? "var(--accent-color)" : "var(--bg-secondary)", color: turn.role === "user" ? "var(--on-accent-color)" : "var(--text-main)" }}
+              // The renderer escapes every text fragment, so the answer cannot
+              // inject markup; it is the same rule the reading view uses.
+              {...(turn.role === "assistant" ? { dangerouslySetInnerHTML: { __html: markdownToHtml(turn.text) } } : { children: turn.text })}
+            />
           </div>
         ))}
         {streaming !== null && (
