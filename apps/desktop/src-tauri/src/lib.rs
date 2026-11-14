@@ -11,6 +11,7 @@ mod checked_fs;
 mod backup;
 mod db_batch;
 mod linux_appimage;
+mod llm;
 #[cfg(target_os = "macos")]
 mod macos_spellcheck;
 mod mail_imap;
@@ -390,6 +391,7 @@ pub fn run() {
         .manage(vault_walk::VaultWalks::default())
         .manage(tray::TrayState::default())
         .manage(window_state::WindowStateStore::default())
+        .manage(llm::LlmHub::default())
         .setup(|app| {
             // The isolated dev build (tauri.dev.conf.json, identifier
             // com.plainva.desktop.dev) and the Labs build of a feature branch
@@ -420,6 +422,7 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             secure_store::keychain_set,
             secure_store::keychain_get,
+            secure_store::keychain_has,
             secure_store::keychain_delete,
             secure_store::keychain_compare_and_set,
             oauth_loopback_start,
@@ -431,6 +434,9 @@ pub fn run() {
             tray::tray_enable,
             tray::tray_disable,
             tray::tray_set_next,
+            llm::llm_stream,
+            llm::llm_cancel,
+            llm::llm_models,
             session::desktop_session_kind,
             app_identity::app_updates_managed_by,
             atomic_write::register_write_root,

@@ -148,3 +148,16 @@ mod tests {
         assert_eq!(successes, 1);
     }
 }
+
+/// Reads a secret for the native side (the LLM egress reads a provider key
+/// here). Deliberately not a command: the webview gets `keychain_has` and never
+/// the value, so a compromised renderer cannot lift a provider key.
+pub(crate) fn read_secret(app: &tauri::AppHandle, key: &str) -> Result<Option<String>, String> {
+    locked(|| read(&entry(app, key)?))
+}
+
+/// Whether a secret exists, without revealing it.
+#[tauri::command]
+pub fn keychain_has(app: tauri::AppHandle, key: String) -> Result<bool, String> {
+    locked(|| Ok(read(&entry(&app, &key)?)?.is_some()))
+}

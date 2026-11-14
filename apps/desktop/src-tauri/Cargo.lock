@@ -3727,6 +3727,7 @@ dependencies = [
  "tauri-plugin-wdio-webdriver",
  "tempfile",
  "trash",
+ "url",
  "walkdir",
  "webpki-roots",
  "zip",
