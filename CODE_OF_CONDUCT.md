@@ -1,6 +1,6 @@
 # Code of Conduct
 
-Plainva uses the Contributor Covenant, version 2.1, adapted for the current early project phase.
+Alviss uses the Contributor Covenant, version 2.1, adapted for the current early project phase.
 
 ## Our Pledge
 

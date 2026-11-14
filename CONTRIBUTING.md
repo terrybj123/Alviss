@@ -1,6 +1,6 @@
-# Contributing to Plainva
+# Contributing to Alviss
 
-Thank you for your interest in Plainva. The project is still in its earliest setup phase, so contribution rules are intentionally small and may evolve.
+Thank you for your interest in Alviss. The project is still in its earliest setup phase, so contribution rules are intentionally small and may evolve.
 
 ## Start Here
 
@@ -30,7 +30,7 @@ pnpm install --frozen-lockfile
 
 ## Contribution Scope
 
-Plainva works in small, reviewed steps:
+Alviss works in small, reviewed steps:
 
 - Keep changes focused.
 - Avoid unrelated refactors.
@@ -66,7 +66,7 @@ UI changes additionally follow the design language (`docs/engineering/Design_Lan
 - New `pv-*` surfaces need LCARS + Win95 selectors (or a justified exemption) — attach screenshots in light AND dark, plus LCARS/Win95 when a themed surface changed.
 - New visual patterns extend the design docs first, then get built.
 
-Plainva ships two shells from one repository, and a change is expected to reach **both**:
+Alviss ships two shells from one repository, and a change is expected to reach **both**:
 
 - A feature or fix lands on desktop AND mobile. The implementation may differ per platform; the result for the user may not.
 - If your change deliberately covers only one shell, record it in `packages/ui/src/lib/featureParity.ts` with a reason — `apps/desktop/src/featureParity.test.ts` fails the build on an undocumented asymmetry. Mark it `kind: "gap"` when it should be closed later, `kind: "decision"` when the platform makes it permanent.
@@ -74,13 +74,16 @@ Plainva ships two shells from one repository, and a change is expected to reach 
 
 ## Licensing
 
-Plainva core is licensed under AGPL-3.0-only.
+Alviss core is licensed under AGPL-3.0-only.
 
 By contributing, you agree that your contribution is provided under the repository license unless a different license is explicitly stated for a specific file or package.
 
-Pull requests require a signed Contributor License Agreement: the CLA-Assistant bot asks for a signature on your first PR and records it in the repository. The signatures are kept in `signatures/version1/cla.json` on the branch `cla-signatures`, not on `main`: the bot commits them itself, and `main` only accepts commits that have passed CI. The copy of that file on `main` ends with the last signature recorded there (2026-09-19) and is no longer written. The agreement text lives in [CLA.md](CLA.md); signing is a one-time comment on the PR.
+There is **no CLA**. A contribution is accepted under AGPL-3.0-only, like the rest of the
+repository.
 
-Commercial exception licensing is planned as a project/business option. It is not configured through pull requests.
+Because Alviss is a derivative of Plainva, the project cannot offer a commercial (non-AGPL)
+licence for the combined work — that right belongs to the upstream copyright holders and is
+described in [UPSTREAM.md](UPSTREAM.md). Do not contribute code you expect to license separately.
 
 ## Code of Conduct
 
