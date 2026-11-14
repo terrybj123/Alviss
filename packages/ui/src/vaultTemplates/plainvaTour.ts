@@ -654,7 +654,7 @@ export const TOUR_STRINGS_EN: TourStrings = {
     ],
     resources: [
       { title: "Markdown cheat sheet", body: CHEAT_SHEET_EN, props: { kind: "Reference", read: "Read", cover: "Attachments/cover.svg" } },
-      { title: "Alviss handbook", body: "The full guide lives at plainva.com/docs.", props: { kind: "Reference", url: "https://plainva.com/docs", read: "New" } },
+      { title: "Alviss handbook", body: "The full guide lives at github.com/terrybj123/Alviss/tree/main/docs.", props: { kind: "Reference", url: "https://github.com/terrybj123/Alviss/tree/main/docs", read: "New" } },
       { title: "Deep work", body: "Cal Newport. The chapter on scheduling is the useful one.", props: { kind: "Book", read: "New", area: "[[Learning]]" } },
       { title: "Keyboard shortcuts", body: "Press `F1` in Alviss — the list is searchable.", props: { kind: "Reference", read: "Read", area: "[[Learning]]" } },
     ],
@@ -828,7 +828,7 @@ export const TOUR_STRINGS_DE: TourStrings = {
     ],
     resources: [
       { title: "Markdown-Spickzettel", body: CHEAT_SHEET_DE, props: { art: "Referenz", status: "Angesehen", cover: "Anhänge/cover.svg" } },
-      { title: "Alviss-Handbuch", body: "Das vollständige Handbuch steht auf plainva.com/docs.", props: { art: "Referenz", url: "https://plainva.com/docs", status: "Neu" } },
+      { title: "Alviss-Handbuch", body: "Das vollständige Handbuch steht auf github.com/terrybj123/Alviss/tree/main/docs.", props: { art: "Referenz", url: "https://github.com/terrybj123/Alviss/tree/main/docs", status: "Neu" } },
       { title: "Konzentriert arbeiten", body: "Cal Newport. Das Kapitel über Zeitplanung ist das nützliche.", props: { art: "Buch", status: "Neu", bereich: "[[Lernen]]" } },
       { title: "Tastenkürzel", body: "In Alviss `F1` drücken — die Liste ist durchsuchbar.", props: { art: "Referenz", status: "Angesehen", bereich: "[[Lernen]]" } },
     ],

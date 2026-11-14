@@ -182,7 +182,7 @@ const TOUR_STRINGS_JA: TourStrings = {
     ],
     resources: [
       { title: "Markdown 早見表", body: CHEAT_SHEET_JA, props: { kind: "リファレンス", read: "既読", cover: "添付ファイル/cover.svg" } },
-      { title: "Alviss ハンドブック", body: "完全なガイドは plainva.com/docs にあります。", props: { kind: "リファレンス", url: "https://plainva.com/docs", read: "未読" } },
+      { title: "Alviss ハンドブック", body: "完全なガイドは github.com/terrybj123/Alviss/tree/main/docs にあります。", props: { kind: "リファレンス", url: "https://github.com/terrybj123/Alviss/tree/main/docs", read: "未読" } },
       { title: "Deep work", body: "Cal Newport 著。スケジューリングについての章が特に役立つ。", props: { kind: "書籍", read: "未読", area: "[[学び]]" } },
       { title: "キーボードショートカット", body: "Alvissで `F1` を押す——一覧は検索できます。", props: { kind: "リファレンス", read: "既読", area: "[[学び]]" } },
     ],

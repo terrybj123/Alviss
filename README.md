@@ -27,7 +27,8 @@ product rules and adds an assistant.
 
 ## The AI assistant
 
-Open a vault, then **Settings → AI**. Pick a provider, enter your own key, and
+Press **⌘⇧K** (or search the command palette for "Open the chat") inside a
+vault. Open **Providers** in the panel, pick a provider, enter your own key and
 choose a model. Alviss never brings its own AI service and never proxies your
 requests.
 
@@ -43,8 +44,12 @@ Plus **any OpenAI-compatible endpoint**: give it a name, a base URL such as
 `https://your-server/v1`, and a token. This covers self-hosted servers, gateways
 and any provider that speaks the OpenAI chat protocol.
 
-The assistant reads the note you point it at and cites what it used. It does not
-write to your vault.
+The note you are reading is offered as context and can be switched off with one
+click. The assistant does not write to your vault.
+
+Your key goes into the macOS keychain and is never shown again — not in the
+panel, not in the settings, not in a log. Answers stream in as they arrive, and
+**Stop** ends one mid-sentence.
 
 ## System requirements
 

@@ -2,7 +2,7 @@ import i18n from "../i18n";
 import { matchAppLanguage } from "../services/languages";
 
 /**
- * Deep links into the user guide on plainva.com.
+ * Deep links into the user guide in this repository.
  *
  * The handbook ships in all ten app languages under `docs/user/<code>/`, and
  * since the website publishes every one of them the link follows the app

@@ -686,7 +686,7 @@ const TOUR_STRINGS_PT_BR: TourStrings = {
     ],
     resources: [
       { title: "Guia rápido de Markdown", body: CHEAT_SHEET_PT_BR, props: { tipo: "Referência", status: "Lido", cover: "Anexos/cover.svg" } },
-      { title: "Manual do Alviss", body: "O manual completo está em plainva.com/docs.", props: { tipo: "Referência", url: "https://plainva.com/docs", status: "Novo" } },
+      { title: "Manual do Alviss", body: "O manual completo está em github.com/terrybj123/Alviss/tree/main/docs.", props: { tipo: "Referência", url: "https://github.com/terrybj123/Alviss/tree/main/docs", status: "Novo" } },
       { title: "Trabalho focado", body: "Cal Newport. O capítulo sobre planejamento de horários é o mais útil.", props: { tipo: "Livro", status: "Novo", area: "[[Aprendizado]]" } },
       { title: "Atalhos de teclado", body: "Pressione `F1` no Alviss — a lista é pesquisável.", props: { tipo: "Referência", status: "Lido", area: "[[Aprendizado]]" } },
     ],

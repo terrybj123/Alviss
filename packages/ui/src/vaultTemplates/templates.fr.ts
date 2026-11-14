@@ -184,7 +184,7 @@ const TOUR_STRINGS_FR: TourStrings = {
     ],
     resources: [
       { title: "Aide-mémoire Markdown", body: CHEAT_SHEET_FR, props: { genre: "Référence", status: "Consulté", cover: "Pièces jointes/cover.svg" } },
-      { title: "Manuel Alviss", body: "Le guide complet se trouve sur plainva.com/docs.", props: { genre: "Référence", url: "https://plainva.com/docs", status: "Nouveau" } },
+      { title: "Manuel Alviss", body: "Le guide complet se trouve sur github.com/terrybj123/Alviss/tree/main/docs.", props: { genre: "Référence", url: "https://github.com/terrybj123/Alviss/tree/main/docs", status: "Nouveau" } },
       { title: "Deep work", body: "Cal Newport. Le chapitre sur la planification est le plus utile.", props: { genre: "Livre", status: "Nouveau", domaine: "[[Apprentissage]]" } },
       { title: "Raccourcis clavier", body: "Appuyez sur `F1` dans Alviss — vous pouvez chercher dans la liste.", props: { genre: "Référence", status: "Consulté", domaine: "[[Apprentissage]]" } },
     ],

@@ -185,7 +185,7 @@ const TOUR_STRINGS_ZH_CN: TourStrings = {
     ],
     resources: [
       { title: "Markdown速查表", body: CHEAT_SHEET_ZH_CN, props: { kind: "参考", status: "已读", cover: "附件/cover.svg" } },
-      { title: "Alviss手册", body: "完整的指南在plainva.com/docs。", props: { kind: "参考", url: "https://plainva.com/docs", status: "未读" } },
+      { title: "Alviss手册", body: "完整的指南在github.com/terrybj123/Alviss/tree/main/docs。", props: { kind: "参考", url: "https://github.com/terrybj123/Alviss/tree/main/docs", status: "未读" } },
       { title: "深度工作", body: "Cal Newport 著。关于时间安排的那一章最有用。", props: { kind: "书籍", status: "未读", lingyu: "[[学习]]" } },
       { title: "键盘快捷键", body: "在Alviss中按`F1`——列表可以搜索。", props: { kind: "参考", status: "已读", lingyu: "[[学习]]" } },
     ],

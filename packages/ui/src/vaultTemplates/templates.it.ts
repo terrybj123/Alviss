@@ -776,8 +776,8 @@ export const TOUR_STRINGS_IT: TourStrings = {
       },
       {
         title: "Manuale di Alviss",
-        body: "La guida completa si trova su plainva.com/docs.",
-        props: { tipo: "Riferimento", url: "https://plainva.com/docs", stato: "Nuovo" },
+        body: "La guida completa si trova su github.com/terrybj123/Alviss/tree/main/docs.",
+        props: { tipo: "Riferimento", url: "https://github.com/terrybj123/Alviss/tree/main/docs", stato: "Nuovo" },
       },
       {
         title: "Lavoro concentrato",

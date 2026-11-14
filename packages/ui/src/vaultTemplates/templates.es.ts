@@ -177,7 +177,7 @@ const TOUR_STRINGS_ES: TourStrings = {
     ],
     resources: [
       { title: "Referencia rápida de Markdown", body: CHEAT_SHEET_ES, props: { tipo: "Referencia", estado: "Leído", cover: "Adjuntos/cover.svg" } },
-      { title: "Manual de Alviss", body: "La guía completa está en plainva.com/docs.", props: { tipo: "Referencia", url: "https://plainva.com/docs", estado: "Nuevo" } },
+      { title: "Manual de Alviss", body: "La guía completa está en github.com/terrybj123/Alviss/tree/main/docs.", props: { tipo: "Referencia", url: "https://github.com/terrybj123/Alviss/tree/main/docs", estado: "Nuevo" } },
       { title: "Trabajo profundo", body: "Cal Newport. El capítulo sobre planificación es el útil.", props: { tipo: "Libro", estado: "Nuevo", area: "[[Aprendizaje]]" } },
       { title: "Atajos de teclado", body: "Pulsa `F1` en Alviss — la lista se puede buscar.", props: { tipo: "Referencia", estado: "Leído", area: "[[Aprendizaje]]" } },
     ],

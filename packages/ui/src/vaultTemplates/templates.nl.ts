@@ -184,7 +184,7 @@ const TOUR_STRINGS_NL: TourStrings = {
     ],
     resources: [
       { title: "Markdown-spiekbriefje", body: CHEAT_SHEET_NL, props: { soort: "Referentie", status: "Gelezen", cover: "Bijlagen/cover.svg" } },
-      { title: "Alviss-handleiding", body: "De volledige handleiding staat op plainva.com/docs.", props: { soort: "Referentie", url: "https://plainva.com/docs", status: "Nieuw" } },
+      { title: "Alviss-handleiding", body: "De volledige handleiding staat op github.com/terrybj123/Alviss/tree/main/docs.", props: { soort: "Referentie", url: "https://github.com/terrybj123/Alviss/tree/main/docs", status: "Nieuw" } },
       { title: "Deep work", body: "Cal Newport. Het hoofdstuk over planning is het nuttigste.", props: { soort: "Boek", status: "Nieuw", domein: "[[Leren]]" } },
       { title: "Sneltoetsen", body: "Druk in Alviss op `F1` — de lijst is doorzoekbaar.", props: { soort: "Referentie", status: "Gelezen", domein: "[[Leren]]" } },
     ],
