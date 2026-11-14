@@ -83,6 +83,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   const [draft, setDraft] = useState<Draft | null>(null);
   const [keys, setKeys] = useState<Record<string, boolean>>({});
   const [testNote, setTestNote] = useState<string | null>(null);
+  const [models, setModels] = useState<string[]>([]);
   const [attachNote, setAttachNote] = useState(true);
   const requestRef = useRef<string | null>(null);
   const decoderRef = useRef<LlmStreamDecoder | null>(null);
@@ -251,6 +252,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   // ---- provider editing --------------------------------------------------
   const openDraft = (endpoint: LlmEndpoint) => {
     setTestNote(null);
+    setModels([]);
     setDraft({
       id: endpoint.id,
       label: endpoint.label,
@@ -267,11 +269,13 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
     if (!preset) return;
     const endpoint = endpointFromPreset(preset);
     setTestNote(null);
+    setModels([]);
     setDraft({ id: endpoint.id, label: endpoint.label, baseUrl: endpoint.baseUrl, model: endpoint.model, protocol: endpoint.protocol, key: "", isNew: true });
   };
 
   const addCustom = () => {
     setTestNote(null);
+    setModels([]);
     setDraft({
       id: nextCustomId(config.endpoints),
       label: "",
@@ -339,6 +343,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
       }
       const body = await transport.models(buildModelsRequest(endpoint), endpoint.needsKey === false ? null : endpoint.keyRef);
       const ids = parseModels(JSON.parse(body));
+      setModels(ids);
       setTestNote(ids.length ? t("ai.testOk", { n: ids.length }) : t("ai.testEmpty"));
     } catch (cause) {
       setTestNote(redactForDiagnostics(String(cause)));
@@ -395,6 +400,19 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
             <TextInput aria-label={t("ai.name")} placeholder={t("ai.name")} value={draft.label} onChange={(e) => setDraft({ ...draft, label: e.target.value })} purpose="name" />
             <TextInput aria-label={t("ai.address")} placeholder={t("ai.address")} value={draft.baseUrl} onChange={(e) => setDraft({ ...draft, baseUrl: e.target.value })} purpose="address" />
             <TextInput aria-label={t("ai.model")} placeholder={t("ai.model")} value={draft.model} onChange={(e) => setDraft({ ...draft, model: e.target.value })} purpose="code" />
+            {models.length > 0 && (
+              <SelectField
+                aria-label={t("ai.model")}
+                value={models.includes(draft.model) ? draft.model : ""}
+                onChange={(e) => { if (e.target.value) setDraft({ ...draft, model: e.target.value }); }}
+                data-testid="llm-model-picker"
+              >
+                <option value="">{t("ai.model")}</option>
+                {models.map((id) => (
+                  <option key={id} value={id}>{id}</option>
+                ))}
+              </SelectField>
+            )}
             {!(normalizeBaseUrl(draft.baseUrl)?.local ?? false) && (
               <TextInput aria-label={t("ai.key")} placeholder={t("ai.key")} type="password" value={draft.key} onChange={(e) => setDraft({ ...draft, key: e.target.value })} purpose="secret" autoComplete="off" />
             )}

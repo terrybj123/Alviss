@@ -84,6 +84,10 @@ For a release bundle:
 pnpm --filter desktop tauri build
 ```
 
+More detail — the toolchain versions, the guards that will stop a commit, and
+troubleshooting — is in [BUILDING.md](BUILDING.md). Cutting a signed release is
+[RELEASING.md](RELEASING.md).
+
 ## License
 
 **AGPL-3.0-only.** Alviss is a modified version of Plainva; the full terms, the

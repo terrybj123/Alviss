@@ -205,6 +205,27 @@ describe("the chat panel", () => {
     expect(answer.querySelector("img")).toBeNull();
   });
 
+  it("offers the provider's models after a successful test", async () => {
+    await act(async () => {
+      container.querySelector<HTMLButtonElement>('button[aria-label="Providers"]')?.click();
+    });
+    await act(async () => {
+      buttonWithText("Own server")?.click();
+    });
+    const address = container.querySelector<HTMLInputElement>('input[aria-label="Address (https://…/v1)"]')!;
+    await act(async () => {
+      setInput(address, "https://example.org/v1");
+    });
+    await act(async () => {
+      buttonWithText("Test connection")?.click();
+    });
+    await act(async () => undefined);
+
+    const picker = container.querySelector<HTMLSelectElement>('[data-testid="llm-model-picker"]')!;
+    expect(picker).not.toBeNull();
+    expect([...picker.options].map((o) => o.value)).toEqual(["", "m1", "m2"]);
+  });
+
   it("names the fix when the provider rejects the key", async () => {
     await act(async () => {
       setInput(input(), "Hello");
