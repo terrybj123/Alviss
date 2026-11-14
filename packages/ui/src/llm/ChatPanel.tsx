@@ -51,6 +51,8 @@ export interface ChatPanelProps {
   transport: LlmTransport;
   /** The note the user is reading, when the shell has one. */
   context?: ChatContext | null;
+  /** Where the conversation is remembered: one scope per vault. */
+  scope?: string;
 }
 
 interface Turn {
@@ -68,7 +70,7 @@ interface Draft {
   isNew: boolean;
 }
 
-export function ChatPanel({ transport, context }: ChatPanelProps) {
+export function ChatPanel({ transport, context, scope = "default" }: ChatPanelProps) {
   const { t } = useTranslation();
   const [view, setView] = useState<"chat" | "config">("chat");
   const [config, setConfig] = useState<LlmConfig>(EMPTY_LLM_CONFIG);
@@ -84,6 +86,8 @@ export function ChatPanel({ transport, context }: ChatPanelProps) {
   const requestRef = useRef<string | null>(null);
   const decoderRef = useRef<LlmStreamDecoder | null>(null);
   const streamBuffer = useRef("");
+  const [hydrated, setHydrated] = useState(false);
+  const chatKey = `alviss.llm.chat.${scope}`;
 
   const active = useMemo(
     () => config.endpoints.find((e) => e.id === config.activeId) ?? config.endpoints[0] ?? null,
@@ -108,6 +112,32 @@ export function ChatPanel({ transport, context }: ChatPanelProps) {
       cancelled = true;
     };
   }, [transport]);
+
+  // The conversation outlives the panel: it is device-local and per vault, so
+  // reopening the chat continues where the reader left off. A conversation is
+  // plain text in the settings store for now; the vault-file form of the plan
+  // (§5.3) arrives with the conversation list.
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      const store = await getPlatformServices().loadSettings();
+      const stored = (await store.get<{ turns?: Turn[] }>(chatKey)) ?? null;
+      if (cancelled) return;
+      if (stored?.turns?.length) setTurns(stored.turns);
+      setHydrated(true);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [chatKey]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    void (async () => {
+      const store = await getPlatformServices().loadSettings();
+      await store.set(chatKey, { turns });
+    })();
+  }, [chatKey, hydrated, turns]);
 
   const persist = useCallback(async (next: LlmConfig) => {
     setConfig(next);
@@ -409,6 +439,14 @@ export function ChatPanel({ transport, context }: ChatPanelProps) {
             </Button>
           </span>
         )}
+        <Button
+          size="sm"
+          variant="ghost"
+          icon={<Trash2 size={ICON.ui} />}
+          onClick={() => setTurns([])}
+          aria-label={t("ai.newChat")}
+          data-testid="llm-new-chat"
+        />
         <Button size="sm" variant="ghost" icon={<Settings2 size={ICON.ui} />} onClick={() => setView("config")} aria-label={t("ai.providers")} />
       </div>
 

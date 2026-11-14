@@ -250,13 +250,23 @@ existing areas, so the phone layout and the settings search pick it up for free.
 
 ### 5.3 Storage
 
-- Endpoint configuration (label, URL, protocol, model, temperature): the existing settings store.
-- API keys: OS keychain only. Never in the vault, never in settings JSON, never logged.
-- Conversations: plain Markdown files in the vault's hidden `.plainva/chats/` folder, one file per
-  conversation, with YAML frontmatter for endpoint and model. Rationale: the user owns the data,
-  it syncs through whatever sync they already configured, and it stays readable in any editor.
-  Being inside the existing hidden folder means no new exclusion rules are needed and no vault
-  migration is required.
+- Endpoint configuration (label, URL, protocol, model, temperature): the existing settings store,
+  under `alviss.llm`.
+- API keys: OS keychain only, under `llm.<endpoint id>`. Never in the vault, never in settings
+  JSON, never logged, never returned to the WebView (`keychain_has` answers presence only).
+- Conversations: **device-local for now**, in the settings store under `alviss.llm.chat.<scope>`,
+  one scope per vault. The panel restores the last conversation when it opens and offers
+  *New conversation*.
+
+  This deviates from the original plan (plain Markdown under `.plainva/chats/`). Reason: the
+  Markdown form only pays off with a conversation list, rename and delete — a browser this phase
+  does not build. Shipping the file format without that surface would produce files nobody can
+  manage. The file form is Phase 2, and the scope key already carries the vault, so the migration
+  is a copy **out** of the settings store, not a redesign.
+
+- Rendering: answers are shown as plain text with preserved whitespace. Markdown rendering of an
+  answer (code blocks, lists, links) is a follow-up: it needs a renderer with the same sanitising
+  rules the reading view uses, not `dangerouslySetInnerHTML` in a panel.
 
 ### 5.4 Prompt assembly
 
@@ -459,6 +469,19 @@ Estimates assume one focused developer; they are ranges, not commitments.
 | M2 | Chat UI | Panel, streaming, stop/regenerate, markdown, context attach, history | 2 weeks |
 | M3 | Hardening | Error states, budget/truncation notices, docs, accessibility pass | 1 week |
 | M4 | Release | Signing, notarization, updater, DMG, fresh-machine test | 1 week |
+
+### 10.1 Where Phase 1 stands (2026-11-15)
+
+| Milestone | State |
+|---|---|
+| M0 Foundation | done — baseline v0.8.7, toolchain, rebrand, CI |
+| M1 LLM core | done — two protocols, SSE, errors, keychain egress, 16 tests |
+| M2 Chat UI | done — panel, presets, custom server, streaming, stop, context, persistence |
+| M3 Hardening | partial — errors, tests, parity catalog; markdown rendering and a conversation list are open |
+| M4 Release | not started — needs the Apple Developer account (§8.1); a local `.app` builds and runs |
+
+Known gaps at this point, all recorded above: markdown rendering of answers, a conversation list
+over `.plainva/chats/`, and notarisation (blocked on the Apple account).
 
 **First paid macOS release: roughly 7–8 weeks from approval.**
 

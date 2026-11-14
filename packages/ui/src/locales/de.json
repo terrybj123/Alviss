@@ -1,5 +1,6 @@
 {
   "ai": {
+    "newChat": "New conversation",
     "usage": "{input} in / {output} out",
     "title": "Alviss AI",
     "open": "Open the chat",

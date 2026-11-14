@@ -1,5 +1,6 @@
 {
   "ai": {
+    "newChat": "新对话",
     "usage": "输入 {input} / 输出 {output}",
     "title": "Alviss AI",
     "open": "打开聊天",

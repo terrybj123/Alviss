@@ -21,7 +21,7 @@ export interface ChatHostProps {
 
 export function ChatHost({ activePath, onClose }: ChatHostProps) {
   const { t } = useTranslation();
-  const { vaultAdapter } = useVault();
+  const { vaultAdapter, vaultPath } = useVault();
   const [context, setContext] = useState<ChatContext | null>(null);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export function ChatHost({ activePath, onClose }: ChatHostProps) {
 
   return (
     <Modal title={t("ai.title")} onClose={onClose} size="md">
-      <ChatPanel transport={transport} context={context} />
+      <ChatPanel transport={transport} context={context} scope={vaultPath ?? "default"} />
     </Modal>
   );
 }
