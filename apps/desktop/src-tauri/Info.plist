@@ -13,6 +13,6 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Plainva records a voice memo only when you start one. The recording stays as a file in your vault; it is not sent anywhere.</string>
+	<string>Alviss records a voice memo only when you start one. The recording stays as a file in your vault; it is not sent anywhere.</string>
 </dict>
 </plist>

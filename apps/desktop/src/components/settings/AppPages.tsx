@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
-  APP_LANGUAGES,
+  OFFERED_LANGUAGES,
   Button,
   SettingCard,
   SettingCardNote,
@@ -199,7 +199,7 @@ export const AppearancePage: React.FC<AppearancePageProps> = (p) => {
               ariaLabel={t("settings.language")}
               value={p.appLanguage}
               onChange={p.onLanguage}
-              options={APP_LANGUAGES.map((l) => ({ value: l.code, label: l.nativeName }))}
+              options={OFFERED_LANGUAGES.map((l) => ({ value: l.code, label: l.nativeName }))}
             />
           </div>
         </SettingRow>

@@ -1,0 +1,57 @@
+Alviss
+Copyright (C) 2026 the Alviss authors
+
+This program is a modified version of Plainva.
+  Plainva:    https://github.com/plainva/plainva
+  Copyright:  (C) the Plainva contributors
+  License:    GNU Affero General Public License, version 3 only
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License as published by the Free
+Software Foundation, version 3 of the License.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+details.
+
+You should have received a copy of the GNU Affero General Public License along
+with this program. If not, see <https://www.gnu.org/licenses/>.
+
+The full license text is in LICENSE. The corresponding source of every release
+is published at https://github.com/terrybj123/Alviss
+
+
+Modifications
+=============
+
+Alviss is developed independently from Plainva, starting from the v0.8.7
+release (commit 423752705, released 2026-11-04). This notice records the
+modification as AGPL-3.0 section 5(a) requires.
+
+Modifications started on 2026-11-14 and continue after that date:
+
+  - rebranded to Alviss: product name, application icon, bundle identifier
+    (com.alviss.desktop), update feed and update signing key
+  - added an in-app LLM chat, written for Alviss
+  - restricted the offered user-interface languages to English and Simplified
+    Chinese
+
+See git history for the complete record.
+
+
+Trademarks
+==========
+
+The name "Plainva", the Plainva logo and the plainva.com domain belong to their
+owners. Alviss does not use them as brand assets and is not affiliated with,
+endorsed by, or supported by the Plainva project.
+
+References to Plainva in this repository are descriptive: they identify where
+the code came from and document file-format compatibility.
+
+Where the code keeps the `plainva:` YAML frontmatter namespace, the `.plainva/`
+folder inside a vault, the `plainva.db` database file name and the `@plainva/*`
+package names, the reason is compatibility with existing vaults and with
+Obsidian, and keeping merges from upstream reviewable. That is descriptive use,
+not a claim to the mark.

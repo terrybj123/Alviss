@@ -55,7 +55,10 @@ const BUDGET: Record<string, number> = {
   // One less since 2026-10-12: the phone's mail sign-in is registered by a
   // function of its own (`services/mail/mailSignIn.ts`), so a test can ask it.
   "apps/mobile/src/main.tsx": 1,
-  "apps/desktop/src/test-setup.ts": 4,
+  // Five since 2026-11-14: the setup pins the startup language to English, so a
+  // Chinese or German host no longer runs every English-word assertion in its
+  // own language — the reason this suite was red on a zh-CN Mac and green in CI.
+  "apps/desktop/src/test-setup.ts": 5,
 };
 
 interface Finding {

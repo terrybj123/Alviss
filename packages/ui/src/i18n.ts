@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { APP_LANGUAGES, DEFAULT_LANGUAGE, matchAppLanguage } from './services/languages';
+import { APP_LANGUAGES, DEFAULT_LANGUAGE, matchAppLanguage, offeredLanguage } from './services/languages';
 import { loadDateLocale } from './lib/dateLocale';
 
 // Locale bundles load LAZILY (P2.8): all ten JSONs together are ~580 KB —
@@ -25,7 +25,7 @@ async function loadLanguage(code: string): Promise<void> {
 const getOsLanguage = () =>
   matchAppLanguage(navigator.language || (navigator as { userLanguage?: string }).userLanguage);
 
-const initialLanguage = getOsLanguage();
+const initialLanguage = offeredLanguage(getOsLanguage());
 
 i18n
   .use(initReactI18next)

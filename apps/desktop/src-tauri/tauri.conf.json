@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Plainva",
-  "version": "0.8.7",
-  "identifier": "com.plainva.desktop",
+  "productName": "Alviss",
+  "version": "0.1.0",
+  "identifier": "com.alviss.desktop",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Plainva",
+        "title": "Alviss",
         "width": 1280,
         "height": 832,
         "minWidth": 720,
@@ -32,13 +32,15 @@
       "requireLiteralLeadingDot": false
     },
     "sql": {
-      "preload": ["sqlite:plainva.db"]
+      "preload": [
+        "sqlite:plainva.db"
+      ]
     },
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDMyMzdDODIyNzA5MzQ2NzYKUldSMlJwTndJc2czTWpuQkxvclZrb0JHZXJLT3k1bUMrazVZRVJlOExISkg3WXloc1pDSVJld1IK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDBCRjlEMkMxMjIxNUMzRjIKUldUeXd4VWl3ZEw1QzEvT3FZSnU0VkNrNDcvRS9jZU1zTzVCK3VUQ3Y0dDlnazEzQVpSQ2NSVzMK",
       "endpoints": [
-        "https://github.com/plainva/plainva/releases/download/updater/latest.json",
-        "https://github.com/plainva/plainva/releases/latest/download/latest.json"
+        "https://github.com/terrybj123/Alviss/releases/download/updater/latest.json",
+        "https://github.com/terrybj123/Alviss/releases/latest/download/latest.json"
       ]
     }
   },

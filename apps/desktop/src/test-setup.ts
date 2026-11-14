@@ -8,7 +8,7 @@
 // every one of ~500 test files, and `@plainva/ui` loads the whole package —
 // 3 s per file warm, 16 s cold, two thirds of the suite's time (Befunde
 // 2026-09-24, Z2). A test that needs the package imports it itself.
-import { i18nReady, loadAllLanguages, setDateLocaleForTests } from "@plainva/ui/i18n";
+import { changeAppLanguage, i18nReady, loadAllLanguages, setDateLocaleForTests } from "@plainva/ui/i18n";
 import { vi } from "vitest";
 import { makeWaitForPatient } from "../../../packages/core/test/helpers/patientWaitFor";
 import { registerDiscardQuestion } from "../../../packages/ui/src/lib/discardQuestion";
@@ -31,4 +31,9 @@ await loadAllLanguages();
 // geography. So: wait for the startup load to land, then pin English.
 // Tests about localisation set the locale they mean, explicitly.
 await i18nReady.catch(() => {});
+// Pin the startup language to English, as the note above promises. jsdom takes
+// `navigator.language` from the host, so a German or Chinese Mac otherwise runs
+// the whole suite in that language and fails every English-word assertion —
+// a machine-dependent red suite that upstream's all-English CI never sees.
+await changeAppLanguage("en");
 setDateLocaleForTests(undefined);

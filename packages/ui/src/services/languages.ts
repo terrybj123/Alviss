@@ -31,6 +31,22 @@ export const APP_LANGUAGES: AppLanguage[] = [
 export const DEFAULT_LANGUAGE = "en";
 
 /**
+ * The UI languages this build OFFERS (Alviss Phase 1: English and Simplified
+ * Chinese). `APP_LANGUAGES` stays the asset registry — the parity tests, the
+ * date-fns loaders and the vault templates still know every bundle — while this
+ * list is what the language picker shows and what an OS locale may resolve to.
+ */
+export const OFFERED_LANGUAGES: AppLanguage[] = APP_LANGUAGES.filter(
+  (l) => l.code === "en" || l.code === "zh-CN",
+);
+
+/** Clamps any language tag to one this build offers; English otherwise. */
+export function offeredLanguage(tag: string | null | undefined): string {
+  const match = matchAppLanguage(tag);
+  return OFFERED_LANGUAGES.some((l) => l.code === match) ? match : DEFAULT_LANGUAGE;
+}
+
+/**
  * Maps an arbitrary language tag (OS locale, stored setting, i18n.language) to
  * a supported code: exact match first (case-insensitive), then primary-subtag
  * match ("pt-PT" → "pt-BR", "zh" → "zh-CN"), else English.
