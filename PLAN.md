@@ -467,7 +467,7 @@ Estimates assume one focused developer; they are ranges, not commitments.
 | M1 | LLM core | Provider adapters, SSE streaming, keychain, connection test, unit tests | 2–3 weeks |
 | M2 | Chat UI | Panel, streaming, stop/regenerate, markdown, context attach, history | 2 weeks |
 | M3 | Hardening | Error states, budget/truncation notices, docs, accessibility pass | 1 week |
-| M4 | Release | Signing, notarization, updater, DMG, fresh-machine test | 1 week |
+| M4 | Release | Signing, notarization, updater, DMG, fresh-machine test — runbook in [RELEASING.md](RELEASING.md) | 1 week |
 
 ### 10.1 Where Phase 1 stands (2026-11-15)
 
@@ -477,7 +477,7 @@ Estimates assume one focused developer; they are ranges, not commitments.
 | M1 LLM core | done — two protocols, SSE, errors, keychain egress; the native egress is tested against a real local server (chunked SSE, error status) |
 | M2 Chat UI | done — panel, presets, custom server, streaming, stop, context, persistence |
 | M3 Hardening | near done — errors, escaping, tests, parity catalog; a conversation list is open |
-| M4 Release | not started — needs the Apple Developer account (§8.1); a local `.app` builds and runs |
+| M4 Release | prepared, not executed — [RELEASING.md](RELEASING.md) has the runbook; a local `.app` builds, signs with our updater key and runs. Blocked on the Apple Developer account (§8.1) |
 
 Known gaps at this point, all recorded above: a conversation list over `.plainva/chats/` (Phase 2),
 and notarisation (blocked on the Apple Developer account).
