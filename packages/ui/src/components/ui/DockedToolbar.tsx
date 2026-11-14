@@ -6,7 +6,7 @@ export interface DockedToolbarProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Docked toolbar (Plainva UI 2.0 / M3 Expressive): a bottom-anchored action
+ * Docked toolbar (Alviss UI 2.0 / M3 Expressive): a bottom-anchored action
  * strip that sits above the keyboard (mobile editor) or docks to an edge
  * (desktop selection tools). Owns the canonical surface/scroll behaviour via
  * the shared .pv-docked-toolbar classes so themes can restyle it; hosts

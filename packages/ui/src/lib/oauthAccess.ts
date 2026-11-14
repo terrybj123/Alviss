@@ -10,7 +10,7 @@ import type { OAuthFamily } from "./oauthScopes";
  * 2026-10-23: the old "own app ID" field on the account page was a label that
  * re-signing in never read, and there was no place for the secret at all).
  *
- * Plainva's own access is the default whenever this build ships a client for
+ * Alviss's own access is the default whenever this build ships a client for
  * the platform; the user's own Google project stays available under
  * "Advanced". Client ids, secrets and grants never leave the device (ADR 0015).
  */
@@ -41,7 +41,7 @@ export interface OAuthAccess {
   /**
    * How this device asks for consent: the desktop opens the system browser and
    * listens on a loopback port, a phone opens the browser and comes back
-   * through the app's scheme, Android with Plainva's own client uses the
+   * through the app's scheme, Android with Alviss's own client uses the
    * system sheet of Play services.
    */
   flow: "loopback" | "browser" | "system";
@@ -55,7 +55,7 @@ export type AccessResolution = { ok: true; access: OAuthAccess } | { ok: false; 
 const GOOGLE_CLIENT_ID = /^[a-zA-Z0-9-]+\.apps\.googleusercontent\.com$/;
 const MICROSOFT_CLIENT_ID = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 
-/** Gmail through Plainva's project needs the mail scope on that project's
+/** Gmail through Alviss's project needs the mail scope on that project's
  * consent screen. Until Google approves it (stage 2 of E4), a build says so. */
 function googleMailOnPlainvaClient(env: Record<string, unknown>): boolean {
   const state = env.VITE_PLAINVA_GOOGLE_MAIL_STATE;
@@ -89,8 +89,8 @@ export function validClientId(family: AccessFamily, clientId: string): boolean {
 /**
  * The access this device uses for a NEW sign-in of `family`.
  *
- * `stored` is the device's choice; absent means "Plainva's access". A choice of
- * Plainva's access on a build without a client for this platform is a problem
+ * `stored` is the device's choice; absent means "Alviss's access". A choice of
+ * Alviss's access on a build without a client for this platform is a problem
  * the surface states (and offers the own access for), never a silent fallback
  * to some other client.
  */
@@ -114,7 +114,7 @@ export function resolveOAuthAccess(
         family, source, clientId: client.clientId,
         ...(client.clientSecret ? { clientSecret: client.clientSecret } : {}),
         // Play services identifies the build by package and signing key, which
-        // Google accepts in one project only - Plainva's (finding 2026-10-09).
+        // Google accepts in one project only - Alviss's (finding 2026-10-09).
         flow: platform === "android" ? "system" : browserFlow,
         mail: googleMailOnPlainvaClient(env),
       },
@@ -140,7 +140,7 @@ export function resolveOAuthAccess(
 }
 
 /**
- * The app key this device signs in to Dropbox with: Plainva's registration,
+ * The app key this device signs in to Dropbox with: Alviss's registration,
  * or the person's own app (E6). Same shape of answer as the client ids.
  */
 export type DropboxAccessResolution = { ok: true; access: { family: "dropbox"; source: AccessSource; clientId: string } } | { ok: false; problem: AccessProblem };
@@ -160,7 +160,7 @@ export function resolveDropboxAccess(stored: StoredOAuthAccess | null, plainvaKe
  * Two sources: the account's own app id (`byoClientId`) and the key the
  * stored sign-in was made with. Either may hold PLAINVA's key - the old
  * account page wrote whatever its field showed on leaving it, and it showed
- * the stored sign-in's key, the standard one included - so Plainva's key is
+ * the stored sign-in's key, the standard one included - so Alviss's key is
  * the standard sign-in, never an "own" key. A key that does not look like
  * one is not adopted (it stays on the account, where nothing reads it).
  */
@@ -192,7 +192,7 @@ export function readStoredOAuthAccess(value: unknown): StoredOAuthAccess | null 
 }
 
 /**
- * Google projects Plainva used and retired, by project number - the part of a
+ * Google projects Alviss used and retired, by project number - the part of a
  * client id before the first dash (K7, 2026-10-26: `plainva-spike`).
  *
  * No build ever shipped a client of it: while there was no standard sign-in,

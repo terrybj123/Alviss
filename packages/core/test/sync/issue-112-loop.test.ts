@@ -191,7 +191,7 @@ describe("issue #112: one folder, two spellings, no second folder on the server"
     expect(await fs.readdir(w.root)).not.toContain(NFD);
     expect(await fs.readFile(path.join(w.root, NFC, "Notiz.md"), "utf8")).toBe(BODY);
     expect(w.collisions.at(-1)).toEqual([{ path: `${NFD}/Notiz.md`, twin: `${NFC}/Notiz.md` }]);
-    // Plainva deletes nothing on either side.
+    // Alviss deletes nothing on either side.
     expect(w.dav.files.get(`${NFD}/Notiz.md`)).toBeDefined();
     expect(w.dav.log.filter((l) => l.startsWith("DELETE") || l.startsWith("PUT") || l.startsWith("MKCOL"))).toEqual([]);
   });

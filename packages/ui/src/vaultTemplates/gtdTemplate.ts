@@ -3,7 +3,7 @@ import { welcomeBody, type VaultTemplateDefinition, type VaultTemplateNote } fro
 import type { ParaSample, ParaTemplate } from "./paraTemplate";
 
 /**
- * The GTD vault template (plan "Vorlagen-Überarbeitung + Plainva-Tour" § 3).
+ * The GTD vault template (plan "Vorlagen-Überarbeitung + Alviss-Tour" § 3).
  *
  * Shared structure, per-language strings — same reason as PARA and the tour: the
  * parity test requires all ten modules to agree on every folder, note and
@@ -285,7 +285,7 @@ export const GTD_STRINGS_DE: GtdStrings = {
       },
       {
         title: "Angebot des Schreiners prüfen",
-        body: "Ziehe die Karte im Board in eine andere Spalte: Plainva schreibt den neuen Status in die Notiz.",
+        body: "Ziehe die Karte im Board in eine andere Spalte: Alviss schreibt den neuen Status in die Notiz.",
         props: { status: "Nächste", kontext: "@Arbeit", projekt: "[[Küche renovieren]]", frist: "{{today+5}}" },
       },
       {
@@ -400,7 +400,7 @@ export const GTD_STRINGS_EN: GtdStrings = {
       },
       {
         title: "Review the carpenter's quote",
-        body: "Drag the card to another column in the board: Plainva writes the new status into the note.",
+        body: "Drag the card to another column in the board: Alviss writes the new status into the note.",
         props: { status: "Next", context: "@Work", project: "[[Renovate the kitchen]]", due: "{{today+5}}" },
       },
       {

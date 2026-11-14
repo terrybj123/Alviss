@@ -19,7 +19,7 @@ import { BACK_EDGE_PX, startsInBackEdge } from "./gestureConstants";
  * `data-no-page-swipe` (the overlay chip row scrolls sideways itself; a held
  * event block is being moved), and on Android a drag that starts in the
  * left edge zone the system claims for its back gesture. iOS has no edge
- * back gesture in Plainva (parity catalog `system-back`, 2026-09-01), so the
+ * back gesture in Alviss (parity catalog `system-back`, 2026-09-01), so the
  * whole width pages there.
  *
  * `touch-action: pan-y` on the surface is the precondition, not a nicety:

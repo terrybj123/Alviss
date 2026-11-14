@@ -30,7 +30,7 @@ const PROVIDER_NAME: Record<AccessFamily, string> = { google: "Google", microsof
 
 /**
  * Which client this device signs in with (account sign-in plan E3, mockup
- * view 6). One surface for both shells: Plainva's access is the default, the
+ * view 6). One surface for both shells: Alviss's access is the default, the
  * own access asks exactly what this device type needs - a Desktop-type Google
  * client with its secret on a computer, an iOS-type client without one on a
  * phone, a client id for Microsoft, an app key for Dropbox (settings plan
@@ -56,7 +56,7 @@ export function OAuthAccessEditor({
   family: AccessFamily;
   platform: AccessPlatform;
   value: StoredOAuthAccess | null;
-  /** Whether this build ships Plainva's client for this family and platform. */
+  /** Whether this build ships Alviss's client for this family and platform. */
   plainvaAvailable: boolean;
   onSave(next: StoredOAuthAccess): Promise<void>;
   onCancel?(): void;
@@ -109,7 +109,7 @@ export function OAuthAccessEditor({
           )}
           <SettingCardNote>{typeHint}</SettingCardNote>
           {/* issue 142: Google answers a client of the wrong type on its own error
-              page, which never reaches Plainva — so the editor says it first. */}
+              page, which never reaches Alviss — so the editor says it first. */}
           {family === "google" && <SettingCardNote>{t(`accountAccess.ownTypeMismatch.${needs.clientType}`)}</SettingCardNote>}
           <SettingCardBlock>
             <Button

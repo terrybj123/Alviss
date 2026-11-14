@@ -1,6 +1,6 @@
 import { trimEndChars } from "@plainva/core";
 /**
- * Readable names for the entries Plainva puts in the OS keychain (plan P6, E1).
+ * Readable names for the entries Alviss puts in the OS keychain (plan P6, E1).
  *
  * What the user used to see in Seahorse / Keychain Access / Credential Manager:
  *

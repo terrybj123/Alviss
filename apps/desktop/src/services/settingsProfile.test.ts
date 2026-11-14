@@ -258,7 +258,7 @@ describe("profile field scope (bars plan P6)", () => {
   });
 
   it("leaves a field it does not know with the vault", () => {
-    // The forward-compatibility bucket of a newer Plainva: guessing a scope for
+    // The forward-compatibility bucket of a newer Alviss: guessing a scope for
     // it would be worse than keeping the behaviour we have.
     expect(isMemberProfileField("somethingFromTheFuture")).toBe(false);
   });
@@ -266,7 +266,7 @@ describe("profile field scope (bars plan P6)", () => {
 
 describe("legacyToastFor (P7)", () => {
   /**
-   * One sentence used to cover three different findings: "an older Plainva
+   * One sentence used to cover three different findings: "an older Alviss
    * version is still publishing retired account data." For a LOCAL profile
    * document that is simply untrue — the file is this device's own and merely
    * predates the capability stamp, so the message sent the user hunting through

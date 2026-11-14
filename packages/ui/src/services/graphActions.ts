@@ -43,7 +43,7 @@ function notifyOpenEditor(path: string): void {
 
 /**
  * Appends a wiki link to `sourcePath` pointing at `targetPath` (bare basename
- * when unique, else path-qualified — identical to Plainva's own link writing).
+ * when unique, else path-qualified — identical to Alviss's own link writing).
  * Returns the written link text.
  */
 export async function appendWikiLink(

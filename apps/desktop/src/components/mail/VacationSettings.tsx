@@ -9,10 +9,10 @@ import { SIEVE_PORT, setVacation, vacationSupport, type MailAccountConfig } from
  * The rule that shapes this card: **it appears only where it survives the
  * machine being switched off.** An account with neither a Sieve server nor
  * Microsoft Graph gets no switch, and a sentence saying why — a control that
- * needs Plainva running would be a promise that breaks when someone closes the
+ * needs Alviss running would be a promise that breaks when someone closes the
  * lid, which is precisely the moment the notice is supposed to answer.
  *
- * Where the account HAS a Sieve server, Plainva writes one clearly marked
+ * Where the account HAS a Sieve server, Alviss writes one clearly marked
  * section of the script and leaves everything else byte for byte. A script it
  * cannot parse is reported, not overwritten.
  */
@@ -50,7 +50,7 @@ export function VacationSettings({ vaultPath, account }: { vaultPath: string; ac
       toast[ok ? "info" : "error"](
         ok
           ? t("vacation.saved", { defaultValue: "Abwesenheitsnotiz beim Anbieter hinterlegt" })
-          : t("vacation.scriptForeign", { defaultValue: "Das Filterskript enthält einen Abschnitt, den Plainva nicht sicher lesen kann — es wurde nichts geändert." })
+          : t("vacation.scriptForeign", { defaultValue: "Das Filterskript enthält einen Abschnitt, den Alviss nicht sicher lesen kann — es wurde nichts geändert." })
       );
     } catch (e) {
       toast.error(e instanceof Error ? e.message : String(e));

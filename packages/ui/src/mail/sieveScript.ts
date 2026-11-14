@@ -1,10 +1,10 @@
 /**
- * Plainva's own section inside a Sieve script (S13, decision E4).
+ * Alviss's own section inside a Sieve script (S13, decision E4).
  *
- * A mail account's Sieve script is the user's, not Plainva's. People write
+ * A mail account's Sieve script is the user's, not Alviss's. People write
  * rules there by hand, other clients write theirs, and a server-side filter is
  * exactly the kind of thing where silently losing a line costs real mail. So
- * Plainva never owns the file: it owns one clearly marked SECTION of it, reads
+ * Alviss never owns the file: it owns one clearly marked SECTION of it, reads
  * everything else as opaque, and writes it back byte for byte.
  *
  * Everything in here is pure. The protocol lives elsewhere (`net/sieve.ts` for
@@ -14,19 +14,19 @@
 export const SIEVE_BEGIN = "# --- BEGIN PLAINVA (do not edit this section) ---";
 export const SIEVE_END = "# --- END PLAINVA ---";
 
-/** A script split into what Plainva may touch and what it must not. */
+/** A script split into what Alviss may touch and what it must not. */
 export interface SieveSplit {
   before: string;
-  /** Plainva's section WITHOUT the markers, or null when there is none yet. */
+  /** Alviss's section WITHOUT the markers, or null when there is none yet. */
   section: string | null;
   after: string;
 }
 
 /**
- * Splits a script around Plainva's markers.
+ * Splits a script around Alviss's markers.
  *
  * A script with a BEGIN but no END is NOT half-parsed: an unterminated marker
- * means the file is in a state Plainva did not produce, and guessing where the
+ * means the file is in a state Alviss did not produce, and guessing where the
  * section ends would eat whatever follows. It reports "no section" and the
  * caller refuses to write — the one case where doing nothing is right.
  */
@@ -55,7 +55,7 @@ function joinSieve(split: SieveSplit, section: string | null): string {
 }
 
 /**
- * Replaces (or removes) Plainva's section and returns the whole script.
+ * Replaces (or removes) Alviss's section and returns the whole script.
  *
  * Returns null when the script cannot be handled safely — an unterminated
  * marker. The caller reports that instead of overwriting.
@@ -102,7 +102,7 @@ function sieveText(body: string): string {
  * Builds the vacation rule.
  *
  * The date window is a `currentdate` test, not a promise the client keeps:
- * putting it in the script means the reply starts and stops even if Plainva is
+ * putting it in the script means the reply starts and stops even if Alviss is
  * never opened again — which is the whole point of a server-side auto-reply.
  * Returns null when the notice is off, so the caller removes the section.
  */
@@ -160,7 +160,7 @@ export function applyVacation(script: string, settings: VacationSettings): strin
 }
 
 /**
- * Everything Plainva puts in its section, composed in one place (S15).
+ * Everything Alviss puts in its section, composed in one place (S15).
  *
  * This exists because there is exactly ONE section (E4) and two features that
  * want to write it. Composing each half on its own would mean the last one to
@@ -179,8 +179,8 @@ export function buildPlainvaSection(state: { vacationBody: string | null; rulesB
   return [req, ...parts].filter(Boolean).join("\n\n");
 }
 
-/** Reads a script, replaces Plainva's whole section, returns what to upload.
- * Null means the script is in a state Plainva did not produce — do nothing. */
+/** Reads a script, replaces Alviss's whole section, returns what to upload.
+ * Null means the script is in a state Alviss did not produce — do nothing. */
 export function applySieve(
   script: string,
   state: { vacationBody: string | null; rulesBody: string | null; extensions: readonly string[] }

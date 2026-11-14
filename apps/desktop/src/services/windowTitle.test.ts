@@ -10,33 +10,33 @@ describe("composeWindowTitle", () => {
   it("names a window after what it shows while one vault is open", () => {
     // The folder name would be noise for everyone who never opens a second one.
     expect(composeWindowTitle({ subject: "Tasks", vaultPath: "/home/me/Notes", vaultCount: 1 }))
-      .toBe("Tasks — Plainva");
+      .toBe("Tasks — Alviss");
   });
 
   it("adds the vault once there are two, which is the point of the rule", () => {
-    // Two taskbar entries called "Tasks — Plainva" belong to two vaults and
+    // Two taskbar entries called "Tasks — Alviss" belong to two vaults and
     // nothing on the button says which.
     expect(composeWindowTitle({ subject: "Tasks", vaultPath: "/home/me/Notes", vaultCount: 2 }))
-      .toBe("Tasks — Notes — Plainva");
+      .toBe("Tasks — Notes — Alviss");
   });
 
   it("does not say the vault twice when the vault IS the subject", () => {
     // A workplace window shows no single piece of content, so the vault is
-    // already its name — "Notes — Notes — Plainva" is what this prevents.
-    expect(composeWindowTitle({ vaultPath: "/home/me/Notes", vaultCount: 2 })).toBe("Notes — Plainva");
+    // already its name — "Notes — Notes — Alviss" is what this prevents.
+    expect(composeWindowTitle({ vaultPath: "/home/me/Notes", vaultCount: 2 })).toBe("Notes — Alviss");
   });
 
   it("falls back to the app name with nothing open", () => {
-    expect(composeWindowTitle({ vaultCount: 0 })).toBe("Plainva");
+    expect(composeWindowTitle({ vaultCount: 0 })).toBe("Alviss");
   });
 
-  it("calls the vault by the name it has in Plainva (Sammelplan § 3.171 Nr. 4)", () => {
+  it("calls the vault by the name it has in Alviss (Sammelplan § 3.171 Nr. 4)", () => {
     // A vault renamed in the settings kept its folder's name in the title bar.
-    expect(composeWindowTitle({ vaultPath: "/home/me/Notes", vaultName: "Work", vaultCount: 1 })).toBe("Work — Plainva");
+    expect(composeWindowTitle({ vaultPath: "/home/me/Notes", vaultName: "Work", vaultCount: 1 })).toBe("Work — Alviss");
     expect(composeWindowTitle({ subject: "Tasks", vaultPath: "/home/me/Notes", vaultName: "Work", vaultCount: 2 }))
-      .toBe("Tasks — Work — Plainva");
+      .toBe("Tasks — Work — Alviss");
     // No name of its own: the folder's.
-    expect(composeWindowTitle({ vaultPath: "/home/me/Notes", vaultName: null, vaultCount: 1 })).toBe("Notes — Plainva");
+    expect(composeWindowTitle({ vaultPath: "/home/me/Notes", vaultName: null, vaultCount: 1 })).toBe("Notes — Alviss");
   });
 
   it("is composed in one place, with the vault's name, in every window", () => {
@@ -51,6 +51,6 @@ describe("composeWindowTitle", () => {
 
   it("reads the folder name off either separator", () => {
     // Windows paths reach this from the same settings the POSIX ones do.
-    expect(composeWindowTitle({ vaultPath: "C:\\Users\\me\\Vault\\", vaultCount: 2 })).toBe("Vault — Plainva");
+    expect(composeWindowTitle({ vaultPath: "C:\\Users\\me\\Vault\\", vaultCount: 2 })).toBe("Vault — Alviss");
   });
 });

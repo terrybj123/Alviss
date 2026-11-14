@@ -68,7 +68,7 @@ export async function backupIndexFile(
  * root ALREADY declares is kept as it is (OKF v0.2 plan, P2): regenerating the
  * listing is a structural refresh, and lifting the bundle version belongs to
  * the explicit migration, not to an auto-update that runs on every rename.
- * A fresh root declares the version Plainva writes.
+ * A fresh root declares the version Alviss writes.
  */
 export async function generateIndexForFolder(opts: {
   adapter: IndexGenAdapter;
@@ -113,7 +113,7 @@ export async function generateIndexForFolder(opts: {
   const existing = overwrote ? await adapter.readTextFile(indexPath) : null;
   const bundleRoot = folder === "";
   // Keep the declared bundle version of an existing root; only a root that
-  // declares none (or a fresh one) gets the version Plainva writes.
+  // declares none (or a fresh one) gets the version Alviss writes.
   const okfVersion = bundleRoot && existing !== null ? readRootOkfDeclaration(existing) ?? undefined : undefined;
 
   const content = generateIndexContent({
@@ -127,7 +127,7 @@ export async function generateIndexForFolder(opts: {
     subfolders: [...subfolders].map((name) => ({
       name,
       // Only link a subfolder whose own index.md exists (Issue #9): the entry
-      // then opens that note in both Plainva and Obsidian.
+      // then opens that note in both Alviss and Obsidian.
       hasIndex: lowerPaths.has(`${prefix}${name}/index.md`.toLowerCase()),
     })),
     subfoldersHeading: opts.subfoldersHeading,

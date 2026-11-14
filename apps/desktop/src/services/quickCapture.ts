@@ -5,7 +5,7 @@ import { getSettingsStore } from "./settingsStore";
  * The global quick capture (plan Journal, J7) — central window only.
  *
  * Opt-in, off by default: ONE system-wide shortcut opens a small window with
- * the journal's capture field, even while Plainva sits in the tray. The window
+ * the journal's capture field, even while Alviss sits in the tray. The window
  * writes nothing itself: it hands what was typed to this window over the bus,
  * and the journal's one write path takes it from there.
  *

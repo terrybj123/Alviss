@@ -52,7 +52,7 @@ describe("which embeds are sound", () => {
     expect(embedKindOf("shot.png")).toBe("image");
     expect(embedKindOf("Meeting notes")).toBeNull();
     expect(embedKindOf("Plan.md")).toBeNull();
-    // `.mp4` is a film. Plainva plays no film, so it stays a link.
+    // `.mp4` is a film. Alviss plays no film, so it stays a link.
     expect(embedKindOf("clip.mp4")).toBeNull();
   });
 

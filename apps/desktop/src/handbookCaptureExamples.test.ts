@@ -7,7 +7,7 @@ import { sourceFile, sourceMap } from "./test-sourceTree";
 /**
  * The handbook shows one capture sentence per language — "Send offer tomorrow
  * 2pm !!! #client weekly". A translated example is a claim about the parser: it
- * says "type this and Plainva understands it". This guard types every example
+ * says "type this and Alviss understands it". This guard types every example
  * of every language folder into the real grammar, with the words that
  * language's locale file carries, and fails the page that promises more than
  * the app keeps.
@@ -82,9 +82,9 @@ describe("the capture examples of the handbook, typed into the real grammar", ()
       const times = spans(lang, "Tasks.md").filter((span) => /\d/.test(span) && !isSentence(span) && !/[[\]T!-]/.test(span) && !span.includes("remind"));
       expect(times.length, `${lang}/Tasks.md lists time spellings`).toBeGreaterThan(1);
       for (const time of times) {
-        const got = parseTaskCapture(`Plainva ${time}`, words, TODAY);
+        const got = parseTaskCapture(`Alviss ${time}`, words, TODAY);
         expect(got.minutes, `${lang}/Tasks.md: "${time}" is a time`).not.toBeNull();
-        expect(got.title).toBe("Plainva");
+        expect(got.title).toBe("Alviss");
       }
     });
   }

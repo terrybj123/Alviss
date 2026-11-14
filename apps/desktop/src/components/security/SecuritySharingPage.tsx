@@ -438,7 +438,7 @@ export const SecuritySharingPage: React.FC<SecuritySharingPageProps> = ({ select
     setBusy(true);
     try {
       const rotated = await rotateWorkspaceRecovery({ bytes: await readFile(form.recoveryFile), recoveryCode: form.recoveryCode });
-      const target = await save({ defaultPath: "Plainva-Recovery-Renewed.pvrecovery", filters: [{ name: "Plainva Recovery", extensions: ["pvrecovery"] }] });
+      const target = await save({ defaultPath: "Alviss-Recovery-Renewed.pvrecovery", filters: [{ name: "Alviss Recovery", extensions: ["pvrecovery"] }] });
       if (!target) throw new Error(t("workspaceSecurity.saveRequired", { defaultValue: "Save the renewed recovery file to finish." }));
       await writeFile(target, rotated.bytes);
       await activateWorkspaceRecovery(rotated.activation);
@@ -452,7 +452,7 @@ export const SecuritySharingPage: React.FC<SecuritySharingPageProps> = ({ select
     setBusy(true);
     try {
       const prepared = await prepareWorkspaceOwnerTransfer({ targetMemberId: form.scopeId, bytes: await readFile(form.recoveryFile), recoveryCode: form.recoveryCode });
-      const target = await save({ defaultPath: "Plainva-Recovery-New-Owner.pvrecovery", filters: [{ name: "Plainva Recovery", extensions: ["pvrecovery"] }] });
+      const target = await save({ defaultPath: "Alviss-Recovery-New-Owner.pvrecovery", filters: [{ name: "Alviss Recovery", extensions: ["pvrecovery"] }] });
       if (!target) throw new Error(t("workspaceSecurity.saveRequired", { defaultValue: "Save the replacement recovery file to finish." }));
       await writeFile(target, prepared.bytes);
       await activateWorkspaceOwnerTransfer(prepared.activation);
@@ -465,7 +465,7 @@ export const SecuritySharingPage: React.FC<SecuritySharingPageProps> = ({ select
   const exportQuarantine = async (quarantineId: string): Promise<void> => {
     const bytes = await exportWorkspaceQuarantine(quarantineId);
     if (!bytes) return;
-    const target = await save({ defaultPath: `Plainva-Quarantine-${quarantineId.slice(0, 12)}.bin` });
+    const target = await save({ defaultPath: `Alviss-Quarantine-${quarantineId.slice(0, 12)}.bin` });
     if (target) await writeFile(target, bytes);
   };
 
@@ -733,7 +733,7 @@ export const SecuritySharingPage: React.FC<SecuritySharingPageProps> = ({ select
           onRepaired={(ids) => runGovernance(() => updateWorkspaceQuarantine(ids, "repaired"), t("workspaceSecurity.repaired"))}
           onExportDiagnostics={async (ids) => {
             const json = await exportWorkspaceQuarantineDiagnostics(ids);
-            const target = await save({ defaultPath: `Plainva-Quarantine-Diagnostics-${new Date().toISOString().slice(0, 10)}.json` });
+            const target = await save({ defaultPath: `Alviss-Quarantine-Diagnostics-${new Date().toISOString().slice(0, 10)}.json` });
             if (target) await writeFile(target, new TextEncoder().encode(json));
           }}
           onExportCiphertext={exportQuarantine}
@@ -895,7 +895,7 @@ export const SecuritySharingPage: React.FC<SecuritySharingPageProps> = ({ select
             {publicationInvite ? (<>
               <Banner kind="success" rounded>{t("workspaceSecurity.publicationInviteHint", { defaultValue: "Send this code through a secure channel. It opens this publication only - never the vault it came from." })}</Banner>
               <div className="pv-security-field"><span>{t("workspaceSecurity.inviteCode", { defaultValue: "Invitation code" })}</span><code className="pv-security-code">{publicationInvite.invite}</code></div>
-              <div className="pv-security-field"><span>{t("workspaceSecurity.inviteQrCaption", { defaultValue: "Or scan this code with the Plainva app on your other device" })}</span><QrImage value={publicationInvite.invite} label={t("workspaceSecurity.inviteCode", { defaultValue: "Invitation code" })} /></div>
+              <div className="pv-security-field"><span>{t("workspaceSecurity.inviteQrCaption", { defaultValue: "Or scan this code with the Alviss app on your other device" })}</span><QrImage value={publicationInvite.invite} label={t("workspaceSecurity.inviteCode", { defaultValue: "Invitation code" })} /></div>
               <div className="pv-security-field"><span>{t("workspaceSecurity.memberIdFull", { defaultValue: "Member ID" })}</span><code className="pv-security-code">{publicationInvite.memberId}</code></div>
               <div className="pv-security-actions">
                 <Button variant="ghost" onClick={() => { setRecipientFor(null); setPublicationInvite(null); }}>{t("common.close", { defaultValue: "Close" })}</Button>
@@ -950,10 +950,10 @@ export const SecuritySharingPage: React.FC<SecuritySharingPageProps> = ({ select
             <Banner kind="warning" rounded>{t("workspaceSecurity.withdrawBoundary", { defaultValue: "Withdrawing does not take back what someone already has. Whoever copied the bytes and holds the key can still read them. What it does: from now on nothing new reaches them, and the next epoch is unreadable for them." })}</Banner>
             <SettingRow label={t("workspaceSecurity.publications", { defaultValue: "Publications" })}><strong>{withdrawFor.name}</strong></SettingRow>
             <SettingCardNote>{t("workspaceSecurity.withdrawPublicationHint", { defaultValue: "Every object this publication holds is retracted and the publication is forgotten here. Recipients keep no working key." })}</SettingCardNote>
-            {/* Instructions, not automation. Plainva does not manage other
+            {/* Instructions, not automation. Alviss does not manage other
                 systems' access lists, and pretending to would be worse than
                 saying so plainly. */}
-            <SettingCardNote>{t("workspaceSecurity.withdrawProviderHint", { defaultValue: "The folder at {{provider}} stays where it is. Plainva does not manage other systems' sharing settings - remove the share there yourself.", provider: withdrawFor.provider })}</SettingCardNote>
+            <SettingCardNote>{t("workspaceSecurity.withdrawProviderHint", { defaultValue: "The folder at {{provider}} stays where it is. Alviss does not manage other systems' sharing settings - remove the share there yourself.", provider: withdrawFor.provider })}</SettingCardNote>
             <div className="pv-security-actions">
               <Button variant="ghost" onClick={() => setWithdrawFor(null)}>{t("common.cancel", { defaultValue: "Cancel" })}</Button>
               <Button variant="danger" disabled={busy} onClick={() => {
@@ -978,7 +978,7 @@ export const SecuritySharingPage: React.FC<SecuritySharingPageProps> = ({ select
           <div className="pv-security-wizard">
             <Banner kind="info" rounded>{inviteFor.self ? t("workspaceSecurity.addDeviceHint") : t("workspaceSecurity.inviteArtifactHint", { defaultValue: "Send this code to the invited person through a secure channel. On their device they open Security & Sharing, paste it and request to join; approving their device here hands over the key." })}</Banner>
             <div className="pv-security-field"><span>{t("workspaceSecurity.inviteCode", { defaultValue: "Invitation code" })}</span><code className="pv-security-code">{inviteCode}</code></div>
-            <div className="pv-security-field"><span>{t("workspaceSecurity.inviteQrCaption", { defaultValue: "Or scan this code with the Plainva app on your other device" })}</span><QrImage value={inviteCode} label={t("workspaceSecurity.inviteCode", { defaultValue: "Invitation code" })} /></div>
+            <div className="pv-security-field"><span>{t("workspaceSecurity.inviteQrCaption", { defaultValue: "Or scan this code with the Alviss app on your other device" })}</span><QrImage value={inviteCode} label={t("workspaceSecurity.inviteCode", { defaultValue: "Invitation code" })} /></div>
             {!inviteFor.self && <div className="pv-security-field"><span>{t("workspaceSecurity.memberIdFull", { defaultValue: "Member ID" })}</span><code className="pv-security-code">{inviteFor.memberId}</code></div>}
             <div className="pv-security-actions">
               <Button variant="ghost" onClick={() => setInviteFor(null)}>{t("common.close", { defaultValue: "Close" })}</Button>

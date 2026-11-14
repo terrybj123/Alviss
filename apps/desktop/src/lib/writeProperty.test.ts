@@ -31,7 +31,7 @@ const PROSE = "---\nA line between two rules\n---\nText\n";
 const EMPTY_TAGS = "---\ntags:\nstatus: open\nowner: Anna\n---\nText\n";
 const YEAR_AMONG_TAGS = "---\ntags:\n  - 2024\n  - journal\nstatus: open\nowner: Anna\n---\nText\n";
 const NUMBER_AS_TITLE = "---\ntitle: 2024\nstatus: open\nowner: Anna\n---\nText\n";
-const DATE_AS_TIMESTAMP = "---\ntype: Referenz\ntimestamp: 2026-06-22\nstatus: open\naliases: [ Plainva Domains ]\n---\nText\n";
+const DATE_AS_TIMESTAMP = "---\ntype: Referenz\ntimestamp: 2026-06-22\nstatus: open\naliases: [ Alviss Domains ]\n---\nText\n";
 const PLACEHOLDER = "---\ntags:\n  - typ/template\naliases:\n  - {{title}}\nstatus: open\n---\n# {{title}}\n";
 const READABLE = "---\ntitle: Report\nstatus: open\nowner: Anna\n---\nText\n";
 /** What a whole-set write used to give back in another form (Sammelplan § 3.70): none of it may move. */

@@ -87,7 +87,7 @@ describe("vault template databases (Gesamtplan DB-Vorlagen 2026-07-04)", () => {
             for (const b of bases) {
               const y1 = serializeBaseConfig(b.config);
               expect(() => yaml.parse(y1), b.path).not.toThrow();
-              // Idempotent: a first Plainva save must not rewrite the file.
+              // Idempotent: a first Alviss save must not rewrite the file.
               const y2 = serializeBaseConfig(parseBaseConfig(y1));
               expect(y2, `${b.path} not stable across a save round-trip`).toBe(y1);
             }
@@ -100,11 +100,11 @@ describe("vault template databases (Gesamtplan DB-Vorlagen 2026-07-04)", () => {
               for (const v of obj.views) expect(typeof v.name === "string" && v.name.trim(), `${b.path} view name`).toBeTruthy();
               // Exactly one of and/or/not at the filter root.
               expect(Object.keys(obj.filters), `${b.path} filters root`).toHaveLength(1);
-              // The source is a plain folder condition (valid in both Plainva and
-              // Obsidian). It must NOT use a Plainva-only global function like
+              // The source is a plain folder condition (valid in both Alviss and
+              // Obsidian). It must NOT use a Alviss-only global function like
               // `contains(...)` — Obsidian's Bases has no such function and would
               // reject the whole base ("Funktion 'contains' wurde nicht gefunden").
-              // index.md is dropped in Plainva's query layer, not via a filter.
+              // index.md is dropped in Alviss's query layer, not via a filter.
               expect(obj.filters.and, `${b.path} folder source`).toContain(`file.folder == "${sourceFolderOfConfig(parsedByPath.get(b.path))}"`);
               const serialized = serializeBaseConfig(b.config);
               expect(serialized, `${b.path} must stay Obsidian-evaluable (no global contains())`).not.toMatch(/(?<![\w.])contains\(/);
@@ -220,7 +220,7 @@ describe("vault template databases (Gesamtplan DB-Vorlagen 2026-07-04)", () => {
         const tpl = journal.notes.find((n) => n.path === tplPath);
         expect(tpl, tplPath).toBeTruthy();
         for (const key of Object.keys(tpl!.properties ?? {})) {
-          // `plainva` is Plainva's own namespace (icon, header colour, the
+          // `plainva` is Alviss's own namespace (icon, header colour, the
           // `tasks: false` opt-out a template needs), never a database column —
           // the Base UI filters it out of the property list for the same reason.
           if (key === "plainva") continue;

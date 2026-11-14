@@ -35,7 +35,7 @@ function serviceSlots(vaultId: string, card: SignOutCard): ServiceSignInSlot[] {
 /**
  * Deletes this phone's sign-in for the card: the card's grant, what a service
  * still kept for itself, and - for Android's system sign-in - the tokens Play
- * services cached for Plainva. The account, its services and its settings
+ * services cached for Alviss. The account, its services and its settings
  * stay; other devices stay signed in.
  *
  * Deliberately NOT revoked at Google: `AuthorizationClient.revokeAccess`

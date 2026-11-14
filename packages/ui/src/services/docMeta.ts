@@ -36,7 +36,7 @@ export function frontmatterToAddress(content: string): string | null {
 }
 
 /**
- * Plainva presentation metadata (icon, header color) parsed from a frontmatter
+ * Alviss presentation metadata (icon, header color) parsed from a frontmatter
  * block. Never throws — presentation metadata must not break rendering.
  */
 export function plainvaMetaFromBlock(block: string | null): PlainvaDocMeta {

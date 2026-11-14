@@ -7,7 +7,7 @@ import { APP_ID, APP_URL } from "./services/appScheme";
  * The app's identity is its id, never a literal (Labs channel,
  * docs/engineering/Labs_Channel.md).
  *
- * Plainva Labs installs as com.plainva.app.labs next to the store app. Every
+ * Alviss Labs installs as com.plainva.app.labs next to the store app. Every
  * place that spelled "com.plainva.app://" by hand — a widget tap, a launcher
  * shortcut, an OAuth redirect — would open the store app from Labs, or hand it
  * Labs' OAuth code. So the class is closed at the source: Android derives the
@@ -56,7 +56,7 @@ describe("app identity", () => {
     const gradle = read("android/app/build.gradle");
     expect(gradle).toMatch(/labs \{\s*initWith release\s*applicationIdSuffix '\.labs'/);
     const strings = read("android/app/src/labs/res/values/strings.xml");
-    expect(strings).toContain('<string name="app_name">Plainva Labs</string>');
+    expect(strings).toContain('<string name="app_name">Alviss Labs</string>');
     expect(strings).toContain('<string name="custom_url_scheme">com.plainva.app.labs</string>');
   });
 });

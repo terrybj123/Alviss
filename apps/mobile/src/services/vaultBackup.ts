@@ -19,7 +19,7 @@ import { classifyBackupListing, type BackupListing, type UnreadableMark } from "
  * Two differences from the desktop are real and stay:
  *
  *  - **Where.** A phone has no directory picker, so the archive goes to the
- *    app's documents directory (`Plainva Backups/<vault>/`), which is visible
+ *    app's documents directory (`Alviss Backups/<vault>/`), which is visible
  *    in the files app and included in the device backup. `Directory.Cache`
  *    would have been easier and wrong: the OS empties it, and an archive the
  *    system may delete is not an archive.
@@ -48,7 +48,7 @@ import { classifyBackupListing, type BackupListing, type UnreadableMark } from "
  */
 
 const DIR = Directory.Documents;
-const ROOT = "Plainva Backups";
+const ROOT = "Alviss Backups";
 
 const lastRunKey = (vaultId: string) => `m-backup-zip-last-${vaultId}`;
 // Keyed by the folder name, not the vault id: the folder is what survives a

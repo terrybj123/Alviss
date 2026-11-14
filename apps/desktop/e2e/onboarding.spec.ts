@@ -12,7 +12,7 @@ import { test, expect } from '@playwright/test';
  * appearing on a genuine first run.
  */
 
-/** A machine that has never run Plainva: no seen-marker, no recent vaults. */
+/** A machine that has never run Alviss: no seen-marker, no recent vaults. */
 function firstRunShell(page: any) {
   return page.addInitScript(() => {
     (window as any).mockFs = { '/somewhere': { isDir: true } };
@@ -62,7 +62,7 @@ function firstRunShell(page: any) {
 }
 
 /**
- * A machine that HAS run Plainva: a stale seen-marker and a recent vault, which
+ * A machine that HAS run Alviss: a stale seen-marker and a recent vault, which
  * is what makes this an update rather than a first run.
  */
 function updatedShell(page: any) {
@@ -103,7 +103,7 @@ test('welcomes a first-time user with the three ways in', async ({ page }) => {
 
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible({ timeout: 20000 });
-  await expect(dialog.getByText(/Willkommen bei Plainva|Welcome to Plainva/)).toBeVisible();
+  await expect(dialog.getByText(/Willkommen bei Alviss|Welcome to Alviss/)).toBeVisible();
 
   // Three actions, not a "next": the welcome is the entry itself.
   await expect(dialog.getByTestId('firstrun-open')).toBeVisible();

@@ -1491,7 +1491,7 @@ test('reminder settings: rows appear, the condition is stated, the calendar filt
   // The all-day label names a time of day, so its placeholder must be filled.
   await expect(card.getByTestId('reminder-allday')).not.toContainText('{{');
   // The condition, in the settings rather than in fine print.
-  await expect(card).toContainText(/solange Plainva läuft|while Plainva is running/);
+  await expect(card).toContainText(/solange Alviss läuft|while Alviss is running/);
 });
 
 test('checkboxes with a time: their own switch per vault, off by default, with the way to write the time behind the info (E3)', async ({ page }, testInfo) => {

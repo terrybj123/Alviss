@@ -185,8 +185,8 @@ export function AuxApp() {
   // before virtualTabMeta existed.
   // Until the layout is seeded there is no active path yet — but the window
   // already KNOWS what it was asked to show, and the URL says so. Falling back
-  // to the request rather than to "Plainva" matters most where several windows
-  // come up at once (restore on start, E5): a row of identical "Plainva"
+  // to the request rather than to "Alviss" matters most where several windows
+  // come up at once (restore on start, E5): a row of identical "Alviss"
   // taskbar entries that only sort themselves out a moment later is worse than
   // no titles at all. The named content wins as soon as it arrives.
   const shown = activePath || params.content || "";
@@ -195,7 +195,7 @@ export function AuxApp() {
     ? t(meta.labelKey, meta.defaultLabel)
     : shown
       ? shown.split("/").pop() || shown
-      : "Plainva";
+      : "Alviss";
 
   // The OS title bar and the taskbar entry follow the content, not the window
   // it started with — after following a link the taskbar would otherwise still
@@ -204,7 +204,7 @@ export function AuxApp() {
   //
   // A compose window keeps the title the owner gave it: the SUBJECT of the
   // message. Two composers in the taskbar are otherwise two entries called
-  // "Plainva", and this window never learns a file name to replace it with.
+  // "Alviss", and this window never learns a file name to replace it with.
   // The week start of the vault this window shows (decision E4).
   useVaultWeekStart(params.vaultPath);
   useWindowTitle(

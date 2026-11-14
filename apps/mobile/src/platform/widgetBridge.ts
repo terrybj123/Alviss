@@ -4,7 +4,7 @@ import { Capacitor, registerPlugin } from "@capacitor/core";
  * The home-screen widgets, as far as JavaScript can reach them
  * (plan Widgets, W2).
  *
- * Nothing of Plainva runs while the app is closed, so a widget works nothing
+ * Nothing of Alviss runs while the app is closed, so a widget works nothing
  * out: it draws a snapshot the app wrote while it was last open, and a tick
  * made on a widget is only an ORDER the app redeems on its next start. Those
  * are the two directions this bridge carries, and it carries nothing else —

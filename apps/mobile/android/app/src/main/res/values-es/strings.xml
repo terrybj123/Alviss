@@ -8,7 +8,7 @@
     <string name="widget_today_description">Lo que vence hoy, y un toque para añadir algo.</string>
     <string name="widget_capture_label">Captura rápida</string>
     <string name="widget_capture_description">Nueva tarea o entrada de diario, desde la pantalla de inicio.</string>
-    <string name="widget_open_app">Abrir Plainva</string>
+    <string name="widget_open_app">Abrir Alviss</string>
     <string name="widget_as_of">del %1$s</string>
     <string name="widget_tick">Marcar</string>
 </resources>

@@ -33,7 +33,7 @@ export function googleSignInFlow(clientId: string, nativeGrantClientIds: readonl
   return chooseGoogleSignInFlow({
     playServices,
     clientId,
-    // The one rule for "does this build ship Plainva's Android client" — the
+    // The one rule for "does this build ship Alviss's Android client" — the
     // same one the account card's standard sign-in reads (oauthAccess.ts). It
     // asks whether the client is configured, not Google's publishing state:
     // the earlier gate on VITE_PLAINVA_GOOGLE_MAIL_STATE === "testing" would
@@ -48,7 +48,7 @@ export function forgetNativeGoogleTokens(): void { for (const token of issued) r
 
 /**
  * Signing out on this device (plan "Verbinden", V0): Play services drops the
- * access tokens it cached for Plainva now, not at the next request. Local
+ * access tokens it cached for Alviss now, not at the next request. Local
  * only - the consent at Google stays, so other phones stay signed in.
  */
 export async function clearNativeGoogleTokens(): Promise<void> {

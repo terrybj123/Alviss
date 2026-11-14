@@ -16,9 +16,9 @@ export async function phoneTemplateVault(vaultName?: string): Promise<TemplateVa
   let name = vaultName;
   if (name === undefined) {
     try {
-      name = (await getActiveVaultEntry())?.name || "Plainva";
+      name = (await getActiveVaultEntry())?.name || "Alviss";
     } catch {
-      name = "Plainva";
+      name = "Alviss";
     }
   }
   const settings = getMobileSettings();

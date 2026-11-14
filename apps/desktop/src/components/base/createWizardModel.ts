@@ -11,7 +11,7 @@ export interface WizardColumn {
 
 export interface WizardNewColumn {
   name: string;
-  /** Plainva input type; "text" adds no schema entry (plain frontmatter string). */
+  /** Alviss input type; "text" adds no schema entry (plain frontmatter string). */
   input: string;
 }
 

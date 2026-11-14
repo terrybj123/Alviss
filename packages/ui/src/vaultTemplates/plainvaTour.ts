@@ -3,8 +3,8 @@ import { addTourLearning, tourLessons } from "./tourLearning";
 import { welcomeBody, DEFAULT_DAILY_NOTE_TYPE, type VaultTemplateBase, type VaultTemplateDefinition, type VaultTemplateNote } from "./types";
 
 /**
- * The "Plainva Tour" showcase template (plan "Vorlagen-Überarbeitung +
- * Plainva-Tour" § 2): a vault that demonstrates what Plainva can do instead of
+ * The "Alviss Tour" showcase template (plan "Vorlagen-Überarbeitung +
+ * Alviss-Tour" § 2): a vault that demonstrates what Alviss can do instead of
  * describing it — a pinboard of quick notes, daily notes on a calendar, PARA+
  * areas/projects/tasks across gallery, board, timeline and tree views, and note
  * templates wired to their databases.
@@ -538,8 +538,8 @@ Footnotes work too.[^1]
 /** English strings — also the fallback bundle for languages whose own tour
  * translation has not landed yet (structure is identical either way). */
 export const TOUR_STRINGS_EN: TourStrings = {
-  name: "Plainva Tour",
-  description: "A guided vault: pinboard, daily notes, areas, projects and tasks — every view Plainva offers, filled with examples.",
+  name: "Alviss Tour",
+  description: "A guided vault: pinboard, daily notes, areas, projects and tasks — every view Alviss offers, filled with examples.",
   folders: {
     quickNotes: "Quick Notes",
     journal: "Journal",
@@ -564,7 +564,7 @@ export const TOUR_STRINGS_EN: TourStrings = {
   },
   welcome: {
     file: "Welcome.md",
-    title: "Welcome to Plainva",
+    title: "Welcome to Alviss",
     intro: "This vault is a tour. Every folder below is filled with examples, and every database shows a different view — open them and change things: nothing here is precious.",
     outro: "Everything you see is plain Markdown in this folder. Delete what you do not need, rename the rest, and the vault is yours.",
   },
@@ -654,9 +654,9 @@ export const TOUR_STRINGS_EN: TourStrings = {
     ],
     resources: [
       { title: "Markdown cheat sheet", body: CHEAT_SHEET_EN, props: { kind: "Reference", read: "Read", cover: "Attachments/cover.svg" } },
-      { title: "Plainva handbook", body: "The full guide lives at plainva.com/docs.", props: { kind: "Reference", url: "https://plainva.com/docs", read: "New" } },
+      { title: "Alviss handbook", body: "The full guide lives at plainva.com/docs.", props: { kind: "Reference", url: "https://plainva.com/docs", read: "New" } },
       { title: "Deep work", body: "Cal Newport. The chapter on scheduling is the useful one.", props: { kind: "Book", read: "New", area: "[[Learning]]" } },
-      { title: "Keyboard shortcuts", body: "Press `F1` in Plainva — the list is searchable.", props: { kind: "Reference", read: "Read", area: "[[Learning]]" } },
+      { title: "Keyboard shortcuts", body: "Press `F1` in Alviss — the list is searchable.", props: { kind: "Reference", read: "Read", area: "[[Learning]]" } },
     ],
     archive: [
       { title: "Old website", body: "Replaced by [[Website relaunch]]. Kept for the texts.", props: { finished: "{{today-20}}" } },
@@ -712,8 +712,8 @@ Fußnoten gehen auch.[^1]
 
 /** German strings. */
 export const TOUR_STRINGS_DE: TourStrings = {
-  name: "Plainva-Tour",
-  description: "Ein geführter Vault: Pinnwand, Tagesnotizen, Bereiche, Projekte und Aufgaben — jede Ansicht, die Plainva kann, mit Beispielen gefüllt.",
+  name: "Alviss-Tour",
+  description: "Ein geführter Vault: Pinnwand, Tagesnotizen, Bereiche, Projekte und Aufgaben — jede Ansicht, die Alviss kann, mit Beispielen gefüllt.",
   folders: {
     quickNotes: "Notizzettel",
     journal: "Journal",
@@ -738,7 +738,7 @@ export const TOUR_STRINGS_DE: TourStrings = {
   },
   welcome: {
     file: "Willkommen.md",
-    title: "Willkommen bei Plainva",
+    title: "Willkommen bei Alviss",
     intro: "Dieser Vault ist eine Tour. Jeder Ordner unten ist mit Beispielen gefüllt, und jede Datenbank zeigt eine andere Ansicht — öffne sie und ändere etwas: Hier ist nichts kostbar.",
     outro: "Alles, was Du siehst, ist reines Markdown in diesem Ordner. Lösche, was Du nicht brauchst, benenne den Rest um — dann gehört der Vault Dir.",
   },
@@ -828,9 +828,9 @@ export const TOUR_STRINGS_DE: TourStrings = {
     ],
     resources: [
       { title: "Markdown-Spickzettel", body: CHEAT_SHEET_DE, props: { art: "Referenz", status: "Angesehen", cover: "Anhänge/cover.svg" } },
-      { title: "Plainva-Handbuch", body: "Das vollständige Handbuch steht auf plainva.com/docs.", props: { art: "Referenz", url: "https://plainva.com/docs", status: "Neu" } },
+      { title: "Alviss-Handbuch", body: "Das vollständige Handbuch steht auf plainva.com/docs.", props: { art: "Referenz", url: "https://plainva.com/docs", status: "Neu" } },
       { title: "Konzentriert arbeiten", body: "Cal Newport. Das Kapitel über Zeitplanung ist das nützliche.", props: { art: "Buch", status: "Neu", bereich: "[[Lernen]]" } },
-      { title: "Tastenkürzel", body: "In Plainva `F1` drücken — die Liste ist durchsuchbar.", props: { art: "Referenz", status: "Angesehen", bereich: "[[Lernen]]" } },
+      { title: "Tastenkürzel", body: "In Alviss `F1` drücken — die Liste ist durchsuchbar.", props: { art: "Referenz", status: "Angesehen", bereich: "[[Lernen]]" } },
     ],
     archive: [
       { title: "Alte Website", body: "Ersetzt durch [[Website-Relaunch]]. Wegen der Texte aufgehoben.", props: { abgeschlossen: "{{today-20}}" } },

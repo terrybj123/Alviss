@@ -28,7 +28,7 @@ import { addContextFilter, addGroupWithRule, addRuleToGroup, addTopFilterRule, p
  * type the phone could render but never choose.
  */
 /**
- * Which of them the vault offers: with "Allow Plainva extensions for .base
+ * Which of them the vault offers: with "Allow Alviss extensions for .base
  * files" off, only the types Obsidian knows — the desktop's rule
  * (`offeredViewTypes`). Read per render: the switch is a setting.
  */
@@ -84,7 +84,7 @@ export function BaseConfigSheet({
   onClose: () => void;
 }) {
   const { t } = useTranslation();
-  // The vault's "Allow Plainva extensions for .base files" (Sammelplan § 3.169 Nr. 3).
+  // The vault's "Allow Alviss extensions for .base files" (Sammelplan § 3.169 Nr. 3).
   const { settings } = useSettingsState();
   const views: any[] = Array.isArray(config?.views) ? config.views : [];
   const view = views[viewIndex] ?? {};

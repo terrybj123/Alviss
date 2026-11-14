@@ -41,7 +41,7 @@ interface Seed {
   pim?: { id: string; label: string };
   /** Further settings entries (a mailbox list, say). */
   settings?: Record<string, unknown>;
-  /** A Drive folder "Plainva" with this many notes; their downloads wait for `window.__releaseDownloads()`. */
+  /** A Drive folder "Alviss" with this many notes; their downloads wait for `window.__releaseDownloads()`. */
   driveNotes?: number;
 }
 
@@ -101,7 +101,7 @@ async function wire(page: Page, seed: Seed = {}): Promise<Harness> {
       [`cloudAccounts_${vaultKey}`, seedIn.cards],
       ...Object.entries(seedIn.settings),
     ]);
-    // This device signs in to Google with an own client (no Plainva client in the test build).
+    // This device signs in to Google with an own client (no Alviss client in the test build).
     const keychain = new Map<string, string>([
       ['oauth_access_google', JSON.stringify({ source: 'own', clientId: seedIn.client.clientId, clientSecret: seedIn.client.clientSecret })],
       ...Object.entries(seedIn.keychain),
@@ -133,8 +133,8 @@ async function wire(page: Page, seed: Seed = {}): Promise<Harness> {
     let nextRequest = 1;
     const isProvider = (url: string) => url.startsWith('https://oauth2.googleapis.com/') || url.startsWith('https://openidconnect.googleapis.com/');
     // Anything else of Google's (the Drive sync starting up) gets an empty answer.
-    const otherGoogle = (method: string): unknown => (method === 'GET' ? { files: [], items: [] } : { id: 'created-1', name: 'Plainva' });
-    // A Drive folder "Plainva" with notes, when the case asks for one; downloads wait to be released.
+    const otherGoogle = (method: string): unknown => (method === 'GET' ? { files: [], items: [] } : { id: 'created-1', name: 'Alviss' });
+    // A Drive folder "Alviss" with notes, when the case asks for one; downloads wait to be released.
     const notes = Array.from({ length: seedIn.driveNotes }, (_, i) => ({ id: `n${i + 1}`, name: `Note ${i + 1}.md`, mimeType: 'text/markdown', md5Checksum: `m${i + 1}`, modifiedTime: '2026-10-20T10:00:00.000Z' }));
     // `files`: the notes pulled at least once (the SQL stand-in keeps no sync
     // state, so a later cycle pulls them again).
@@ -149,7 +149,7 @@ async function wire(page: Page, seed: Seed = {}): Promise<Harness> {
       const media = /\/files\/(n\d+)$/.exec(u.pathname);
       if (media && u.searchParams.get('alt') === 'media') return { media: media[1] };
       const q = u.searchParams.get('q') ?? '';
-      if (/name='Plainva' and 'root' in parents/.test(q)) return { json: { files: [{ id: 'vault-id', name: 'Plainva' }] } };
+      if (/name='Alviss' and 'root' in parents/.test(q)) return { json: { files: [{ id: 'vault-id', name: 'Alviss' }] } };
       if (/^'vault-id' in parents and trashed=false$/.test(q)) return { json: { files: notes } };
       return null;
     };

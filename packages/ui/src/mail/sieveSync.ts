@@ -5,7 +5,7 @@ import { listMailRules, type MailRule } from "./rules";
 import { mailTransport } from "./transport";
 
 /**
- * Writing Plainva's Sieve section (S15).
+ * Writing Alviss's Sieve section (S15).
  *
  * There is exactly ONE section (E4) and two features that want to write it: the
  * out-of-office notice and the rules. If each composed the section on its own,
@@ -13,11 +13,11 @@ import { mailTransport } from "./transport";
  * silently delete every server-side rule. So every write renders the WHOLE
  * section from both halves, and this module is the only place that does it.
  *
- * That has a consequence worth naming: Plainva has to know both halves at write
+ * That has a consequence worth naming: Alviss has to know both halves at write
  * time, and it does not parse them back out of the script (a Sieve parser kept
  * in step with every server's dialect is a liability, not a feature). So it
  * keeps its own record of what it wrote, per account, next to the rules. The
- * script stays the server's truth for EXECUTION; the record is Plainva's truth
+ * script stays the server's truth for EXECUTION; the record is Alviss's truth
  * for COMPOSITION. Where the two disagree, the marker already says which wins:
  * "do not edit this section".
  */
@@ -26,7 +26,7 @@ export interface SieveWriteResult {
   ok: boolean;
   /** Rules that stayed local, with the reason. */
   skipped: { id: string; reason: SkipReason }[];
-  /** True when the script holds a Plainva marker that cannot be parsed — the
+  /** True when the script holds a Alviss marker that cannot be parsed — the
    * one case where writing nothing is the right answer. */
   unreadable?: boolean;
 }
@@ -34,7 +34,7 @@ export interface SieveWriteResult {
 const vacationKey = (vaultPath: string, accountId: string) =>
   `mailVacation_${accountId}_${btoa(unescape(encodeURIComponent(vaultPath)))}`;
 
-/** What Plainva last wrote as the notice. Empty when it never wrote one. */
+/** What Alviss last wrote as the notice. Empty when it never wrote one. */
 export async function readStoredVacation(vaultPath: string, accountId: string): Promise<VacationSettings> {
   const store = await getPlatformServices().loadSettings();
   const raw = await store.get<VacationSettings>(vacationKey(vaultPath, accountId));
@@ -87,7 +87,7 @@ export async function writeSieveState(
 }
 
 /** Convenience for the rules card: it knows the rules, and reads the notice
- * from Plainva's own record so it cannot drop it. */
+ * from Alviss's own record so it cannot drop it. */
 export async function writeSieveRules(
   vaultPath: string,
   accountId: string,

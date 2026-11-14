@@ -102,7 +102,7 @@ const platformAutostart: AutostartPort = {
  * Brings the system's autostart registration in line with the wish.
  *
  * Reads the platform's own state first: the registry entry, LaunchAgent or
- * .desktop file can be removed from outside Plainva, and writing blindly would
+ * .desktop file can be removed from outside Alviss, and writing blindly would
  * either duplicate it or report a state that is not true.
  */
 export async function applyAutostart(wanted: boolean, port: AutostartPort = platformAutostart): Promise<boolean> {

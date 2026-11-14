@@ -371,7 +371,7 @@ test('a vanished file shows a state, not an error string that gets saved', async
   await page.getByTestId('file-tree').getByText('Vanished', { exact: true }).click();
   await expect(page.getByText('Still here.')).toBeVisible();
 
-  // The file disappears underneath us (deleted outside Plainva), then the tab
+  // The file disappears underneath us (deleted outside Alviss), then the tab
   // is revisited — exactly the stale-index path the reporter hit.
   await page.evaluate(() => { delete (window as any).mockFs['/test-vault/Vanished.md']; });
   await page.getByText('Welcome', { exact: true }).click();
@@ -412,7 +412,7 @@ test('the missing state closes its tab instead of asking to delete the file', as
   await expect(page.getByText(/Really delete/)).toHaveCount(0);
 });
 
-// Issue 110 (E9): a note moved outside Plainva sat two folders further while
+// Issue 110 (E9): a note moved outside Alviss sat two folders further while
 // its tab said "This file no longer exists". The tab now looks for the file
 // by the content hash the index stored: a single match written at the same
 // time (a move keeps it) is followed, anything less certain is offered. The
@@ -435,7 +435,7 @@ async function scriptMovedFileLookup(page: import('@playwright/test').Page, cand
   }, { stamp: STAMP, found: candidates });
 }
 
-test('a note moved outside Plainva: the tab follows it and says where (issue 110)', async ({ page }) => {
+test('a note moved outside Alviss: the tab follows it and says where (issue 110)', async ({ page }) => {
   await page.addInitScript(() => {
     Object.assign((window as any).mockFs, {
       '/test-vault/4 blog': { isDir: true },
@@ -461,7 +461,7 @@ test('a note moved outside Plainva: the tab follows it and says where (issue 110
   await expect(page.getByText('Welcome to the mock vault!')).toBeVisible();
   await tree.getByText('link-50', { exact: true }).first().click();
 
-  await expect(page.getByText(/Moved outside Plainva\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible();
+  await expect(page.getByText(/Moved outside Alviss\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible();
   await expect(page.getByText('Nine editors that stood out.')).toBeVisible();
   await expect(page.getByTestId('editor-missing-file')).toHaveCount(0);
   await expect(page.getByTestId('editor-moved-choice')).toHaveCount(0);
@@ -507,7 +507,7 @@ test('a note whose content exists twice asks "Moved?" instead of guessing (issue
 
 test('a single look-alike written at another time is offered, never followed (issue 110)', async ({ page }) => {
   // Two untouched notes from one template carry the same content; deleting
-  // one outside Plainva is not a move. The tab must not open the other and
+  // one outside Alviss is not a move. The tab must not open the other and
   // call it "moved".
   await page.addInitScript(() => {
     Object.assign((window as any).mockFs, {
@@ -528,7 +528,7 @@ test('a single look-alike written at another time is offered, never followed (is
   await expect(choice).toBeVisible();
   await expect(choice).toContainText('A file with the same content exists elsewhere — is it this one?');
   await expect(choice.getByTestId('editor-moved-candidate')).toHaveText(['4 blog/link-50-draft.md']);
-  await expect(page.getByText(/Moved outside Plainva/)).toHaveCount(0);
+  await expect(page.getByText(/Moved outside Alviss/)).toHaveCount(0);
   await expect(page.locator('.cm-content')).toHaveCount(0);
   // Not this one: the tab closes, nothing is deleted or followed.
   await choice.getByRole('button', { name: 'Close tab' }).click();
@@ -566,7 +566,7 @@ async function moveOutside(page: import('@playwright/test').Page, to: string | n
 const reportGone = (page: import('@playwright/test').Page) =>
   page.evaluate(() => window.dispatchEvent(new CustomEvent('plainva-external-update', { detail: { path: '4 blog/link-50.md' } })));
 
-test('an open note follows its file when it is moved outside Plainva, and so does its bookmark (issue 110)', async ({ page }) => {
+test('an open note follows its file when it is moved outside Alviss, and so does its bookmark (issue 110)', async ({ page }) => {
   await page.addInitScript((stamp) => {
     // The index answers for the note from the start, so the open tab knows it.
     const orig = (window as any).__TAURI_INTERNALS__.invoke;
@@ -582,10 +582,10 @@ test('an open note follows its file when it is moved outside Plainva, and so doe
   await moveOutside(page, '4 blog/taken/link-50.md');
   await reportGone(page);
 
-  await expect(page.getByText(/Moved outside Plainva\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible();
+  await expect(page.getByText(/Moved outside Alviss\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible();
   await expect(page.getByText('Nine editors that stood out.')).toBeVisible();
   await expect(page.getByTestId('editor-missing-file')).toHaveCount(0);
-  // A proven move carries what Plainva stores about the note: the bookmark.
+  // A proven move carries what Alviss stores about the note: the bookmark.
   await expect.poll(() => page.evaluate(() => JSON.parse((window as any).mockFs['/test-vault/.plainva/bookmarks.json']).items.map((i: any) => i.path)))
     .toEqual(['4 blog/taken/link-50.md']);
   expect(await page.evaluate(() => '/test-vault/4 blog/link-50.md' in (window as any).mockFs)).toBe(false);
@@ -609,7 +609,7 @@ test('unsaved text of an open note goes with it to the new place, never back to 
   // Moved before the autosave: the save finds the file gone and asks.
   await moveOutside(page, '4 blog/taken/link-50.md');
 
-  await expect(page.getByText(/Moved outside Plainva\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible({ timeout: 10000 });
+  await expect(page.getByText(/Moved outside Alviss\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible({ timeout: 10000 });
   await expect(page.getByText('Typed while it moved.')).toBeVisible();
   await expect.poll(() => page.evaluate(() => (window as any).mockFs['/test-vault/4 blog/taken/link-50.md'])).toContain('Typed while it moved.');
   // Nothing was written back to the old place, not even by a late save.
@@ -617,7 +617,7 @@ test('unsaved text of an open note goes with it to the new place, never back to 
   expect(await page.evaluate(() => '/test-vault/4 blog/link-50.md' in (window as any).mockFs)).toBe(false);
 });
 
-test('unsaved text of a note deleted outside Plainva stays until the reader saves it back (issue 110)', async ({ page }) => {
+test('unsaved text of a note deleted outside Alviss stays until the reader saves it back (issue 110)', async ({ page }) => {
   await page.addInitScript((stamp) => {
     const orig = (window as any).__TAURI_INTERNALS__.invoke;
     (window as any).__TAURI_INTERNALS__.invoke = async (cmd: string, args: any, options: any) => {
@@ -637,7 +637,7 @@ test('unsaved text of a note deleted outside Plainva stays until the reader save
 
   const banner = page.getByTestId('editor-vanished');
   await expect(banner).toBeVisible({ timeout: 10000 });
-  await expect(banner).toContainText('This file was removed outside Plainva. Your unsaved changes are kept here.');
+  await expect(banner).toContainText('This file was removed outside Alviss. Your unsaved changes are kept here.');
   await expect(page.getByText('Still mine.')).toBeVisible();
   // No silent resurrection: the autosave keeps its hands off the old place.
   await page.waitForTimeout(2500);
@@ -686,7 +686,7 @@ async function addListView(page: import('@playwright/test').Page) {
   await page.getByRole('menu', { name: 'Add view' }).getByRole('menuitem', { name: 'List', exact: true }).click();
 }
 
-test('an open database follows its file when it is moved outside Plainva, and so does its bookmark (issue 110)', async ({ page }) => {
+test('an open database follows its file when it is moved outside Alviss, and so does its bookmark (issue 110)', async ({ page }) => {
   await scriptLookup(page, ['4 blog/taken/Links.base']);
   await openLinksBase(page, { '/test-vault/.plainva/bookmarks.json': JSON.stringify({ items: [{ type: 'file', path: '4 blog/Links.base' }] }) });
 
@@ -698,7 +698,7 @@ test('an open database follows its file when it is moved outside Plainva, and so
     window.dispatchEvent(new CustomEvent('plainva-external-update', { detail: { path: '4 blog/Links.base' } }));
   });
 
-  await expect(page.getByText(/Moved outside Plainva\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible();
+  await expect(page.getByText(/Moved outside Alviss\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible();
   await expect(page.locator('button.base-view-add')).toBeVisible();
   await expect(page.getByTestId('base-missing-file')).toHaveCount(0);
   await expect.poll(() => page.evaluate(() => JSON.parse((window as any).mockFs['/test-vault/.plainva/bookmarks.json']).items.map((i: any) => i.path)))
@@ -709,16 +709,16 @@ test('an open database follows its file when it is moved outside Plainva, and so
   expect(await mockHas(page, '4 blog/Links.base')).toBe(false);
 });
 
-test('a database change made after its file was deleted outside Plainva waits until the reader saves it back (issue 110)', async ({ page }) => {
+test('a database change made after its file was deleted outside Alviss waits until the reader saves it back (issue 110)', async ({ page }) => {
   await scriptLookup(page, []);
   await openLinksBase(page);
-  // Deleted outside Plainva, and nothing reported it yet.
+  // Deleted outside Alviss, and nothing reported it yet.
   await page.evaluate(() => { delete (window as any).mockFs['/test-vault/4 blog/Links.base']; });
 
   await addListView(page);
   const missing = page.getByTestId('base-missing-file');
   await expect(missing).toBeVisible();
-  await expect(missing).toContainText('This file was removed outside Plainva. Your unsaved changes are kept here.');
+  await expect(missing).toContainText('This file was removed outside Alviss. Your unsaved changes are kept here.');
   // No silent resurrection at the old place.
   await page.waitForTimeout(1500);
   expect(await mockHas(page, '4 blog/Links.base')).toBe(false);
@@ -748,7 +748,7 @@ async function serveImages(page: import('@playwright/test').Page) {
   });
 }
 
-test('unsaved edits of an image go with its tab when the image is moved outside Plainva (issue 110)', async ({ page }) => {
+test('unsaved edits of an image go with its tab when the image is moved outside Alviss (issue 110)', async ({ page }) => {
   await scriptLookup(page, ['4 blog/taken/red.png']);
   await serveImages(page);
   await page.addInitScript((png) => {
@@ -775,7 +775,7 @@ test('unsaved edits of an image go with its tab when the image is moved outside 
     window.dispatchEvent(new CustomEvent('plainva-external-update', { detail: { path: '4 blog/red.png' } }));
   });
 
-  await expect(page.getByText(/Moved outside Plainva\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible();
+  await expect(page.getByText(/Moved outside Alviss\. The tab now shows the file in 4 blog\/taken\//)).toBeVisible();
   // The edit came along, still unsaved: nothing was written anywhere yet.
   await expect(save).toBeEnabled();
   expect(await mockText(page, '4 blog/taken/red.png')).toBe(`png:${RED_PNG}`);
@@ -1655,7 +1655,7 @@ test('Splash: shows by default despite lastVaultPath (auto-open is opt-in)', asy
     };
   });
   await page.goto('/');
-  await expect(page.getByText(/Willkommen bei Plainva|Welcome to Plainva/)).toBeVisible({ timeout: 10000 });
+  await expect(page.getByText(/Willkommen bei Alviss|Welcome to Alviss/)).toBeVisible({ timeout: 10000 });
   // The opt-in is offered right on the splash, as the same switch as in the
   // settings (finding 2026-10-30), and starts off.
   const toggle = page.getByTestId('splash-auto-open').getByRole('switch', { name: /Letzten Vault|open the last vault/ });
@@ -2329,7 +2329,7 @@ test('Settings info button: a press opens the explanation beside the label, Esca
   const panel = dialog.locator('.pv-infotip-panel');
   await expect(panel).toBeVisible();
   await expect(info).toHaveAttribute('aria-expanded', 'true');
-  await expect(panel).toContainText(/Suchindex ist Plainvas Verzeichnis|search index is Plainva's record/);
+  await expect(panel).toContainText(/Suchindex ist Alvisss Verzeichnis|search index is Alviss's record/);
   await expect(panel.getByRole('link', { name: /Mehr im Handbuch|Read more in the handbook/ })).toBeVisible();
   // The text lives in a live region, announced when it appears.
   await expect(dialog.locator('[role="status"] .pv-infotip-panel')).toHaveCount(1);
@@ -3096,13 +3096,13 @@ test('Clicking an unresolved wiki link creates and opens the note', async ({ pag
 // --- Plan 2026-07-25 P1/P2: reading the vault again, and the tab menu ---
 
 test('F5 reads the vault again and reports what changed', async ({ page }) => {
-  // Root cause the plan named: a file that arrived outside Plainva (network
+  // Root cause the plan named: a file that arrived outside Alviss (network
   // share, cloud client, another machine) stayed invisible because nothing
   // rescanned. F5 used to be swallowed outright; now it triggers the reread.
   await page.goto('/');
   await expect(page.getByText('Welcome', { exact: true })).toBeVisible({ timeout: 10000 });
 
-  // A file appears in the vault without Plainva ever writing it.
+  // A file appears in the vault without Alviss ever writing it.
   await page.evaluate(() => {
     (window as any).mockFs['/test-vault/Arrived.md'] = '# Arrived\n\nCame from elsewhere.\n';
   });
@@ -3544,7 +3544,7 @@ test('Create vault: the project template writes every computed column into the .
   expect(milestones).not.toContain('endField');
 });
 
-test('Create vault: the Plainva tour is the recommended card and scaffolds a fully populated vault', async ({ page }) => {
+test('Create vault: the Alviss tour is the recommended card and scaffolds a fully populated vault', async ({ page }) => {
   await page.addInitScript(() => {
     const orig = (window as any).__TAURI_INTERNALS__.invoke;
     (window as any).__TAURI_INTERNALS__.invoke = async (cmd: string, args: any, options: any) => {
@@ -3560,11 +3560,11 @@ test('Create vault: the Plainva tour is the recommended card and scaffolds a ful
   // The tour is the first card and the one carrying the badge — an empty vault
   // demonstrates nothing, so "recommended to start" belongs here (E1).
   const cards = page.locator('button.pv-cardhover');
-  const tour = page.getByRole('button', { name: /Plainva.?(Tour|tour)/ });
+  const tour = page.getByRole('button', { name: /Alviss.?(Tour|tour)/ });
   await expect(tour).toBeVisible();
   await expect(tour.getByText(/Empfohlen für den Einstieg|Recommended to start/)).toBeVisible();
   // Directly after the empty-vault card, i.e. first among the templates.
-  await expect(cards.nth(1)).toHaveText(/Plainva.?(Tour|tour)/);
+  await expect(cards.nth(1)).toHaveText(/Alviss.?(Tour|tour)/);
   await expect(cards.nth(0)).not.toHaveText(/Empfohlen für den Einstieg|Recommended to start/);
 
   // The card is a teaser, not an inventory: ten folders and seven databases
@@ -3610,7 +3610,7 @@ test('Create vault: the Plainva tour is the recommended card and scaffolds a ful
   expect(String(daily)).toContain('{{cursor}}');
 
   // The pinboard database keeps its Obsidian-native shape on disk: a table view
-  // carrying the Plainva render hint, so Obsidian opens it as a table.
+  // carrying the Alviss render hint, so Obsidian opens it as a table.
   const pinboardBase = files.find((p) => p.endsWith('.base') && /(Notizzettel|Quick notes)/i.test(p))!;
   const pinboard = await page.evaluate((p) => (window as any).mockFs[p], pinboardBase);
   expect(String(pinboard)).toContain('type: table');
@@ -3639,7 +3639,7 @@ test('Create vault: an emptied known vault never receives a newer tour', async (
   await page.goto('/');
   await page.getByRole('button', { name: /^(Neuer Vault|New Vault)$/ }).click();
   await page.getByRole('button', { name: /Auf diesem Computer|On this computer/ }).click();
-  await page.getByRole('button', { name: /Plainva.?(Tour|tour)/ }).click();
+  await page.getByRole('button', { name: /Alviss.?(Tour|tour)/ }).click();
   await expect(page.getByText(/bereits angelegt|already.*vault|already.*content|new, empty|neuen, leeren/i)).toBeVisible();
   expect(await page.evaluate(() => Object.keys((window as any).mockFs))).toEqual(['/test-vault']);
 });
@@ -3754,7 +3754,7 @@ test('background settings: start with the system and the tray, both off, and the
   await expect(tray).toHaveCount(1);
   // Off by default — never registered unasked.
   await expect(tray).toHaveAttribute('aria-checked', 'false');
-  await expect(card).toContainText(/solange Plainva läuft|while Plainva is running/);
+  await expect(card).toContainText(/solange Alviss läuft|while Alviss is running/);
   await card.screenshot({ path: '/tmp/bg-off.png' });
 
   // Saying "no, I cannot see it" must leave the switch off — otherwise the

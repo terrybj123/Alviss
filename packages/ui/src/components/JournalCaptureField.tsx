@@ -14,7 +14,7 @@ import { CARET_KEYS, useInlineSuggest } from "./InlineSuggest";
  * the desktop puts it into a small dialog, the phone into its capture sheet,
  * and both into the "journal" section of a day.
  *
- * It shows the time the entry WILL carry — Plainva stamps it, nobody types it —
+ * It shows the time the entry WILL carry — Alviss stamps it, nobody types it —
  * and a chip that makes the entry a task (`- [ ] 14:05 …`). The text is plain
  * Markdown: tags, links and a second line are simply typed — and after `[[`
  * and `#` the field offers the vault's notes and tags, as the note editor does

@@ -106,7 +106,7 @@ interface PendingFlow {
 /**
  * Cold-start hardening (P4.4, finding M3): the flow used to live ONLY in this
  * module variable — Android killing the app during the browser consent made
- * the redirect restart Plainva with `pending === null` and the sign-in dead.
+ * the redirect restart Alviss with `pending === null` and the sign-in dead.
  * The transaction is now ALSO persisted in the secure store (PKCE verifier
  * included — it is a secret), restored on demand, single-use and TTL-bound.
  */
@@ -314,7 +314,7 @@ async function finishConnectSteps(rootFolder: string): Promise<void> {
   const template = getVaultTemplates(i18n.language).find((d) => d.id === createTemplateId) ?? null;
   await createProviderVault(await getMobileVault(), withFolder, {
     template,
-    vaultName: folder?.split("/").pop() || "Plainva",
+    vaultName: folder?.split("/").pop() || "Alviss",
     subfoldersHeading: i18n.t("indexMd.subfoldersHeading"),
   }, adoptFor(access, withFolder, context));
   cancelConnect();

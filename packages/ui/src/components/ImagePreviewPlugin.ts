@@ -179,7 +179,7 @@ class ImageWidget extends WidgetType {
       frame: whole,
       regions,
       // Only a picture from the vault (plan Stufe E, section 4). At a foreign URL
-      // Plainva can guarantee neither the size the fractions were measured
+      // Alviss can guarantee neither the size the fractions were measured
       // against nor that the picture is still the same one.
       pickRegion: this.source.kind === "vault"
         ? () => pickImageRegion({ host: frame, box: img }, { hint: i18n.t("comments.commentRegionHint") })

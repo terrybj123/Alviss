@@ -6,7 +6,7 @@ import { FolderPickerSheet } from "../components/FolderPickerSheet";
 import { HailingSheet } from "../components/HailingSheet";
 import { DeletedFilesSheet } from "../components/DeletedFilesSheet";
 import { ZipBackupGroup } from "../components/ZipBackupGroup";
-import { errorText, toast, placeStampEnabled, setPlaceStampEnabled, createTaskDatabase, formatBuildLine, formatDiagnosticsExport, GroupCard, ICON, PlainvaLogo, Row, RowList, SectionLabel, SettingField, Switch, CommittedTextInput, splitTextFileExtensions, travelsWithVault, choicesWith, VERSION_INTERVAL_CHOICES, VERSION_MAX_AGE_CHOICES, VERSION_MAX_COUNT_CHOICES, versionIntervalLabel } from "@plainva/ui";
+import { errorText, toast, placeStampEnabled, setPlaceStampEnabled, createTaskDatabase, formatBuildLine, formatDiagnosticsExport, GroupCard, ICON, AlvissLogo, Row, RowList, SectionLabel, SettingField, Switch, CommittedTextInput, splitTextFileExtensions, travelsWithVault, choicesWith, VERSION_INTERVAL_CHOICES, VERSION_MAX_AGE_CHOICES, VERSION_MAX_COUNT_CHOICES, versionIntervalLabel } from "@plainva/ui";
 import { mPrompt, mSelect } from "../services/mobileDialogs";
 import { type DefaultView, NOTE_HEAD_BUTTONS, type NoteHeadButton } from "../services/mobileSettings";
 import { noteTypeOf } from "../services/newNote";
@@ -294,7 +294,7 @@ export function ContentAreaScreen({ vault, onBack }: { vault: MobileVault; onBac
                 value={settings.defaultNoteType}
               />
             </SettingField>
-            {/* C15: which extra file types open in Plainva as text — the vault's
+            {/* C15: which extra file types open in Alviss as text — the vault's
                 list, the same the desktop edits, applied to every path that
                 opens a file (`setExtraTextExtensions`, Sammelplan § 3.169). */}
             <SettingField hint={t("settings.textFileExtensionsHint")} info={t("settings.textFileExtensionsDesc")} label={t("settings.textFileExtensions")}>
@@ -581,7 +581,7 @@ export function AboutAreaScreen({ onBack }: { onBack: () => void }) {
             stand on Appearance as well (settings plan 2026-10-29, appendix 2.1 B5). */}
         <GroupCard>
           <RowList>
-            <Row icon={<PlainvaLogo size={ICON.touch} />} onClick={logoTap} subtitle={[appVersion, formatBuildLine()].filter(Boolean).join(" · ")} title="Plainva" />
+            <Row icon={<AlvissLogo size={ICON.touch} />} onClick={logoTap} subtitle={[appVersion, formatBuildLine()].filter(Boolean).join(" · ")} title="Alviss" />
           </RowList>
         </GroupCard>
         <p className="m-hint">{t("mobile.aboutTip")}</p>

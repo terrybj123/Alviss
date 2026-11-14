@@ -494,7 +494,7 @@ describe("original desktop save completion", () => {
     const h = open("Unix.md", "base\nmiddle\nend\n");
     h.edit("base!\nmiddle\nend\n"); await h.persist("base!\nmiddle\nend\n");
     expect(await bytesOf("Unix.md")).toEqual(utf8("base!\nmiddle\nend\n"));
-    // A note Plainva has just created: one line, nothing to count yet.
+    // A note Alviss has just created: one line, nothing to count yet.
     await raw.writeTextFile("New.md", "# New");
     const fresh = open("New.md", "# New");
     fresh.edit("# New\n\nFirst line.\n"); await fresh.persist("# New\n\nFirst line.\n");

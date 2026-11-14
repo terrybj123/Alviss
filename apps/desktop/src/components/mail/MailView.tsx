@@ -685,7 +685,7 @@ export function MailView({ onOpenPath, isActivePane = true }: MailViewProps) {
   /**
    * Local rules over the page that was just fetched (S14).
    *
-   * "Local" is the whole caveat: they can only act on mail Plainva has seen, so
+   * "Local" is the whole caveat: they can only act on mail Alviss has seen, so
    * they run when a folder is loaded and never in the background. Where a
    * mailbox can do better, S15/S16 put the same rule on the server; the
    * settings card says which of the two is true.
@@ -719,7 +719,7 @@ export function MailView({ onOpenPath, isActivePane = true }: MailViewProps) {
         markRead: (id) => setMessageSeen(vaultPath, account, box, uidOf(id), true),
         flag: (id) => setMessageFlagged(vaultPath, account, box, uidOf(id), true),
         // Without a junk or trash folder there is nowhere to put it — refusing
-        // beats moving mail into a folder name Plainva invented.
+        // beats moving mail into a folder name Alviss invented.
         junk: (id) => (junkBox ? moveMessage(vaultPath, account, box, uidOf(id), junkBox) : Promise.reject(new Error("no junk folder"))),
         trash: (id) => (trash ? moveMessage(vaultPath, account, box, uidOf(id), trash) : Promise.reject(new Error("no trash folder"))),
         // Filing needs the BODY, which an envelope does not carry — so the
@@ -850,7 +850,7 @@ export function MailView({ onOpenPath, isActivePane = true }: MailViewProps) {
    * Keyed on WHAT is shown, as a value. It hung on the identity of the loader,
    * and the loader was a new function for reasons that are not a new folder:
    * the folder list of the account that was left being emptied, the folder
-   * list of the new one arriving, a junk folder Plainva had just created, the
+   * list of the new one arriving, a junk folder Alviss had just created, the
    * app language. Each of those emptied the list, dropped the search and the
    * selection, closed the reader and read the folder again.
    *
@@ -1539,7 +1539,7 @@ export function MailView({ onOpenPath, isActivePane = true }: MailViewProps) {
    * at the foot of the reading area.
    */
   const openLink = useStableHandler((link: LinkTarget) => {
-    // A mail address opens Plainva's composer, from the mailbox the message
+    // A mail address opens Alviss's composer, from the mailbox the message
     // lies in, as on the phone (open-items plan 3.82). It went to the
     // system's mail program, under that program's sender — or nowhere.
     const draft = mailtoDraft(link.href);
@@ -1640,7 +1640,7 @@ export function MailView({ onOpenPath, isActivePane = true }: MailViewProps) {
    * `$Junk`. The confirmation says which of the two actually happened instead of
    * claiming a filter was trained.
    *
-   * With no junk folder at all, Plainva offers to create one rather than moving
+   * With no junk folder at all, Alviss offers to create one rather than moving
    * mail into a name it invented.
    */
   /**
@@ -1680,7 +1680,7 @@ export function MailView({ onOpenPath, isActivePane = true }: MailViewProps) {
       if (plans.some((p) => p.plan.direction === "report" && !p.plan.target)) {
         const ok = await appConfirm({
           title: t("mail.junkNoFolderTitle", { defaultValue: "Kein Spam-Ordner vorhanden" }),
-          message: t("mail.junkNoFolderMsg", { defaultValue: "Dieses Konto hat keinen Spam-Ordner. Soll Plainva einen Ordner „Junk“ anlegen?" }),
+          message: t("mail.junkNoFolderMsg", { defaultValue: "Dieses Konto hat keinen Spam-Ordner. Soll Alviss einen Ordner „Junk“ anlegen?" }),
         });
         if (!ok) return;
         try {
@@ -2653,7 +2653,7 @@ export function MailView({ onOpenPath, isActivePane = true }: MailViewProps) {
                 {t("mail.forward", { defaultValue: "Weiterleiten" })}
               </Button>
               {/* Unsubscribing (S23): offered only when the SENDER declared a
-                  route in `List-Unsubscribe`. Plainva never guesses one from
+                  route in `List-Unsubscribe`. Alviss never guesses one from
                   the body, and it never performs it silently — what follows is
                   a page in the browser or a message the reader sees first. */}
               {unsubRoute && (
@@ -2781,7 +2781,7 @@ export function MailView({ onOpenPath, isActivePane = true }: MailViewProps) {
             )}
             </div>
 
-            {/* Vault-capture bar — Plainva's differentiator over any mail client */}
+            {/* Vault-capture bar — Alviss's differentiator over any mail client */}
             <div className="pv-mail-capbar">
               <span className="pv-mail-capbar-label">{t("mail.intoVault", { defaultValue: "In den Vault" })}</span>
               <button type="button" className="pv-mail-capchip" onClick={() => void captureNote(false)} data-testid="mail-capture-note">

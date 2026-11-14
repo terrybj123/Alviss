@@ -17,7 +17,7 @@ export interface ScrollEdgeProps {
 }
 
 /**
- * Scroll-edge container (Plainva UI 2.0 / M3 Expressive): wraps a scrolling
+ * Scroll-edge container (Alviss UI 2.0 / M3 Expressive): wraps a scrolling
  * region and shows a subtle bottom shadow ONLY while there is content scrolled
  * below the edge, so the last row is never obscured when everything fits. The
  * shadow fades out toward the horizontal edges (see .pv-scroll-edge in ui.css).

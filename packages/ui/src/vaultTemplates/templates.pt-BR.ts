@@ -99,7 +99,7 @@ const PARA_STRINGS_PT_BR: ParaStrings = {
       },
       {
         title: "Combinar a planta com a equipe",
-        body: "Arraste o cartão para outra coluna no quadro: o Plainva grava o novo status na nota.",
+        body: "Arraste o cartão para outra coluna no quadro: o Alviss grava o novo status na nota.",
         props: { status: "Em andamento", projeto: "[[Mudança para o novo escritório]]", prazo: "{{today+7}}" },
       },
       {
@@ -225,7 +225,7 @@ const GTD_STRINGS_PT_BR: GtdStrings = {
       },
       {
         title: "Revisar o orçamento do marceneiro",
-        body: "Arraste o cartão para outra coluna no quadro: o Plainva grava o novo status na nota.",
+        body: "Arraste o cartão para outra coluna no quadro: o Alviss grava o novo status na nota.",
         props: { status: "Próxima", contexto: "@Trabalho", projeto: "[[Reformar a cozinha]]", prazo: "{{today+5}}" },
       },
       {
@@ -508,7 +508,7 @@ const JOURNAL_STRINGS_PT_BR: JournalStrings = {
 };
 
 // ---------------------------------------------------------------------------
-// Plainva Tour: a showcase vault, not an organizational method. Folder names,
+// Alviss Tour: a showcase vault, not an organizational method. Folder names,
 // database column keys, view names and the sub-item labels follow the same
 // ASCII-key / localized-value convention as the bundles above; several values
 // (Áreas/Projetos/Tarefas, "Concluído"/"Ativo"/…, the 3-step task status) are
@@ -568,10 +568,10 @@ Notas de rodapé também funcionam.[^1]
 [^1]: Assim como esta.
 `;
 
-/** Brazilian Portuguese strings for the Plainva Tour. */
+/** Brazilian Portuguese strings for the Alviss Tour. */
 const TOUR_STRINGS_PT_BR: TourStrings = {
-  name: "Tour do Plainva",
-  description: "Um vault guiado: mural, notas diárias, áreas, projetos e tarefas — todas as visões que o Plainva oferece, preenchidas com exemplos.",
+  name: "Tour do Alviss",
+  description: "Um vault guiado: mural, notas diárias, áreas, projetos e tarefas — todas as visões que o Alviss oferece, preenchidas com exemplos.",
   folders: {
     quickNotes: "Notas Rápidas",
     journal: "Journal",
@@ -596,7 +596,7 @@ const TOUR_STRINGS_PT_BR: TourStrings = {
   },
   welcome: {
     file: "Bem-vindo.md",
-    title: "Bem-vindo ao Plainva",
+    title: "Bem-vindo ao Alviss",
     intro: "Este vault é um tour guiado. Cada pasta abaixo está cheia de exemplos, e cada base de dados mostra uma visão diferente — abra-as e mude o que quiser: nada aqui é precioso.",
     outro: "Tudo o que você vê aqui é Markdown puro, nesta pasta. Exclua o que não precisar, renomeie o resto — e o vault passa a ser seu.",
   },
@@ -686,9 +686,9 @@ const TOUR_STRINGS_PT_BR: TourStrings = {
     ],
     resources: [
       { title: "Guia rápido de Markdown", body: CHEAT_SHEET_PT_BR, props: { tipo: "Referência", status: "Lido", cover: "Anexos/cover.svg" } },
-      { title: "Manual do Plainva", body: "O manual completo está em plainva.com/docs.", props: { tipo: "Referência", url: "https://plainva.com/docs", status: "Novo" } },
+      { title: "Manual do Alviss", body: "O manual completo está em plainva.com/docs.", props: { tipo: "Referência", url: "https://plainva.com/docs", status: "Novo" } },
       { title: "Trabalho focado", body: "Cal Newport. O capítulo sobre planejamento de horários é o mais útil.", props: { tipo: "Livro", status: "Novo", area: "[[Aprendizado]]" } },
-      { title: "Atalhos de teclado", body: "Pressione `F1` no Plainva — a lista é pesquisável.", props: { tipo: "Referência", status: "Lido", area: "[[Aprendizado]]" } },
+      { title: "Atalhos de teclado", body: "Pressione `F1` no Alviss — a lista é pesquisável.", props: { tipo: "Referência", status: "Lido", area: "[[Aprendizado]]" } },
     ],
     archive: [
       { title: "Site antigo", body: "Substituído por [[Relançamento do site]]. Mantido por causa dos textos.", props: { concluido: "{{today-20}}" } },

@@ -68,7 +68,7 @@ export interface DiagnosticsAppInfo {
  */
 export function formatDiagnosticsExport(info: DiagnosticsAppInfo): string {
   const lines = [
-    "# Plainva diagnostics export",
+    "# Alviss diagnostics export",
     "",
     `- App: ${info.appVersion}`,
     `- Build: ${formatBuildLine() || "-"}`,

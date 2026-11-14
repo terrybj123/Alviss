@@ -1257,9 +1257,9 @@ describe("KeyfileSyncStep", () => {
 
 describe("connectionFingerprint", () => {
   it("is deterministic and normalizes the remote root", () => {
-    expect(connectionFingerprint("drive", "Plainva")).toBe("drive:plainva");
-    expect(connectionFingerprint("Drive", "/Plainva/")).toBe("drive:plainva");
-    expect(connectionFingerprint("onedrive", "Apps/Plainva")).toBe("onedrive:apps/plainva");
+    expect(connectionFingerprint("drive", "Alviss")).toBe("drive:alviss");
+    expect(connectionFingerprint("Drive", "/Alviss/")).toBe("drive:alviss");
+    expect(connectionFingerprint("onedrive", "Apps/Alviss")).toBe("onedrive:apps/alviss");
     expect(connectionFingerprint("webdav", "  root  ")).toBe("webdav:root");
   });
 });
@@ -1267,7 +1267,7 @@ describe("connectionFingerprint", () => {
 // --- v3 fail-closed content-E2E guard evaluation ---
 
 describe("evaluateManifestGuard", () => {
-  const CONN = "drive:plainva";
+  const CONN = "drive:alviss";
   const known = (over: Partial<{ knownEncrypted: boolean; expectedKeyId: string }> = {}) => ({
     connectionId: CONN,
     knownEncrypted: over.knownEncrypted ?? false,

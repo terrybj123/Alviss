@@ -13,7 +13,7 @@ import { useVaultLabels } from "../services/vaultNames";
 import { ImportWizardModal } from "./import/ImportWizardModal";
 import { FirstRunModal } from "./onboarding/FirstRunModal";
 import { toast } from "@plainva/ui";
-import { PlainvaLogo } from "@plainva/ui";
+import { AlvissLogo } from "@plainva/ui";
 import { WindowChromeStrip } from "./WindowControls";
 import { TauriVaultAdapter } from "../adapters/TauriVaultAdapter";
 import {
@@ -67,7 +67,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ showFirstRun, onFirs
   const [forgetting, setForgetting] = useState(false);
 
   const getBasename = (path: string) => path.split(/[/\\]/).pop() || path;
-  // What each known vault is called in Plainva — its own name where it was
+  // What each known vault is called in Alviss — its own name where it was
   // given one (the settings' vault page), else its folder's.
   const vaultLabel = useVaultLabels(recentVaults);
 
@@ -186,7 +186,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ showFirstRun, onFirs
       <div style={{ width: "100%", maxWidth: "440px" }}>
         <div style={{ textAlign: "center" }}>
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "22px" }}>
-            <PlainvaLogo size={SPLASH_LOGO_SIZE} glow />
+            <AlvissLogo size={SPLASH_LOGO_SIZE} glow />
           </div>
           <h1 style={{ fontSize: "var(--text-display)", fontWeight: 800, letterSpacing: "-0.02em", margin: "0 0 8px" }}>{t("splash.title")}</h1>
           <p style={{ color: "var(--text-muted)", fontSize: "var(--text-lg)", margin: "0 0 28px" }}>{t("splash.subtitle")}</p>
@@ -313,7 +313,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ showFirstRun, onFirs
                     {def.name}
                     {/* The tour is the one template that shows what the app can
                         do; an empty vault shows nothing, so the badge belongs
-                        here (plan "Vorlagen-Überarbeitung + Plainva-Tour", E1). */}
+                        here (plan "Vorlagen-Überarbeitung + Alviss-Tour", E1). */}
                     {def.id === "plainva" && (
                       <span style={{ fontSize: "var(--text-xs)", fontWeight: 600, padding: "1px 7px", borderRadius: "var(--radius-pill)", background: "var(--accent-color)", color: "var(--accent-on)" }}>
                         {t("splash.recommended")}

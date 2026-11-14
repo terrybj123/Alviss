@@ -12,7 +12,7 @@ import type { PlannerRow, TaskPriority } from "./taskPlanner";
  *
  * Three rules follow from that, and they are the whole design:
  *
- * 1. **Seven days of supply.** Someone who does not open Plainva for two days
+ * 1. **Seven days of supply.** Someone who does not open Alviss for two days
  *    must still see something true on Wednesday. The snapshot carries the
  *    overdue count plus the next week, and the widget works out "today" from
  *    the day keys itself — so it turns the page at midnight without the app.
@@ -29,7 +29,7 @@ import type { PlannerRow, TaskPriority } from "./taskPlanner";
  * of the home screen does.
  */
 
-/** Bumped when the shape changes; a native reader that sees a higher one shows "open Plainva". */
+/** Bumped when the shape changes; a native reader that sees a higher one shows "open Alviss". */
 export const WIDGET_SNAPSHOT_VERSION = 1;
 
 /** How many days of supply the snapshot carries beyond today. */

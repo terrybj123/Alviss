@@ -6,7 +6,7 @@ import type { MobileSyncProvider } from "./syncService";
 
 const drive = (refreshToken: string): MobileSyncProvider => ({
   provider: "drive",
-  creds: { clientId: "c", clientSecret: "s", refreshToken, rootFolderName: "Plainva" },
+  creds: { clientId: "c", clientSecret: "s", refreshToken, rootFolderName: "Alviss" },
 });
 
 describe("whether this device reaches the vault's file provider", () => {

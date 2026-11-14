@@ -6,7 +6,7 @@ import { join } from "node:path";
  * A Dropbox app key the user brought must reach BOTH the handshake and the
  * stored credentials.
  *
- * The central Plainva registration hit Dropbox's user limit (#48), so a user
+ * The central Alviss registration hit Dropbox's user limit (#48), so a user
  * can now supply their own app key. The trap is that Dropbox refreshes tokens
  * against the app key: a key used only for the first authorization works once
  * and then locks the vault out on the next refresh, hours later, with an error

@@ -71,7 +71,7 @@ export function plannerRowsFromTasks(tasks: readonly TaskRecord[]): PlannerRow[]
     repeats: task.recurrence !== undefined,
     ...(task.parent !== undefined ? { parentId: plannerTaskId(task.path, task.parent) } : {}),
     ...(task.details && task.details.length > 0 ? { details: task.details } : {}),
-    // The Tasks plugin's `✅` date — Plainva writes it with every tick.
+    // The Tasks plugin's `✅` date — Alviss writes it with every tick.
     ...(task.state === "done" && task.completed ? { doneOn: task.completed } : {}),
   }));
 }

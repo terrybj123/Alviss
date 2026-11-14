@@ -100,7 +100,7 @@ interface StoredPendingPairing {
   hpkePublicKey: string;
 }
 
-/** Written into genesis + policy: the oldest Plainva that may open this
+/** Written into genesis + policy: the oldest Alviss that may open this
  *  workspace. Kept identical to the desktop wizard so a workspace created on
  *  the phone stays joinable from a desktop of the same generation. */
 const MINIMUM_CLIENT_VERSION = "0.4.1";
@@ -766,7 +766,7 @@ export async function mobilePublicationPendingCounts(input: {
  *
  * What stays behind is deliberate and named on the sheet: the publication's own
  * objects (the store is put-only, there is no delete) and the share at the
- * provider, which Plainva does not manage.
+ * provider, which Alviss does not manage.
  */
 export async function withdrawMobilePublication(input: {
   vaultId: string;

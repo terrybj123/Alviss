@@ -193,7 +193,7 @@ describe("the sync state belongs to the folder, not the account (third review, f
 describe("a Dropbox vault reopened after its default folder was written out (fourth review, finding 1)", () => {
   it("is the same target: no conflict copies, and the queued deletion is sent", async () => {
     const vault = await syncedVault();
-    // First start: the folder setting is still empty, the target uses /Plainva.
+    // First start: the folder setting is still empty, the target uses /Alviss.
     expect(await bindVaultSyncState("/v", syncStateBindingFor({ provider: "dropbox", folder: { path: "" } }), { queue: vault.queue, records: vault.repo })).toBe("adopt");
     // Meanwhile: C deleted here, B changed here, A changed on another device.
     await vault.app.deleteItem("C.md");
@@ -201,7 +201,7 @@ describe("a Dropbox vault reopened after its default folder was written out (fou
     vault.folderA.set("A.md", { text: "one\nfrom elsewhere\n", etag: '"e2"' });
 
     // The wizard (or the migration in readSyncRootFolder) wrote the default out.
-    expect(await bindVaultSyncState("/v", syncStateBindingFor({ provider: "dropbox", folder: { path: "/Plainva" } }), { queue: vault.queue, records: vault.repo })).toBe("keep");
+    expect(await bindVaultSyncState("/v", syncStateBindingFor({ provider: "dropbox", folder: { path: "/Alviss" } }), { queue: vault.queue, records: vault.repo })).toBe("keep");
     const pushes = await vault.cycle(vault.folderA);
 
     expect(await vault.conflictCopies()).toEqual([]);
@@ -215,16 +215,16 @@ describe("a Dropbox vault reopened after its default folder was written out (fou
 
 /** Two spellings of one target, per provider: every row has to keep. */
 const SAME_TARGET: Array<[string, Parameters<typeof syncStateBindingFor>[0], Parameters<typeof syncStateBindingFor>[0]]> = [
-  ["Dropbox: empty and the written-out default", { provider: "dropbox", folder: { path: "" } }, { provider: "dropbox", folder: { path: "/Plainva" } }],
-  ["Dropbox: no setting and the default without a slash", { provider: "dropbox" }, { provider: "dropbox", folder: { path: "Plainva" } }],
+  ["Dropbox: empty and the written-out default", { provider: "dropbox", folder: { path: "" } }, { provider: "dropbox", folder: { path: "/Alviss" } }],
+  ["Dropbox: no setting and the default without a slash", { provider: "dropbox" }, { provider: "dropbox", folder: { path: "Alviss" } }],
   ["Dropbox: slashes and case", { provider: "dropbox", folder: { path: "/Notes/Vault/" } }, { provider: "dropbox", folder: { path: "notes//VAULT" } }],
   ["Dropbox: backslashes", { provider: "dropbox", folder: { path: "\\Notes\\Vault" } }, { provider: "dropbox", folder: { path: "/Notes/Vault" } }],
-  ["OneDrive: empty and the default", { provider: "onedrive", folder: { path: "" } }, { provider: "onedrive", folder: { path: "Plainva" } }],
-  ["OneDrive: slashes and case", { provider: "onedrive", folder: { path: "/Plainva/" } }, { provider: "onedrive", folder: { path: "plainva" } }],
+  ["OneDrive: empty and the default", { provider: "onedrive", folder: { path: "" } }, { provider: "onedrive", folder: { path: "Alviss" } }],
+  ["OneDrive: slashes and case", { provider: "onedrive", folder: { path: "/Alviss/" } }, { provider: "onedrive", folder: { path: "alviss" } }],
   ["OneDrive: nested with doubled slashes", { provider: "onedrive", folder: { path: "Notes/Vault" } }, { provider: "onedrive", folder: { path: "notes//vault/" } }],
-  ["Drive: empty and the default", { provider: "drive", folder: { path: "" } }, { provider: "drive", folder: { path: "Plainva" } }],
+  ["Drive: empty and the default", { provider: "drive", folder: { path: "" } }, { provider: "drive", folder: { path: "Alviss" } }],
   ["Drive: slashes", { provider: "drive", folder: { path: "/Notes/Vault/" } }, { provider: "drive", folder: { path: "Notes//Vault" } }],
-  ["Drive: the folder id learned since", { provider: "drive", folder: { path: "Plainva" } }, { provider: "drive", folder: { path: "Plainva", id: "f1" } }],
+  ["Drive: the folder id learned since", { provider: "drive", folder: { path: "Alviss" } }, { provider: "drive", folder: { path: "Alviss", id: "f1" } }],
   ["Drive: the same id under a renamed folder", { provider: "drive", folder: { path: "Old", id: "f1" } }, { provider: "drive", folder: { path: "New", id: "f1" } }],
   ["S3: endpoint case, default port and slash", { provider: "s3", s3: { endpoint: "HTTPS://S3.Example.com:443/", bucket: "notes", prefix: "vault" } }, { provider: "s3", s3: { endpoint: "https://s3.example.com", bucket: "notes", prefix: "/vault/" } }],
   ["S3: an empty prefix and a slash", { provider: "s3", s3: { endpoint: "http://127.0.0.1:9000", bucket: "notes", prefix: "" } }, { provider: "s3", s3: { endpoint: "http://127.0.0.1:9000/", bucket: "notes", prefix: "/" } }],
@@ -237,10 +237,10 @@ const SAME_TARGET: Array<[string, Parameters<typeof syncStateBindingFor>[0], Par
 
 /** Two targets that really differ: these, and only these, reset. */
 const OTHER_TARGET: Array<[string, Parameters<typeof syncStateBindingFor>[0], Parameters<typeof syncStateBindingFor>[0]]> = [
-  ["Dropbox: another folder", { provider: "dropbox", folder: { path: "/Plainva" } }, { provider: "dropbox", folder: { path: "/Other" } }],
-  ["Drive: another folder id", { provider: "drive", folder: { path: "Plainva", id: "f1" } }, { provider: "drive", folder: { path: "Plainva", id: "f2" } }],
-  ["Drive: case is a name in Drive", { provider: "drive", folder: { path: "Plainva" } }, { provider: "drive", folder: { path: "plainva" } }],
-  ["Drive: another account, same folder name", { provider: "drive", folder: { path: "Plainva" }, identity: { issuer: "google", subject: "anna" } }, { provider: "drive", folder: { path: "Plainva" }, identity: { issuer: "google", subject: "bert" } }],
+  ["Dropbox: another folder", { provider: "dropbox", folder: { path: "/Alviss" } }, { provider: "dropbox", folder: { path: "/Other" } }],
+  ["Drive: another folder id", { provider: "drive", folder: { path: "Alviss", id: "f1" } }, { provider: "drive", folder: { path: "Alviss", id: "f2" } }],
+  ["Drive: case is a name in Drive", { provider: "drive", folder: { path: "Alviss" } }, { provider: "drive", folder: { path: "alviss" } }],
+  ["Drive: another account, same folder name", { provider: "drive", folder: { path: "Alviss" }, identity: { issuer: "google", subject: "anna" } }, { provider: "drive", folder: { path: "Alviss" }, identity: { issuer: "google", subject: "bert" } }],
   ["S3: another bucket", { provider: "s3", s3: { endpoint: "https://s3.example.com", bucket: "notes" } }, { provider: "s3", s3: { endpoint: "https://s3.example.com", bucket: "other" } }],
   ["WebDAV: another server", { provider: "webdav", webdav: { url: "https://cloud.example.com/dav/", user: "anna" } }, { provider: "webdav", webdav: { url: "https://other.example.com/dav/", user: "anna" } }],
   ["WebDAV: another user", { provider: "webdav", webdav: { url: "https://cloud.example.com/remote.php/webdav/", user: "anna" } }, { provider: "webdav", webdav: { url: "https://cloud.example.com/remote.php/webdav/", user: "bert" } }],
@@ -268,8 +268,8 @@ describe("one target or another (fourth review, finding 1)", () => {
   });
 
   it("names the folder the way the target resolves it", () => {
-    expect(syncStateBindingFor({ provider: "dropbox", folder: { path: "" } }).root).toBe(dropboxFolderIdentity("/Plainva"));
-    expect(dropboxRootPath("")).toBe("/Plainva");
+    expect(syncStateBindingFor({ provider: "dropbox", folder: { path: "" } }).root).toBe(dropboxFolderIdentity("/Alviss"));
+    expect(dropboxRootPath("")).toBe("/Alviss");
   });
 
   it("never lets a reset allow creating the folder", () => {

@@ -5,7 +5,7 @@ import i18n from "../i18n";
 
 /**
  * CodeMirror's search keys minus one: its "find previous" also sits on
- * Mod+Shift+G, which is Plainva's "open graph" (the desktop's global shortcut).
+ * Mod+Shift+G, which is Alviss's "open graph" (the desktop's global shortcut).
  * The editor does not stop a key it handles, so both ran — the graph opened and
  * the note behind it grew a search panel or jumped to the previous match. Find
  * previous keeps Shift+F3, and Shift+Enter in the search field. This is the

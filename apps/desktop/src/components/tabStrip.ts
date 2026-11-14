@@ -217,7 +217,7 @@ const OVERFLOW_WIDTH = 44;
  * A tab is in the window while every tab there can keep at least
  * min(its own width, `TAB_MIN_WIDTH`), and the active tab always is.
  *
- * There is no upper limit and nothing closes itself: a tab Plainva shuts on
+ * There is no upper limit and nothing closes itself: a tab Alviss shuts on
  * its own is a lost train of thought.
  */
 export function tabWindowOf(

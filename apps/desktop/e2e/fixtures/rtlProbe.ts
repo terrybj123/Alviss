@@ -22,7 +22,7 @@ export const RTL_DOC = [
   "- الفصل الأول قرطبة",
   "- [x] شراء الكتاب",
   "",
-  "Plainva keeps notes as Markdown files",
+  "Alviss keeps notes as Markdown files",
 ].join("\n");
 
 function createProbe() {

@@ -1490,7 +1490,7 @@ export function CalendarView({ onOpenPath, isActivePane = true }: CalendarViewPr
   // "Per Mail versenden" (mail-client E6): build an iCal REQUEST invite and open
   // the compose dialog with it attached, recipients pre-filled from the event's
   // attendees (rsvps emails, else the plain attendee list). The recipients' own
-  // calendar apps handle the RSVP (iMIP); Plainva tracks replies only for events
+  // calendar apps handle the RSVP (iMIP); Alviss tracks replies only for events
   // it owns.
   const emailInvite = useCallback(
     async (e: PimEventRow) => {

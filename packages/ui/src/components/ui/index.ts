@@ -1,4 +1,4 @@
-/** Plainva UI primitives (plan Designsprache 2026-07-05, P2). */
+/** Alviss UI primitives (plan Designsprache 2026-07-05, P2). */
 export { Button, type ButtonProps, type ButtonVariant, type ButtonSize } from "./Button";
 export { Fab, type FabProps } from "./Fab";
 export { NotePath, type NotePathProps } from "./NotePath";

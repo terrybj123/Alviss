@@ -98,7 +98,7 @@ const MiniPreview: React.FC = () => {
 };
 
 /**
- * Shown once, to people opening Plainva for the very first time.
+ * Shown once, to people opening Alviss for the very first time.
  *
  * It ends in a decision rather than in "next": the three actions are the same
  * ones the splash offers, so the welcome is the entry itself instead of a

@@ -3,7 +3,7 @@ import { welcomeBody, type VaultTemplateDefinition, type VaultTemplateNote } fro
 import type { ParaSample, ParaTemplate } from "./paraTemplate";
 
 /**
- * The Zettelkasten vault template (plan "Vorlagen-Überarbeitung + Plainva-Tour"
+ * The Zettelkasten vault template (plan "Vorlagen-Überarbeitung + Alviss-Tour"
  * § 3). Shared structure, per-language strings — same reason as PARA and GTD.
  *
  * The one thing this template has to show is the WEB: permanent notes that link

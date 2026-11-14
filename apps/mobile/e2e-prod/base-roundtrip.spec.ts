@@ -6,7 +6,7 @@ import { waitForVaultDirectory, type MobileTestGlobals } from "./exampleVault";
  * Two findings of the `.base` reference (03.11.), on the phone's config sheet
  * against the real index:
  *
- * - A filter condition Plainva cannot read (`price > 2`, `a && b` deep in a
+ * - A filter condition Alviss cannot read (`price > 2`, `a && b` deep in a
  *   group) stays in the file but filters nothing. The sheet showed it as
  *   written and said nothing, so the view showed more rows than its filter
  *   reads; now each such entry says it is not applied.
@@ -70,8 +70,8 @@ test("an unreadable filter is marked as not applied, and deleting a view leaves 
     // The loose condition and the group holding `a && b` each say so.
     const notes = sheet.getByTestId("filter-not-applied");
     await expect(notes).toHaveCount(2);
-    await expect(notes.nth(0)).toHaveText("Not applied: Plainva cannot read this condition, so it filters nothing.");
-    await expect(notes.nth(1)).toHaveText("Not applied, because Plainva cannot read it: a && b");
+    await expect(notes.nth(0)).toHaveText("Not applied: Alviss cannot read this condition, so it filters nothing.");
+    await expect(notes.nth(1)).toHaveText("Not applied, because Alviss cannot read it: a && b");
     if (process.env.PLAINVA_EVIDENCE) await page.screenshot({ path: testInfo.outputPath("phone-filter-not-applied.png") });
 
     // Back to the areas, then delete the first view.

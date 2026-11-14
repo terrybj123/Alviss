@@ -21,7 +21,7 @@ function toBase64(bytes: Uint8Array): string {
 }
 
 export function recoveryFileName(now = new Date()): string {
-  return `Plainva-Recovery-${now.toISOString().slice(0, 10)}.pvrecovery`;
+  return `Alviss-Recovery-${now.toISOString().slice(0, 10)}.pvrecovery`;
 }
 
 export interface SavedRecoveryFile {

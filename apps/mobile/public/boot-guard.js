@@ -1,5 +1,5 @@
 /*
- * Plainva boot guard — phone edition.
+ * Alviss boot guard — phone edition.
  *
  * WHY THIS FILE EXISTS AT ALL
  * The desktop learned this twice (v0.3.0, issue #46): a blank window tells the
@@ -161,13 +161,13 @@
     var box = mountOverlay();
     var android = /Android/i.test(String(navigator.userAgent));
 
-    block(box, "Plainva can't start on this device", [
+    block(box, "Alviss can't start on this device", [
       android
-        ? "Plainva needs a newer web engine than this device provides. On Android that engine " +
+        ? "Alviss needs a newer web engine than this device provides. On Android that engine " +
             "is a separate component, so this is usually fixable: open the Play Store and " +
-            "update Android System WebView (and Chrome), then start Plainva again."
-        : "Plainva needs a newer web engine than this device provides. On iOS and iPadOS that " +
-            "engine is part of the system, so Plainva needs iOS/iPadOS 16.4 or later.",
+            "update Android System WebView (and Chrome), then start Alviss again."
+        : "Alviss needs a newer web engine than this device provides. On iOS and iPadOS that " +
+            "engine is part of the system, so Alviss needs iOS/iPadOS 16.4 or later.",
       "Your notes are untouched — the app stopped before it opened anything.",
       "If this device LOOKS new enough, the details below are what we need — please copy them " +
         "into a report: github.com/plainva/plainva/issues",
@@ -194,7 +194,7 @@
     shown = "startup";
     var box = mountOverlay();
 
-    block(box, "Plainva didn't start", [
+    block(box, "Alviss didn't start", [
       "Something went wrong before the app could open. Your notes are untouched.",
       "Please report this with the details below: github.com/plainva/plainva/issues",
     ]);
@@ -251,7 +251,7 @@
        disprove it a moment later - a cheap phone, a cold Capacitor bridge.
        An error BEFORE the first render keeps the screen for good; a merely
        LATE mount, or an error after the first render, does not: the app is
-       running, and "Plainva didn't start" on top of it would swallow every
+       running, and "Alviss didn't start" on top of it would swallow every
        tap (open-items plan 3.91; the desktop's guard has done this since
        2026-08-24). Both files are ES5 without imports, so the rule is
        written twice rather than shared. */

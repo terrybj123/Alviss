@@ -60,7 +60,7 @@ export function foldersMissingIndex(infos: Pick<FolderIndexInfo, "folder" | "has
 }
 
 /**
- * What a folder's overview is: absent, Plainva's, or the user's own.
+ * What a folder's overview is: absent, Alviss's, or the user's own.
  *
  * One question with one answer, because three surfaces ask it and they must
  * not disagree — the folder sheet (which action to offer, or none), the

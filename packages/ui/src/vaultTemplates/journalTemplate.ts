@@ -2,7 +2,7 @@ import { defineBase } from "./baseBuilders";
 import { welcomeBody, DEFAULT_DAILY_NOTE_TYPE, type VaultTemplateDefinition, type VaultTemplateNote } from "./types";
 
 /**
- * The Journal vault template (plan "Vorlagen-Überarbeitung + Plainva-Tour" § 3).
+ * The Journal vault template (plan "Vorlagen-Überarbeitung + Alviss-Tour" § 3).
  *
  * It shipped a database and a template and not a single entry, so the calendar
  * view opened empty and the table had no rows — the two things the template

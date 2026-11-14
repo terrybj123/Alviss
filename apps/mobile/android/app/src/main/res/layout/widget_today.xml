@@ -3,7 +3,7 @@
 
      RemoteViews admits only a handful of view types and no custom fonts, so
      this is deliberately plain: a head, a counter, a list. What makes it
-     Plainva is the colour and the ordering, not the typography — Android
+     Alviss is the colour and the ordering, not the typography — Android
      simply does not allow the latter in a widget.
 
      The head is a tap target in its own right and stays visible in every

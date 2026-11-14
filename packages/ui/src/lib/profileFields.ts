@@ -222,7 +222,7 @@ export const PROFILE_FIELDS: readonly ProfileFieldDef[] = [
   { logical: "inboxFolder", scope: "vault", kind: "vaultPath", area: "content", desktop: "store", mobile: "inboxFolder" },
   { logical: "defaultNoteType", scope: "vault", kind: "text", area: "content", desktop: "store", mobile: "defaultNoteType" },
   { logical: "taskDatabase", scope: "vault", kind: "vaultPath", area: "content", desktop: "store", mobile: "taskDatabase" },
-  // Which extra file types open inside Plainva instead of going to the system
+  // Which extra file types open inside Alviss instead of going to the system
   // (C15). A VAULT field: whether a `.fountain` is text is a property of the
   // archive, not of the machine looking at it, and a per-device list would let
   // the same file open in the editor here and in another app there. The list
@@ -344,7 +344,7 @@ export function profileField(logical: string): ProfileFieldDef | undefined {
 /**
  * Whether a logical field belongs to the signed-in member rather than the
  * vault. Fields nobody knows (the forward-compatibility bucket of a newer
- * Plainva) stay with the vault — guessing a scope for them would be worse than
+ * Alviss) stay with the vault — guessing a scope for them would be worse than
  * keeping today's behaviour.
  */
 export function isMemberProfileField(logical: string): boolean {

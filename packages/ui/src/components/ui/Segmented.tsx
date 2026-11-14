@@ -22,7 +22,7 @@ export interface SegmentedProps<T extends string> {
 }
 
 /**
- * Segmented control (Plainva UI 2.0 / M3 Expressive): a small set of mutually
+ * Segmented control (Alviss UI 2.0 / M3 Expressive): a small set of mutually
  * exclusive options in one pill track (e.g. the .base view switch). Single
  * select → radiogroup semantics. The active segment fills with the accent
  * container; token-driven so every theme restyles it (LCARS pill, Win95 bevel).

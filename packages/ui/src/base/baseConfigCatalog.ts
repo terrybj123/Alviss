@@ -67,8 +67,8 @@ export function firstBaseConfigArea(): BaseConfigAreaDef {
 
 /**
  * Distinct display metadata per `.base` view type — used by the desktop
- * view-type tile grid and the mobile view-type chips. `type` is the Plainva
- * render type (baseFormat.ts); `extended` marks the Plainva-only types that
+ * view-type tile grid and the mobile view-type chips. `type` is the Alviss
+ * render type (baseFormat.ts); `extended` marks the Alviss-only types that
  * are gated behind the "advanced databases" vault setting.
  */
 export interface BaseViewTypeMeta {
@@ -76,7 +76,7 @@ export interface BaseViewTypeMeta {
   /** i18n key `database.view<Cap>` (matches the existing view-type labels). */
   labelKey: string;
   icon: LucideIcon;
-  /** Plainva-only type (board/calendar/timeline/graph/pinboard). */
+  /** Alviss-only type (board/calendar/timeline/graph/pinboard). */
   extended: boolean;
 }
 
@@ -93,7 +93,7 @@ export const BASE_VIEW_TYPES: readonly BaseViewTypeMeta[] = [
 
 /**
  * The view types a view's type can be set to: all of them, or — with the
- * vault's "Allow Plainva extensions for .base files" off — only those Obsidian
+ * vault's "Allow Alviss extensions for .base files" off — only those Obsidian
  * knows. One answer for the desktop's config panel and the phone's sheet
  * (Sammelplan § 3.169 Nr. 3: the phone offered every type whatever the
  * switch said, because it had no switch).

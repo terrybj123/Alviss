@@ -7,7 +7,7 @@ import { readDriveFolderSelection } from "@plainva/core";
  * Where the vault's remote sync folder is configured — and why it no longer
  * lives in the keychain slot.
  *
- * The folder name ("Plainva", "Apps/Plainva", …) used to be a FIELD of the
+ * The folder name ("Alviss", "Apps/Alviss", …) used to be a FIELD of the
  * provider credentials. It is not a secret, and keeping it there had one fatal
  * consequence: removing a cloud account wipes the whole slot, so the folder
  * went with it. Reconnecting the same account then found nothing to carry over,

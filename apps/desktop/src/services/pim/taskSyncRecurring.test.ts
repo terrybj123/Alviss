@@ -17,7 +17,7 @@ import { isRecurringAtProviderNamespace, providerReopened } from "@plainva/ui";
 import { runTaskSync, type TaskSyncAdapter, type TaskSyncOptions } from "./taskSync";
 
 /**
- * Finding 2026-09-20: "tasks ticked off at Google stay open in Plainva". The raw
+ * Finding 2026-09-20: "tasks ticked off at Google stay open in Alviss". The raw
  * provider rows (anonymised here) showed the reconciler doing the right thing —
  * a recurring task at Google is ONE task: ticking it completes it, overnight
  * the SAME id comes back open with the next due date. These cases pin that
@@ -225,8 +225,8 @@ describe("a task the provider repeats", () => {
 
 /**
  * Finding 2026-10-24 (TestFlight build 139, Apple Reminders through "On this
- * device"): a recurring reminder with a time, ticked in Plainva. Reminders moved
- * on to the next occurrence and kept the time; Plainva kept the note done and
+ * device"): a recurring reminder with a time, ticked in Alviss. Reminders moved
+ * on to the next occurrence and kept the time; Alviss kept the note done and
  * added a second, done note "Probe 2".
  *
  * EventKit does not repeat the way Google does. Completing a recurring

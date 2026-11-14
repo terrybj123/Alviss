@@ -16,7 +16,7 @@ import { resetMobileWhatsNew } from "../services/mobileWhatsNew";
  *
  * Since the widgets (plan Widgets, W6) it also carries what a home screen
  * may show. That belongs HERE and not with the appearance: it is not about
- * how Plainva looks but about what leaves it.
+ * how Alviss looks but about what leaves it.
  */
 export function BehaviorAreaScreen({ onBack }: { onBack: () => void }) {
   const { t } = useTranslation();

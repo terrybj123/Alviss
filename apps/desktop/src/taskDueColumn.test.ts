@@ -4,7 +4,7 @@ import { shippedSources } from "./test-sourceTree";
 
 /**
  * Plan Aufgaben-Oberfläche, E9: a task database from before tasks had times
- * types its due column as a day. Plainva never retypes it by itself — it offers
+ * types its due column as a day. Alviss never retypes it by itself — it offers
  * it once per database and device, and the conversion touches the column's
  * type only.
  */

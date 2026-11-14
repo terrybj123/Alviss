@@ -10,7 +10,7 @@ import { describe, expect, it } from "vitest";
  * The phone has no watcher; its index knows what the app tells it, through
  * one door (`MobileVault.reindexPaths`, services/pathReindex.ts). A photo or a
  * file put into a note, a voice memo, a mail's attachment saved, a mail filed
- * as a note or as `.eml`, the attachments of something shared to Plainva: on
+ * as a note or as `.eml`, the attachments of something shared to Alviss: on
  * disk and queued for the sync, and unknown to search, to the tree and to
  * every list drawn from the index until the next full scan — which on a phone
  * comes with a return to the app or a pull to refresh.

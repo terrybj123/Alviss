@@ -256,10 +256,10 @@ describe("Dropbox app key per device (E6)", () => {
     expect(validClientId("dropbox", PLAINVA_DROPBOX_APP_KEY)).toBe(true);
   });
 
-  it("takes an account's own key over; Plainva's key written as the account's is the standard sign-in", () => {
+  it("takes an account's own key over; Alviss's key written as the account's is the standard sign-in", () => {
     expect(adoptedDropboxAccess([undefined, undefined])).toBeNull();
     expect(adoptedDropboxAccess(["abcd1234efgh"])).toEqual({ source: "own", clientId: "abcd1234efgh" });
-    // The old account page wrote the field's value on leaving it - the stored sign-in's key, Plainva's included.
+    // The old account page wrote the field's value on leaving it - the stored sign-in's key, Alviss's included.
     expect(adoptedDropboxAccess([PLAINVA_DROPBOX_APP_KEY])).toEqual({ source: "plainva" });
     expect(adoptedDropboxAccess([PLAINVA_DROPBOX_APP_KEY, "zzzz9999yyyy"])).toEqual({ source: "own", clientId: "zzzz9999yyyy" });
     // A key that does not look like one is not adopted; nothing is lost - it stays on the account.

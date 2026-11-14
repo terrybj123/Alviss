@@ -2,10 +2,10 @@ import { describe, expect, it } from "vitest";
 import { SIEVE_BEGIN, SIEVE_END, applyVacation, buildVacationSection, splitSieve, writeSieveSection } from "@plainva/ui/mail";
 
 /**
- * Plainva's section inside someone else's Sieve script (S13, E4).
+ * Alviss's section inside someone else's Sieve script (S13, E4).
  *
  * The guarantee worth testing is not that the vacation rule is pretty — it is
- * that everything Plainva did not write survives untouched, and that a script
+ * that everything Alviss did not write survives untouched, and that a script
  * it cannot parse is refused rather than overwritten. A server-side filter is
  * where a silently lost line costs real mail.
  */
@@ -39,7 +39,7 @@ describe("splitting a script", () => {
 
 describe("writing the section back", () => {
   it("leaves a foreign script byte-for-byte when the notice is off", () => {
-    // Nothing to add and nothing of Plainva's in there: the file must come back
+    // Nothing to add and nothing of Alviss's in there: the file must come back
     // as it went in, apart from a trailing newline.
     expect(writeSieveSection(FOREIGN, null)).toBe(FOREIGN + "\n");
   });

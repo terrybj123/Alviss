@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { sourceTexts } from "../../test-sourceTree";
 
 /**
- * C4/S16 — creating a task in Plainva that also exists at the provider.
+ * C4/S16 — creating a task in Alviss that also exists at the provider.
  *
  * The interesting cases are the failures, because the note is already on disk
  * when this runs: a failed provider call must leave it alone, and a failed

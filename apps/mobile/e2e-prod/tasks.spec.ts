@@ -67,7 +67,7 @@ interface Anchor {
   identity?: string;
 }
 
-/** A task note the way Plainva writes one; `anchor` makes it a mirrored provider task. */
+/** A task note the way Alviss writes one; `anchor` makes it a mirrored provider task. */
 function taskNote(title: string, fields: { status?: string; frist?: string; priority?: string; anchor?: Anchor; body?: string } = {}): string {
   const lines = ["---", "type: Note"];
   const a = fields.anchor;
@@ -84,7 +84,7 @@ function taskNote(title: string, fields: { status?: string; frist?: string; prio
   return lines.join("\n");
 }
 
-/** The id Plainva put into a mirrored task's name from 12.09. to 24.09.: the start of the hash of its identity. */
+/** The id Alviss put into a mirrored task's name from 12.09. to 24.09.: the start of the hash of its identity. */
 const legacyHex = (a: Required<Anchor>) => createHash("sha256").update(JSON.stringify([a.provider, a.identity, a.list, a.uid])).digest("hex").slice(0, 16);
 
 type Bridge = Awaited<ReturnType<typeof installSqlBridge>>;
@@ -495,7 +495,7 @@ test("tasks that exist more than once: the notice, the review sheet, only the em
   }
 });
 
-test("names with an id (E12): only the ones Plainva gave are offered, Hide holds until the set changes, and the clean-up renames with their links", async ({ page, context }) => {
+test("names with an id (E12): only the ones Alviss gave are offered, Hide holds until the set changes, and the clean-up renames with their links", async ({ page, context }) => {
   test.setTimeout(120_000);
   const errors = collectErrors(page);
   const sql = await installSqlBridge(context);
@@ -506,7 +506,7 @@ test("names with an id (E12): only the ones Plainva gave are offered, Hide holds
   const rasen = `Aufgaben/Rasen mähen — ${legacyHex(anchor("u4"))}.md`;
   const baseName = (path: string) => path.split("/").pop()!;
   // Named by a person (the digits are no hash of its anchor), and a note
-  // without an anchor at all: neither is Plainva's to rename.
+  // without an anchor at all: neither is Alviss's to rename.
   const foreign = "Aufgaben/Plan — 0123456789abcdef.md";
   const unanchored = `Notizen/Idee — ${legacyHex(anchor("u1"))}.md`;
   try {
@@ -526,7 +526,7 @@ test("names with an id (E12): only the ones Plainva gave are offered, Hide holds
 
     const notice = page.getByTestId("task-names-notice");
     await expect(page.getByTestId("task-names-banner")).toHaveText("2 task notes still carry an id in their names", { timeout: 20_000 });
-    await expect(notice).toContainText("Plainva can name them after their titles.");
+    await expect(notice).toContainText("Alviss can name them after their titles.");
     await expect(notice).toContainText("Links to these notes are updated along with them (here: 1).");
     // Old (struck through) → new, in one fixed order: by the tasks' identities.
     await expect(notice.locator("del[data-testid='task-names-old']")).toHaveText([baseName(zahnarzt), baseName(steuer)]);
@@ -594,7 +594,7 @@ test("Create as a task in the share sheet: the shared text and file become a tas
     await start(page, context, sql, [["Aufgaben.base", TASK_BASE], ["Aufgaben/Steuer abgeben.md", taskNote("Steuer abgeben", { status: "Offen" })]]);
     await openTasks(page);
 
-    // Something is shared to Plainva from another app; back in the app, it looks into its inbox.
+    // Something is shared to Alviss from another app; back in the app, it looks into its inbox.
     inbox.share({ id: shareId, text: "Buy stamps\nThe post office closes at six.", files: [{ name: "receipt.png", mime: "image/png", bytes: receipt }] });
     await returnToApp(page);
     const sheet = page.getByTestId("share-inbox");

@@ -2,7 +2,7 @@
  * The app's files of ONE device under `.plainva/` (decision E7 of the bug
  * clearing plan 2026-10-30, Sammelplan § 3.127 Nr. 3).
  *
- * `.plainva/` never travels with Plainva's own sync, so the pins of the map and
+ * `.plainva/` never travels with Alviss's own sync, so the pins of the map and
  * the recently opened notes were always meant to be a device's own. A vault
  * folder that a file service carries (Dropbox, iCloud Drive, a network share)
  * carries `.plainva/` along anyway, and then several devices wrote ONE
@@ -14,7 +14,7 @@
  * Nothing of what a vault has is lost on the way: a device that has no file
  * of its own yet starts from the shared file of older versions — every device
  * does, so every device keeps what it showed before. The shared file itself is
- * never written and never deleted here: an older Plainva on another device
+ * never written and never deleted here: an older Alviss on another device
  * still reads and writes it, and keeps working with it.
  */
 

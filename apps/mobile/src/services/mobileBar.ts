@@ -113,7 +113,7 @@ export async function migrateMobileBarLayout(vaultId: string | null): Promise<vo
 
 /**
  * Keeps the legacy fields in step with the bar, so a phone that is downgraded —
- * or a copy of Plainva that has not been updated yet — still finds a bar it
+ * or a copy of Alviss that has not been updated yet — still finds a bar it
  * understands. Cheap, and the alternative is a device that loses its bar.
  */
 export function mirrorLegacyBarFields(value: AreaOrder): void {

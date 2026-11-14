@@ -101,7 +101,7 @@ describe("iOS purpose strings", () => {
     expect(bodies.length).toBe(declared.size);
     for (const [, key, text] of bodies) {
       expect(text.trim().length, `${key} has no purpose string`).toBeGreaterThan(30);
-      expect(text, `${key} names the app`).toContain("Plainva");
+      expect(text, `${key} names the app`).toContain("Alviss");
     }
   });
 });

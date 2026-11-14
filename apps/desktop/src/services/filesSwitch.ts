@@ -43,7 +43,7 @@ export async function filesAccountIdForVault(vaultPath: string, provider: string
  * Whether the vault queues its local changes: whenever it has a file provider,
  * running or standing still (review of plan "Verbinden", finding 4). Files
  * switched off, paused here or signed out stop the worker, not the record of
- * what changed - a file edited outside Plainva while files were off went
+ * what changed - a file edited outside Alviss while files were off went
  * unnoticed by the sync once they were on again, because the index had
  * already taken it in. The queue holds it until the worker runs.
  */

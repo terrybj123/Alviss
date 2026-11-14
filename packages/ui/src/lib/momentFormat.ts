@@ -1,7 +1,7 @@
 /**
  * Moment-style format strings, translated to date-fns.
  *
- * Plainva speaks Moment tokens to the user — `{{date:DD.MM.YYYY}}`, the
+ * Alviss speaks Moment tokens to the user — `{{date:DD.MM.YYYY}}`, the
  * daily-note filename format — because that is what Obsidian uses and what
  * people arriving from there already know (decision E2 of the Vorlagen-Engine
  * plan). Internally everything formats with date-fns, and the two token sets
@@ -24,7 +24,7 @@
  * Letters that ARE tokens stay tokens, even inside a word — exactly as Moment
  * and Obsidian behave. `Journal` formats as gibberish there too (its `a` is the
  * meridiem token); literal words belong in `[brackets]`. Deviating here would
- * mean the same format string produces different file names in Plainva and in
+ * mean the same format string produces different file names in Alviss and in
  * Obsidian, which is a worse failure than a surprising format.
  */
 

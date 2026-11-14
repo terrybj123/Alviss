@@ -7,7 +7,7 @@ import type { WritingPurpose } from "./spellcheck";
  * forms unless the field tells it otherwise: `ｈｔｔｐｓ：／／ｃｌｏｕｄ．ｅｘａｍｐｌｅ．ｃｏｍ`
  * looks like an address and is none - no server answers to it, and the
  * message that comes back ("could not connect") says nothing about the cause.
- * Plainva's connection forms were plain text fields, so that is what such a
+ * Alviss's connection forms were plain text fields, so that is what such a
  * keyboard produced in them, with autocapitalisation and autocorrection on top
  * (Play feedback 2026-09-30: S3 and WebDAV could not be set up on a phone with
  * a Japanese keyboard. Not reproduced on a device; this is the defect that

@@ -130,7 +130,7 @@ export const WorkspaceJoinDialog: React.FC<{ onClose: () => void }> = ({ onClose
           </>
         ) : (
           <>
-            <Banner kind="info" rounded>{t("workspaceSecurity.joinWaiting", { defaultValue: "Waiting for an existing device to approve this join. Keep Plainva open." })}</Banner>
+            <Banner kind="info" rounded>{t("workspaceSecurity.joinWaiting", { defaultValue: "Waiting for an existing device to approve this join. Keep Alviss open." })}</Banner>
             <div className="pv-security-field"><span>{t("workspaceSecurity.joinShortCodeHint", { defaultValue: "Give this code to the approving device" })}</span><code className="pv-security-code">{pending.shortCode}</code></div>
             {pending.expiresAt && (
               <div className="pv-security-field"><span>{t("workspaceSecurity.joinExpires")}</span><span>{new Date(pending.expiresAt).toLocaleString()}</span></div>

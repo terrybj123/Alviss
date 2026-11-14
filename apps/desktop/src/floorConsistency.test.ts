@@ -54,7 +54,7 @@ const FLOOR = {
    * iOS 16.4.
    *
    * It said 15.0 until 2026-08-22 while the bundle already required 16.4,
-   * so the App Store offered Plainva to devices on which it could not
+   * so the App Store offered Alviss to devices on which it could not
    * start. Raising it costs nothing that worked: those devices never got
    * past a blank screen.
    */

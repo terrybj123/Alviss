@@ -33,7 +33,7 @@ test('shows a readable message when the engine cannot parse lookbehind', async (
 
   const overlay = page.locator(OVERLAY);
   await expect(overlay).toBeVisible();
-  await expect(overlay).toContainText("Plainva can't start on this system");
+  await expect(overlay).toContainText("Alviss can't start on this system");
   // The version floor has to be ON the screen — "it doesn't work" alone would
   // send the next reporter down the same road. Asserted on the ENGINE bar, not
   // the macOS version: the OS number is owned by floorConsistency.test.ts, and
@@ -101,7 +101,7 @@ test('reports the error when the entry module dies while evaluating', async ({ p
 
   const overlay = page.locator(OVERLAY);
   await expect(overlay).toBeVisible();
-  await expect(overlay).toContainText("Plainva didn't start");
+  await expect(overlay).toContainText("Alviss didn't start");
   // The technical detail is the whole point — without it a report says
   // "it's broken" and we are back to guessing.
   await expect(overlay).toContainText('boot exploded');
@@ -183,7 +183,7 @@ test('a late mount retires the timeout overlay instead of burying the app', asyn
 test('an error right after the late first render does not hold the overlay (3.91)', async ({ page }) => {
   // The hole the interval above left: it asked "was there ANY error?" at its
   // next look, so a failed request of the running app in the at most 250 ms
-  // between the first render and that look held "Plainva didn't start" over
+  // between the first render and that look held "Alviss didn't start" over
   // the app for good. The error is sent the moment #root gets its first child.
   await page.addInitScript(() => {
     const watch = new MutationObserver(() => {

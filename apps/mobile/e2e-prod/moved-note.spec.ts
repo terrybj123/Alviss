@@ -27,7 +27,7 @@ async function write(page: Page, files: Array<[string, string]>) {
   }
 }
 
-/** Outside Plainva: nothing in the app hears about it. */
+/** Outside Alviss: nothing in the app hears about it. */
 async function moveOutside(page: Page, from: string, to: string) {
   await page.evaluate(async ([a, b]) => {
     await (globalThis as MobileTestGlobals).Capacitor.Plugins.Filesystem.rename({ from: "vault/" + a, to: "vault/" + b, directory: "DATA", toDirectory: "DATA" });
@@ -102,7 +102,7 @@ async function openBlogFolder(page: Page, sql: Bridge, files: Array<[string, str
   return row;
 }
 
-test.describe("a note moved outside Plainva (issue 110)", () => {
+test.describe("a note moved outside Alviss (issue 110)", () => {
   test.beforeEach(async ({ page, context }) => {
     test.setTimeout(90_000);
     await page.addLocatorHandler(page.getByTestId("whats-new-sheet"), async () => page.getByTestId("whats-new-close").click());
@@ -116,7 +116,7 @@ test.describe("a note moved outside Plainva (issue 110)", () => {
       await moveOutside(page, "4 blog/link-50.md", "4 blog/taken/link-50.md");
       await row.click();
 
-      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Plainva. The note is now in 4 blog/taken/." })).toBeVisible();
+      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Alviss. The note is now in 4 blog/taken/." })).toBeVisible();
       await expect(page.locator(".cm-content")).toContainText("Nine editors that stood out.");
       await expect(page.getByTestId("note-missing-back")).toHaveCount(0);
       // The index followed too, and nothing was written back at the old place.
@@ -155,7 +155,7 @@ test.describe("a note moved outside Plainva (issue 110)", () => {
 
   test("offers a single look-alike written at another time instead of following it", async ({ page, context }) => {
     // Two untouched notes from one template carry the same content; deleting
-    // one outside Plainva is not a move. The screen must not open the other
+    // one outside Alviss is not a move. The screen must not open the other
     // and call it "moved".
     const sql = await installSqlBridge(context);
     try {
@@ -167,7 +167,7 @@ test.describe("a note moved outside Plainva (issue 110)", () => {
       await expectStateInView(page, "Moved?");
       await expect(page.getByText("A file with the same content exists elsewhere — is it this one?")).toBeVisible();
       await expect(page.getByTestId("note-moved-candidate")).toHaveText(["4 blog/drafts/draft.md"]);
-      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Plainva" })).toHaveCount(0);
+      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Alviss" })).toHaveCount(0);
       await expect(page.locator(".cm-content")).toHaveCount(0);
       // The stale row went all the same; the look-alike is untouched.
       await expect.poll(() => sql.count(INDEX, "files WHERE path = '4 blog/link-50.md'")).toBe(0);
@@ -195,7 +195,7 @@ test.describe("a note moved outside Plainva (issue 110)", () => {
   });
 });
 
-test.describe("a note that is OPEN while it is moved outside Plainva (issue 110)", () => {
+test.describe("a note that is OPEN while it is moved outside Alviss (issue 110)", () => {
   test.beforeEach(async ({ page, context }) => {
     test.setTimeout(90_000);
     await page.addLocatorHandler(page.getByTestId("whats-new-sheet"), async () => page.getByTestId("whats-new-close").click());
@@ -212,10 +212,10 @@ test.describe("a note that is OPEN while it is moved outside Plainva (issue 110)
       await expect(page.locator(".cm-content")).toContainText("Nine editors that stood out.");
 
       await moveOutside(page, "4 blog/link-50.md", "4 blog/taken/link-50.md");
-      // The iOS Files app moved it while Plainva was away; the return re-reads.
+      // The iOS Files app moved it while Alviss was away; the return re-reads.
       await returnToApp(page);
 
-      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Plainva. The note is now in 4 blog/taken/." })).toBeVisible({ timeout: 20_000 });
+      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Alviss. The note is now in 4 blog/taken/." })).toBeVisible({ timeout: 20_000 });
       await expect(page.locator(".cm-content")).toContainText("Nine editors that stood out.");
       await expect.poll(async () => JSON.parse((await readVaultFile(page, ".plainva/bookmarks.json")) ?? "{}").items?.map((i: { path: string }) => i.path))
         .toEqual(["4 blog/taken/link-50.md"]);
@@ -270,13 +270,13 @@ test.describe("a note that is OPEN while it is moved outside Plainva (issue 110)
       await page.waitForTimeout(2500);
       expect(await onDisk(page, "4 blog/link-50.md")).toBe(false);
       // Followed directly - not found by the lookup for a file moved outside the app, which says so.
-      expect((await page.evaluate(() => (window as unknown as { __notices: string[] }).__notices)).filter((text) => text.includes("Moved outside Plainva"))).toEqual([]);
+      expect((await page.evaluate(() => (window as unknown as { __notices: string[] }).__notices)).filter((text) => text.includes("Moved outside Alviss"))).toEqual([]);
     } finally {
       sql.close();
     }
   });
 
-  test("keeps the unsaved text of a note deleted outside Plainva until it is saved back", async ({ page, context }) => {
+  test("keeps the unsaved text of a note deleted outside Alviss until it is saved back", async ({ page, context }) => {
     const sql = await installSqlBridge(context);
     try {
       const row = await openBlogFolder(page, sql, [["4 blog/link-50.md", NOTE], ["4 blog/other.md", "# Other\n"]]);
@@ -286,7 +286,7 @@ test.describe("a note that is OPEN while it is moved outside Plainva (issue 110)
 
       const banner = page.getByTestId("note-vanished");
       await expect(banner).toBeVisible({ timeout: 20_000 });
-      await expect(banner).toContainText("This file was removed outside Plainva. Your unsaved changes are kept here.");
+      await expect(banner).toContainText("This file was removed outside Alviss. Your unsaved changes are kept here.");
       await expect(page.locator(".cm-content")).toContainText("Still mine.");
       // The autosave does not bring the file back on its own.
       await page.waitForTimeout(2500);
@@ -318,7 +318,7 @@ async function writeBinary(page: Page, path: string, data: string) {
   await page.waitForTimeout(5);
 }
 
-test.describe("a database or an image moved outside Plainva (issue 110)", () => {
+test.describe("a database or an image moved outside Alviss (issue 110)", () => {
   test.beforeEach(async ({ page, context }) => {
     test.setTimeout(90_000);
     await page.addLocatorHandler(page.getByTestId("whats-new-sheet"), async () => page.getByTestId("whats-new-close").click());
@@ -336,7 +336,7 @@ test.describe("a database or an image moved outside Plainva (issue 110)", () => 
       await moveOutside(page, "4 blog/Links.base", "4 blog/taken/Links.base");
       await returnToApp(page);
 
-      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Plainva. The file is now in 4 blog/taken/." })).toBeVisible({ timeout: 20_000 });
+      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Alviss. The file is now in 4 blog/taken/." })).toBeVisible({ timeout: 20_000 });
       await expect(page.getByTestId("base-search-toggle")).toBeVisible();
       await expect(page.getByTestId("base-missing-back")).toHaveCount(0);
       await expect.poll(async () => JSON.parse((await readVaultFile(page, ".plainva/bookmarks.json")) ?? "{}").items?.map((i: { path: string }) => i.path))
@@ -347,7 +347,7 @@ test.describe("a database or an image moved outside Plainva (issue 110)", () => 
     }
   });
 
-  test("a database change after its file was deleted outside Plainva waits until it is saved back", async ({ page, context }) => {
+  test("a database change after its file was deleted outside Alviss waits until it is saved back", async ({ page, context }) => {
     const sql = await installSqlBridge(context);
     try {
       await openBlogFolder(page, sql, [["4 blog/Links.base", LINKS_BASE], ["4 blog/link-50.md", NOTE]]);
@@ -362,7 +362,7 @@ test.describe("a database or an image moved outside Plainva (issue 110)", () => 
       await page.locator(".m-sheet-inputrow input").fill("Second");
       await page.keyboard.press("Enter");
 
-      await expect(page.getByText("This file was removed outside Plainva. Your unsaved changes are kept here.")).toBeVisible({ timeout: 20_000 });
+      await expect(page.getByText("This file was removed outside Alviss. Your unsaved changes are kept here.")).toBeVisible({ timeout: 20_000 });
       // The change does not bring the file back on its own.
       await page.waitForTimeout(1500);
       expect(await onDisk(page, "4 blog/Links.base")).toBe(false);
@@ -391,7 +391,7 @@ test.describe("a database or an image moved outside Plainva (issue 110)", () => 
       await moveOutside(page, "4 blog/diagram.svg", "4 blog/taken/diagram.svg");
       await row.click();
 
-      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Plainva. The file is now in 4 blog/taken/." })).toBeVisible({ timeout: 20_000 });
+      await expect(page.locator(".pv-toast").filter({ hasText: "Moved outside Alviss. The file is now in 4 blog/taken/." })).toBeVisible({ timeout: 20_000 });
       await expect(page.getByRole("img", { name: "diagram.svg" })).toBeVisible();
       await expect(page.getByText("Could not load the image.")).toHaveCount(0);
       expect(await onDisk(page, "4 blog/diagram.svg")).toBe(false);

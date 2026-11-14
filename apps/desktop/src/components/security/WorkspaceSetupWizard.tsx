@@ -73,7 +73,7 @@ export const WorkspaceSetupWizard: React.FC<WorkspaceSetupWizardProps> = ({ vaul
 
   const saveRecovery = async () => {
     if (!prepared) return;
-    const target = await save({ defaultPath: "Plainva-Recovery.pvrecovery", filters: [{ name: "Plainva Recovery", extensions: ["pvrecovery"] }] });
+    const target = await save({ defaultPath: "Alviss-Recovery.pvrecovery", filters: [{ name: "Alviss Recovery", extensions: ["pvrecovery"] }] });
     if (!target) return;
     if (isInsideVault(target, vaultPath)) {
       setError(t("workspaceSecurity.recoveryInVaultRefused"));

@@ -22,7 +22,7 @@ export interface VaultPickerModalProps {
 
 export const VaultPickerModal: React.FC<VaultPickerModalProps> = ({ vaults, selected, activeVaultPath, onSelect, onClose }) => {
   const { t } = useTranslation();
-  // The name each vault goes by in Plainva (its own, else its folder's).
+  // The name each vault goes by in Alviss (its own, else its folder's).
   const label = useVaultLabels(vaults);
   return (
     <Modal onClose={onClose} title={t("settings.vaultSelect", { defaultValue: "Vault wählen" })} size="sm">

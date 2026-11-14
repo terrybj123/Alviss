@@ -84,7 +84,7 @@ describe("OneDriveSyncTarget", () => {
   it("pulls a recursive, paginated listing keyed by path with cTag etags", async () => {
     const page2 = `${GRAPH}/next-page`;
     const { target } = makeTarget(async (url: string) => {
-      if (url.startsWith(`${GRAPH}/me/drive/root:/Plainva:/children`)) {
+      if (url.startsWith(`${GRAPH}/me/drive/root:/Alviss:/children`)) {
         return res({
           value: [
             { id: "f1", name: "sub", folder: {} },
@@ -97,7 +97,7 @@ describe("OneDriveSyncTarget", () => {
       if (url === page2) {
         return res({ value: [{ id: "i2", name: "b.md", file: {}, cTag: "c2", lastModifiedDateTime: "2026-01-01T00:00:00Z" }] });
       }
-      if (url.startsWith(`${GRAPH}/me/drive/root:/Plainva/sub:/children`)) {
+      if (url.startsWith(`${GRAPH}/me/drive/root:/Alviss/sub:/children`)) {
         return res({ value: [{ id: "i3", name: "c.md", file: {}, eTag: "e3" }] });
       }
       throw new Error(`unexpected url ${url}`);
@@ -127,13 +127,13 @@ describe("OneDriveSyncTarget", () => {
     const creates = calls(fetchFn).filter((c) => c.method === "POST");
     expect(creates).toHaveLength(1);
     expect(creates[0].url).toBe(`${GRAPH}/me/drive/root/children`);
-    expect(JSON.parse(creates[0].init.body).name).toBe("Plainva");
+    expect(JSON.parse(creates[0].init.body).name).toBe("Alviss");
   });
 
   it("downloads content and maps 404 to null", async () => {
     const bytes = new TextEncoder().encode("body");
     const { target } = makeTarget(async (url: string) =>
-      url === `${GRAPH}/me/drive/root:/Plainva/a.md:/content` ? res(bytes) : res({}, { status: 404 })
+      url === `${GRAPH}/me/drive/root:/Alviss/a.md:/content` ? res(bytes) : res({}, { status: 404 })
     );
     expect(await target.download("a.md")).toEqual(bytes);
     expect(await target.download("missing.md")).toBeNull();
@@ -141,27 +141,27 @@ describe("OneDriveSyncTarget", () => {
 
   it("getStartCursor returns the delta token deltaLink (?token=latest) (1a)", async () => {
     const { target, fetchFn } = makeTarget(async (url: string) => {
-      if (url === `${GRAPH}/me/drive/root:/Plainva:/delta?token=latest`) {
-        return res({ value: [], "@odata.deltaLink": `${GRAPH}/me/drive/root:/Plainva:/delta?token=DL1` });
+      if (url === `${GRAPH}/me/drive/root:/Alviss:/delta?token=latest`) {
+        return res({ value: [], "@odata.deltaLink": `${GRAPH}/me/drive/root:/Alviss:/delta?token=DL1` });
       }
       throw new Error(`unexpected ${url}`);
     });
-    expect(await target.getStartCursor()).toBe(`${GRAPH}/me/drive/root:/Plainva:/delta?token=DL1`);
+    expect(await target.getStartCursor()).toBe(`${GRAPH}/me/drive/root:/Alviss:/delta?token=DL1`);
     expect(calls(fetchFn).every((c) => c.method === "GET")).toBe(true);
   });
 
   it("pull(cursor) is an incremental delta: changed files, deletions, next deltaLink (1a)", async () => {
-    const deltaLink = `${GRAPH}/me/drive/root:/Plainva:/delta?token=DL1`;
+    const deltaLink = `${GRAPH}/me/drive/root:/Alviss:/delta?token=DL1`;
     const { target } = makeTarget(async (url: string) => {
       if (url === deltaLink) {
         return res({
           value: [
-            { id: "i1", name: "a.md", file: {}, cTag: "c1b", parentReference: { path: "/drive/root:/Plainva" }, fileSystemInfo: { lastModifiedDateTime: "2025-03-04T05:06:07Z" } },
-            { id: "i2", name: "c.md", file: {}, cTag: "c9", parentReference: { path: "/drive/root:/Plainva/sub" } },
-            { id: "i3", name: "gone.md", deleted: {}, parentReference: { path: "/drive/root:/Plainva" } },
-            { id: "root", name: "Plainva", folder: {}, parentReference: { path: "/drive/root:" } },
+            { id: "i1", name: "a.md", file: {}, cTag: "c1b", parentReference: { path: "/drive/root:/Alviss" }, fileSystemInfo: { lastModifiedDateTime: "2025-03-04T05:06:07Z" } },
+            { id: "i2", name: "c.md", file: {}, cTag: "c9", parentReference: { path: "/drive/root:/Alviss/sub" } },
+            { id: "i3", name: "gone.md", deleted: {}, parentReference: { path: "/drive/root:/Alviss" } },
+            { id: "root", name: "Alviss", folder: {}, parentReference: { path: "/drive/root:" } },
           ],
-          "@odata.deltaLink": `${GRAPH}/me/drive/root:/Plainva:/delta?token=DL2`,
+          "@odata.deltaLink": `${GRAPH}/me/drive/root:/Alviss:/delta?token=DL2`,
         });
       }
       throw new Error(`unexpected ${url}`);
@@ -170,10 +170,10 @@ describe("OneDriveSyncTarget", () => {
     const result = await target.pull(deltaLink);
     expect(result.etagMap.get("a.md")).toBe("c1b");
     expect(result.etagMap.get("sub/c.md")).toBe("c9");
-    expect(result.etagMap.has("Plainva")).toBe(false); // the root folder item is skipped
+    expect(result.etagMap.has("Alviss")).toBe(false); // the root folder item is skipped
     expect(result.deleted).toEqual(["gone.md"]);
     expect(result.mtimeMap?.get("a.md")).toBe(Date.UTC(2025, 2, 4, 5, 6, 7));
-    expect(result.nextCursor).toBe(`${GRAPH}/me/drive/root:/Plainva:/delta?token=DL2`);
+    expect(result.nextCursor).toBe(`${GRAPH}/me/drive/root:/Alviss:/delta?token=DL2`);
   });
 
   it("pushes a small write via path-based PUT and returns cTag + id", async () => {
@@ -190,7 +190,7 @@ describe("OneDriveSyncTarget", () => {
     expect(result).toEqual({ etag: "c1", remoteId: "i1" });
     const call = calls(fetchFn)[0];
     expect(call.method).toBe("PUT");
-    expect(call.url).toBe(`${GRAPH}/me/drive/root:/Plainva/notes/a.md:/content`);
+    expect(call.url).toBe(`${GRAPH}/me/drive/root:/Alviss/notes/a.md:/content`);
     expect(call.init.headers["Authorization"]).toBe("Bearer atok");
     expect(call.init.headers["Content-Type"]).toBe("text/markdown");
   });
@@ -219,8 +219,8 @@ describe("OneDriveSyncTarget", () => {
     // Root + "deep" + "deep/nested"
     expect(posts.map((c) => c.url)).toEqual([
       `${GRAPH}/me/drive/root/children`,
-      `${GRAPH}/me/drive/root:/Plainva:/children`,
-      `${GRAPH}/me/drive/root:/Plainva/deep:/children`,
+      `${GRAPH}/me/drive/root:/Alviss:/children`,
+      `${GRAPH}/me/drive/root:/Alviss/deep:/children`,
     ]);
     expect(uploadAttempts).toBe(2);
   });
@@ -265,7 +265,7 @@ describe("OneDriveSyncTarget", () => {
     const { target, fetchFn } = makeTarget(async () => res({}, { status: 404 }));
     await target.push({ id: 1, file_path: "gone.md", operation: "delete", retry_count: 0, next_retry_at: 0, queued_at: 0 });
     expect(calls(fetchFn)[0].method).toBe("DELETE");
-    expect(calls(fetchFn)[0].url).toBe(`${GRAPH}/me/drive/root:/Plainva/gone.md:`);
+    expect(calls(fetchFn)[0].url).toBe(`${GRAPH}/me/drive/root:/Alviss/gone.md:`);
   });
 
   it("renames within the same folder via PATCH name only", async () => {
@@ -282,7 +282,7 @@ describe("OneDriveSyncTarget", () => {
     expect(result).toEqual({ etag: "c2", remoteId: "i1" });
     const call = calls(fetchFn)[0];
     expect(call.method).toBe("PATCH");
-    expect(call.url).toBe(`${GRAPH}/me/drive/root:/Plainva/notes/old.md:`);
+    expect(call.url).toBe(`${GRAPH}/me/drive/root:/Alviss/notes/old.md:`);
     const body = JSON.parse(call.init.body);
     expect(body).toEqual({ name: "new.md" });
   });
@@ -319,7 +319,7 @@ describe("OneDriveSyncTarget", () => {
     });
     const patch = calls(fetchFn).find((c) => c.method === "PATCH")!;
     const body = JSON.parse(patch.init.body);
-    expect(body.parentReference).toEqual({ path: "/drive/root:/Plainva/to/sub" });
+    expect(body.parentReference).toEqual({ path: "/drive/root:/Alviss/to/sub" });
   });
 
   it("refreshes on 401, retries with the new bearer and reports the rotated refresh token", async () => {
@@ -352,7 +352,7 @@ describe("OneDriveSyncTarget.listFolders (settings picker, 2026-07-06)", () => {
       if (u === page2) return res({ value: [{ name: "Archiv", folder: {} }] });
       return res({
         value: [
-          { name: "Plainva", folder: {} },
+          { name: "Alviss", folder: {} },
           { name: "readme.txt", file: {} },
           { name: "Dokumente", folder: {} },
         ],
@@ -361,8 +361,8 @@ describe("OneDriveSyncTarget.listFolders (settings picker, 2026-07-06)", () => {
     });
 
     const names = await target.listFolders("");
-    expect(names).toEqual(["Archiv", "Dokumente", "Plainva"]);
-    // Root browsing is independent of rootFolderName (default "Plainva").
+    expect(names).toEqual(["Alviss", "Archiv", "Dokumente"]);
+    // Root browsing is independent of rootFolderName (default "Alviss").
     expect(String(fetchFn.mock.calls[0][0])).toBe(`${GRAPH}/me/drive/root/children?$select=name,folder&$top=200`);
   });
 
@@ -466,7 +466,7 @@ describe("OneDriveSyncTarget announcing a freshly created root folder", () => {
       id: 2, file_path: "b.md", operation: "write",
       content: new TextEncoder().encode("y"), retry_count: 0, next_retry_at: 0, queued_at: 0,
     } as any);
-    expect(created).toEqual(["Plainva"]);
+    expect(created).toEqual(["Alviss"]);
   });
 
   it("stays quiet when the folder was already there", async () => {

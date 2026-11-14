@@ -313,7 +313,7 @@ describe("editorSession", () => {
   });
 
   /**
-   * C15 (S14). A `.py` is not a note: it opens in Plainva now, and everything
+   * C15 (S14). A `.py` is not a note: it opens in Alviss now, and everything
    * the note machinery would do to it is either meaningless (a document header
    * on a config file) or actively wrong (frontmatter hiding on a `.yaml` whose
    * first line is `---`, which is data, not a note header).

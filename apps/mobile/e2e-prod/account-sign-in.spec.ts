@@ -28,7 +28,7 @@ const CARLA = { subject: "ms-carla", email: "carla@outlook.com" };
 
 interface Harness {
   provider: FakeOAuthProvider;
-  /** A stand-in for Microsoft, with Plainva's own client. */
+  /** A stand-in for Microsoft, with Alviss's own client. */
   microsoft: FakeOAuthProvider;
   choice: FakeConsentChoice;
   /**
@@ -78,7 +78,7 @@ async function boot(context: BrowserContext, page: Page, seed?: (storage: Record
       const method = route.request().method();
       const body = method === "GET"
         ? { files: [], items: [{ id: "primary", summary: "Anna", primary: true, accessRole: "owner" }], startPageToken: "1", newStartPageToken: "1", changes: [] }
-        : { id: "created-1", name: "Plainva", mimeType: "application/vnd.google-apps.folder" };
+        : { id: "created-1", name: "Alviss", mimeType: "application/vnd.google-apps.folder" };
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(body) });
       return;
     }
@@ -543,7 +543,7 @@ test("a files step that fails after the folder pick says why, with its sender", 
   }
   await expectStep(page, "files");
   await expect(page.getByTestId("connectrun-choose-folder")).toBeEnabled();
-  // The sender first: Plainva could not confirm whose account this is - its own check, not a refusal.
+  // The sender first: Alviss could not confirm whose account this is - its own check, not a refusal.
   await expect(page.getByTestId("connectrun-outcome")).toHaveAttribute("data-source", "plainva");
   await expect(page.getByTestId("connectrun-signin")).toBeVisible();
   // Nothing in the frame is squeezed below a few characters: the step label broke letter by letter.

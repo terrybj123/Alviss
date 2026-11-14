@@ -3,7 +3,7 @@ import type { TextFileShape } from "@plainva/core";
 import { toast } from "../services/toastStore";
 
 /**
- * Tells the user that Plainva turned a file's line ends.
+ * Tells the user that Alviss turned a file's line ends.
  *
  * A file keeps the line ends it has — with one exception (maintainer,
  * 2026-10-12): a carriage return of its own, every line end of a file from a
@@ -50,7 +50,7 @@ function sayBurst(): void {
     const lineEnd = lineEndName(gathered.eol);
     toast.info(said(
       "editor.lineEndsConverted",
-      `“${name}” had bare CR line endings, as old Mac files do. Plainva saved it with ${lineEnd}.`,
+      `“${name}” had bare CR line endings, as old Mac files do. Alviss saved it with ${lineEnd}.`,
       { name, eol: lineEnd },
     ));
     return;
@@ -58,7 +58,7 @@ function sayBurst(): void {
   const files = gathered.names.length;
   toast.info(said(
     "editor.lineEndsConvertedSeveral",
-    `Several files (${files}) had bare CR line endings, as old Mac files do. Plainva saved them with LF or CRLF.`,
+    `Several files (${files}) had bare CR line endings, as old Mac files do. Alviss saved them with LF or CRLF.`,
     { files },
   ));
 }

@@ -222,7 +222,7 @@ export function ReminderSettings() {
           onChange={(on) => {
             void save({ ...settings, enabled: on }, remindEventsKey(vaultPath ?? ""), on);
             // The offer belongs here, where it has a reason: reminders only
-            // appear while Plainva runs, so this is the moment staying in the
+            // appear while Alviss runs, so this is the moment staying in the
             // background means something. Asked once, never taken unasked.
             if (on) void offerBackgroundOnce(t);
           }}

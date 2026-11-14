@@ -11,7 +11,7 @@ import type { VaultTemplateDefinition } from "@plainva/ui";
 
 /**
  * The showcase template's own guarantees (plan "Vorlagen-Überarbeitung +
- * Plainva-Tour", step P2.4).
+ * Alviss-Tour", step P2.4).
  *
  * The generic template suites already prove the tour is OKF-conform, obeys the
  * Obsidian rules and keeps its relations intact. What they cannot see is whether
@@ -54,7 +54,7 @@ async function scaffold(def: VaultTemplateDefinition) {
   return adapter;
 }
 
-describe("Plainva Tour", () => {
+describe("Alviss Tour", () => {
   for (const { code: lang } of APP_LANGUAGES) {
     describe(`language ${lang}`, () => {
       const def = getVaultTemplates(lang).find((d) => d.id === "plainva")!;

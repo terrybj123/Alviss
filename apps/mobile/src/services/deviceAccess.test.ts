@@ -82,7 +82,7 @@ describe("readDeviceAccess on the phone", () => {
 /**
  * Dropbox's app key is the phone's choice like the Google and Microsoft
  * client (settings plan 2026-10-29, E6). A key an account kept before is
- * taken over once; Plainva's own key, which the old account page wrote as the
+ * taken over once; Alviss's own key, which the old account page wrote as the
  * account's, is the standard sign-in; nothing on the account is removed.
  */
 describe("the Dropbox app key on the phone", () => {
@@ -96,14 +96,14 @@ describe("the Dropbox app key on the phone", () => {
     expect(await dropboxDeviceKey("v1")).toBe("abcd1234efgh");
   });
 
-  it("reads the key the stored sign-in was made with, and Plainva's key as the standard sign-in", async () => {
+  it("reads the key the stored sign-in was made with, and Alviss's key as the standard sign-in", async () => {
     records = [];
     storedFiles = { provider: "dropbox", creds: { appKey: PLAINVA_DROPBOX_APP_KEY, refreshToken: "r" } };
     expect(await readDeviceAccess("dropbox", "v1")).toEqual({ source: "plainva" });
     expect(await dropboxDeviceKey("v1")).toBe(PLAINVA_DROPBOX_APP_KEY);
   });
 
-  it("keeps 'no choice' when nothing is there to take over, and resolves to Plainva's key", async () => {
+  it("keeps 'no choice' when nothing is there to take over, and resolves to Alviss's key", async () => {
     records = [];
     expect(await readDeviceAccess("dropbox", "v1")).toBeNull();
     expect(secrets.has("oauth_access_dropbox")).toBe(false);

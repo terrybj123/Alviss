@@ -49,7 +49,7 @@ export interface AccountOAuthContext {
  *    below. An Android-type client is NOT an option for a user: Google lets
  *    the package name + signing fingerprint of the Play build be registered in
  *    exactly one project. See docs/engineering/Google_Mail.md.
- *  - Microsoft: the central Plainva Entra app (same as the OneDrive sync)
+ *  - Microsoft: the central Alviss Entra app (same as the OneDrive sync)
  *    already carries delegated Calendars/Tasks scopes — just connect + consent.
  */
 
@@ -296,7 +296,7 @@ async function contextOf(opts: PimOAuthOptions, purpose: PimOAuthPurpose): Promi
  * with Drive, so another screen cannot replace an unacknowledged result. */
 export async function beginPimOAuth(provider: PimOAuthProvider, opts: PimOAuthOptions): Promise<void> {
   // The one sign-in knows its flow from this device's access: the system sheet
-  // only with Plainva's own client on Android (oauthAccess.ts).
+  // only with Alviss's own client on Android (oauthAccess.ts).
   const native = opts.signIn ? opts.signIn.intent.access.flow === "system" : await signsInThroughPlayServices(opts);
   if (provider === "google" && native) {
     const purpose = opts.purpose ?? "calendar";

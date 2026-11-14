@@ -49,7 +49,7 @@ import { markSignInAnnounced } from "./signInNotice";
  *
  * The same core as on the desktop (`prepareSignIn`, `completeSignIn`,
  * `bindSignedInAccount`); what differs is the platform step - the consent
- * leaves the app through the browser or, with Plainva's own client on
+ * leaves the app through the browser or, with Alviss's own client on
  * Android, the system sheet, and comes back through the `signin` purpose of
  * the OAuth transaction, also after a cold start.
  *

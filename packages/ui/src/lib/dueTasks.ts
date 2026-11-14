@@ -7,7 +7,7 @@ import { plannerRowsFromDb, plannerRowsFromTasks, type PlannerDbMeta } from "./t
  * What is due on a day — one answer for every surface that asks (TestFlight,
  * build 136, Sammelplan § 3.145 Nr. 1).
  *
- * Plainva has two kinds of task: an entry of the task database, and a checkbox
+ * Alviss has two kinds of task: an entry of the task database, and a checkbox
  * in a note — with a due date when the line carries a Tasks-plugin `📅`. The
  * planner's lists read both since they exist. The Today screen, the calendars
  * and the widget read the database alone, each with its own loader, so a
@@ -52,7 +52,7 @@ export function dueTaskRows(sources: DueTaskSources): PlannerRow[] {
 
 const DAY_KEY = /^\d{4}-\d{2}-\d{2}$/;
 
-/** A row's due day as a key, or null when it has none Plainva can read. */
+/** A row's due day as a key, or null when it has none Alviss can read. */
 export function dueDayOf(row: Pick<PlannerRow, "due">): string | null {
   return row.due && DAY_KEY.test(row.due) ? row.due : null;
 }

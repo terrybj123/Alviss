@@ -297,7 +297,7 @@ describe("webviewHardening listeners", () => {
       host.remove();
     });
 
-    it("keeps Plainva's menu in fields that are never checked", () => {
+    it("keeps Alviss's menu in fields that are never checked", () => {
       setSpellcheckOn(true);
       initWebviewHardening();
       // A code or secret field says false; an unclassified field says nothing
@@ -322,7 +322,7 @@ describe("webviewHardening listeners", () => {
       expect(contextMenuStore.get()?.selection).toBe("hello");
     });
 
-    it("a more specific Plainva menu still wins inside a checked field", () => {
+    it("a more specific Alviss menu still wins inside a checked field", () => {
       setSpellcheckOn(true);
       initWebviewHardening();
       // The table cell's menu: its listener prevents the default before the

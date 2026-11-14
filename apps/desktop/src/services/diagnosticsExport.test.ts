@@ -17,7 +17,7 @@ describe("diagnostics export redaction", () => {
 
   it("writes fixed English headings whatever the app language (#105)", async () => {
     const empty = formatDiagnosticsExport({ appVersion: "test", tauriVersion: "test", os: "test", language: "de" });
-    expect(empty).toContain("# Plainva diagnostics export");
+    expect(empty).toContain("# Alviss diagnostics export");
     expect(empty).toContain("- Language: de");
     expect(empty).toMatch(/^- Exported: \d{4}-\d{2}-\d{2}T/m);
     expect(empty).toContain("Note: contains NO note content; error messages may contain vault-relative file paths.");

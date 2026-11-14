@@ -2,7 +2,7 @@
  * Per-vault property TYPE registry (ADR 0008).
  *
  * Obsidian itself records property *types* globally per name in
- * `.obsidian/types.json` (not options). We mirror that idea in a Plainva-local
+ * `.obsidian/types.json` (not options). We mirror that idea in a Alviss-local
  * store so a property a user marks as e.g. "status" stays a status across
  * reloads — WITHOUT writing anything into the note or vault (Obsidian-safe).
  *

@@ -8,7 +8,7 @@ import { SAMPLE_TODAY, sampleTasks, taskRecordsOf } from "../../../packages/core
 
 /**
  * The Tasks query block (plan Tasks-Abfragen, T3): the result as the planner
- * draws it — groups, the tree of `show tree`, the hint of a line Plainva does
+ * draws it — groups, the tree of `show tree`, the hint of a line Alviss does
  * not read (case a), the error of a line Tasks rejects too (case c), the
  * explanation, and the cap of 100 rows. Shared by both shells, tested once.
  */
@@ -103,7 +103,7 @@ describe("groups, hints, errors, explanation", () => {
     const hints = all(host, "tasks-query-hint");
     expect(hints).toHaveLength(1);
     expect(hints[0].textContent).toContain("Line 2");
-    expect(hints[0].textContent).toContain("Plainva never runs code from notes.");
+    expect(hints[0].textContent).toContain("Alviss never runs code from notes.");
     expect(hints[0].textContent).toContain("The list may show more tasks than in Obsidian.");
     expect(all(host, "task-planner-row")).toHaveLength(2);
   });
@@ -126,7 +126,7 @@ describe("groups, hints, errors, explanation", () => {
     expect(all(host, "tasks-query-explain")).toHaveLength(0);
     await act(async () => all(host, "tasks-query-explain-switch")[0].click());
     const text = all(host, "tasks-query-explain")[0].textContent ?? "";
-    expect(text).toContain("How Plainva reads this query");
+    expect(text).toContain("How Alviss reads this query");
     expect(text).toContain("until Sunday, November 1, 2026");
     expect(text).toContain("no effect");
     expect(text).toContain("not supported");

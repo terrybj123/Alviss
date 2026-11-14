@@ -14,7 +14,7 @@ import { PLAINVA_INDEX_MARKER } from "../../src/okf-index.js";
  * (`planVaultTransfer`'s `keepBack`); no upload ever asks the starter record.
  */
 
-const STARTER = "# Willkommen\n\nDas ist Plainva.\n";
+const STARTER = "# Willkommen\n\nDas ist Alviss.\n";
 const INDEX = `# Vault\n\n- [[Willkommen]]\n\n${PLAINVA_INDEX_MARKER}\n`;
 const BASE = "views:\n  - type: table\n    name: Aufgaben\n";
 

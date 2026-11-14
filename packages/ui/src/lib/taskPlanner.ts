@@ -1,7 +1,7 @@
 /**
  * The planner behind the tasks view (plan Aufgaben-Oberfläche, B1): the lists a
  * to-do app is expected to have — Today, Upcoming, Inbox, Done — over the two
- * sources Plainva already has, the task database and the checkboxes in notes.
+ * sources Alviss already has, the task database and the checkboxes in notes.
  *
  * Pure and platform-free like `taskList.ts`: no I/O, no React, no clock of its
  * own. The shells hand in the rows they already load and today's day key; both
@@ -62,7 +62,7 @@ export interface PlannerRow {
   dueMinutes: number | null;
   priority: TaskPriority;
   tags: readonly string[];
-  /** Repeats through Plainva's own recurrence. */
+  /** Repeats through Alviss's own recurrence. */
   repeats?: boolean;
   /** Mirrored from a provider list. */
   mirrored?: boolean;
@@ -168,7 +168,7 @@ export function comparePlannerRows(a: Pick<PlannerRow, "priority" | "dueMinutes"
  *
  * A due value that is not a day key is treated as "no date": the row lands in
  * the Inbox rather than vanishing, which is the honest place for a task whose
- * date Plainva cannot read.
+ * date Alviss cannot read.
  */
 export function buildPlanner(rows: readonly PlannerRow[], todayKey: string): Planner {
   const horizon = addDaysToKey(todayKey, UPCOMING_DAYS);

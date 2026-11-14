@@ -12,7 +12,7 @@ import { S3SyncTarget } from "../../src/sync/S3SyncTarget.ts";
 import { EncryptingSyncTarget } from "../../src/settingsSync/EncryptingSyncTarget.ts";
 
 /**
- * Issue #112: a folder created in Plainva must land INSIDE the vault folder and
+ * Issue #112: a folder created in Alviss must land INSIDE the vault folder and
  * nowhere else. The engine used to hand the vault-relative path of a queued
  * mkdir to `createFolder`, the pickers' call, which counts from the ACCOUNT
  * root — so on Drive, OneDrive, Dropbox and S3 every such folder appeared a
@@ -48,20 +48,20 @@ async function pushMkdir(target: ISyncTarget, path = FOLDER): Promise<void> {
   expect(db.queries.some((q) => q.query.includes("retry_count"))).toBe(false);
 }
 
-describe("a folder created in Plainva lands inside the vault folder (issue #112)", () => {
+describe("a folder created in Alviss lands inside the vault folder (issue #112)", () => {
   it("Google Drive: every folder is created below the vault's root folder, none under My Drive", async () => {
     const fetchFn = fetchMock(async (url: string, init: any) => {
       const u = decodeURIComponent(String(url));
-      // The vault folder "Plainva" exists at the top of My Drive; nothing below it does.
-      if (init.method === "GET" && u.includes("name='Plainva'") && u.includes("'root' in parents")) {
-        return res({ files: [{ id: "f-vault", name: "Plainva" }] });
+      // The vault folder "Alviss" exists at the top of My Drive; nothing below it does.
+      if (init.method === "GET" && u.includes("name='Alviss'") && u.includes("'root' in parents")) {
+        return res({ files: [{ id: "f-vault", name: "Alviss" }] });
       }
       if (init.method === "GET") return res({ files: [] });
       if (init.method === "POST") return res({ id: `f-${JSON.parse(init.body).name}` });
       throw new Error(`unexpected ${init.method} ${u}`);
     });
     const target = new DriveSyncTarget(
-      { clientId: "cid", clientSecret: "sec", refreshToken: "rtok", accessToken: "atok", rootFolderName: "Plainva" },
+      { clientId: "cid", clientSecret: "sec", refreshToken: "rtok", accessToken: "atok", rootFolderName: "Alviss" },
       fetchFn
     );
     const picker = vi.spyOn(target, "createFolder");
@@ -84,7 +84,7 @@ describe("a folder created in Plainva lands inside the vault folder (issue #112)
       return String(url).endsWith("/me/drive/root/children") ? res({}, { status: 409 }) : res({ id: "x" }, { status: 201 });
     });
     const target = new OneDriveSyncTarget(
-      { clientId: "cid", refreshToken: "rtok", accessToken: "atok", rootFolderName: "Plainva" } as any,
+      { clientId: "cid", refreshToken: "rtok", accessToken: "atok", rootFolderName: "Alviss" } as any,
       fetchFn
     );
 
@@ -92,17 +92,17 @@ describe("a folder created in Plainva lands inside the vault folder (issue #112)
 
     const calls = fetchFn.mock.calls.map((c: any) => ({ url: decodeURIComponent(String(c[0])), name: JSON.parse(c[1].body).name }));
     // The one request at the drive root is the vault folder's own "ensure" (409 = there).
-    expect(calls.filter((c) => c.url.endsWith("/me/drive/root/children")).map((c) => c.name)).toEqual(["Plainva"]);
+    expect(calls.filter((c) => c.url.endsWith("/me/drive/root/children")).map((c) => c.name)).toEqual(["Alviss"]);
     expect(calls.slice(1)).toEqual([
-      { url: expect.stringMatching(/\/me\/drive\/root:\/Plainva:\/children$/), name: "Projekte" },
-      { url: expect.stringMatching(/\/me\/drive\/root:\/Plainva\/Projekte:\/children$/), name: "Neutralität" },
+      { url: expect.stringMatching(/\/me\/drive\/root:\/Alviss:\/children$/), name: "Projekte" },
+      { url: expect.stringMatching(/\/me\/drive\/root:\/Alviss\/Projekte:\/children$/), name: "Neutralität" },
     ]);
   });
 
   it("Dropbox: the folder is created under the vault's root path", async () => {
     const fetchFn = fetchMock(async () => res({}));
     const target = new DropboxSyncTarget(
-      { appKey: "akey", refreshToken: "rtok", accessToken: "atok", rootPath: "/Apps/Plainva" } as any,
+      { appKey: "akey", refreshToken: "rtok", accessToken: "atok", rootPath: "/Apps/Alviss" } as any,
       fetchFn
     );
 
@@ -111,7 +111,7 @@ describe("a folder created in Plainva lands inside the vault folder (issue #112)
     expect(fetchFn).toHaveBeenCalledTimes(1);
     expect(String(fetchFn.mock.calls[0][0])).toContain("files/create_folder_v2");
     expect(JSON.parse((fetchFn.mock.calls[0][1] as any).body)).toEqual({
-      path: "/Apps/Plainva/Projekte/Neutralität",
+      path: "/Apps/Alviss/Projekte/Neutralität",
       autorename: false,
     });
   });
@@ -189,7 +189,7 @@ describe("a folder created in Plainva lands inside the vault folder (issue #112)
     // able to create a folder NEXT TO the vault — that is its whole job.
     const fetchFn = fetchMock(async () => res({}));
     const target = new DropboxSyncTarget(
-      { appKey: "akey", refreshToken: "rtok", accessToken: "atok", rootPath: "/Apps/Plainva" } as any,
+      { appKey: "akey", refreshToken: "rtok", accessToken: "atok", rootPath: "/Apps/Alviss" } as any,
       fetchFn
     );
     await target.createFolder("Elsewhere");

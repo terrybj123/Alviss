@@ -4,7 +4,7 @@ import { mailtoDraft } from "./mailtoDraft";
  * Reading `List-Unsubscribe` (S23, plan P12).
  *
  * Newsletters carry the way out in their own headers (RFC 2369, and RFC 8058
- * for the one-click variant). Plainva does not guess it from the body, and it
+ * for the one-click variant). Alviss does not guess it from the body, and it
  * does not click anything on the reader's behalf: it reads what the sender
  * declared and offers it. What follows the offer is a browser or a mail — both
  * visible acts, neither of them silent.

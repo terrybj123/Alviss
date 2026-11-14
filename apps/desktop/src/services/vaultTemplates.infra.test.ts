@@ -11,7 +11,7 @@ import {
 
 /**
  * Infrastructure the vault STRUCTURE templates build on (plan
- * "Vorlagen-Überarbeitung + Plainva-Tour", step P1.1):
+ * "Vorlagen-Überarbeitung + Alviss-Tour", step P1.1):
  *
  * - `welcomeBody` link sections — the folder bullets alone point at managed
  *   index.md files, which the graph hides, so a welcome note that links nothing

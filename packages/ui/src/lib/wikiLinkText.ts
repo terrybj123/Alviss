@@ -1,7 +1,7 @@
 import { likeAnySpelling, wikiTargetForPath } from "@plainva/core";
 
 /**
- * The text Plainva writes for a link to a note someone picked from a list.
+ * The text Alviss writes for a link to a note someone picked from a list.
  *
  * A pick used to write the note's TITLE — `[[Angebotsbrief]]` for the note
  * `Projekte/Brief.md` — in the `[[` completion, the `@` mention and the

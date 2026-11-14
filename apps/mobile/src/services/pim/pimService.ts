@@ -823,7 +823,7 @@ export async function openMeetingNoteFor(
     // The pipeline adds the vault's pieces. `{{daily}}` in a meeting note is
     // the daily note of the MEETING's day: the note's `day` is that day.
     resolveTemplate: (raw, ctx) => applyTemplateInteractive(raw, ctx),
-    templateContext: { vaultName: (await getActiveVaultEntry()).name || "Plainva" },
+    templateContext: { vaultName: (await getActiveVaultEntry()).name || "Alviss" },
     now,
   });
   if (!res) return null;

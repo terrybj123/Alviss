@@ -248,7 +248,7 @@ describe("meeting-note template: rendering", () => {
     // The template's type wins (OKF write rule); its other keys survive.
     expect(readFrontmatterPath(note, ["type"])).toBe("Besprechung");
     expect(readFrontmatterPath(note, ["tags"])).toEqual(["meeting"]);
-    // The event's fields are Plainva's, written after the template.
+    // The event's fields are Alviss's, written after the template.
     expect(readFrontmatterPath(note, ["date"])).toBe("2026-07-20");
     expect(readFrontmatterPath(note, ["location"])).toBe("Room 5");
     expect(readFrontmatterPath(note, ["attendees"])).toEqual(["Ada", "Grace"]);

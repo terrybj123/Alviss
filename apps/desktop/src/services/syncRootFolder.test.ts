@@ -52,20 +52,20 @@ describe("syncRootFolder", () => {
   });
 
   it("retains a same-named folder's identity through reconnect and clears it on a new path choice", async () => {
-    await writeSyncRootFolder("/v", "drive", "Plainva", "second-folder");
+    await writeSyncRootFolder("/v", "drive", "Alviss", "second-folder");
     slots.clear();
-    expect(await readDriveDestination("/v")).toEqual({ path: "Plainva", id: "second-folder" });
-    expect(await readSyncRootFolder("/v", "drive")).toBe("Plainva");
+    expect(await readDriveDestination("/v")).toEqual({ path: "Alviss", id: "second-folder" });
+    expect(await readSyncRootFolder("/v", "drive")).toBe("Alviss");
     await writeSyncRootFolder("/v", "drive", "New vault");
     expect(await readDriveDestination("/v")).toEqual({ path: "New vault" });
   });
 
   it("carries the old slot value over on the first read", async () => {
-    slots.set("drive", { clientId: "c", clientSecret: "s", refreshToken: "r", rootFolderName: "Apps/Plainva" });
+    slots.set("drive", { clientId: "c", clientSecret: "s", refreshToken: "r", rootFolderName: "Apps/Alviss" });
 
-    expect(await readSyncRootFolder("/v", "drive")).toBe("Apps/Plainva");
+    expect(await readSyncRootFolder("/v", "drive")).toBe("Apps/Alviss");
     // Written through, so the value no longer depends on the slot staying alive.
-    expect(settings.get(syncRootFolderKey("/v", "drive"))).toBe("Apps/Plainva");
+    expect(settings.get(syncRootFolderKey("/v", "drive"))).toBe("Apps/Alviss");
   });
 
   it("keeps an explicitly emptied folder empty instead of migrating again", async () => {

@@ -16,14 +16,14 @@ import type { SkipReason } from "./sieveRules";
  *     cc rule cannot be honoured as written;
  *   - it cannot set the flagged state at all.
  *
- * Ownership works like the Sieve section (E4): Plainva owns the rules it NAMED
+ * Ownership works like the Sieve section (E4): Alviss owns the rules it NAMED
  * and leaves every other rule in the mailbox alone.
  */
 
-/** Rules Plainva wrote carry this prefix in their display name. It is the Graph
+/** Rules Alviss wrote carry this prefix in their display name. It is the Graph
  * counterpart of the marked Sieve section: everything else in the mailbox is
  * somebody else's and is never touched. */
-export const GRAPH_RULE_PREFIX = "[Plainva] ";
+export const GRAPH_RULE_PREFIX = "[Alviss] ";
 
 export const isPlainvaRule = (displayName: string) => displayName.startsWith(GRAPH_RULE_PREFIX);
 
@@ -126,7 +126,7 @@ export function buildGraphRules(
     }
 
     if (rule.actions.some((a) => a.kind === "capture")) {
-      // Only Plainva can file a note; uploading the rest would let the server
+      // Only Alviss can file a note; uploading the rest would let the server
       // move the message before anything could be filed.
       skipped.push({ id: rule.id, reason: "localAction" });
       continue;

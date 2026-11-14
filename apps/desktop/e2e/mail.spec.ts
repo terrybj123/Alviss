@@ -1191,7 +1191,7 @@ test('a Microsoft mailbox sends from the composer: through Graph, never through 
 /**
  * A file over one Graph request goes along (Sammelplan § 3.95 Nr. 3): until
  * 2026-10-30 a Microsoft mailbox left every file over 2.8 MB behind, because
- * Plainva attached each file in one request. Now the message becomes a draft,
+ * Alviss attached each file in one request. Now the message becomes a draft,
  * the file goes through an upload session in ranges, and the draft is sent.
  *
  * The answers are what Microsoft's reference describes for an upload session;
@@ -2394,7 +2394,7 @@ test('the flagged list that is switched off while it is on its way does not come
   await expect(rows.first()).toContainText('Rechnung Q3');
 });
 
-test('a junk folder that Plainva creates leaves the list and the search in it alone', async ({ page }) => {
+test('a junk folder that Alviss creates leaves the list and the search in it alone', async ({ page }) => {
   // The folder list is not what the view shows: a new folder in it used to
   // empty the list, drop the search and read the folder again — while the
   // message that was being reported was still on its way out of it.
@@ -3193,7 +3193,7 @@ test('spam: a server that refuses the keyword still gets the message moved, and 
   await expect(page.locator('.pv-toast').last()).toContainText('no spam marking');
 });
 
-test('spam: without a junk folder Plainva offers to create one instead of inventing a name', async ({ page }) => {
+test('spam: without a junk folder Alviss offers to create one instead of inventing a name', async ({ page }) => {
   await openVault(page); // this account has no junk folder
   await page.getByTestId('ribbon-mail').click();
   await page.getByTestId('mail-envelope').first().click();
@@ -3246,7 +3246,7 @@ test('out-of-office: with a Sieve server the form appears and names where the no
   // The sentence that makes the feature honest: it keeps answering without us —
   // one state line since the settings plan of 2026-10-29 (B3) …
   const where = dlg.getByTestId('vacation-where');
-  await expect(where).toContainText(/Plainva is closed|Plainva geschlossen/i);
+  await expect(where).toContainText(/Alviss is closed|Alviss geschlossen/i);
   // … and WHICH server, and that it never claims the whole script, behind its info.
   await dlg.getByRole('button', { name: /^(Mehr zu Abwesenheitsnotiz|More about Out-of-office notice)$/ }).click();
   const info = dlg.locator('.pv-infotip-panel');
@@ -3257,7 +3257,7 @@ test('out-of-office: with a Sieve server the form appears and names where the no
 });
 
 test('rules: a local rule files a fetched message, and the card says what "local" means', async ({ page }) => {
-  // The honest label is the point: a rule that only runs while Plainva is open
+  // The honest label is the point: a rule that only runs while Alviss is open
   // must say so, or someone relies on a filter that is not running while their
   // laptop is shut.
   await page.addInitScript(() => {
@@ -3284,7 +3284,7 @@ test('rules: a local rule files a fetched message, and the card says what "local
   const dlg = page.getByRole('dialog', { name: /Einstellungen|Settings/ });
   await dlg.getByRole('button', { name: /^(E-Mail|Email)$/ }).click();
   const where = dlg.getByTestId('rules-where');
-  await expect(where).toContainText(/only while Plainva is open|solange Plainva offen/i);
+  await expect(where).toContainText(/only while Alviss is open|solange Alviss offen/i);
   await expect(where).toContainText(/fetched|abgerufen/i);
   await expect(where).not.toContainText('{{');
 });
@@ -3304,7 +3304,7 @@ test('rules: a rule that reads the body says it cannot run from the overview', a
 
 test('rules: storing them with the provider writes the rule AND keeps a hand-written script', async ({ page }) => {
   // Two things have to survive one upload: what the user wrote by hand, and
-  // the out-of-office notice that shares Plainva's section. Composing either
+  // the out-of-office notice that shares Alviss's section. Composing either
   // half on its own would delete the other.
   await page.addInitScript(() => {
     (window as any).__withJunk = true;
@@ -3329,11 +3329,11 @@ test('rules: storing them with the provider writes the rule AND keeps a hand-wri
   await dlg.getByRole('button', { name: /^(E-Mail|Email)$/ }).click();
 
   // With a Sieve server the state line says the rules run here until they are
-  // stored there; the info says they then outlive a closed Plainva — and on
+  // stored there; the info says they then outlive a closed Alviss — and on
   // WHICH server, or "runs on the server" would not be believable.
   await expect(dlg.getByTestId('rules-where')).toContainText(/store the rules|beim Anbieter hinterlegst/i);
   await dlg.getByRole('button', { name: /^(Mehr zu Regeln|More about Rules)$/ }).click();
-  await expect(dlg.locator('.pv-infotip-panel')).toContainText(/Plainva is closed|Plainva geschlossen/i);
+  await expect(dlg.locator('.pv-infotip-panel')).toContainText(/Alviss is closed|Alviss geschlossen/i);
   await expect(dlg.locator('.pv-infotip-panel')).toContainText('sieve.mailbox.org');
   await page.keyboard.press('Escape');
 
@@ -3348,7 +3348,7 @@ test('rules: storing them with the provider writes the rule AND keeps a hand-wri
   // The user's own rule is still there, byte for byte.
   expect(put.body).toContain('if header :contains "from" "chef" { fileinto "Wichtig"; }');
   // require comes once, before anything else.
-  expect(put.body.match(/^require .*$/gm)).toHaveLength(2); // theirs, and Plainva's inside its section
+  expect(put.body.match(/^require .*$/gm)).toHaveLength(2); // theirs, and Alviss's inside its section
 });
 
 test('rules: one the server cannot express stays local and is named', async ({ page }) => {
@@ -3401,7 +3401,7 @@ test('rules: a Microsoft mailbox is offered the server-side path and says so', a
   const dlg = page.getByRole('dialog', { name: /Einstellungen|Settings/ });
   await dlg.getByRole('button', { name: /^(E-Mail|Email)$/ }).click();
 
-  await expect(dlg.getByTestId('rules-where')).toContainText(/Plainva is closed|Plainva geschlossen/i);
+  await expect(dlg.getByTestId('rules-where')).toContainText(/Alviss is closed|Alviss geschlossen/i);
   // It never claims to own the mailbox's other rules — said behind the info.
   await dlg.getByRole('button', { name: /^(Mehr zu Regeln|More about Rules)$/ }).click();
   await expect(dlg.locator('.pv-infotip-panel')).toContainText(/created itself|selbst angelegt/i);
@@ -3411,7 +3411,7 @@ test('rules: a Microsoft mailbox is offered the server-side path and says so', a
 
 test('rules: filing as a note runs on a fetched message, and twice gives one note', async ({ page }) => {
   // The action no mail program has. It writes into the VAULT, so it can only
-  // run where Plainva is — and running it twice must not leave two notes.
+  // run where Alviss is — and running it twice must not leave two notes.
   await page.addInitScript(() => {
     (window as any).__mailRules = [
       {
@@ -3444,7 +3444,7 @@ test('rules: filing as a note runs on a fetched message, and twice gives one not
   await page.keyboard.press('Control+,');
   const dlg = page.getByRole('dialog', { name: /Einstellungen|Settings/ });
   await dlg.getByRole('button', { name: /^(E-Mail|Email)$/ }).click();
-  await expect(dlg.getByTestId('rules-local-action')).toContainText(/only in Plainva|nur in Plainva/i);
+  await expect(dlg.getByTestId('rules-local-action')).toContainText(/only in Alviss|nur in Alviss/i);
 });
 
 test('mail list: a mailbox never signed in HERE offers the sign-in instead of a raw error', async ({ page }) => {
@@ -3597,7 +3597,7 @@ test('switching or closing the vault asks before it takes a changed draft along,
 
   // And no composer at all: closing the vault leads straight to the chooser.
   await fromVaultMenu('test-vault', SWITCH);
-  await expect(page.getByRole('heading', { name: /Willkommen bei Plainva|Welcome to Plainva/ })).toBeVisible({ timeout: 20000 });
+  await expect(page.getByRole('heading', { name: /Willkommen bei Alviss|Welcome to Alviss/ })).toBeVisible({ timeout: 20000 });
   await expect(question).toHaveCount(0);
 });
 
@@ -4167,7 +4167,7 @@ test('a long plain-text mail keeps its lines, its blanks and its links in the te
 });
 
 /**
- * A mail address in a message opens Plainva's composer (open-items plan
+ * A mail address in a message opens Alviss's composer (open-items plan
  * 3.82), from the mailbox the message lies in, with recipient, subject and
  * text from the link — the phone has done it so since M1. The desktop handed
  * it to the system's mail program. The phone holds the same in
@@ -4275,7 +4275,7 @@ test('spam: "always load remote images" does not reach into the junk folder, and
   // The hint names the reason and counts what it held back.
   const hint = page.getByTestId('mail-blocked-hint');
   await expect(hint).toHaveAttribute('data-junk', '');
-  await expect(hint).toContainText('In the spam folder Plainva loads no remote images, even if they are otherwise always loaded. 3 blocked.');
+  await expect(hint).toContainText('In the spam folder Alviss loads no remote images, even if they are otherwise always loaded. 3 blocked.');
   await expect(page.getByTestId('mail-show-images')).toHaveText('Show for this message');
   await page.screenshot({ path: testInfo.outputPath('mail-junk-images.png') });
 

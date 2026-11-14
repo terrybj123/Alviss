@@ -3,7 +3,7 @@ import { findMediaEmbeds } from "./imageTarget";
 
 /**
  * A picture from the web, written into a note by someone else, made a link —
- * the ONE rule for text Plainva writes into a note from a message: the filed
+ * the ONE rule for text Alviss writes into a note from a message: the filed
  * mail and the reply note (open-items plan 3.79, decision E1 of the
  * bug-clearing plan).
  *

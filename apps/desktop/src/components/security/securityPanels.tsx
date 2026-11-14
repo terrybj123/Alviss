@@ -68,7 +68,7 @@ export const TechDetails: React.FC<{ t: TFunction; entries: readonly (readonly [
  * A full rotation rewrites every readable object and can run for a long time;
  * until now its only trace was one line inside a details block that starts
  * closed. The cursor is durable (`resumeWorkspaceRekey`), so the card says so:
- * closing Plainva does not lose the run.
+ * closing Alviss does not lose the run.
  *
  * It is a card of its own and stands BESIDE the other cards, never inside one:
  * placed in the members and devices cards it drew a second frame within the

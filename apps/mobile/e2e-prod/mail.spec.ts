@@ -341,7 +341,7 @@ test("remote images: the phone has the switch, and it does not reach into the ju
     await expect.poll(() => srcdoc(page)).toContain("Klicken Sie hier");
     expect(await srcdoc(page)).not.toContain("spam-tracker.example");
     await expect(page.getByTestId("mail-blocked-junk")).toHaveText(
-      "In the spam folder Plainva loads no remote images, even if they are otherwise always loaded. 3 blocked.",
+      "In the spam folder Alviss loads no remote images, even if they are otherwise always loaded. 3 blocked.",
     );
     await expect(page.getByTestId("mail-show-images")).toHaveText("Show for this message");
     await page.screenshot({ path: testInfo.outputPath("mail-junk-images.png") });

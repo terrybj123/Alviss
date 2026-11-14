@@ -3,7 +3,7 @@ import { getSettingsStore } from "./settingsStore";
 import { notifyAppearanceChanged } from "./appearanceSync";
 
 /**
- * The name a vault goes by in Plainva on this device (Sammelplan § 3.169 Nr. 3).
+ * The name a vault goes by in Alviss on this device (Sammelplan § 3.169 Nr. 3).
  *
  * The phone has always let a vault be renamed — a label in its vault list, the
  * cloud folder untouched. The desktop named a vault after its folder and had

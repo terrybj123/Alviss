@@ -21,8 +21,8 @@ describe("textDirectionOf", () => {
   });
 
   it("follows the FIRST strong character of a mixed line", () => {
-    expect(textDirectionOf(`${AR} Plainva Markdown`)).toBe("rtl");
-    expect(textDirectionOf("Plainva يحفظ ملاحظاتي كملفات Markdown.")).toBe("ltr");
+    expect(textDirectionOf(`${AR} Alviss Markdown`)).toBe("rtl");
+    expect(textDirectionOf("Alviss يحفظ ملاحظاتي كملفات Markdown.")).toBe("ltr");
     // Numbers and punctuation before the first letter decide nothing.
     expect(textDirectionOf(`42. ${AR}`)).toBe("rtl");
     expect(textDirectionOf(`(3) ${DE}`)).toBe("ltr");
@@ -79,7 +79,7 @@ describe("lineDirections", () => {
       "- الفصل الأول: قرطبة",
       "- [x] شراء الكتاب",
       "> العلم في الصغر كالنقش على الحجر.",
-      "Plainva يحفظ ملاحظاتي كملفات Markdown.",
+      "Alviss يحفظ ملاحظاتي كملفات Markdown.",
     ].join("\n");
     expect(lineDirections(doc)).toEqual(["rtl", "rtl", "rtl", "rtl", "rtl", "rtl", "ltr"]);
   });
@@ -128,7 +128,7 @@ describe("lineDirections", () => {
   });
 
   it("a table is one block", () => {
-    expect(lineDirections(`| 1 | ${AR} |\n| --- | --- |\n| Plainva | 2 |`)).toEqual(["rtl", "rtl", "rtl"]);
+    expect(lineDirections(`| 1 | ${AR} |\n| --- | --- |\n| Alviss | 2 |`)).toEqual(["rtl", "rtl", "rtl"]);
   });
 
   it("a callout without a title takes the direction of its body", () => {

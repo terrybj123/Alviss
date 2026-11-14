@@ -298,8 +298,8 @@ export function SecurityAreaScreen({ vault, onBack, onConnectCloud, onSetupWorks
     try {
       const store = await getMobileWorkspaceObjectStore(vault.vaultId);
       const renewed = await rotateMobileWorkspaceRecovery({ store, runtime: vault.workspaceRuntime, bytes: recoveryBytes, code: recoveryCode });
-      const file = new File([renewed.bytes.buffer as ArrayBuffer], "Plainva-Recovery-Renewed.pvrecovery", { type: "application/octet-stream" });
-      if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: "Plainva Recovery" });
+      const file = new File([renewed.bytes.buffer as ArrayBuffer], "Alviss-Recovery-Renewed.pvrecovery", { type: "application/octet-stream" });
+      if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: "Alviss Recovery" });
       else {
         const url = URL.createObjectURL(file); const link = document.createElement("a"); link.href = url; link.download = file.name; link.click(); URL.revokeObjectURL(url);
       }
@@ -603,8 +603,8 @@ export function SecurityAreaScreen({ vault, onBack, onConnectCloud, onSetupWorks
       const prepared = await prepareMobileWorkspaceOwnerTransfer({ store, runtime: rt, targetMemberId: memberId, bytes: recoveryBytes, code: recoveryCode });
       // Get the replacement package out of the app BEFORE the switch. Same
       // share-then-activate order as renewing, for the same reason.
-      const file = new File([prepared.bytes.buffer as ArrayBuffer], "Plainva-Recovery-New-Owner.pvrecovery", { type: "application/octet-stream" });
-      if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: "Plainva Recovery" });
+      const file = new File([prepared.bytes.buffer as ArrayBuffer], "Alviss-Recovery-New-Owner.pvrecovery", { type: "application/octet-stream" });
+      if (navigator.canShare?.({ files: [file] })) await navigator.share({ files: [file], title: "Alviss Recovery" });
       else {
         const url = URL.createObjectURL(file); const link = document.createElement("a"); link.href = url; link.download = file.name; link.click(); URL.revokeObjectURL(url);
       }

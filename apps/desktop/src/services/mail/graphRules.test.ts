@@ -126,7 +126,7 @@ describe("what Graph cannot express stays local", () => {
 });
 
 describe("ownership", () => {
-  it("recognises only what Plainva named", () => {
+  it("recognises only what Alviss named", () => {
     // Everything else in the mailbox is somebody else's and is never touched.
     expect(isPlainvaRule(`${GRAPH_RULE_PREFIX}Newsletter`)).toBe(true);
     expect(isPlainvaRule("Meine eigene Regel")).toBe(false);

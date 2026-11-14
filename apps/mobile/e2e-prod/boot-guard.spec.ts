@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 /**
- * The phone's boot guard (public/boot-guard.js) shows "Plainva didn't start"
+ * The phone's boot guard (public/boot-guard.js) shows "Alviss didn't start"
  * when nothing rendered within twelve seconds. Until 3.91 it never took that
  * overlay back: a first start slower than that on a cheap phone left it over
  * the running app for good, swallowing every tap. The desktop's guard has

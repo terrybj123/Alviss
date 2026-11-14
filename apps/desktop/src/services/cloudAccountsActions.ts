@@ -98,7 +98,7 @@ export interface ConnectRequest {
   consentServices?: CloudServiceId[];
   /**
    * The Dropbox app key this device signs in with (settings plan 2026-10-29,
-   * E6): Plainva's or the device's own - never the account's any more.
+   * E6): Alviss's or the device's own - never the account's any more.
    */
   dropboxAppKey?: string;
   /** Google OAuth client secret (BYO desktop client, ADR 0006). */
@@ -525,7 +525,7 @@ export async function saveSyncRootFolder(vaultPath: string, provider: SyncProvid
 export async function openDriveDestination(vaultPath: string) {
   const target = await syncTargetFromSlots(vaultPath, "drive") as DriveSyncTarget;
   const destination = await readDriveDestination(vaultPath);
-  return { vaultPath, currentPath: destination.path || "Plainva", previewCurrent: () => target.previewConfiguredFolder(),
+  return { vaultPath, currentPath: destination.path || "Alviss", previewCurrent: () => target.previewConfiguredFolder(),
     loadFolder: (id: string, page?: string) => target.previewFolder(id, page) };
 }
 

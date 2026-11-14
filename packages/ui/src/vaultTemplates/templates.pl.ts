@@ -18,7 +18,7 @@ import { buildJournal, type JournalStrings } from "./journalTemplate";
  * here so the databases show real data as soon as the vault is indexed. */
 
 // ---------------------------------------------------------------------------
-// Plainva Tour — shared structure (plainvaTour.ts), Polish strings.
+// Alviss Tour — shared structure (plainvaTour.ts), Polish strings.
 // ---------------------------------------------------------------------------
 
 const CHEAT_SHEET_PL = `Wszystko poniżej to zwykły Markdown. Przełączasz się między czytaniem a edycją w pasku narzędzi — edytor pokazuje znaki formatowania tylko tam, gdzie jest Twój kursor.
@@ -68,8 +68,8 @@ Przypisy też działają.[^1]
 `;
 
 const TOUR_STRINGS_PL: TourStrings = {
-  name: "Wycieczka po Plainva",
-  description: "Vault z przewodnikiem: tablica korkowa, notatki dzienne, obszary, projekty i zadania — każdy widok, jaki oferuje Plainva, wypełniony przykładami.",
+  name: "Wycieczka po Alviss",
+  description: "Vault z przewodnikiem: tablica korkowa, notatki dzienne, obszary, projekty i zadania — każdy widok, jaki oferuje Alviss, wypełniony przykładami.",
   folders: {
     quickNotes: "Szybkie notatki",
     journal: "Dziennik",
@@ -94,7 +94,7 @@ const TOUR_STRINGS_PL: TourStrings = {
   },
   welcome: {
     file: "Witaj.md",
-    title: "Witaj w Plainva",
+    title: "Witaj w Alviss",
     intro: "Ten vault to wycieczka z przewodnikiem. Każdy folder poniżej jest wypełniony przykładami, a każda baza danych pokazuje inny widok — otwórz je i zmieniaj: nic tutaj nie jest nietykalne.",
     outro: "Wszystko, co widzisz, to zwykły Markdown w tym folderze. Usuń, czego nie potrzebujesz, zmień nazwy reszty — a vault będzie Twój.",
   },
@@ -184,9 +184,9 @@ const TOUR_STRINGS_PL: TourStrings = {
     ],
     resources: [
       { title: "Ściągawka Markdown", body: CHEAT_SHEET_PL, props: { rodzaj: "Referencja", status: "Przeczytane", cover: "Załączniki/cover.svg" } },
-      { title: "Podręcznik Plainva", body: "Pełny przewodnik znajduje się na plainva.com/docs.", props: { rodzaj: "Referencja", url: "https://plainva.com/docs", status: "Nowe" } },
+      { title: "Podręcznik Alviss", body: "Pełny przewodnik znajduje się na plainva.com/docs.", props: { rodzaj: "Referencja", url: "https://plainva.com/docs", status: "Nowe" } },
       { title: "Deep work", body: "Cal Newport. Przydatny jest rozdział o planowaniu.", props: { rodzaj: "Książka", status: "Nowe", obszar: "[[Nauka]]" } },
-      { title: "Skróty klawiszowe", body: "Naciśnij `F1` w Plainva — listę można przeszukiwać.", props: { rodzaj: "Referencja", status: "Przeczytane", obszar: "[[Nauka]]" } },
+      { title: "Skróty klawiszowe", body: "Naciśnij `F1` w Alviss — listę można przeszukiwać.", props: { rodzaj: "Referencja", status: "Przeczytane", obszar: "[[Nauka]]" } },
     ],
     archive: [
       { title: "Stara strona internetowa", body: "Zastąpiona przez [[Relaunch strony internetowej]]. Zachowana ze względu na teksty.", props: { zakonczenie: "{{today-20}}" } },
@@ -219,7 +219,7 @@ const PARA_STRINGS_PL: ParaStrings = {
     intro:
       "Ten vault jest zorganizowany według metody PARA (Tiago Forte): treści są porządkowane według bliskości do działania, a nie według tematu. Przykłady poniżej to prawdziwe notatki — zmieniaj je, przenoś, usuwaj je.",
     outro:
-      "Otwórz bazy danych, aby zobaczyć projekty według statusu, przypisywać im zadania i łączyć je z obszarami — ukończona praca trafia do Archiwum, a linki i przeglądy index.md Plainva aktualizuje automatycznie.",
+      "Otwórz bazy danych, aby zobaczyć projekty według statusu, przypisywać im zadania i łączyć je z obszarami — ukończona praca trafia do Archiwum, a linki i przeglądy index.md Alviss aktualizuje automatycznie.",
   },
   welcomeSections: { databases: "Twoje bazy danych", start: "Od czego zacząć" },
   baseFiles: { projects: "Projekty.base", tasks: "Zadania.base", areas: "Obszary.base" },
@@ -277,7 +277,7 @@ const PARA_STRINGS_PL: ParaStrings = {
       },
       {
         title: "Uzgodnić plan pomieszczeń z zespołem",
-        body: "Przeciągnij kartę do innej kolumny tablicy: Plainva zapisze nowy status w notatce.",
+        body: "Przeciągnij kartę do innej kolumny tablicy: Alviss zapisze nowy status w notatce.",
         props: { status: "W trakcie", projekt: "[[Przeprowadzka do nowego biura]]", termin: "{{today+7}}" },
       },
       {
@@ -396,7 +396,7 @@ const GTD_STRINGS_PL: GtdStrings = {
       },
       {
         title: "Sprawdzić ofertę stolarza",
-        body: "Przeciągnij kartę do innej kolumny tablicy: Plainva zapisze nowy status w notatce.",
+        body: "Przeciągnij kartę do innej kolumny tablicy: Alviss zapisze nowy status w notatce.",
         props: { status: "Następne", kontekst: "@Praca", projekt: "[[Remont kuchni]]", termin: "{{today+5}}" },
       },
       {

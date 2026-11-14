@@ -88,7 +88,7 @@ export async function queryView(v: MobileVault, config: any, viewIndex: number):
  * Serializes and writes the config through the sync chain, then re-indexes.
  *
  * Only over the file that is there (issue 110, E9): a database moved or
- * deleted outside Plainva while it was open must not come back at its old
+ * deleted outside Alviss while it was open must not come back at its old
  * place — a duplicate of the moved file, or a deletion undone, which sync
  * would carry on. The write throws `VaultFileNotFoundError` then, and the
  * screen looks for the file. `recreate` is the reader's own "Save here again".
@@ -439,7 +439,7 @@ export async function createBaseItem(
   const built = await buildNewNoteFromTemplate({
     read: (p) => vaultOps.read(v, p),
     exists: (p) => v.files.exists(p),
-    vaultName: (await getActiveVaultEntry()).name || "Plainva",
+    vaultName: (await getActiveVaultEntry()).name || "Alviss",
     folder,
     title: name,
     type,
@@ -541,7 +541,7 @@ export async function planMobilePinboardEntry(
           const answered = await answerTemplateFile({
             read: (p) => vaultOps.read(v, p),
             exists: (p) => v.files.exists(p),
-            vaultName: (await getActiveVaultEntry()).name || "Plainva",
+            vaultName: (await getActiveVaultEntry()).name || "Alviss",
             folder,
             title,
             template,

@@ -216,7 +216,7 @@ export function MailAccountsScreen({
 
   /**
    * The out-of-office notice (S13). Offered only where the server keeps
-   * answering without Plainva — otherwise the section says why instead of
+   * answering without Alviss — otherwise the section says why instead of
    * carrying a switch that writes nowhere.
    */
   const vacationKind = sendingAccount ? vacationSupport(sendingAccount).kind : "none";

@@ -1,7 +1,7 @@
 import { imageCandidates } from "../lib/imageTarget";
 
 /**
- * Gallery cover resolution (plan "Vorlagen-Überarbeitung + Plainva-Tour", P1.4).
+ * Gallery cover resolution (plan "Vorlagen-Überarbeitung + Alviss-Tour", P1.4).
  *
  * The gallery used to drop the cover value straight into `<img src>`, which only
  * works for a URL the WebView can fetch — an `http(s):`/`blob:`/`data:` source.

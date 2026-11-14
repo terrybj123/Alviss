@@ -19,7 +19,7 @@ import { matchAppLanguage } from "../services/languages";
  * web slug lives here and mirrors `scripts/sync-docs.mjs` in the website repo.
  * If those two ever disagree the link 404s — hence the test.
  */
-const DOCS_BASE = "https://plainva.com";
+const DOCS_BASE = "https://github.com/terrybj123/Alviss/blob/main/docs/user";
 
 export const GDRIVE_BYO_GUIDE = "Google_Drive_BYO_Guide.md";
 export const ONEDRIVE_DROPBOX_BYO_GUIDE = "OneDrive_and_Dropbox_BYO_Guide.md";
@@ -42,15 +42,7 @@ export function googleClientGuideUrl(platform: "desktop" | "ios" | "android", la
   return platform === "desktop" ? page : `${page}#${GOOGLE_PHONE_CLIENT_ANCHOR}`;
 }
 
-/** Handbook file name → website slug. `README.md` is the section index. */
-export function docsSlug(page: string): string {
-  const base = page.replace(/\.md$/i, "");
-  return base === "README" ? "" : base.toLowerCase().replace(/_/g, "-");
-}
-
 export function userGuideUrl(page: string, language = i18n.language): string {
   const lang = matchAppLanguage(language);
-  const prefix = lang === "en" ? "" : `/${lang}`;
-  const slug = docsSlug(page);
-  return `${DOCS_BASE}${prefix}/docs${slug ? `/${slug}` : ""}`;
+  return `${DOCS_BASE}/${lang}/${page}`;
 }

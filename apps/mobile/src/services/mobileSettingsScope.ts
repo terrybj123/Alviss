@@ -141,7 +141,7 @@ export interface VaultScopedSettings {
   /** Whether a comment may write its anchor pair into the Markdown (Stufe D, SD2). */
   commentAnchors: boolean;
   /**
-   * Which extra file types open inside Plainva as text (C15) — the vault's
+   * Which extra file types open inside Alviss as text (C15) — the vault's
    * list, the same the desktop edits ("More text files"). Carried by the
    * phone itself in the settings profile, like the template rules: the field
    * is `json`. Applied through `setExtraTextExtensions` whenever the settings
@@ -150,9 +150,9 @@ export interface VaultScopedSettings {
    */
   textFileExtensions: string[];
   /**
-   * Whether the Plainva-only view types of a `.base` (board, calendar,
+   * Whether the Alviss-only view types of a `.base` (board, calendar,
    * timeline, graph, pinboard) are offered when a view's type is chosen —
-   * the desktop's "Allow Plainva extensions for .base files".
+   * the desktop's "Allow Alviss extensions for .base files".
    */
   extendedDatabases: boolean;
   /**

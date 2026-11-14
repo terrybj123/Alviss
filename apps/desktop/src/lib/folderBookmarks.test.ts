@@ -22,7 +22,7 @@ describe("typed folder bookmarks", () => {
     expect(files.get(".obsidian/bookmarks.json")).toBe(source);
     expect(parseBookmarksFile(files.get(".plainva/bookmarks.json")!).paths).toEqual(["Notes/A.md"]);
   });
-  it("takes each of Obsidian's bookmarks over once per vault: removed in Plainva, it stays removed at the next open (§ 3.127 Nr. 2)", async () => {
+  it("takes each of Obsidian's bookmarks over once per vault: removed in Alviss, it stays removed at the next open (§ 3.127 Nr. 2)", async () => {
     const { io, files } = disk([file("Mine.md")]);
     files.set(".obsidian/bookmarks.json", JSON.stringify({ items: [file("Obs/A.md"), folder("Obs")] }));
     expect(await importObsidianBookmarks(io)).toEqual([file("Mine.md"), file("Obs/A.md"), folder("Obs")]);

@@ -45,7 +45,7 @@ type T = (key: string, options?: Record<string, unknown>) => string;
 
 const say = (t: T, text: ConnectText) => t(text.key, text.values);
 
-/** A failure with its sender - device, provider, network, Plainva (plan "Verbinden-Assistent", E7). */
+/** A failure with its sender - device, provider, network, Alviss (plan "Verbinden-Assistent", E7). */
 export function failedServiceStatus(err: unknown, t: T, provider: string): ServiceRunStatus {
   const view = serviceConnectionFailure(err, t, { provider, platform: "desktop" });
   return { state: "error", ...(view.title ? { title: view.title } : {}), detail: view.text, ...(view.raw ? { raw: view.raw } : {}) };

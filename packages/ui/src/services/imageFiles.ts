@@ -2,7 +2,7 @@ import { mimeTypeForPath } from "@plainva/core";
 
 /**
  * Image dispatch + IO helpers of the in-app image viewer/editor (plan
- * UI-UX-Paket P10). Images open in a Plainva tab; all other attachments keep
+ * UI-UX-Paket P10). Images open in a Alviss tab; all other attachments keep
  * opening in the OS default app.
  */
 

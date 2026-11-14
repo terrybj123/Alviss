@@ -58,7 +58,7 @@ function withinBytes(text: string, max: number): string {
 
 /**
  * A file name as the sender wrote it, split into a stem and an extension that
- * are safe as a file name on every platform Plainva runs on.
+ * are safe as a file name on every platform Alviss runs on.
  *
  * The name is somebody else's choice — whoever sent the mail. It may hold a
  * path, a control character, a device name or a novel; what is saved is a

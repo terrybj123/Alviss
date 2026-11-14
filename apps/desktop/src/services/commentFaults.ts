@@ -65,7 +65,7 @@ export function installCommentFaultReporter(vaultPath: string): () => void {
       label: i18n.t("comments.commentFaultExport"),
       run: () => {
         void (async () => {
-          const target = await save({ defaultPath: `Plainva-Comments-Diagnostics-${new Date().toISOString().slice(0, 10)}.json` });
+          const target = await save({ defaultPath: `Alviss-Comments-Diagnostics-${new Date().toISOString().slice(0, 10)}.json` });
           if (target) await writeFile(target, new TextEncoder().encode(commentFaultDiagnostics(fresh)));
         })().catch((error) => toast.error(error instanceof Error ? error.message : String(error)));
       },

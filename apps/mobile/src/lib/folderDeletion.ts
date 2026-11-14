@@ -10,7 +10,7 @@ import type { VaultFileInfo } from "@plainva/core";
  * be restored — possible before the tap rather than after it.
  */
 
-/** Files (never directories, never Plainva's own folder) below a listing. */
+/** Files (never directories, never Alviss's own folder) below a listing. */
 export function countFolderFiles(entries: ReadonlyArray<VaultFileInfo>): number {
   let n = 0;
   for (const e of entries) {

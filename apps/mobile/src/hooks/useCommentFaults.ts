@@ -58,7 +58,7 @@ export function useCommentFaults(vault: MobileVault | null): void {
       toast.warning(describeCommentFaults(fresh, t), {
         label: t("comments.commentFaultExport"),
         run: () => {
-          void shareVaultText(`Plainva-Comments-Diagnostics-${new Date().toISOString().slice(0, 10)}.json`, commentFaultDiagnostics(fresh), "application/json").catch((error) => toast.error(error instanceof Error ? error.message : String(error)));
+          void shareVaultText(`Alviss-Comments-Diagnostics-${new Date().toISOString().slice(0, 10)}.json`, commentFaultDiagnostics(fresh), "application/json").catch((error) => toast.error(error instanceof Error ? error.message : String(error)));
         },
       });
     };

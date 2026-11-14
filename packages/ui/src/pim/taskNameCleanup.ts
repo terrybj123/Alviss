@@ -14,12 +14,12 @@ import { applyLinkUpdates, type LinkUpdatePlan } from "../lib/renameNote";
  * Task notes that still carry an id in their name (plan Befunde 2026-09-24,
  * E12).
  *
- * From 12.09. to 24.09. Plainva named a mirrored task "<title> — <16 hex>.md"
+ * From 12.09. to 24.09. Alviss named a mirrored task "<title> — <16 hex>.md"
  * so two devices would pick the same path for it. Since E11 the name is the
  * title again ("Title", "Title 2"), and the notes named in those twelve days
  * are offered ONCE for a clean-up — never renamed on their own.
  *
- * What qualifies is narrow on purpose: the name must have the shape Plainva
+ * What qualifies is narrow on purpose: the name must have the shape Alviss
  * gave it AND the digits must be the hash of the anchor in the very same file
  * (`isOwnLegacyTaskNoteName`). A note somebody named "Plan — 0123….md", or a
  * mirrored note whose name was copied from another, stays as it is.

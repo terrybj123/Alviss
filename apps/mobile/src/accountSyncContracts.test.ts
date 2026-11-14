@@ -172,7 +172,7 @@ describe("mobile account-sync regression contracts", () => {
     await port.applyValues({ barLayoutMobileBar: { order: ["mail", "notes", "today"], visibleCount: 2 } });
     const exported = await port.exportValues();
     // Notes leads because the bar model pins it — the value is sanitized on the
-    // way in, so an arrangement from a newer Plainva cannot produce a bar this
+    // way in, so an arrangement from a newer Alviss cannot produce a bar this
     // phone has no screens for.
     expect(exported.barLayoutMobileBar).toMatchObject({ order: expect.arrayContaining(["notes"]), visibleCount: 2 });
     expect((exported.barLayoutMobileBar as { order: string[] }).order[0]).toBe("notes");

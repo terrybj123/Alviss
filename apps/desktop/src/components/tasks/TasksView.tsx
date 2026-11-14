@@ -164,7 +164,7 @@ export function TasksView({ onOpenPath, onRenamed }: Props) {
   // Manual refresh: for provider-synced tasks a plain re-query is not enough —
   // trigger a real PIM cycle (pull + reconcile) first, like the calendar tab's
   // refresh button. This was the "checked off in Google Tasks doesn't update in
-  // Plainva" report: the only automatic pull is the 5-minute worker timer.
+  // Alviss" report: the only automatic pull is the 5-minute worker timer.
   const refreshAll = useCallback(() => {
     setRefreshTick((x) => x + 1);
     if (pimRuntime) void pimRuntime.worker.triggerImmediate().catch(() => undefined);

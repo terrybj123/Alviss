@@ -5,15 +5,15 @@ import { parseBaseConfig, serializeBaseConfig } from "@plainva/ui";
 /**
  * Round-trip guard for `.base` files: reading a file and writing it back with
  * no change made in the app must give a file whose YAML DATA equals the input
- * (key order may differ). Plainva's promise is that an Obsidian vault is never
+ * (key order may differ). Alviss's promise is that an Obsidian vault is never
  * silently reformatted, and a `.base` is rewritten as a whole on every save —
- * so everything Plainva does not know, or knows in a different spelling, has
+ * so everything Alviss does not know, or knows in a different spelling, has
  * to come back exactly as it was. The fixtures cover the places where it did
- * not: unknown keys in a column's `plainva` block, a rollup Plainva cannot
- * read, a view type Plainva does not know, Obsidian's own `groupBy`, and the
+ * not: unknown keys in a column's `plainva` block, a rollup Alviss cannot
+ * read, a view type Alviss does not know, Obsidian's own `groupBy`, and the
  * native keys of a view after another view is deleted or moved.
  *
- * Plainva's own legacy forms (a top-level `columns:` map, `type: board`, the
+ * Alviss's own legacy forms (a top-level `columns:` map, `type: board`, the
  * two-key filter root) are migrated on save on purpose and are not fixtures
  * here; baseFormat.test.ts covers them.
  */
@@ -137,7 +137,7 @@ views:
 
 const FIXTURES: Record<string, string> = {
   "an Obsidian-authored base (formulas, summaries, groupBy, limit, unknown view type)": OBSIDIAN_AUTHORED,
-  "a Plainva-authored base (unknown plainva keys, unreadable rollup, legacy limit)": PLAINVA_AUTHORED,
+  "a Alviss-authored base (unknown plainva keys, unreadable rollup, legacy limit)": PLAINVA_AUTHORED,
   "a base with an unknown top-level key and an unknown view key": UNKNOWN_TOP_LEVEL,
 };
 
@@ -167,7 +167,7 @@ describe(".base round-trip guard", () => {
     expect(out.properties["note.open"].plainva.input).toBe("number");
   });
 
-  it("keeps a view type Plainva does not know, shown as a table", () => {
+  it("keeps a view type Alviss does not know, shown as a table", () => {
     const cfg = parseBaseConfig(OBSIDIAN_AUTHORED);
     expect(cfg.views[2].type).toBe("table");
     cfg.views[2].sort = [{ property: "file.name", direction: "ASC" }];

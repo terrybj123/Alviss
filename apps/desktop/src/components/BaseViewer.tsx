@@ -136,7 +136,7 @@ export function BaseViewer({
   /** Path of the note this base is embedded in — enables auto-scoping the rows
    * to the host element when the two bases are related (embedScope). */
   hostPath?: string;
-  /** Tab retargeting: the tab follows its file when it was moved outside Plainva (issue 110). */
+  /** Tab retargeting: the tab follows its file when it was moved outside Alviss (issue 110). */
   onRenamed?: (from: string, to: string) => void;
   /** Closes this tab — the missing-file state's one action (never the delete flow). */
   onCloseTab?: () => void;
@@ -150,7 +150,7 @@ export function BaseViewer({
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(!snapshot);
 
-  // The database file moved or vanished outside Plainva (issue 110, E9): the
+  // The database file moved or vanished outside Alviss (issue 110, E9): the
   // tab looks for it by the content hash the index stored and follows a
   // proven move — with bookmarks and pinboard places — or asks "Moved?", or
   // shows the missing state. A config change that found its file gone waits
@@ -1519,7 +1519,7 @@ export function BaseViewer({
         if (isMounted) {
           setError(e.message || t("database.failedLoad", "Failed to load base file"));
           setIsLoading(false);
-          // Moved or deleted outside Plainva? Looked for before the error
+          // Moved or deleted outside Alviss? Looked for before the error
           // stands (issue 110, E9); a file that is there after all keeps it.
           lookForFile();
         }
@@ -1555,7 +1555,7 @@ export function BaseViewer({
       setDbConfig(newConfig);
 
       // Never to a place the file has left (issue 110, E9): a database moved
-      // or deleted outside Plainva would come back here as a duplicate or a
+      // or deleted outside Alviss would come back here as a duplicate or a
       // deletion undone.
       await assertFileStillThere(vaultAdapter, activePath);
       await vaultAdapter.writeTextFile(activePath, newText);
@@ -1633,7 +1633,7 @@ export function BaseViewer({
   };
 
   const setViewType = (type: string) => {
-    // Every Plainva-only view type (board/calendar/timeline/graph/pinboard)
+    // Every Alviss-only view type (board/calendar/timeline/graph/pinboard)
     // serializes as `type: table` + `plainva.render`, so it must show the
     // Obsidian-compatibility hint — not just board/calendar/timeline
     // (maintainer 2026-07-18: the hint was missing for graph and pinboard).

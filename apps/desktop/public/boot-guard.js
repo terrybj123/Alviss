@@ -1,5 +1,5 @@
 /*
- * Plainva boot guard.
+ * Alviss boot guard.
  *
  * WHY THIS FILE EXISTS AT ALL
  * A blank window is the worst failure this app can have: it tells the user
@@ -153,10 +153,10 @@
     shown = "unsupported";
     var box = mountOverlay();
 
-    block(box, "Plainva can't start on this system", [
-      "Plainva needs a newer web engine than this system provides. On macOS that engine is " +
+    block(box, "Alviss can't start on this system", [
+      "Alviss needs a newer web engine than this system provides. On macOS that engine is " +
         "part of the system rather than of Safari — installing a newer Safari does not " +
-        "change it — so Plainva needs macOS 13.3 (Ventura) or later, which carries " +
+        "change it — so Alviss needs macOS 13.3 (Ventura) or later, which carries " +
         "Safari 16.4 or newer. On Linux it needs WebKitGTK 2.40 or newer, on Windows an " +
         "up-to-date WebView2 runtime.",
       "Your notes are untouched — the app stopped before it opened anything.",
@@ -184,7 +184,7 @@
     shown = "startup";
     var box = mountOverlay();
 
-    block(box, "Plainva didn't start", [
+    block(box, "Alviss didn't start", [
       "Something went wrong before the app could open. Your notes are untouched.",
       "Please report this with the details below: github.com/plainva/plainva/issues",
     ]);
@@ -243,7 +243,7 @@
        it a moment later - a loaded machine, a cold disk, six browsers on one
        box. An error BEFORE the first render keeps the screen for good; a
        merely LATE mount does not: the app is demonstrably running, and
-       leaving "Plainva didn't start" on top of it hides a working program and
+       leaving "Alviss didn't start" on top of it hides a working program and
        swallows every click into it. Found by the E2E suite, where 47 tests
        clicked into this overlay over an app that had rendered fine
        (2026-08-24). An error AFTER the first render does not keep it either,

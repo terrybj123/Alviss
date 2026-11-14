@@ -3,7 +3,7 @@ import { logDiagnostic } from "../services/diagnosticsLog";
 import { toast } from "../services/toastStore";
 
 /**
- * Which addresses Plainva hands to the system — one rule for both shells
+ * Which addresses Alviss hands to the system — one rule for both shells
  * (review 2026-10-22, Sammelplan § 3.138).
  *
  * The desktop's opener plugin only ever allowed web, mail and phone addresses
@@ -45,7 +45,7 @@ export function urlAsTheBrowserReadsIt(url: string): string {
 }
 
 /**
- * The address to hand to the system, or `null` when Plainva does not open it:
+ * The address to hand to the system, or `null` when Alviss does not open it:
  * no scheme (a relative value), a scheme outside `EXTERNAL_SCHEMES`, or a
  * value the URL parser refuses. Case does not matter (`HTTPS:`); a scheme
  * hidden behind percent-encoding is no scheme at all and is refused.
@@ -91,7 +91,7 @@ function schemeOf(url: unknown): string {
  * Wraps a shell's opener so it only ever receives an address
  * `externalUrlToOpen` allows. A refused address never reaches `open`; the
  * person is told once, and the call resolves — callers' own error toasts are
- * for an opener that failed, not for a link Plainva declined.
+ * for an opener that failed, not for a link Alviss declined.
  */
 export function guardedExternalOpener(open: (url: string) => Promise<void>): (url: string) => Promise<void> {
   return async (url: string) => {

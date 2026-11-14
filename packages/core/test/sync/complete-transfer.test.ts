@@ -15,7 +15,7 @@ function targetFor(provider: Provider, content: (init: RequestInit) => Response)
     const url = String(input);
     if (provider === 'Drive' && !url.includes('alt=media')) {
       const name = decodeURIComponent(url).match(/name='([^']*)'/)?.[1] ?? '';
-      return Response.json({ files: [{ id: name === 'Plainva' ? 'root' : 'file', name, mimeType: name === 'Plainva' ? 'application/vnd.google-apps.folder' : 'text/plain' }] });
+      return Response.json({ files: [{ id: name === 'Alviss' ? 'root' : 'file', name, mimeType: name === 'Alviss' ? 'application/vnd.google-apps.folder' : 'text/plain' }] });
     }
     signals.push(init.signal!);
     return content(init);

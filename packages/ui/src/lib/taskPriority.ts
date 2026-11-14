@@ -9,7 +9,7 @@ import type { TaskPriority } from "./taskPlanner";
  * sorts or draws a flag still agrees. Empty means none.
  *
  * Unlike the date and the checkbox there is no input type that says "this is
- * the priority", so the column is found by NAME — among the names Plainva gives
+ * the priority", so the column is found by NAME — among the names Alviss gives
  * it in its ten languages, since a vault keeps the name of the language it was
  * created in.
  */

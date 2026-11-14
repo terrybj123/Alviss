@@ -79,7 +79,7 @@ beforeEach(async () => {
   vi.unstubAllEnvs();
 });
 
-/** Android with Plainva's own client: the system sheet (oauthAccess.ts). */
+/** Android with Alviss's own client: the system sheet (oauthAccess.ts). */
 function plainvaAndroid(): void {
   state.platform = "android"; state.builtIn = "client.apps.googleusercontent.com";
   state.secrets.set("oauth_access_google", { source: "plainva" });

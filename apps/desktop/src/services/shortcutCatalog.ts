@@ -1,5 +1,5 @@
 /**
- * Central catalog of Plainva's keyboard shortcuts and notable mouse gestures.
+ * Central catalog of Alviss's keyboard shortcuts and notable mouse gestures.
  * This is the single source of truth the shortcuts help window (F1) renders
  * from, and it mirrors what is actually wired in AppShell.tsx (global keydown),
  * webviewHardening.ts (the reload keys), packages/ui editorSession (editor

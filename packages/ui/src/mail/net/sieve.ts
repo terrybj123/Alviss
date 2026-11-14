@@ -173,7 +173,7 @@ export async function sieveConnect(creds: SieveCreds, timeoutMs = 30_000): Promi
   }
 }
 
-/** The script Plainva reads and writes when the server has no active one yet. */
+/** The script Alviss reads and writes when the server has no active one yet. */
 export const DEFAULT_SIEVE_SCRIPT = "plainva";
 
 /**

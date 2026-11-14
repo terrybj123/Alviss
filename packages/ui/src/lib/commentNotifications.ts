@@ -1,7 +1,7 @@
 /**
  * Which new remarks are worth telling somebody about (Stufe F, F1).
  *
- * Plainva has no server that could push a notification. There are only devices
+ * Alviss has no server that could push a notification. There are only devices
  * syncing the same files, so a notification can only come into being where a
  * device looks anyway - at the end of a sync cycle. That is not a limitation one
  * could engineer away: a push service would mean a foreign server learns when

@@ -5,7 +5,7 @@ import { sourceFile } from "./test-sourceTree";
 
 /**
  * The database reference of the user guide (docs/user/<lang>/Base_Reference.md)
- * promises to list everything a `.base` file can hold in Plainva. That promise
+ * promises to list everything a `.base` file can hold in Alviss. That promise
  * breaks silently the day a new view type, summary, rollup function, field type
  * or `plainva` key lands in the code without a line in the reference — nothing
  * else would notice, because the reference is prose.

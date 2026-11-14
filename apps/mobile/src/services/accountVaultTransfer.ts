@@ -21,7 +21,7 @@ import { discardPreparedContainer, noteSaver, openPreparedVaultDatabase, switchV
 
 /** Destination identity excludes tokens and local labels. */
 export function fileDestinationKey(p: MobileSyncProvider, identity?: VerifiedProviderIdentity): string | null {
-  if (p.provider === "drive" || p.provider === "onedrive") return identity ? JSON.stringify([p.provider, verifiedProviderIdentityKey(identity), p.creds.rootFolderName || "Plainva"]) : null;
+  if (p.provider === "drive" || p.provider === "onedrive") return identity ? JSON.stringify([p.provider, verifiedProviderIdentityKey(identity), p.creds.rootFolderName || "Alviss"]) : null;
   if (p.provider === "webdav") return JSON.stringify([p.provider, trimEndChars(p.creds.url, "/"), p.creds.user]);
   if (p.provider === "s3") return JSON.stringify([p.provider, trimEndChars(p.creds.endpoint, "/"), p.creds.bucket, p.creds.prefix || "", p.creds.accessKeyId]);
   if (p.provider === "dropbox") return identity ? JSON.stringify([p.provider, verifiedProviderIdentityKey(identity), p.creds.rootPath || "/"]) : null;
@@ -58,7 +58,7 @@ async function verifyIdentity(p: MobileSyncProvider, context: ServiceConnectionC
 /** The name of the cloud folder a connection points at, as the person chose it. */
 function chosenFolder(p: MobileSyncProvider): string {
   const last = (path: string) => path.split("/").filter(Boolean).pop() ?? "";
-  if (p.provider === "drive" || p.provider === "onedrive") return last(p.creds.rootFolderName || "Plainva") || "Plainva";
+  if (p.provider === "drive" || p.provider === "onedrive") return last(p.creds.rootFolderName || "Alviss") || "Alviss";
   if (p.provider === "dropbox") return last(p.creds.rootPath || "/") || "Dropbox";
   if (p.provider === "webdav") { try { return decodeURIComponent(last(new URL(p.creds.url).pathname)) || p.creds.url; } catch { return p.creds.url; } }
   return last(p.creds.prefix || "") || p.creds.bucket;

@@ -64,8 +64,8 @@ $$
 `;
 
 const TOUR_STRINGS_JA: TourStrings = {
-  name: "Plainva ツアー",
-  description: "ガイド付きの保管庫: ピンボード、デイリーノート、エリア、プロジェクト、タスク——Plainvaが提供するすべてのビューを、例で満たしています。",
+  name: "Alviss ツアー",
+  description: "ガイド付きの保管庫: ピンボード、デイリーノート、エリア、プロジェクト、タスク——Alvissが提供するすべてのビューを、例で満たしています。",
   folders: {
     quickNotes: "クイックメモ",
     journal: "ジャーナル",
@@ -90,7 +90,7 @@ const TOUR_STRINGS_JA: TourStrings = {
   },
   welcome: {
     file: "はじめに.md",
-    title: "Plainvaへようこそ",
+    title: "Alvissへようこそ",
     intro:
       "この保管庫はツアーです。以下の各フォルダーには例がたくさん入っていて、それぞれのデータベースが異なるビューを見せてくれます——開いて自由に変更してみてください。ここにあるものはどれも大切にする必要はありません。",
     outro:
@@ -182,9 +182,9 @@ const TOUR_STRINGS_JA: TourStrings = {
     ],
     resources: [
       { title: "Markdown 早見表", body: CHEAT_SHEET_JA, props: { kind: "リファレンス", read: "既読", cover: "添付ファイル/cover.svg" } },
-      { title: "Plainva ハンドブック", body: "完全なガイドは plainva.com/docs にあります。", props: { kind: "リファレンス", url: "https://plainva.com/docs", read: "未読" } },
+      { title: "Alviss ハンドブック", body: "完全なガイドは plainva.com/docs にあります。", props: { kind: "リファレンス", url: "https://plainva.com/docs", read: "未読" } },
       { title: "Deep work", body: "Cal Newport 著。スケジューリングについての章が特に役立つ。", props: { kind: "書籍", read: "未読", area: "[[学び]]" } },
-      { title: "キーボードショートカット", body: "Plainvaで `F1` を押す——一覧は検索できます。", props: { kind: "リファレンス", read: "既読", area: "[[学び]]" } },
+      { title: "キーボードショートカット", body: "Alvissで `F1` を押す——一覧は検索できます。", props: { kind: "リファレンス", read: "既読", area: "[[学び]]" } },
     ],
     archive: [
       { title: "旧ウェブサイト", body: "[[ウェブサイトのリニューアル]] に置き換えられました。テキストのために保存しています。", props: { finished: "{{today-20}}" } },
@@ -217,7 +217,7 @@ const PARA_STRINGS_JA: ParaStrings = {
     intro:
       "この保管庫はPARAメソッド（Tiago Forte）に沿って整理されています。内容はテーマではなく、行動との近さによって分類されます。以下の例は実際のノートです——自由に変更したり、移動したり、削除したりしてください。",
     outro:
-      "データベースを開くと、プロジェクトをステータス別に確認し、タスクを割り当て、それぞれのエリアに関連付けられます——完了したものはアーカイブへ移り、リンクとindex.mdの一覧はPlainvaが自動的に最新の状態に保ちます。",
+      "データベースを開くと、プロジェクトをステータス別に確認し、タスクを割り当て、それぞれのエリアに関連付けられます——完了したものはアーカイブへ移り、リンクとindex.mdの一覧はAlvissが自動的に最新の状態に保ちます。",
   },
   welcomeSections: { databases: "データベース", start: "はじめの一歩" },
   baseFiles: { projects: "プロジェクト.base", tasks: "タスク.base", areas: "エリア.base" },
@@ -275,7 +275,7 @@ const PARA_STRINGS_JA: ParaStrings = {
       },
       {
         title: "チームとフロアプランを調整する",
-        body: "カードをボードの別の列にドラッグしてみましょう。Plainvaが新しいステータスをノートに書き込みます。",
+        body: "カードをボードの別の列にドラッグしてみましょう。Alvissが新しいステータスをノートに書き込みます。",
         props: { status: "進行中", project: "[[新オフィスへの移転]]", due: "{{today+7}}" },
       },
       {
@@ -394,7 +394,7 @@ const GTD_STRINGS_JA: GtdStrings = {
       },
       {
         title: "大工の見積もりを確認する",
-        body: "カードをボードの別の列にドラッグしてみましょう。Plainvaが新しいステータスをノートに書き込みます。",
+        body: "カードをボードの別の列にドラッグしてみましょう。Alvissが新しいステータスをノートに書き込みます。",
         props: { status: "次のアクション", context: "@職場", project: "[[キッチンをリフォームする]]", due: "{{today+5}}" },
       },
       {

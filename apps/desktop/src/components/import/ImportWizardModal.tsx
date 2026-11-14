@@ -58,7 +58,7 @@ interface SelectedFileItem {
  * Obsidian is offered as a choice but never imports anything.
  *
  * Someone coming from Obsidian looks for their app in this list, and the honest
- * answer is that there is nothing to import: Plainva opens the same Markdown
+ * answer is that there is nothing to import: Alviss opens the same Markdown
  * files. Saying that where they look beats saying it in a FAQ they will not
  * read (plan §5, E10).
  */
@@ -149,7 +149,7 @@ export const ImportWizardModal: React.FC<ImportWizardModalProps> = ({ targetVaul
 
   /**
    * A subfolder import writes into a synced vault, so every note becomes an
-   * upload. Plainva guards mass DELETES but has never mentioned mass uploads.
+   * upload. Alviss guards mass DELETES but has never mentioned mass uploads.
    */
   const syncProvider = syncStatusStore.get(vaultPath).provider;
 
@@ -440,7 +440,7 @@ export const ImportWizardModal: React.FC<ImportWizardModalProps> = ({ targetVaul
    * Options shared by analyze and run.
    *
    * `serializeBase` hands the core the app's canonical `.base` writer so an
-   * imported database is byte-identical to one created in Plainva.
+   * imported database is byte-identical to one created in Alviss.
    */
   const buildOptions = async (httpFetch: typeof fetch, writeAdapter?: unknown, signal?: AbortSignal) => {
     const resolved = resolvedTarget();

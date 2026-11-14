@@ -186,7 +186,7 @@ describe("a note that is written anew keeps the shape it has", () => {
     await files.writeTextFile("Projects/Beta.md", "# Beta\n");
     const index = indexOf(["Projects/Alpha.md", "Projects/Beta.md"]);
     const generate = () => generateIndexForFolder({ adapter: files, queryService: index, folder: "Projects", heading: "Projects", subfoldersHeading: "Folders", skipBackup: true });
-    // A new overview starts with "\n" and without a mark, like everything Plainva creates.
+    // A new overview starts with "\n" and without a mark, like everything Alviss creates.
     await generate();
     const fresh = await files.readTextFile("Projects/index.md");
     expect(fresh.includes("\r")).toBe(false);

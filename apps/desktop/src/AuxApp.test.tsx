@@ -204,7 +204,7 @@ describe("what an auxiliary window starts with", () => {
 
   it("names itself from the requested content before the layout is seeded", async () => {
     // The title used to come from the active path alone, which only exists
-    // AFTER the seed. Every window therefore called itself "Plainva" for the
+    // AFTER the seed. Every window therefore called itself "Alviss" for the
     // first moments — harmless with one window, bad with the restore on start
     // (E5), where several come up at once and the taskbar shows a row of
     // identical entries that sort themselves out a beat later. The window
@@ -222,7 +222,7 @@ describe("what an auxiliary window starts with", () => {
     // seed runs, the one the production smoke caught.
     const bar = host.querySelector('[data-testid="titlebar"]');
     expect(bar?.textContent).toContain("Alpha.md");
-    expect(bar?.textContent).not.toContain("Plainva");
+    expect(bar?.textContent).not.toContain("Alviss");
   });
 });
 

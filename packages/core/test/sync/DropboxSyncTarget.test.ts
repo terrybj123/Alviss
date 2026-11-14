@@ -83,7 +83,7 @@ describe("DropboxAuth", () => {
 
 describe("httpHeaderSafeJson", () => {
   it("escapes non-ASCII characters for HTTP header transport", () => {
-    expect(httpHeaderSafeJson({ path: "/Plainva/über.md" })).toBe('{"path":"/Plainva/\\u00fcber.md"}');
+    expect(httpHeaderSafeJson({ path: "/Alviss/über.md" })).toBe('{"path":"/Alviss/\\u00fcber.md"}');
     expect(httpHeaderSafeJson({ path: "/plain/ascii.md" })).toBe('{"path":"/plain/ascii.md"}');
   });
 });
@@ -94,9 +94,9 @@ describe("DropboxSyncTarget", () => {
       if (url === `${API}/files/list_folder`) {
         return res({
           entries: [
-            { ".tag": "folder", name: "sub", path_display: "/Plainva/sub", path_lower: "/plainva/sub" },
-            { ".tag": "file", name: "a.md", path_display: "/Plainva/a.md", path_lower: "/plainva/a.md", content_hash: "h1", client_modified: "2025-05-01T08:00:00Z", server_modified: "2026-10-29T14:28:00Z" },
-            { ".tag": "file", name: "x.CONFLICT-1.md", path_display: "/Plainva/x.CONFLICT-1.md", path_lower: "/plainva/x.conflict-1.md", content_hash: "hc" },
+            { ".tag": "folder", name: "sub", path_display: "/Alviss/sub", path_lower: "/alviss/sub" },
+            { ".tag": "file", name: "a.md", path_display: "/Alviss/a.md", path_lower: "/alviss/a.md", content_hash: "h1", client_modified: "2025-05-01T08:00:00Z", server_modified: "2026-10-29T14:28:00Z" },
+            { ".tag": "file", name: "x.CONFLICT-1.md", path_display: "/Alviss/x.CONFLICT-1.md", path_lower: "/alviss/x.conflict-1.md", content_hash: "hc" },
           ],
           cursor: "cur-1",
           has_more: true,
@@ -106,8 +106,8 @@ describe("DropboxSyncTarget", () => {
         expect(JSON.parse(init.body).cursor).toBe("cur-1");
         return res({
           entries: [
-            { ".tag": "file", name: "b.md", path_display: "/Plainva/sub/b.md", path_lower: "/plainva/sub/b.md", content_hash: "h2", server_modified: "2026-01-02T00:00:00Z" },
-            { ".tag": "deleted", name: "gone.md", path_display: "/Plainva/gone.md", path_lower: "/plainva/gone.md" },
+            { ".tag": "file", name: "b.md", path_display: "/Alviss/sub/b.md", path_lower: "/alviss/sub/b.md", content_hash: "h2", server_modified: "2026-01-02T00:00:00Z" },
+            { ".tag": "deleted", name: "gone.md", path_display: "/Alviss/gone.md", path_lower: "/alviss/gone.md" },
           ],
           cursor: "cur-2",
           has_more: false,
@@ -130,7 +130,7 @@ describe("DropboxSyncTarget", () => {
     const listCall = calls(fetchFn)[0];
     const body = JSON.parse(listCall.init.body);
     expect(body).toEqual({
-      path: "/Plainva",
+      path: "/Alviss",
       recursive: true,
       include_deleted: false,
       include_non_downloadable_files: false,
@@ -144,7 +144,7 @@ describe("DropboxSyncTarget", () => {
         return res({ error_summary: "path/not_found/..", error: {} }, { status: 409 });
       }
       if (url === `${API}/files/create_folder_v2`) {
-        return res({ metadata: { name: "Plainva" } });
+        return res({ metadata: { name: "Alviss" } });
       }
       throw new Error(`unexpected url ${url}`);
     });
@@ -157,7 +157,7 @@ describe("DropboxSyncTarget", () => {
     const { target } = makeTarget(async (url: string, init: any) => {
       if (url === `${API}/files/list_folder/get_latest_cursor`) {
         expect(JSON.parse(init.body)).toEqual({
-          path: "/Plainva",
+          path: "/Alviss",
           recursive: true,
           include_deleted: false,
           include_non_downloadable_files: false,
@@ -175,9 +175,9 @@ describe("DropboxSyncTarget", () => {
         expect(JSON.parse(init.body).cursor).toBe("cur-now");
         return res({
           entries: [
-            { ".tag": "file", name: "a.md", path_display: "/Plainva/a.md", path_lower: "/plainva/a.md", content_hash: "h1b" },
-            { ".tag": "deleted", name: "gone.md", path_display: "/Plainva/gone.md", path_lower: "/plainva/gone.md" },
-            { ".tag": "folder", name: "sub", path_display: "/Plainva/sub", path_lower: "/plainva/sub" },
+            { ".tag": "file", name: "a.md", path_display: "/Alviss/a.md", path_lower: "/alviss/a.md", content_hash: "h1b" },
+            { ".tag": "deleted", name: "gone.md", path_display: "/Alviss/gone.md", path_lower: "/alviss/gone.md" },
+            { ".tag": "folder", name: "sub", path_display: "/Alviss/sub", path_lower: "/alviss/sub" },
           ],
           cursor: "cur-next",
           has_more: false,
@@ -209,7 +209,7 @@ describe("DropboxSyncTarget", () => {
     const bytes = new TextEncoder().encode("body");
     const { target, fetchFn } = makeTarget(async (url: string, init: any) => {
       const arg = JSON.parse(init.headers["Dropbox-API-Arg"]);
-      return arg.path === "/Plainva/a.md" ? res(bytes) : res({ error_summary: "path/not_found/." }, { status: 409 });
+      return arg.path === "/Alviss/a.md" ? res(bytes) : res({ error_summary: "path/not_found/." }, { status: 409 });
     });
     expect(await target.download("a.md")).toEqual(bytes);
     expect(await target.download("missing.md")).toBeNull();
@@ -234,7 +234,7 @@ describe("DropboxSyncTarget", () => {
     expect(call.url).toBe(`${CONTENT}/files/upload`);
     expect(call.init.headers["Dropbox-API-Arg"]).toContain("\\u00e4"); // header-safe umlaut
     const arg = JSON.parse(call.init.headers["Dropbox-API-Arg"]);
-    expect(arg).toEqual({ path: "/Plainva/notes/ä.md", mode: "overwrite", autorename: false, mute: true });
+    expect(arg).toEqual({ path: "/Alviss/notes/ä.md", mode: "overwrite", autorename: false, mute: true });
   });
 
   it("gives an upload the time the file was edited as client_modified, in whole seconds", async () => {
@@ -268,7 +268,7 @@ describe("DropboxSyncTarget", () => {
         if (url.endsWith("upload_session/finish")) {
           const arg = JSON.parse(init.headers["Dropbox-API-Arg"]);
           expect(arg.cursor).toEqual({ session_id: "sess-1", offset: 20 });
-          expect(arg.commit).toEqual({ path: "/Plainva/big.bin", mode: "overwrite", autorename: false, mute: true });
+          expect(arg.commit).toEqual({ path: "/Alviss/big.bin", mode: "overwrite", autorename: false, mute: true });
           expect(init.body.length).toBe(5);
           return res({ ".tag": "file", name: "big.bin", id: "id:big", content_hash: "h-big" });
         }
@@ -300,7 +300,7 @@ describe("DropboxSyncTarget", () => {
     await target.push({ id: 1, file_path: "dir", operation: "delete", retry_count: 0, next_retry_at: 0, queued_at: 0 });
     const call = calls(fetchFn)[0];
     expect(call.url).toBe(`${API}/files/delete_v2`);
-    expect(JSON.parse(call.init.body)).toEqual({ path: "/Plainva/dir" });
+    expect(JSON.parse(call.init.body)).toEqual({ path: "/Alviss/dir" });
   });
 
   it("renames via move_v2 and returns the new file metadata etag", async () => {
@@ -318,8 +318,8 @@ describe("DropboxSyncTarget", () => {
     });
     expect(result).toEqual({ etag: "h-moved", remoteId: "id:2" });
     expect(JSON.parse(calls(fetchFn)[0].init.body)).toEqual({
-      from_path: "/Plainva/old.md",
-      to_path: "/Plainva/sub/new.md",
+      from_path: "/Alviss/old.md",
+      to_path: "/Alviss/sub/new.md",
       autorename: false,
     });
   });
@@ -377,7 +377,7 @@ describe("DropboxSyncTarget.listFolders (settings picker, 2026-07-06)", () => {
       });
       return res({
         entries: [
-          { ".tag": "folder", name: "Plainva" },
+          { ".tag": "folder", name: "Alviss" },
           { ".tag": "file", name: "readme.txt" },
           { ".tag": "folder", name: "Fotos" },
         ],
@@ -387,7 +387,7 @@ describe("DropboxSyncTarget.listFolders (settings picker, 2026-07-06)", () => {
     });
 
     const names = await target.listFolders("");
-    expect(names).toEqual(["Archiv", "Fotos", "Plainva"]);
+    expect(names).toEqual(["Alviss", "Archiv", "Fotos"]);
     expect(calls(fetchFn)[1].url).toBe(`${API}/files/list_folder/continue`);
   });
 
@@ -428,7 +428,7 @@ describe("DropboxSyncTarget announcing a freshly created root folder", () => {
           ? res({ entries: [], has_more: false })
           : res({ error_summary: "path/not_found/" }, { status: 409 });
       }
-      if (u.includes("files/create_folder_v2")) return res({ metadata: { path_lower: "/plainva" } });
+      if (u.includes("files/create_folder_v2")) return res({ metadata: { path_lower: "/alviss" } });
       return res({});
     });
     const target = new DropboxSyncTarget(
@@ -443,7 +443,7 @@ describe("DropboxSyncTarget announcing a freshly created root folder", () => {
   it("reports the folder it had to create", async () => {
     const { target, created } = targetWithRoot(false);
     await target.pull();
-    expect(created).toEqual(["/Plainva"]);
+    expect(created).toEqual(["/Alviss"]);
   });
 
   it("stays quiet when the folder was already there", async () => {

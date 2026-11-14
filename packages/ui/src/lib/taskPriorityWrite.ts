@@ -9,7 +9,7 @@ import { priorityValue, resolveTaskPriorityModel, withPriorityColumn } from "./t
  *
  * A database made before priorities existed has no column for them. It gets one
  * the first time somebody SETS a priority — an explicit act — and never as a
- * side effect of opening a view: Plainva does not rewrite a `.base` it was only
+ * side effect of opening a view: Alviss does not rewrite a `.base` it was only
  * asked to read. Clearing a priority in a database without the column is a
  * no-op for the same reason.
  */

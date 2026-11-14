@@ -7,7 +7,7 @@ import { applySieve, buildRulesSection, buildVacationBody, type MailRule } from 
  * The properties worth pinning are the ones where a wrong answer costs mail: a
  * rule that cannot be expressed must stay local rather than be uploaded and
  * rejected, a glob metacharacter in a search value must not become a wildcard,
- * and — the reason this step exists — the two halves of Plainva's section must
+ * and — the reason this step exists — the two halves of Alviss's section must
  * not delete each other.
  */
 
@@ -151,7 +151,7 @@ describe("the one section both features share", () => {
     expect(script).toContain(own);
   });
 
-  it("refuses to write when the markers are in a state Plainva did not produce", () => {
+  it("refuses to write when the markers are in a state Alviss did not produce", () => {
     const broken = "# --- BEGIN PLAINVA (do not edit this section) ---\nvacation \"x\";";
     expect(applySieve(broken, { vacationBody: null, rulesBody: "x", extensions: [] })).toBeNull();
   });

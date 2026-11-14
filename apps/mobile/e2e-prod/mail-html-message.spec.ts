@@ -8,7 +8,7 @@ import { readVaultFile, waitForVaultDirectory, type MobileTestGlobals } from "./
  * 2026-10-09).
  *
  * That is every message of a Microsoft mailbox: Graph hands a body over as
- * HTML unless the request asks for text, and Plainva does not ask. The reply's
+ * HTML unless the request asks for text, and Alviss does not ask. The reply's
  * quote and the filed note read the text part alone — so the reply quoted
  * nothing and the note was properties and a heading. The fixture's own three
  * messages come with `contentType: "text"`, which a real mailbox does not send,

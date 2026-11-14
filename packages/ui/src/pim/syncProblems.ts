@@ -40,7 +40,7 @@ export const TASK_NOTE_PROBLEM_PREFIX = "plainva:task-note:";
  * words — shortened and without the path of any address, never withheld. */
 export function syncProblemReason(problem: PimSyncProblem, t: Translate): string {
   if (problem.signIn) return t("pim.problemSignIn");
-  // What the task reconciler could not carry into the notes (B2): Plainva's
+  // What the task reconciler could not carry into the notes (B2): Alviss's
   // own reason, said in the reader's language.
   if (problem.error.startsWith(TASK_NOTE_PROBLEM_PREFIX)) {
     const code = problem.error.slice(TASK_NOTE_PROBLEM_PREFIX.length);

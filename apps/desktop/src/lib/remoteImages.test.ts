@@ -7,7 +7,7 @@ import { buildEmailNoteContent, buildReplyNoteContent, type MailMessage } from "
  * A picture from the web in a message's text, filed into a note (open-items
  * plan 3.79, decision E1). The editor and the reading view load a picture a
  * note embeds from the web (`apps/desktop/e2e/parse-budget.spec.ts`), so a
- * sender could see each opening of the filed note. The text Plainva writes
+ * sender could see each opening of the filed note. The text Alviss writes
  * from a message makes such a picture a link; everything else stays.
  */
 
@@ -95,7 +95,7 @@ const MESSAGE: MailMessage = {
   attachments: [],
 };
 
-describe("the notes Plainva writes from a message", () => {
+describe("the notes Alviss writes from a message", () => {
   it("files a mail with its pictures from the web as links", () => {
     const note = buildEmailNoteContent(MESSAGE, "acc", "INBOX", "2026-10-01");
     expect(note).toContain("Hello,\n\n[https://tracker.example.org/open.png?id=42](https://tracker.example.org/open.png?id=42)\n\n- one\n- [logo](https://tracker.example.org/logo.png)\n");

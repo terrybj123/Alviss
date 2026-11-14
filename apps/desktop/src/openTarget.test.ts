@@ -21,7 +21,7 @@ describe("resolveOpenAction", () => {
     expect(resolveOpenAction("Tasks.BASE")).toBe("base");
   });
 
-  it("sends images to Plainva's own viewer", () => {
+  it("sends images to Alviss's own viewer", () => {
     for (const p of ["a.png", "a.jpg", "a.jpeg", "a.gif", "a.webp", "a.svg", "a.bmp", "a.avif"]) {
       expect(resolveOpenAction(`Attachments/${p}`)).toBe("image");
     }
@@ -39,7 +39,7 @@ describe("resolveOpenAction", () => {
    * open as a note buffer by accident, then went to the OS while the question
    * was open; now they are a named list with a named home.
    */
-  it("opens known text files in Plainva", () => {
+  it("opens known text files in Alviss", () => {
     for (const p of ["data.csv", "notes.txt", "config.json", "feed.xml", "run.sh", "main.py", "app.ts"]) {
       expect(resolveOpenAction(p)).toBe("text");
       expect(opensExternally(p)).toBe(false);
@@ -226,7 +226,7 @@ describe("resolveOpenAction", () => {
 });
 
 describe("comparesAsText", () => {
-  it("lays a file out as text where Plainva opens it as text or the sync merges it as text — an image as an image", () => {
+  it("lays a file out as text where Alviss opens it as text or the sync merges it as text — an image as an image", () => {
     for (const p of ["Notes/Plan.md", "Tasks.base", "script.py", "data.csv", "board.canvas", "page.html", "notes.org", "x.gitignore"]) {
       expect(comparesAsText(p), p).toBe(true);
     }

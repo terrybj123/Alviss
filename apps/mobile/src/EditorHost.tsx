@@ -148,7 +148,7 @@ export function EditorHost({
    */
   onFindPanelChange?: (open: boolean) => void;
   /**
-   * The file under this editor is gone — moved or deleted outside Plainva, or
+   * The file under this editor is gone — moved or deleted outside Alviss, or
    * by sync, while the note was open (issue 110, E9). The screen looks for it.
    */
   onVanished?: () => void;
@@ -1242,7 +1242,7 @@ export function EditorHost({
         title: stem,
         now: new Date(),
         folder: path.split("/").slice(0, -1).join("/"),
-        vaultName: (await getActiveVaultEntry()).name || "Plainva",
+        vaultName: (await getActiveVaultEntry()).name || "Alviss",
         hostPath: path,
       });
       if (!answered) return; // cancelled → nothing is inserted

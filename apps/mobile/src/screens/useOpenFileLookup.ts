@@ -11,7 +11,7 @@ export interface OpenFileLookupOptions {
    * then stays and offers the file.
    */
   carry?(to: string): Promise<boolean>;
-  /** Puts the screen on the file's new path — the same the rename in Plainva does. */
+  /** Puts the screen on the file's new path — the same the rename in Alviss does. */
   onRenamed?(to: string): void;
 }
 
@@ -28,7 +28,7 @@ export function useOpenFileLookup(vault: MobileVault, path: string, opts: OpenFi
   const missing = useMissingFile(path, {
     deps: vault.indexer && vault.db ? { exists: (p) => vault.adapter.exists(p), db: vault.db, indexer: vault.indexer } : null,
     scope: vault.vaultId,
-    // What a move made in Plainva carries along — bookmarks, pinboard places,
+    // What a move made in Alviss carries along — bookmarks, pinboard places,
     // the file operation — for a move made elsewhere. Links in other notes
     // stay as they are.
     adopt: async (from, to) => {

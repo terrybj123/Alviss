@@ -37,13 +37,13 @@ describe("attachments in the navigator", () => {
   });
 
   it("opens an image itself and hands everything else to the system", () => {
-    // A row that does nothing is worse than one that opens the OS — Plainva
+    // A row that does nothing is worse than one that opens the OS — Alviss
     // has no viewer for a PDF and should not pretend otherwise.
     expect(open).toContain("if (isImage) openImage(path)");
     expect(open).toContain("shareVaultFile");
   });
 
-  it("opens a text file from the list in Plainva, as from everywhere else", () => {
+  it("opens a text file from the list in Alviss, as from everywhere else", () => {
     // The shared rule calls a `.csv` a text file, and a link, a bookmark or a
     // search hit opened it in the editor — while this list handed the same
     // file to the share sheet (finding 2026-10-08). One file, one answer: the

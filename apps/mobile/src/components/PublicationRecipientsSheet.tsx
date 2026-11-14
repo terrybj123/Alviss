@@ -103,7 +103,7 @@ export function PublicationRecipientsSheet({
                 />
                 <p className="m-onramp-sub">
                   {t("workspaceSecurity.inviteQrCaption", {
-                    defaultValue: "Or scan this code with the Plainva app on your other device",
+                    defaultValue: "Or scan this code with the Alviss app on your other device",
                   })}
                 </p>
               </div>

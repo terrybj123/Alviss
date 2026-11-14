@@ -12,7 +12,7 @@ import { buildTemplateNoteContent, interpolateNote, interpolateScaffoldDates } f
  * of the templates - in any of the app's languages - writes at its path; a
  * template's dates are those of the day it was created, which an untouched
  * file still carries as its modification day. A generated listing counts
- * while it carries Plainva's marker, at the root or in a template's folder.
+ * while it carries Alviss's marker, at the root or in a template's folder.
  */
 export interface StarterRecognitionAdapter {
   listDir(path?: string, recursive?: boolean): Promise<VaultFileInfo[]>;

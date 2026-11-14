@@ -9,7 +9,7 @@ import { parseUnifiedId } from "./unified";
  *
  * There is no snooze in IMAP and none in Microsoft Graph. What every client
  * calls "snooze" is a client-side marker, and the honest consequence is that it
- * lives where Plainva's other per-vault preferences live: in the profile, so a
+ * lives where Alviss's other per-vault preferences live: in the profile, so a
  * message put aside on the phone also rests on the desktop. A marker in local
  * storage would let the same message come back on one device and stay hidden on
  * the other — two truths about one mail.

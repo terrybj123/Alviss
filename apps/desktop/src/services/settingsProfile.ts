@@ -1124,7 +1124,7 @@ function reportProfileLocked(vaultPath: string): void {
  * Records that something old was seen — and says so on screen only when the
  * claim is actually true (P7, E4).
  *
- * The old text told the user "an older Plainva version is still publishing
+ * The old text told the user "an older Alviss version is still publishing
  * retired account data" for THREE different findings, one of which was this
  * device's OWN profile file missing the current capability stamp. Nobody is
  * publishing there; the file simply predates the stamp. Accusing an absent

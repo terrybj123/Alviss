@@ -39,7 +39,7 @@ export async function overviewState(v: MobileVault, folder: string): Promise<Fol
  */
 export async function writeOverview(v: MobileVault, folder: string): Promise<{ path: string; entries: number; overwrote: boolean }> {
   if (!v.queryService) throw new Error("no index");
-  const heading = folder === "" ? (await getActiveVaultEntry()).name || "Plainva" : folder.split("/").pop()!;
+  const heading = folder === "" ? (await getActiveVaultEntry()).name || "Alviss" : folder.split("/").pop()!;
   const result = await generateIndexForFolder({
     adapter: v.files,
     queryService: v.queryService,

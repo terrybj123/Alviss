@@ -6,7 +6,7 @@ import { ICON } from "@plainva/ui";
  * The ONE mark of a choice on the phone (findings 2026-09-22 and 2026-09-24,
  * E20/E21).
  *
- * Round is one, square is several — the distinction Plainva already makes
+ * Round is one, square is several — the distinction Alviss already makes
  * between an option and a checkbox, and the one the eye reads before the first
  * tap. The multiple choice used to wear the round slot too, so "only these
  * calendars" looked like a list that would take one answer; a relation that

@@ -12,5 +12,5 @@ export async function mobilePersonalDesignForEditor(): Promise<PersonalDesignSyn
   const { loadMobileWorkspaceRuntime, getMobileWorkspaceStatus } = await import("./mobileWorkspaceSecurity");
   const runtime = await loadMobileWorkspaceRuntime(vault.id);
   if (!runtime && await getMobileWorkspaceStatus(vault.id)) throw new Error("workspace-locked");
-  return mobilePersonalDesign(vault.id, runtime?.memberId ?? null, vault.name || "Plainva");
+  return mobilePersonalDesign(vault.id, runtime?.memberId ?? null, vault.name || "Alviss");
 }

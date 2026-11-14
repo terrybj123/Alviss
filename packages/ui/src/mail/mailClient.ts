@@ -278,7 +278,7 @@ export async function getVacation(vaultPath: string, account: MailAccountConfig)
   return readVacation(vaultPath, account, c);
 }
 
-/** Returns false when the script must not be touched (a section Plainva did
+/** Returns false when the script must not be touched (a section Alviss did
  * not write and cannot parse) — the caller reports that instead of a success. */
 export async function setVacation(vaultPath: string, account: MailAccountConfig, settings: VacationSettings): Promise<boolean> {
   const support = vacationSupport(account);
@@ -300,7 +300,7 @@ export async function setMailRules(
   mailboxes?: RuleMailboxes
 ): Promise<SieveWriteResult> {
   // Microsoft carries its own rule store; there is no script and nothing of
-  // anyone else's to damage beyond the rules Plainva itself named.
+  // anyone else's to damage beyond the rules Alviss itself named.
   if (mailAccountKind(account) === "microsoft") return graphSetRules(vaultPath, account, rules, mailboxes);
 
   const support = vacationSupport(account);

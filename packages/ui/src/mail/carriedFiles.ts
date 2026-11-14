@@ -28,7 +28,7 @@ import type { AttachmentFetchFailure, AttachmentFetchResult, MailAttachmentInfo,
  */
 
 /**
- * What Plainva loads for a forward ON ITS OWN, per message, in bytes.
+ * What Alviss loads for a forward ON ITS OWN, per message, in bytes.
  *
  * A file a person attaches by hand is their decision; a forward attaches
  * whatever the original happened to carry, and that may be a video. 18 MB of
@@ -279,7 +279,7 @@ export function base64Size(contentBase64: string): number {
 }
 
 export interface AttachmentLimits {
-  /** The largest single file the sending mailbox takes; null = no bound of Plainva's. */
+  /** The largest single file the sending mailbox takes; null = no bound of Alviss's. */
   perFile: number | null;
   /** How much a forward loads on its own, for the whole message. */
   carriedTotal: number;
@@ -295,7 +295,7 @@ export interface AttachmentLimits {
  * composer had closed.
  *
  * Over IMAP/SMTP the provider sets the bound and only says so by refusing, so
- * Plainva sets none for a file a person chose. What a forward loads on its own
+ * Alviss sets none for a file a person chose. What a forward loads on its own
  * is bounded for every mailbox (`CARRIED_TOTAL_LIMIT`).
  */
 export function attachmentLimits(account: MailAccountConfig | null | undefined): AttachmentLimits {
@@ -346,7 +346,7 @@ function sizeOf(file: CarriedFile): number {
  * sender changes and it fits after all, it is.
  *
  * The other files are a person's own: only the mailbox's bound per file
- * applies to them, never Plainva's.
+ * applies to them, never Alviss's.
  */
 export function planFiles(carried: readonly CarriedFile[], others: readonly MailAttachment[], limits: AttachmentLimits): FilePlan {
   const rows: CarriedRow[] = [];

@@ -9,7 +9,7 @@ import { GOOGLE_PHONE_CLIENT_ANCHOR, setPlatformServices } from "@plainva/ui";
  * The phone's editor of its own Google client (issue 142).
  *
  * A Desktop-type client fails on the phone with redirect_uri_mismatch on
- * Google's own error page — Plainva never hears of it. So the editor says it in
+ * Google's own error page — Alviss never hears of it. So the editor says it in
  * advance: the type the phone needs, what the error means, and a link to the
  * guide's section on the iOS client (the desktop's side:
  * apps/desktop/src/googleClientType.test.tsx). When the answer does reach the
@@ -63,7 +63,7 @@ describe("the phone's own Google client", () => {
       const link = container.querySelector<HTMLButtonElement>('[data-testid="oauth-access-google-guide"]');
       expect(link?.textContent).toBe(i18n.t("cloudAccounts.providerHelp", { provider: "Google" }));
       await act(async () => { link!.click(); });
-      expect(opened).toEqual([`https://plainva.com/docs/google-drive-byo-guide#${GOOGLE_PHONE_CLIENT_ANCHOR}`]);
+      expect(opened).toEqual([`https://github.com/terrybj123/Alviss/blob/main/docs/user/en/Google_Drive_BYO_Guide.md#${GOOGLE_PHONE_CLIENT_ANCHOR}`]);
     });
   }
 
@@ -75,7 +75,7 @@ describe("the phone's own Google client", () => {
     expect(action?.label).toBe(i18n.t("cloudAccounts.providerHelp", { provider: "Google" }));
     action!.run();
     await act(async () => {});
-    expect(opened).toEqual([`https://plainva.com/docs/google-drive-byo-guide#${GOOGLE_PHONE_CLIENT_ANCHOR}`]);
+    expect(opened).toEqual([`https://github.com/terrybj123/Alviss/blob/main/docs/user/en/Google_Drive_BYO_Guide.md#${GOOGLE_PHONE_CLIENT_ANCHOR}`]);
     // Any other failure keeps its sentence and gets no button.
     expect(connectionFailureToast(new Error("access_denied"))).toHaveLength(1);
   });

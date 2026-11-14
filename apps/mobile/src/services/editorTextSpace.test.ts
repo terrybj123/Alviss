@@ -255,7 +255,7 @@ describe("the phone writes a file back in its shape", () => {
     note.type("one\ntwo!\n");
     await phone.noteSaver.flushAll();
     expect(await rawBytes("Unix.md")).toEqual(utf8("one\ntwo!\n"));
-    // A note Plainva has just created: one line, nothing to count yet.
+    // A note Alviss has just created: one line, nothing to count yet.
     await raw.writeTextFile("New.md", "# New");
     const fresh = await open("New.md");
     fresh.type("# New\n\nFirst line.\n");

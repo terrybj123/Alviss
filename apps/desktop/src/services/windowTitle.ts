@@ -6,7 +6,7 @@ import { useVaultLabels, vaultFolderLabel } from "./vaultNames";
  *
  * With one vault open, a window is named after what it SHOWS — the note, the
  * view, or plainly the app. With two, that is no longer enough to tell the
- * entries apart: two windows called "Tasks — Plainva" in the taskbar belong to
+ * entries apart: two windows called "Tasks — Alviss" in the taskbar belong to
  * two different vaults, and nothing on the button says which. So the vault
  * joins the name, but only then — appending it always would put a folder name
  * in front of every user who never opens a second vault.
@@ -19,7 +19,7 @@ export function composeWindowTitle(opts: {
   subject?: string | null;
   vaultPath?: string | null;
   /**
-   * What the vault is called in Plainva (`vaultNames.ts`): its own name where
+   * What the vault is called in Alviss (`vaultNames.ts`): its own name where
    * it has one, else its folder's. Without it the folder's name stands.
    */
   vaultName?: string | null;
@@ -28,11 +28,11 @@ export function composeWindowTitle(opts: {
 }): string {
   const vault = opts.vaultPath ? (opts.vaultName?.trim() || vaultFolderLabel(opts.vaultPath)) : null;
   const subject = opts.subject?.trim() || null;
-  const lead = subject ?? vault ?? "Plainva";
+  const lead = subject ?? vault ?? "Alviss";
   // The vault is already the lead when there is no subject: repeating it would
-  // read "Notes — Notes — Plainva".
+  // read "Notes — Notes — Alviss".
   const withVault = opts.vaultCount >= 2 && vault && subject ? `${lead} — ${vault}` : lead;
-  return withVault === "Plainva" ? "Plainva" : `${withVault} — Plainva`;
+  return withVault === "Alviss" ? "Alviss" : `${withVault} — Alviss`;
 }
 
 /**
@@ -55,7 +55,7 @@ export function useOsWindowTitle(title: string | null): void {
 
 /**
  * Names the OS window after `composeWindowTitle`, with the vault under the
- * name it has in Plainva (Sammelplan § 3.171 Nr. 4). The title read the
+ * name it has in Alviss (Sammelplan § 3.171 Nr. 4). The title read the
  * folder's name, so a vault renamed in the settings kept its old name in the
  * title bar and the taskbar. It follows a rename at once, in this window and -
  * through the settings broadcast (`appearanceSync.ts`) - in every other one.

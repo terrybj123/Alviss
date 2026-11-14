@@ -6,7 +6,7 @@ import { setPlatformServices } from "@plainva/ui";
  * The out-of-office notice (S13).
  *
  * One rule decides whether this feature is honest: it is offered ONLY where it
- * survives the machine being switched off. A switch that needs Plainva running
+ * survives the machine being switched off. A switch that needs Alviss running
  * is a promise that breaks when someone closes the lid — so an account with
  * neither Sieve nor Graph must not get one.
  */
@@ -47,7 +47,7 @@ describe("writing it", () => {
     sievePut: vi.fn(async (_creds: unknown, _args: { host: string; port: number; name: string; body: string }) => {}),
   };
 
-  // Writing the notice now renders the WHOLE Plainva section (S15), so it has
+  // Writing the notice now renders the WHOLE Alviss section (S15), so it has
   // to read the rules — which means this path needs a settings store.
   const store = new Map<string, unknown>();
 
@@ -88,7 +88,7 @@ describe("writing it", () => {
   });
 
   it("writes NOTHING into a script it cannot parse", async () => {
-    // An unterminated marker means the file is in a state Plainva did not
+    // An unterminated marker means the file is in a state Alviss did not
     // produce. Overwriting it would eat whatever follows.
     transport.sieveGet.mockImplementation(async () => ({ name: "work", body: "# --- BEGIN PLAINVA (do not edit this section) ---\nvacation \"x\";" }));
     expect(await writeVacation("/v", imap({ sieveHost: "s.example.org" }), creds, { enabled: true, message: "weg" })).toBe(false);

@@ -381,9 +381,9 @@ export function BrowseScreen({
       {/* Attachments (S42). They were in the vault, synced and backed up, and
           no screen admitted they existed — a photo inserted into a note simply
           vanished from view. An image opens in the viewer; everything else is
-          handed to the system, which knows what a PDF is and Plainva does not.
+          handed to the system, which knows what a PDF is and Alviss does not.
           A text file is the one kind of row here that is neither (C15, finding
-          2026-10-08): the shared rule says it opens inside Plainva, and from a
+          2026-10-08): the shared rule says it opens inside Alviss, and from a
           link, a bookmark or the search it did — only this list sent the same
           `.csv` to the share sheet. */}
       {shown.attachments.map((a) => (

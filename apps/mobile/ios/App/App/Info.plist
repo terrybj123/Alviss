@@ -40,30 +40,30 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>Plainva connects to the mail server you configure. If that server runs on your local network, iOS asks for this permission.</string>
+	<string>Alviss connects to the mail server you configure. If that server runs on your local network, iOS asks for this permission.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Plainva uses the camera so you can take a photo and add it to a note.</string>
+	<string>Alviss uses the camera so you can take a photo and add it to a note.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Plainva records a voice memo only when you start one. The recording stays as a file in your vault; it is not sent anywhere.</string>
+	<string>Alviss records a voice memo only when you start one. The recording stays as a file in your vault; it is not sent anywhere.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Plainva asks for your position only when you press the place button while writing a journal entry. The coordinates are written into that entry and nowhere else; nothing is tracked and nothing is sent anywhere.</string>
+	<string>Alviss asks for your position only when you press the place button while writing a journal entry. The coordinates are written into that entry and nowhere else; nothing is tracked and nothing is sent anywhere.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Plainva never asks for your position in the background and never tracks you. It asks only while you are using the app, when you press the place button in a journal entry, and the coordinates go into that entry and nowhere else.</string>
+	<string>Alviss never asks for your position in the background and never tracks you. It asks only while you are using the app, when you press the place button in a journal entry, and the coordinates go into that entry and nowhere else.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Plainva accesses your photo library so you can add a picture to a note.</string>
+	<string>Alviss accesses your photo library so you can add a picture to a note.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Plainva can save a photo when you add it to a note.</string>
+	<string>Alviss can save a photo when you add it to a note.</string>
 	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>Plainva shows the calendars of this device next to your notes and creates the events you add from a note. Full access is needed to read and write them.</string>
+	<string>Alviss shows the calendars of this device next to your notes and creates the events you add from a note. Full access is needed to read and write them.</string>
 	<key>NSRemindersFullAccessUsageDescription</key>
-	<string>Plainva shows your reminder lists as task lists next to your notes and checks off or creates reminders from there.</string>
+	<string>Alviss shows your reminder lists as task lists next to your notes and checks off or creates reminders from there.</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Plainva shows the calendars of this device next to your notes and creates the events you add from a note.</string>
+	<string>Alviss shows the calendars of this device next to your notes and creates the events you add from a note.</string>
 	<key>NSRemindersUsageDescription</key>
-	<string>Plainva shows your reminder lists as task lists next to your notes and checks off or creates reminders from there.</string>
-	<key>PlainvaAppGroup</key>
+	<string>Alviss shows your reminder lists as task lists next to your notes and checks off or creates reminders from there.</string>
+	<key>AlvissAppGroup</key>
 	<string>$(PLAINVA_APP_GROUP)</string>
-	<key>PlainvaURLScheme</key>
+	<key>AlvissURLScheme</key>
 	<string>$(PLAINVA_BUNDLE_BASE)</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>

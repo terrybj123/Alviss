@@ -3,7 +3,7 @@
  *
  * Comments live beside the note, never inside it - that is what keeps "a note
  * is an ordinary Markdown file" true (plan section 4). An EXPORT is the one
- * place where the opposite is right: the file leaves Plainva, nobody is going
+ * place where the opposite is right: the file leaves Alviss, nobody is going
  * to edit it here again, and the reader has no way to see the annotations
  * unless they travel in the text.
  *
@@ -23,7 +23,7 @@
  * the same rule the vault-wide overview uses (D9).
  *
  * The invisible anchor markers are stripped in every mode, including `plain`.
- * They are Plainva bookkeeping, and the exported file is a copy for somebody
+ * They are Alviss bookkeeping, and the exported file is a copy for somebody
  * else - a note without comments never had one, so nothing changes for anyone
  * who does not use them.
  */
@@ -209,7 +209,7 @@ export function hasOpenAnnotations(
 }
 
 /**
- * Builds the file that leaves Plainva.
+ * Builds the file that leaves Alviss.
  *
  * The threads are built with a null member id on purpose: a mention highlights
  * a thread for the person reading the app, and nothing about who exported the

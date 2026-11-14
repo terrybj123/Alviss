@@ -66,7 +66,7 @@ export function wikiQueryBefore(context: CompletionContext): { from: number; to:
 //
 // Attachments are offered too since issue #56, but SECOND (E4): notes keep the
 // top of the list without a heading, attachments follow under one. A link to a
-// PDF is a normal thing to want — and Plainva already resolves `[[Report.pdf]]`
+// PDF is a normal thing to want — and Alviss already resolves `[[Report.pdf]]`
 // and renders it as a working link, so the app was producing references it
 // would not help you write.
 export function wikiLinkCompletionSource(deps: EditorTriggerDeps) {

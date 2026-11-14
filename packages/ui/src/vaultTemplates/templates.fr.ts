@@ -18,7 +18,7 @@ import { buildJournal, type JournalStrings } from "./journalTemplate";
  * here so the databases show real data as soon as the vault is indexed. */
 
 // ---------------------------------------------------------------------------
-// Plainva Tour — shared structure (plainvaTour.ts), French strings.
+// Alviss Tour — shared structure (plainvaTour.ts), French strings.
 // ---------------------------------------------------------------------------
 
 const CHEAT_SHEET_FR = `Tout ce qui suit est du Markdown pur. Basculez entre lecture et édition avec la barre d'outils — l'éditeur n'affiche les marques de mise en forme qu'à l'endroit où se trouve votre curseur.
@@ -68,8 +68,8 @@ Les notes de bas de page fonctionnent aussi.[^1]
 `;
 
 const TOUR_STRINGS_FR: TourStrings = {
-  name: "Tour Plainva",
-  description: "Un vault guidé : tableau d'affichage, notes quotidiennes, domaines, projets et tâches — toutes les vues offertes par Plainva, remplies d'exemples.",
+  name: "Tour Alviss",
+  description: "Un vault guidé : tableau d'affichage, notes quotidiennes, domaines, projets et tâches — toutes les vues offertes par Alviss, remplies d'exemples.",
   folders: {
     quickNotes: "Notes rapides",
     journal: "Journal",
@@ -94,7 +94,7 @@ const TOUR_STRINGS_FR: TourStrings = {
   },
   welcome: {
     file: "Bienvenue.md",
-    title: "Bienvenue dans Plainva",
+    title: "Bienvenue dans Alviss",
     intro: "Ce vault est une visite guidée. Chaque dossier ci-dessous est rempli d'exemples, et chaque base de données montre une vue différente — ouvrez-les et modifiez-les : rien ici n'est précieux.",
     outro: "Tout ce que vous voyez est du Markdown pur dans ce dossier. Supprimez ce dont vous n'avez pas besoin, renommez le reste, et le vault est à vous.",
   },
@@ -184,9 +184,9 @@ const TOUR_STRINGS_FR: TourStrings = {
     ],
     resources: [
       { title: "Aide-mémoire Markdown", body: CHEAT_SHEET_FR, props: { genre: "Référence", status: "Consulté", cover: "Pièces jointes/cover.svg" } },
-      { title: "Manuel Plainva", body: "Le guide complet se trouve sur plainva.com/docs.", props: { genre: "Référence", url: "https://plainva.com/docs", status: "Nouveau" } },
+      { title: "Manuel Alviss", body: "Le guide complet se trouve sur plainva.com/docs.", props: { genre: "Référence", url: "https://plainva.com/docs", status: "Nouveau" } },
       { title: "Deep work", body: "Cal Newport. Le chapitre sur la planification est le plus utile.", props: { genre: "Livre", status: "Nouveau", domaine: "[[Apprentissage]]" } },
-      { title: "Raccourcis clavier", body: "Appuyez sur `F1` dans Plainva — vous pouvez chercher dans la liste.", props: { genre: "Référence", status: "Consulté", domaine: "[[Apprentissage]]" } },
+      { title: "Raccourcis clavier", body: "Appuyez sur `F1` dans Alviss — vous pouvez chercher dans la liste.", props: { genre: "Référence", status: "Consulté", domaine: "[[Apprentissage]]" } },
     ],
     archive: [
       { title: "Ancien site web", body: "Remplacé par [[Refonte du site web]]. Conservé pour les textes.", props: { cloture: "{{today-20}}" } },
@@ -277,7 +277,7 @@ const PARA_STRINGS_FR: ParaStrings = {
       },
       {
         title: "Valider le plan avec l'équipe",
-        body: "Faites glisser la carte vers une autre colonne du tableau : Plainva écrit le nouveau statut dans la note.",
+        body: "Faites glisser la carte vers une autre colonne du tableau : Alviss écrit le nouveau statut dans la note.",
         props: { status: "En cours", projet: "[[Déménagement vers le nouveau bureau]]", echeance: "{{today+7}}" },
       },
       {
@@ -400,7 +400,7 @@ const GTD_STRINGS_FR: GtdStrings = {
       },
       {
         title: "Examiner le devis du menuisier",
-        body: "Faites glisser la carte vers une autre colonne du tableau : Plainva écrit le nouveau statut dans la note.",
+        body: "Faites glisser la carte vers une autre colonne du tableau : Alviss écrit le nouveau statut dans la note.",
         props: { status: "Suivante", contexte: "@Travail", projet: "[[Rénover la cuisine]]", echeance: "{{today+5}}" },
       },
       {

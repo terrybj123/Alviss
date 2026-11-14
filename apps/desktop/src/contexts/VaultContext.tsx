@@ -514,7 +514,7 @@ export const SHOW_COMPATIBILITY_WARNING_KEY = "showCompatibilityWarning";
  */
 export const AUTO_OPEN_LAST_VAULT_KEY = "autoOpenLastVault";
 
-/** OKF write rule: every file Plainva creates gets at least `type` (the bundle's
+/** OKF write rule: every file Alviss creates gets at least `type` (the bundle's
  * `okf_version` lives in the root index.md only — OKF v0.2, E1 2026-08-20). */
 export const defaultNoteTypeKey = (vaultPath: string) => `defaultNoteType_${btoa(unescape(encodeURIComponent(vaultPath)))}`;
 export const dailyNoteTypeKey = (vaultPath: string) => `dailyNoteType_${btoa(unescape(encodeURIComponent(vaultPath)))}`;
@@ -965,7 +965,7 @@ export const VaultProvider: React.FC<{
       // Changes are queued for a vault with a provider even while its files stand still (review finding 4).
       const queuesChanges = queuesLocalChanges(fileAccess);
 
-      // Files created/modified outside Plainva's own write path (another editor, the OS)
+      // Files created/modified outside Alviss's own write path (another editor, the OS)
       // are indexed but were never enqueued. Push them when this vault has a sync target.
       const enqueueLocalChange = async (changedPath: string) => {
         if (!queuesChanges || changedPath.includes(".plainva") || changedPath.includes(".CONFLICT")) return;
@@ -1022,7 +1022,7 @@ export const VaultProvider: React.FC<{
         },
         onLocalFileDeleted: (path, row) => {
           // An editor that shows this file learns that it vanished (issue 110,
-          // E9) — moved or deleted outside Plainva while open. It looks for
+          // E9) — moved or deleted outside Alviss while open. It looks for
           // the file; the owner bridge carries the event to other windows.
           if (!path.includes(".plainva")) window.dispatchEvent(new CustomEvent("plainva-external-update", { detail: { path } }));
           if (path.includes(".plainva") || path.includes(".CONFLICT")) return;
@@ -1356,7 +1356,7 @@ export const VaultProvider: React.FC<{
           driveTarget.onRootFolderCreated = (name) => reportRootFolderCreated(name);
           driveTarget.allowRootCreation = !hasSyncedBefore;
           // Resolved by name because no id is stored yet — the affected vault of
-          // 2026-09-20 had neither name nor id and looked "Plainva" up on every
+          // 2026-09-20 had neither name nor id and looked "Alviss" up on every
           // start. The id is stored once a full listing of this folder has held.
           if (!driveDestination.id) driveTarget.onRootFolderResolved = (info) => { resolvedDriveRoot = { id: info.id, path: info.path }; };
           target = driveTarget;
@@ -1692,7 +1692,7 @@ export const VaultProvider: React.FC<{
             syncWorker.onMassDeletionPending = ({ pendingDeletes, syncedTotal }) => {
               // The push-side mass-deletion guard tripped: a large share of the
               // synced files is queued for REMOTE deletion (typically the local
-              // vault folder was emptied or moved while Plainva knew the vault).
+              // vault folder was emptied or moved while Alviss knew the vault).
               // Never execute that silently — ask. Cancel/Escape takes the safe
               // branch: the deletes are discarded and the files restored from the
               // remote on the next cycle.
@@ -2198,7 +2198,7 @@ export const VaultProvider: React.FC<{
         console.error("[VaultContext] vault watcher failed to start", err);
         toast.warning(
           i18n.t("refresh.watcherFailed", {
-            defaultValue: "Externe Änderungen werden nicht mehr sofort erkannt. Plainva gleicht jetzt regelmäßig ab — F5 liest sofort neu ein.",
+            defaultValue: "Externe Änderungen werden nicht mehr sofort erkannt. Alviss gleicht jetzt regelmäßig ab — F5 liest sofort neu ein.",
           })
         );
         setState(s => ({ ...s, error: `Watcher error: ${err.message || String(err)}` }));
@@ -2521,7 +2521,7 @@ export const VaultProvider: React.FC<{
    * Reconcile ONE folder subtree — the fast path when the vault has 20.000
    * files. Through the core's reconcileFolder (issue 110, E8): walking the
    * folder and indexing each entry only ever saw what IS there, so a file
-   * moved away outside Plainva stayed in the tree after "refresh folder".
+   * moved away outside Alviss stayed in the tree after "refresh folder".
    */
   const refreshFolder = async (folderPath: string) => {
     const indexer = state.indexer;
@@ -3077,7 +3077,7 @@ export const VaultProvider: React.FC<{
    *
    * What stays behind, deliberately: the publication's own `.pvws/` objects.
    * The store is put-only; there is no delete. The provider-side share is not
-   * touched either - Plainva does not manage other systems' ACLs, and pretending
+   * touched either - Alviss does not manage other systems' ACLs, and pretending
    * to would be worse than saying so. The surface tells the publisher to remove
    * the share themselves, and that instruction is the last step of this flow,
    * not a footnote under it.

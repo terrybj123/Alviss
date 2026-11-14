@@ -126,7 +126,7 @@ function fullProfile(): Record<string, unknown> {
   values.textFileExtensions = ["fountain", "adoc"];
   values.calendarOverlays = ["Plan.base#Termine"];
   values.barLayoutMobileBar = { order: ["notes", "mail", "today"], visibleCount: 3 };
-  values.bookmarks = ["Projekte/Plainva.md", "Journal/2026-09-04.md"];
+  values.bookmarks = ["Projekte/Alviss.md", "Journal/2026-09-04.md"];
   values.bookmarkFolders = ["Projekte", "Journal"];
   values.mailAccounts = [];
   values.cloudAccounts = [];

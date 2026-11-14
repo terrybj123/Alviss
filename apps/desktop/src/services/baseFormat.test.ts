@@ -20,7 +20,7 @@ describe("baseFormat id mapping", () => {
 });
 
 describe("baseFormat view type mapping", () => {
-  it("maps Plainva render types to native Obsidian types", () => {
+  it("maps Alviss render types to native Obsidian types", () => {
     expect(toObsidianViewType("table")).toBe("table");
     expect(toObsidianViewType("list")).toBe("list");
     expect(toObsidianViewType("gallery")).toBe("cards");
@@ -28,7 +28,7 @@ describe("baseFormat view type mapping", () => {
     expect(toObsidianViewType("calendar")).toBe("table");
     expect(toObsidianViewType("timeline")).toBe("table");
   });
-  it("maps native types back, preserving legacy Plainva render types", () => {
+  it("maps native types back, preserving legacy Alviss render types", () => {
     expect(fromObsidianViewType("cards")).toBe("gallery");
     expect(fromObsidianViewType("table")).toBe("table");
     expect(fromObsidianViewType("board")).toBe("board");
@@ -56,7 +56,7 @@ describe("baseFormat serialize: Obsidian-native output", () => {
     expect(out.filters.and[0]).toBe('file.folder == "Cal"');
   });
 
-  it("degrades Plainva-only views to a native table plus a plainva.render hint", () => {
+  it("degrades Alviss-only views to a native table plus a plainva.render hint", () => {
     const out = yaml.parse(
       serializeBaseConfig({ columns: {}, views: [{ type: "calendar", dateField: "date" }], _obsidian: {} }),
     );
@@ -471,7 +471,7 @@ describe("baseFormat: Obsidian hard requirements (view names, single-rooted filt
   });
 });
 
-// Plan D6: the Plainva-only extras (option color/group, relationBase) must live
+// Plan D6: the Alviss-only extras (option color/group, relationBase) must live
 // ONLY under the namespaced `plainva` sub-key so Obsidian's Bases plugin ignores
 // them (graceful degradation) instead of choking on unknown native keys.
 describe("baseFormat: plainva-namespaced extras never leak to the native level", () => {
@@ -708,7 +708,7 @@ describe("baseFormat pinboard keys (pinboardOrder, pinboardPinned, pinboardFilte
   });
 
   it("keeps unknown plainva keys of an on-disk view across a round-trip (forward compat)", () => {
-    // A future Plainva writes a key this build does not know: saving from here
+    // A future Alviss writes a key this build does not know: saving from here
     // must NOT destroy it — the serializer works on the cloned on-disk view.
     const text = yaml.stringify({
       views: [

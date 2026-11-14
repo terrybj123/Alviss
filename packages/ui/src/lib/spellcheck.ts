@@ -3,7 +3,7 @@ import { useSyncExternalStore } from "react";
 /**
  * Spell checking: one switch, one rule (plan Befunde 2026-10-06, E3).
  *
- * Plainva draws no squiggles and ships no dictionaries. What checks the text is
+ * Alviss draws no squiggles and ships no dictionaries. What checks the text is
  * the platform: the WebView with the system's languages on Windows and macOS,
  * the keyboard and the system's checker on a phone. All the app decides is
  * WHERE the platform may check, and it says so with the `spellcheck` attribute.
@@ -112,7 +112,7 @@ export function useSpellcheck(purpose: WritingPurpose): boolean {
  * therefore gets the system's menu (which carries cut, copy and paste as
  * well). The question is asked of the attribute the field actually carries,
  * so the menu and the squiggles can never disagree: a code or secret field
- * says `false` and keeps Plainva's menu, an unclassified field inherits the
+ * says `false` and keeps Alviss's menu, an unclassified field inherits the
  * root's `false`.
  *
  * `field` is the editable element itself (an input, a textarea, a

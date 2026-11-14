@@ -4,7 +4,7 @@ import type { TemplateRequest } from "@plainva/ui";
 /**
  * In-app dialog service (plan Designsprache 2026-07-05, P3/§6). Replaces the
  * native blocking dialogs (window.confirm + Tauri ask/message/confirm) with
- * Plainva-styled, theme-aware dialogs. Promise API so the 35 former call
+ * Alviss-styled, theme-aware dialogs. Promise API so the 35 former call
  * sites stay one-liners; rendered by components/ui/DialogHost (mounted once
  * in main.tsx). Only the OS folder/file pickers (plugin-dialog open()) stay
  * native. Queue semantics: requests show one at a time, in order.

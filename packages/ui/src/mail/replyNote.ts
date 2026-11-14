@@ -11,7 +11,7 @@ import type { MailMessage } from "./types";
  * Nr. 6: it was the desktop's only, written into its mail view).
  *
  * A reply note is a normal vault note addressed at the sender, the original
- * quoted below, written in Plainva and sent later. It names the mailbox the
+ * quoted below, written in Alviss and sent later. It names the mailbox the
  * message is in (`mailbox:`, decision E6): sent by mail later, the note leaves
  * from there, not from whichever mailbox is stored first.
  */

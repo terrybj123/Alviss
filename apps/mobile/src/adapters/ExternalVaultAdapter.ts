@@ -18,7 +18,7 @@ import { withFolderDeadlines, type FolderDeadlineOptions } from "./folderAnswerD
  * `VaultFileNotFoundError`, so the queueing and conflict chains above behave
  * exactly as they do over the sandbox.
  *
- * What is different, and is the whole point: nothing here assumes Plainva is
+ * What is different, and is the whole point: nothing here assumes Alviss is
  * the only writer. `watch()` stays absent on purpose (neither platform gives a
  * reliable watcher for a foreign folder); P5 answers with a rescan on resume
  * and a timestamp check on open.

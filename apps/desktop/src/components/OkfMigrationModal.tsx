@@ -16,7 +16,7 @@ type Step = "scanning" | "summary" | "running" | "report";
 
 /**
  * OKF bundle migration (OKF v0.2 plan, P2): lift the root index.md from the
- * version it declares to the one Plainva writes, and — opt-in, checked by
+ * version it declares to the one Alviss writes, and — opt-in, checked by
  * default (D2) — remove the legacy per-note `okf_version` key.
  *
  * Dry-run numbers first, then the run through the FULL adapter chain (backup

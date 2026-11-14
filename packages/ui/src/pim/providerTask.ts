@@ -2,10 +2,10 @@ import { readFrontmatterPath, setFrontmatterPath, updateVaultText, type TextUpda
 import { verifiedProviderIdentityOf } from "../lib/accountProfile";
 
 /**
- * Creating a task in Plainva that also exists at the provider (C4, S16).
+ * Creating a task in Alviss that also exists at the provider (C4, S16).
  *
  * Until now the task reconciler only mirrored remote → local: a task created in
- * Plainva stayed a note and never appeared in Google Tasks, the iCloud
+ * Alviss stayed a note and never appeared in Google Tasks, the iCloud
  * reminders or Microsoft To Do. The capability to create one was finished in
  * all three providers (`IPimTarget.createTask`) and had, in the whole
  * repository, no caller at all. This is that caller — shared, so the phone (S17)
@@ -38,7 +38,7 @@ export type ProviderTaskAdapter = TextUpdateFiles;
  * importing the PIM types into this layer. */
 export interface ProviderTaskDraft {
   title: string;
-  /** ISO date (YYYY-MM-DD), day-granular like every task due date in Plainva. */
+  /** ISO date (YYYY-MM-DD), day-granular like every task due date in Alviss. */
   due?: string;
   notes?: string;
 }

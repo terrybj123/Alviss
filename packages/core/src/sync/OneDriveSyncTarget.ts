@@ -24,7 +24,7 @@ export interface OneDriveCredentials {
 }
 
 const GRAPH = "https://graph.microsoft.com/v1.0";
-const DEFAULT_ROOT = "Plainva";
+const DEFAULT_ROOT = "Alviss";
 
 /** The folder a OneDrive target works in, resolved exactly as the target does (default "Plainva"). */
 export function oneDriveRootName(rootFolderName?: string): string {

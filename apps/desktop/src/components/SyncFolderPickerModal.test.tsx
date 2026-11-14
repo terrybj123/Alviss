@@ -93,7 +93,7 @@ describe("SyncFolderPickerModal", () => {
   });
 
   it("navigating into a Drive folder and picking it returns the nested path", async () => {
-    const listFolders = vi.fn(async (path: string) => (path === "" ? ["Apps"] : path === "Apps" ? ["Plainva"] : []));
+    const listFolders = vi.fn(async (path: string) => (path === "" ? ["Apps"] : path === "Apps" ? ["Alviss"] : []));
     const onSelect = vi.fn();
     await render(
       <SyncFolderPickerModal listFolders={listFolders} rootLabel="Google Drive" onSelect={onSelect} onCancel={() => {}} />
@@ -101,11 +101,11 @@ describe("SyncFolderPickerModal", () => {
 
     expect(useButton().disabled).toBe(true);
     await act(async () => rowByText("Apps").click());
-    await act(async () => rowByText("Plainva").click());
-    expect(container.textContent).toContain("Google Drive / Apps/Plainva");
+    await act(async () => rowByText("Alviss").click());
+    expect(container.textContent).toContain("Google Drive / Apps/Alviss");
 
     await act(async () => useButton().click());
-    expect(onSelect).toHaveBeenCalledWith("Apps/Plainva");
+    expect(onSelect).toHaveBeenCalledWith("Apps/Alviss");
   });
 
   it("shows listing errors and keeps the pick disabled", async () => {

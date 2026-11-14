@@ -10,7 +10,7 @@ import { byteExactDav, type ByteExactDav } from "../helpers/byteExactDav.js";
 /**
  * Issue #112 on the wire (ADR 0016). The reporter's HiDrive stores names byte
  * for byte; a folder made in Finder arrives decomposed, the same folder
- * written from elsewhere composed. Plainva names both by the composed
+ * written from elsewhere composed. Alviss names both by the composed
  * identity and must write into the folder the server already holds — never
  * a second, identical-looking one next to it.
  */

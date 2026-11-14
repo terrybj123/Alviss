@@ -218,7 +218,7 @@ export function AddVaultScreen({
     const run = createMode
       ? createProviderVault(vault, withRoot, {
           template: getVaultTemplates(i18n.language).find((d) => d.id === createTemplateId) ?? null,
-          vaultName: folder.split("/").pop() || "Plainva",
+          vaultName: folder.split("/").pop() || "Alviss",
           subfoldersHeading: t("indexMd.subfoldersHeading"),
         })
       : connectProvider(vault, withRoot);

@@ -8,7 +8,7 @@
     <string name="widget_today_description">今日の予定と、タップで追加。</string>
     <string name="widget_capture_label">クイック入力</string>
     <string name="widget_capture_description">新しいタスクやジャーナルをホーム画面から。</string>
-    <string name="widget_open_app">Plainva を開く</string>
+    <string name="widget_open_app">Alviss を開く</string>
     <string name="widget_as_of">%1$s 時点</string>
     <string name="widget_tick">完了にする</string>
 </resources>

@@ -9,7 +9,7 @@ import type { RepeatRule } from "./taskRecurrence";
  * "Angebot abschicken morgen 14 Uhr !!! #kunde jeden Monat".
  *
  * A small grammar of its own instead of a library: the natural-language date
- * libraries cover a few of Plainva's ten languages and weigh many times what
+ * libraries cover a few of Alviss's ten languages and weigh many times what
  * this does, and the job here is narrow — a handful of words per language plus
  * everything that needs no language at all (a date in digits, a time, `!`,
  * `#tag`). The words come from the locale files, so a translator can fix them

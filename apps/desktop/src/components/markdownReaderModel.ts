@@ -299,7 +299,7 @@ export function remarkBrToBreak() {
  *
  * GFM knows task boxes only inside LIST items, so a checklist in a table cell
  * has no Markdown spelling. Obsidian users write the HTML tag there and
- * Obsidian draws a box; Plainva showed the tag as text, so the same file read
+ * Obsidian draws a box; Alviss showed the tag as text, so the same file read
  * differently in the two programs. Raw HTML stays out of the reader — there is
  * no rehype-raw and there should not be — and this plugin adds no general
  * door: it recognises ONE element with ONE attribute and builds the node

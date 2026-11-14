@@ -229,7 +229,7 @@ export function VaultSyncScreen({
             <Button variant="tonal" disabled={busy} onClick={() => syncNow()}>{t("sync.listingIncompleteRetry")}</Button>
           </Banner>
         )}
-        {/* The cloud folder of a vault that has synced before is gone: Plainva
+        {/* The cloud folder of a vault that has synced before is gone: Alviss
             created no replacement (plan A4); the account's files page picks it. */}
         {isActive && status.rootMissing && !status.listingIncomplete && (
           <Banner kind="error" rounded>{t("sync.rootMissingBody")}</Banner>

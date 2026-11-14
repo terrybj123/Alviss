@@ -16,7 +16,7 @@ import { PinModeToggle } from "../graph/PinModeToggle";
  * relation properties (optionally plus plain wiki links). Color follows a
  * select property (chip palette order), size a number property. Persisted
  * Obsidian-compatibly as `type: table` + `views[i].plainva.render: "graph"`
- * with the option sub-keys — Obsidian shows the table, Plainva the net.
+ * with the option sub-keys — Obsidian shows the table, Alviss the net.
  */
 
 export interface BaseGraphViewProps {

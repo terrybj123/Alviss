@@ -77,7 +77,7 @@ describe("applyAutostart", () => {
   });
 
   it("writes nothing when the system already agrees", async () => {
-    // The entry can be removed from outside Plainva, so the system is asked
+    // The entry can be removed from outside Alviss, so the system is asked
     // first — writing blindly would either duplicate it or report a state that
     // is not true.
     const p = autoPort(true);

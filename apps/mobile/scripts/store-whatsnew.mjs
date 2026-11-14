@@ -71,7 +71,7 @@ export function parseCatalog(source) {
  * contents for the dialog the app shows anyway.
  */
 export function buildNote({ lang, version, highlights, strings, blogUrl, blogLanguages }) {
-  const lines = [`Plainva ${version}`];
+  const lines = [`Alviss ${version}`];
   highlights.forEach((h, i) => {
     const title = strings[`highlight${i + 1}Title`];
     if (!title) throw new Error(`${lang}: whatsNew.highlight${i + 1}Title is missing`);

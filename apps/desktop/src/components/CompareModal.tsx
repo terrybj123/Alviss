@@ -689,7 +689,7 @@ export const CompareModal: React.FC<{
   );
 
   const body = <>
-      {isConflict && conflictPath ? <FileComparisonDetails vault={vaultPath ?? "Plainva"} originalPath={path} copyPath={conflictPath} original={currentText} copy={conflictText} onReveal={file => { onClose(); window.dispatchEvent(new CustomEvent("plainva-reveal-folder", { detail: { path: file } })); }} /> : <div style={{ padding: "0.45rem 1rem", fontSize: "var(--text-sm)", color: "var(--text-muted)", background: "var(--bg-secondary)", borderBottom: "1px solid var(--border-color)", flexShrink: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }} data-tip={path}>
+      {isConflict && conflictPath ? <FileComparisonDetails vault={vaultPath ?? "Alviss"} originalPath={path} copyPath={conflictPath} original={currentText} copy={conflictText} onReveal={file => { onClose(); window.dispatchEvent(new CustomEvent("plainva-reveal-folder", { detail: { path: file } })); }} /> : <div style={{ padding: "0.45rem 1rem", fontSize: "var(--text-sm)", color: "var(--text-muted)", background: "var(--bg-secondary)", borderBottom: "1px solid var(--border-color)", flexShrink: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }} data-tip={path}>
         {path}
         {orphan && <> — {t("versions.orphanHint")}</>}
         {isConflict && <> — {t("compare.conflictExplainer")}</>}

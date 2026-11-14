@@ -34,7 +34,7 @@ export function pastedAttachmentName(mime: string, now: Date): string {
 /**
  * The folder attachments go into: the configured one, or beside the note when
  * it is empty. An empty setting is a deliberate choice, not a missing value —
- * it restores the behaviour Plainva had before this setting existed.
+ * it restores the behaviour Alviss had before this setting existed.
  */
 export function attachmentFolderFor(configured: string, noteFolder: string): string {
   const folder = trimChars((configured || "").trim(), "/\\");

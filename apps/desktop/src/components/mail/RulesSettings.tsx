@@ -18,7 +18,7 @@ import {
  * Mail rules — Settings → Email (S14).
  *
  * The honest label is the point of this card. Right now every rule runs LOCALLY:
- * over what Plainva has fetched, only while it is open. That is a real thing and
+ * over what Alviss has fetched, only while it is open. That is a real thing and
  * a limited one, and the card says which — a card that implied a server-side
  * filter would have people rely on a rule that is not running while their laptop
  * is shut.
@@ -90,7 +90,7 @@ export function RulesSettings({ vaultPath, account }: { vaultPath: string; accou
       if (result.unreadable) {
         toast.error(
           t("rules.scriptForeign", {
-            defaultValue: "Das Filterskript enthält einen Abschnitt, den Plainva nicht sicher lesen kann — es wurde nichts geändert.",
+            defaultValue: "Das Filterskript enthält einen Abschnitt, den Alviss nicht sicher lesen kann — es wurde nichts geändert.",
           })
         );
       } else if (result.ok) {

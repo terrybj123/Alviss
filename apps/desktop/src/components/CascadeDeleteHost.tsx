@@ -97,7 +97,7 @@ export function CascadeDeleteHost({ onDeleted }: { onDeleted: (paths: string[]) 
 
     // A database creates its storage folder, and deleting the database left it
     // behind empty (issue #34). Offered, never silent — the folder is the
-    // user's, even when Plainva made it.
+    // user's, even when Alviss made it.
     for (const folder of result.emptiedFolders) {
       const ok = await appConfirm({
         title: d.t("cascade.emptyFolderTitle"),

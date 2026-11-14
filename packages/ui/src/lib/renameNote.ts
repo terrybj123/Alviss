@@ -165,7 +165,7 @@ export async function planLinkUpdates(
   );
   // `index.md` is the name every folder's overview has (OKF). A bare
   // `[[index]]` means whichever overview the rule finds first, and that
-  // changes as soon as another folder gets one — Plainva writes them folder by
+  // changes as soon as another folder gets one — Alviss writes them folder by
   // folder, in one run before the index knows them (finding 2026-10-21). A
   // link to a folder's overview names its folder, as ADR 0009 (point 6) says
   // of an adoption; the vault's own `index.md` is named by `index` alone.

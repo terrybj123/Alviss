@@ -1,7 +1,7 @@
 /**
  * Inline `.base` helpers (#8). Creating an inline database from the editor writes
  * a real `.base` file in the same folder as the current note (so it round-trips
- * through Obsidian and the rest of Plainva) and the editor then embeds it with
+ * through Obsidian and the rest of Alviss) and the editor then embeds it with
  * `![[path]]`, which NoteEmbedPlugin renders as an inline BaseViewer.
  *
  * Shared since S19: the phone had these two slash commands in the menu doing

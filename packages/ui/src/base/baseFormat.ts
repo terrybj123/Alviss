@@ -3,13 +3,13 @@
  *
  * On disk a `.base` must use ONLY Obsidian's canonical top-level keys
  * (`filters`, `formulas`, `properties`, `views`) so the core "Bases" plugin can
- * open it. Plainva's richness — the per-property input type, curated option sets
+ * open it. Alviss's richness — the per-property input type, curated option sets
  * with colors/groups, relation targets, and the board/calendar/timeline views —
  * is stored under a NAMESPACED `plainva:` sub-key inside `properties[x]` and
  * `views[i]`. Those are places Obsidian documents as open-ended ("it is up to the
  * individual view how to use these configuration values"; plugins "can add
- * additional data"), so Obsidian ignores them (graceful degradation: a Plainva
- * board shows as a plain table) while Plainva reads them for full functionality.
+ * additional data"), so Obsidian ignores them (graceful degradation: a Alviss
+ * board shows as a plain table) while Alviss reads them for full functionality.
  *
  * The rest of the app keeps using the historical IN-MEMORY shape with bare
  * property names: `config.columns[bareProp] = { input, options, relationBase }`
@@ -17,7 +17,7 @@
  * module is the ONLY translation layer:
  *   - `parseBaseConfig` normalizes any on-disk form into that in-memory shape —
  *     the new namespaced format, the Obsidian-native form, AND the legacy
- *     top-level `columns:` written by older Plainva builds (auto-migrated on the
+ *     top-level `columns:` written by older Alviss builds (auto-migrated on the
  *     next save).
  *   - `serializeBaseConfig` converts the in-memory shape back to Obsidian-native
  *     YAML.
@@ -30,7 +30,7 @@
  *
  * Obsidian additionally REJECTS the whole file (not just the odd key) when a
  * view has no `name` or when a `filters` object carries more than one of
- * `and`/`or`/`not` side by side. In memory Plainva keeps the flat two-list
+ * `and`/`or`/`not` side by side. In memory Alviss keeps the flat two-list
  * shape the UI edits (`filters.and` + `filters.or`, semantics: all of `and`
  * AND at least one of `or`), so this module maps it losslessly onto the
  * single-rooted on-disk form `and: [...and, {or: [...or]}]` on save. Files
@@ -77,7 +77,7 @@ const NATIVE_RENDER = new Set(["table", "list", "gallery"]);
 /** Same hex shapes the plainva frontmatter namespace accepts (ADR 0009). */
 const HEX_COLOR_RE = /^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/;
 
-/** Plainva render type -> the native Obsidian view type Obsidian will accept. */
+/** Alviss render type -> the native Obsidian view type Obsidian will accept. */
 export function toObsidianViewType(render: string | undefined): string {
   switch (render) {
     case "list":
@@ -86,22 +86,22 @@ export function toObsidianViewType(render: string | undefined): string {
       return "cards";
     case "table":
       return "table";
-    // board / calendar / timeline are Plainva-only: degrade to a plain table in Obsidian.
+    // board / calendar / timeline are Alviss-only: degrade to a plain table in Obsidian.
     default:
       return NATIVE_RENDER.has(render ?? "") ? (render as string) : "table";
   }
 }
 
 /**
- * Native Obsidian view type -> Plainva render type. Used only when no
- * `plainva.render` is present (Obsidian-authored views, or legacy Plainva files
+ * Native Obsidian view type -> Alviss render type. Used only when no
+ * `plainva.render` is present (Obsidian-authored views, or legacy Alviss files
  * that stored their render type directly in `type`).
  */
 export function fromObsidianViewType(type: string | undefined): string {
   switch (type) {
     case "cards":
       return "gallery";
-    // Legacy Plainva files stored these directly in `type` (no plainva namespace yet).
+    // Legacy Alviss files stored these directly in `type` (no plainva namespace yet).
     case "board":
     case "calendar":
     case "timeline":
@@ -118,7 +118,7 @@ export function fromObsidianViewType(type: string | undefined): string {
  * Obsidian requires every view to carry a non-empty string `name` and refuses
  * to open the base otherwise ("'name' in view N is missing or invalid").
  * Fallback for views created without one (wizard, inline base, legacy files):
- * the capitalized Plainva render type, de-duplicated against sibling views.
+ * the capitalized Alviss render type, de-duplicated against sibling views.
  */
 function fallbackViewName(render: string, taken: Set<string>): string {
   const key = render && typeof render === "string" ? render : "table";
@@ -160,9 +160,9 @@ function keepFilterEntry(v: any): boolean {
 /**
  * On-disk `filters` -> the flat in-memory `{and, or}` lists the UI edits.
  * Group objects among the entries stay entries (Notion-style groups, P8).
- * Also understood: the invalid two-key form older Plainva builds wrote
+ * Also understood: the invalid two-key form older Alviss builds wrote
  * (`and` + `or` side by side) and a bare condition string. A pure `not` root
- * passes through untouched (Plainva has no UI for it; it round-trips
+ * passes through untouched (Alviss has no UI for it; it round-trips
  * verbatim). One legacy normalization: a trailing {or} group inside `and`
  * that is provably the serialized OLD flat or-list (see module header) is
  * lifted back into the flat or-list — semantics are identical either way;
@@ -182,7 +182,7 @@ function normalizeFiltersIn(raw: any): any {
   // compares against later — reading it must never change it.
   const and = [...filterItems(raw.and)];
   let or = filterItems(raw.or);
-  // A stray sibling not-group (never written by Plainva) survives as a nested item.
+  // A stray sibling not-group (never written by Alviss) survives as a nested item.
   if (hasNot) and.push({ not: filterItems(raw.not) });
   if (or.length === 0) {
     const liftIdx = and.map((x) => isSoleGroup(x, "or") && Array.isArray(x.or)).lastIndexOf(true);
@@ -205,7 +205,7 @@ function normalizeFiltersIn(raw: any): any {
 
 /**
  * In-memory `filters` -> the single-rooted form Obsidian accepts: a filter
- * object must contain EXACTLY ONE of `and`/`or`/`not`. Plainva's query
+ * object must contain EXACTLY ONE of `and`/`or`/`not`. Alviss's query
  * semantics ((all of and) AND (any of or)) map losslessly onto
  * `and: [...and, {or: [...or]}]`; group entries serialize verbatim inside
  * their list. Empty group shells are dropped. Returns undefined when there is
@@ -234,7 +234,7 @@ function normalizeOption(o: any): Record<string, any> {
     const value = o.value ?? o.label ?? "";
     const opt: Record<string, any> = { value: String(value) };
     if (o.label != null && o.label !== value) opt.label = o.label;
-    // `color` is a Plainva palette NAME. Legacy board options used a CSS
+    // `color` is a Alviss palette NAME. Legacy board options used a CSS
     // `backgroundColor` that does not map to a palette -> drop it (the chip
     // colour then falls back to a deterministic value-derived colour).
     if (o.color != null) opt.color = o.color;
@@ -268,7 +268,7 @@ function normalizeColumn(src: any): Record<string, any> {
   }
   // Rollup: a value derived from the linked notes, computed at query time and
   // stored nowhere. A malformed spec is dropped (the column then has no
-  // values) rather than thrown on — a `.base` from a newer Plainva must never
+  // values) rather than thrown on — a `.base` from a newer Alviss must never
   // keep the database from opening.
   const rollup = normalizeRollup(src.rollup);
   if (rollup) col.rollup = rollup;
@@ -309,7 +309,7 @@ function nativeGroupProperty(g: Record<string, any>): string | undefined {
   return typeof g.property === "string" && g.property.trim() ? fromPropId(g.property) : undefined;
 }
 
-/** Normalize one on-disk view to the in-memory view shape (bare names, Plainva render type). */
+/** Normalize one on-disk view to the in-memory view shape (bare names, Alviss render type). */
 function normalizeViewIn(v: any): Record<string, any> {
   if (!isPlainObject(v)) return { type: "table" };
   const pv = isPlainObject(v.plainva) ? v.plainva : {};
@@ -337,12 +337,12 @@ function normalizeViewIn(v: any): Record<string, any> {
   // apply to this view only; folder/tag sources stay in the file-level filters.
   const viewFilters = normalizeFiltersIn(v.filters);
   if (viewFilters !== undefined) out.filters = viewFilters;
-  // Plainva view extras live under `plainva`; legacy files stored them at the view top level.
+  // Alviss view extras live under `plainva`; legacy files stored them at the view top level.
   const dateField = pv.dateField ?? v.dateField;
   const endField = pv.endField ?? v.endField;
   // Obsidian's own `groupBy` is `{ property, direction }` with a property id;
   // in memory the grouping is the bare property name, whichever key holds it
-  // (a legacy Plainva file kept the bare name at the view top level).
+  // (a legacy Alviss file kept the bare name at the view top level).
   const groupBy = pv.groupBy ?? (isPlainObject(v.groupBy) ? nativeGroupProperty(v.groupBy) : v.groupBy);
   const coverImage = pv.coverImage ?? v.coverImage;
   const widths = pv.widths ?? v.widths;
@@ -423,7 +423,7 @@ function readFileWide(views: any[]): Record<string, any> {
     if (out.taskList === undefined && typeof pv.taskList === "string" && pv.taskList.trim()) {
       out.taskList = pv.taskList;
     }
-    // Self-reference filters ("Diese Notiz") — Obsidian ignores them; Plainva
+    // Self-reference filters ("Diese Notiz") — Obsidian ignores them; Alviss
     // resolves them against the embedding host at render time (embedScope).
     if (out.contextFilters === undefined && Array.isArray(pv.contextFilters)) {
       const list = pv.contextFilters.filter((x: any): x is string => typeof x === "string" && !!x);
@@ -469,7 +469,7 @@ function restoreKey(target: Record<string, any>, source: Record<string, any> | n
 /**
  * True when Obsidian accepts this `filters` value as it stands: absent, a
  * condition string, or an object with exactly one of `and`/`or`/`not`. Older
- * Plainva builds wrote `and` and `or` side by side, which Obsidian rejects —
+ * Alviss builds wrote `and` and `or` side by side, which Obsidian rejects —
  * those are rewritten on save even when unchanged.
  */
 function isValidFilterRoot(f: unknown): boolean {
@@ -479,7 +479,7 @@ function isValidFilterRoot(f: unknown): boolean {
   return keys.length === 1 && (keys[0] === "and" || keys[0] === "or" || keys[0] === "not");
 }
 
-/** View types this module reads by name; any other `type` is unknown to Plainva and kept as written. */
+/** View types this module reads by name; any other `type` is unknown to Alviss and kept as written. */
 const KNOWN_VIEW_TYPES = new Set(["table", "list", "cards", "gallery", "board", "calendar", "timeline"]);
 
 /** The keys of a column's `plainva` block this module reads and writes. */
@@ -521,7 +521,7 @@ export function parseBaseConfig(text: string): any {
   }
   config.columns = columns;
 
-  // Each view carries its own pristine on-disk copy, so the keys Plainva does
+  // Each view carries its own pristine on-disk copy, so the keys Alviss does
   // not edit (`limit`, `image`, a plugin's settings, an unknown `type`) stay
   // with THEIR view when views are deleted, moved or duplicated — keyed to the
   // view, never to its position in the list.
@@ -587,7 +587,7 @@ function serializeView(v: any, takenNames: Set<string>): WrittenView {
   const pv: Record<string, any> = isPlainObject(base.plainva) ? base.plainva : {};
   const render = v?.type ?? "table";
 
-  // A type Plainva does not know (a plugin's view, a future Obsidian type) is
+  // A type Alviss does not know (a plugin's view, a future Obsidian type) is
   // shown as a table and stays as written until the user picks another type.
   if (!(raw && unchanged("type") && typeof raw.type === "string" && !KNOWN_VIEW_TYPES.has(raw.type))) {
     base.type = toObsidianViewType(render);
@@ -703,13 +703,13 @@ function serializeView(v: any, takenNames: Set<string>): WrittenView {
 
 /**
  * Serialize the in-memory config to Obsidian-native `.base` YAML: native
- * top-level keys only, Plainva richness under `properties[x].plainva` /
+ * top-level keys only, Alviss richness under `properties[x].plainva` /
  * `views[i].plainva`.
  *
  * Only what changed in memory is written anew. Each key this module knows is
  * compared with what the file it came from reads as (the pristine copy on
  * `_obsidian`, per view on the view itself); where both agree, the file's own
- * spelling stays. So everything Plainva does not know or cannot read — unknown
+ * spelling stays. So everything Alviss does not know or cannot read — unknown
  * keys, an unreadable rollup, a plugin's view type, Obsidian's `groupBy`, an
  * option written as a bare string — survives a save, and a file read and saved
  * without a change comes back with the same YAML data (baseRoundTrip.test.ts).
@@ -757,7 +757,7 @@ export function serializeBaseConfig(config: any): string {
     if (previousKeys) plainva.previousKeys = previousKeys;
     else delete plainva.previousKeys;
     // Keys the user did not change keep the file's spelling — and a value
-    // this build cannot read (a rollup from a newer Plainva) stays.
+    // this build cannot read (a rollup from a newer Alviss) stays.
     if (was) for (const key of COLUMN_KEYS) if (sameData(col[key], was[key])) restoreKey(plainva, fromFile, key);
     const keptEmpty = isPlainObject(entry.plainva) && Object.keys(entry.plainva).length === 0;
     if (Object.keys(plainva).length > 0 || keptEmpty) entry.plainva = plainva;

@@ -5,7 +5,7 @@ import { getPlatformServices, hasPlatformServices } from "../platform/services";
  * Provenance stamps for the OKF 0.2 trust families (plan OKF v0.2, P3b).
  *
  * Only the MACHINE write paths stamp. The importer, mail capture and the task
- * sync are the three places where Plainva produces a note the user did not
+ * sync are the three places where Alviss produces a note the user did not
  * type, and they say so with `generated` (plus `sources` where the producer
  * actually knows one). The editor never touches `generated`, `verified` or
  * `sources` (E3): a person saving a note is not a process, and a stamp nobody

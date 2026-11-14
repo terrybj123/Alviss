@@ -43,7 +43,7 @@ export function turnInto(text: string, target: BlockTarget): string {
  * Invisible list separator (E2, 2026-07-05): a blank line alone does NOT keep
  * two same-style lists apart — CommonMark parses them as ONE loose list (also
  * in Obsidian/GitHub, even with two blank lines). The standard workaround is a
- * comment line between them; Plainva's read view hides comments anyway.
+ * comment line between them; Alviss's read view hides comments anyway.
  */
 export const LIST_SEPARATOR = "<!-- -->";
 

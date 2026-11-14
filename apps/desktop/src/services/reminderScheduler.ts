@@ -31,7 +31,7 @@ import { getTaskDatabasePath } from "./taskDatabase";
  * notification therefore shows it AT ONCE, with no error and no warning. There
  * are no `pending`/`cancel` commands on the desktop either.
  *
- * So Plainva does the waking itself: it holds the plan, arms a timer per
+ * So Alviss does the waking itself: it holds the plan, arms a timer per
  * reminder that is about to come due, and calls the plugin at that moment with
  * no schedule at all. The price is stated rather than hidden — **the app has to
  * be running**, and the setting says so.

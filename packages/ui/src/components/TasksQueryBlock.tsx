@@ -19,7 +19,7 @@ import { cx } from "./ui/cx";
  * (`@plainva/core` tasksQuery); the rows are the planner's rows, so a task
  * here looks and behaves as in the Tasks tab.
  *
- * - **Hints** (case a): a line Tasks knows and Plainva does not yet stands
+ * - **Hints** (case a): a line Tasks knows and Alviss does not yet stands
  *   above the result, with what that means for the list.
  * - **Error** (case c): a line Tasks rejects too — no result, never
  *   "0 tasks"; the query below with the line marked, and "Edit query".

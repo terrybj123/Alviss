@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 /**
- * The name a vault goes by in Plainva (Sammelplan § 3.169 Nr. 3): a setting of
+ * The name a vault goes by in Alviss (Sammelplan § 3.169 Nr. 3): a setting of
  * its own beside the vault's other per-vault keys, so "forget this vault"
  * sweeps it; the folder's name where there is none.
  */

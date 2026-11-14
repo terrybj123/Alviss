@@ -3,7 +3,7 @@
  *
  * The on-disk shape follows **RFC 9253** (the iCalendar extension for task
  * relationships), the same vocabulary the TaskNotes plugin already writes into
- * frontmatter, so a vault is not locked into Plainva's private idea of what a
+ * frontmatter, so a vault is not locked into Alviss's private idea of what a
  * dependency is:
  *
  *     blockedBy:
@@ -15,7 +15,7 @@
  * two facts that can disagree, and the moment they do, neither is trustworthy.
  *
  * Only `FINISHTOSTART` is EVALUATED (decision E3). The rest of the vocabulary
- * round-trips untouched so a file written elsewhere survives, but Plainva draws
+ * round-trips untouched so a file written elsewhere survives, but Alviss draws
  * and checks the one relationship that carries almost all real scheduling.
  * Start-to-Finish is never offered: the DCMA assessment treats it as a defect,
  * and a tool that offers it invites plans nobody can read.
@@ -27,7 +27,7 @@ export const REL_TYPES: readonly RelType[] = [
   "FINISHTOSTART", "FINISHTOFINISH", "STARTTOSTART", "STARTTOFINISH",
 ] as const;
 
-/** The one relationship Plainva evaluates and draws. */
+/** The one relationship Alviss evaluates and draws. */
 export const EVALUATED_RELTYPE: RelType = "FINISHTOSTART";
 
 export interface Dependency {
@@ -135,7 +135,7 @@ export function findDependencyCycle(
  * Successors that start before their predecessor finishes.
  *
  * Reported, never corrected (decision E6): the dates are the user's statement
- * about the world. Plainva says the two disagree and lets them decide which one
+ * about the world. Alviss says the two disagree and lets them decide which one
  * was wrong — silently moving a date would rewrite a note nobody asked to change.
  */
 export interface ScheduleConflict {

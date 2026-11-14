@@ -76,7 +76,7 @@ function usable(rule: FolderTemplateRule): boolean {
  * outcome depend on how the list happens to be sorted, which is invisible.
  *
  * Matching ignores case: the folder picker writes the exact name, but a
- * hand-typed one rarely matches it letter for letter, and no filesystem Plainva
+ * hand-typed one rarely matches it letter for letter, and no filesystem Alviss
  * runs on distinguishes two folders by case alone.
  */
 export function resolveFolderTemplate(
@@ -117,7 +117,7 @@ export function resolveTypeTemplate(
  * A name may be the file alone ("Projekt.md") or its full vault path; the
  * settings surfaces offer the templates folder, so the bare name is the normal
  * case and the full path is what a hand-typed or hand-edited value carries. A
- * missing extension is completed — Plainva templates are markdown files, so
+ * missing extension is completed — Alviss templates are markdown files, so
  * "Projekt" can only mean one thing. `""` names no template.
  *
  * One definition for both shells: the desktop and the phone each had a copy.

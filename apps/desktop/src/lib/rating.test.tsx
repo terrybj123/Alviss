@@ -17,7 +17,7 @@ import {
  *
  * The file holds a plain NUMBER — `mood: 4` — because that is what Obsidian, a
  * spreadsheet and a future reader can all make sense of; the marks are how
- * Plainva draws it. These pin that split, the edges of the scale, and that
+ * Alviss draws it. These pin that split, the edges of the scale, and that
  * pressing the current value clears it.
  */
 

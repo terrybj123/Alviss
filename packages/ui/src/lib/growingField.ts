@@ -43,7 +43,7 @@ const BREAK = /<br\s*\/?>/gi;
 /**
  * A Markdown table cell as it is edited: its `<br>` are real line breaks.
  * A GFM cell cannot hold a newline, so `<br>` is how a break is written there
- * (and how every renderer, Plainva's included, already shows it).
+ * (and how every renderer, Alviss's included, already shows it).
  */
 export function tableCellToEditText(cell: string): string {
   return cell.replace(BREAK, "\n");

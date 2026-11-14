@@ -136,7 +136,7 @@ const TreeNodeView: React.FC<{
   const paddingLeft = depth * 12 + 8;
 
   if (isFile) {
-    // A .base is indexed as "attachment" but is a first-class Plainva document:
+    // A .base is indexed as "attachment" but is a first-class Alviss document:
     // database icon (tinted via views[i].plainva.fileIconColor) and no visible
     // extension, like .md (Base-UX2 P7).
     const isBase = /\.base$/i.test(node.path!);

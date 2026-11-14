@@ -274,7 +274,7 @@ const block = (page: any) => page.locator('.pv-tasksquery-live [data-testid="tas
 const rowTitles = (scope: any) => scope.getByTestId('task-planner-row').allTextContents();
 
 // The tester's case (iPhone, Build 136): a callout "Offene Todos" with a query.
-// Obsidian shows the open tasks; Plainva showed four lines of code.
+// Obsidian shows the open tasks; Alviss showed four lines of code.
 test('the tester\'s callout draws its tasks in the live preview, in the card, as a tree', async ({ page }, testInfo) => {
   await openNote(page, 'Bahnhof Nord');
   const live = page.locator('.pv-tasksquery-live').first();
@@ -334,7 +334,7 @@ test('"Edit query" shows the query as text with the caret in it; leaving shows t
   await expect(page.locator('.pv-tasksquery-live')).toHaveCount(1);
 });
 
-test('a line Plainva does not read is named above the list; one Tasks rejects too is an error', async ({ page }) => {
+test('a line Alviss does not read is named above the list; one Tasks rejects too is an error', async ({ page }) => {
   await openNote(page, 'Woche');
   const blocks = page.locator('.pv-tasksquery-live [data-testid="tasks-query"]');
   await expect(blocks).toHaveCount(2);

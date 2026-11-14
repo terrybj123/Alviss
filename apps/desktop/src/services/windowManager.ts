@@ -367,7 +367,7 @@ export async function openAuxWindow(params: {
 
   const win = new WebviewWindow(label, {
     url,
-    title: params.title ?? "Plainva",
+    title: params.title ?? "Alviss",
     width: params.bounds?.width ?? params.size?.width ?? defaultSizeFor(params.content).width,
     height: params.bounds?.height ?? params.size?.height ?? defaultSizeFor(params.content).height,
     x: params.bounds?.x,

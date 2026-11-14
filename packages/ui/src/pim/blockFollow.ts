@@ -487,7 +487,7 @@ export async function sourceOfBlocker(deps: Pick<BlockFollowDeps, "eventsByUid">
 
 /**
  * Whether the user may change this event. An invitation of somebody else is
- * theirs to move: Plainva then writes the user's blockers, never the event.
+ * theirs to move: Alviss then writes the user's blockers, never the event.
  */
 export function mayChangeEvent(event: PimEventRow, writableCalendarKeys: ReadonlySet<string>): boolean {
   return writableCalendarKeys.has(`${event.accountId} ${event.calendarId}`) && event.selfResponse === undefined;

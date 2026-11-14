@@ -14,7 +14,7 @@ import {
 import type { MobileVault } from "../services/vaultService";
 
 /**
- * Lifting the bundle to the OKF version Plainva writes, from the phone (OKF
+ * Lifting the bundle to the OKF version Alviss writes, from the phone (OKF
  * v0.2 plan, P2). Same shape as the conversion screen — numbers and names
  * first, then a determinate run that backgrounding pauses — but without the
  * journal: every edit here is idempotent and reversible from its backup

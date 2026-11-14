@@ -163,7 +163,7 @@ describe("OverviewsScreen", () => {
     await render();
     const beta = container.querySelector('[data-testid="overview-row-Beta"]')!;
     expect(beta.querySelector("button")).toBeNull();
-    // …while the two Plainva knows about do carry one.
+    // …while the two Alviss knows about do carry one.
     expect(container.querySelector('[data-testid="overview-row-Alpha"]')!.querySelector("button")).not.toBeNull();
     expect(container.querySelector('[data-testid="overview-row-Gamma"]')!.querySelector("button")).not.toBeNull();
   });

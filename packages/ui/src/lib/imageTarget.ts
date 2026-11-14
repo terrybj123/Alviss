@@ -5,12 +5,12 @@ import { trimChars } from "@plainva/core";
  *
  * Obsidian writes the SHORTEST link it can — `![[foto.png]]` — and keeps the
  * file in its attachments folder; it finds the picture by basename across the
- * vault. Plainva writes the full vault path and resolved exactly that: one
+ * vault. Alviss writes the full vault path and resolved exactly that: one
  * candidate, the vault root. A tester's photos therefore rendered as
  * underlined text, and the same rule sat in five places with five different
  * reaches (the pinboard card looked beside the note, the editor did not).
  *
- * One rule now: literal path, beside the note, Plainva's attachment folder,
+ * One rule now: literal path, beside the note, Alviss's attachment folder,
  * and — last, because it needs the index — the basename anywhere in the
  * vault. Every candidate passes the vault guard; the embed's `|300` width and
  * `|alt` are parsed here rather than breaking the match.
@@ -29,7 +29,7 @@ const IMAGE_EXT_RE = /\.(png|jpe?g|gif|svg|webp|bmp|ico)$/i;
  */
 const AUDIO_EXT_RE = /\.(m4a|mp3|wav|ogg|oga|opus|webm|flac|aac)$/i;
 
-/** What an embed points at, or `null` when Plainva shows it as a link. */
+/** What an embed points at, or `null` when Alviss shows it as a link. */
 export type EmbedKind = "image" | "audio";
 
 export interface WikiImageEmbed {
@@ -72,7 +72,7 @@ export function embedKindOf(target: string): EmbedKind | null {
 export interface ImageLookup {
   /** Vault-relative path of the note the embed is in. */
   notePath: string;
-  /** Plainva's configured attachment folder for that note (vault-relative), or null/empty. */
+  /** Alviss's configured attachment folder for that note (vault-relative), or null/empty. */
   attachmentFolder?: string | null;
 }
 
@@ -130,7 +130,7 @@ const ADDRESS_RE = /^(?:[a-zA-Z][a-zA-Z0-9+.-]*:|\/\/)/;
  * The file a markdown embed's destination names (Sammelplan § 3.42), read the
  * way the reading view's parser reads it: `<…>` around a destination with
  * blanks, a `"title"` behind it dropped, and the percent-encoding Obsidian and
- * Plainva write (`Zoom%20one.svg`) decoded with the core's one decoder — the
+ * Alviss write (`Zoom%20one.svg`) decoded with the core's one decoder — the
  * editor, the cards and the journal looked for a file named `Zoom%20one.svg`.
  * An address on the web stays as written: decoding would change where it
  * points. `null` when the destination is no single target.

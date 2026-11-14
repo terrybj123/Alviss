@@ -20,7 +20,7 @@ export interface MissingFileSurface {
   deps: MissingFileDeps | null;
   /** The vault. One search per path and vault runs, however many surfaces ask. */
   scope: string;
-  /** Carries what Plainva stores about the file along a proven or picked move (`adoptExternalMove`). */
+  /** Carries what Alviss stores about the file along a proven or picked move (`adoptExternalMove`). */
   adopt(from: string, to: string): Promise<unknown>;
   /**
    * Takes along what the surface holds that never reached the disk, before

@@ -109,7 +109,7 @@ export function RepeatTaskModal({ taskTitle, initial, currentDue, onCancel, onSu
             <span className="pv-setrow-label">{taskTitle}</span>
             <div className="pv-setrow-desc">
               {t("tasks.repeatHint", {
-                defaultValue: "Beim Abhaken legt Plainva die nächste Aufgabe mit der neuen Fälligkeit an.",
+                defaultValue: "Beim Abhaken legt Alviss die nächste Aufgabe mit der neuen Fälligkeit an.",
               })}
             </div>
           </div>

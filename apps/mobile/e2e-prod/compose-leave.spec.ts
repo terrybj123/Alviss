@@ -128,7 +128,7 @@ test("the share inbox over a message being written: choosing a vault and opening
     const { recipient, question, stay, messageStands } = await writeMessage(page);
     const sheet = page.getByTestId("share-inbox");
 
-    // Something is shared to Plainva from another app; back in the app, its
+    // Something is shared to Alviss from another app; back in the app, its
     // inbox lies over the composer.
     inbox.share({ id: "5a4e0002-7a5c-4b6e-8d9f-5ba7ed000001", text: "Buy stamps\nThe post office closes at six." });
     await returnToApp(page);

@@ -247,7 +247,7 @@ describe("findFirstUnlinkedOccurrence", () => {
   // wait for. Latin next to such text keeps its boundary.
   it("finds a spaceless title in the middle of a run", () => {
     expect(findFirstUnlinkedOccurrence("今日は会議の議事録を書いた。", ["議事録"])).toEqual({ index: 6, matched: "議事録" });
-    expect(findFirstUnlinkedOccurrence("でPlainvaを使った", ["Plainva"])).toEqual({ index: 1, matched: "Plainva" });
+    expect(findFirstUnlinkedOccurrence("でAlvissを使った", ["Alviss"])).toEqual({ index: 1, matched: "Alviss" });
     expect(findFirstUnlinkedOccurrence("[[議事録]]を書いた", ["議事録"])).toBeNull();
   });
 

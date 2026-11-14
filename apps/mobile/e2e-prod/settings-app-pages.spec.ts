@@ -74,7 +74,7 @@ test("the APP pages carry the desktop's groups, with the explanations behind the
 
     // About & diagnostics: the logo and its hint live here alone.
     await page.locator('[data-testid="settings-area-about"]').click();
-    await expect(page.getByText("Plainva", { exact: true })).toBeVisible();
+    await expect(page.getByText("Alviss", { exact: true })).toBeVisible();
     await expect(page.locator(".m-settings .m-hint").first()).toContainText("logo");
     await shoot(page, testInfo, "m-about");
   } finally {

@@ -19,7 +19,7 @@ export interface DriveStoredCredentials {
 
 /**
  * OneDrive credentials (public client, no secret; sync-provider plan 2026-07-04).
- * clientId is Plainva's central Entra app registration once it exists (M-A), or a
+ * clientId is Alviss's central Entra app registration once it exists (M-A), or a
  * user-supplied one until then. refreshToken comes from the loopback OAuth flow and
  * is REWRITTEN whenever Microsoft rotates it (onTokensRefreshed persistence).
  */
@@ -30,7 +30,7 @@ export interface OneDriveStoredCredentials {
 }
 
 /**
- * Dropbox credentials (public client, no secret). appKey is Plainva's central app
+ * Dropbox credentials (public client, no secret). appKey is Alviss's central app
  * once registered (M-B), or a user-supplied one until then.
  */
 export interface DropboxStoredCredentials {

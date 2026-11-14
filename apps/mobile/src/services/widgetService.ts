@@ -160,7 +160,7 @@ async function writeOnce(): Promise<void> {
   try {
     const entry = await getActiveVaultEntry();
     // The same fallback the shell shows in its header.
-    const vaultName = entry.name || "Plainva";
+    const vaultName = entry.name || "Alviss";
     const settings = getMobileSettings();
     const now = new Date();
     // A sealed workspace goes out empty — not full-and-hidden.

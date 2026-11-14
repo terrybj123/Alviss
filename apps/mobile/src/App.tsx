@@ -172,7 +172,7 @@ export default function App() {
     void pendingReleaseDialog(getMobileSettings().onboarded).then(setReleaseDialog);
   }, []);
 
-  const [vaultName, setVaultName] = useState("Plainva");
+  const [vaultName, setVaultName] = useState("Alviss");
   /** Which vault the bar was read for — the change listener has no props. */
   const barVaultRef = useRef<string | null>(null);
   /**
@@ -218,11 +218,11 @@ export default function App() {
   const connectionRun = useConnectionRun();
 
   useEffect(() => {
-    void getActiveVaultEntry().then((e) => setVaultName(e.name || "Plainva"));
+    void getActiveVaultEntry().then((e) => setVaultName(e.name || "Alviss"));
     const onChanged = () => setBump((n) => n + 1);
-    const onSwitched = () => void getActiveVaultEntry().then((e) => setVaultName(e.name || "Plainva"));
+    const onSwitched = () => void getActiveVaultEntry().then((e) => setVaultName(e.name || "Alviss"));
     const onSettings = () => {
-      void getActiveVaultEntry().then((e) => setVaultName(e.name || "Plainva"));
+      void getActiveVaultEntry().then((e) => setVaultName(e.name || "Alviss"));
     };
     /**
      * The bar changed — here, on the desktop, or through the settings sync.
@@ -491,7 +491,7 @@ export default function App() {
         adapter: vault.adapter,
         isNewVault: vault.freshlySeeded,
         template: def,
-        vaultName: "Plainva",
+        vaultName: "Alviss",
         subfoldersHeading: t("indexMd.subfoldersHeading"),
       });
       await applyTemplateSettings(def?.settings);

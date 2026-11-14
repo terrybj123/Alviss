@@ -25,7 +25,7 @@ type Tool = "select" | "crop" | "pen" | "arrow" | "rect" | "text";
 const ZOOM_STEPS = [0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4];
 
 /**
- * Unsaved edits of an image whose file moved outside Plainva (issue 110,
+ * Unsaved edits of an image whose file moved outside Alviss (issue 110,
  * E9), handed from the tab at the old place to the tab at the new one. The
  * viewer mounts once per path, and edits are only written when the reader
  * saves them — so they travel along, and nothing is written on the way.
@@ -47,7 +47,7 @@ export function ImageViewer({ path, onOpenPath, isBookmarked, onToggleBookmark, 
   onDelete?: () => void;
   onSplit?: (direction: "vertical" | "horizontal") => void;
   activeSplitDirection?: "vertical" | "horizontal";
-  /** Tab retargeting: the tab follows its image when it was moved outside Plainva (issue 110). */
+  /** Tab retargeting: the tab follows its image when it was moved outside Alviss (issue 110). */
   onRenamed?: (from: string, to: string) => void;
   /** Closes this tab — the missing-file state's one action. */
   onCloseTab?: () => void;
@@ -76,7 +76,7 @@ export function ImageViewer({ path, onOpenPath, isBookmarked, onToggleBookmark, 
   const dragRef = useRef<{ start: Point; points: Point[] } | null>(null);
   const saveAsInputRef = useRef<HTMLInputElement>(null);
 
-  // The image moved or vanished outside Plainva (issue 110, E9): looked for
+  // The image moved or vanished outside Alviss (issue 110, E9): looked for
   // by its content hash, a proven move followed — with bookmarks and pinboard
   // places — or "Moved?", or the missing state. Unsaved edits go along with
   // the tab; nothing is written until the reader saves.
@@ -117,7 +117,7 @@ export function ImageViewer({ path, onOpenPath, isBookmarked, onToggleBookmark, 
           const bmp = await createImageBitmap(blob);
           if (alive) {
             setBitmap(bmp);
-            // Edits that came along with a move made outside Plainva.
+            // Edits that came along with a move made outside Alviss.
             const carried = carriedEdits.get(carryKey(vaultPath, path));
             if (carried) {
               carriedEdits.delete(carryKey(vaultPath, path));
@@ -134,7 +134,7 @@ export function ImageViewer({ path, onOpenPath, isBookmarked, onToggleBookmark, 
         console.error("[ImageViewer] loading failed", path, e);
         if (alive) {
           setError(t("imageViewer.loadError"));
-          // Moved or deleted outside Plainva? Looked for before the error stands.
+          // Moved or deleted outside Alviss? Looked for before the error stands.
           lookForFile();
         }
       });

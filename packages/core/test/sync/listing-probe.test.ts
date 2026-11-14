@@ -604,7 +604,7 @@ describe("a listing is a claim, not a fact (finding 2026-09-20)", () => {
   });
 
   it("names a missing root as its own reason", () => {
-    expect(syncErrorReason(new SyncRootMissingError("Plainva", "Google Drive"))).toBe("root-missing");
+    expect(syncErrorReason(new SyncRootMissingError("Alviss", "Google Drive"))).toBe("root-missing");
   });
 });
 

@@ -2,7 +2,7 @@ import { useRef, useState, useSyncExternalStore } from "react";
 import { Pin, SunMoon, X, Plus, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { toggleLightDark } from "../services/theme";
-import { ICON, PlainvaLogo, appliedTheme, onThemeApplied } from "@plainva/ui";
+import { ICON, AlvissLogo, appliedTheme, onThemeApplied } from "@plainva/ui";
 import { WindowControls, detectMac } from "./WindowControls";
 import { HailingFrequenciesModal } from "./HailingFrequenciesModal";
 import { tabLabel, useTabDnd, useTabWindow, dropIndicatorShadow, TAB_MAX_WIDTH } from "./tabStrip";
@@ -103,14 +103,14 @@ export function TitleBar({ tabs, pinnedTabs, activeIndex, onSelectTab, onCloseTa
             the 5-click easter egg should not advertise itself. */}
         <button
           type="button"
-          aria-label="Plainva"
+          aria-label="Alviss"
           data-testid="titlebar-logo"
           onClick={handleLogoClick}
           style={{ display: "flex", alignItems: "center", background: "transparent", border: "none", padding: 0, cursor: "default", flexShrink: 0 }}
         >
-          <PlainvaLogo size={ICON.touch} />
+          <AlvissLogo size={ICON.touch} />
         </button>
-        <b style={{ fontSize: "var(--text-md)", fontWeight: 700, letterSpacing: "-0.01em", color: "var(--titlebar-fg)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>Plainva</b>
+        <b style={{ fontSize: "var(--text-md)", fontWeight: 700, letterSpacing: "-0.01em", color: "var(--titlebar-fg)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>Alviss</b>
       </div>
 
       {onToggleLeftSidebar && (

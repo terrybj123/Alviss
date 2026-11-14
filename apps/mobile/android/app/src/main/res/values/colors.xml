@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Widget colours (plan Widgets, W3/E6).
 
-     Plainva's own petrol, not the system's "Material You" palette: a widget
+     Alviss's own petrol, not the system's "Material You" palette: a widget
      that took its colours from the wallpaper would look like every other
      widget, and the point of this one is that you recognise it at a glance.
      The values are the app's light tokens from packages/ui/src/styles/

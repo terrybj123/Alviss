@@ -41,7 +41,7 @@ export const TASKS_PLUGIN_SETTINGS_PATH = ".obsidian/plugins/obsidian-tasks-plug
 
 /**
  * The Tasks plugin's settings, once per `key` — only to NAME a global filter or
- * query in the explanation (E12); Plainva applies neither. `read` answers the
+ * query in the explanation (E12); Alviss applies neither. `read` answers the
  * file's text, or null when there is none.
  */
 export function loadTasksPluginSettings(owner: object, key: string, read: () => Promise<string | null>): Promise<TasksPluginSettings | null> {

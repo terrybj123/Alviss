@@ -33,7 +33,7 @@ export type SecretDiagnosticReason =
  * `legacy-profile-capability` recorded that A profile document lacks the
  * current capability stamp — but not WHICH one, and that difference decides
  * whether anyone is publishing anything at all: a remote document may come
- * from an older Plainva, a local one is this device's own file and accuses
+ * from an older Alviss, a local one is this device's own file and accuses
  * nobody (B7). Since P7 the two are separate reasons, so the diagnostics
  * answer the question rather than leaving it to be guessed. The undivided
  * value stays for records written before that.
@@ -65,7 +65,7 @@ export interface SyncDiagnostics {
   lastSecrets?: SecretDiagnostics;
   legacyClient?: { at: string; reasons: LegacyClientDiagnosticReason[] };
   /**
-   * An older Plainva version stored `lastExport` for every check and called it
+   * An older Alviss version stored `lastExport` for every check and called it
    * "sent". We preserve that history below, but never promote it to a verified
    * upload. The UI explains the limitation once this marker is present.
    */

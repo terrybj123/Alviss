@@ -11,7 +11,7 @@ import type { VaultTemplateDefinition } from "@plainva/ui";
 
 /**
  * What the GTD and Zettelkasten samples are supposed to DEMONSTRATE (plan
- * "Vorlagen-Überarbeitung + Plainva-Tour" § 3, step P3.2). PARA's own
+ * "Vorlagen-Überarbeitung + Alviss-Tour" § 3, step P3.2). PARA's own
  * guarantees live next door in `vaultTemplates.para.test.ts`.
  *
  * Each method has one thing a single example note cannot show:

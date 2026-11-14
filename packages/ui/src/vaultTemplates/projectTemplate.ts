@@ -266,9 +266,9 @@ export const PROJECT_STRINGS_DE: ProjectStrings = {
   welcome: {
     file: "Willkommen.md",
     title: "Willkommen",
-    intro: "Diese Vorlage zeigt ein Projekt so, wie es in Plainva funktioniert: vier Datenbanken, die aufeinander zeigen.",
+    intro: "Diese Vorlage zeigt ein Projekt so, wie es in Alviss funktioniert: vier Datenbanken, die aufeinander zeigen.",
     outro:
-      "In **Projekte** rechnen zwei Spalten mit: **Offen** zählt die Aufgaben, die noch nicht erledigt sind, **Geplant** addiert ihren Aufwand. Beides steht in keiner Datei — es wird bei jeder Abfrage neu ermittelt.\n\nIn **Aufgaben** trägt die Spalte **Wartet auf** die Abhängigkeiten. In der Zeitleiste zeichnet Plainva daraus Pfeile; beginnt eine Aufgabe, bevor ihre Vorgängerin fertig ist, wird der Pfeil rot. Geändert wird dabei nichts — die Daten sind Deine Aussage, Plainva sagt nur, dass zwei davon einander widersprechen.\n\nIn **Meilensteine** hat jeder Eintrag ein Datum und kein Ende. Genau daran erkennt die Zeitleiste einen Moment und zeichnet eine Raute statt eines Balkens.",
+      "In **Projekte** rechnen zwei Spalten mit: **Offen** zählt die Aufgaben, die noch nicht erledigt sind, **Geplant** addiert ihren Aufwand. Beides steht in keiner Datei — es wird bei jeder Abfrage neu ermittelt.\n\nIn **Aufgaben** trägt die Spalte **Wartet auf** die Abhängigkeiten. In der Zeitleiste zeichnet Alviss daraus Pfeile; beginnt eine Aufgabe, bevor ihre Vorgängerin fertig ist, wird der Pfeil rot. Geändert wird dabei nichts — die Daten sind Deine Aussage, Alviss sagt nur, dass zwei davon einander widersprechen.\n\nIn **Meilensteine** hat jeder Eintrag ein Datum und kein Ende. Genau daran erkennt die Zeitleiste einen Moment und zeichnet eine Raute statt eines Balkens.",
   },
   welcomeSections: { databases: "Datenbanken", start: "Zum Einstieg" },
   baseFiles: { projects: "Projekte.base", tasks: "Aufgaben.base", milestones: "Meilensteine.base", people: "Beteiligte.base" },
@@ -380,9 +380,9 @@ export const PROJECT_STRINGS_EN: ProjectStrings = {
   welcome: {
     file: "Welcome.md",
     title: "Welcome",
-    intro: "This template shows a project the way it works in Plainva: four databases pointing at one another.",
+    intro: "This template shows a project the way it works in Alviss: four databases pointing at one another.",
     outro:
-      "In **Projects** two columns do the counting: **Open** counts the tasks that are not done yet, **Planned** adds up their effort. Neither is stored in a file — both are worked out again on every query.\n\nIn **Tasks** the **Waits for** column carries the dependencies. The timeline draws arrows from them; when a task starts before its predecessor finishes, the arrow turns red. Nothing is changed in the process — the dates are your statement, Plainva only says that two of them disagree.\n\nIn **Milestones** every entry has a date and no end. That is exactly how the timeline recognizes a moment and draws a diamond instead of a bar.",
+      "In **Projects** two columns do the counting: **Open** counts the tasks that are not done yet, **Planned** adds up their effort. Neither is stored in a file — both are worked out again on every query.\n\nIn **Tasks** the **Waits for** column carries the dependencies. The timeline draws arrows from them; when a task starts before its predecessor finishes, the arrow turns red. Nothing is changed in the process — the dates are your statement, Alviss only says that two of them disagree.\n\nIn **Milestones** every entry has a date and no end. That is exactly how the timeline recognizes a moment and draws a diamond instead of a bar.",
   },
   welcomeSections: { databases: "Databases", start: "Start here" },
   baseFiles: { projects: "Projects.base", tasks: "Tasks.base", milestones: "Milestones.base", people: "People.base" },
@@ -494,9 +494,9 @@ export const PROJECT_STRINGS_FR: ProjectStrings = {
   welcome: {
     file: "Bienvenue.md",
     title: "Bienvenue",
-    intro: "Ce modèle montre un projet tel qu'il fonctionne dans Plainva : quatre bases de données qui se pointent les unes vers les autres.",
+    intro: "Ce modèle montre un projet tel qu'il fonctionne dans Alviss : quatre bases de données qui se pointent les unes vers les autres.",
     outro:
-      "Dans **Projets**, deux colonnes font le calcul : **Ouvert** compte les tâches qui ne sont pas encore terminées, **Budget** additionne leur charge de travail. Aucune des deux n'est stockée dans un fichier — les deux sont recalculées à chaque requête.\n\nDans **Tâches**, la colonne **En attente de** porte les dépendances. La chronologie en tire des flèches ; quand une tâche commence avant que sa précédente ne soit terminée, la flèche devient rouge. Rien n'est modifié dans ce processus — les dates sont votre déclaration, Plainva se contente de signaler que deux d'entre elles se contredisent.\n\nDans **Jalons**, chaque entrée a une date et aucune fin. C'est exactement ainsi que la chronologie reconnaît un instant et dessine un losange au lieu d'une barre.",
+      "Dans **Projets**, deux colonnes font le calcul : **Ouvert** compte les tâches qui ne sont pas encore terminées, **Budget** additionne leur charge de travail. Aucune des deux n'est stockée dans un fichier — les deux sont recalculées à chaque requête.\n\nDans **Tâches**, la colonne **En attente de** porte les dépendances. La chronologie en tire des flèches ; quand une tâche commence avant que sa précédente ne soit terminée, la flèche devient rouge. Rien n'est modifié dans ce processus — les dates sont votre déclaration, Alviss se contente de signaler que deux d'entre elles se contredisent.\n\nDans **Jalons**, chaque entrée a une date et aucune fin. C'est exactement ainsi que la chronologie reconnaît un instant et dessine un losange au lieu d'une barre.",
   },
   welcomeSections: { databases: "Bases de données", start: "Pour commencer" },
   baseFiles: { projects: "Projets.base", tasks: "Tâches.base", milestones: "Jalons.base", people: "Personnes.base" },
@@ -608,9 +608,9 @@ export const PROJECT_STRINGS_ES: ProjectStrings = {
   welcome: {
     file: "Bienvenida.md",
     title: "Bienvenida",
-    intro: "Esta plantilla muestra un proyecto tal como funciona en Plainva: cuatro bases de datos que se apuntan entre sí.",
+    intro: "Esta plantilla muestra un proyecto tal como funciona en Alviss: cuatro bases de datos que se apuntan entre sí.",
     outro:
-      "En **Proyectos**, dos columnas hacen el cálculo: **Abierto** cuenta las tareas que aún no están terminadas, **Planificado** suma su esfuerzo. Ninguna de las dos se guarda en un archivo — ambas se recalculan en cada consulta.\n\nEn **Tareas**, la columna **En espera de** contiene las dependencias. La cronología dibuja flechas a partir de ellas; cuando una tarea empieza antes de que termine la anterior, la flecha se vuelve roja. En este proceso no se cambia nada — las fechas son tu declaración, Plainva solo indica que dos de ellas se contradicen.\n\nEn **Hitos**, cada entrada tiene una fecha y ningún final. Así es exactamente como la cronología reconoce un momento y dibuja un rombo en lugar de una barra.",
+      "En **Proyectos**, dos columnas hacen el cálculo: **Abierto** cuenta las tareas que aún no están terminadas, **Planificado** suma su esfuerzo. Ninguna de las dos se guarda en un archivo — ambas se recalculan en cada consulta.\n\nEn **Tareas**, la columna **En espera de** contiene las dependencias. La cronología dibuja flechas a partir de ellas; cuando una tarea empieza antes de que termine la anterior, la flecha se vuelve roja. En este proceso no se cambia nada — las fechas son tu declaración, Alviss solo indica que dos de ellas se contradicen.\n\nEn **Hitos**, cada entrada tiene una fecha y ningún final. Así es exactamente como la cronología reconoce un momento y dibuja un rombo en lugar de una barra.",
   },
   welcomeSections: { databases: "Bases de datos", start: "Por dónde empezar" },
   baseFiles: { projects: "Proyectos.base", tasks: "Tareas.base", milestones: "Hitos.base", people: "Personas.base" },
@@ -722,9 +722,9 @@ export const PROJECT_STRINGS_PT_BR: ProjectStrings = {
   welcome: {
     file: "Bem-vindo.md",
     title: "Bem-vindo",
-    intro: "Este modelo mostra um projeto do jeito que ele funciona no Plainva: quatro bases de dados que apontam umas para as outras.",
+    intro: "Este modelo mostra um projeto do jeito que ele funciona no Alviss: quatro bases de dados que apontam umas para as outras.",
     outro:
-      "Em **Projetos**, duas colunas fazem a contagem: **Aberto** conta as tarefas que ainda não foram concluídas, **Planejado** soma o esforço delas. Nenhuma das duas fica salva em um arquivo — ambas são recalculadas a cada consulta.\n\nEm **Tarefas**, a coluna **Espera por** carrega as dependências. A linha do tempo desenha setas a partir delas; quando uma tarefa começa antes que sua antecessora termine, a seta fica vermelha. Nada é alterado nesse processo — as datas são a sua declaração, o Plainva só aponta que duas delas se contradizem.\n\nEm **Marcos**, cada item tem uma data e nenhum fim. É exatamente assim que a linha do tempo reconhece um momento e desenha um losango em vez de uma barra.",
+      "Em **Projetos**, duas colunas fazem a contagem: **Aberto** conta as tarefas que ainda não foram concluídas, **Planejado** soma o esforço delas. Nenhuma das duas fica salva em um arquivo — ambas são recalculadas a cada consulta.\n\nEm **Tarefas**, a coluna **Espera por** carrega as dependências. A linha do tempo desenha setas a partir delas; quando uma tarefa começa antes que sua antecessora termine, a seta fica vermelha. Nada é alterado nesse processo — as datas são a sua declaração, o Alviss só aponta que duas delas se contradizem.\n\nEm **Marcos**, cada item tem uma data e nenhum fim. É exatamente assim que a linha do tempo reconhece um momento e desenha um losango em vez de uma barra.",
   },
   welcomeSections: { databases: "Bases de dados", start: "Por onde começar" },
   baseFiles: { projects: "Projetos.base", tasks: "Tarefas.base", milestones: "Marcos.base", people: "Pessoas.base" },
@@ -836,9 +836,9 @@ export const PROJECT_STRINGS_IT: ProjectStrings = {
   welcome: {
     file: "Benvenuto.md",
     title: "Benvenuto",
-    intro: "Questo modello mostra un progetto così come funziona in Plainva: quattro database che puntano l'uno all'altro.",
+    intro: "Questo modello mostra un progetto così come funziona in Alviss: quattro database che puntano l'uno all'altro.",
     outro:
-      "In **Progetti**, due colonne fanno il conteggio: **Aperto** conta le attività non ancora concluse, **Pianificato** somma il loro impegno. Nessuna delle due è salvata in un file — entrambe vengono ricalcolate a ogni interrogazione.\n\nIn **Attività**, la colonna **In attesa di** contiene le dipendenze. La timeline vi disegna delle frecce; quando un'attività inizia prima che la precedente sia conclusa, la freccia diventa rossa. In questo processo non viene modificato nulla — le date sono una tua dichiarazione, Plainva si limita a segnalare che due di esse sono in contraddizione.\n\nIn **Milestone**, ogni voce ha una data e nessuna fine. Proprio per questo la timeline riconosce un istante e disegna un rombo invece di una barra.",
+      "In **Progetti**, due colonne fanno il conteggio: **Aperto** conta le attività non ancora concluse, **Pianificato** somma il loro impegno. Nessuna delle due è salvata in un file — entrambe vengono ricalcolate a ogni interrogazione.\n\nIn **Attività**, la colonna **In attesa di** contiene le dipendenze. La timeline vi disegna delle frecce; quando un'attività inizia prima che la precedente sia conclusa, la freccia diventa rossa. In questo processo non viene modificato nulla — le date sono una tua dichiarazione, Alviss si limita a segnalare che due di esse sono in contraddizione.\n\nIn **Milestone**, ogni voce ha una data e nessuna fine. Proprio per questo la timeline riconosce un istante e disegna un rombo invece di una barra.",
   },
   welcomeSections: { databases: "Database", start: "Da dove iniziare" },
   baseFiles: { projects: "Progetti.base", tasks: "Attività.base", milestones: "Milestone.base", people: "Persone.base" },
@@ -950,9 +950,9 @@ export const PROJECT_STRINGS_NL: ProjectStrings = {
   welcome: {
     file: "Welkom.md",
     title: "Welkom",
-    intro: "Dit sjabloon toont een project zoals het in Plainva werkt: vier databases die naar elkaar verwijzen.",
+    intro: "Dit sjabloon toont een project zoals het in Alviss werkt: vier databases die naar elkaar verwijzen.",
     outro:
-      "In **Projecten** rekenen twee kolommen mee: **Open** telt de taken die nog niet klaar zijn, **Gepland** telt hun inspanning op. Geen van beide staat in een bestand — allebei worden ze bij elke query opnieuw berekend.\n\nIn **Taken** draagt de kolom **Wacht op** de afhankelijkheden. De tijdlijn tekent daaruit pijlen; begint een taak voordat de vorige klaar is, dan wordt de pijl rood. Er verandert daarbij niets — de datums zijn jouw eigen opgave, Plainva meldt alleen dat twee ervan elkaar tegenspreken.\n\nIn **Mijlpalen** heeft elk item een datum en geen einde. Precies daaraan herkent de tijdlijn een moment en tekent ze een ruit in plaats van een balk.",
+      "In **Projecten** rekenen twee kolommen mee: **Open** telt de taken die nog niet klaar zijn, **Gepland** telt hun inspanning op. Geen van beide staat in een bestand — allebei worden ze bij elke query opnieuw berekend.\n\nIn **Taken** draagt de kolom **Wacht op** de afhankelijkheden. De tijdlijn tekent daaruit pijlen; begint een taak voordat de vorige klaar is, dan wordt de pijl rood. Er verandert daarbij niets — de datums zijn jouw eigen opgave, Alviss meldt alleen dat twee ervan elkaar tegenspreken.\n\nIn **Mijlpalen** heeft elk item een datum en geen einde. Precies daaraan herkent de tijdlijn een moment en tekent ze een ruit in plaats van een balk.",
   },
   welcomeSections: { databases: "Databases", start: "Om te beginnen" },
   baseFiles: { projects: "Projecten.base", tasks: "Taken.base", milestones: "Mijlpalen.base", people: "Personen.base" },
@@ -1064,9 +1064,9 @@ export const PROJECT_STRINGS_PL: ProjectStrings = {
   welcome: {
     file: "Witaj.md",
     title: "Witaj",
-    intro: "Ten szablon pokazuje projekt tak, jak działa w Plainva: cztery bazy danych wskazujące na siebie nawzajem.",
+    intro: "Ten szablon pokazuje projekt tak, jak działa w Alviss: cztery bazy danych wskazujące na siebie nawzajem.",
     outro:
-      "W bazie **Projekty** dwie kolumny liczą automatycznie: **Otwarte** zlicza zadania, które nie są jeszcze ukończone, **Planowane** sumuje ich nakład pracy. Żadna z nich nie jest zapisana w pliku — obie są przeliczane od nowa przy każdym zapytaniu.\n\nW **Zadaniach** kolumna **Czeka na** przenosi zależności. Oś czasu rysuje z nich strzałki; jeśli zadanie zaczyna się, zanim skończy się jego poprzednik, strzałka staje się czerwona. Nic nie jest przy tym zmieniane — daty to Twoje własne dane, Plainva tylko wskazuje, że dwie z nich są ze sobą sprzeczne.\n\nW **Kamieniach milowych** każdy wpis ma datę i żadnego końca. Właśnie po tym oś czasu rozpoznaje moment i rysuje romb zamiast paska.",
+      "W bazie **Projekty** dwie kolumny liczą automatycznie: **Otwarte** zlicza zadania, które nie są jeszcze ukończone, **Planowane** sumuje ich nakład pracy. Żadna z nich nie jest zapisana w pliku — obie są przeliczane od nowa przy każdym zapytaniu.\n\nW **Zadaniach** kolumna **Czeka na** przenosi zależności. Oś czasu rysuje z nich strzałki; jeśli zadanie zaczyna się, zanim skończy się jego poprzednik, strzałka staje się czerwona. Nic nie jest przy tym zmieniane — daty to Twoje własne dane, Alviss tylko wskazuje, że dwie z nich są ze sobą sprzeczne.\n\nW **Kamieniach milowych** każdy wpis ma datę i żadnego końca. Właśnie po tym oś czasu rozpoznaje moment i rysuje romb zamiast paska.",
   },
   welcomeSections: { databases: "Bazy danych", start: "Od czego zacząć" },
   baseFiles: { projects: "Projekty.base", tasks: "Zadania.base", milestones: "Kamienie milowe.base", people: "Osoby.base" },
@@ -1178,9 +1178,9 @@ export const PROJECT_STRINGS_ZH_CN: ProjectStrings = {
   welcome: {
     file: "欢迎.md",
     title: "欢迎",
-    intro: "这个模板展示了一个项目在Plainva中的运作方式：四个互相指向的数据库。",
+    intro: "这个模板展示了一个项目在Alviss中的运作方式：四个互相指向的数据库。",
     outro:
-      "在**项目**数据库中，有两栏会自动计算：**Weiwan**（未完成的任务数）统计还没有完成的任务，**Jihuagongshi**（计划工时）把这些任务的工时加起来。这两项都不保存在文件里——每次查询都会重新计算一次。\n\n在**任务**数据库中，**等待**这一栏记录着依赖关系。时间轴会据此画出箭头；如果一项任务在它的前置任务完成之前就开始了，箭头就会变红。这个过程不会修改任何内容——日期是你自己给出的说明，Plainva只是指出其中两项互相矛盾。\n\n在**里程碑**数据库中，每一条记录都只有日期，没有结束时间。正因如此，时间轴才能识别出一个时间点，并画出菱形而不是长条。",
+      "在**项目**数据库中，有两栏会自动计算：**Weiwan**（未完成的任务数）统计还没有完成的任务，**Jihuagongshi**（计划工时）把这些任务的工时加起来。这两项都不保存在文件里——每次查询都会重新计算一次。\n\n在**任务**数据库中，**等待**这一栏记录着依赖关系。时间轴会据此画出箭头；如果一项任务在它的前置任务完成之前就开始了，箭头就会变红。这个过程不会修改任何内容——日期是你自己给出的说明，Alviss只是指出其中两项互相矛盾。\n\n在**里程碑**数据库中，每一条记录都只有日期，没有结束时间。正因如此，时间轴才能识别出一个时间点，并画出菱形而不是长条。",
   },
   welcomeSections: { databases: "数据库", start: "从这里开始" },
   baseFiles: { projects: "项目.base", tasks: "任务.base", milestones: "里程碑.base", people: "人员.base" },
@@ -1292,9 +1292,9 @@ export const PROJECT_STRINGS_JA: ProjectStrings = {
   welcome: {
     file: "はじめに.md",
     title: "はじめに",
-    intro: "このテンプレートは、Plainvaでのプロジェクトの動き方を示しています。お互いを参照し合う4つのデータベースで構成されています。",
+    intro: "このテンプレートは、Alvissでのプロジェクトの動き方を示しています。お互いを参照し合う4つのデータベースで構成されています。",
     outro:
-      "**プロジェクト**では、2つの列が自動的に計算されます。**Open**はまだ完了していないタスクの数を数え、**Planned**はその作業量を合計します。どちらもファイルには保存されません——クエリのたびに毎回計算し直されます。\n\n**タスク**では、**待ち**列が依存関係を表します。タイムラインはそこから矢印を描きます。あるタスクが前のタスクの完了より前に始まると、矢印は赤くなります。この過程で何かが変更されるわけではありません——日付はあなた自身の申告であり、Plainvaはそのうち2つが矛盾していることを伝えるだけです。\n\n**マイルストーン**では、すべての項目に日付があり、終了日はありません。そのおかげでタイムラインは瞬間を認識し、バーの代わりにひし形を描きます。",
+      "**プロジェクト**では、2つの列が自動的に計算されます。**Open**はまだ完了していないタスクの数を数え、**Planned**はその作業量を合計します。どちらもファイルには保存されません——クエリのたびに毎回計算し直されます。\n\n**タスク**では、**待ち**列が依存関係を表します。タイムラインはそこから矢印を描きます。あるタスクが前のタスクの完了より前に始まると、矢印は赤くなります。この過程で何かが変更されるわけではありません——日付はあなた自身の申告であり、Alvissはそのうち2つが矛盾していることを伝えるだけです。\n\n**マイルストーン**では、すべての項目に日付があり、終了日はありません。そのおかげでタイムラインは瞬間を認識し、バーの代わりにひし形を描きます。",
   },
   welcomeSections: { databases: "データベース", start: "はじめの一歩" },
   baseFiles: { projects: "プロジェクト.base", tasks: "タスク.base", milestones: "マイルストーン.base", people: "メンバー.base" },

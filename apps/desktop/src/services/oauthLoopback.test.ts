@@ -38,7 +38,7 @@ describe("turning a loopback failure into something a person can read", () => {
   /**
    * Anything that is not one of our codes keeps its own words — a generic
    * replacement would hide the one message that helps — but is framed as the
-   * provider's answer, so it never reads like a sentence of Plainva's
+   * provider's answer, so it never reads like a sentence of Alviss's
    * (finding 2026-09-24).
    */
   it("keeps every other failure verbatim, framed as the provider's answer", async () => {
@@ -49,8 +49,8 @@ describe("turning a loopback failure into something a person can read", () => {
     expect(oauthErrorText("plain string")).toBe("Provider response: plain string");
   });
 
-  /** Plainva's own codes never reach the screen raw — "storageFailed" did. */
-  it("turns Plainva's own codes into sentences", async () => {
+  /** Alviss's own codes never reach the screen raw — "storageFailed" did. */
+  it("turns Alviss's own codes into sentences", async () => {
     await i18n.changeLanguage("en");
     expect(oauthErrorText(new ServiceConnectionError("storageFailed"))).toBe(
       "The sign-in worked, but the account data could not be saved on this device. Nothing was left half-created.",

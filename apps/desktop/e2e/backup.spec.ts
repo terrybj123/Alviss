@@ -422,7 +422,7 @@ test("the vault's own page renames it, exports the ZIP to the chosen file and as
   await expect(details).toContainText('/test-vault');
   await shootTheme(page, testInfo, 'vault-details');
 
-  // Rename: a name in Plainva, shown at once in the rail's card; the folder keeps its own.
+  // Rename: a name in Alviss, shown at once in the rail's card; the folder keeps its own.
   await details.getByTestId('vault-details-rename').click();
   const prompt = page.getByRole('dialog', { name: /^(Umbenennen|Rename)$/ });
   await prompt.getByRole('textbox').fill('Work notes');

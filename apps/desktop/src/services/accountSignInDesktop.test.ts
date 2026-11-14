@@ -194,7 +194,7 @@ describe("this device's Dropbox app key (settings plan 2026-10-29, E6)", () => {
     expect(await readDeviceAccess("dropbox", "V")).toEqual({ source: "own", clientId: "abcd1234efgh" });
   });
 
-  it("reads Plainva's key on the account - written there by the old page's field - as the standard sign-in", async () => {
+  it("reads Alviss's key on the account - written there by the old page's field - as the standard sign-in", async () => {
     h.registry = [dropboxCard(PLAINVA_DROPBOX_APP_KEY)];
     expect(await readDeviceAccess("dropbox", "V")).toEqual({ source: "plainva" });
     const resolved = await deviceAccess("dropbox", "V");
@@ -207,7 +207,7 @@ describe("this device's Dropbox app key (settings plan 2026-10-29, E6)", () => {
     expect(await readDeviceAccess("dropbox", "V")).toEqual({ source: "own", clientId: "own5678keyab" });
   });
 
-  it("stores nothing for a device with nothing to take over, and signs in with Plainva's key", async () => {
+  it("stores nothing for a device with nothing to take over, and signs in with Alviss's key", async () => {
     expect(await readDeviceAccess("dropbox", "V")).toBeNull();
     expect(h.secrets.has("oauth_access_dropbox")).toBe(false);
     expect(await deviceAccess("dropbox", "V")).toMatchObject({ ok: true, access: { source: "plainva" } });

@@ -400,7 +400,7 @@ export function usePaneLayout({ vaultPath, validatePath, onOpenPath, onRequestPi
    * Attachments never become a tab: they go to the OS and the layout stays as it
    * is (issue #55). Returns true when the path was handled and the caller must
    * stop — every opener starts with this line. `notifyOpen` is deliberately NOT
-   * called for them: the recent list tracks what Plainva has open, and a PDF
+   * called for them: the recent list tracks what Alviss has open, and a PDF
    * handed to another program is not that.
    */
   const handedToTheSystem = (path: string): boolean => {

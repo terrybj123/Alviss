@@ -115,7 +115,7 @@ export interface TaskSyncOptions {
    */
   mayCreateNotes?: boolean;
   /**
-   * Deletions the user confirmed in Plainva whose provider task should follow
+   * Deletions the user confirmed in Alviss whose provider task should follow
    * (E4b). Carried out at the START of a list's reconcile, before anything is
    * imported or pushed.
    *
@@ -392,7 +392,7 @@ async function reconcileList(
     const st = stateByUid.get(rt.uid);
     const remoteFields = fieldsOfTask(rt);
 
-    // A deletion the user confirmed in Plainva (E4b). Runs FIRST: everything
+    // A deletion the user confirmed in Alviss (E4b). Runs FIRST: everything
     // below reconciles a task that is supposed to stay.
     const order = (opts.pendingDeletions ?? []).find((o) => anchorMatchesTask(o, taskId(rt.uid)));
     if (order) {

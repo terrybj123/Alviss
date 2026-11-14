@@ -560,7 +560,7 @@ export const Editor: React.FC<{
 
   // Hand the note to the OS default handler for its type (e.g. Byword for
   // `.md`) — plain-Markdown interop, requested in issue #6. The file watcher
-  // picks up external edits, so changes flow back into Plainva automatically.
+  // picks up external edits, so changes flow back into Alviss automatically.
   const handleMenuOpenInDefaultApp = async () => {
     if (!activePath || !vaultPath) return;
     try {
@@ -572,7 +572,7 @@ export const Editor: React.FC<{
   };
 
   // In-app counterpart of "reveal in file manager": expand + select the file
-  // in Plainva's own tree. Park + event: App un-collapses the sidebar /
+  // in Alviss's own tree. Park + event: App un-collapses the sidebar /
   // switches to the files tab on the event; a mounted tree handles it live,
   // an unmounted one consumes the parked path when it mounts (lib/treeReveal).
   // The tree deliberately never auto-reveals on opening a file — only this
@@ -2182,7 +2182,7 @@ export const Editor: React.FC<{
   }, [isLoading, loadError, activePath, queryService]);
 
   // A file that could not be read is looked for before the missing state is
-  // shown (issue 110, E9) — moved outside Plainva, it sits somewhere else
+  // shown (issue 110, E9) — moved outside Alviss, it sits somewhere else
   // with the same content. One match at the same modification time (a move
   // keeps it): the tab follows and says where. Anything less certain: the
   // card asks. None: the missing state, and the index row is already gone
@@ -2196,9 +2196,9 @@ export const Editor: React.FC<{
       setMissingLookup({ kind: "settled", searching: false });
       return;
     }
-    // A move the sync made here is no move outside Plainva: the tab shows the new name.
+    // A move the sync made here is no move outside Alviss: the tab shows the new name.
     if (movedOutside) toast.info(t("editor.movedFileFollowed", {
-      defaultValue: "Moved outside Plainva. The tab now shows the file in {{folder}}.",
+      defaultValue: "Moved outside Alviss. The tab now shows the file in {{folder}}.",
       folder: movedFolderLabel(to, vaultDisplayName(vaultPath ?? "")),
     }));
     // A surface without tab retargeting (the peek window, an auxiliary
@@ -2207,7 +2207,7 @@ export const Editor: React.FC<{
     else onOpenPath?.(to, false);
   });
   /**
-   * What a move made in Plainva carries along — bookmarks, pinboard places,
+   * What a move made in Alviss carries along — bookmarks, pinboard places,
    * the note's remarks — for a move made elsewhere, once it is proven or the
    * reader picked the file. Links in other notes stay as they are.
    */
@@ -2320,7 +2320,7 @@ export const Editor: React.FC<{
   });
   // The sync moved the open file here (fileMoved.ts): the editor switches to
   // the new name directly, its unsaved text with it - never a save at the old
-  // place, never the lookup for a file moved outside Plainva.
+  // place, never the lookup for a file moved outside Alviss.
   useEffect(() => {
     const onMoved = (event: Event) => {
       const moved = (event as CustomEvent<FileMovedDetail>).detail;
@@ -2404,7 +2404,7 @@ export const Editor: React.FC<{
   });
   /**
    * Entry point for every report that the open file may be gone. Deferred a
-   * moment: a deletion made in Plainva closes this tab right after, and a
+   * moment: a deletion made in Alviss closes this tab right after, and a
    * watcher batch indexes the other side of a move in the same breath.
    */
   const noticeVanished = useStableHandler((path: string) => {
@@ -2550,7 +2550,7 @@ export const Editor: React.FC<{
           else setReloadNonce((n) => n + 1);
           return;
         }
-        // The file is gone — moved or deleted outside Plainva, or by sync
+        // The file is gone — moved or deleted outside Alviss, or by sync
         // (issue 110, E9). That is not a failed save; the vanish check takes
         // over. Asked by existence, because a client window's error comes
         // over the bus without its class.
@@ -3811,7 +3811,7 @@ export const Editor: React.FC<{
                 <Button key={candidate} variant="secondary" data-testid="editor-moved-candidate" onClick={() => {
                   if (!activePath) return;
                   // The reader said which file it is: that move is as good as
-                  // proven, and what Plainva stores about the note follows.
+                  // proven, and what Alviss stores about the note follows.
                   void adoptMove(activePath, candidate);
                   followMovedFile(activePath, candidate);
                 }}>
@@ -3830,7 +3830,7 @@ export const Editor: React.FC<{
           </div>
         ) : loadError ? (
           // Issue #34: phantom rows in a stale index (typically after a deletion
-          // made outside Plainva) used to open an editor whose CONTENT was the
+          // made outside Alviss) used to open an editor whose CONTENT was the
           // error message. It is a state now. The row that led here is already
           // gone when this shows: the lookup above removes it without a click
           // once the file is proven missing (issue 110, E9). Before that, a

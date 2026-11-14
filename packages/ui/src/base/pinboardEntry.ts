@@ -391,7 +391,7 @@ export interface PinboardEntryResult {
 /** Ends an entry; see the module comment. The shell flushes its editor first. */
 export async function finalizePinboardEntry(files: PinboardEntryFiles, opts: FinalizePinboardEntryOptions): Promise<PinboardEntryResult> {
   // Saving is a decision to keep — made before anything is written: a saved
-  // template nobody typed into has exactly the bytes Plainva wrote, and an app
+  // template nobody typed into has exactly the bytes Alviss wrote, and an app
   // that goes away in the middle of the save must not have it on record as a
   // leftover to take back.
   if (opts.intent === "save") opts.ledger?.forget(opts.draft.path);

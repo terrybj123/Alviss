@@ -52,7 +52,7 @@ describe("buildNote", () => {
       strings,
       blogUrl: "https://plainva.com/blog/plainva-0-8-1",
     });
-    expect(note).toBe("Plainva 0.8.1\n• One\n• Two (Experimental)\nplainva.com/blog/plainva-0-8-1");
+    expect(note).toBe("Alviss 0.8.1\n• One\n• Two (Experimental)\nplainva.com/blog/plainva-0-8-1");
   });
 
   it("points German readers at the German post", () => {
@@ -67,7 +67,7 @@ describe("buildNote", () => {
   });
 
   it("does not invent a blog URL for a release without a post", () => {
-    expect(buildNote({ lang:"de", version:"0.6.4", highlights:[{}], strings })).toBe("Plainva 0.6.4\n• One");
+    expect(buildNote({ lang:"de", version:"0.6.4", highlights:[{}], strings })).toBe("Alviss 0.6.4\n• One");
   });
 });
 

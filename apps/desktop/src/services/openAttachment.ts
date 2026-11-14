@@ -6,7 +6,7 @@ import { errorText, toast } from "@plainva/ui";
  *
  * WHAT to do with a path is decided by `resolveOpenAction` in the shared
  * package; this is the desktop half of HOW — the opener call plus the one case
- * that stays visible in Plainva, namely failure. Both places that render a vault
+ * that stays visible in Alviss, namely failure. Both places that render a vault
  * path (the pane layout and the peek window) call this, so the message and the
  * logging exist once. Its mobile sibling is `services/openAttachment.ts` in the
  * mobile app, which shares the file, not the code: there the system is reached

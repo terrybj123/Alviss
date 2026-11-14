@@ -2,7 +2,7 @@ import type { BookmarkEntry } from "@plainva/ui";
 /**
  * The window bus (multi-window P0).
  *
- * Plainva runs every window in ONE process: the central window owns the
+ * Alviss runs every window in ONE process: the central window owns the
  * background services and all write paths, auxiliary windows read the vault
  * and the index directly and hand mutations over. This module is the wire
  * between them — two directions, deliberately narrow:

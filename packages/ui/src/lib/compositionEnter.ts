@@ -3,7 +3,7 @@
  *
  * Japanese, Chinese and Korean are typed by COMPOSING: the keyboard shows a
  * reading, offers conversions, and Enter confirms the chosen one. That Enter
- * is a key press like any other as far as the page is concerned - and Plainva
+ * is a key press like any other as far as the page is concerned - and Alviss
  * has some sixty handlers of the form `if (e.key === "Enter") submit()`. Seven
  * of them checked `isComposing`; the rest submitted the half-typed reading:
  * the cloud folder was created under the name as it stood before conversion,

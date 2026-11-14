@@ -102,7 +102,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose, initialPr
   const { t, i18n } = useTranslation();
 
   const vaults = Array.from(new Set([vaultPath, ...recentVaults].filter(Boolean) as string[]));
-  // What each vault is called in Plainva: its own name, else its folder's.
+  // What each vault is called in Alviss: its own name, else its folder's.
   const vaultLabelOf = useVaultLabels(vaults);
 
   const [section, setSection] = useState<string>(vaultPath || GENERAL);
@@ -353,7 +353,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose, initialPr
 
   const handleReportIssue = async () => {
     const body = encodeURIComponent(
-      `Plainva ${aboutInfo?.appVersion ?? "dev"} (${formatBuildLine()}) · Tauri ${aboutInfo?.tauriVersion ?? "-"} · WebView ${webViewVersion} · ${aboutInfo?.os ?? "?"} · ${i18n.language}\n\n`
+      `Alviss ${aboutInfo?.appVersion ?? "dev"} (${formatBuildLine()}) · Tauri ${aboutInfo?.tauriVersion ?? "-"} · WebView ${webViewVersion} · ${aboutInfo?.os ?? "?"} · ${i18n.language}\n\n`
     );
     try {
       const { openExternalUrl: openUrl } = await import("../services/openExternal");
@@ -905,7 +905,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose, initialPr
                   </SettingsPage>
                   <SettingsPage active={inAppWorld && appPage === "about"}>
                     <AboutPage
-                      aboutLine={aboutInfo ? `Plainva ${aboutInfo.appVersion} (${formatBuildLine()}) · Tauri ${aboutInfo.tauriVersion} · WebView ${webViewVersion} · ${aboutInfo.os}` : "…"}
+                      aboutLine={aboutInfo ? `Alviss ${aboutInfo.appVersion} (${formatBuildLine()}) · Tauri ${aboutInfo.tauriVersion} · WebView ${webViewVersion} · ${aboutInfo.os}` : "…"}
                       keychainStatus={keychainStatus}
                       perfStats={perfStats}
                       onRefreshPerfStats={() => { void refreshPerfStats(); }}

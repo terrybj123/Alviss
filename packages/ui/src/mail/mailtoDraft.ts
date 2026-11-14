@@ -2,7 +2,7 @@
  * What a `mailto:` link asks to write (RFC 6068) — one reading for both shells
  * (open-items plan 3.82).
  *
- * A mail address in a message opens Plainva's composer, from the mailbox the
+ * A mail address in a message opens Alviss's composer, from the mailbox the
  * message lies in, with what the link names: its recipients, its subject and
  * its text. The phone took the link apart in its message screen; the desktop
  * handed every link to the system, a mail address included, and the system's

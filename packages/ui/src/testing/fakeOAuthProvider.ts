@@ -174,7 +174,7 @@ export class FakeOAuthProvider {
     return entry && !entry.grant.revoked ? entry.scopes : null;
   }
 
-  /** The person revokes Plainva's access in their provider account. */
+  /** The person revokes Alviss's access in their provider account. */
   revoke(email: string): void {
     for (const grant of this.grants) if (grant.account.email === email) grant.revoked = true;
   }

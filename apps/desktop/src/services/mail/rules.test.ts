@@ -93,7 +93,7 @@ describe("collecting actions", () => {
     expect(actionsFor(rules, { from: "newsletter@x.org" })).toEqual([{ kind: "markRead" }]);
   });
 
-  it("says when a rule needs a body Plainva has not fetched", () => {
+  it("says when a rule needs a body Alviss has not fetched", () => {
     expect(needsBody([rule({ conditions: [{ field: "body", op: "contains", value: "x" }] })])).toBe(true);
     expect(needsBody([rule()])).toBe(false);
   });

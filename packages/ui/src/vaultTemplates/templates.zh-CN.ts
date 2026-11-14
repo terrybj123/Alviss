@@ -19,7 +19,7 @@ import { buildProject, PROJECT_STRINGS_ZH_CN } from "./projectTemplate";
  * indexed. */
 
 // ---------------------------------------------------------------------------
-// Plainva Tour — shared structure (plainvaTour.ts), Simplified Chinese strings.
+// Alviss Tour — shared structure (plainvaTour.ts), Simplified Chinese strings.
 // ---------------------------------------------------------------------------
 
 const CHEAT_SHEET_ZH_CN = `下面的所有内容都是纯粹的Markdown。用工具栏在阅读和编辑模式之间切换——编辑器只在光标所在的位置显示格式标记。
@@ -69,8 +69,8 @@ $$
 `;
 
 const TOUR_STRINGS_ZH_CN: TourStrings = {
-  name: "Plainva导览",
-  description: "一个带导览的仓库：便签板、日记、领域、项目和任务——Plainva提供的每一种视图，都配有示例。",
+  name: "Alviss导览",
+  description: "一个带导览的仓库：便签板、日记、领域、项目和任务——Alviss提供的每一种视图，都配有示例。",
   folders: {
     quickNotes: "快速笔记",
     journal: "日记",
@@ -95,7 +95,7 @@ const TOUR_STRINGS_ZH_CN: TourStrings = {
   },
   welcome: {
     file: "欢迎.md",
-    title: "欢迎使用 Plainva",
+    title: "欢迎使用 Alviss",
     intro: "这个仓库是一次导览。下面的每个文件夹都填满了示例，每个数据库展示不同的视图——打开它们，随意修改：这里没有什么是不能碰的。",
     outro: "你看到的一切都是这个文件夹里纯粹的Markdown。删掉不需要的，把其余的重新命名——这个仓库就是你的了。",
   },
@@ -185,9 +185,9 @@ const TOUR_STRINGS_ZH_CN: TourStrings = {
     ],
     resources: [
       { title: "Markdown速查表", body: CHEAT_SHEET_ZH_CN, props: { kind: "参考", status: "已读", cover: "附件/cover.svg" } },
-      { title: "Plainva手册", body: "完整的指南在plainva.com/docs。", props: { kind: "参考", url: "https://plainva.com/docs", status: "未读" } },
+      { title: "Alviss手册", body: "完整的指南在plainva.com/docs。", props: { kind: "参考", url: "https://plainva.com/docs", status: "未读" } },
       { title: "深度工作", body: "Cal Newport 著。关于时间安排的那一章最有用。", props: { kind: "书籍", status: "未读", lingyu: "[[学习]]" } },
-      { title: "键盘快捷键", body: "在Plainva中按`F1`——列表可以搜索。", props: { kind: "参考", status: "已读", lingyu: "[[学习]]" } },
+      { title: "键盘快捷键", body: "在Alviss中按`F1`——列表可以搜索。", props: { kind: "参考", status: "已读", lingyu: "[[学习]]" } },
     ],
     archive: [
       { title: "旧网站", body: "被[[网站改版]]取代了。留着是为了里面的文案。", props: { guidang: "{{today-20}}" } },
@@ -219,7 +219,7 @@ const PARA_STRINGS_ZH_CN: ParaStrings = {
     title: "欢迎",
     intro: "这个仓库按照PARA方法（Tiago Forte）组织：内容按可执行程度分类，而不是按主题分类。",
     outro:
-      "打开项目.base、任务.base和领域.base数据库，即可按状态查看项目，把任务分配给项目，并把项目关联到各自的领域——已完成的内容会移到归档，链接和index.md概览由Plainva自动维护。",
+      "打开项目.base、任务.base和领域.base数据库，即可按状态查看项目，把任务分配给项目，并把项目关联到各自的领域——已完成的内容会移到归档，链接和index.md概览由Alviss自动维护。",
   },
   welcomeSections: { databases: "你的数据库", start: "从这里开始" },
   baseFiles: { projects: "项目.base", tasks: "任务.base", areas: "领域.base" },
@@ -277,7 +277,7 @@ const PARA_STRINGS_ZH_CN: ParaStrings = {
       },
       {
         title: "与团队确定平面图",
-        body: "把卡片拖到看板的另一列：Plainva会把新的状态写入这条笔记。",
+        body: "把卡片拖到看板的另一列：Alviss会把新的状态写入这条笔记。",
         props: { status: "进行中", xiangmu: "[[搬到新办公室]]", due: "{{today+7}}" },
       },
       {
@@ -395,7 +395,7 @@ const GTD_STRINGS_ZH_CN: GtdStrings = {
       },
       {
         title: "查看木工的报价",
-        body: "把卡片拖到看板的另一列：Plainva会把新的状态写入这条笔记。",
+        body: "把卡片拖到看板的另一列：Alviss会把新的状态写入这条笔记。",
         props: { status: "下一步", context: "@办公", xiangmu: "[[厨房翻新]]", due: "{{today+5}}" },
       },
       {

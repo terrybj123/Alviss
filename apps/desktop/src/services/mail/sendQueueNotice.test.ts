@@ -13,7 +13,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
  * lost its "Undo"), and its own notice stayed until it was closed by hand.
  *
  * The rule is the one the handbook states: the notice keeps "Undo" ready WHILE
- * the message waits. That window ends when the timer runs out, when Plainva is
+ * the message waits. That window ends when the timer runs out, when Alviss is
  * closed, or when a second message pushes the first one out — and in that
  * moment the notice goes, before the transport has answered. From then on
  * there is at most one notice, and it belongs to the message that is waiting.
@@ -140,7 +140,7 @@ describe("the undo notice of a delayed send", () => {
     expect(owed()[0].action?.label).toBe(i18n.t("mail.sendReopen"));
   });
 
-  it("is gone when Plainva is closed and the message is sent at once", async () => {
+  it("is gone when Alviss is closed and the message is sent at once", async () => {
     await submitSend(request("Closing"));
     expect(notices()).toHaveLength(1);
 

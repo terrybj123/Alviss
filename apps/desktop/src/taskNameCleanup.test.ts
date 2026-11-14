@@ -106,7 +106,7 @@ function runnerOf(v: ReturnType<typeof vault>, storage = memoryStorage(), notePa
 }
 
 describe("what is offered", () => {
-  it("offers only the names Plainva gave itself: the shape AND the hash of the note's own anchor", async () => {
+  it("offers only the names Alviss gave itself: the shape AND the hash of the note's own anchor", async () => {
     const own = legacy("Aufgaben", "Zahnarzt anrufen", "u1");
     const full = legacy("Aufgaben", "Steuern", "u2", true);
     const copied = `Aufgaben/Fremd — ${hashOf("u1").slice(0, 16)}.md`; // the digits of ANOTHER task

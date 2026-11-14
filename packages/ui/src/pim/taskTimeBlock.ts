@@ -13,13 +13,13 @@ import { markdownToHtml } from "../lib/markdownToHtml";
  * "Block time" on a task (issue #34, wave 3; shared by both shells since S24).
  *
  * The reporter asked for time windows on tasks ("1 h", "13:00–15:00"). Tasks in
- * Plainva are day-granular on purpose — an EVENT is the object that owns a time
+ * Alviss are day-granular on purpose — an EVENT is the object that owns a time
  * RANGE, with collision rendering in the grid, provider sync and reminders. So
  * a task keeps its due DATE and gains an event that carries its title.
  *
  * The link is written on BOTH ends, each in the form its side can actually read:
  *   - the event carries a wiki link in its description (readable in Google
- *     Calendar and Outlook too, and rendered as Markdown by Plainva),
+ *     Calendar and Outlook too, and rendered as Markdown by Alviss),
  *   - the note carries `plainva.blocks[]` — the `plainva:` namespace is
  *     Obsidian-inert, and this is a DIFFERENT key from `plainva.pim`, which is
  *     already the anchor of a mirrored remote task and of a meeting note.
@@ -108,7 +108,7 @@ export interface TaskBlockValues {
 /**
  * Builds the event draft for "block time" on a task. The link is a wiki link in
  * the description rather than a provider-private property: it stays readable in
- * Google Calendar and Outlook, and Plainva renders event descriptions as
+ * Google Calendar and Outlook, and Alviss renders event descriptions as
  * Markdown. Pure.
  */
 export function buildTaskBlockDraft(opts: {

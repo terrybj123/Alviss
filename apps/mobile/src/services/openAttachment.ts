@@ -5,8 +5,8 @@ import type { MobileVault } from "./vaultService";
 /**
  * What happens when an attachment is tapped (S42).
  *
- * An image gets Plainva's viewer; everything else is handed to the system,
- * which knows what a PDF or an .ods is and Plainva does not. Building a
+ * An image gets Alviss's viewer; everything else is handed to the system,
+ * which knows what a PDF or an .ods is and Alviss does not. Building a
  * viewer per format would be a promise the app cannot keep, and a row that
  * does nothing is worse than one that opens the OS.
  *

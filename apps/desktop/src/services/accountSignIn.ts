@@ -135,7 +135,7 @@ export async function deviceAccess(family: AccessFamily, vaultPath?: string): Pr
 }
 
 async function adoptHistoricalClient(family: OAuthFamily, vaultPath: string): Promise<StoredOAuthAccess | null> {
-  if (family !== "google") return null; // Microsoft always had Plainva's client; an own one stays opt-in.
+  if (family !== "google") return null; // Microsoft always had Alviss's client; an own one stays opt-in.
   const plainva = plainvaGoogleClient(env(), "desktop");
   const own = (client: { clientId?: string; clientSecret?: string } | null | undefined): StoredOAuthAccess | null =>
     client?.clientId && client.clientSecret && client.clientId !== plainva?.clientId && validClientId("google", client.clientId)

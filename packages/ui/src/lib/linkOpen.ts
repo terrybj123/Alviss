@@ -10,7 +10,7 @@ import { wikiTargetToPath } from "./wikiResolver";
  * Eight places opened a Markdown link, each in a way of its own. The reading
  * view read it from the linking note's folder and said "not found" for
  * everything else. The editor did that for a target with a slash and sent a
- * bare name through the wiki rule without decoding it, so the entry Plainva's
+ * bare name through the wiki rule without decoding it, so the entry Alviss's
  * own listing writes for a note "My letter" — `[My letter](My%20letter.md)` —
  * created a note `My%20letter.md` beside the real one. A table cell lost the
  * way the link was written on its way to the shell and treated every link as a

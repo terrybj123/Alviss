@@ -336,7 +336,7 @@ export * from "./components/ui/useOutsidePress";
 export * from "./components/ui/useWeekStartDay";
 export * from "./components/ui/ToastHost";
 export * from "./components/NoteCardBody";
-export * from "./components/PlainvaLogo";
+export * from "./components/AlvissLogo";
 export * from "./components/QrScanner";
 export * from "./hooks/useFocusTrap";
 export * from "./hooks/useTaskDuplicates";

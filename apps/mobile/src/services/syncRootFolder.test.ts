@@ -62,9 +62,9 @@ describe("where the remote folder lives (finding 2026-08-19)", () => {
   });
 
   it("retains a same-named folder's identity through reconnect and clears it on a new path choice", async () => {
-    await writeSyncRootFolder(VAULT, "drive", "Plainva", "second-folder");
-    expect(await readDriveDestination(VAULT, null)).toEqual({ path: "Plainva", id: "second-folder" });
-    expect(await readSyncRootFolder(VAULT, "drive", null)).toBe("Plainva");
+    await writeSyncRootFolder(VAULT, "drive", "Alviss", "second-folder");
+    expect(await readDriveDestination(VAULT, null)).toEqual({ path: "Alviss", id: "second-folder" });
+    expect(await readSyncRootFolder(VAULT, "drive", null)).toBe("Alviss");
     await writeSyncRootFolder(VAULT, "drive", "New vault");
     expect(await readDriveDestination(VAULT, null)).toEqual({ path: "New vault" });
   });
@@ -76,9 +76,9 @@ describe("where the remote folder lives (finding 2026-08-19)", () => {
 
   it("keeps the providers apart", async () => {
     await writeSyncRootFolder(VAULT, "drive", "DriveFolder");
-    await writeSyncRootFolder(VAULT, "dropbox", "/Apps/Plainva");
+    await writeSyncRootFolder(VAULT, "dropbox", "/Apps/Alviss");
     expect(await readSyncRootFolder(VAULT, "drive", null)).toBe("DriveFolder");
-    expect(await readSyncRootFolder(VAULT, "dropbox", null)).toBe("/Apps/Plainva");
+    expect(await readSyncRootFolder(VAULT, "dropbox", null)).toBe("/Apps/Alviss");
   });
 
   it("leaves WebDAV and S3 in the credentials, where the form shows them", async () => {

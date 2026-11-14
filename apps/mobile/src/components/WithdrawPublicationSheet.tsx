@@ -84,14 +84,14 @@ export function WithdrawPublicationSheet({
               "Every object this publication holds is retracted and the publication is forgotten here. Recipients keep no working key.",
           })}
         </p>
-        {/* Named rather than silently left behind: Plainva does not manage other
+        {/* Named rather than silently left behind: Alviss does not manage other
             systems' sharing settings, so the folder stays shared until somebody
             unshares it there. */}
         <p className="m-hint">
           {t("workspaceSecurity.withdrawProviderHint", {
             provider: PROVIDER_NAMES[record.config.provider] ?? record.config.provider,
             defaultValue:
-              "The folder at {{provider}} stays where it is. Plainva does not manage other systems' sharing settings - remove the share there yourself.",
+              "The folder at {{provider}} stays where it is. Alviss does not manage other systems' sharing settings - remove the share there yourself.",
           })}
         </p>
 

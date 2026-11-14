@@ -1,7 +1,7 @@
 /**
  * "Is this server address unencrypted AND reachable from outside my network?"
  *
- * Plainva allows `http://` — a self-hosted server on a home network is a normal
+ * Alviss allows `http://` — a self-hosted server on a home network is a normal
  * thing to sync against, and blocking it outright made those setups impossible
  * on Android (issue #48). But the two cases are not equally harmless: WebDAV
  * authenticates with Basic auth, so the password travels on EVERY request. On a

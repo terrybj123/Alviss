@@ -96,7 +96,7 @@ export function BasePeekModal({
   const goFwd = () => setHistory(peekForward);
   // Every navigation (link inside the peek, or an entry opened from a base shown
   // in the peek) pushes onto the history — notes AND `.base` targets alike.
-  // An attachment is the exception: a peek is a PREVIEW, and Plainva has none
+  // An attachment is the exception: a peek is a PREVIEW, and Alviss has none
   // for a PDF, so it goes straight to the system and the window stays where it
   // is (issue #55; the peek used to render the editor on it, which produced the
   // load error).

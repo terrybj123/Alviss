@@ -197,7 +197,7 @@ export function resolveDraftsMailbox(
 }
 
 /** Reply note: a NORMAL vault note addressed at the sender, with the
- * original quoted below — written in Plainva, sent later via draft/mailto.
+ * original quoted below — written in Alviss, sent later via draft/mailto.
  * `mailbox` is the address of the mailbox the message is in: sent later, the
  * note leaves from there (decision E6, `noteMailPrefill`). */
 export function buildReplyNoteContent(message: Pick<MailMessage, "subject" | "from" | "text" | "html">, dayKey: string, mailbox?: string): string {

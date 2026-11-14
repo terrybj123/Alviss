@@ -153,7 +153,7 @@ describe("TaskNamesNotice (desktop)", () => {
     expect(localStorage.getItem(taskNamesHiddenKey("C:/vaults/wiki"))).toBeTruthy();
   });
 
-  it("offers nothing for a name that only LOOKS like one Plainva gave", async () => {
+  it("offers nothing for a name that only LOOKS like one Alviss gave", async () => {
     env.files.set("Aufgaben/Plan — 0123456789abcdef.md", "# Plan\n");
     env.files.set(`Aufgaben/Fremd — ${hashOf("u1").slice(0, 16)}.md`, note("u9", "Fremd"));
     await render();

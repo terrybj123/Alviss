@@ -21,7 +21,7 @@ describe("parseDependencies", () => {
   });
 
   it("keeps the other relationship types instead of flattening them", () => {
-    // Plainva evaluates only finish-to-start, but a file written elsewhere
+    // Alviss evaluates only finish-to-start, but a file written elsewhere
     // must survive a round trip unchanged.
     const deps = parseDependencies([{ uid: "[[A]]", reltype: "startToStart" }]);
     expect(deps[0].reltype).toBe("STARTTOSTART");

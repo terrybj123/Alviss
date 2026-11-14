@@ -123,7 +123,7 @@ describe("listStoredCredentials", () => {
 
   it("cannot show a slot the settings store knows nothing about — the stated limit", async () => {
     // Deliberate: without a keychain enumeration a slot is only found if
-    // Plainva can still DERIVE its name. A mailbox whose account record is gone
+    // Alviss can still DERIVE its name. A mailbox whose account record is gone
     // as well leaves no trace to derive from. Pinned so the limit is a known
     // property rather than a surprise the next time someone reads the list and
     // believes it is complete.

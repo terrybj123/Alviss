@@ -8,13 +8,13 @@ import { mailTransport } from "./transport";
  * The out-of-office notice, whichever way the provider offers it (S13).
  *
  * The rule that decides everything here: **it is only offered where it survives
- * the machine being switched off.** An auto-reply that needs Plainva running is
+ * the machine being switched off.** An auto-reply that needs Alviss running is
  * not an auto-reply, it is a promise that breaks the moment someone closes the
  * lid — so an account with neither Sieve nor Graph gets no switch at all, and
  * the interface says why instead of pretending.
  *
  * Two backends, one shape:
- *   - **Sieve** (mailbox.org, Fastmail, Nextcloud, Mailcow, …) — Plainva writes
+ *   - **Sieve** (mailbox.org, Fastmail, Nextcloud, Mailcow, …) — Alviss writes
  *     its own marked section of the script and leaves everything else alone.
  *   - **Microsoft Graph** — a mailbox setting; there is nothing to parse and
  *     nothing of anyone else's to damage.
@@ -45,7 +45,7 @@ export function vacationSupport(account: MailAccountConfig): VacationSupport {
 }
 
 export interface VacationState extends VacationSettings {
-  /** True when the script carries a section Plainva did not write and cannot
+  /** True when the script carries a section Alviss did not write and cannot
    * safely parse — the caller refuses to save rather than overwrite it. */
   scriptUnreadable?: boolean;
 }
@@ -65,8 +65,8 @@ export async function readVacation(
     const transport = mailTransport();
     if (!transport.sieveGet) return { enabled: false, message: "" };
     const { body } = await transport.sieveGet(creds, { host: support.host, port: support.port });
-    // Reading only reports whether Plainva's section is there and parseable —
-    // the settings themselves live in the form, not in a Sieve parser Plainva
+    // Reading only reports whether Alviss's section is there and parseable —
+    // the settings themselves live in the form, not in a Sieve parser Alviss
     // would have to keep in step with every server's dialect.
     const unreadable = applyVacation(body, { enabled: false, message: "" }) === null;
     return { enabled: body.includes("vacation"), message: "", scriptUnreadable: unreadable };
@@ -76,7 +76,7 @@ export async function readVacation(
 
 /**
  * Writes the notice. Returns false when the script must not be touched —
- * an unterminated Plainva marker, i.e. a file in a state Plainva did not
+ * an unterminated Alviss marker, i.e. a file in a state Alviss did not
  * produce.
  */
 export async function writeVacation(

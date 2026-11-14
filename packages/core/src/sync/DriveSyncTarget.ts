@@ -54,7 +54,7 @@ const DRIVE_API = "https://www.googleapis.com/drive/v3";
 const DRIVE_UPLOAD = "https://www.googleapis.com/upload/drive/v3";
 const TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token";
 const FOLDER_MIME = "application/vnd.google-apps.folder";
-const DEFAULT_ROOT = "Plainva";
+const DEFAULT_ROOT = "Alviss";
 
 /** The folder path a Drive target looks up, resolved exactly as the target does (default "Plainva"). */
 export function driveRootName(rootFolderName?: string): string {

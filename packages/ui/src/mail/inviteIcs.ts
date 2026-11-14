@@ -5,7 +5,7 @@ import type { PimEvent } from "@plainva/core";
  * METHOD:REQUEST VEVENT that rides along as a text/calendar attachment when the
  * user "sends an event by email". Pure + unit-tested — the send itself goes
  * through the normal SMTP path (E3). This is an iMIP invite the recipient's
- * mail/calendar app can accept; Plainva does not track those RSVPs (that
+ * mail/calendar app can accept; Alviss does not track those RSVPs (that
  * happens provider-side for events it owns).
  */
 
@@ -69,7 +69,7 @@ export function buildInviteIcs(
   const lines: string[] = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Plainva//Mail Invite//EN",
+    "PRODID:-//Alviss//Mail Invite//EN",
     "METHOD:REQUEST",
     "CALSCALE:GREGORIAN",
     "BEGIN:VEVENT",

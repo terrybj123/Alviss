@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Plainva</string>
-    <string name="title_activity_main">Plainva</string>
+    <string name="app_name">Alviss</string>
+    <string name="title_activity_main">Alviss</string>
     <string name="package_name">com.plainva.app</string>
     <string name="custom_url_scheme">com.plainva.app</string>
     <string name="shortcut_new_note">New note</string>
@@ -12,7 +12,7 @@
     <string name="widget_today_description">What is due today, and one tap to add something.</string>
     <string name="widget_capture_label">Quick capture</string>
     <string name="widget_capture_description">New task or journal entry, straight from the home screen.</string>
-    <string name="widget_open_app">Open Plainva</string>
+    <string name="widget_open_app">Open Alviss</string>
     <string name="widget_as_of">as of %1$s</string>
     <string name="widget_tick">Tick off</string>
 </resources>

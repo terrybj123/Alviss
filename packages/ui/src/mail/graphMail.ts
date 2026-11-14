@@ -755,10 +755,10 @@ export const GRAPH_REQUEST_LIMIT = 3_900_000;
 export const GRAPH_DIRECT_FILE_LIMIT = Math.floor(2.8 * 1024 * 1024);
 
 /**
- * The largest file a Microsoft mailbox takes from Plainva: 150 MB, the bound
+ * The largest file a Microsoft mailbox takes from Alviss: 150 MB, the bound
  * Microsoft names for one attachment through an upload session
  * (https://learn.microsoft.com/en-us/graph/outlook-large-attachments). Until
- * 2026-10-30 it was 2.8 MB, because Plainva had no upload session (Sammelplan
+ * 2026-10-30 it was 2.8 MB, because Alviss had no upload session (Sammelplan
  * § 3.95 Nr. 3): a larger file — attached by hand or carried by a forward —
  * stayed behind, by name. The composers hold every file against this bound.
  *
@@ -998,7 +998,7 @@ export async function graphAppendDraft(
  *
  * `scheduled` versus `alwaysEnabled` is not a detail: with a window the reply
  * starts and stops by itself, without one it runs until someone turns it off.
- * Plainva picks by whether a window was given, so the setting means what the
+ * Alviss picks by whether a window was given, so the setting means what the
  * form said.
  */
 export interface GraphAutoReply {
@@ -1052,7 +1052,7 @@ export async function graphSetAutoReply(vaultPath: string, account: MailAccountC
 /**
  * Server-side rules on a Microsoft mailbox (S16).
  *
- * Ownership is the same promise as the marked Sieve section (E4): Plainva
+ * Ownership is the same promise as the marked Sieve section (E4): Alviss
  * replaces the rules it NAMED and leaves every other rule in the mailbox
  * exactly where it is. Rules live on the inbox, which is where Graph runs them.
  */
@@ -1076,7 +1076,7 @@ export async function graphSetRules(
   const foreign = all.filter((r) => !isPlainvaRule(String(r.displayName ?? "")));
   const mine = all.filter((r) => isPlainvaRule(String(r.displayName ?? "")));
 
-  // Plainva's rules run AFTER the user's own: someone who wrote a rule by hand
+  // Alviss's rules run AFTER the user's own: someone who wrote a rule by hand
   // meant it to come first, and a translated rule quietly overtaking it would
   // change behaviour nobody asked to change.
   const start = foreign.reduce((max, r) => Math.max(max, Number(r.sequence ?? 0)), 0) + 1;
@@ -1091,7 +1091,7 @@ export async function graphSetRules(
   return { ok: true, skipped: built.skipped };
 }
 
-/** How many rules Plainva currently has on the server — enough to tell the card
+/** How many rules Alviss currently has on the server — enough to tell the card
  * whether what it shows is actually running there. */
 export async function graphCountRules(vaultPath: string, account: MailAccountConfig): Promise<number> {
   const rt = await runtimeFor(vaultPath, account);

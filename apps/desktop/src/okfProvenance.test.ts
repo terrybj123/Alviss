@@ -1,5 +1,5 @@
 // OKF 0.2 provenance helpers (plan OKF v0.2, P3b): the one place that names
-// Plainva's machine actors and appends a person's review. The helpers live in
+// Alviss's machine actors and appends a person's review. The helpers live in
 // @plainva/ui (shared by both shells); their tests sit in the desktop suite
 // like the other ui-lib tests.
 import { afterEach, describe, expect, it } from "vitest";

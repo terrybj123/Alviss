@@ -2,7 +2,7 @@
  * Central app registrations for OAuth sync providers (sync-provider plan 2026-07-04).
  *
  * Both are PUBLIC client identifiers (not secrets — safe to ship in the binary).
- * These are Plainva's official app registrations (plan items M-A/M-B, filled
+ * These are Alviss's official app registrations (plan items M-A/M-B, filled
  * 2026-07-06). When set, the settings form pre-fills them and hides the plumbing;
  * a user can still override with their own id (BYO-style, like Google Drive).
  *

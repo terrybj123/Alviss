@@ -120,7 +120,7 @@ export interface MailTransport {
   /**
    * ManageSieve (S13): reads the ACTIVE script and its name, so the caller
    * writes back into the same one. Optional — an account without a Sieve
-   * server has no server-side filter, and Plainva then offers none.
+   * server has no server-side filter, and Alviss then offers none.
    */
   /** The active script plus the extensions the server announced. The list
    * decides which rules can go server-side: a script with a `require` the

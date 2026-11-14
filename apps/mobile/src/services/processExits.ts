@@ -1,10 +1,10 @@
 /**
- * "Did the system end Plainva, and why?" — kept on the device and shown in
+ * "Did the system end Alviss, and why?" — kept on the device and shown in
  * the sync diagnostics (plan 2026-09-04, P1).
  *
  * Android 17 kills an app that outgrows its per-app memory budget. Without
  * this record the only symptom is "the app was gone when I came back", and
- * the question whether Plainva has a leak can only be guessed at. The system
+ * the question whether Alviss has a leak can only be guessed at. The system
  * remembers the last exits of a package; on every start the new ones are
  * classified and appended to a short list in the settings store. Only exits
  * a person can act on are kept — a normal swipe-away or an update is noise.

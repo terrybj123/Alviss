@@ -8,11 +8,11 @@ import { sha256Bytes, toHex, utf8Encode } from "@plainva/core";
  * one. Closing an EMPTY entry takes it back silently. An app that is closed or
  * killed while the entry is open never gets that far, and the empty timestamp
  * note it leaves behind syncs to every device. So each draft is remembered
- * here — per device and vault, with a hash of exactly the bytes Plainva wrote —
+ * here — per device and vault, with a hash of exactly the bytes Alviss wrote —
  * until its entry ends, and whatever a crash left is finished at the next start
  * and before the next entry is planned (`sweepPinboardDrafts`):
  *
- *  - still there and byte-identical to what Plainva wrote → removed through
+ *  - still there and byte-identical to what Alviss wrote → removed through
  *    the shell's ordinary delete (the trash where the shell has one);
  *  - changed in any way — typed text, a sync from another device — → kept,
  *    and only forgotten;
@@ -40,7 +40,7 @@ export interface DraftLedgerStorage {
 export interface RememberedPinboardDraft {
   /** Vault-relative path the draft was written to. */
   path: string;
-  /** SHA-256 (hex) of exactly the bytes Plainva wrote. */
+  /** SHA-256 (hex) of exactly the bytes Alviss wrote. */
   sha256: string;
   /** When it was written (ms since the epoch) — for diagnostics only. */
   at: number;
@@ -261,7 +261,7 @@ export interface PinboardDraftSweepFiles {
 }
 
 export interface PinboardDraftSweep {
-  /** Unchanged since Plainva wrote them: removed. */
+  /** Unchanged since Alviss wrote them: removed. */
   removed: string[];
   /** Changed since: kept, and forgotten. */
   kept: string[];

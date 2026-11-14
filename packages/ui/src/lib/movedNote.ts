@@ -62,11 +62,11 @@ export function planMissingNote(outcome: MissingFileOutcome, unsaved: boolean): 
 }
 
 /**
- * The stored paths a move made in Plainva carries along, applied to a move
+ * The stored paths a move made in Alviss carries along, applied to a move
  * made outside it once that move is proven (or the reader picked the file):
  * bookmarks, pinboard arrangements, and the "move" file operation, which
  * moves the note's remarks and refreshes managed listings. Links inside other
- * notes are left alone — a move in Plainva rewrites none either, and a move
+ * notes are left alone — a move in Alviss rewrites none either, and a move
  * made elsewhere must not change files nobody touched.
  */
 export interface ExternalMoveDeps {

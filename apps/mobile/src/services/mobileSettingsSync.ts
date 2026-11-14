@@ -175,10 +175,10 @@ async function remoteRoot(vaultId: string, provider: MobileSyncProvider): Promis
     case "s3": return `${provider.creds.endpoint}/${provider.creds.bucket}/${provider.creds.prefix ?? ""}`;
     case "drive": {
       const selected = await readDriveDestination(vaultId, provider);
-      return selected.id ? `id:${selected.id}` : selected.path || "Plainva";
+      return selected.id ? `id:${selected.id}` : selected.path || "Alviss";
     }
     case "onedrive":
-      return (await readSyncRootFolder(vaultId, provider.provider, provider)) || "Plainva";
+      return (await readSyncRootFolder(vaultId, provider.provider, provider)) || "Alviss";
     case "dropbox": return (await readSyncRootFolder(vaultId, "dropbox", provider)) || "/";
   }
 }
@@ -731,7 +731,7 @@ export function createMobileProfilePort(vault: MobileVault, memberId: string | n
         if (localDefaultCalendar !== undefined) patch.defaultCalendar = localDefaultCalendar;
 
         // Everything the phone does NOT understand is kept verbatim and written
-        // back on the next export, so a newer Plainva on another device does not
+        // back on the next export, so a newer Alviss on another device does not
         // lose its settings by syncing through this one.
         // Written LAST and only as a whole: a bookmark list is one value, so it
         // either lands completely or not at all. That is the part of the desktop's
@@ -775,7 +775,7 @@ export function createMobileProfilePort(vault: MobileVault, memberId: string | n
         if (Object.keys(rulePatch).length > 0) await applyVaultSettings(vaultId, rulePatch);
 
         // The navigation bar (S10). `saveBarLayout` sanitizes against the bar's
-        // own spec, so an arrangement from a newer Plainva — one that names areas
+        // own spec, so an arrangement from a newer Alviss — one that names areas
         // this phone does not have — becomes a valid bar instead of an empty one.
         //
         // Absence deliberately means "nothing said", not "reset": a device that
@@ -980,7 +980,7 @@ interface SidebandSteps {
  * Same rule as the desktop (P7, E4): a finding is always recorded, but only
  * said out loud when the sentence is true. This device's OWN profile file
  * missing the capability stamp accuses nobody — warning about "an older
- * Plainva" there sends the user looking at their other machines for nothing.
+ * Alviss" there sends the user looking at their other machines for nothing.
  *
  * Never exposes account ids, endpoints or credential material.
  */

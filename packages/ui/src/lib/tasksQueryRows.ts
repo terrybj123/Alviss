@@ -115,7 +115,7 @@ export function tasksQueryGroupLabel(heading: TasksGroupHeading, t: TasksQueryT,
   }
 }
 
-/** The sentence for a line Plainva leaves out (case a): why, and what that means for the list. */
+/** The sentence for a line Alviss leaves out (case a): why, and what that means for the list. */
 export function tasksQueryNoticeText(line: TasksQueryLine, t: TasksQueryT): string {
   const u = line.unsupported!;
   return `${t(`tasksQuery.unsupported.${u.reason}`)} ${t(`tasksQuery.effect.${u.effect}`)}`;
@@ -233,7 +233,7 @@ export interface TasksQueryExplainRow {
 
 export interface TasksQueryExplainView {
   rows: TasksQueryExplainRow[];
-  /** Sentences under the lines: the default sort, the notes Plainva counts, the plugin's settings. */
+  /** Sentences under the lines: the default sort, the notes Alviss counts, the plugin's settings. */
   notes: string[];
 }
 

@@ -38,7 +38,7 @@ export interface MailAccountConfig {
   clientId?: string;
   /**
    * ManageSieve host for a server-side filter (S13). Absent = this account has
-   * none, and Plainva then offers no out-of-office notice rather than a switch
+   * none, and Alviss then offers no out-of-office notice rather than a switch
    * that writes nowhere. Deliberately NOT guessed from the IMAP host.
    */
   sieveHost?: string;
@@ -62,7 +62,7 @@ export interface MailAccountConfig {
    * Additional sender addresses (aliases) offered in the From picker, e.g.
    * "Name <alias@example.org>". The account's own `user` is always the first
    * choice and never has to be listed here. Whether an alias is ACCEPTED is the
-   * provider's call — a server that refuses to relay it says so, and Plainva
+   * provider's call — a server that refuses to relay it says so, and Alviss
    * surfaces that error rather than silently sending as someone else.
    */
   senders?: string[];

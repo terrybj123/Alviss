@@ -49,7 +49,7 @@ function showFatalError(label: string, err: unknown): void {
     );
     document.body.appendChild(box);
   }
-  box.textContent = `Plainva startup error\n[${label}]\n\n${detail}`;
+  box.textContent = `Alviss startup error\n[${label}]\n\n${detail}`;
 }
 
 // The fatal overlay is a BOOT-failure safety net: a black screen on a real

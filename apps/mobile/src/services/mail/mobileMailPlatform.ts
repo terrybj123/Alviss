@@ -11,7 +11,7 @@ import { hasNativeMailSocket, nativeMailSocket } from "../../adapters/mailNet";
 export class MailImapUnavailableError extends Error {
   readonly code = "imap-unavailable";
   constructor() {
-    super("IMAP/SMTP is not available on mobile yet — connect a Microsoft account, or use Plainva on the desktop.");
+    super("IMAP/SMTP is not available on mobile yet — connect a Microsoft account, or use Alviss on the desktop.");
     this.name = "MailImapUnavailableError";
   }
 }

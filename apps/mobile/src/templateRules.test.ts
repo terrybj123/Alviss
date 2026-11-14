@@ -90,7 +90,7 @@ describe("template lookup on mobile", () => {
   it("resolves a bare rule name against the vault's template folder", () => {
     // Rules are authored on the desktop, where the picker stores the FILE name.
     expect(templatePathOf("Projekt.md")).toBe("Vorlagen/Projekt.md");
-    // A missing extension is completed — Plainva templates are markdown files,
+    // A missing extension is completed — Alviss templates are markdown files,
     // so "Besprechung" can only mean one thing.
     expect(templatePathOf("Besprechung")).toBe("Vorlagen/Besprechung.md");
     // A full vault path stays as it is (hand-edited profiles carry those).

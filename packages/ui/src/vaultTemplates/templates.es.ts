@@ -56,11 +56,11 @@ Las notas al pie también funcionan.[^1]
 [^1]: Como esta.
 `;
 
-/** Spanish strings for the "Plainva Tour" showcase template. */
+/** Spanish strings for the "Alviss Tour" showcase template. */
 const TOUR_STRINGS_ES: TourStrings = {
-  name: "Plainva Tour",
+  name: "Alviss Tour",
   description:
-    "Un vault guiado: tablón, notas diarias, áreas, proyectos y tareas — todas las vistas que ofrece Plainva, llenas de ejemplos.",
+    "Un vault guiado: tablón, notas diarias, áreas, proyectos y tareas — todas las vistas que ofrece Alviss, llenas de ejemplos.",
   folders: {
     quickNotes: "Notas rápidas",
     journal: "Diario",
@@ -85,7 +85,7 @@ const TOUR_STRINGS_ES: TourStrings = {
   },
   welcome: {
     file: "Bienvenida.md",
-    title: "Bienvenido a Plainva",
+    title: "Bienvenido a Alviss",
     intro:
       "Este vault es un tour. Cada carpeta de aquí abajo está llena de ejemplos, y cada base de datos muestra una vista distinta — ábrelas y cambia cosas: aquí nada es intocable.",
     outro:
@@ -177,9 +177,9 @@ const TOUR_STRINGS_ES: TourStrings = {
     ],
     resources: [
       { title: "Referencia rápida de Markdown", body: CHEAT_SHEET_ES, props: { tipo: "Referencia", estado: "Leído", cover: "Adjuntos/cover.svg" } },
-      { title: "Manual de Plainva", body: "La guía completa está en plainva.com/docs.", props: { tipo: "Referencia", url: "https://plainva.com/docs", estado: "Nuevo" } },
+      { title: "Manual de Alviss", body: "La guía completa está en plainva.com/docs.", props: { tipo: "Referencia", url: "https://plainva.com/docs", estado: "Nuevo" } },
       { title: "Trabajo profundo", body: "Cal Newport. El capítulo sobre planificación es el útil.", props: { tipo: "Libro", estado: "Nuevo", area: "[[Aprendizaje]]" } },
-      { title: "Atajos de teclado", body: "Pulsa `F1` en Plainva — la lista se puede buscar.", props: { tipo: "Referencia", estado: "Leído", area: "[[Aprendizaje]]" } },
+      { title: "Atajos de teclado", body: "Pulsa `F1` en Alviss — la lista se puede buscar.", props: { tipo: "Referencia", estado: "Leído", area: "[[Aprendizaje]]" } },
     ],
     archive: [
       { title: "Sitio web antiguo", body: "Sustituido por [[Relanzamiento del sitio web]]. Se conserva por los textos.", props: { finalizado: "{{today-20}}" } },
@@ -270,7 +270,7 @@ const PARA_STRINGS_ES: ParaStrings = {
       },
       {
         title: "Acordar el plano con el equipo",
-        body: "Arrastra la tarjeta a otra columna del tablero: Plainva escribe el nuevo estado en la nota.",
+        body: "Arrastra la tarjeta a otra columna del tablero: Alviss escribe el nuevo estado en la nota.",
         props: { estado: "En curso", proyecto: "[[Mudanza a la nueva oficina]]", fecha: "{{today+7}}" },
       },
       {
@@ -502,7 +502,7 @@ const GTD_STRINGS_ES: GtdStrings = {
       },
       {
         title: "Revisar el presupuesto del carpintero",
-        body: "Arrastra la tarjeta a otra columna del tablero: Plainva escribe el nuevo estado en la nota.",
+        body: "Arrastra la tarjeta a otra columna del tablero: Alviss escribe el nuevo estado en la nota.",
         props: { estado: "Siguiente", contexto: "@Trabajo", proyecto: "[[Renovar la cocina]]", fecha: "{{today+5}}" },
       },
       {

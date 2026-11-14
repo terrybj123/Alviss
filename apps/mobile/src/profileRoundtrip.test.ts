@@ -67,7 +67,7 @@ describe("profile roundtrip into mobile settings", () => {
 
   it("ignores fields it does not carry instead of guessing", () => {
     // They stay in the unknown bucket and are written back untouched, so a newer
-    // Plainva on another device does not lose them by syncing through this one.
+    // Alviss on another device does not lose them by syncing through this one.
     const { patch, skipped } = importVaultSettings({ barLayoutRibbon: { order: [] }, somethingFromTheFuture: 1 });
     expect(patch).toEqual({});
     expect(skipped).toEqual([]);

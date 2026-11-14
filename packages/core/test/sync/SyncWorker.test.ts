@@ -884,8 +884,8 @@ describe("SyncWorker", () => {
     // The real note is pulled; the device-local index DB is never even downloaded.
     expect(target.download).toHaveBeenCalledWith("note.md");
     expect(target.download).not.toHaveBeenCalledWith(".plainva/vault.db");
-    const touchedPlainva = vault.writeTextFile.mock.calls.some((c: any[]) => String(c[0]).includes(".plainva"));
-    expect(touchedPlainva).toBe(false);
+    const touchedAlviss = vault.writeTextFile.mock.calls.some((c: any[]) => String(c[0]).includes(".plainva"));
+    expect(touchedAlviss).toBe(false);
     const wroteConflict = vault.writeTextFile.mock.calls.some((c: any[]) => String(c[0]).includes(".CONFLICT"));
     expect(wroteConflict).toBe(false);
   });

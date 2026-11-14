@@ -18,7 +18,7 @@ import { buildJournal, type JournalStrings } from "./journalTemplate";
  * here so the databases show real data as soon as the vault is indexed. */
 
 // ---------------------------------------------------------------------------
-// Plainva Tour — shared structure (plainvaTour.ts), Dutch strings.
+// Alviss Tour — shared structure (plainvaTour.ts), Dutch strings.
 // ---------------------------------------------------------------------------
 
 const CHEAT_SHEET_NL = `Alles hieronder is gewoon Markdown. Schakel tussen lezen en bewerken met de werkbalk — de editor toont de opmaaktekens alleen daar waar je cursor staat.
@@ -68,8 +68,8 @@ Voetnoten werken ook.[^1]
 `;
 
 const TOUR_STRINGS_NL: TourStrings = {
-  name: "Plainva-tour",
-  description: "Een begeleide vault: prikbord, dagelijkse notities, domeinen, projecten en taken — elke weergave die Plainva biedt, gevuld met voorbeelden.",
+  name: "Alviss-tour",
+  description: "Een begeleide vault: prikbord, dagelijkse notities, domeinen, projecten en taken — elke weergave die Alviss biedt, gevuld met voorbeelden.",
   folders: {
     quickNotes: "Snelle notities",
     journal: "Journal",
@@ -94,7 +94,7 @@ const TOUR_STRINGS_NL: TourStrings = {
   },
   welcome: {
     file: "Welkom.md",
-    title: "Welkom bij Plainva",
+    title: "Welkom bij Alviss",
     intro: "Deze vault is een tour. Elke map hieronder is gevuld met voorbeelden, en elke database toont een andere weergave — open ze en verander iets: hier is niets kostbaars.",
     outro: "Alles wat je ziet is gewoon Markdown in deze map. Verwijder wat je niet nodig hebt, hernoem de rest — dan is de vault van jou.",
   },
@@ -184,9 +184,9 @@ const TOUR_STRINGS_NL: TourStrings = {
     ],
     resources: [
       { title: "Markdown-spiekbriefje", body: CHEAT_SHEET_NL, props: { soort: "Referentie", status: "Gelezen", cover: "Bijlagen/cover.svg" } },
-      { title: "Plainva-handleiding", body: "De volledige handleiding staat op plainva.com/docs.", props: { soort: "Referentie", url: "https://plainva.com/docs", status: "Nieuw" } },
+      { title: "Alviss-handleiding", body: "De volledige handleiding staat op plainva.com/docs.", props: { soort: "Referentie", url: "https://plainva.com/docs", status: "Nieuw" } },
       { title: "Deep work", body: "Cal Newport. Het hoofdstuk over planning is het nuttigste.", props: { soort: "Boek", status: "Nieuw", domein: "[[Leren]]" } },
-      { title: "Sneltoetsen", body: "Druk in Plainva op `F1` — de lijst is doorzoekbaar.", props: { soort: "Referentie", status: "Gelezen", domein: "[[Leren]]" } },
+      { title: "Sneltoetsen", body: "Druk in Alviss op `F1` — de lijst is doorzoekbaar.", props: { soort: "Referentie", status: "Gelezen", domein: "[[Leren]]" } },
     ],
     archive: [
       { title: "Oude website", body: "Vervangen door [[Website-relaunch]]. Bewaard vanwege de teksten.", props: { afgesloten: "{{today-20}}" } },
@@ -277,7 +277,7 @@ const PARA_STRINGS_NL: ParaStrings = {
       },
       {
         title: "Plattegrond afstemmen met het team",
-        body: "Sleep de kaart in het bord naar een andere kolom: Plainva schrijft de nieuwe status naar de notitie.",
+        body: "Sleep de kaart in het bord naar een andere kolom: Alviss schrijft de nieuwe status naar de notitie.",
         props: { status: "Bezig", project: "[[Verhuizing naar het nieuwe kantoor]]", deadline: "{{today+7}}" },
       },
       {
@@ -396,7 +396,7 @@ const GTD_STRINGS_NL: GtdStrings = {
       },
       {
         title: "Offerte van de timmerman controleren",
-        body: "Sleep de kaart in het bord naar een andere kolom: Plainva schrijft de nieuwe status naar de notitie.",
+        body: "Sleep de kaart in het bord naar een andere kolom: Alviss schrijft de nieuwe status naar de notitie.",
         props: { status: "Volgende", context: "@Werk", project: "[[Keuken renoveren]]", deadline: "{{today+5}}" },
       },
       {

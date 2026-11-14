@@ -17,7 +17,7 @@ describe("countFolderFiles (S4)", () => {
     ).toBe(3);
   });
 
-  it("ignores Plainva's own directory", () => {
+  it("ignores Alviss's own directory", () => {
     // Snapshots and bookmarks are not the user's files; counting them would
     // inflate the number the dialog puts in front of the tap.
     expect(

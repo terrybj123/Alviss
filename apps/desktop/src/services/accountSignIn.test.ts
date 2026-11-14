@@ -228,7 +228,7 @@ describe("access per device (E3)", () => {
     VITE_PLAINVA_GOOGLE_IOS_CLIENT_ID: "plainva-ios.apps.googleusercontent.com",
   };
 
-  it("uses Plainva's client by default, and the system sheet on Android", () => {
+  it("uses Alviss's client by default, and the system sheet on Android", () => {
     expect(resolveOAuthAccess("google", "desktop", null, env)).toMatchObject({ ok: true, access: { source: "plainva", clientId: "plainva-desktop.apps.googleusercontent.com", clientSecret: "plainva-secret", flow: "loopback", mail: false } });
     expect(resolveOAuthAccess("google", "android", null, env)).toMatchObject({ ok: true, access: { flow: "system" } });
     expect(resolveOAuthAccess("google", "ios", null, env)).toMatchObject({ ok: true, access: { flow: "browser" } });
@@ -249,7 +249,7 @@ describe("access per device (E3)", () => {
     expect(resolveOAuthAccess("google", "desktop", { source: "own", clientId: "nonsense" }, env)).toEqual({ ok: false, problem: "ownClientInvalid" });
   });
 
-  it("Microsoft always has Plainva's client", () => {
+  it("Microsoft always has Alviss's client", () => {
     expect(resolveOAuthAccess("microsoft", "android", null, {})).toMatchObject({ ok: true, access: { flow: "browser", mail: true } });
   });
 });

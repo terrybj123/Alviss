@@ -11,7 +11,7 @@ import { followFreshNoteMove } from "./freshNote";
 import { type IndexMdAdapter } from "./indexMd";
 
 /**
- * Automatic refresh of Plainva-managed index.md files (plan UI-UX-Paket P11).
+ * Automatic refresh of Alviss-managed index.md files (plan UI-UX-Paket P11).
  * Operation-driven, not watcher-driven — the file operations report themselves
  * via the `plainva-file-ops` window event AFTER their reindex, the updater
  * debounces per batch and rewrites only listings that (a) already exist and

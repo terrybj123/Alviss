@@ -2,7 +2,7 @@ import { defineBase } from "./baseBuilders";
 import { welcomeBody, type VaultTemplateDefinition, type VaultTemplateNote } from "./types";
 
 /**
- * The PARA vault template (plan "Vorlagen-Überarbeitung + Plainva-Tour" § 3).
+ * The PARA vault template (plan "Vorlagen-Überarbeitung + Alviss-Tour" § 3).
  *
  * Built from a shared structure and a per-language string bundle, for the same
  * reason as the tour: the cross-language parity test requires all ten modules to
@@ -247,7 +247,7 @@ export const PARA_STRINGS_DE: ParaStrings = {
     intro:
       "Dieser Vault ist nach der PARA-Methode (Tiago Forte) organisiert: Inhalte werden nach Handlungsnähe sortiert, nicht nach Thema. Die Beispiele unten sind echte Notizen — ändere sie, verschiebe sie, lösche sie.",
     outro:
-      "Öffne die Datenbanken, um Projekte nach Status zu sehen, ihnen Aufgaben zuzuordnen und sie mit ihren Bereichen zu verknüpfen — Abgeschlossenes wandert ins Archiv, Links und die index.md-Übersichten pflegt Plainva automatisch.",
+      "Öffne die Datenbanken, um Projekte nach Status zu sehen, ihnen Aufgaben zuzuordnen und sie mit ihren Bereichen zu verknüpfen — Abgeschlossenes wandert ins Archiv, Links und die index.md-Übersichten pflegt Alviss automatisch.",
   },
   welcomeSections: { databases: "Deine Datenbanken", start: "Zum Einstieg" },
   baseFiles: { projects: "Projekte.base", tasks: "Aufgaben.base", areas: "Bereiche.base" },
@@ -305,7 +305,7 @@ export const PARA_STRINGS_DE: ParaStrings = {
       },
       {
         title: "Grundriss mit dem Team abstimmen",
-        body: "Ziehe die Karte im Board in eine andere Spalte: Plainva schreibt den neuen Status in die Notiz.",
+        body: "Ziehe die Karte im Board in eine andere Spalte: Alviss schreibt den neuen Status in die Notiz.",
         props: { status: "In Arbeit", projekt: "[[Umzug ins neue Büro]]", frist: "{{today+7}}" },
       },
       {
@@ -426,7 +426,7 @@ export const PARA_STRINGS_EN: ParaStrings = {
       },
       {
         title: "Agree the floor plan with the team",
-        body: "Drag the card to another column in the board: Plainva writes the new status into the note.",
+        body: "Drag the card to another column in the board: Alviss writes the new status into the note.",
         props: { status: "In progress", project: "[[Move to the new office]]", due: "{{today+7}}" },
       },
       {

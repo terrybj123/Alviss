@@ -7,7 +7,7 @@ import { afterEach, describe, expect, it, vi, beforeEach } from "vitest";
  * A reply's quote, a forward, the reply note and the filed note each read
  * `message.text` on their own. Two backends never fill it for an HTML mail:
  * Microsoft Graph hands a body over as HTML unless the request asks for text
- * (`Prefer: outlook.body-content-type="text"`, which Plainva does not send, so
+ * (`Prefer: outlook.body-content-type="text"`, which Alviss does not send, so
  * that is every message of a Microsoft mailbox), and the phone's MIME parser
  * takes a `text/plain` part or nothing. The reply quoted nothing, the forward
  * carried its header block alone, and the filed note was properties and a

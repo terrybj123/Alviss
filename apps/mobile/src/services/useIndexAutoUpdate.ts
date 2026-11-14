@@ -4,7 +4,7 @@ import i18n from "@plainva/ui/i18n";
 import type { MobileVault } from "./vaultService";
 
 /**
- * Keeps Plainva-managed index.md overviews current on the phone (P6).
+ * Keeps Alviss-managed index.md overviews current on the phone (P6).
  *
  * It is the same updater the desktop runs, not a second one — which is the
  * whole point: a vault edited on the phone used to drift out of date until a

@@ -6,7 +6,7 @@ import { test, expect } from '@playwright/test';
  * sync moves this device's content of it to a copy that goes up, and tells
  * the editor. The editor open on the old name switches to the copy at once -
  * unsaved text included - instead of saving the old name again or looking
- * for a file "moved outside Plainva". The sync's move is played here the way
+ * for a file "moved outside Alviss". The sync's move is played here the way
  * the engine makes it: the file is renamed on disk, and the event follows.
  *
  * The fixture is the note-body suite's plain vault (see not-text.spec.ts).
@@ -183,7 +183,7 @@ test('the editor open on a refused file switches to its copy, and its next save 
   expect(state.writes).not.toContain('Flagged.md');
   expect(state.old).toBeUndefined();
   // Not the lookup for a file moved elsewhere: no such notice.
-  await expect(page.locator('.pv-toast').filter({ hasText: 'Moved outside Plainva' })).toHaveCount(0);
+  await expect(page.locator('.pv-toast').filter({ hasText: 'Moved outside Alviss' })).toHaveCount(0);
 });
 
 test('what was typed but not saved yet goes along to the copy, never back to the old name', async ({ page }) => {

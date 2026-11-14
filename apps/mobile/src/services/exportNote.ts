@@ -51,7 +51,7 @@ async function askExportMode(t: TFunction): Promise<CommentExportMode | null> {
  * since the export shipped, the phone said nothing.
  *
  * Where the file goes is deliberately the system sheet rather than a
- * Plainva-drawn picker: "Save to Files" lives there on both platforms, next to
+ * Alviss-drawn picker: "Save to Files" lives there on both platforms, next to
  * Print, Mail and every editor installed — the same destination choice the
  * desktop's save dialog gives, in the shape the platform uses.
  *

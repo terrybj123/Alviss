@@ -4,7 +4,7 @@ import { queuesLocalChanges } from "./filesSwitch";
 /**
  * Review of plan "Verbinden", finding 4: files switched off (or paused, or
  * signed out) stop the worker, not the record of what changed. A file edited
- * outside Plainva meanwhile went unnoticed once files were on again - the
+ * outside Alviss meanwhile went unnoticed once files were on again - the
  * index had taken it in, and the queue never heard of it.
  */
 describe("whether the vault queues its local changes", () => {

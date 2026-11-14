@@ -270,7 +270,7 @@ describe("S3", () => {
 });
 
 describe("OneDrive", () => {
-  const ROOT = "https://graph.microsoft.com/v1.0/me/drive/root:/Plainva/";
+  const ROOT = "https://graph.microsoft.com/v1.0/me/drive/root:/Alviss/";
 
   /** A drive that keeps items by path; `cTag` moves with the content, `eTag` with anything. */
   function drive(opts: { ignoreIfMatch?: boolean } = {}) {

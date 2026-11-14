@@ -13,7 +13,7 @@ import { ownDeviceFilePath, readDeviceOwnText } from "../lib/deviceOwnFiles";
  * to save had it — the other device's pins were gone. All of it is per device:
  * pins are positions on THIS device's map (screens differ), the pin mode and
  * the overlay mode are how this device shows the map, and a dismissed
- * suggestion was never more than that — over Plainva's own sync no other
+ * suggestion was never more than that — over Alviss's own sync no other
  * device ever saw it. A device without its own file starts from the shared
  * one, which stays where it is for older versions (`deviceOwnFiles.ts`).
  *

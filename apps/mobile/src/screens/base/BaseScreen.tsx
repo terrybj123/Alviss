@@ -157,7 +157,7 @@ export function BaseScreen({
   vault: MobileVault;
   path: string;
   onBack: () => void;
-  /** The screen follows its database when it was moved outside Plainva (issue 110). */
+  /** The screen follows its database when it was moved outside Alviss (issue 110). */
   onRenamed?: (to: string) => void;
   onOpenNote: (path: string) => void;
   /**
@@ -176,7 +176,7 @@ export function BaseScreen({
   const [loaded, setLoaded] = useState<LoadedBase | null>(() => snapshot?.loaded ?? null);
   const [viewIndex, setViewIndex] = useState(() => snapshot?.viewIndex ?? 0);
   const [allRows, setRows] = useState<Row[] | null>(() => snapshot?.rows ?? null);
-  // The database file moved or vanished outside Plainva (issue 110, E9): the
+  // The database file moved or vanished outside Alviss (issue 110, E9): the
   // screen looks for it by the content hash the index stored and follows a
   // proven move — with bookmarks and pinboard places — or asks "Moved?", or
   // shows the missing state. A config change that found its file gone waits
@@ -376,7 +376,7 @@ export function BaseScreen({
       })
       .catch(() => {
         if (stale) return;
-        // Moved or deleted outside Plainva? Looked for (issue 110, E9). Never
+        // Moved or deleted outside Alviss? Looked for (issue 110, E9). Never
         // an empty stand-in: its next change would write it over the file.
         setLoadFailed(true);
         lookForFile();

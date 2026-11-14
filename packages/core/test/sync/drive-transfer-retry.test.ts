@@ -35,7 +35,7 @@ function driveFixture(timeout = 30000) {
     if (init?.method === "PATCH") return writeResponse();
     if (url.pathname.endsWith("/files") && init?.method === "GET") {
       const q = url.searchParams.get("q") ?? "";
-      if (q.includes("vnd.google-apps.folder")) return Response.json({ files: [{ id: "vault-root", name: "Plainva", mimeType: "application/vnd.google-apps.folder" }] });
+      if (q.includes("vnd.google-apps.folder")) return Response.json({ files: [{ id: "vault-root", name: "Alviss", mimeType: "application/vnd.google-apps.folder" }] });
       const name = /name='([^']*)'/.exec(q)?.[1];
       return Response.json({ files: name ? files.filter(file => file.name === name) : files });
     }

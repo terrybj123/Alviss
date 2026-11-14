@@ -146,7 +146,7 @@ export function listNames(names: readonly string[], locale: string): string {
   return names.join(", ");
 }
 
-/** The fields worth a row: a formula Plainva did not evaluate has no value and is left out. */
+/** The fields worth a row: a formula Alviss did not evaluate has no value and is left out. */
 export function shownComputedFields(fields: readonly NoteComputedField[]): NoteComputedField[] {
   return fields.filter((field) => field.kind !== "formula" || !isMissing(field.value));
 }

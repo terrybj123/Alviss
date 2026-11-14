@@ -13,7 +13,7 @@ export interface FileMovedDetail {
 }
 
 /**
- * Plainva moved a note in a place that has no tabs of its own to retarget —
+ * Alviss moved a note in a place that has no tabs of its own to retarget —
  * the overview manager's adoption (Sammelplan § 3.135 Nr. 1). The window's
  * tabs follow the note, as after a rename in the file tree.
  */

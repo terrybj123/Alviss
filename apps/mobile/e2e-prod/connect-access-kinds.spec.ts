@@ -142,7 +142,7 @@ test("S3: the keys, Advanced holds region, prefix and path style, and the folder
   await openConnect(page);
   await page.getByTestId("connect-search").fill("s3");
   await page.getByTestId("connect-family-s3").click();
-  await expect(page.getByTestId("connect-service-calendar")).toContainText("has no calendar Plainva can read");
+  await expect(page.getByTestId("connect-service-calendar")).toContainText("has no calendar Alviss can read");
   await page.getByTestId("connect-start").click();
   for (const field of ["endpoint", "bucket", "accessKeyId", "secret"]) await expect(page.getByTestId(`connect-field-${field}`)).toBeVisible();
   await expect(page.getByTestId("connect-field-region")).toHaveCount(0);
@@ -196,7 +196,7 @@ test("Dropbox: the sign-in starts from the services page, and 'Signed in' waits 
   await openConnect(page);
   await page.getByTestId("connect-family-dropbox").click();
   // The other services stay in the list, off, with the reason.
-  await expect(page.getByTestId("connect-service-mail")).toContainText("has no mailbox Plainva can fetch");
+  await expect(page.getByTestId("connect-service-mail")).toContainText("has no mailbox Alviss can fetch");
   await expect(page.getByTestId("connect-summary")).toContainText("Standard sign-in");
   await expect(page.getByTestId("connect-other-signin")).toContainText("own app key");
   await expect(page.getByTestId("connect-start")).toHaveText("Sign in with Dropbox…");

@@ -345,7 +345,7 @@ export const EditorPage: React.FC<EditorPageProps> = (p) => {
       </SettingCard>
 
       {/* The journal's device settings (appendix 2.3 B2): the place stamp came
-          from Appearance — it is about capturing, not about how Plainva looks.
+          from Appearance — it is about capturing, not about how Alviss looks.
           The global quick capture stays in Startup & behavior, beside running
           in the background it depends on (B3). */}
       <SettingCard label={t("settings.editorGroupJournal")} testId="editor-journal">
@@ -413,7 +413,7 @@ export const BehaviorPage: React.FC<BehaviorPageProps> = (p) => {
 /** The update controls: a group of About & diagnostics on the desktop (E10). */
 export interface UpdatesGroupProps {
   autoUpdateCheckEnabled: boolean;
-  /** The package manager that updates this installation (Nix); `null` when Plainva updates itself. */
+  /** The package manager that updates this installation (Nix); `null` when Alviss updates itself. */
   managedBy?: string | null;
   onAutoUpdateCheck: (v: boolean) => void;
   updateStatus: string;

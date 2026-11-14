@@ -42,12 +42,12 @@ export function osa(script: string, language: "AppleScript" | "JavaScript" = "Ap
 
 const app = `(first application process whose bundle identifier is "${APP_ID}")`;
 
-/** Brings Plainva to the front, the way a click into its window would. */
+/** Brings Alviss to the front, the way a click into its window would. */
 export function activatePlainva(): void {
   osa(`tell application "System Events" to set frontmost of ${app} to true`);
 }
 
-/** Brings the Finder to the front: Plainva is then in the background, as for a system-wide shortcut. */
+/** Brings the Finder to the front: Alviss is then in the background, as for a system-wide shortcut. */
 export function activateFinder(): void {
   osa(`tell application "System Events" to set frontmost of process "Finder" to true`);
 }
@@ -57,7 +57,7 @@ export function frontmostProcess(): string {
   return osa(`tell application "System Events" to get name of first application process whose frontmost is true`);
 }
 
-/** Position and size of Plainva's front window, in screen points. */
+/** Position and size of Alviss's front window, in screen points. */
 export function frontWindowFrame(): { x: number; y: number; width: number; height: number } {
   const out = osa(
     `tell application "System Events" to tell ${app}\n` +

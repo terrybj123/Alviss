@@ -49,7 +49,7 @@ function vault(files: Record<string, Row>) {
   return {
     deps: deps as unknown as MissingFileDeps & typeof deps,
     rows,
-    /** Outside Plainva: the disk changes, the index does not. */
+    /** Outside Alviss: the disk changes, the index does not. */
     move(from: string, to: string) { disk.set(to, disk.get(from)!); disk.delete(from); },
     remove(path: string) { disk.delete(path); },
     /** The watcher saw a side of it. */

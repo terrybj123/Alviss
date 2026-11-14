@@ -8,7 +8,7 @@
     <string name="widget_today_description">Le scadenze di oggi, e un tocco per aggiungere.</string>
     <string name="widget_capture_label">Acquisizione rapida</string>
     <string name="widget_capture_description">Nuova attività o voce di diario, dalla schermata home.</string>
-    <string name="widget_open_app">Apri Plainva</string>
+    <string name="widget_open_app">Apri Alviss</string>
     <string name="widget_as_of">al %1$s</string>
     <string name="widget_tick">Spunta</string>
 </resources>

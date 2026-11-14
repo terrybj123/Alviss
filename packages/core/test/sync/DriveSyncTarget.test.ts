@@ -48,7 +48,7 @@ describe("DriveSyncTarget", () => {
   it("creates a new top-level file and returns its remote id + etag", async () => {
     const { target, fetchFn } = makeTarget(async (url: string, init: any) => {
       const u = String(url);
-      if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+      if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Alviss" }] });
       if (init.method === "GET" && u.includes("/drive/v3/files?")) return res({ files: [] }); // file lookup: not found
       if (init.method === "POST" && u.includes("/upload/drive/v3/files")) return res({ id: "file-1", md5Checksum: "abc123" });
       throw new Error(`unexpected ${init.method} ${u}`);
@@ -70,7 +70,7 @@ describe("DriveSyncTarget", () => {
   it("creates a new file with the time it was edited as modifiedTime (Sammelplan § 3.164)", async () => {
     const { target, fetchFn } = makeTarget(async (url: string, init: any) => {
       const u = String(url);
-      if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+      if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Alviss" }] });
       if (init.method === "GET" && u.includes("/drive/v3/files?")) return res({ files: [] });
       if (init.method === "POST" && u.includes("/upload/drive/v3/files")) return res({ id: "file-1", md5Checksum: "abc123" });
       throw new Error(`unexpected ${init.method} ${u}`);
@@ -486,11 +486,11 @@ describe("DriveSyncTarget", () => {
         const u = String(url);
         if (init.method !== "GET" || !u.includes("/drive/v3/files?")) throw new Error(`unexpected ${init.method} ${u}`);
         if (u.includes("pageToken=tok-1")) return res({ files: [{ name: "Archiv" }] });
-        return res({ files: [{ name: "Plainva" }, { name: "Fotos" }], nextPageToken: "tok-1" });
+        return res({ files: [{ name: "Alviss" }, { name: "Fotos" }], nextPageToken: "tok-1" });
       });
 
       const names = await target.listFolders("");
-      expect(names).toEqual(["Archiv", "Fotos", "Plainva"]);
+      expect(names).toEqual(["Alviss", "Archiv", "Fotos"]);
 
       const first = String(fetchFn.mock.calls[0][0]);
       const q = decodeURIComponent(first.split("q=")[1].split("&")[0]);
@@ -554,19 +554,19 @@ describe("DriveSyncTarget", () => {
   });
 
   describe("nested rootFolderName (2026-07-06)", () => {
-    it("resolves 'Apps/Plainva' segment by segment before the first push", async () => {
+    it("resolves 'Apps/Alviss' segment by segment before the first push", async () => {
       const lookups: string[] = [];
       const fetchFn = vi.fn(async (url: string, init: any) => {
         const u = decodeURIComponent(String(url));
         if (init.method === "GET" && u.includes("vnd.google-apps.folder")) {
           lookups.push(u);
           if (u.includes("name='Apps'") && u.includes("'root' in parents")) return res({ files: [{ id: "f-apps", name: "Apps" }] });
-          if (u.includes("name='Plainva'") && u.includes("'f-apps' in parents")) return res({ files: [] }); // -> create
+          if (u.includes("name='Alviss'") && u.includes("'f-apps' in parents")) return res({ files: [] }); // -> create
           throw new Error(`unexpected folder lookup ${u}`);
         }
         if (init.method === "POST" && u.includes("/drive/v3/files?fields=id")) {
           const body = JSON.parse(init.body);
-          expect(body).toMatchObject({ name: "Plainva", parents: ["f-apps"] });
+          expect(body).toMatchObject({ name: "Alviss", parents: ["f-apps"] });
           return res({ id: "f-plainva" });
         }
         if (init.method === "GET" && u.includes("/drive/v3/files?")) return res({ files: [] }); // file lookup: not found
@@ -574,7 +574,7 @@ describe("DriveSyncTarget", () => {
         throw new Error(`unexpected ${init.method} ${u}`);
       });
       const target = new DriveSyncTarget(
-        { clientId: "cid", clientSecret: "secret", refreshToken: "rtok", accessToken: "atok", rootFolderName: "Apps/Plainva" },
+        { clientId: "cid", clientSecret: "secret", refreshToken: "rtok", accessToken: "atok", rootFolderName: "Apps/Alviss" },
         fetchFn as any
       );
 
@@ -600,7 +600,7 @@ describe("DriveSyncTarget", () => {
       const fetchFn = vi.fn(async (url: string, init: any) => {
         const u = decodeURIComponent(String(url));
         if (init.method === "GET" && u.includes("vnd.google-apps.folder")) {
-          return res({ files: exists ? [{ id: "f-root", name: "Plainva" }] : [] });
+          return res({ files: exists ? [{ id: "f-root", name: "Alviss" }] : [] });
         }
         if (init.method === "POST" && u.includes("/drive/v3/files?fields=id")) return res({ id: "f-root" });
         if (init.method === "GET" && u.includes("/drive/v3/files?")) return res({ files: [] });
@@ -625,7 +625,7 @@ describe("DriveSyncTarget", () => {
       const { target, created } = targetWithFolder(false);
       await target.push(write(1));
       await target.push(write(2));
-      expect(created).toEqual(["Plainva"]); // cached root id ⇒ announced exactly once
+      expect(created).toEqual(["Alviss"]); // cached root id ⇒ announced exactly once
     });
 
     it("stays quiet when the folder was already there", async () => {
@@ -704,7 +704,7 @@ describe("DriveSyncTarget", () => {
     it("refuses to write when Drive only holds a name differing in case", async () => {
       const { target, fetchFn } = makeTarget(async (url: string, init: any) => {
         const u = String(url);
-        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Alviss" }] });
         if (init.method === "GET" && u.includes("/drive/v3/files?"))
           return res({ files: [{ id: "twin", name: "Mobile App.md", md5Checksum: "abc" }] });
         throw new Error(`unexpected ${init.method} ${u}`);
@@ -718,7 +718,7 @@ describe("DriveSyncTarget", () => {
     it("picks the byte-exact file when Drive returns several spellings", async () => {
       const { target, fetchFn } = makeTarget(async (url: string, init: any) => {
         const u = String(url);
-        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Alviss" }] });
         if (init.method === "GET" && u.includes("/drive/v3/files?"))
           return res({ files: [
             { id: "twin", name: "Mobile App.md", md5Checksum: "aaa" },
@@ -737,13 +737,13 @@ describe("DriveSyncTarget", () => {
       // "u" + combining diaeresis and the single code point are ONE name on
       // every file system; macOS stores the decomposed form. Refusing the pair
       // stalled the push of a file nobody had duplicated — and since the phone
-      // wrote the other form itself, it was Plainva blocking Plainva
+      // wrote the other form itself, it was Alviss blocking Alviss
       // (finding 2026-08-21).
       const composed = "Bücher.md";
       const decomposed = "Bücher.md";
       const { target, fetchFn } = makeTarget(async (url: string, init: any) => {
         const u = String(url);
-        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Alviss" }] });
         if (init.method === "GET" && u.includes("/drive/v3/files?"))
           return res({ files: [{ id: "twin", name: decomposed, md5Checksum: "abc" }] });
         if (init.method === "PATCH") return res({ id: "twin", md5Checksum: "new" });
@@ -762,7 +762,7 @@ describe("DriveSyncTarget", () => {
       const composed = "Bücher.md";
       const { target, fetchFn } = makeTarget(async (url: string, init: any) => {
         const u = String(url);
-        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Alviss" }] });
         if (init.method === "GET" && u.includes("/drive/v3/files?"))
           return res({ files: [
             { id: "twin", name: "Bücher.md", md5Checksum: "aaa" },
@@ -786,7 +786,7 @@ describe("DriveSyncTarget", () => {
       const composed = "Bücher.md";
       const { target, fetchFn } = makeTarget(async (url: string, init: any) => {
         const u = String(url);
-        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Alviss" }] });
         if (init.method === "GET" && u.includes("/drive/v3/files?"))
           return res({ files: [{ id: "other", name: "bücher.md", md5Checksum: "abc" }] });
         throw new Error(`unexpected ${init.method} ${u}`);
@@ -799,7 +799,7 @@ describe("DriveSyncTarget", () => {
     it("refuses to delete when only a differently-spelled file exists", async () => {
       const { target, fetchFn } = makeTarget(async (url: string, init: any) => {
         const u = String(url);
-        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Alviss" }] });
         if (init.method === "GET" && u.includes("/drive/v3/files?"))
           return res({ files: [{ id: "twin", name: "Mobile App.md" }] });
         throw new Error(`unexpected ${init.method} ${u}`);
@@ -816,7 +816,7 @@ describe("DriveSyncTarget", () => {
       // between them is a coin flip, so the sync must say so instead.
       const { target } = makeTarget(async (url: string, init: any) => {
         const u = String(url);
-        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+        if (init.method === "GET" && isFolderLookup(u)) return res({ files: [{ id: "root-folder", name: "Alviss" }] });
         if (init.method === "GET" && u.includes("/drive/v3/files?"))
           return res({ files: [{ id: "a", name: "note.md" }, { id: "b", name: "note.md" }] });
         throw new Error(`unexpected ${init.method} ${u}`);
@@ -835,7 +835,7 @@ describe("DriveSyncTarget", () => {
         if (init.method === "GET" && isFolderLookup(u)) {
           if (u.includes(encodeURIComponent("name='Efforts'")))
             return res({ files: [{ id: "lower", name: "efforts" }, { id: "exact", name: "Efforts" }] });
-          return res({ files: [{ id: "root-folder", name: "Plainva" }] });
+          return res({ files: [{ id: "root-folder", name: "Alviss" }] });
         }
         if (init.method === "GET" && u.includes("/drive/v3/files?")) {
           const m = decodeURIComponent(u).match(/'([^']+)' in parents/);

@@ -103,7 +103,7 @@ const RTL_NOTE = [
   "- [x] شراء الكتاب", // 5
   "> العلم في الصغر كالنقش على الحجر.", // 6
   "", // 7
-  "Plainva يحفظ ملاحظاتي كملفات Markdown.", // 8
+  "Alviss يحفظ ملاحظاتي كملفات Markdown.", // 8
   "", // 9
   "```", // 10
   'grep -n "الأندلس" notes.md', // 11
@@ -160,7 +160,7 @@ describe("right-to-left lines in the editor", () => {
   });
 
   it("draws a table with its direction and each cell with its own", () => {
-    const session = makeSession(["قبل", "", "| الاسم | Wert |", "| --- | --- |", "| ٣ | Plainva |", "", "بعد"].join("\n"));
+    const session = makeSession(["قبل", "", "| الاسم | Wert |", "| --- | --- |", "| ٣ | Alviss |", "", "بعد"].join("\n"));
     const wrap = session.view.contentDOM.querySelector<HTMLElement>(".cm-md-table-wrap");
     expect(wrap?.getAttribute("dir")).toBe("rtl");
     const cells = [...session.view.contentDOM.querySelectorAll<HTMLElement>(".cm-md-table th, .cm-md-table td")];

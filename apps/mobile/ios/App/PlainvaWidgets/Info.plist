@@ -12,6 +12,6 @@
 	<key>NSExtension</key><dict>
 		<key>NSExtensionPointIdentifier</key><string>com.apple.widgetkit-extension</string>
 	</dict>
-	<key>PlainvaAppGroup</key><string>$(PLAINVA_APP_GROUP)</string>
-	<key>PlainvaURLScheme</key><string>$(PLAINVA_BUNDLE_BASE)</string>
+	<key>AlvissAppGroup</key><string>$(PLAINVA_APP_GROUP)</string>
+	<key>AlvissURLScheme</key><string>$(PLAINVA_BUNDLE_BASE)</string>
 </dict></plist>

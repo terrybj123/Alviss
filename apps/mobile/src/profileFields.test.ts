@@ -45,7 +45,7 @@ describe("profile field catalog", () => {
     expect(isMemberProfileField("bookmarks")).toBe(true);
     expect(isMemberProfileField("dailyNotesFolder")).toBe(false);
     expect(isMemberProfileField("templateFolder")).toBe(false);
-    // Unknown fields (a newer Plainva) stay with the vault — guessing would be
+    // Unknown fields (a newer Alviss) stay with the vault — guessing would be
     // worse than keeping today's behaviour.
     expect(isMemberProfileField("somethingFromTheFuture")).toBe(false);
   });

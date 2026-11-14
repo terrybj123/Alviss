@@ -201,7 +201,7 @@ export function EventEditSheet({
 
         {/* Repeat (S25). Touching ANY control here marks the rule as edited —
             an untouched event keeps whatever the provider has, including the
-            parts Plainva can only read approximately. */}
+            parts Alviss can only read approximately. */}
         <p className="m-sectionlabel m-sectionlabel--inset">{t("pim.repeat")}</p>
         <div className="m-turninto">
           {FREQS.map((f) => (
@@ -279,7 +279,7 @@ export function EventEditSheet({
         )}
 
         {/* Attendees (S25): one address per line, as on the desktop. The
-            invitation is the provider's to send — Plainva asks it to. */}
+            invitation is the provider's to send — Alviss asks it to. */}
         <p className="m-sectionlabel m-sectionlabel--inset">{t("pim.groupAttendees")}</p>
         <TextArea
           aria-label={t("pim.groupAttendees")}

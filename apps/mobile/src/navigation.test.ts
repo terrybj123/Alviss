@@ -155,10 +155,10 @@ describe("nav state (overlay + tab stacks)", () => {
   it("keeps capture available and targets nested folders, including overlays", () => {
     let s = initialNavState("notes");
     expect(showsCaptureFab(navTop(s))).toBe(true);
-    s = pushEntry(s, { kind: "folder", path: "Projects/Plainva" });
+    s = pushEntry(s, { kind: "folder", path: "Projects/Alviss" });
     expect(showsCaptureFab(navTop(s))).toBe(true);
-    expect(activeFolderPath(s)).toBe("Projects/Plainva");
-    s = pushEntry(s, { kind: "note", path: "Projects/Plainva/Plan.md" });
+    expect(activeFolderPath(s)).toBe("Projects/Alviss");
+    s = pushEntry(s, { kind: "note", path: "Projects/Alviss/Plan.md" });
     expect(showsCaptureFab(navTop(s))).toBe(false);
 
     let overlay = pushEntry(initialNavState("notes"), { kind: "more", path: "" });

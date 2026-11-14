@@ -23,7 +23,7 @@ import { isHeld, subscribeVaultRuntimes } from "../../services/vaultRuntimes";
  *  - Export writes the same ZIP the phone shares (the vault minus
  *    `ZIP_EXCLUDED_DIR_NAMES`, named by `vaultExportFileName`) to a file the
  *    person picks — the desktop's native zipper, the phone's share sheet.
- *  - Delete is the phone's for a folder it does not own: Plainva lets go of
+ *  - Delete is the phone's for a folder it does not own: Alviss lets go of
  *    the vault — index, settings, window layout, credentials — and the folder
  *    with the notes stays where it is. The question says so in the phone's
  *    words. It is the start screen's "forget this vault"
@@ -41,7 +41,7 @@ export interface VaultDetailsPageProps {
   /** Closes the vault in this window, before it is forgotten. */
   onCloseActive: () => void;
   removeRecentVault: (vaultPath: string) => Promise<void>;
-  /** The vault is gone from Plainva: the settings show another one. */
+  /** The vault is gone from Alviss: the settings show another one. */
   onDeleted: (vaultPath: string) => void;
 }
 
@@ -106,7 +106,7 @@ export const VaultDetailsPage: React.FC<VaultDetailsPageProps> = (p) => {
   const remove = async () => {
     const ok = await appConfirm({
       title: t("mobile.vaultDelete"),
-      // A folder Plainva does not own: the connection goes, the files stay —
+      // A folder Alviss does not own: the connection goes, the files stay —
       // said in the phone's words for exactly that case.
       message: t("mobile.vaultExternalRemoveConfirm", { name, label: p.vaultPath }),
       kind: "danger",

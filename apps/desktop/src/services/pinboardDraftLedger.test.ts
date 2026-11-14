@@ -18,7 +18,7 @@ import {
  * (plan Befunde 2026-09-24, E15). The draft is a real file from the moment the
  * entry opens; closing an EMPTY entry takes it back — and an app that went
  * away never closed it. The ledger remembers each draft with a hash of exactly
- * the bytes Plainva wrote, and the sweep finishes what is left: unchanged →
+ * the bytes Alviss wrote, and the sweep finishes what is left: unchanged →
  * removed, changed → kept, gone → forgotten, open → untouched.
  */
 
@@ -82,7 +82,7 @@ describe("sweepPinboardDrafts: finishing what a crash left", () => {
     vi.unstubAllGlobals();
   });
 
-  it("a draft still byte-identical to what Plainva wrote is removed through the ordinary delete, and forgotten", async () => {
+  it("a draft still byte-identical to what Alviss wrote is removed through the ordinary delete, and forgotten", async () => {
     const { files, store, removed } = memoryFiles({ [A]: DRAFT });
     const ledger = pinboardDraftLedger("V", leftOver([{ path: A, content: DRAFT }]));
     expect(await sweepPinboardDrafts(files, ledger)).toEqual({ removed: [A], kept: [], forgotten: [], open: [] });

@@ -6,7 +6,7 @@ import { readVaultFile, waitForVaultDirectory, type MobileTestGlobals, vaultFold
  * bundle, with real files in the web shell's storage.
  *
  * The shared rule calls a `.csv` or an `.ini` a text file that opens inside
- * Plainva, and the desktop has treated one that way since 2026-08: opened from
+ * Alviss, and the desktop has treated one that way since 2026-08: opened from
  * anywhere, refused when its bytes are not text, written back with the line
  * ends and the mark it arrived with. The phone opened the same files with none
  * of the three: its file list handed them to the share sheet while a link

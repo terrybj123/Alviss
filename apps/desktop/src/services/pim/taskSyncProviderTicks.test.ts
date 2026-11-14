@@ -16,7 +16,7 @@ import { buildTaskDbFile } from "../taskDatabase";
 
 /**
  * Finding B2 (maintainer, 19.10.): a task ticked off in Google Tasks was not
- * ticked off in Plainva; the other way round it was. Nothing covered the way
+ * ticked off in Alviss; the other way round it was. Nothing covered the way
  * from the provider's answer to the note, so this file walks it whole: the
  * Google adapter reads a stubbed Tasks API, the worker fills the cache, the
  * reconciler writes the note — and where the note cannot take the tick, it is

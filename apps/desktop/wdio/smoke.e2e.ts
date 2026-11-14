@@ -147,7 +147,7 @@ function fileHolds(file: string, text: string): boolean {
   return existsSync(file) && readFileSync(file, "utf8").includes(text);
 }
 
-describe("Plainva native smoke", () => {
+describe("Alviss native smoke", () => {
   const marker = `smoke-marker-${Date.now()}`;
   const secondMarker = `second-window-${Date.now()}`;
   let vault = "";

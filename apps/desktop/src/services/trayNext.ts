@@ -27,7 +27,7 @@ const byVault = new Map<string, TrayEntry>();
  * Open threads that name you, per vault (Stufe F, F2).
  *
  * Counted as ADDRESSED threads rather than "unread remarks", deliberately:
- * Plainva has no read state for a comment, and inventing one for a tray line
+ * Alviss has no read state for a comment, and inventing one for a tray line
  * would be a second truth that nothing else maintains. "Threads that name you
  * and are still open" is a fact the overview already computes and the badge
  * already shows, so the tray cannot disagree with the surface.

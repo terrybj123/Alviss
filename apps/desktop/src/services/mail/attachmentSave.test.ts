@@ -99,7 +99,7 @@ describe("what a saved attachment is called", () => {
 
   it("never saves a file that starts with a dot", () => {
     // A name like this is a hidden file on two of three desktop systems, and
-    // Plainva's own tree does not show it.
+    // Alviss's own tree does not show it.
     expect(attachmentFileName(".htaccess")).toEqual({ stem: "attachment", ext: "htaccess" });
     expect(attachmentFileName("..versteckt.pdf")).toEqual({ stem: "versteckt", ext: "pdf" });
     expect(attachmentFileName(". . .pdf")).toEqual({ stem: "attachment", ext: "pdf" });

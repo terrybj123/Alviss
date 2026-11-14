@@ -15,7 +15,7 @@ export type UpdateCheckResult =
   | { status: "none" }
   /** The releases feed does not exist yet (pre-launch) — not an error. */
   | { status: "no-release" }
-  /** A package manager updates this installation (e.g. Nix); Plainva does not. */
+  /** A package manager updates this installation (e.g. Nix); Alviss does not. */
   | { status: "managed"; by: string }
   | { status: "error"; error: string };
 
@@ -37,7 +37,7 @@ async function isReleaseInstall(): Promise<boolean> {
 }
 
 /**
- * The package manager that updates this installation, or `null` when Plainva
+ * The package manager that updates this installation, or `null` when Alviss
  * updates itself. A package manager says so through the environment of the
  * process (`PLAINVA_UPDATES_MANAGED_BY`, set by the wrapper of the Nix package,
  * read in `src-tauri/src/app_identity.rs`): its copy carries the release

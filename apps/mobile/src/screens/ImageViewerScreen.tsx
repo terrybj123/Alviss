@@ -20,14 +20,14 @@ export function ImageViewerScreen({
   vault: MobileVault;
   path: string;
   onBack: () => void;
-  /** The screen follows its image when it was moved outside Plainva (issue 110). */
+  /** The screen follows its image when it was moved outside Alviss (issue 110). */
   onRenamed?: (to: string) => void;
 }) {
   const { t } = useTranslation();
   const [url, setUrl] = useState<string | null>(null);
   const [failed, setFailed] = useState(false);
   const name = path.split("/").pop() ?? path;
-  // Moved or deleted outside Plainva (issue 110, E9): looked for by its
+  // Moved or deleted outside Alviss (issue 110, E9): looked for by its
   // content hash and followed when the move is proven, else "Moved?" or the
   // missing state — never the bare load error.
   const missing = useOpenFileLookup(vault, path, { onRenamed });

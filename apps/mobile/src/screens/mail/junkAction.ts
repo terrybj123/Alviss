@@ -20,7 +20,7 @@ export interface JunkDeps {
   account: MailAccountConfig;
   folders: readonly MailboxInfo[];
   items: readonly JunkItem[];
-  /** Asks whether Plainva may create a junk folder. Absent = do not offer. */
+  /** Asks whether Alviss may create a junk folder. Absent = do not offer. */
   confirmCreate?: () => Promise<boolean>;
 }
 

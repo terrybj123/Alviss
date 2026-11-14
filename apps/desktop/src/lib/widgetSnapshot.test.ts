@@ -24,7 +24,7 @@ const LABELS: WidgetLabels = {
   today: "Heute",
   overdue: "Überfällig",
   empty: "Nichts fällig",
-  locked: "Gesperrt — in Plainva öffnen",
+  locked: "Gesperrt — in Alviss öffnen",
   pending: "wird beim Öffnen übernommen",
   newTask: "Aufgabe",
   newJournal: "Journal",

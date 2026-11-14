@@ -91,7 +91,7 @@ const PARA_STRINGS_IT: ParaStrings = {
       },
       {
         title: "Concordare la planimetria con il team",
-        body: "Trascina la scheda in un'altra colonna della board: Plainva scrive il nuovo stato nella nota.",
+        body: "Trascina la scheda in un'altra colonna della board: Alviss scrive il nuovo stato nella nota.",
         props: { stato: "In corso", progetto: "[[Trasloco nel nuovo ufficio]]", scadenza: "{{today+7}}" },
       },
       {
@@ -210,7 +210,7 @@ const GTD_STRINGS_IT: GtdStrings = {
       },
       {
         title: "Rivedere il preventivo del falegname",
-        body: "Trascina la scheda in un'altra colonna della board: Plainva scrive il nuovo stato nella nota.",
+        body: "Trascina la scheda in un'altra colonna della board: Alviss scrive il nuovo stato nella nota.",
         props: { stato: "Prossima", contesto: "@Lavoro", progetto: "[[Rinnovare la cucina]]", scadenza: "{{today+5}}" },
       },
       {
@@ -545,9 +545,9 @@ Anche le note a piè di pagina funzionano.[^1]
 
 /** Italian strings. */
 export const TOUR_STRINGS_IT: TourStrings = {
-  name: "Plainva Tour",
+  name: "Alviss Tour",
   description:
-    "Un vault guidato: bacheca, note giornaliere, aree, progetti e attività — ogni vista che Plainva offre, piena di esempi.",
+    "Un vault guidato: bacheca, note giornaliere, aree, progetti e attività — ogni vista che Alviss offre, piena di esempi.",
   folders: {
     quickNotes: "Note veloci",
     journal: "Diario",
@@ -572,7 +572,7 @@ export const TOUR_STRINGS_IT: TourStrings = {
   },
   welcome: {
     file: "Benvenuto.md",
-    title: "Benvenuto in Plainva",
+    title: "Benvenuto in Alviss",
     intro:
       "Questo vault è un tour. Ogni cartella qui sotto è piena di esempi, e ogni database mostra una vista diversa — aprili e cambia le cose: qui non c'è nulla di prezioso.",
     outro:
@@ -775,7 +775,7 @@ export const TOUR_STRINGS_IT: TourStrings = {
         props: { tipo: "Riferimento", stato: "Letto", cover: "Allegati/cover.svg" },
       },
       {
-        title: "Manuale di Plainva",
+        title: "Manuale di Alviss",
         body: "La guida completa si trova su plainva.com/docs.",
         props: { tipo: "Riferimento", url: "https://plainva.com/docs", stato: "Nuovo" },
       },
@@ -786,7 +786,7 @@ export const TOUR_STRINGS_IT: TourStrings = {
       },
       {
         title: "Scorciatoie da tastiera",
-        body: "Premi `F1` in Plainva — l'elenco è ricercabile.",
+        body: "Premi `F1` in Alviss — l'elenco è ricercabile.",
         props: { tipo: "Riferimento", stato: "Letto", area: "[[Apprendimento]]" },
       },
     ],

@@ -39,7 +39,7 @@ afterEach(() => {
 describe("the info button on the phone", () => {
   it("opens the shell's sheet at the end of the document, out of the row it was pressed in", () => {
     const go: string[] = [];
-    act(() => root.render(<RowList><Row title="Rebuild index" onClick={() => go.push("row")} info={{ text: "The search index is Plainva's record.", guide: "Search.md" }} /></RowList>));
+    act(() => root.render(<RowList><Row title="Rebuild index" onClick={() => go.push("row")} info={{ text: "The search index is Alviss's record.", guide: "Search.md" }} /></RowList>));
     const button = container.querySelector<HTMLButtonElement>("button.pv-infotip")!;
     act(() => button.click());
     const sheet = document.querySelector<HTMLElement>('[data-testid="grouprow-info-sheet"]')!;
@@ -49,7 +49,7 @@ describe("the info button on the phone", () => {
     expect(sheet.classList.contains("m-sheet")).toBe(true);
     expect(sheet.querySelector(".m-sheet-grip")).not.toBeNull();
     expect(sheet.querySelector(".m-sheet-title")?.textContent).toBe("Rebuild index");
-    expect(sheet.textContent).toContain("The search index is Plainva's record.");
+    expect(sheet.textContent).toContain("The search index is Alviss's record.");
     expect(sheet.textContent).toContain("Read more in the handbook");
     expect(go).toEqual([]);
     // The back button closes the sheet, not the screen.

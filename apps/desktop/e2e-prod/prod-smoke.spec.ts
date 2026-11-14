@@ -39,7 +39,7 @@ test('production bundle boots and renders the splash without an uncaught error',
   // the app working, not a defect — the smoke asks whether the bundle boots.
   try {
     await expect(
-      page.getByRole('heading', { level: 1, name: /Willkommen bei Plainva|Welcome to Plainva/ }),
+      page.getByRole('heading', { level: 1, name: /Willkommen bei Alviss|Welcome to Alviss/ }),
     ).toBeVisible({ timeout: 15000 });
   } catch (error) {
     throw new Error(
@@ -70,7 +70,7 @@ test('production bundle boots and renders the splash without an uncaught error',
 test('production bundle lets the journal shortcut through the webview hardening', async ({ page }) => {
   await page.goto('/');
   await expect(
-    page.getByRole('heading', { level: 1, name: /Willkommen bei Plainva|Welcome to Plainva/ }),
+    page.getByRole('heading', { level: 1, name: /Willkommen bei Alviss|Welcome to Alviss/ }),
   ).toBeVisible({ timeout: 15000 });
 
   // Listen where AppShell's global handler listens: on window, bubble phase.

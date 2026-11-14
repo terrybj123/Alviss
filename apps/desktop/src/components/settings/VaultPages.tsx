@@ -272,7 +272,7 @@ export const ContentPage: React.FC<ContentPageProps> = (p) => {
         <SettingRow label={t("settings.defaultNoteType")} info={t("settings.defaultNoteTypeDesc")}>
           <CommittedTextInput autoComplete="off" value={p.defaultNoteType} onSave={p.onDefaultNoteType} placeholder={DEFAULT_NOTE_TYPE} style={{ width: "100%" }} />
         </SettingRow>
-        {/* C15: which extra file types open in Plainva rather than going to the
+        {/* C15: which extra file types open in Alviss rather than going to the
             system. It can only ADD — the built-in list stays whatever this
             says, so a typo here can never turn a note into an OS handoff. */}
         <SettingRow label={t("settings.textFileExtensions")} desc={t("settings.textFileExtensionsHint")} info={t("settings.textFileExtensionsDesc")}>

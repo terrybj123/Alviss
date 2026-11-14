@@ -338,7 +338,7 @@ export async function runOkfConversion(opts: {
 
 /**
  * The bundle migration (OKF v0.2 plan, P2): the root `index.md` declares the
- * version Plainva writes, and — opt-in, D2 — the legacy per-note `okf_version`
+ * version Alviss writes, and — opt-in, D2 — the legacy per-note `okf_version`
  * key disappears. Which files to look at comes from `scanOkfVersionState`; the
  * per-file edit is `migrateOkfFile` from core.
  *

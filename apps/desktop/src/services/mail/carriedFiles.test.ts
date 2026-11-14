@@ -328,7 +328,7 @@ describe("which files go for which sending mailbox", () => {
   it("holds a file attached by hand against the mailbox's bound only", () => {
     const big: MailAttachment = { name: "video.mp4", mime: "video/mp4", contentBase64: packed(BOUND + 1) };
     const small: MailAttachment = { name: "note.md", mime: "text/markdown", contentBase64: packed(100) };
-    // Over IMAP Plainva sets no bound for a file a person chose — not even the
+    // Over IMAP Alviss sets no bound for a file a person chose — not even the
     // forward's own, which counts the files of the original alone.
     const full = [ready(0, CARRIED_TOTAL_LIMIT)];
     expect(planFiles(full, [big, small], attachmentLimits(imap)).others).toEqual([true, true]);

@@ -146,7 +146,7 @@ describe("Drive — asked about the object, not the search", () => {
     let found = true;
     const { target } = drive(async (url) => {
       const u = String(url);
-      if (isFolderLookup(u)) return res({ files: [{ id: "root", name: "Plainva" }] });
+      if (isFolderLookup(u)) return res({ files: [{ id: "root", name: "Alviss" }] });
       if (u.includes("/drive/v3/files?")) return res({ files: found ? [{ id: "f1", name: "a.md" }] : [] });
       throw new Error(`unexpected ${u}`);
     });
@@ -159,7 +159,7 @@ describe("Drive — asked about the object, not the search", () => {
     const { target } = drive(async (url) => {
       // URLSearchParams writes a space as "+".
       const u = decodeURIComponent(String(url).replace(/\+/g, " "));
-      if (isFolderLookup(String(url))) return res({ files: [{ id: "rootid-123456", name: "Plainva" }] });
+      if (isFolderLookup(String(url))) return res({ files: [{ id: "rootid-123456", name: "Alviss" }] });
       if (u.includes("'rootid-123456' in parents")) {
         return res({ files: [{ id: "f1", name: "a.md", md5Checksum: "m1" }, { id: "d1", name: "Sub", mimeType: FOLDER }] });
       }
@@ -174,12 +174,12 @@ describe("Drive — asked about the object, not the search", () => {
   it("reports the root it resolved by name, and refuses to create one for a vault that has synced before", async () => {
     const resolved = vi.fn();
     const found = drive(async (url) => {
-      if (isFolderLookup(String(url))) return res({ files: [{ id: "root-1", name: "Plainva" }] });
+      if (isFolderLookup(String(url))) return res({ files: [{ id: "root-1", name: "Alviss" }] });
       return res({ files: [] });
     });
     found.target.onRootFolderResolved = resolved;
     await found.target.pull();
-    expect(resolved).toHaveBeenCalledWith({ id: "root-1", path: "Plainva", created: false });
+    expect(resolved).toHaveBeenCalledWith({ id: "root-1", path: "Alviss", created: false });
 
     const missing = drive(async (url, init) => {
       if (init.method === "POST") throw new Error("must not create a folder");

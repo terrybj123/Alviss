@@ -101,7 +101,7 @@ function readZip(bytes: Uint8Array): Record<string, Uint8Array> {
   return result;
 }
 let root: string, raw: LocalVaultAdapter, adapter: CapacitorVaultAdapter, vault: MobileVault;
-const oldName = "Plainva Backups/Vault/Vault_2026-09-01_10-00-00.zip";
+const oldName = "Alviss Backups/Vault/Vault_2026-09-01_10-00-00.zip";
 beforeEach(async () => {
   vi.useFakeTimers({ toFake: ["Date"] });
   vi.setSystemTime(new Date(2026, 8, 9, 15, 0, 0));
@@ -195,7 +195,7 @@ describe("mobile archive publication and retry", () => {
     const name = await runVaultBackup(vault, "Vault");
     expect(name).toBeTruthy();
     expect(boundary.documents.has(oldName)).toBe(false); // retention only follows the complete retry
-    const saved = boundary.documents.get("Plainva Backups/Vault/" + name)!;
+    const saved = boundary.documents.get("Alviss Backups/Vault/" + name)!;
     expect(strFromU8(archive(saved)["Note.md"])).toBe("body");
     expect(backupState(vault.vaultId).lastRun).toBe(Date.now());
   });
@@ -204,7 +204,7 @@ describe("mobile archive publication and retry", () => {
     boundary.documents.clear();
     boundary.keep = 2;
     const name = buildZipFileName("Vault", new Date());
-    const existing = "Plainva Backups/Vault/" + name;
+    const existing = "Alviss Backups/Vault/" + name;
     boundary.documents.set(existing, btoa("earlier archive"));
     const created = await runVaultBackup(vault, "Vault");
     expect(created).toBe(name.slice(0, -4) + "_001.zip");

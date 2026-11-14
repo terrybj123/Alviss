@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { resolveCoverSource } from "@plainva/ui";
 
 /**
- * Gallery cover classification (plan "Vorlagen-Überarbeitung + Plainva-Tour",
+ * Gallery cover classification (plan "Vorlagen-Überarbeitung + Alviss-Tour",
  * P1.4). The gallery used to hand the raw value to `<img src>`, so a cover
  * stored IN the vault — the normal case for a local vault — rendered as nothing:
  * the WebView cannot fetch a file path. The resolution order matters as much as

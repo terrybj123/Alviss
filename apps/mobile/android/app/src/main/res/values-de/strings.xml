@@ -8,7 +8,7 @@
     <string name="widget_today_description">Was heute ansteht, und ein Tipp, um etwas anzulegen.</string>
     <string name="widget_capture_label">Schnellerfassung</string>
     <string name="widget_capture_description">Neue Aufgabe oder Journal-Eintrag, direkt vom Startbildschirm.</string>
-    <string name="widget_open_app">Plainva öffnen</string>
+    <string name="widget_open_app">Alviss öffnen</string>
     <string name="widget_as_of">Stand: %1$s</string>
     <string name="widget_tick">Abhaken</string>
 </resources>

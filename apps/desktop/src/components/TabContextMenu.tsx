@@ -52,7 +52,7 @@ const SHORTCUT_REOPEN = IS_MAC ? "⌘⇧T" : "Ctrl ⇧T";
 
 /**
  * Right-click menu for tabs, modelled on the browser tab menu (plan P2) but
- * translated into Plainva's world: no tab groups (Plainva has panes), no
+ * translated into Alviss's world: no tab groups (Alviss has panes), no
  * duplicate (two tabs on one file buy nothing — "split" is the useful version).
  * "Open in new window" MOVES the tab out (multi-window P1): the same content in
  * two places is exactly what the dedup rule forbids.

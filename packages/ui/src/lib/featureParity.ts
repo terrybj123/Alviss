@@ -1,7 +1,7 @@
 /**
  * The catalog of KNOWN desktop/mobile asymmetries.
  *
- * Plainva is one product with two shells, and the working rule is that a
+ * Alviss is one product with two shells, and the working rule is that a
  * feature or a fix reaches both. The rule needed a place where breaking it is
  * a written fact instead of an omission nobody sees: the same failure kept
  * surfacing and the maintainer kept finding it on the device. The account
@@ -793,7 +793,7 @@ export const PARITY_FEATURES: ParityFeatureDef[] = [
       "pasted into a mail program's window beside the note. The phone deliberately " +
       "leaves the copy out (NoteScreen.tsx): it keeps no mail window open next to " +
       "the note, so its note menu hands the note to mail directly - through mailto, " +
-      "Plainva's own composer, or as an attachment. Getting a note into a mail works " +
+      "Alviss's own composer, or as an attachment. Getting a note into a mail works " +
       "on both shells; only the clipboard route is the desktop's.",
     verified: "2026-09-24",
   },
@@ -905,7 +905,7 @@ export const PARITY_FEATURES: ParityFeatureDef[] = [
   },
   {
     id: "external-change-watcher",
-    title: "Notice files changed or moved outside Plainva while the app is open",
+    title: "Notice files changed or moved outside Alviss while the app is open",
     area: "platform",
     kind: "decision",
     desktop: "yes",
@@ -961,7 +961,7 @@ export const PARITY_FEATURES: ParityFeatureDef[] = [
       "A Windows widget needs the app shipped as an MSIX package with its own " +
       "widget provider service, a macOS widget a native app extension signed " +
       "beside the app — neither is something the Tauri shell carries, and either " +
-      "would change how Plainva is packaged on that platform for one surface. " +
+      "would change how Alviss is packaged on that platform for one surface. " +
       "The desktop answers the same need from the tray (next appointment, new " +
       "task, journal entry), which is there whenever the window is not.",
     mobile: "yes",
@@ -1247,7 +1247,7 @@ export const PARITY_FEATURES: ParityFeatureDef[] = [
       "Everything ELSE about remark notifications is the same on both shells " +
       "since F3: the same three levels, the same preview switch, the same " +
       "per-note silencing, the same landing on the card that was pointed at. " +
-      "What differs is WHEN, and only that. Plainva has no server that could " +
+      "What differs is WHEN, and only that. Alviss has no server that could " +
       "push a notification, so a remark can only be noticed where a device looks " +
       "anyway - in a sync cycle. The desktop worker runs continuously (15 s by " +
       "default), so it tells you almost at once. A phone runs no timer in the " +
@@ -1464,7 +1464,7 @@ export const PARITY_FEATURES: ParityFeatureDef[] = [
     desktop: "yes",
     mobile: "partial",
     mobileReason:
-      "The phone writes its archives into its own documents folder (\"Plainva Backups/<vault>\", " +
+      "The phone writes its archives into its own documents folder (\"Alviss Backups/<vault>\", " +
       "visible in the Files app) and offers no row to choose another one or to open it. The " +
       "rest of the card is the same since the check of 2026-10-30 (Sammelplan § 3.169 Nr. 3): " +
       "the switch, the archives kept, \"Back up now\" and the three version pickers, with one " +

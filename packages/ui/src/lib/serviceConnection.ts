@@ -57,7 +57,7 @@ export interface ConnectionMessageContext {
  * client". The client ID itself cannot tell (every type is
  * `…apps.googleusercontent.com`), and Google usually shows the error on its
  * own page in the browser; the editor of the own client therefore says the
- * same in advance. When the answer does reach Plainva, it is named here.
+ * same in advance. When the answer does reach Alviss, it is named here.
  */
 function isGoogleClientTypeMismatch(value: string): boolean {
   return value.includes("redirect_uri_mismatch");
@@ -116,13 +116,13 @@ function rawText(error: unknown): string {
  * everything else into "could not be completed", while the desktop wizard
  * printed whatever it caught — which is how "storageFailed" stood on the
  * screen where a sentence belonged. Now there is one rule:
- *   - a code Plainva knows becomes its sentence (`ServiceConnectionError`
+ *   - a code Alviss knows becomes its sentence (`ServiceConnectionError`
  *     reasons first, then the classes of a failed Android Google sign-in,
  *     then the connection and loopback markers, then the
  *     storage and transfer wordings of older throw sites);
  *   - anything else is the provider's own answer and is shown VERBATIM, framed
  *     as such — "access_denied: the app is not verified" says more than any
- *     replacement could, but it must never look like Plainva's sentence;
+ *     replacement could, but it must never look like Alviss's sentence;
  *   - nothing at all still says something: the generic retry sentence.
  */
 export function serviceConnectionMessage(error: unknown, t: ConnectionTranslate, context: ConnectionMessageContext = {}): string {
@@ -185,7 +185,7 @@ export interface ConnectionFailure {
 /** The provider no longer accepts the sign-in (its own answer to a refresh). */
 const PROVIDER_SIGN_IN = /invalid_grant/;
 /**
- * Plainva's own check of the sign-in, asked of no provider (second review
+ * Alviss's own check of the sign-in, asked of no provider (second review
  * 2026-10-28): no stored grant, another client, a scope missing, another
  * account, an identity it could not confirm.
  */
@@ -210,7 +210,7 @@ export function serviceConnectionFailure(error: unknown, t: ConnectionTranslate,
     return { source: "plainva", title: null, text: serviceConnectionMessage(error, t, context), signIn: false };
   }
   if (error instanceof SignInWrongAccountError || error instanceof SignInNothingGrantedError) {
-    // The person chose another account, or ticked nothing, in the provider's dialog: Plainva's check says so.
+    // The person chose another account, or ticked nothing, in the provider's dialog: Alviss's check says so.
     const text = error instanceof SignInWrongAccountError ? t("cloudAccounts.wrongAccount", { expected: error.expected, actual: error.actual }) : t("cloudAccounts.nothingGranted");
     return { source: "plainva", title: failureTitle("plainva", t, context.provider), text, signIn: true };
   }
@@ -237,7 +237,7 @@ export function serviceConnectionFailure(error: unknown, t: ConnectionTranslate,
   if (PROVIDER_REFUSAL.test(value) || error instanceof AccountGrantMissingPermissionsError) return { source: "provider", title: failureTitle("provider", t, context.provider), text, signIn: false };
   if (!value || OWN_STEPS.test(value)) return { source: "plainva", title: failureTitle("plainva", t, context.provider), text, signIn: false };
   // Words nobody here knows: the provider's own answer only where they read as one; else
-  // Plainva's step that did not complete. Either way the words stand below.
+  // Alviss's step that did not complete. Either way the words stand below.
   if (PROVIDER_ANSWER.test(value)) return { source: "provider", title: failureTitle("provider", t, context.provider), text: t("connectRun.providerText", { provider: context.provider }), raw: value, signIn: false };
   return { source: "plainva", title: failureTitle("plainva", t, context.provider), text: t("connection.loginFailed"), raw: value, signIn: false };
 }

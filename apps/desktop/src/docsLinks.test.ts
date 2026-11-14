@@ -2,11 +2,11 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import i18n from "@plainva/ui/i18n";
-import { docsSlug, userGuideUrl, GDRIVE_BYO_GUIDE, ONEDRIVE_DROPBOX_BYO_GUIDE } from "@plainva/ui";
+import { userGuideUrl, GDRIVE_BYO_GUIDE, ONEDRIVE_DROPBOX_BYO_GUIDE } from "@plainva/ui";
 import { APP_LANGUAGES } from "@plainva/ui";
 
 /**
- * The in-app help links point at plainva.com. Two things can silently break
+ * The in-app help links point at the handbook in this repository. Two things can silently break
  * them, and neither shows up as a compile error:
  *
  *  1. the slug rule drifting away from the website's generator, and
@@ -25,27 +25,19 @@ describe("docsLinks", () => {
     await i18n.changeLanguage("en");
   });
 
-  it("maps a handbook file name to the website slug", () => {
-    expect(docsSlug("OKF.md")).toBe("okf");
-    expect(docsSlug("Getting_Started.md")).toBe("getting-started");
-    expect(docsSlug("OneDrive_and_Dropbox_BYO_Guide.md")).toBe("onedrive-and-dropbox-byo-guide");
-    // README is the section index, so it has no slug of its own.
-    expect(docsSlug("README.md")).toBe("");
-  });
-
   it("puts English at the root and every other language under its code", async () => {
-    expect(userGuideUrl("OKF.md")).toBe("https://plainva.com/docs/okf");
+    expect(userGuideUrl("OKF.md")).toBe("https://github.com/terrybj123/Alviss/blob/main/docs/user/en/OKF.md");
 
     await i18n.changeLanguage("de");
-    expect(userGuideUrl("OKF.md")).toBe("https://plainva.com/de/docs/okf");
+    expect(userGuideUrl("OKF.md")).toBe("https://github.com/terrybj123/Alviss/blob/main/docs/user/de/OKF.md");
 
     await i18n.changeLanguage("pt-BR");
-    expect(userGuideUrl("Getting_Started.md")).toBe("https://plainva.com/pt-BR/docs/getting-started");
+    expect(userGuideUrl("Getting_Started.md")).toBe("https://github.com/terrybj123/Alviss/blob/main/docs/user/pt-BR/Getting_Started.md");
 
     // A language the site does not know falls back to English, never to a
     // prefix that was never built.
     await i18n.changeLanguage("xx");
-    expect(userGuideUrl("OKF.md")).toBe("https://plainva.com/docs/okf");
+    expect(userGuideUrl("OKF.md")).toBe("https://github.com/terrybj123/Alviss/blob/main/docs/user/en/OKF.md");
   });
 
   it("links only to pages that exist in every language of the handbook", () => {

@@ -2,7 +2,7 @@ import type { DevicePimPort } from "@plainva/core";
 import { withoutUrlPaths } from "./pimCycleReport";
 
 /**
- * Diagnostics for the way from a task in Plainva to the provider's list and
+ * Diagnostics for the way from a task in Alviss to the provider's list and
  * back (plan Befunde 2026-10-06, T4).
  *
  * Two TestFlight reports call the reminders on the iPhone unreliable or slow,

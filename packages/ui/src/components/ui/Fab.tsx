@@ -9,7 +9,7 @@ export interface FabProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 /**
- * Floating action button (Plainva UI 2.0 / M3 Expressive): the primary create
+ * Floating action button (Alviss UI 2.0 / M3 Expressive): the primary create
  * affordance. Round by default (--radius-lg rounded square); pass `label` for
  * the extended pill form. Renders the shared .pv-fab classes so themes restyle
  * it (LCARS pill, Win95 bevel) — never rebuild with inline styles.

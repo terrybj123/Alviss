@@ -115,7 +115,7 @@ export async function createTaskDatabase(
  * status/select column with options.
  *
  * Two exceptions to "the last one is done" (finding B2, 19.10.): an option
- * that IS a done word — the one Plainva writes in any of its languages, or a
+ * that IS a done word — the one Alviss writes in any of its languages, or a
  * common synonym — is "done" wherever it stands, and a cancelled option at
  * the end is never taken for it. A board of Open / In progress / Done /
  * Cancelled used to receive "Cancelled" for every task ticked at the
@@ -135,7 +135,7 @@ export interface TaskStatusModel {
 }
 
 /**
- * The done option of every language Plainva writes (`tasks.dbStatusDone`) and
+ * The done option of every language Alviss writes (`tasks.dbStatusDone`) and
  * the usual synonyms, compared case-insensitively. Kept here rather than read
  * from the locales: this module is pure and serves both shells and the
  * reconciler, whatever language the person reads.
@@ -382,7 +382,7 @@ export function applyTaskStatusOption(
 /**
  * Which provider list a task created in this database also goes to (C4, S15).
  *
- * Today the reconciler only mirrors remote → local: a task created in Plainva
+ * Today the reconciler only mirrors remote → local: a task created in Alviss
  * stays a note and never appears in Google Tasks or the iCloud reminders. The
  * capability to create one is finished in all three providers
  * (`IPimTarget.createTask`) and has never had a caller; what was missing is not

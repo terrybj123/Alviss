@@ -43,7 +43,7 @@ export function planBaseFormulaExport(config: any, columns: BaseExportColumn[]) 
       issues.push({ column: key, issue: "property" });
     }
     properties[id] = { displayName: label };
-    // The same exported file retains working computed columns in Plainva.
+    // The same exported file retains working computed columns in Alviss.
     if (column?.rollup) properties[id].plainva = { rollup: column.rollup };
     order.push(id);
   }

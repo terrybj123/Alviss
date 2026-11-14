@@ -77,7 +77,7 @@ describe("it never goes to the server", () => {
   });
 
   it("names it apart from what the server simply cannot do", () => {
-    // Not "unsupported": the server lacks nothing. The action is Plainva's own.
+    // Not "unsupported": the server lacks nothing. The action is Alviss's own.
     const server = buildRulesSection([rule({ actions: [{ kind: "junk" }] })], {});
     expect(server.skipped[0].reason).toBe("noMailbox");
   });

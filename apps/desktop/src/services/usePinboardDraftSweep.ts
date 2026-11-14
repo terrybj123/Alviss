@@ -7,7 +7,7 @@ import { sweepDesktopPinboardDrafts } from "./pinboardDrafts";
  * Finishes what an app that was closed or killed during a pinboard entry left
  * behind (plan Befunde 2026-09-24, E15), once per opened vault: an empty
  * draft goes the way closing its window would have taken it, anything that
- * changed since Plainva wrote it stays, and a draft that is open right now is
+ * changed since Alviss wrote it stays, and a draft that is open right now is
  * left alone. The main window only — it holds the adapter chain and the index
  * every other window delegates to (VaultContext). The phone runs the same
  * clean-up from its shell (`usePinboardDraftSweep` there).

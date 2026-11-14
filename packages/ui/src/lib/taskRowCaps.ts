@@ -18,7 +18,7 @@ import { taskPlainTitle } from "./taskTitle";
  * - Moving a database entry's day needs a date column; a checkbox moves its
  *   `📅` as long as its line is known.
  * - Only a checkbox goes into the database, and only a checkbox has the four
- *   box states; only a database entry carries Plainva's repeat rule — and not
+ *   box states; only a database entry carries Alviss's repeat rule — and not
  *   one mirrored from a provider, which repeats where it came from.
  */
 

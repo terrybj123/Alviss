@@ -38,7 +38,7 @@ describe("imageTarget", () => {
   });
 
   it("finds each embed on its own — a link after it is not swallowed", () => {
-    const line = "- foto ![[foto.png]] und [Plainva](https://plainva.com) und ![[foto.png|300]] ![alt](pics/a.png \"t\")";
+    const line = "- foto ![[foto.png]] und [Alviss](https://plainva.com) und ![[foto.png|300]] ![alt](pics/a.png \"t\")";
     const found = findImageEmbeds(line);
     expect(found.map((f) => [f.target, f.width, f.syntax])).toEqual([
       ["foto.png", null, "wiki"],

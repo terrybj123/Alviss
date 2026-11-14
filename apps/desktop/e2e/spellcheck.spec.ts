@@ -183,7 +183,7 @@ async function setSwitch(page: any, on: boolean) {
   await expect(dialog).toHaveCount(0);
 }
 
-test('off by default: nothing is checked and a right-click in the note opens Plainva\'s own menu', async ({ page }) => {
+test('off by default: nothing is checked and a right-click in the note opens Alviss\'s own menu', async ({ page }) => {
   await openNote(page);
   // The document root says "unchecked" for every field nobody classified.
   await expect(page.locator('html')).toHaveAttribute('spellcheck', 'false');
@@ -220,7 +220,7 @@ test('switched on in the settings: the open editor follows, and the right-click 
   // Code inside the note stays unchecked.
   await expect(prose.locator('[spellcheck="false"]', { hasText: 'code' })).toHaveCount(1);
 
-  // Prose: nobody prevents the default, and Plainva's menu stays away.
+  // Prose: nobody prevents the default, and Alviss's menu stays away.
   expect(await rightClick(prose)).toBe(false);
   await expect(page.getByRole('menu', { name: CONTEXT_MENU })).toHaveCount(0);
 

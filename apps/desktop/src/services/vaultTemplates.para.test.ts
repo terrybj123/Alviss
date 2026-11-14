@@ -10,7 +10,7 @@ import {
 
 /**
  * What the enriched PARA template promises (plan
- * "Vorlagen-Überarbeitung + Plainva-Tour" § 3, step P3.1).
+ * "Vorlagen-Überarbeitung + Alviss-Tour" § 3, step P3.1).
  *
  * The generic suites check OKF conformance, the Obsidian rules and that every
  * welcome link resolves. What they cannot see is whether the examples actually

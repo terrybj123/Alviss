@@ -3233,7 +3233,7 @@ test('Sub-items lives in the data-source tab for every view type; graph shows th
   await configTab(page, 'source');
   await expect(panel.getByText(/^(Unterelemente|Sub-items)$/).first()).toBeVisible();
 
-  // Every Plainva-only view type shows the Obsidian-compatibility hint, incl.
+  // Every Alviss-only view type shows the Obsidian-compatibility hint, incl.
   // graph (previously only board/calendar/timeline warned).
   await configTab(page, 'view');
   await panel.getByRole('radio', { name: /^(Graph)$/ }).click();
@@ -3743,7 +3743,7 @@ test('Embedded database: a new entry fills the host\'s empty single link, and ne
 });
 
 // --- Findings of the .base reference (03.11.) --------------------------------
-// A condition Plainva cannot read stays in the file but filters nothing; the
+// A condition Alviss cannot read stays in the file but filters nothing; the
 // panel showed it as written and said nothing. And deleting a view handed its
 // native keys (`limit`) to the next view, which lost its own (`image`).
 test('An unreadable filter is marked as not applied; deleting a view leaves the other its own keys', async ({ page }, testInfo) => {
@@ -3782,8 +3782,8 @@ test('An unreadable filter is marked as not applied; deleting a view leaves the 
 
   const notes = page.locator('.base-config-panel').getByTestId('filter-not-applied');
   await expect(notes).toHaveCount(2);
-  await expect(notes.nth(0)).toHaveText(/Nicht angewendet: Plainva kann diese Bedingung nicht lesen|Not applied: Plainva cannot read this condition/);
-  await expect(notes.nth(1)).toHaveText(/(Nicht angewendet, weil Plainva sie nicht lesen kann|Not applied, because Plainva cannot read it): a && b/);
+  await expect(notes.nth(0)).toHaveText(/Nicht angewendet: Alviss kann diese Bedingung nicht lesen|Not applied: Alviss cannot read this condition/);
+  await expect(notes.nth(1)).toHaveText(/(Nicht angewendet, weil Alviss sie nicht lesen kann|Not applied, because Alviss cannot read it): a && b/);
   if (process.env.PLAINVA_EVIDENCE) await page.screenshot({ path: testInfo.outputPath('desktop-filter-not-applied.png') });
 
   // Delete the first (active) view from its tab menu.

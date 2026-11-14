@@ -77,7 +77,7 @@ function pointerDown(target: Element) {
   act(() => { target.dispatchEvent(new Event("pointerdown", { bubbles: true, cancelable: true })); });
 }
 
-const TEXT = "The search index is Plainva's record.\n\nRebuilding it reads every file again.";
+const TEXT = "The search index is Alviss's record.\n\nRebuilding it reads every file again.";
 
 describe("InfoTip (the info button)", () => {
   it("is a real button at the end of the label, named after it, closed at first", () => {
@@ -105,7 +105,7 @@ describe("InfoTip (the info button)", () => {
     expect(panel.classList.contains("pv-popover--fixed")).toBe(true);
     expect(panel.closest('[role="status"]')).not.toBeNull();
     expect([...panel.querySelectorAll(".pv-infotip-text")].map((p) => p.textContent)).toEqual([
-      "The search index is Plainva's record.",
+      "The search index is Alviss's record.",
       "Rebuilding it reads every file again.",
     ]);
     press(button());
@@ -148,10 +148,10 @@ describe("InfoTip (the info button)", () => {
     press(button());
     const link = container.querySelector<HTMLAnchorElement>(".pv-infotip-guide")!;
     expect(link.textContent).toContain("Read more in the handbook");
-    expect(link.getAttribute("href")).toBe("https://plainva.com/docs/search");
+    expect(link.getAttribute("href")).toBe("https://github.com/terrybj123/Alviss/blob/main/docs/user/en/Search.md");
     press(link);
-    expect(opened).toEqual(["https://plainva.com/docs/search"]);
-    expect(infoGuideUrl("Journal.md#the-day-ends-at", "de")).toBe("https://plainva.com/de/docs/journal#the-day-ends-at");
+    expect(opened).toEqual(["https://github.com/terrybj123/Alviss/blob/main/docs/user/en/Search.md"]);
+    expect(infoGuideUrl("Journal.md#the-day-ends-at", "de")).toBe("https://github.com/terrybj123/Alviss/blob/main/docs/user/de/Journal.md#the-day-ends-at");
     // Without a guide there is no link.
     render(<InfoTip label="Other" info="Just text." />);
     expect(container.querySelector(".pv-infotip-guide")).toBeNull();
@@ -182,7 +182,7 @@ describe("InfoTip (the info button)", () => {
     expect(status.classList.contains("pv-infotip-live")).toBe(true);
     expect(status.textContent).toBe(TEXT);
     press(sheet.querySelector('[data-testid="info-tip-guide"]')!);
-    expect(opened).toEqual(["https://plainva.com/docs/search"]);
+    expect(opened).toEqual(["https://github.com/terrybj123/Alviss/blob/main/docs/user/en/Search.md"]);
     press(sheet.querySelector('[data-testid="sheet-close"]')!);
     expect(container.querySelector('[data-testid="shell-sheet"]')).toBeNull();
     expect(button().getAttribute("aria-expanded")).toBe("false");

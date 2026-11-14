@@ -101,7 +101,7 @@ describe("the sink both shells register", () => {
     expect(toastStore.get()).toHaveLength(1);
     const [notice] = toastStore.get();
     expect(notice.kind).toBe("warning");
-    expect(notice.message).toBe("This link was not opened for your safety: Plainva only opens web, mail and phone links.");
+    expect(notice.message).toBe("This link was not opened for your safety: Alviss only opens web, mail and phone links.");
     // The address itself never goes into the message.
     expect(notice.message).not.toContain("alert");
   });

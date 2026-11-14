@@ -10,7 +10,7 @@ import type { VaultTemplateDefinition } from "@plainva/ui";
 
 /**
  * What the three link-driven templates are supposed to DEMONSTRATE (plan
- * "Vorlagen-Überarbeitung + Plainva-Tour" § 3, step P3.3). PARA lives in
+ * "Vorlagen-Überarbeitung + Alviss-Tour" § 3, step P3.3). PARA lives in
  * `vaultTemplates.para.test.ts`, GTD and Zettelkasten in
  * `vaultTemplates.methods.test.ts`.
  *

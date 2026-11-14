@@ -18,7 +18,7 @@ import { serializeRollup, type RollupSpec, type SummaryName } from "@plainva/cor
 import { setColumnDisplayName } from "../base/baseRelations";
 import type { VaultTemplateBase } from "./types";
 
-/** Plainva palette names (see propertyModel.PALETTE_NAMES) — an option without
+/** Alviss palette names (see propertyModel.PALETTE_NAMES) — an option without
  * one gets a deterministic colour derived from its value. */
 export type OptionColor = "gray" | "teal" | "blue" | "green" | "amber" | "coral" | "purple" | "pink";
 
@@ -28,7 +28,7 @@ export type OptionSpec = string | { value: string; color?: OptionColor };
 export interface ColumnSpec {
   /** Bare frontmatter key (translated per language, kept ASCII/umlaut-free). */
   key: string;
-  /** Plainva input type; omit for a computed reverse-relation column. */
+  /** Alviss input type; omit for a computed reverse-relation column. */
   input?: "text" | "number" | "rating" | "checkbox" | "date" | "datetime" | "select" | "status" | "multiselect" | "list" | "tags" | "url" | "email" | "phone" | "relation";
   /** Rating: how many marks (1-10, default 5). */
   ratingMax?: number;
@@ -50,7 +50,7 @@ export interface ColumnSpec {
 export interface ViewSpec {
   /** Localized, non-empty view name (Obsidian requires it). */
   name: string;
-  /** Render type. Everything but `table` is a Plainva render mode: on disk the
+  /** Render type. Everything but `table` is a Alviss render mode: on disk the
    * view degrades to `type: table` plus `plainva.render`, so Obsidian shows a
    * plain table instead of rejecting the file. */
   type: "table" | "board" | "calendar" | "timeline" | "list" | "gallery" | "pinboard" | "graph";
@@ -154,12 +154,12 @@ export function defineBase(spec: BaseSpec): VaultTemplateBase {
     return view;
   });
 
-  // A single folder source — valid in both Plainva and Obsidian Bases. The
+  // A single folder source — valid in both Alviss and Obsidian Bases. The
   // folder's managed index.md is NOT excluded via a filter: Obsidian's Bases has
   // no global `contains()` function (a filter like `!contains(file.path, ...)`
-  // makes Obsidian reject the whole base), so the exclusion lives in Plainva's
+  // makes Obsidian reject the whole base), so the exclusion lives in Alviss's
   // query layer instead (VaultQueryService drops OKF reserved names from every
-  // base view). In Obsidian the index row shows harmlessly (Plainva-first).
+  // base view). In Obsidian the index row shows harmlessly (Alviss-first).
   let config: Record<string, unknown> = {
     filters: { and: [`file.folder == "${spec.sourceFolder}"`] },
     columns,

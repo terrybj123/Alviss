@@ -14,7 +14,7 @@ import i18n from "../i18n";
  * the reading mode, a card and a journal line all draw the same controls, and
  * a change to them is one change.
  *
- * Plainva's own controls, not the platform's `<audio controls>`: that one
+ * Alviss's own controls, not the platform's `<audio controls>`: that one
  * looks like a different application in each shell and ignores every theme.
  *
  * `preload="metadata"` so the duration is there before anyone presses play,

@@ -1016,7 +1016,7 @@ describe("the calendar can be written into", () => {
 /**
  * The event form is the shared one (S25). Its touched guards are the reason an
  * edit of the time does not reset who answered an invitation, and does not
- * overwrite a recurrence Plainva could only read half of. A phone form written
+ * overwrite a recurrence Alviss could only read half of. A phone form written
  * from scratch would clear somebody's RSVPs eventually.
  */
 describe("editing an event keeps what it did not touch", () => {
@@ -1672,7 +1672,7 @@ describe("find & replace writes through the shared rule", () => {
 });
 
 /**
- * A Plainva-managed overview stays read-only until the reader opts out (P6).
+ * A Alviss-managed overview stays read-only until the reader opts out (P6).
  *
  * Without the gate the next auto-update run silently overwrites whatever was
  * typed into it — the exact failure the managed marker exists to prevent, and
@@ -3505,7 +3505,7 @@ describe("desktop rules the phone had never been given (finding 2026-08-19)", ()
  * Both bridges bound the time between two bytes: a live transfer never trips
  * that, but a server that THINKS does — a slow PROPFIND over a large folder
  * sits silent. Both sat at 60 s while the app waits 120, so the native side
- * decided and the user got a raw "request failed" instead of Plainva's own
+ * decided and the user got a raw "request failed" instead of Alviss's own
  * answer, classified and counted.
  *
  * Three numbers in three languages cannot be kept in step by hand, and only

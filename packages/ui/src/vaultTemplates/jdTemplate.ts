@@ -2,7 +2,7 @@ import { welcomeBody, type VaultTemplateDefinition, type VaultTemplateNote } fro
 
 /**
  * The Johnny.Decimal vault template (plan "Vorlagen-Überarbeitung +
- * Plainva-Tour" § 3). Database-free on purpose: the whole method is the
+ * Alviss-Tour" § 3). Database-free on purpose: the whole method is the
  * numbering, and a number is only convincing once you can see it used.
  *
  * Two notes could not show that. The samples now carry real IDs in the right

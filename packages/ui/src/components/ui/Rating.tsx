@@ -6,7 +6,7 @@ import { cx } from "./cx";
  *
  * The value in the file is a plain NUMBER — `mood: 4` — because that is what
  * Obsidian, a spreadsheet and a future reader can all make sense of; the marks
- * are how Plainva draws it, not how it stores it. Sorting and filtering are a
+ * are how Alviss draws it, not how it stores it. Sorting and filtering are a
  * number's, for the same reason.
  *
  * Settable and readable by the same component: a rating one can see but not

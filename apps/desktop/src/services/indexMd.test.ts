@@ -137,7 +137,7 @@ describe("generateIndexForFolder", () => {
     expect(content).toContain("# Projects");
     expect(content).toContain("* [Alpha](Alpha.md) - First project.");
     expect(content).toContain("* [Beta](Beta.md)");
-    // Docs has its own index.md → link straight to it (opens in Plainva AND
+    // Docs has its own index.md → link straight to it (opens in Alviss AND
     // Obsidian). Sub has none → plain text, so a click never fabricates a stray
     // note in Obsidian (Issue #9).
     expect(content).toContain("* [Docs](Docs/index.md)");

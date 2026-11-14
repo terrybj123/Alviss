@@ -309,7 +309,7 @@ export interface CreateTaskOptions {
   tags?: readonly string[];
   /** Written when the database HAS a priority column — creating a task never adds one. */
   priority?: TaskPriority;
-  /** Plainva's own recurrence (`plainva.repeat`). */
+  /** Alviss's own recurrence (`plainva.repeat`). */
   repeat?: RepeatRule | null;
   /** The vault, for `{{vault}}` and `{{daily±N}}` in the database's template (Sammelplan § 3.97). */
   templateVault?: TemplateVault | null;

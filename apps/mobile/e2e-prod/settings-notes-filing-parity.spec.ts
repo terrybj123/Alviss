@@ -4,7 +4,7 @@ import { waitForVaultDirectory } from "./exampleVault";
 
 /**
  * "Notes & filing" on the phone carries the desktop's three vault settings
- * (Sammelplan § 3.169 Nr. 3): "More text files", "Allow Plainva extensions
+ * (Sammelplan § 3.169 Nr. 3): "More text files", "Allow Alviss extensions
  * for .base files" and "Mark commented passages in the note" — with the same
  * texts, info buttons and switches, and stored so they stay. Against the
  * production bundle, like the other settings pages. The desktop's rows are
@@ -43,7 +43,7 @@ test("Notes & filing on the phone has the desktop's text files, .base extensions
     await expect(page.getByText("More text files", { exact: true })).toBeVisible();
     await expect(page.getByText("Comma separated, e.g. .log, .ini")).toBeVisible();
     await page.getByRole("button", { name: "More about More text files" }).click();
-    await expect(page.getByTestId("rowfield-info-sheet")).toContainText("Extra extensions Plainva opens itself");
+    await expect(page.getByTestId("rowfield-info-sheet")).toContainText("Extra extensions Alviss opens itself");
     await page.keyboard.press("Escape");
     await extensions.fill("fountain; .adoc");
     await extensions.blur();
@@ -52,7 +52,7 @@ test("Notes & filing on the phone has the desktop's text files, .base extensions
     // The .base switch, on by default, as on the desktop.
     const extDb = page.getByTestId("extDb");
     await extDb.scrollIntoViewIfNeeded();
-    await expect(page.getByText("Allow Plainva extensions for .base files", { exact: true })).toBeVisible();
+    await expect(page.getByText("Allow Alviss extensions for .base files", { exact: true })).toBeVisible();
     await expect(page.getByText("Obsidian does not fully know these features.")).toBeVisible();
     await expect(extDb).toBeChecked();
     await extDb.click();

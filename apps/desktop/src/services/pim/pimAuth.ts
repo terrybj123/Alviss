@@ -43,7 +43,7 @@ export async function authorizeGooglePim(opts: { clientId: string; clientSecret:
     httpFetch
   );
   if (!tokens.refreshToken) {
-    throw new Error("Google returned no refresh_token. Remove Plainva's access in the Google account settings, then connect again.");
+    throw new Error("Google returned no refresh_token. Remove Alviss's access in the Google account settings, then connect again.");
   }
   return { refreshToken: tokens.refreshToken };
 }

@@ -238,7 +238,7 @@ describe("computed columns of a database", () => {
     expect(formatByteSize(12)).toBe("12 B");
   });
 
-  it("leaves out a formula that has no value — Plainva does not evaluate Obsidian formulas", () => {
+  it("leaves out a formula that has no value — Alviss does not evaluate Obsidian formulas", () => {
     const fields: NoteComputedField[] = [
       { column: "formula.a", kind: "formula", value: undefined },
       { column: "formula.b", kind: "formula", value: 5 },

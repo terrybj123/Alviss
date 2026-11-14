@@ -54,7 +54,7 @@ export function VaultSwitcher({
   // opens and closes the menu — and never a press beside the menu.
   const lineRef = useRef<HTMLDivElement>(null);
   const close = useCallback(() => onOpenChange(false), [onOpenChange]);
-  // The name each vault goes by in Plainva: its own, else its folder's.
+  // The name each vault goes by in Alviss: its own, else its folder's.
   const label = useVaultLabels([vaultPath, ...(recentVaults ?? [])]);
 
   return (

@@ -4,7 +4,7 @@ import { readProviderTaskAnchor, type ProviderTaskAnchor } from "./providerTask"
 import i18n from "../i18n";
 
 /**
- * Deleting a task in Plainva also deletes it at the provider (E4b), after a
+ * Deleting a task in Alviss also deletes it at the provider (E4b), after a
  * window in which it can still be taken back (E4c).
  *
  * The rule until now was one-directional on purpose: a note that had vanished

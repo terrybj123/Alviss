@@ -4,7 +4,7 @@ import type { VaultTemplateDefinition } from "@plainva/ui";
 
 /**
  * Scaffolder additions for the showcase template (plan
- * "Vorlagen-Überarbeitung + Plainva-Tour", step P1.3): verbatim attachment
+ * "Vorlagen-Überarbeitung + Alviss-Tour", step P1.3): verbatim attachment
  * files and the scaffold-time `{{today±N}}` token.
  *
  * The token exists because the views that make a showcase worth looking at are

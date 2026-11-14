@@ -263,7 +263,7 @@ export async function forgetVaultData(
  * "Forget this vault", wherever it is asked — the start screen's remove dialog
  * and the vault's own page in the settings (Sammelplan § 3.169 Nr. 3): every
  * piece of per-vault app data goes (`forgetVaultData`), the vault leaves the
- * list of known vaults, and the name it had in Plainva goes with it. The
+ * list of known vaults, and the name it had in Alviss goes with it. The
  * folder with the notes is never touched. One function, so the two places
  * cannot come to forget different things.
  */

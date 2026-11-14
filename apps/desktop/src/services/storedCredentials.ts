@@ -4,7 +4,7 @@ import { collectVaultKeychainSlots } from "./vaultForget";
 import { isReadableSlotName } from "@plainva/ui";
 
 /**
- * "Stored access" — what Plainva has put in the OS keychain, and for whom (P5b).
+ * "Stored access" — what Alviss has put in the OS keychain, and for whom (P5b).
  *
  * The keychain accumulates. The maintainer's held a master-key cache for a vault
  * path that no longer exists and provider credentials for a test vault given up
@@ -16,7 +16,7 @@ import { isReadableSlotName } from "@plainva/ui";
  * **The known limit, stated plainly.** This does not enumerate the keychain —
  * the `keyring` crate has no search API, and doing it natively would mean three
  * platform-specific implementations of which only one could be verified here.
- * Instead every slot Plainva could have written is DERIVED and then probed with
+ * Instead every slot Alviss could have written is DERIVED and then probed with
  * a single read. The derivation covers every vault the settings store still
  * remembers, which is more than the recent list: a vault removed from that list
  * keeps its settings keys unless the user also chose "forget app data". What
@@ -99,7 +99,7 @@ function describeSlot(slot: string, vaultPath: string): { kind: StoredCredential
   return { kind: "vault" };
 }
 
-/** Every slot name Plainva could have written for this vault, old and new. */
+/** Every slot name Alviss could have written for this vault, old and new. */
 async function candidateSlots(vaultPath: string): Promise<string[]> {
   return collectVaultKeychainSlots(vaultPath);
 }

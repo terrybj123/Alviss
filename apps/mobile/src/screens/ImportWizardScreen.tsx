@@ -38,7 +38,7 @@ import { ChoiceMark } from "../components/ChoiceMark";
  *
  * Same five steps as the desktop — choose, analyse, preview, run, report —
  * because they are not a layout, they are what an import IS: you say what you
- * have, Plainva says what it would write, you agree, it writes, and it tells
+ * have, Alviss says what it would write, you agree, it writes, and it tells
  * you what did not come along. Every one of those answers comes from the
  * shared core; this screen only asks.
  *

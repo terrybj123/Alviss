@@ -23,7 +23,7 @@ export async function shareVaultFile(vault: MobileVault, path: string): Promise<
 }
 
 /**
- * The same sheet, for a file Plainva assembles rather than reads (D10).
+ * The same sheet, for a file Alviss assembles rather than reads (D10).
  *
  * The annotated export is not a copy of anything on disk — it is the note plus
  * its open remarks — so it cannot go through the path above. Everything else

@@ -73,7 +73,7 @@ export const StoredCredentialsCard: React.FC<{ keychainStatus: string }> = ({ ke
     // app-wide, and it used to stand on a VAULT page. What the list is, and
     // what it cannot find, are behind the info; the list itself stays.
     <SettingCard label={t("settings.groupKeychain")} testId="settings-stored-access">
-      {/* The keychain's state and what Plainva keeps in it, at one place (2.6 B1). */}
+      {/* The keychain's state and what Alviss keeps in it, at one place (2.6 B1). */}
       <SettingRow label={t("settings.osKeychain")}>
         <strong style={{ color: keychainStatus === "native" ? "var(--accent-color)" : "var(--error-text)", fontSize: "var(--text-md)" }}>
           {keychainStatus === "checking" ? t("settings.keychainChecking") : keychainStatus === "native" ? t("settings.keychainNative") : t("settings.keychainFallback")}

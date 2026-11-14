@@ -27,7 +27,7 @@ vi.mock("@tauri-apps/plugin-fs", () => ({
   remove: vi.fn(async () => undefined),
 }));
 vi.mock("@tauri-apps/api/path", () => ({
-  appDataDir: vi.fn(async () => "C:/AppData/Plainva"),
+  appDataDir: vi.fn(async () => "C:/AppData/Alviss"),
   join: vi.fn(async (...parts: string[]) => parts.join("/")),
 }));
 

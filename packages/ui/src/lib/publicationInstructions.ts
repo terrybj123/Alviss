@@ -4,7 +4,7 @@
  * `publishedSliceProviderInstructions` decides WHICH advice a provider needs -
  * that is a rule about the provider, and it lives in `packages/core`. It
  * returns identifiers, not sentences, so the words stay where every other
- * user-facing word in Plainva lives: the ten locale files.
+ * user-facing word in Alviss lives: the ten locale files.
  *
  * The mapping is here rather than in either shell because both show the same
  * advice, and a second copy is how desktop and mobile come to tell a publisher

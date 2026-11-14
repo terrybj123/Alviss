@@ -1,7 +1,7 @@
 /**
  * The window class the shell is currently in (S13, M3 Canonical Layouts).
  *
- * Plainva already owns a surface for every class — a navigator, a working
+ * Alviss already owns a surface for every class — a navigator, a working
  * surface, a context surface. On the phone they stand one AFTER the other,
  * on the desktop side BY side. The only thing missing was the layer that
  * decides which of the two a given window is: without it, a tablet renders a

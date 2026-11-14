@@ -430,7 +430,7 @@ describe("a mailbox that does not take every file", () => {
     expect(question()?.message).toBe(`Film.mp4 (${i18n.t("mail.fileLeft.tooLarge")})`);
   });
 
-  it("takes the same file over IMAP: Plainva sets no bound for a file a person chose", async () => {
+  it("takes the same file over IMAP: Alviss sets no bound for a file a person chose", async () => {
     await open({ accountId: "m1", to: "", subject: "", body: "" });
     await tap(q("compose-attach"));
     await tap(q("pick-file"));

@@ -14,7 +14,7 @@ import type { ComposeSnapshot } from "./composeHandoff";
  * 1. **The delayed send.** "Undo send" is a DELAY, not a recall — once SMTP has
  *    the message there is no taking it back. The compose window closes the
  *    moment the writer hits send, so the timer has to outlive it, and closing
- *    Plainva FLUSHES rather than drops: a message someone asked to send must
+ *    Alviss FLUSHES rather than drops: a message someone asked to send must
  *    not vanish (S23).
  * 2. **Whose timer it is.** The queue belongs to the CENTRAL window (plan
  *    §12.4). It hangs on `beforeunload`, and a compose window is the most
@@ -152,7 +152,7 @@ function undoQueue(): UndoSendQueue<QueuedSend> {
   if (queue) return queue;
   queue = new UndoSendQueue<QueuedSend>(async ({ req, deliver }) => {
     // The notice ends WITH the window, before the transport is asked. Whatever
-    // brought the message here — the timer, Plainva closing, a second message
+    // brought the message here — the timer, Alviss closing, a second message
     // pushing this one out — "Undo" can no longer stop it, and the notice is
     // persistent: nothing but this takes it down. It is also the last moment
     // the id still names THIS message's notice; by the time the transport has
@@ -170,7 +170,7 @@ function undoQueue(): UndoSendQueue<QueuedSend> {
       refusedSends().hold(req, mailErrorText(e, say));
     }
   });
-  // Closing Plainva must not lose a message someone asked to send.
+  // Closing Alviss must not lose a message someone asked to send.
   if (typeof window !== "undefined") window.addEventListener("beforeunload", () => void queue?.flush());
   return queue;
 }

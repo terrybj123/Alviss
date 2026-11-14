@@ -7,7 +7,7 @@ import { formatMomentLocalized } from "../lib/momentFormat";
  * Templates are DATA, never code. Every placeholder is a named, finite token
  * with a defined resolution — there is no expression evaluation, no user
  * script, no network access. Obsidian's Templater is a JavaScript executor;
- * Plainva vaults travel through other people's clouds and get shared, so an
+ * Alviss vaults travel through other people's clouds and get shared, so an
  * executable template would be code execution on every device that opens the
  * vault. That door stays shut (plan § 4.1).
  *

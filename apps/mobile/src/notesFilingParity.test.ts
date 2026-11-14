@@ -4,7 +4,7 @@ import { offeredViewTypes, resolveOpenAction, setExtraTextExtensions, setPlatfor
 
 /**
  * Three vault settings the desktop had and the phone did not (Sammelplan
- * § 3.169 Nr. 3): "More text files", "Allow Plainva extensions for .base
+ * § 3.169 Nr. 3): "More text files", "Allow Alviss extensions for .base
  * files" and "Mark commented passages in the note". A row alone would be a
  * switch that changes nothing; these pin that each one is a real per-vault
  * setting here, travels with the profile, and does on the phone what it does

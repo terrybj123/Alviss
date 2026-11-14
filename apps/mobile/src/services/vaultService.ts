@@ -935,7 +935,7 @@ async function boot(entry: VaultEntry, signal?: AbortSignal): Promise<MobileVaul
       },
       onLocalFileDeleted: (path, row) => {
         // A note screen that shows this file learns that it vanished (issue
-        // 110, E9) — moved or deleted outside Plainva while open, found by the
+        // 110, E9) — moved or deleted outside Alviss while open, found by the
         // re-read on return or the pull. The editor looks for it.
         if (!isInternal(path)) window.dispatchEvent(new CustomEvent("m-external-update", { detail: { path, vaultId: entry.id } }));
         // The worker mirrored a remote deletion (finding 2026-09-20): nothing is
@@ -1667,7 +1667,7 @@ export const vaultOps = {
       const built = await buildNewNoteFromTemplate({
         read: (p) => this.read(v, p),
         exists: (p) => v.files.exists(p),
-        vaultName: (await getActiveVaultEntry()).name || "Plainva",
+        vaultName: (await getActiveVaultEntry()).name || "Alviss",
         folder,
         title,
         type,
@@ -1702,7 +1702,7 @@ export const vaultOps = {
     // the same thing, and the share path has no file at all.
     const built = await buildNewNoteFromTemplateText({
       raw: templateRaw,
-      vaultName: (await getActiveVaultEntry()).name || "Plainva",
+      vaultName: (await getActiveVaultEntry()).name || "Alviss",
       folder,
       title: name,
       type: configuredNoteType(),
@@ -1761,7 +1761,7 @@ export const vaultOps = {
    */
   async ensureDailyNote(v: MobileVault, date: Date, mode: "interactive" | "headless" = "interactive"): Promise<EnsuredDailyNote | null> {
     const ms = getMobileSettings();
-    const vaultName = (await getActiveVaultEntry()).name || "Plainva";
+    const vaultName = (await getActiveVaultEntry()).name || "Alviss";
     const ensured = await ensureSharedDailyNote(
       date,
       { folder: ms.dailyFolder, format: ms.dailyFormat, templateFolder: ms.templateFolder, template: ms.dailyTemplate, noteType: configuredDailyNoteType() },

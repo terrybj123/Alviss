@@ -164,7 +164,7 @@ describe("Google Drive", () => {
       const decoded = decodeURIComponent(url);
       // The root folder lookup finds it; the file itself does not exist yet.
       if (decoded.includes("mimeType='application/vnd.google-apps.folder'")) {
-        return { ok: true, status: 200, json: async () => ({ files: [{ id: "folder-1", name: "Plainva" }] }) };
+        return { ok: true, status: 200, json: async () => ({ files: [{ id: "folder-1", name: "Alviss" }] }) };
       }
       if (url.includes("/files?fields=id")) {
         return { ok: true, status: 200, json: async () => ({ id: "new-1" }) };

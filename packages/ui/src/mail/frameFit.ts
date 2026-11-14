@@ -15,7 +15,7 @@
  * DOM application both live here and both shells call the same function.
  *
  * Scaling, not reflowing, is the deliberate choice: reflowing a mail means
- * rewriting the sender's layout, and Plainva's mail viewer shows what was
+ * rewriting the sender's layout, and Alviss's mail viewer shows what was
  * sent. A scaled table stays the table the sender built.
  */
 

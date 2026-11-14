@@ -2,7 +2,7 @@ import { isTextFile } from "@plainva/core";
 import { isImagePath } from "../services/imageFiles";
 
 /**
- * What Plainva does with a vault path when the user opens it (issue #55).
+ * What Alviss does with a vault path when the user opens it (issue #55).
  *
  * The decision used to exist exactly ONCE — in the desktop file tree — while
  * every other route to a file (wiki link, bookmark, recent list, tag tree,
@@ -14,8 +14,8 @@ import { isImagePath } from "../services/imageFiles";
  *
  *   .md            → the editor
  *   .base          → the database viewer
- *   image          → Plainva's own image viewer tab
- *   known text     → a plain text tab inside Plainva
+ *   image          → Alviss's own image viewer tab
+ *   known text     → a plain text tab inside Alviss
  *   anything else  → the operating system, which knows what a PDF is
  *
  * The fourth line is C15, and it arrived the careful way round. Text-decodable
@@ -117,7 +117,7 @@ export function resolveOpenAction(path: string): OpenAction {
 /**
  * Whether the comparison and the version history of both shells read a file
  * as text — the NAME half of that question (finding 2026-10-11): whatever
- * Plainva opens as text itself (a note, a database, the list above with the
+ * Alviss opens as text itself (a note, a database, the list above with the
  * vault's own additions), and whatever the sync merges as text. An image is
  * shown as one, an SVG included: the image check runs first, as above.
  * Whether a file IS text is asked of its bytes where it is read.
@@ -134,7 +134,7 @@ export function comparesAsText(path: string): boolean {
 
 /**
  * True when opening this path means handing it to the operating system rather
- * than rendering it in Plainva. The one predicate an open path should branch on
+ * than rendering it in Alviss. The one predicate an open path should branch on
  * — spelling out `resolveOpenAction(p) === "external"` at every call site is how
  * a second, drifting copy of the rule gets born.
  */

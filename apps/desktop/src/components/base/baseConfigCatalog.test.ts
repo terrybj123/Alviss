@@ -40,7 +40,7 @@ describe("baseConfigCatalog — view types", () => {
     ]);
   });
 
-  it("gates exactly the Plainva-only types as extended", () => {
+  it("gates exactly the Alviss-only types as extended", () => {
     const extended = BASE_VIEW_TYPES.filter((v) => v.extended).map((v) => v.type);
     expect(extended).toEqual(["board", "calendar", "timeline", "graph", "pinboard"]);
   });

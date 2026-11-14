@@ -109,7 +109,7 @@ describe.each(SHELLS)("boot guard ($name)", ({ guard, html: htmlPath }) => {
     try {
       const guard = runGuard();
       vi.advanceTimersByTime(13_000);
-      expect(guard.overlay()?.textContent).toContain("Plainva didn't start");
+      expect(guard.overlay()?.textContent).toContain("Alviss didn't start");
       guard.mount();
       vi.advanceTimersByTime(500);
       expect(guard.overlay()).toBeNull();
@@ -145,7 +145,7 @@ describe.each(SHELLS)("boot guard ($name)", ({ guard, html: htmlPath }) => {
       guard.mount();
       vi.advanceTimersByTime(500);
       const text = guard.overlay()?.textContent ?? "";
-      expect(text).toContain("Plainva didn't start");
+      expect(text).toContain("Alviss didn't start");
       expect(text).toContain("chunk failed");
       expect(text).not.toContain("No error was reported");
     } finally {
@@ -216,11 +216,11 @@ describe("boot guard (desktop) — what it says", () => {
     // names the engine bar rather than just an OS.
     expect(source).toContain("WebKitGTK 2.40");
     expect(source).toContain("WebView2");
-    expect(source).toContain("Plainva can't start on this system");
+    expect(source).toContain("Alviss can't start on this system");
     // English only (maintainer, 2026-08-14): this screen is written to be pasted
     // into a report, and a second language block only made it longer.
-    expect(source).not.toContain("Plainva kann auf diesem System nicht starten");
-    expect(source).not.toContain("Plainva ist nicht gestartet");
+    expect(source).not.toContain("Alviss kann auf diesem System nicht starten");
+    expect(source).not.toContain("Alviss ist nicht gestartet");
     // Safari 16.4 is the actual bar on macOS; the OS version can only ever
     // approximate it, so the text has to say the former. Counted with comments
     // stripped, because the file explains itself there too: once in the prose,
@@ -241,14 +241,14 @@ describe("boot guard (mobile) — what it says", () => {
     // component — there the honest answer is an ACTION the user can take, and
     // a version number alone would read as "buy a new phone".
     expect(source).toContain("Android System WebView");
-    expect(source).toContain("Plainva can't start on this device");
+    expect(source).toContain("Alviss can't start on this device");
     // The iOS number itself is NOT repeated here — floorConsistency.test.ts
     // owns it and checks this same file against it. Two copies of a version
     // number are how it drifts.
 
     // English only, same reason as the desktop: no i18n bundle exists at this
     // point, and this text is written to be pasted into a report.
-    expect(source).not.toContain("Plainva kann auf diesem Gerät nicht starten");
+    expect(source).not.toContain("Alviss kann auf diesem Gerät nicht starten");
   });
 
   it("stands down when the in-module overlay would double up", () => {

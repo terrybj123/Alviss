@@ -3,12 +3,12 @@ import { defineBase, serializeBaseConfig, parseBaseConfig } from "@plainva/ui";
 
 /**
  * `defineBase` capabilities added for the showcase template (plan
- * "Vorlagen-Überarbeitung + Plainva-Tour", step P1.2).
+ * "Vorlagen-Überarbeitung + Alviss-Tour", step P1.2).
  *
  * Every new capability is checked on the ROUND TRIP — in-memory spec → on-disk
  * YAML → parsed back — because that is the only place the two-layer contract is
  * visible: Obsidian sees `filters`/`properties`/`views` and nothing else, while
- * Plainva's richness lives under the `plainva` namespace. A key written to the
+ * Alviss's richness lives under the `plainva` namespace. A key written to the
  * wrong layer would still "work" in memory and be silently dropped on disk.
  */
 

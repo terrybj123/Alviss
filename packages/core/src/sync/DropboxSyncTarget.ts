@@ -24,7 +24,7 @@ export interface DropboxCredentials {
 
 const API = "https://api.dropboxapi.com/2";
 const CONTENT = "https://content.dropboxapi.com/2";
-const DEFAULT_ROOT = "/Plainva";
+const DEFAULT_ROOT = "/Alviss";
 
 /** The folder a Dropbox target works in, resolved exactly as the target does (default "/Plainva"). */
 export function dropboxRootPath(rootPath?: string): string {

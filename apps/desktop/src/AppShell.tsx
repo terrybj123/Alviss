@@ -338,8 +338,8 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
     // (P7.2 continues below the hook: the per-kind right-sidebar apply effect
     // needs activePath, which this hook provides.)
     onRequestPick: () => { setQuickSwitcherNewTab(false); setShowQuickSwitcher(true); },
-    // An attachment goes to the OS, which knows what a PDF is and Plainva does
-    // not (issue #55). The only case that stays visible in Plainva is failure —
+    // An attachment goes to the OS, which knows what a PDF is and Alviss does
+    // not (issue #55). The only case that stays visible in Alviss is failure —
     // and then the message names the file and the reason, because "could not be
     // opened" alone leaves the user with nothing to do.
     openExternally: (p) => {
@@ -355,7 +355,7 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
     // key.
     layoutScope: windowLabel,
   });
-  // A note Plainva moved where no tab strip is at hand (the overview manager's
+  // A note Alviss moved where no tab strip is at hand (the overview manager's
   // adoption): the tabs follow it, as after a rename in the file tree.
   useEffect(() => {
     const onRenamed = (e: Event) => {
@@ -1527,7 +1527,7 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
       {/* Document surface (plan Designsprache P12): panes float as cards on the
           chrome background instead of butting squarely against the sidebars. */}
       <main style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: layout.direction === 'vertical' ? 'row' : 'column', background: 'var(--canvas-bg)', position: 'relative', padding: 'var(--space-2)', gap: isSplit ? 0 : undefined }}>
-        <h1 style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0, 0, 0, 0)", whiteSpace: "nowrap", borderWidth: 0 }}>Plainva Desktop</h1>
+        <h1 style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0, 0, 0, 0)", whiteSpace: "nowrap", borderWidth: 0 }}>Alviss Desktop</h1>
         
         {showVerticalPreview && (
           <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '50%', background: 'var(--accent-color)', opacity: 0.15, pointerEvents: 'none', zIndex: 'var(--z-popover)', borderLeft: '2px solid var(--accent-color)' }} />

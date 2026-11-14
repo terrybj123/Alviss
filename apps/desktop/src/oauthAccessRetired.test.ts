@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { isRetiredPlainvaClient, retiredAccessReplacement } from "@plainva/ui";
 
 /**
- * Plainva's first Google project (`plainva-spike`) is retired (K7, 2026-10-26).
+ * Alviss's first Google project (`plainva-spike`) is retired (K7, 2026-10-26).
  * No build ever shipped one of its clients; testers entered them as their own
  * while there was no standard sign-in, and Google now answers
  * "Error 401: deleted_client". Each device moves back to the standard once.

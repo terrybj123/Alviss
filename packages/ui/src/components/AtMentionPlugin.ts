@@ -11,7 +11,7 @@ import { pathsSharingNames, wikiLinkTextFor } from "../lib/wikiLinkText";
 // The editor's `@` mention menu (Notion-style). Typing `@` opens a menu that
 // blends two kinds of entries:
 //   - dynamic dates (today / tomorrow / yesterday + "pick a date…") inserted as
-//     plain ISO `YYYY-MM-DD` text (Plainva stays plain Markdown);
+//     plain ISO `YYYY-MM-DD` text (Alviss stays plain Markdown);
 //   - note links: a live search of the vault index that inserts `[[Name]]`.
 // (People mentions are planned for later.)
 //

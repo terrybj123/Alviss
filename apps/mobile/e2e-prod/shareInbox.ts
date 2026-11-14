@@ -101,7 +101,7 @@ export async function installShareInbox(context: BrowserContext) {
   }, KEY);
 
   return {
-    /** Something was shared to Plainva; the app sees it on its next look into the inbox. */
+    /** Something was shared to Alviss; the app sees it on its next look into the inbox. */
     share(share: ShareFixture) {
       const files = (share.files ?? []).map((file, n) => {
         const id = fileId(share.id, n);

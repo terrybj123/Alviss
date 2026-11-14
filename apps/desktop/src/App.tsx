@@ -141,7 +141,7 @@ function App() {
         if (await store.get<boolean>(okfPromptDismissedKey(vaultPath))) return;
         const scan = await scanVaultOkf({ vaultPath, queryService, adapter: vaultAdapter });
         // Nothing to offer: say nothing. A vault that already conforms — every
-        // vault Plainva created itself — never hears about OKF unasked.
+        // vault Alviss created itself — never hears about OKF unasked.
         if (scan.violations.length === 0) {
           await store.set(okfPromptDismissedKey(vaultPath), true);
           await store.save();
@@ -462,7 +462,7 @@ function SyncErrorDialog({
   const handleResetEncryption = async () => {
     const ok = await appConfirm({
       title: t("sync.resetEncryptionTitle", { defaultValue: "Verschlüsselung zurücksetzen?" }),
-      message: t("sync.resetEncryptionConfirm", { defaultValue: "Plainva merkt sich nicht mehr, dass diese Verbindung verschlüsselt war, und synchronisiert wieder als Klartext. Nur nutzen, wenn der verschlüsselte Vault absichtlich entfernt wurde. Trägt die Cloud noch verschlüsselte Inhalte, brich hier ab." }),
+      message: t("sync.resetEncryptionConfirm", { defaultValue: "Alviss merkt sich nicht mehr, dass diese Verbindung verschlüsselt war, und synchronisiert wieder als Klartext. Nur nutzen, wenn der verschlüsselte Vault absichtlich entfernt wurde. Trägt die Cloud noch verschlüsselte Inhalte, brich hier ab." }),
       kind: "danger",
       confirmLabel: t("sync.resetEncryptionAction", { defaultValue: "Verschlüsselung zurücksetzen" }),
     });
@@ -497,7 +497,7 @@ function SyncErrorDialog({
           <p style={{ margin: "0.85rem 0 0", color: recovered ? "var(--success-text)" : "var(--text-muted)", fontWeight: 600 }}>
             {recovered
               ? t("sync.recovered", { defaultValue: "Die Synchronisierung war beim erneuten Versuch erfolgreich." })
-              : t("sync.retrying", { defaultValue: "Plainva versucht die Synchronisierung erneut …" })}
+              : t("sync.retrying", { defaultValue: "Alviss versucht die Synchronisierung erneut …" })}
           </p>
         )}
         {!incomplete && !rootMissing && !error?.signInAccountId && <p style={{ margin: "0.85rem 0 0", fontSize: "var(--text-md)", color: "var(--text-muted)" }}>
@@ -509,7 +509,7 @@ function SyncErrorDialog({
               ? t("workspaceSync.fatal")
             : authError
               ? t("sync.authErrorHint", { defaultValue: "Die Anmeldung ist abgelaufen oder wurde widerrufen. Stelle die Verbindung in den Sync-Einstellungen neu her." })
-              : t("sync.transientErrorHint", { defaultValue: "Das war wahrscheinlich ein vorübergehendes Netzwerk- oder Providerproblem. Plainva versucht solche Fehler automatisch erneut." })}
+              : t("sync.transientErrorHint", { defaultValue: "Das war wahrscheinlich ein vorübergehendes Netzwerk- oder Providerproblem. Alviss versucht solche Fehler automatisch erneut." })}
         </p>}
         {dialogConflicts.length > 0 && (
           <div style={{ marginTop: "0.85rem" }}>

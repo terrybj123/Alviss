@@ -3,7 +3,7 @@ import type { ParaSample } from "./paraTemplate";
 
 /**
  * The ACE / "Linking Your Thinking" vault template (plan
- * "Vorlagen-Überarbeitung + Plainva-Tour" § 3). Deliberately database-free: this
+ * "Vorlagen-Überarbeitung + Alviss-Tour" § 3). Deliberately database-free: this
  * method navigates by Maps of Content, not by rows and columns.
  *
  * Which is exactly why the samples matter. A Home note that links nothing is a

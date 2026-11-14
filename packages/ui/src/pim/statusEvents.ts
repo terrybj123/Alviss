@@ -11,7 +11,7 @@
  * it as a quiet band behind the day; the phone gives it a row with its own mark
  * in the day list, because a list has no behind.
  *
- * Plainva READS these and never writes them. Creating an out-of-office entry
+ * Alviss READS these and never writes them. Creating an out-of-office entry
  * has provider-side consequences — Google auto-declines invitations for it —
  * and a calendar view has no business triggering that as a side effect of
  * dragging something.

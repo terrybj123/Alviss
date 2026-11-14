@@ -14,7 +14,7 @@ export interface OpenFileLookupOptions {
    * then stays and offers the file.
    */
   carry?(to: string): Promise<boolean>;
-  /** Tab retargeting — the same the rename in Plainva uses. */
+  /** Tab retargeting — the same the rename in Alviss uses. */
   onRenamed?(from: string, to: string): void;
   /** A surface without tabs of its own (the peek, an auxiliary window) opens the file where it lives now. */
   onOpenPath?(path: string, newTab: boolean): void;
@@ -26,7 +26,7 @@ export interface OpenFileLookupOptions {
  * index, bookmark store and navigation. It also hears the vanish itself: the
  * watcher, a reconcile or sync report the old path as an external update
  * (VaultContext), and a file still missing a moment later is looked for. The
- * moment lets a rename made in Plainva retarget the tab first.
+ * moment lets a rename made in Alviss retarget the tab first.
  */
 export function useOpenFileLookup(path: string, opts: OpenFileLookupOptions): MissingFile {
   const { t } = useTranslation();
@@ -35,7 +35,7 @@ export function useOpenFileLookup(path: string, opts: OpenFileLookupOptions): Mi
   const missing = useMissingFile(path, {
     deps: opts.enabled && vaultAdapter && indexer && db ? { exists: (p) => vaultAdapter.exists(p), db, indexer } : null,
     scope: vaultPath ?? "",
-    // What a move made in Plainva carries along — bookmarks, pinboard places,
+    // What a move made in Alviss carries along — bookmarks, pinboard places,
     // the file operation — for a move made elsewhere. Links in other notes
     // stay as they are.
     adopt: async (from, to) => {
@@ -50,7 +50,7 @@ export function useOpenFileLookup(path: string, opts: OpenFileLookupOptions): Mi
     // A surface that cannot navigate offers the file instead of following it.
     follow: opts.onRenamed || opts.onOpenPath ? (to) => {
       toast.info(t("editor.movedFileFollowed", {
-        defaultValue: "Moved outside Plainva. The tab now shows the file in {{folder}}.",
+        defaultValue: "Moved outside Alviss. The tab now shows the file in {{folder}}.",
         folder: movedFolderLabel(to, vaultDisplayName(vaultPath ?? "")),
       }));
       if (opts.onRenamed) opts.onRenamed(path, to);

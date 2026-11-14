@@ -120,7 +120,7 @@ export function renameBookmarksOnDisk(io: BookmarksIO, from: string, to: string)
  * Nr. 2). The import is additive and shares the mutation lane with star
  * clicks; the source is always read-only — removing a bookmark does not edit
  * Obsidian. It used to run at every open of the vault, so a bookmark removed
- * in Plainva that Obsidian's file still named was back the next time. Now the
+ * in Alviss that Obsidian's file still named was back the next time. Now the
  * vault remembers which of Obsidian's bookmarks it has taken over
  * (`OBSIDIAN_IMPORT_FILE`): such a one never comes again, while a bookmark set
  * in Obsidian later still arrives. The memory is written after the list, so an

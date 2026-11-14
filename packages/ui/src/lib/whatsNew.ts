@@ -92,8 +92,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "bell" },
       { icon: "wand" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-8-7",
-    blogLanguages: ["de", "en", "es", "fr", "it", "ja", "nl", "pl", "pt-BR", "zh-CN"],
   },
   {
     version: "0.8.6",
@@ -107,8 +105,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "shield" },
       { icon: "mail" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-8-6",
-    blogLanguages: ["de", "en", "es", "fr", "it", "ja", "nl", "pl", "pt-BR", "zh-CN"],
   },
   {
     version: "0.8.5",
@@ -123,8 +119,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "link" },
       { icon: "sync" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-8-5",
-    blogLanguages: ["de", "en", "es", "fr", "it", "ja", "nl", "pl", "pt-BR", "zh-CN"],
   },
   {
     version: "0.8.4",
@@ -139,8 +133,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "mail" },
       { icon: "sync" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-8-4",
-    blogLanguages: ["en", "de", "es", "fr", "it", "ja", "nl", "pl", "pt-BR", "zh-CN"],
   },
   {
     version: "0.8.3",
@@ -153,8 +145,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "paperclip" },
       { icon: "shield" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-8-3",
-    blogLanguages: ["en", "de", "es", "fr", "it", "ja", "nl", "pl", "pt-BR", "zh-CN"],
   },
   {
     version: "0.8.2",
@@ -186,7 +176,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "layout" },
       { icon: "phone" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-8-1",
   },
   {
     version: "0.8.0",
@@ -204,7 +193,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "sync" },
       { icon: "layout" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-8-0",
   },
   {
     version: "0.7.0",
@@ -219,7 +207,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "phone" },
       { icon: "bell" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-7-0",
   },
   {
     version: "0.6.8",
@@ -234,7 +221,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "paperclip" },
       { icon: "database" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-6-8",
   },
   {
     version: "0.6.7",
@@ -247,7 +233,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "phone" },
       { icon: "paperclip" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-6-7",
   },
   {
     version: "0.6.6",
@@ -260,7 +245,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "calendar" },
       { icon: "layout" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-6-6",
   },
   {
     version: "0.6.5",
@@ -276,7 +260,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "key" },
       { icon: "trash" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-6-5",
   },
   {
     version: "0.6.4",
@@ -301,7 +284,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "key" },
       { icon: "shield" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-6-3",
   },
   {
     version: "0.6.2",
@@ -314,7 +296,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "database" },
       { icon: "sync" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-6-2",
   },
   {
     version: "0.6.1",
@@ -332,7 +313,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "sync" },
       { icon: "tabs" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-6-0",
   },
   {
     version: "0.5.2",
@@ -345,7 +325,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "paperclip" },
       { icon: "mail" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-5-2",
   },
   {
     version: "0.5.1",
@@ -358,7 +337,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "database" },
       { icon: "sync" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-5-1",
   },
   {
     version: "0.5.0",
@@ -370,7 +348,6 @@ export const WHATS_NEW_CATALOG: WhatsNewItem[] = [
       { icon: "calendar" },
       { icon: "phone" },
     ],
-    blogUrl: "https://plainva.com/blog/plainva-0-5-0",
   },
 ];
 

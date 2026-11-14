@@ -19,7 +19,7 @@ vi.mock("./settingsStore", () => ({
 import { clearConnectionState, connectionIdFor, loadConnectionState, saveConnectionState } from "./encryptionManifest";
 import { perVaultStoreSuffix } from "./vaultForget";
 
-const CONNECTION = connectionIdFor("onedrive", "Plainva");
+const CONNECTION = connectionIdFor("onedrive", "Alviss");
 
 describe("connection E2E pin teardown (Stilllegen P1)", () => {
   beforeEach(() => {
@@ -31,7 +31,7 @@ describe("connection E2E pin teardown (Stilllegen P1)", () => {
     expect((await loadConnectionState(CONNECTION)).knownEncrypted).toBe(true);
     // Exactly one stored key, and it is the connection-keyed pin (not path-keyed).
     const [pinKey] = Object.keys(storeValues);
-    expect(pinKey).toBe(`e2eState_${btoa("onedrive:plainva")}`);
+    expect(pinKey).toBe(`e2eState_${btoa("onedrive:alviss")}`);
 
     await clearConnectionState(CONNECTION);
     expect(storeValues[pinKey]).toBeUndefined();
@@ -42,8 +42,8 @@ describe("connection E2E pin teardown (Stilllegen P1)", () => {
   it("the pin is keyed by the connection, so the per-vault suffix sweep never reaches it", () => {
     // This is why forgetVaultData needs a dedicated clear step: the pin ends in
     // `_<b64(connectionId)>`, never `_<b64(vaultPath)>`.
-    const pinKey = `e2eState_${btoa("onedrive:plainva")}`;
-    for (const vaultPath of ["C:/Vaults/Mein Vault", "C:/Vaults/Plainva", "/home/me/Plainva"]) {
+    const pinKey = `e2eState_${btoa("onedrive:alviss")}`;
+    for (const vaultPath of ["C:/Vaults/Mein Vault", "C:/Vaults/Alviss", "/home/me/Alviss"]) {
       expect(pinKey.endsWith(perVaultStoreSuffix(vaultPath))).toBe(false);
     }
   });

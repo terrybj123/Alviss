@@ -22,7 +22,7 @@ const b64 = (p: string) => btoa(unescape(encodeURIComponent(p)));
 export const SYNC_PROVIDERS = ["webdav", "drive", "s3", "onedrive", "dropbox"] as const;
 export type SyncProvider = (typeof SYNC_PROVIDERS)[number];
 
-/** What Plainva wrote before P6. Kept because migration needs a source. */
+/** What Alviss wrote before P6. Kept because migration needs a source. */
 export const legacySlot = {
   files: (vaultPath: string, provider: SyncProvider) => `${provider}_credentials_${b64(vaultPath)}`,
   account: (vaultPath: string, accountId: string) => `account_${accountId}_${b64(vaultPath)}`,
@@ -32,7 +32,7 @@ export const legacySlot = {
   repair: (vaultPath: string) => `account_repair_backup_${b64(vaultPath)}`,
 } as const;
 
-/** What Plainva writes now. `mail` goes through the shared builder on purpose:
+/** What Alviss writes now. `mail` goes through the shared builder on purpose:
  * the shared mail module writes with it, so anything else here could drift. */
 export const slot = {
   files: (vaultPath: string, provider: SyncProvider) =>

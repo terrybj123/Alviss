@@ -11,7 +11,7 @@ import { taskDbDueKey } from "./taskDatabase";
  * A task's time lives in its due value (`2026-09-21T14:00`), which the planner
  * and the reminders read whatever the column is typed as. A database made
  * before tasks had times types that column as a plain `date`: its table then
- * shows the day only, and its cell editor cannot set a time. Plainva does not
+ * shows the day only, and its cell editor cannot set a time. Alviss does not
  * retype a column by itself — it OFFERS it, once per database and device, the
  * first time a task with a time is captured there. The values are not touched:
  * a day stays a day in a date & time column.

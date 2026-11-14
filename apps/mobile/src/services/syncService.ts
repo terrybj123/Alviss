@@ -456,9 +456,9 @@ function providerVaultName(p: MobileSyncProvider): string {
     case "s3":
       return `S3 · ${p.creds.bucket}`;
     case "drive":
-      return `Google Drive · ${p.creds.rootFolderName || "Plainva"}`;
+      return `Google Drive · ${p.creds.rootFolderName || "Alviss"}`;
     case "onedrive":
-      return `OneDrive · ${p.creds.rootFolderName || "Plainva"}`;
+      return `OneDrive · ${p.creds.rootFolderName || "Alviss"}`;
     default:
       return `Dropbox · ${p.creds.rootPath || "/"}`;
   }
@@ -1115,7 +1115,7 @@ export async function openDriveDestination(vaultId: string) {
   if (!stored || stored.provider !== "drive") throw new Error("Google Drive is not connected");
   const target = await buildTarget(stored, credKeyFor(vaultId), vaultId) as DriveSyncTarget;
   const destination = await readDriveDestination(vaultId, stored);
-  return { currentPath: destination.path || "Plainva", previewCurrent: () => target.previewConfiguredFolder(),
+  return { currentPath: destination.path || "Alviss", previewCurrent: () => target.previewConfiguredFolder(),
     loadFolder: (id: string, page?: string) => target.previewFolder(id, page) };
 }
 

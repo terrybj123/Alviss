@@ -101,7 +101,7 @@ export function NoteScreen({
   onOpenTag?: (tag: string) => void;
   /** Retargets the open nav entry after a rename (path changes). */
   onRenamed: (newPath: string) => void;
-  /** Opens Plainva's own composer with the note in it (S30). */
+  /** Opens Alviss's own composer with the note in it (S30). */
   onComposeMail?: (draft: { subject: string; body: string; attachments?: MailAttachment[]; to?: string; from?: string }) => void;
   /** Opens the command palette over this note; its note commands then act on it. */
   onOpenCommands?: () => void;
@@ -496,7 +496,7 @@ export function NoteScreen({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pendingPropertyJump, doc]);
   /**
-   * A Plainva-managed overview is read-only until the reader says otherwise
+   * A Alviss-managed overview is read-only until the reader says otherwise
    * (desktop parity). Without the guard the next auto-update run silently
    * overwrites whatever was typed here — which is the whole reason the marker
    * exists. The way out is named and one tap away, and it removes the marker:
@@ -618,7 +618,7 @@ export function NoteScreen({
     onRenamed(to);
   });
   /**
-   * What a move made in Plainva carries along — bookmarks, pinboard places,
+   * What a move made in Alviss carries along — bookmarks, pinboard places,
    * the note's remarks — for a move made elsewhere, once it is proven or the
    * reader picked the file. Links in other notes stay as they are.
    */
@@ -803,7 +803,7 @@ export function NoteScreen({
   });
   /**
    * Entry point for every report that the open file may be gone. Deferred a
-   * moment: a deletion made in Plainva leaves this screen right after, and a
+   * moment: a deletion made in Alviss leaves this screen right after, and a
    * re-read indexes the other side of a move in the same breath. Once asked,
    * the question stands until the reader answers it.
    */
@@ -982,8 +982,8 @@ export function NoteScreen({
    * had none; the two that make sense with a touch keyboard are here.
    *
    * `mailto:` hands the note to whatever mail app the phone already has set
-   * up — no account in Plainva required, which is the common case on a phone.
-   * "Compose" goes to Plainva's own composer instead, where a signature, Cc
+   * up — no account in Alviss required, which is the common case on a phone.
+   * "Compose" goes to Alviss's own composer instead, where a signature, Cc
    * and attachments are available. Copying as rich text is deliberately absent:
    * a phone clipboard has no HTML flavour to paste into.
    */
@@ -1494,7 +1494,7 @@ export function NoteScreen({
               {movedLookup.candidates.map((candidate) => (
                 <Button key={candidate} data-testid="note-moved-candidate" onClick={() => {
                   // The reader said which file it is: that move is as good as
-                  // proven, and what Plainva stores about the note follows.
+                  // proven, and what Alviss stores about the note follows.
                   void adoptMove(path, candidate);
                   followMoved(candidate);
                 }} variant="tonal">

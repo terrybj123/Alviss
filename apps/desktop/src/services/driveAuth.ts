@@ -75,7 +75,7 @@ export async function authorizeDrive(opts: {
   );
   if (!tokens.refreshToken) {
     throw new Error(
-      "Google hat keinen refresh_token geliefert. Den Plainva-Zugriff in den Google-Kontoeinstellungen entfernen und erneut verbinden."
+      "Google hat keinen refresh_token geliefert. Den Alviss-Zugriff in den Google-Kontoeinstellungen entfernen und erneut verbinden."
     );
   }
 

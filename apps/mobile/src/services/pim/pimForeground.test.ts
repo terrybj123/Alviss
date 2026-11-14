@@ -7,7 +7,7 @@ import * as pim from "./pimRuntime";
  * Mobile-PIM-Auffrischung, P1/P2).
  *
  * The finding this pins: a task created in Google Tasks took very long to reach
- * Plainva and its reminder never arrived at all. A WebView runs no timers in
+ * Alviss and its reminder never arrived at all. A WebView runs no timers in
  * the background, so the worker's two-minute interval is dead for as long as
  * the app is away — and the reminder run reads the task DATABASE, which the
  * mirror only fills at the END of a cycle. No cycle, no mirror, no reminder.

@@ -4,12 +4,12 @@ import { getPlatformServices } from "../platform/services";
  * Mail rules: the model, the matching, and running them locally (S14).
  *
  * The model is deliberately the COMMON DENOMINATOR of what a mail server can
- * express, not what Plainva could implement. Everything here has to survive
+ * express, not what Alviss could implement. Everything here has to survive
  * translation into a Sieve script (S15) and into an Outlook rule (S16) — a
- * condition that only Plainva understands would produce a rule that works on
+ * condition that only Alviss understands would produce a rule that works on
  * this machine and nowhere else, which is the opposite of what a rule is for.
  *
- * Local execution is the fallback, never the goal. It runs over what Plainva
+ * Local execution is the fallback, never the goal. It runs over what Alviss
  * has actually fetched, so it can only ever act on mail the app has seen. Where
  * that is all a mailbox can do, the interface says so in those words instead of
  * implying a filter that runs on the server.
@@ -148,7 +148,7 @@ export function actionsFor(rules: readonly MailRule[], message: RuleMessage): Ru
 }
 
 /** Whether any rule needs the message BODY. A body is not in an envelope, so a
- * rule that asks for one can only run on messages Plainva has opened — the
+ * rule that asks for one can only run on messages Alviss has opened — the
  * interface says that rather than letting it silently never fire. */
 export function needsBody(rules: readonly MailRule[]): boolean {
   return rules.some((r) => r.enabled && r.conditions.some((c) => c.field === "body"));
@@ -173,7 +173,7 @@ export interface RuleRunResult {
 }
 
 /**
- * Runs the rules over messages Plainva has fetched.
+ * Runs the rules over messages Alviss has fetched.
  *
  * Two properties matter more than anything else here:
  *

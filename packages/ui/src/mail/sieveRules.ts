@@ -8,7 +8,7 @@ import type { MailRule, RuleAction, RuleCondition } from "./rules";
  * express, so this file is a translation and not an interpretation. Where a
  * rule cannot be expressed — because the server lacks the extension it would
  * need — it is reported as skipped and stays local. That is the honest failure:
- * a script Plainva uploads with a `require` the server does not have is
+ * a script Alviss uploads with a `require` the server does not have is
  * rejected as a WHOLE, which would take the out-of-office notice down with it.
  *
  * Everything here is pure.
@@ -40,7 +40,7 @@ export type SkipReason =
   /** An action needs a mailbox the account does not have (junk/trash). */
   | "noMailbox"
   /**
-   * The rule does something only Plainva can do — filing the message as a note.
+   * The rule does something only Alviss can do — filing the message as a note.
    * The whole rule stays local: uploading it WITHOUT that action would let the
    * server move the message first and leave nothing to file. Not a limitation
    * of the server, so it does not share "unsupported".
@@ -155,7 +155,7 @@ function indent(block: string): string {
 }
 
 /**
- * Builds the rules half of Plainva's section.
+ * Builds the rules half of Alviss's section.
  *
  * `capabilities` is what the server announced. When it is undefined the
  * translation runs unfiltered — an older transport that cannot report them

@@ -116,7 +116,7 @@ export function AutostartRow() {
     let alive = true;
     void (async () => {
       // Reads the system rather than a remembered flag: the registry entry or
-      // LaunchAgent can be removed from outside Plainva, and a switch that
+      // LaunchAgent can be removed from outside Alviss, and a switch that
       // shows a state the system does not have is worse than none.
       const { isEnabled } = await import("@tauri-apps/plugin-autostart");
       const on = await isEnabled().catch(() => false);

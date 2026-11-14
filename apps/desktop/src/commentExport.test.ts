@@ -4,7 +4,7 @@ import { hasOpenAnnotations, renderNoteExport } from "@plainva/ui";
 import i18n from "@plainva/ui/i18n";
 
 /**
- * The file that leaves Plainva (D10).
+ * The file that leaves Alviss (D10).
  *
  * Comments live beside the note everywhere else - the export is the one place
  * where the opposite is right, because the reader has no other way to see them.
@@ -60,7 +60,7 @@ function render(comments: WorkspaceCommentRecord[], mode: "plain" | "appendix" |
 
 describe("renderNoteExport", () => {
   it("strips the invisible markers in every mode, even without annotations", () => {
-    // The markers are Plainva bookkeeping. A note nobody annotated never had
+    // The markers are Alviss bookkeeping. A note nobody annotated never had
     // one, so nothing changes for anyone who does not use comments - but a note
     // that HAS them must not hand a foreign tool our internal ids.
     const { text, placed, listed } = render([first], "plain");

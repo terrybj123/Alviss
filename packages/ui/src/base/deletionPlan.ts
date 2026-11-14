@@ -84,7 +84,7 @@ export interface DeletionPlan {
   affectedBases: string[];
   /**
    * Notes in this plan that carry a `plainva.events` anchor — an entry that was
-   * put in the calendar (S19). Plainva NEVER deletes someone's appointment as a
+   * put in the calendar (S19). Alviss NEVER deletes someone's appointment as a
    * side effect of deleting a note: the dialog says the appointments stay, and
    * the host fills this so it can say it. Absent = nothing scheduled.
    */

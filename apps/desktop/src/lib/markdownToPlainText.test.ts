@@ -105,7 +105,7 @@ describe("markdownToPlainText — fenced code", () => {
 describe("markdownToPlainText — mixed document", () => {
   it("handles a realistic multi-line selection", () => {
     const md = [
-      "# Project **Plainva**",
+      "# Project **Alviss**",
       "",
       "> A note with [[Docs|the guide]] and `code`.",
       "",
@@ -113,7 +113,7 @@ describe("markdownToPlainText — mixed document", () => {
       "- second *item*",
     ].join("\n");
     const expected = [
-      "Project Plainva",
+      "Project Alviss",
       "",
       "A note with the guide and code.",
       "",
