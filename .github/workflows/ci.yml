@@ -1,0 +1,50 @@
+name: CI
+
+# What this repository checks on every push. Deliberately narrow: the upstream
+# project's ten workflows assumed its own signing keys, store accounts and
+# release targets, and none of them survive a rebrand. This one runs the checks
+# that a contributor can reproduce locally in one command.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    # macOS, not ubuntu: the suite reads platform paths and the app's engine
+    # floor is a macOS/WebKit one, so a Linux runner would test a product we do
+    # not ship.
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.0.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Tests
+        run: pnpm test
+
+      - name: Production build
+        run: pnpm --filter desktop build

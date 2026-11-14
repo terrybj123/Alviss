@@ -9,19 +9,24 @@
 //! The address is checked here rather than trusted: `https` only, except for a
 //! server on this machine. A renderer that has been talked into posting a note
 //! to an attacker's host cannot do it through this command.
+//!
+//! The stream runs on its own thread and the command returns once it started:
+//! a model may think for half a minute, and a blocking command would freeze the
+//! window for exactly that long.
 
 use std::collections::HashSet;
 use std::io::Read;
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
 use serde::Serialize;
 use tauri::{AppHandle, Emitter, State};
 
-/// Requests the renderer asked to stop, by id.
-#[derive(Default)]
+/// Requests the renderer asked to stop, by id. Shared with the streaming
+/// threads, so a stop reaches a request already in flight.
+#[derive(Clone, Default)]
 pub struct LlmHub {
-    cancelled: Mutex<HashSet<String>>,
+    cancelled: Arc<Mutex<HashSet<String>>>,
 }
 
 #[derive(Clone, Serialize)]
@@ -77,8 +82,8 @@ fn stopped(hub: &LlmHub, request_id: &str) -> bool {
         .unwrap_or(false)
 }
 
-/// Streams one answer. Returns `Ok` once the stream ended or the caller stopped
-/// it; a provider failure is reported as an `llm-error` event, not as a panic.
+/// Streams one answer. Returns `Ok` as soon as the stream is running; the
+/// outcome arrives as `llm-chunk` / `llm-done` / `llm-error` events.
 #[tauri::command]
 pub fn llm_stream(
     app: AppHandle,
@@ -93,7 +98,7 @@ pub fn llm_stream(
         let _ = app.emit(
             "llm-error",
             ErrorPayload {
-                request_id: request_id.clone(),
+                request_id,
                 status: None,
                 message: "This server address is not allowed.".to_string(),
                 detail: Some(url),
@@ -102,26 +107,14 @@ pub fn llm_stream(
         return Ok(());
     }
 
-    let mut request = reqwest::blocking::Client::builder()
-        .connect_timeout(Duration::from_secs(20))
-        // A model may think for a while; this is the ceiling for ONE answer,
-        // not a per-read deadline (the blocking client has no read timeout).
-        .timeout(Duration::from_secs(600))
-        .build()
-        .map_err(|e| e.to_string())?
-        .post(&url);
-
-    for (name, value) in &headers {
-        request = request.header(name.as_str(), value.as_str());
-    }
-    if let Some(reference) = key_ref.as_deref() {
-        match read_key(&app, reference) {
-            Ok(key) => request = request.bearer_auth(key),
+    let key = match key_ref.as_deref() {
+        Some(reference) => match read_key(&app, reference) {
+            Ok(key) => Some(key),
             Err(_) => {
                 let _ = app.emit(
                     "llm-error",
                     ErrorPayload {
-                        request_id: request_id.clone(),
+                        request_id,
                         status: None,
                         message: "No key is stored for this provider.".to_string(),
                         detail: None,
@@ -129,38 +122,67 @@ pub fn llm_stream(
                 );
                 return Ok(());
             }
-        }
+        },
+        None => None,
+    };
+
+    let hub = hub.inner().clone();
+    std::thread::spawn(move || stream_blocking(app, hub, request_id, url, headers, body, key));
+    Ok(())
+}
+
+fn stream_blocking(
+    app: AppHandle,
+    hub: LlmHub,
+    request_id: String,
+    url: String,
+    headers: Vec<(String, String)>,
+    body: String,
+    key: Option<String>,
+) {
+    let mut request = match reqwest::blocking::Client::builder()
+        .connect_timeout(Duration::from_secs(20))
+        // A model may think for a while; this is the ceiling for ONE answer,
+        // not a per-read deadline (the blocking client has no read timeout).
+        .timeout(Duration::from_secs(600))
+        .build()
+    {
+        Ok(client) => client.post(&url),
+        Err(error) => return fail(&app, &hub, request_id, None, "The HTTP client could not start.", Some(error.to_string())),
+    };
+
+    for (name, value) in &headers {
+        request = request.header(name.as_str(), value.as_str());
+    }
+    if let Some(key) = key {
+        request = request.bearer_auth(key);
     }
 
     let response = match request.body(body).send() {
         Ok(response) => response,
         Err(error) => {
-            let _ = app.emit(
-                "llm-error",
-                ErrorPayload {
-                    request_id: request_id.clone(),
-                    status: None,
-                    message: "The provider could not be reached.".to_string(),
-                    detail: Some(error.to_string()),
-                },
-            );
-            return Ok(());
+            return fail(
+                &app,
+                &hub,
+                request_id,
+                None,
+                "The provider could not be reached.",
+                Some(error.to_string()),
+            )
         }
     };
 
     let status = response.status();
     if !status.is_success() {
         let detail = response.text().unwrap_or_default();
-        let _ = app.emit(
-            "llm-error",
-            ErrorPayload {
-                request_id: request_id.clone(),
-                status: Some(status.as_u16()),
-                message: format!("The provider answered with HTTP {}.", status.as_u16()),
-                detail: Some(detail.chars().take(2_000).collect()),
-            },
+        return fail(
+            &app,
+            &hub,
+            request_id,
+            Some(status.as_u16()),
+            &format!("The provider answered with HTTP {}.", status.as_u16()),
+            Some(detail.chars().take(2_000).collect()),
         );
-        return Ok(());
     }
 
     // A network chunk can split a multi-byte character; hold the tail until the
@@ -176,16 +198,14 @@ pub fn llm_stream(
             Ok(0) => break,
             Ok(n) => n,
             Err(error) => {
-                let _ = app.emit(
-                    "llm-error",
-                    ErrorPayload {
-                        request_id: request_id.clone(),
-                        status: None,
-                        message: "The connection to the provider broke.".to_string(),
-                        detail: Some(error.to_string()),
-                    },
-                );
-                return Ok(());
+                return fail(
+                    &app,
+                    &hub,
+                    request_id,
+                    None,
+                    "The connection to the provider broke.",
+                    Some(error.to_string()),
+                )
             }
         };
         pending.extend_from_slice(&buffer[..read]);
@@ -213,11 +233,33 @@ pub fn llm_stream(
     let _ = app.emit(
         "llm-done",
         DonePayload {
-            request_id: request_id.clone(),
+            request_id,
             cancelled: was_stopped,
         },
     );
-    Ok(())
+}
+
+/// Reports a failure, clears the request from the cancelled set and stops.
+fn fail(
+    app: &AppHandle,
+    hub: &LlmHub,
+    request_id: String,
+    status: Option<u16>,
+    message: &str,
+    detail: Option<String>,
+) {
+    if let Ok(mut set) = hub.cancelled.lock() {
+        set.remove(&request_id);
+    }
+    let _ = app.emit(
+        "llm-error",
+        ErrorPayload {
+            request_id,
+            status,
+            message: message.to_string(),
+            detail,
+        },
+    );
 }
 
 /// Stops a running answer. Safe to call for an id that already finished.
@@ -271,7 +313,11 @@ pub fn llm_models(
     let status = response.status();
     let text = response.text().map_err(|e| e.to_string())?;
     if !status.is_success() {
-        return Err(format!("http:{}:{}", status.as_u16(), text.chars().take(2_000).collect::<String>()));
+        return Err(format!(
+            "http:{}:{}",
+            status.as_u16(),
+            text.chars().take(2_000).collect::<String>()
+        ));
     }
     Ok(text)
 }
