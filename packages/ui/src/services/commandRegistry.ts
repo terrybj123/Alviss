@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import {
+import { Sparkles,
   Calendar, Columns2, Download, FileText, FolderOpen,
   Gauge, Keyboard, ListChecks, Mail, MessageSquare, Moon, NotebookText, Palette, Pencil, Printer, RefreshCw, Replace,
   Rows2, Save, Search, Settings, SquareArrowOutUpRight, Trash2, Type, Waypoints, X,
@@ -104,6 +104,8 @@ export interface CommandDeps {
   toggleFocusMode?: () => void;
   toggleTheme?: () => void;
   themeTogglePinned?: () => boolean;
+  /** Opens the AI chat panel (plan §5.1) — the palette is its door. */
+  openChat?: () => void;
   openSettings?: () => void;
   openShortcuts?: () => void;
   activePath?: () => string | null;
@@ -161,6 +163,7 @@ export function buildAppCommands(d: CommandDeps): AppCommand[] {
     need(d.openQuickSwitcher, (run) => ({ id: "open-file", group: "open", icon: Search, titleKey: "editor.openFile", titleDefault: "Datei öffnen", hint: "Mod+O", run })),
     need(d.openTemplatePicker, (run) => ({ id: "insert-template", group: "note", icon: FileText, titleKey: "shortcuts.insertTemplate", titleDefault: "Vorlage einfügen", hint: "Mod+Alt+T", run })),
     need(d.saveActiveAsTemplate, (run) => ({ id: "template-from-note", group: "note", icon: Save, titleKey: "editor.saveAsTemplate", titleDefault: "Aktuelle Notiz als Vorlage speichern", run, isAvailable: note })),
+    need(d.openChat, (run) => ({ id: "open-chat", group: "open", icon: Sparkles, titleKey: "ai.open", titleDefault: "Open the chat", run })),
     need(d.openGraph, (run) => ({ id: "open-graph", group: "open", icon: Waypoints, titleKey: "graph.open", titleDefault: "Graph öffnen", hint: "Mod+Shift+G", run })),
     need(d.openTasks, (run) => ({ id: "open-tasks", group: "open", icon: ListChecks, titleKey: "tasks.openTasks", titleDefault: "Aufgaben öffnen", run })),
     need(d.openCalendar, (run) => ({ id: "open-calendar", group: "open", icon: Calendar, titleKey: "pim.openCalendar", titleDefault: "Kalender öffnen", run })),

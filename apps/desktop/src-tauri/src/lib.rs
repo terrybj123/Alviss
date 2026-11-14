@@ -437,6 +437,8 @@ pub fn run() {
             llm::llm_stream,
             llm::llm_cancel,
             llm::llm_models,
+            llm::llm_set_key,
+            llm::llm_clear_key,
             session::desktop_session_kind,
             app_identity::app_updates_managed_by,
             atomic_write::register_write_root,

@@ -79,6 +79,7 @@ import {
 } from "./services/windowManager";
 import { currentWindowParams, isOwnerWindow, windowStateKey } from "./services/windowContext";
 import { detectMac } from "./components/WindowControls";
+import { ChatHost } from "./components/ai/ChatHost";
 import { useQuickCaptureSink } from "./hooks/useJournal";
 import { useDayBoundary } from "./hooks/useDayBoundary";
 import "./App.css";
@@ -182,6 +183,7 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
     };
   }, []);
   const [showShortcuts, setShowShortcuts] = useState(false);
+  const [showChat, setShowChat] = useState(false);
   const [showQuickSwitcher, setShowQuickSwitcher] = useState(false);
   const [showCommandPalette, setShowCommandPalette] = useState(false);
   const [showFindReplace, setShowFindReplace] = useState(false);
@@ -940,6 +942,9 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
       } else if (mod && !e.altKey && !e.shiftKey && e.key === "0") {
         e.preventDefault();
         void import("./services/uiZoom").then(({ setStoredUiZoom, DEFAULT_UI_ZOOM }) => setStoredUiZoom(DEFAULT_UI_ZOOM)).catch(() => {});
+      } else if (mod && e.shiftKey && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setShowChat(true);
       } else if (mod && e.key === ",") {
         e.preventDefault();
         capabilities.openSettings();
@@ -1813,6 +1818,7 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
             toggleTheme: () => { void toggleLightDark(); },
             // The stored theme, not <html> — "My theme" may be previewing a mood (E22).
             themeTogglePinned: () => appliedTheme().pinned,
+            openChat: () => setShowChat(true),
             openSettings: () => capabilities.openSettings(),
             openShortcuts: () => setShowShortcuts(true),
             openFindReplace: () => setShowFindReplace(true),
@@ -1935,6 +1941,7 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
       )}
       <Suspense fallback={null}>
         {showShortcuts && <ShortcutsModal onClose={() => setShowShortcuts(false)} />}
+        {showChat && <ChatHost activePath={activePath} onClose={() => setShowChat(false)} />}
         {showFindReplace && (
           <Suspense fallback={null}>
             <VaultFindReplaceModal onClose={() => setShowFindReplace(false)} onOpenPath={openInFocusedPane} />

@@ -253,6 +253,21 @@ export function findGuardContradictions(
  */
 export const PARITY_FEATURES: ParityFeatureDef[] = [
   {
+    id: "ai-chat",
+    title: "Ask a model about the open note",
+    area: "ai",
+    kind: "gap",
+    desktop: "yes",
+    mobile: null,
+    mobileReason:
+      "The chat shipped on the desktop first (plan §5.1). The phone has no panel " +
+      "yet — it needs its own presentation (sheet, safe-area input, no keyboard " +
+      "shortcut) before it can open one, and it needs the keychain port wired to " +
+      "its own secure store. Written down on 2026-11-14; closing it means the " +
+      "shared ChatPanel plus a mobile host.",
+    verified: "2026-11-14",
+  },
+  {
     id: "density-mode",
     title: "Comfortable/compact density choice",
     area: "appearance",

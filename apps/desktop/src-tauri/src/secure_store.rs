@@ -156,6 +156,12 @@ pub(crate) fn read_secret(app: &tauri::AppHandle, key: &str) -> Result<Option<St
     locked(|| read(&entry(app, key)?))
 }
 
+/// Replaces or removes a secret from the native side (the LLM panel stores a
+/// provider key this way, so the value never has to survive in the WebView).
+pub(crate) fn write_secret(app: &tauri::AppHandle, key: &str, value: Option<&str>) -> Result<(), String> {
+    locked(|| write(&entry(app, key)?, value))
+}
+
 /// Whether a secret exists, without revealing it.
 #[tauri::command]
 pub fn keychain_has(app: tauri::AppHandle, key: String) -> Result<bool, String> {

@@ -173,6 +173,8 @@ export const MOBILE_ABSENT_COMMANDS: Readonly<Record<string, string>> = {
   "focus-mode": "reader-chrome-auto-hide",
   "close-tab": "editor-tabs",
   "reopen-tab": "editor-tabs",
+  // The chat is a desktop surface first; the phone gets its own panel later.
+  "open-chat": "ai-chat",
   "open-comms-window": "multi-window",
   "open-second-window": "multi-window",
   "open-vault-window": "multi-vault",

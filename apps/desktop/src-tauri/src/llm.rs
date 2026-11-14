@@ -228,6 +228,21 @@ pub fn llm_cancel(hub: State<'_, LlmHub>, request_id: String) {
     }
 }
 
+/// Stores a provider key in the OS keychain. The value is never returned.
+#[tauri::command]
+pub fn llm_set_key(app: AppHandle, key_ref: String, key: String) -> Result<(), String> {
+    if key.trim().is_empty() {
+        return Err("empty_key".to_string());
+    }
+    crate::secure_store::write_secret(&app, &key_ref, Some(key.trim()))
+}
+
+/// Removes a provider key.
+#[tauri::command]
+pub fn llm_clear_key(app: AppHandle, key_ref: String) -> Result<(), String> {
+    crate::secure_store::write_secret(&app, &key_ref, None)
+}
+
 /// The provider's model list, for "Test connection". Returns the JSON body; the
 /// renderer decides which ids it shows.
 #[tauri::command]
