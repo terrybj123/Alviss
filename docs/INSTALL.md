@@ -21,8 +21,11 @@ listing and no account to create.
 
 ## 2. Download and install
 
-1. Open the [latest release](https://github.com/terrybj123/Alviss/releases/latest).
-2. Download the `.zip`.
+1. Open the [latest release](https://github.com/terrybj123/Alviss/releases/latest), or take the
+   file directly:
+   [Alviss-0.1.0-macos-universal.zip](https://github.com/terrybj123/Alviss/releases/download/alviss-v0.1.0/Alviss-0.1.0-macos-universal.zip).
+2. Download the `.zip` — it sits under **Assets** on the release page, named
+   `Alviss-<version>-macos-universal.zip`.
 3. Double-click it, then drag **Alviss.app** into **Applications**.
 4. Optionally check the file is what it claims to be:
 

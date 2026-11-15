@@ -75,9 +75,10 @@ open the chat (`⌘⇧K`).
 2. Attach: the `.dmg`, its `.sig`, and the updater archive Tauri produced.
 3. Write the release page **and link the source for that tag** — AGPL-3.0 §6(d) requires the
    corresponding source to be obtainable from the place the binary is offered.
-   Mark a build that is not notarized as a **prerelease**: GitHub then keeps it out of
-   `/releases/latest`, which is the honest outcome while every user still needs the Gatekeeper
-   step.
+   Mark a build as a **prerelease only when a newer stable release already exists** — GitHub keeps
+   prereleases out of `/releases/latest`, and on 2026-11-15 the single installable build was marked
+   that way, so every "latest" link led to an empty list and nobody could find the download. While
+   it is the only build, publish it normally and say "developer preview" in the title.
 4. Update the updater manifest (`latest.json`) the app reads:
    `https://github.com/terrybj123/Alviss/releases/latest/download/latest.json`.
 5. Keep `NOTICE` accurate: it names the upstream base commit and the modifications. A release
