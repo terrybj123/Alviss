@@ -68,14 +68,34 @@ open the chat (`⌘⇧K`).
 
 ## 5. Publish
 
-1. Tag `vX.Y.Z` on the commit that was built.
+1. Tag **`alviss-vX.Y.Z`** on the commit that was built. The prefix is not decoration: the
+   repository's history carries the upstream project's tags, so a bare `v0.1.0` already exists and
+   GitHub would attach the release to that years-old upstream commit. Our tags are namespaced so
+   that cannot happen — the first release proved it the expensive way.
 2. Attach: the `.dmg`, its `.sig`, and the updater archive Tauri produced.
 3. Write the release page **and link the source for that tag** — AGPL-3.0 §6(d) requires the
    corresponding source to be obtainable from the place the binary is offered.
+   Mark a build that is not notarized as a **prerelease**: GitHub then keeps it out of
+   `/releases/latest`, which is the honest outcome while every user still needs the Gatekeeper
+   step.
 4. Update the updater manifest (`latest.json`) the app reads:
    `https://github.com/terrybj123/Alviss/releases/latest/download/latest.json`.
 5. Keep `NOTICE` accurate: it names the upstream base commit and the modifications. A release
    whose `NOTICE` is stale is a licence problem, not a documentation problem.
+
+### The unsigned path (what 0.1.0 shipped)
+
+Before the Apple certificate exists, `tauri build` signs nothing and `spctl` rejects the bundle —
+that is expected, and it is why the download needs one approval step
+([docs/INSTALL.md](docs/INSTALL.md) §3). It still has to be a **universal** build and still carries
+a checksum in the notes:
+
+```bash
+pnpm --filter desktop tauri build --target universal-apple-darwin --bundles app
+cd apps/desktop/src-tauri/target/universal-apple-darwin/release/bundle/macos
+ditto -c -k --sequesterRsrc --keepParent Alviss.app Alviss-X.Y.Z-macos-universal.zip
+shasum -a 256 Alviss-X.Y.Z-macos-universal.zip
+```
 
 ## 6. Checklist
 
