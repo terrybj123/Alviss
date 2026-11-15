@@ -9,6 +9,16 @@ works with the provider you choose.
 > **Status: pre-release.** Alviss is in active development and has not had a
 > public release yet. Keep backups of anything irreplaceable.
 
+## Install
+
+[**Download the latest build**](https://github.com/terrybj123/Alviss/releases/latest) — macOS
+13.3 or newer, Apple Silicon or Intel, in one universal app.
+
+The build is **not notarized yet** (no Apple Developer certificate), so the first launch needs one
+step past Gatekeeper. [docs/INSTALL.md](docs/INSTALL.md) walks through it, together with the
+checksum, the update path and how to uninstall. Nothing is installed in the background: you unzip,
+drag to Applications, and launch.
+
 ## What Alviss is
 
 Alviss is an independent derivative of [Plainva](https://github.com/plainva/plainva),
