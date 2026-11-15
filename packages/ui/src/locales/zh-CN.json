@@ -1,5 +1,10 @@
 {
   "ai": {
+    "edit": "编辑",
+    "modelHint": "也可以直接填入服务商使用的模型 ID。",
+    "protocol": "协议",
+    "protocolOpenAi": "OpenAI 兼容",
+    "protocolAnthropic": "Anthropic",
     "newChat": "新对话",
     "usage": "输入 {input} / 输出 {output}",
     "title": "Alviss AI",

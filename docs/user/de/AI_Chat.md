@@ -36,6 +36,9 @@ other address must be `https`.
 **Test connection** asks the provider for its model list and offers it under the
 model field, so you do not have to type a model id from memory.
 
+A provider you added stays editable: its name, address, model and key can be changed
+later, and **Remove** deletes it together with its key.
+
 ## Your key
 
 The key is stored in the macOS keychain and read by the application's native

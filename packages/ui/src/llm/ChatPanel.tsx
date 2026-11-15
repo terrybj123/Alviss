@@ -310,7 +310,11 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
       setKeys((prev) => ({ ...prev, [endpoint.id]: true }));
     }
     setDraft(null);
-    setView("chat");
+    setTestNote(null);
+    setModels([]);
+    // A first provider means the chat can start now; any other save returns
+    // to the list, where the change is visible.
+    setView(draft.isNew && others.length === 0 ? "chat" : "config");
   };
 
   const removeEndpoint = async (endpoint: LlmEndpoint) => {
@@ -351,6 +355,80 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   };
 
   // ---- view --------------------------------------------------------------
+  // Adding or editing one provider is a view of its own: the form used to sit
+  // under the list, where a narrow dock scrolled it out of sight and the row's
+  // button looked like it did nothing (finding 2026-11-15).
+  if (view === "config" && draft) {
+    const local = normalizeBaseUrl(draft.baseUrl)?.local ?? false;
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)", height: "100%", minHeight: 0, overflowY: "auto" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+          <Button
+            size="sm"
+            variant="ghost"
+            icon={<ArrowLeft size={ICON.ui} />}
+            onClick={() => {
+              setDraft(null);
+              setTestNote(null);
+              setModels([]);
+            }}
+            data-testid="llm-editor-back"
+          >
+            {t("ai.back")}
+          </Button>
+          <strong style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            {draft.label || t("ai.addCustom")}
+          </strong>
+        </div>
+
+        <TextInput aria-label={t("ai.name")} placeholder={t("ai.name")} value={draft.label} onChange={(e) => setDraft({ ...draft, label: e.target.value })} purpose="name" />
+        <TextInput aria-label={t("ai.address")} placeholder={t("ai.address")} value={draft.baseUrl} onChange={(e) => setDraft({ ...draft, baseUrl: e.target.value })} purpose="address" />
+        <TextInput aria-label={t("ai.model")} placeholder={t("ai.model")} value={draft.model} onChange={(e) => setDraft({ ...draft, model: e.target.value })} purpose="code" data-testid="llm-model-input" />
+        {models.length > 0 ? (
+          <SelectField
+            aria-label={t("ai.model")}
+            value={models.includes(draft.model) ? draft.model : ""}
+            onChange={(e) => { if (e.target.value) setDraft({ ...draft, model: e.target.value }); }}
+            data-testid="llm-model-picker"
+          >
+            <option value="">{t("ai.model")}</option>
+            {models.map((id) => (
+              <option key={id} value={id}>{id}</option>
+            ))}
+          </SelectField>
+        ) : (
+          <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }}>{t("ai.modelHint")}</span>
+        )}
+        {!local && (
+          <>
+            <TextInput aria-label={t("ai.key")} placeholder={t("ai.key")} type="password" value={draft.key} onChange={(e) => setDraft({ ...draft, key: e.target.value })} purpose="secret" autoComplete="off" />
+            <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }}>{t("ai.keyHint")}</span>
+          </>
+        )}
+        <SelectField
+          aria-label={t("ai.protocol")}
+          value={draft.protocol}
+          onChange={(e) => setDraft({ ...draft, protocol: e.target.value as LlmEndpoint["protocol"] })}
+        >
+          <option value="openai-chat">{t("ai.protocolOpenAi")}</option>
+          <option value="anthropic-messages">{t("ai.protocolAnthropic")}</option>
+        </SelectField>
+        <div style={{ display: "flex", gap: "var(--space-2)" }}>
+          <Button size="sm" variant="primary" onClick={() => void saveDraft()} data-testid="llm-save">
+            {t("ai.save")}
+          </Button>
+          <Button size="sm" variant="secondary" onClick={() => void testConnection()} data-testid="llm-test">
+            {t("ai.test")}
+          </Button>
+          <Button size="sm" variant="ghost" onClick={() => { setDraft(null); setTestNote(null); setModels([]); }}>
+            {t("ai.cancel")}
+          </Button>
+        </div>
+        {testNote && <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }} data-testid="llm-test-note">{testNote}</span>}
+      </div>
+    );
+  }
+
   if (view === "config") {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)", height: "100%", minHeight: 0, overflowY: "auto" }}>
@@ -369,76 +447,29 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
 
         {config.endpoints.map((endpoint) => (
           <div key={endpoint.id} style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", padding: "var(--space-2)", border: "1px solid var(--border-color)", borderRadius: "var(--radius-md)" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)", minWidth: 0 }}>
               <strong>{endpoint.label}</strong>
-              <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }}>
+              <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                 {endpoint.model || t("ai.noModel")}
                 {endpoint.needsKey === false ? "" : ` · ${keys[endpoint.id] ? t("ai.keyStored") : t("ai.keyNotStored")}`}
               </span>
             </div>
-            <span style={{ marginInlineStart: "auto", display: "flex", gap: "var(--space-2)" }}>
-              <Button size="sm" variant="secondary" onClick={() => openDraft(endpoint)}>
-                {t("ai.providers")}
+            <span style={{ marginInlineStart: "auto", display: "flex", gap: "var(--space-2)", flexShrink: 0 }}>
+              <Button size="sm" variant="secondary" onClick={() => openDraft(endpoint)} data-testid={`llm-edit-${endpoint.id}`}>
+                {t("ai.edit")}
               </Button>
               <Button size="sm" variant="ghost" icon={<Trash2 size={ICON.ui} />} onClick={() => void removeEndpoint(endpoint)} aria-label={t("ai.remove")} />
             </span>
           </div>
         ))}
 
-        {!draft && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
-            {LLM_PRESETS.map((preset) => (
-              <Button key={preset.id} size="sm" variant="tonal" onClick={() => void addPreset(preset.id)}>
-                {preset.label}
-              </Button>
-            ))}
-          </div>
-        )}
-
-        {draft && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", padding: "var(--space-3)", border: "1px solid var(--border-color)", borderRadius: "var(--radius-md)" }}>
-            <TextInput aria-label={t("ai.name")} placeholder={t("ai.name")} value={draft.label} onChange={(e) => setDraft({ ...draft, label: e.target.value })} purpose="name" />
-            <TextInput aria-label={t("ai.address")} placeholder={t("ai.address")} value={draft.baseUrl} onChange={(e) => setDraft({ ...draft, baseUrl: e.target.value })} purpose="address" />
-            <TextInput aria-label={t("ai.model")} placeholder={t("ai.model")} value={draft.model} onChange={(e) => setDraft({ ...draft, model: e.target.value })} purpose="code" />
-            {models.length > 0 && (
-              <SelectField
-                aria-label={t("ai.model")}
-                value={models.includes(draft.model) ? draft.model : ""}
-                onChange={(e) => { if (e.target.value) setDraft({ ...draft, model: e.target.value }); }}
-                data-testid="llm-model-picker"
-              >
-                <option value="">{t("ai.model")}</option>
-                {models.map((id) => (
-                  <option key={id} value={id}>{id}</option>
-                ))}
-              </SelectField>
-            )}
-            {!(normalizeBaseUrl(draft.baseUrl)?.local ?? false) && (
-              <TextInput aria-label={t("ai.key")} placeholder={t("ai.key")} type="password" value={draft.key} onChange={(e) => setDraft({ ...draft, key: e.target.value })} purpose="secret" autoComplete="off" />
-            )}
-            <SelectField
-              aria-label={t("ai.providers")}
-              value={draft.protocol}
-              onChange={(e) => setDraft({ ...draft, protocol: e.target.value as LlmEndpoint["protocol"] })}
-            >
-              <option value="openai-chat">OpenAI-compatible</option>
-              <option value="anthropic-messages">Anthropic</option>
-            </SelectField>
-            <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }}>{t("ai.keyHint")}</span>
-            <div style={{ display: "flex", gap: "var(--space-2)" }}>
-              <Button size="sm" variant="primary" onClick={() => void saveDraft()}>
-                {t("ai.save")}
-              </Button>
-              <Button size="sm" variant="ghost" onClick={() => { setDraft(null); setTestNote(null); }}>
-                {t("ai.cancel")}
-              </Button>
-              <Button size="sm" variant="secondary" onClick={() => void testConnection()}>
-                {t("ai.test")}
-              </Button>
-            </div>
-            {testNote && <span style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)" }} data-testid="llm-test-note">{testNote}</span>}
-          </div>
-        )}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}>
+          {LLM_PRESETS.map((preset) => (
+            <Button key={preset.id} size="sm" variant="tonal" onClick={() => void addPreset(preset.id)}>
+              {preset.label}
+            </Button>
+          ))}
+        </div>
       </div>
     );
   }

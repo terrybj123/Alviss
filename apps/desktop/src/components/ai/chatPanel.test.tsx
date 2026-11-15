@@ -226,6 +226,43 @@ describe("the chat panel", () => {
     expect([...picker.options].map((o) => o.value)).toEqual(["", "m1", "m2"]);
   });
 
+  it("edits an existing provider instead of forcing a new one", async () => {
+    await act(async () => {
+      container.querySelector<HTMLButtonElement>('button[aria-label="Providers"]')?.click();
+    });
+    await act(async () => {
+      container.querySelector<HTMLButtonElement>('[data-testid="llm-edit-openai"]')?.click();
+    });
+
+    const model = container.querySelector<HTMLInputElement>('[data-testid="llm-model-input"]')!;
+    expect(model.value).toBe("gpt-x");
+    await act(async () => {
+      setInput(model, "gpt-y");
+    });
+    await act(async () => {
+      container.querySelector<HTMLButtonElement>('[data-testid="llm-save"]')?.click();
+    });
+    await act(async () => undefined);
+
+    const stored = memory.get("alviss.llm") as { endpoints: Array<{ id: string; model: string }> };
+    expect(stored.endpoints).toHaveLength(1);
+    expect(stored.endpoints[0]?.id).toBe("openai");
+    expect(stored.endpoints[0]?.model).toBe("gpt-y");
+    // Back on the list, where the change is visible.
+    expect(container.textContent).toContain("gpt-y");
+  });
+
+  it("always offers the model field, and says so when no list is known", async () => {
+    await act(async () => {
+      container.querySelector<HTMLButtonElement>('button[aria-label="Providers"]')?.click();
+    });
+    await act(async () => {
+      buttonWithText("Own server")?.click();
+    });
+    expect(container.querySelector('[data-testid="llm-model-input"]')).not.toBeNull();
+    expect(container.textContent).toContain("type the model id");
+  });
+
   it("names the fix when the provider rejects the key", async () => {
     await act(async () => {
       setInput(input(), "Hello");

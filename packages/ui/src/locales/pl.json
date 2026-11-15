@@ -1,5 +1,10 @@
 {
   "ai": {
+    "edit": "Edit",
+    "modelHint": "Or type the model id exactly as the provider names it.",
+    "protocol": "Protocol",
+    "protocolOpenAi": "OpenAI-compatible",
+    "protocolAnthropic": "Anthropic",
     "newChat": "New conversation",
     "usage": "{input} in / {output} out",
     "title": "Alviss AI",
