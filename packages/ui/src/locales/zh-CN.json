@@ -1,12 +1,13 @@
 {
   "ai": {
+    "emptyAnswer": "模型没有返回任何文本。",
     "edit": "编辑",
     "modelHint": "也可以直接填入服务商使用的模型 ID。",
     "protocol": "协议",
     "protocolOpenAi": "OpenAI 兼容",
     "protocolAnthropic": "Anthropic",
     "newChat": "新对话",
-    "usage": "输入 {input} / 输出 {output}",
+    "usage": "输入 {{input}} / 输出 {{output}}",
     "title": "Alviss AI",
     "open": "打开聊天",
     "placeholder": "输入问题…",
@@ -26,7 +27,7 @@
     "remove": "移除",
     "test": "测试连接",
     "testing": "正在测试…",
-    "testOk": "连接成功，可用模型 {n} 个。",
+    "testOk": "连接成功，可用模型 {{n}} 个。",
     "testEmpty": "连接成功，但服务端没有列出模型。",
     "noProviders": "还没有服务商。可添加 OpenAI、Anthropic、DeepSeek 或你自己的服务器。",
     "noModel": "请先选择模型。",

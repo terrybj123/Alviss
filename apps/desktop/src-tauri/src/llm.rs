@@ -435,6 +435,63 @@ mod tests {
     }
 
     #[test]
+    fn event_payloads_name_the_request_the_way_the_renderer_reads_it() {
+        // The renderer reads `requestId`. A rename here without the other side
+        // is how every event got dropped on 2026-11-15.
+        let chunk = serde_json::to_value(ChunkPayload {
+            request_id: "r1".to_string(),
+            text: "x".to_string(),
+        })
+        .unwrap();
+        assert_eq!(chunk["requestId"], "r1");
+        let done = serde_json::to_value(DonePayload {
+            request_id: "r1".to_string(),
+            cancelled: true,
+        })
+        .unwrap();
+        assert_eq!(done["requestId"], "r1");
+        let error = serde_json::to_value(ErrorPayload {
+            request_id: "r1".to_string(),
+            status: Some(401),
+            message: "m".to_string(),
+            detail: None,
+        })
+        .unwrap();
+        assert_eq!(error["requestId"], "r1");
+    }
+
+    #[test]
+    #[ignore = "network: set DEEPSEEK_API_KEY to run it"]
+    fn reaches_a_real_provider_end_to_end() {
+        let Ok(key) = std::env::var("DEEPSEEK_API_KEY") else {
+            eprintln!("DEEPSEEK_API_KEY unset; skipping");
+            return;
+        };
+        let hub = LlmHub::default();
+        let mut events = Vec::new();
+        stream_request(
+            &hub,
+            "real",
+            "https://api.deepseek.com/chat/completions",
+            &[("content-type".to_string(), "application/json".to_string())],
+            r#"{"model":"deepseek-flash","messages":[{"role":"user","content":"Say hi in three words"}],"stream":true,"max_tokens":4096}"#
+                .to_string(),
+            Some(key),
+            &mut |event| events.push(event),
+        );
+        let body: String = events
+            .iter()
+            .filter_map(|event| match event {
+                Event::Chunk(text) => Some(text.as_str()),
+                _ => None,
+            })
+            .collect();
+        assert!(body.contains("data:"), "no stream arrived: {body:?}");
+        assert!(matches!(events.last(), Some(Event::Done { .. })));
+        eprintln!("streamed {} bytes", body.len());
+    }
+
+    #[test]
     fn streams_a_server_sent_event_answer() {
         let url = serve_once("HTTP/1.1 200 OK", "data: {\"choices\":[{\"delta\":{\"content\":\"Hi\"}}]}\n\n");
         let events = collect(&url, &[("content-type".to_string(), "application/json".to_string())]);

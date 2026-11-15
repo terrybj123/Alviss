@@ -158,7 +158,9 @@ export class LlmStreamDecoder {
   }
 
   push(chunk: string): LlmEvent[] {
-    this.buffer += chunk;
+    // Server-sent events allow CRLF. A buffer split across chunks can also split
+    // the pair, so the normalisation runs on the whole buffer, after appending.
+    this.buffer = (this.buffer + chunk).replace(/\r\n/g, "\n");
     const events: LlmEvent[] = [];
     for (;;) {
       const boundary = this.buffer.indexOf("\n\n");
@@ -203,7 +205,10 @@ function openAiEvents(json: unknown): LlmEvent[] {
     out.push({ type: "error", message: String(obj.error.message ?? "provider error") });
   }
   const choice = obj.choices?.[0];
-  const text = choice?.delta?.content;
+  const delta = choice?.delta as { content?: unknown; reasoning_content?: unknown; reasoning?: unknown } | undefined;
+  const reasoning = delta?.reasoning_content ?? delta?.reasoning;
+  if (typeof reasoning === "string" && reasoning.length > 0) out.push({ type: "reasoning", text: reasoning });
+  const text = delta?.content;
   if (typeof text === "string" && text.length > 0) out.push({ type: "text", text });
   if (obj.usage) {
     out.push({

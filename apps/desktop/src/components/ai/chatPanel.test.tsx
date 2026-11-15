@@ -263,6 +263,44 @@ describe("the chat panel", () => {
     expect(container.textContent).toContain("type the model id");
   });
 
+  it("shows a reasoning model's thinking while it has not answered yet", async () => {
+    await act(async () => {
+      setInput(input(), "Hello");
+    });
+    await act(async () => {
+      buttonWithText("Send")?.click();
+    });
+    await act(async () => {
+      handler!({
+        type: "chunk",
+        requestId: started!.requestId,
+        text: 'data: {"choices":[{"delta":{"reasoning_content":"weighing the tide"}}]}\n\n',
+      });
+    });
+    const thinking = container.querySelector('[data-testid="llm-thinking"]');
+    expect(thinking?.textContent).toContain("weighing the tide");
+  });
+
+  it("says so when a reasoning model runs out of budget before answering", async () => {
+    await act(async () => {
+      setInput(input(), "Hello");
+    });
+    await act(async () => {
+      buttonWithText("Send")?.click();
+    });
+    await act(async () => {
+      handler!({
+        type: "chunk",
+        requestId: started!.requestId,
+        text: 'data: {"choices":[{"delta":{"reasoning_content":"only thinking"}}]}\n\n',
+      });
+    });
+    await act(async () => {
+      handler!({ type: "done", requestId: started!.requestId });
+    });
+    expect(container.textContent).toContain("returned no text");
+  });
+
   it("names the fix when the provider rejects the key", async () => {
     await act(async () => {
       setInput(input(), "Hello");

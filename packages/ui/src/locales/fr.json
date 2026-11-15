@@ -1,12 +1,13 @@
 {
   "ai": {
+    "emptyAnswer": "The model returned no text.",
     "edit": "Edit",
     "modelHint": "Or type the model id exactly as the provider names it.",
     "protocol": "Protocol",
     "protocolOpenAi": "OpenAI-compatible",
     "protocolAnthropic": "Anthropic",
     "newChat": "New conversation",
-    "usage": "{input} in / {output} out",
+    "usage": "{{input}} in / {{output}} out",
     "title": "Alviss AI",
     "open": "Open the chat",
     "placeholder": "Ask a question…",
@@ -26,7 +27,7 @@
     "remove": "Remove",
     "test": "Test connection",
     "testing": "Testing…",
-    "testOk": "Connected — {n} models available.",
+    "testOk": "Connected — {{n}} models available.",
     "testEmpty": "Connected, but the server listed no models.",
     "noProviders": "No provider yet. Add OpenAI, Anthropic, DeepSeek or your own server.",
     "noModel": "Choose a model first.",

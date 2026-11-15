@@ -78,6 +78,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   const [input, setInput] = useState("");
   const [turns, setTurns] = useState<Turn[]>([]);
   const [streaming, setStreaming] = useState<string | null>(null);
+  const [reasoning, setReasoning] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [usage, setUsage] = useState<{ input?: number; output?: number } | null>(null);
   const [draft, setDraft] = useState<Draft | null>(null);
@@ -88,6 +89,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   const requestRef = useRef<string | null>(null);
   const decoderRef = useRef<LlmStreamDecoder | null>(null);
   const streamBuffer = useRef("");
+  const reasoningRef = useRef("");
   const [hydrated, setHydrated] = useState(false);
   const chatKey = `alviss.llm.chat.${scope}`;
 
@@ -153,12 +155,21 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   // ---- streaming ---------------------------------------------------------
   const finishStream = useCallback(() => {
     const text = streamBuffer.current;
+    const thought = reasoningRef.current;
     requestRef.current = null;
     decoderRef.current = null;
     streamBuffer.current = "";
+    reasoningRef.current = "";
     setStreaming(null);
-    if (text.trim()) setTurns((prev) => [...prev, { role: "assistant", text }]);
-  }, []);
+    setReasoning("");
+    if (text.trim()) {
+      setTurns((prev) => [...prev, { role: "assistant", text }]);
+    } else if (thought.trim()) {
+      // A reasoning model that ran out of budget before its answer: the
+      // thinking is all there is, and silence would look like a hang.
+      setError(t("ai.emptyAnswer"));
+    }
+  }, [t]);
 
   useEffect(
     () =>
@@ -171,6 +182,9 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
             if (decoded.type === "text") {
               streamBuffer.current += decoded.text;
               setStreaming(streamBuffer.current);
+            } else if (decoded.type === "reasoning") {
+              reasoningRef.current += decoded.text;
+              setReasoning(reasoningRef.current);
             } else if (decoded.type === "usage") {
               setUsage((prev) => ({
                 input: decoded.inputTokens ?? prev?.input,
@@ -228,11 +242,13 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
     requestRef.current = requestId;
     decoderRef.current = new LlmStreamDecoder(active.protocol);
     streamBuffer.current = "";
+    reasoningRef.current = "";
+    setReasoning("");
     setStreaming("");
     try {
       await transport.start(
         requestId,
-        buildChatRequest({ endpoint: active, messages, maxOutputTokens: 1_024 }),
+        buildChatRequest({ endpoint: active, messages, maxOutputTokens: 4_096 }),
         active.needsKey === false ? null : active.keyRef,
       );
     } catch (cause) {
@@ -525,11 +541,16 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
             />
           </div>
         ))}
-        {streaming !== null && (
-          <div style={{ whiteSpace: "pre-wrap", padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: "var(--bg-secondary)" }}>
-            {streaming || t("ai.sending")}
-          </div>
-        )}
+        {streaming !== null &&
+          (streaming === null || streaming === "" ? (
+            <div style={{ whiteSpace: "pre-wrap", color: "var(--text-muted)", fontSize: "var(--text-sm)", padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: "var(--bg-secondary)" }} data-testid="llm-thinking">
+              {reasoning || t("ai.sending")}
+            </div>
+          ) : (
+            <div style={{ whiteSpace: "pre-wrap", padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: "var(--bg-secondary)" }}>
+              {streaming}
+            </div>
+          ))}
       </div>
 
       {error && <Banner kind="error">{error}</Banner>}

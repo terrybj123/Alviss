@@ -128,10 +128,25 @@ describe("openai stream", () => {
     ]);
   });
 
+  it("decodes a CRLF stream the same way", () => {
+    const decoder = new LlmStreamDecoder("openai-chat");
+    expect(decoder.push('data: {"choices":[{"delta":{"content":"Hi"}}]}\r\n\r\n')).toEqual([{ type: "text", text: "Hi" }]);
+  });
+
   it("holds a partial block across chunks", () => {
     const decoder = new LlmStreamDecoder("openai-chat");
     expect(decoder.push('data: {"choices":[{"delta":{"content":"He')).toEqual([]);
     expect(decoder.push('llo"}}]}\n\n')).toEqual([{ type: "text", text: "Hello" }]);
+  });
+
+  it("separates a reasoning model's thinking from its answer", () => {
+    const decoder = new LlmStreamDecoder("openai-chat");
+    expect(decoder.push('data: {"choices":[{"delta":{"reasoning_content":"let me think"}}]}\n\n')).toEqual([
+      { type: "reasoning", text: "let me think" },
+    ]);
+    expect(decoder.push('data: {"choices":[{"delta":{"content":"Answer"}}]}\n\n')).toEqual([
+      { type: "text", text: "Answer" },
+    ]);
   });
 
   it("reports a provider error event", () => {

@@ -426,6 +426,7 @@ const VERBATIM_ALLOWED = new Set<string>([
   "ai.model",
   "ai.name",
   "ai.edit",
+  "ai.emptyAnswer",
   "ai.modelHint",
   "ai.protocol",
   "ai.protocolOpenAi",

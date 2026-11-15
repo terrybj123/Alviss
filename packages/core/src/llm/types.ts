@@ -70,6 +70,8 @@ export interface LlmHttpSpec {
 /** What a streamed answer produces. */
 export type LlmEvent =
   | { type: "text"; text: string }
+  /** A reasoning model's thinking, before it answers (DeepSeek, o-series). */
+  | { type: "reasoning"; text: string }
   | { type: "usage"; inputTokens?: number; outputTokens?: number }
   | { type: "done"; stopReason?: string }
   | { type: "error"; message: string; code?: string };
