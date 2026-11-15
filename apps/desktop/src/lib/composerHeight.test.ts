@@ -17,6 +17,12 @@ describe("the chat composer height", () => {
     expect(composerHeightFrom(0)).toBe(COMPOSER_DEFAULT);
   });
 
+  it("narrows the ceiling on a short window", () => {
+    expect(clampComposerHeight(300, 200)).toBe(200);
+    expect(clampComposerHeight(100, 200)).toBe(100);
+    expect(clampComposerHeight(500, 10)).toBe(COMPOSER_MIN);
+  });
+
   it("reads a stored number back", () => {
     expect(composerHeightFrom(200)).toBe(200);
     expect(composerHeightFrom(5000)).toBe(COMPOSER_MAX);

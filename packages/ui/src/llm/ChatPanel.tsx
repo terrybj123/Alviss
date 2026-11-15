@@ -88,6 +88,9 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   const [fontStep, setFontStep] = useState(0);
   const [composerHeight, setComposerHeight] = useState(COMPOSER_DEFAULT);
   const composerDrag = useRef<{ startY: number; startHeight: number } | null>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+  /** True while the reader has not scrolled away from the newest message. */
+  const pinnedToBottom = useRef(true);
   const [error, setError] = useState<string | null>(null);
   const [usage, setUsage] = useState<{ input?: number; output?: number } | null>(null);
   const [draft, setDraft] = useState<Draft | null>(null);
@@ -273,6 +276,22 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
     }
   }, [active, attachNote, context, input, streaming, t, transport, turns]);
 
+  // The composer growing must not swallow the end of the answer: a chat stays
+  // pinned to its newest line unless the reader scrolled up (finding 2026-11-15).
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list || !pinnedToBottom.current) return;
+    list.scrollTop = list.scrollHeight;
+  }, [turns, streaming, reasoning, error, composerHeight]);
+
+  const trackScroll = () => {
+    const list = listRef.current;
+    if (!list) return;
+    // Within a line or two of the bottom counts as "following", so a pixel of
+    // overscroll never detaches the chat.
+    pinnedToBottom.current = list.scrollHeight - list.scrollTop - list.clientHeight < 48;
+  };
+
   const cycleFontSize = () => {
     const next = (fontStep + 1) % FONT_STEPS.length;
     setFontStep(next);
@@ -289,7 +308,11 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
     const onMove = (move: MouseEvent) => {
       const drag = composerDrag.current;
       if (!drag) return;
-      setComposerHeight(clampComposerHeight(drag.startHeight + (drag.startY - move.clientY)));
+      // Never more than a little over half the panel: the conversation keeps
+      // its half however far the bar is dragged.
+      const panel = listRef.current?.parentElement?.getBoundingClientRect().height ?? 0;
+      const ceiling = panel > 0 ? panel * 0.55 : undefined;
+      setComposerHeight(clampComposerHeight(drag.startHeight + (drag.startY - move.clientY), ceiling));
     };
     const onUp = () => {
       window.removeEventListener("mousemove", onMove);
@@ -565,7 +588,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
         </span>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", flex: 1, minHeight: 0, overflowY: "auto", overflowX: "hidden" }}>
+      <div ref={listRef} onScroll={trackScroll} data-testid="llm-messages" style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", flex: "1 1 0", minHeight: 0, overflowY: "auto", overflowX: "hidden" }}>
         {turns.length === 0 && streaming === null && <EmptyState title={t("ai.title")}>{t("ai.emptyChat")}</EmptyState>}
         {turns.map((turn, index) => (
           <div key={index} style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)", alignItems: turn.role === "user" ? "flex-end" : "flex-start" }}>

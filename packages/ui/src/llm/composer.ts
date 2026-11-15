@@ -13,10 +13,15 @@ export const COMPOSER_DEFAULT = 84;
 /** Where the chosen height is remembered. */
 export const COMPOSER_KEY = "alviss.llm.composer";
 
-/** Clamps a dragged or stored height into the allowed range. */
-export function clampComposerHeight(raw: number): number {
+/**
+ * Clamps a dragged or stored height into the allowed range. `max` narrows the
+ * ceiling on a short window: a composer may never leave the conversation a
+ * strip, however far the bar is dragged.
+ */
+export function clampComposerHeight(raw: number, max: number = COMPOSER_MAX): number {
   if (!Number.isFinite(raw)) return COMPOSER_DEFAULT;
-  return Math.max(COMPOSER_MIN, Math.min(COMPOSER_MAX, Math.round(raw)));
+  const ceiling = Math.max(COMPOSER_MIN, Math.min(COMPOSER_MAX, Math.round(max)));
+  return Math.max(COMPOSER_MIN, Math.min(ceiling, Math.round(raw)));
 }
 
 /** A stored height, or the default when nobody dragged it yet. */

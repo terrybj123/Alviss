@@ -406,6 +406,48 @@ describe("the chat panel", () => {
     expect(grip.querySelector("span")).not.toBeNull();
   });
 
+  it("keeps the newest line visible when the composer grows", async () => {
+    const list = container.querySelector<HTMLElement>('[data-testid="llm-messages"]')!;
+    Object.defineProperty(list, "scrollHeight", { value: 1000, configurable: true });
+    Object.defineProperty(list, "clientHeight", { value: 400, configurable: true });
+
+    const handle = container.querySelector<HTMLElement>('[data-testid="llm-composer-handle"]')!;
+    await act(async () => {
+      handle.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, clientY: 300 }));
+    });
+    await act(async () => {
+      window.dispatchEvent(new MouseEvent("mousemove", { clientY: 200 }));
+    });
+    await act(async () => {
+      window.dispatchEvent(new MouseEvent("mouseup"));
+    });
+    await act(async () => undefined);
+
+    // The list follows the bottom instead of hiding the last line behind the
+    // taller composer.
+    expect(list.scrollTop).toBe(1000);
+  });
+
+  it("does not drag the reader back down once they scrolled up", async () => {
+    const list = container.querySelector<HTMLElement>('[data-testid="llm-messages"]')!;
+    Object.defineProperty(list, "scrollHeight", { value: 1000, configurable: true });
+    Object.defineProperty(list, "clientHeight", { value: 400, configurable: true });
+    list.scrollTop = 0;
+    await act(async () => {
+      list.dispatchEvent(new Event("scroll", { bubbles: false }));
+    });
+
+    await act(async () => {
+      setInput(input(), "Hello");
+    });
+    await act(async () => {
+      buttonWithText("Send")?.click();
+    });
+    await act(async () => undefined);
+
+    expect(list.scrollTop).toBe(0);
+  });
+
   it("names the fix when the provider rejects the key", async () => {
     await act(async () => {
       setInput(input(), "Hello");
