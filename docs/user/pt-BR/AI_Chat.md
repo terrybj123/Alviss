@@ -7,10 +7,11 @@ requests.
 
 ## Opening the chat
 
-Press **⌘⇧K**, or open the command palette (**⌘K**) and choose **Open the chat**.
-The chat docks to the right of the note, so you can read and ask at the same
-time. Drag the divider to change its width; the width is remembered per window.
-Close it with the **×** in its header, or **⌘⇧K** again.
+Click **Open the chat** at the top of the left sidebar, press **⌘⇧K**, or open the
+command palette (**⌘K**) and choose **Open the chat**. The chat docks to the right
+of the note, so you can read and ask at the same time. Drag the divider to change
+its width; the width is remembered per window. Close it with the **×** in its
+header, or **⌘⇧K** again.
 
 The first time, it opens on the provider list, because there is nothing to talk
 to yet.

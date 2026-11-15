@@ -66,7 +66,7 @@ import { Button } from "@plainva/ui";
 import { CommandPalette } from "./components/CommandPalette";
 import { appliedTheme, buildAppCommands, newEntries, newHandlersOf, requestNew } from "@plainva/ui";
 import { toggleLightDark } from "./services/theme";
-import { Plus, ChevronsDownUp, ChevronsUpDown, FileText, FolderTree, RefreshCw, ArrowUpDown, X } from "lucide-react";
+import { Plus, ChevronsDownUp, ChevronsUpDown, FileText, FolderTree, RefreshCw, ArrowUpDown, X, Sparkles } from "lucide-react";
 import { nextFolderSort, readStoredFolderSort, writeStoredFolderSort, type FolderSort, type FolderSortKey,
   SEARCH_SORT_KEYS, listSortLabelKey, nextSearchSort, readStoredSearchSort, writeStoredSearchSort, type SearchSort, type SearchSortKey } from "@plainva/ui";
 import { useDebouncedValue } from "@plainva/ui";
@@ -1429,6 +1429,21 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
               ])}
             />
           </div>
+        </div>
+        {/* The chat is one click from the tree, not a shortcut to remember
+            (finding 2026-11-15): it sits above the view switch so it stays put
+            whichever view is showing, and above the search results too. */}
+        <div style={{ padding: '0 var(--side-head-pad) var(--space-1)' }}>
+          <Button
+            variant={showChat ? 'tonal' : 'ghost'}
+            size="sm"
+            icon={<Sparkles size={ICON.ui} />}
+            onClick={() => setShowChat((open) => !open)}
+            style={{ width: '100%', justifyContent: 'flex-start' }}
+            data-testid="sidebar-chat"
+          >
+            {t("ai.open")}
+          </Button>
         </div>
         {/* "Recently opened" and Bookmarks sit ABOVE the view switch, so they
             stay put whichever view is showing. They used to live inside the
