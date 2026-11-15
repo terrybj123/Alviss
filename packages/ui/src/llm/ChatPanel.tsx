@@ -557,7 +557,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
             <div
               data-testid={turn.role === "assistant" ? "llm-answer" : "llm-question"}
               className={turn.role === "assistant" ? "pv-chat-md" : undefined}
-              style={{ fontSize: FONT_STEPS[fontStep], whiteSpace: turn.role === "user" ? "pre-wrap" : undefined, padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: turn.role === "user" ? "var(--accent-color)" : "var(--bg-secondary)", color: turn.role === "user" ? "var(--on-accent-color)" : "var(--text-main)" }}
+              style={{ fontSize: FONT_STEPS[fontStep], whiteSpace: turn.role === "user" ? "pre-wrap" : undefined, padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: turn.role === "user" ? "var(--accent-container)" : "var(--bg-secondary)", color: turn.role === "user" ? "var(--on-accent-container)" : "var(--text-main)" }}
               // The renderer escapes every text fragment, so the answer cannot
               // inject markup; it is the same rule the reading view uses.
               {...(turn.role === "assistant" ? { dangerouslySetInnerHTML: { __html: markdownToHtml(turn.text) } } : { children: turn.text })}
