@@ -360,6 +360,38 @@ describe("the chat panel", () => {
     expect(started).toBeNull();
   });
 
+  it("remembers the height the composer was dragged to", async () => {
+    const handle = container.querySelector<HTMLElement>('[data-testid="llm-composer-handle"]')!;
+    await act(async () => {
+      handle.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, clientY: 300 }));
+    });
+    await act(async () => {
+      window.dispatchEvent(new MouseEvent("mousemove", { clientY: 250 }));
+    });
+    await act(async () => {
+      window.dispatchEvent(new MouseEvent("mouseup"));
+    });
+    await act(async () => undefined);
+
+    expect(memory.get("alviss.llm.composer")).toBe(134);
+    expect(input().style.height).toBe("134px");
+  });
+
+  it("clamps a drag that would swallow the conversation", async () => {
+    const handle = container.querySelector<HTMLElement>('[data-testid="llm-composer-handle"]')!;
+    await act(async () => {
+      handle.dispatchEvent(new MouseEvent("mousedown", { bubbles: true, clientY: 300 }));
+    });
+    await act(async () => {
+      window.dispatchEvent(new MouseEvent("mousemove", { clientY: -2000 }));
+    });
+    await act(async () => {
+      window.dispatchEvent(new MouseEvent("mouseup"));
+    });
+    await act(async () => undefined);
+    expect(input().style.height).toBe("360px");
+  });
+
   it("names the fix when the provider rejects the key", async () => {
     await act(async () => {
       setInput(input(), "Hello");
