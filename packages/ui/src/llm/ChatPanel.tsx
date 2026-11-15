@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
 import { useTranslation } from "react-i18next";
 import {
   buildChatRequest,
@@ -17,7 +17,7 @@ import { Banner } from "../components/ui/Banner";
 import { Button } from "../components/ui/Button";
 import { IconButton } from "../components/ui/IconButton";
 import { EmptyState } from "../components/ui/EmptyState";
-import { SelectField, TextInput } from "../components/ui/Field";
+import { SelectField, TextArea, TextInput } from "../components/ui/Field";
 import { ICON } from "../lib/iconSizes";
 import { markdownToHtml } from "../lib/markdownToHtml";
 import { getPlatformServices } from "../platform/services";
@@ -29,6 +29,7 @@ import {
   readLlmConfig,
   type LlmConfig,
 } from "./presets";
+import { COMPOSER_DEFAULT, COMPOSER_KEY, clampComposerHeight, composerHeightFrom } from "./composer";
 import type { LlmTransport } from "./transport";
 
 /**
@@ -85,6 +86,8 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   const [streaming, setStreaming] = useState<string | null>(null);
   const [reasoning, setReasoning] = useState("");
   const [fontStep, setFontStep] = useState(0);
+  const [composerHeight, setComposerHeight] = useState(COMPOSER_DEFAULT);
+  const composerDrag = useRef<{ startY: number; startHeight: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [usage, setUsage] = useState<{ input?: number; output?: number } | null>(null);
   const [draft, setDraft] = useState<Draft | null>(null);
@@ -111,7 +114,9 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
       const store = await getPlatformServices().loadSettings();
       const stored = readLlmConfig(await store.get(CONFIG_KEY));
       const savedFont = await store.get<number>(FONT_KEY);
+      const savedComposer = await store.get<number>(COMPOSER_KEY);
       if (cancelled) return;
+      setComposerHeight(composerHeightFrom(savedComposer));
       if (typeof savedFont === "number" && savedFont >= 0 && savedFont < FONT_STEPS.length) setFontStep(savedFont);
       setConfig(stored);
       // Nothing to talk to yet: open the provider list instead of an empty
@@ -267,6 +272,35 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
       setError(redactForDiagnostics(String(cause)));
     }
   }, [active, attachNote, context, input, streaming, t, transport, turns]);
+
+  /** Drag the bar above the composer: up grows it, down shrinks it. */
+  const startComposerResize = useCallback((event: ReactMouseEvent) => {
+    event.preventDefault();
+    composerDrag.current = { startY: event.clientY, startHeight: composerHeight };
+    const onMove = (move: MouseEvent) => {
+      const drag = composerDrag.current;
+      if (!drag) return;
+      setComposerHeight(clampComposerHeight(drag.startHeight + (drag.startY - move.clientY)));
+    };
+    const onUp = () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+      document.body.style.cursor = "";
+      document.body.style.userSelect = "";
+      composerDrag.current = null;
+      setComposerHeight((height) => {
+        void (async () => {
+          const store = await getPlatformServices().loadSettings();
+          await store.set(COMPOSER_KEY, height);
+        })();
+        return height;
+      });
+    };
+    document.body.style.cursor = "row-resize";
+    document.body.style.userSelect = "none";
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+  }, [composerHeight]);
 
   const stop = useCallback(() => {
     const id = requestRef.current;
@@ -581,20 +615,32 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
         <span style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)" }}>{t("ai.usage", { input: usage.input ?? 0, output: usage.output ?? 0 })}</span>
       )}
 
-      <div style={{ display: "flex", gap: "var(--space-2)" }}>
-        <TextInput
+      <div
+        onMouseDown={startComposerResize}
+        style={{ height: 6, marginBlock: "calc(var(--space-1) * -1)", cursor: "row-resize", flexShrink: 0 }}
+        aria-hidden="true"
+        data-testid="llm-composer-handle"
+      />
+      <div style={{ display: "flex", gap: "var(--space-2)", alignItems: "flex-end" }}>
+        <TextArea
           aria-label={t("ai.placeholder")}
           placeholder={t("ai.placeholder")}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
+            // Enter sends; Shift+Enter is a new paragraph. During IME
+            // composition (Chinese, Japanese) Enter belongs to the candidate
+            // window, not to us — sending there would cut the word in half.
+            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
               e.preventDefault();
               void send();
             }
           }}
           purpose="prose"
+          rows={2}
+          style={{ flex: 1, minWidth: 0, height: composerHeight, resize: "none", overflowY: "auto", lineHeight: 1.45 }}
           autoFocus
+          data-testid="llm-composer"
         />
         {streaming === null ? (
           <Button variant="primary" icon={<Send size={ICON.ui} />} onClick={() => void send()} disabled={!input.trim()}>

@@ -82,14 +82,15 @@ const transport: LlmTransport = {
 let container: HTMLDivElement;
 let root: Root;
 
-function setInput(input: HTMLInputElement, value: string) {
-  const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set;
-  setter?.call(input, value);
-  input.dispatchEvent(new Event("input", { bubbles: true }));
+function setInput(field: HTMLInputElement | HTMLTextAreaElement, value: string) {
+  const proto = field instanceof HTMLTextAreaElement ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
+  const setter = Object.getOwnPropertyDescriptor(proto, "value")?.set;
+  setter?.call(field, value);
+  field.dispatchEvent(new Event("input", { bubbles: true }));
 }
 
-function input(): HTMLInputElement {
-  return container.querySelector<HTMLInputElement>('input[aria-label="Ask a question…"]')!;
+function input(): HTMLTextAreaElement {
+  return container.querySelector<HTMLTextAreaElement>('textarea[aria-label="Ask a question…"]')!;
 }
 
 function buttonWithText(text: string): HTMLButtonElement | undefined {
@@ -328,6 +329,35 @@ describe("the chat panel", () => {
     });
     await act(async () => undefined);
     expect(memory.get("alviss.llm.font")).toBe(1);
+  });
+
+  it("takes several lines, and only Enter sends", async () => {
+    const field = input();
+    expect(field.tagName).toBe("TEXTAREA");
+    await act(async () => {
+      setInput(field, "first line");
+    });
+    await act(async () => {
+      field.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", shiftKey: true, bubbles: true }));
+    });
+    // Shift+Enter is a new paragraph: nothing was sent.
+    expect(started).toBeNull();
+
+    await act(async () => {
+      field.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+    });
+    expect(started).not.toBeNull();
+  });
+
+  it("keeps the text while a Chinese IME is composing", async () => {
+    const field = input();
+    await act(async () => {
+      setInput(field, "tong");
+    });
+    await act(async () => {
+      field.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter", isComposing: true, bubbles: true }));
+    });
+    expect(started).toBeNull();
   });
 
   it("names the fix when the provider rejects the key", async () => {
