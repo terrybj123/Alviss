@@ -1,5 +1,6 @@
 {
   "ai": {
+    "dragToResize": "Drag to resize",
     "textSize": "Text size",
     "emptyAnswer": "The model returned no text.",
     "edit": "Edit",

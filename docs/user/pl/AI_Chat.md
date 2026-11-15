@@ -71,6 +71,9 @@ HTML produces text, not a page.
 **New conversation** clears the panel. The last conversation is remembered per
 vault and comes back when you reopen the chat.
 
+The row under the composer carries the provider switch on the left and **Send** on the right, so the
+box you type in takes the whole width of the panel.
+
 Type in the composer at the bottom of the panel. **Enter** sends and **Shift+Enter** starts a new
 line; while a Chinese or Japanese input method is composing, Enter belongs to the candidates, not to
 the chat. Drag the bar just above the composer to make it taller — the height is remembered.

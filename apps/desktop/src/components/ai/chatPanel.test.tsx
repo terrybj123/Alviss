@@ -392,6 +392,20 @@ describe("the chat panel", () => {
     expect(input().style.height).toBe("360px");
   });
 
+  it("gives the composer the whole width and puts the controls underneath", async () => {
+    const composer = input();
+    expect(composer.style.width).toBe("100%");
+    const send = container.querySelector('[data-testid="llm-send"]')!;
+    // Not beside the text: the old row stole width from what you type.
+    expect(send.parentElement).not.toBe(composer.parentElement);
+    // The provider switch lives with the send button, like a chat app's footer.
+    expect(container.querySelector('[data-testid="llm-provider-select"]')).not.toBeNull();
+    // And the grip is a visible, styled bar rather than an invisible strip.
+    const grip = container.querySelector('[data-testid="llm-composer-handle"]')!;
+    expect(grip.classList.contains("pv-chat-grip")).toBe(true);
+    expect(grip.querySelector("span")).not.toBeNull();
+  });
+
   it("names the fix when the provider rejects the key", async () => {
     await act(async () => {
       setInput(input(), "Hello");

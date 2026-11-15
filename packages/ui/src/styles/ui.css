@@ -4844,11 +4844,17 @@ pre.pv-comment-card__quote { white-space: pre-wrap; }
 .pv-chat-md ul, .pv-chat-md ol { margin-block: 0 var(--space-2); padding-inline-start: var(--space-4); }
 .pv-chat-md li { margin-block: 0 var(--space-1); }
 .pv-chat-md code { background: var(--code-bg); border-radius: var(--radius-xs); padding: 0 var(--space-1); font-family: var(--font-mono); font-size: 0.9em; }
-.pv-chat-md pre { margin-block: 0 var(--space-2); padding: var(--space-2); background: var(--code-bg); border-radius: var(--radius-md); overflow-x: auto; }
+.pv-chat-md pre { margin-block: 0 var(--space-2); padding: var(--space-2); background: var(--code-bg); border-radius: var(--radius-md); white-space: pre-wrap; overflow-wrap: anywhere; }
 .pv-chat-md pre code { padding: 0; background: none; }
-.pv-chat-md table { border-collapse: collapse; width: 100%; margin-block: 0 var(--space-2); font-size: 0.95em; }
-.pv-chat-md th, .pv-chat-md td { border: 1px solid var(--border-color); padding: var(--space-1) var(--space-2); text-align: start; vertical-align: top; }
+.pv-chat-md table { border-collapse: collapse; table-layout: fixed; width: 100%; margin-block: 0 var(--space-2); font-size: 0.95em; }
+.pv-chat-md th, .pv-chat-md td { border: 1px solid var(--border-color); padding: var(--space-1) var(--space-2); text-align: start; vertical-align: top; overflow-wrap: anywhere; }
 .pv-chat-md th { background: var(--bg-secondary); font-weight: 600; }
 .pv-chat-md blockquote { margin-block: 0 var(--space-2); padding-inline-start: var(--space-3); border-inline-start: 2px solid var(--border-color); color: var(--text-muted); }
 .pv-chat-md a { color: var(--accent-color); }
 .pv-chat-md hr { border: 0; border-block-start: 1px solid var(--border-color); margin-block: var(--space-2); }
+
+/* The composer's grip: invisible until it was pointed at, so nobody found it.
+   A visible bar, a taller hit area and a hover that darkens it. */
+.pv-chat-grip { display: flex; align-items: center; justify-content: center; height: 12px; flex-shrink: 0; cursor: row-resize; background: transparent; border: 0; }
+.pv-chat-grip > span { display: block; width: 48px; height: 4px; border-radius: var(--radius-xs); background: var(--border-color); }
+.pv-chat-grip:hover > span, .pv-chat-grip:focus-visible > span { background: var(--text-muted); }

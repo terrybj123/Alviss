@@ -1,5 +1,6 @@
 {
   "ai": {
+    "dragToResize": "拖动调整高度",
     "textSize": "字号",
     "emptyAnswer": "模型没有返回任何文本。",
     "edit": "编辑",

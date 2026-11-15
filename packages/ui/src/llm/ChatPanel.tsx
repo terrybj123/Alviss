@@ -273,6 +273,15 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
     }
   }, [active, attachNote, context, input, streaming, t, transport, turns]);
 
+  const cycleFontSize = () => {
+    const next = (fontStep + 1) % FONT_STEPS.length;
+    setFontStep(next);
+    void (async () => {
+      const store = await getPlatformServices().loadSettings();
+      await store.set(FONT_KEY, next);
+    })();
+  };
+
   /** Drag the bar above the composer: up grows it, down shrinks it. */
   const startComposerResize = useCallback((event: ReactMouseEvent) => {
     event.preventDefault();
@@ -534,56 +543,29 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)", height: "100%", minHeight: 0 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
-        {active ? (
-          <SelectField
-            aria-label={t("ai.providers")}
-            value={active.id}
-            onChange={(e) => void persist({ ...config, activeId: e.target.value })}
-            compact
-          >
-            {config.endpoints.map((endpoint) => (
-              <option key={endpoint.id} value={endpoint.id}>
-                {endpoint.label} · {endpoint.model || "—"}
-              </option>
-            ))}
-          </SelectField>
-        ) : (
-          <span style={{ color: "var(--text-muted)" }}>{t("ai.noProviders")}</span>
-        )}
+      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-1)", flexShrink: 0 }}>
         {context && (
-          <span style={{ marginInlineStart: "auto" }}>
-            <Button size="sm" variant="ghost" onClick={() => setAttachNote((on) => !on)} data-testid="llm-attach-note">
-              {attachNote ? t("ai.contextNote") : t("ai.contextNone")}
-            </Button>
-          </span>
+          <Button size="sm" variant="ghost" onClick={() => setAttachNote((on) => !on)} data-testid="llm-attach-note">
+            {attachNote ? t("ai.contextNote") : t("ai.contextNone")}
+          </Button>
         )}
-        <IconButton
-          label={t("ai.textSize")}
-          onClick={() => {
-            const next = (fontStep + 1) % FONT_STEPS.length;
-            setFontStep(next);
-            void (async () => {
-              const store = await getPlatformServices().loadSettings();
-              await store.set(FONT_KEY, next);
-            })();
-          }}
-          data-testid="llm-text-size"
-        >
-          <span style={{ fontSize: FONT_STEPS[fontStep] }}>A</span>
-        </IconButton>
-        <Button
-          size="sm"
-          variant="ghost"
-          icon={<Trash2 size={ICON.ui} />}
-          onClick={() => setTurns([])}
-          aria-label={t("ai.newChat")}
-          data-testid="llm-new-chat"
-        />
-        <Button size="sm" variant="ghost" icon={<Settings2 size={ICON.ui} />} onClick={() => setView("config")} aria-label={t("ai.providers")} />
+        <span style={{ marginInlineStart: "auto", display: "flex", alignItems: "center", gap: "var(--space-1)" }}>
+          <IconButton label={t("ai.textSize")} onClick={cycleFontSize} data-testid="llm-text-size">
+            <span style={{ fontSize: FONT_STEPS[fontStep] }}>A</span>
+          </IconButton>
+          <Button
+            size="sm"
+            variant="ghost"
+            icon={<Trash2 size={ICON.ui} />}
+            onClick={() => setTurns([])}
+            aria-label={t("ai.newChat")}
+            data-testid="llm-new-chat"
+          />
+          <Button size="sm" variant="ghost" icon={<Settings2 size={ICON.ui} />} onClick={() => setView("config")} aria-label={t("ai.providers")} />
+        </span>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", flex: 1, minHeight: 0, overflowY: "auto" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", flex: 1, minHeight: 0, overflowY: "auto", overflowX: "hidden" }}>
         {turns.length === 0 && streaming === null && <EmptyState title={t("ai.title")}>{t("ai.emptyChat")}</EmptyState>}
         {turns.map((turn, index) => (
           <div key={index} style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)", alignItems: turn.role === "user" ? "flex-end" : "flex-start" }}>
@@ -616,12 +598,17 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
       )}
 
       <div
+        className="pv-chat-grip"
         onMouseDown={startComposerResize}
-        style={{ height: 6, marginBlock: "calc(var(--space-1) * -1)", cursor: "row-resize", flexShrink: 0 }}
-        aria-hidden="true"
+        role="separator"
+        aria-orientation="horizontal"
+        aria-label={t("ai.dragToResize")}
+        data-tip={t("ai.dragToResize")}
         data-testid="llm-composer-handle"
-      />
-      <div style={{ display: "flex", gap: "var(--space-2)", alignItems: "flex-end" }}>
+      >
+        <span />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", flexShrink: 0 }}>
         <TextArea
           aria-label={t("ai.placeholder")}
           placeholder={t("ai.placeholder")}
@@ -638,19 +625,41 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
           }}
           purpose="prose"
           rows={2}
-          style={{ flex: 1, minWidth: 0, height: composerHeight, resize: "none", overflowY: "auto", lineHeight: 1.45 }}
+          style={{ width: "100%", height: composerHeight, resize: "none", overflowY: "auto", lineHeight: 1.45 }}
           autoFocus
           data-testid="llm-composer"
         />
-        {streaming === null ? (
-          <Button variant="primary" icon={<Send size={ICON.ui} />} onClick={() => void send()} disabled={!input.trim()}>
-            {t("ai.send")}
-          </Button>
-        ) : (
-          <Button variant="secondary" icon={<Square size={ICON.ui} />} onClick={stop}>
-            {t("ai.stop")}
-          </Button>
-        )}
+        <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
+          {active ? (
+            <SelectField
+              aria-label={t("ai.providers")}
+              value={active.id}
+              onChange={(e) => void persist({ ...config, activeId: e.target.value })}
+              compact
+              style={{ flex: 1, minWidth: 0 }}
+              data-testid="llm-provider-select"
+            >
+              {config.endpoints.map((endpoint) => (
+                <option key={endpoint.id} value={endpoint.id}>
+                  {endpoint.label} · {endpoint.model || "—"}
+                </option>
+              ))}
+            </SelectField>
+          ) : (
+            <Button size="sm" variant="secondary" onClick={() => setView("config")}>
+              {t("ai.noProviders")}
+            </Button>
+          )}
+          {streaming === null ? (
+            <Button variant="primary" icon={<Send size={ICON.ui} />} onClick={() => void send()} disabled={!input.trim()} data-testid="llm-send">
+              {t("ai.send")}
+            </Button>
+          ) : (
+            <Button variant="secondary" icon={<Square size={ICON.ui} />} onClick={stop}>
+              {t("ai.stop")}
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
