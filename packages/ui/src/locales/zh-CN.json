@@ -1,5 +1,6 @@
 {
   "ai": {
+    "textSize": "字号",
     "emptyAnswer": "模型没有返回任何文本。",
     "edit": "编辑",
     "modelHint": "也可以直接填入服务商使用的模型 ID。",

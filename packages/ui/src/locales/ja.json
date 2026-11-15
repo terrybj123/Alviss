@@ -1,5 +1,6 @@
 {
   "ai": {
+    "textSize": "Text size",
     "emptyAnswer": "The model returned no text.",
     "edit": "Edit",
     "modelHint": "Or type the model id exactly as the provider names it.",

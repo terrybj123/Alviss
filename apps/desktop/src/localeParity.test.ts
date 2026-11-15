@@ -446,6 +446,7 @@ const VERBATIM_ALLOWED = new Set<string>([
   "ai.testEmpty",
   "ai.testOk",
   "ai.testing",
+  "ai.textSize",
   "ai.title",
   "ai.usage",
 // count: 78

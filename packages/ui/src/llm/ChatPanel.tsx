@@ -15,6 +15,7 @@ import {
 import { ArrowLeft, Plus, Send, Settings2, Square, Trash2 } from "lucide-react";
 import { Banner } from "../components/ui/Banner";
 import { Button } from "../components/ui/Button";
+import { IconButton } from "../components/ui/IconButton";
 import { EmptyState } from "../components/ui/EmptyState";
 import { SelectField, TextInput } from "../components/ui/Field";
 import { ICON } from "../lib/iconSizes";
@@ -37,6 +38,10 @@ import type { LlmTransport } from "./transport";
  * settings catalog is a shared, parity-tested surface.
  */
 const CONFIG_KEY = "alviss.llm";
+const FONT_KEY = "alviss.llm.font";
+
+/** Small, default, large — a column, not a document: --text-sm is the base. */
+const FONT_STEPS = ["var(--text-sm)", "var(--text-ui)", "var(--text-md)"] as const;
 
 const SYSTEM_PROMPT =
   "You are the assistant inside Alviss, a plain-Markdown notes editor. " +
@@ -79,6 +84,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   const [turns, setTurns] = useState<Turn[]>([]);
   const [streaming, setStreaming] = useState<string | null>(null);
   const [reasoning, setReasoning] = useState("");
+  const [fontStep, setFontStep] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [usage, setUsage] = useState<{ input?: number; output?: number } | null>(null);
   const [draft, setDraft] = useState<Draft | null>(null);
@@ -104,7 +110,9 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
     void (async () => {
       const store = await getPlatformServices().loadSettings();
       const stored = readLlmConfig(await store.get(CONFIG_KEY));
+      const savedFont = await store.get<number>(FONT_KEY);
       if (cancelled) return;
+      if (typeof savedFont === "number" && savedFont >= 0 && savedFont < FONT_STEPS.length) setFontStep(savedFont);
       setConfig(stored);
       // Nothing to talk to yet: open the provider list instead of an empty
       // chat that can only fail.
@@ -516,6 +524,20 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
             </Button>
           </span>
         )}
+        <IconButton
+          label={t("ai.textSize")}
+          onClick={() => {
+            const next = (fontStep + 1) % FONT_STEPS.length;
+            setFontStep(next);
+            void (async () => {
+              const store = await getPlatformServices().loadSettings();
+              await store.set(FONT_KEY, next);
+            })();
+          }}
+          data-testid="llm-text-size"
+        >
+          <span style={{ fontSize: FONT_STEPS[fontStep] }}>A</span>
+        </IconButton>
         <Button
           size="sm"
           variant="ghost"
@@ -534,7 +556,8 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
             <span style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)" }}>{turn.role === "user" ? "You" : active?.label ?? "AI"}</span>
             <div
               data-testid={turn.role === "assistant" ? "llm-answer" : "llm-question"}
-              style={{ whiteSpace: turn.role === "user" ? "pre-wrap" : undefined, padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: turn.role === "user" ? "var(--accent-color)" : "var(--bg-secondary)", color: turn.role === "user" ? "var(--on-accent-color)" : "var(--text-main)" }}
+              className={turn.role === "assistant" ? "pv-chat-md" : undefined}
+              style={{ fontSize: FONT_STEPS[fontStep], whiteSpace: turn.role === "user" ? "pre-wrap" : undefined, padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: turn.role === "user" ? "var(--accent-color)" : "var(--bg-secondary)", color: turn.role === "user" ? "var(--on-accent-color)" : "var(--text-main)" }}
               // The renderer escapes every text fragment, so the answer cannot
               // inject markup; it is the same rule the reading view uses.
               {...(turn.role === "assistant" ? { dangerouslySetInnerHTML: { __html: markdownToHtml(turn.text) } } : { children: turn.text })}
@@ -543,11 +566,11 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
         ))}
         {streaming !== null &&
           (streaming === null || streaming === "" ? (
-            <div style={{ whiteSpace: "pre-wrap", color: "var(--text-muted)", fontSize: "var(--text-sm)", padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: "var(--bg-secondary)" }} data-testid="llm-thinking">
+            <div style={{ whiteSpace: "pre-wrap", color: "var(--text-muted)", fontSize: "var(--text-xs)", padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: "var(--bg-secondary)" }} data-testid="llm-thinking">
               {reasoning || t("ai.sending")}
             </div>
           ) : (
-            <div style={{ whiteSpace: "pre-wrap", padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: "var(--bg-secondary)" }}>
+            <div className="pv-chat-md" style={{ fontSize: FONT_STEPS[fontStep], whiteSpace: "pre-wrap", padding: "var(--space-2) var(--space-3)", borderRadius: "var(--radius-md)", background: "var(--bg-secondary)" }}>
               {streaming}
             </div>
           ))}

@@ -71,6 +71,9 @@ HTML produces text, not a page.
 **New conversation** clears the panel. The last conversation is remembered per
 vault and comes back when you reopen the chat.
 
+The **Aa** button in the header cycles the text size (small, default, large), and the choice is
+remembered for the next conversation.
+
 ## When something fails
 
 The message names the fix, not just the fault:

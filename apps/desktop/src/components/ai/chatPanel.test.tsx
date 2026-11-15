@@ -301,6 +301,35 @@ describe("the chat panel", () => {
     expect(container.textContent).toContain("returned no text");
   });
 
+  it("draws a Markdown table as a table, in the prose class", async () => {
+    await act(async () => {
+      setInput(input(), "Give me a table");
+    });
+    await act(async () => {
+      buttonWithText("Send")?.click();
+    });
+    const md = "| a | b |\n| --- | --- |\n| 1 | 2 |";
+    const payload = JSON.stringify({ choices: [{ delta: { content: md } }] });
+    await act(async () => {
+      handler!({ type: "chunk", requestId: started!.requestId, text: `data: ${payload}\n\n` });
+    });
+    await act(async () => {
+      handler!({ type: "done", requestId: started!.requestId });
+    });
+    const answer = container.querySelector('[data-testid="llm-answer"]')!;
+    expect(answer.classList.contains("pv-chat-md")).toBe(true);
+    expect(answer.querySelector("table")).not.toBeNull();
+    expect(answer.querySelectorAll("td")).toHaveLength(2);
+  });
+
+  it("cycles the text size and remembers the choice", async () => {
+    await act(async () => {
+      container.querySelector<HTMLButtonElement>('[data-testid="llm-text-size"]')?.click();
+    });
+    await act(async () => undefined);
+    expect(memory.get("alviss.llm.font")).toBe(1);
+  });
+
   it("names the fix when the provider rejects the key", async () => {
     await act(async () => {
       setInput(input(), "Hello");
