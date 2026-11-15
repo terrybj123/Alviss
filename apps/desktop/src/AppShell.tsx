@@ -80,6 +80,7 @@ import {
 import { currentWindowParams, isOwnerWindow, windowStateKey } from "./services/windowContext";
 import { detectMac } from "./components/WindowControls";
 import { ChatHost } from "./components/ai/ChatHost";
+import { CHAT_WIDTH_KEY, chatWidthFrom, clampChatWidth } from "./lib/chatPanelWidth";
 import { useQuickCaptureSink } from "./hooks/useJournal";
 import { useDayBoundary } from "./hooks/useDayBoundary";
 import "./App.css";
@@ -944,7 +945,7 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
         void import("./services/uiZoom").then(({ setStoredUiZoom, DEFAULT_UI_ZOOM }) => setStoredUiZoom(DEFAULT_UI_ZOOM)).catch(() => {});
       } else if (mod && e.shiftKey && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setShowChat(true);
+        setShowChat((open) => !open);
       } else if (mod && e.key === ",") {
         e.preventDefault();
         capabilities.openSettings();
@@ -1102,6 +1103,29 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
         localStorage.setItem(windowStateKey(RIGHT_SIDEBAR_WIDTH_KEY), String(w));
         localStorage.setItem(windowStateKey(RIGHT_SIDEBAR_CHOSEN_KEY), "1");
       }
+    };
+    const onUp = () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+      document.body.style.cursor = "";
+      document.body.style.userSelect = "";
+    };
+    document.body.style.cursor = "col-resize";
+    document.body.style.userSelect = "none";
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+  };
+
+  // The docked chat (2026-11-15): same divider as the sidebars, its own range.
+  const chatAsideRef = useRef<HTMLElement | null>(null);
+  const [chatWidth, setChatWidth] = useState<number>(() => chatWidthFrom(localStorage.getItem(windowStateKey(CHAT_WIDTH_KEY))));
+  const startChatResize = (e: ReactMouseEvent) => {
+    e.preventDefault();
+    const right = chatAsideRef.current?.getBoundingClientRect().right ?? window.innerWidth;
+    const onMove = (ev: MouseEvent) => {
+      const width = clampChatWidth(right - ev.clientX);
+      setChatWidth(width);
+      localStorage.setItem(windowStateKey(CHAT_WIDTH_KEY), String(width));
     };
     const onUp = () => {
       window.removeEventListener("mousemove", onMove);
@@ -1721,6 +1745,19 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
         })}
       </main>
 
+      {showChat && (
+        <div onMouseDown={startChatResize} style={sidebarResizeHandleStyle} aria-hidden="true" data-tip={t("sidebar.resize")} data-testid="chat-resize-handle" />
+      )}
+      {showChat && (
+        <aside
+          ref={chatAsideRef}
+          aria-label={t("ai.title")}
+          style={{ width: `${chatWidth}px`, flexShrink: 0, minWidth: 0, display: "flex", flexDirection: "column", borderInlineStart: "1px solid var(--border-color-light)", background: "var(--bg-secondary)" }}
+        >
+          <ChatHost activePath={activePath} onClose={() => setShowChat(false)} />
+        </aside>
+      )}
+
       {!rightCollapsed && (
         <div onMouseDown={startSidebarResize("right")} style={sidebarResizeHandleStyle} aria-hidden="true" data-tip={t("sidebar.resize")} />
       )}
@@ -1941,7 +1978,7 @@ export function AppShell({ capabilities, children }: { capabilities: ShellCapabi
       )}
       <Suspense fallback={null}>
         {showShortcuts && <ShortcutsModal onClose={() => setShowShortcuts(false)} />}
-        {showChat && <ChatHost activePath={activePath} onClose={() => setShowChat(false)} />}
+
         {showFindReplace && (
           <Suspense fallback={null}>
             <VaultFindReplaceModal onClose={() => setShowFindReplace(false)} onOpenPath={openInFocusedPane} />

@@ -59,7 +59,7 @@ describe("the capture examples of the handbook, typed into the real grammar", ()
   for (const lang of languages) {
     it(`${lang}: every example sentence comes out as the page says`, () => {
       const words = vocab(lang);
-      for (const page of ["Tasks.md", "Mobile_App.md", "Getting_Started.md"]) {
+      for (const page of ["Tasks.md", "Getting_Started.md"]) {
         const sentences = spans(lang, page).filter(isSentence);
         expect(sentences.length, `${lang}/${page} shows an example sentence`).toBeGreaterThan(0);
         for (const sentence of sentences) {

@@ -8,7 +8,9 @@ requests.
 ## Opening the chat
 
 Press **⌘⇧K**, or open the command palette (**⌘K**) and choose **Open the chat**.
-The chat opens over the editor; close it with **Esc**.
+The chat docks to the right of the note, so you can read and ask at the same
+time. Drag the divider to change its width; the width is remembered per window.
+Close it with the **×** in its header, or **⌘⇧K** again.
 
 The first time, it opens on the provider list, because there is nothing to talk
 to yet.
@@ -48,8 +50,7 @@ different providers can hold different keys.
 Whatever the question needs:
 
 1. A short instruction describing the assistant's role.
-2. The note you are reading, when **Current note** is on. Switch it to **No
-   note** to send the question alone.
+2. The note you are reading, when **Current note** is on. Switch it to **No note** to send the question alone.
 3. The conversation so far.
 
 A long note is cut at a fixed limit before it is sent. Nothing else leaves the

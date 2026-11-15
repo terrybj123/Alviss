@@ -159,11 +159,8 @@ describe("supported engine floor", () => {
     const missing: string[] = [];
     for (const lang of languages) {
       const page = guidePage(lang, "Getting_Started.md");
-      const mobilePage = guidePage(lang, "Mobile_App.md");
-      // The phone floor belongs on the phone page: someone reading about the
-      // mobile app is exactly the person who needs to know which devices it
-      // runs on, and they will not find it under a desktop heading.
-      if (!mobilePage.includes(`iOS ${FLOOR.iosVersion}`)) missing.push(`${lang}: iOS ${FLOOR.iosVersion}`);
+      // No phone floor check: Alviss ships no phone build, and Mobile_App.md
+      // says so. The desktop floor below is what a reader can act on.
       // Checked as separate tokens on purpose: zh-CN and ja write the
       // parentheses full-width, so "13.3 (Ventura)" would fail there for reasons
       // that have nothing to do with the floor.

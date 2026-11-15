@@ -181,8 +181,10 @@ removes the largest class of data-loss risk from the first release.
 
 ### 5.1 Scope
 
-A chat panel inside the app that talks to any OpenAI-compatible or Anthropic-compatible endpoint
-configured by the user with a base URL, an API key and a model name.
+A chat panel docked to the right of the editor — not a modal, so the note it talks about stays
+readable while it answers. The divider drags between 300 and 760 px and the width is remembered
+per window. It talks to any OpenAI-compatible or Anthropic-compatible endpoint configured by the
+user with a base URL, an API key and a model name.
 
 Built-in presets: **OpenAI**, **Anthropic** and **DeepSeek**. Every other provider is reached
 through the **custom endpoint** entry — a label, a base URL and a token — which is a first-class

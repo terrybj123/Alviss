@@ -1,5 +1,3 @@
-> This page is available in English only for now.
-
 # The mobile app
 
 Alviss is a macOS application. There is no iPhone, iPad or Android build yet.

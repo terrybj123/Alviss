@@ -1,11 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ChatPanel, Modal, type ChatContext } from "@plainva/ui";
+import { X } from "lucide-react";
+import { ChatPanel, ICON, IconButton, type ChatContext } from "@plainva/ui";
 import { useVault } from "../../contexts/VaultContext";
 import { desktopLlmTransport } from "../../services/llmTransport";
 
 /**
- * The chat, mounted in the desktop shell (plan §5.2).
+ * The chat, docked beside the editor (plan §5.2, revised 2026-11-15).
+ *
+ * It used to be a modal: it covered the note it was talking about, and the
+ * reader had to close it to check a sentence. As a column it sits next to the
+ * text, keeps its width while the note scrolls, and the divider drags.
  *
  * The note the user is reading is read here, once, when the panel opens: the
  * shared panel never touches a vault itself, so it stays usable from any shell.
@@ -48,8 +53,20 @@ export function ChatHost({ activePath, onClose }: ChatHostProps) {
   const transport = useMemo(() => desktopLlmTransport, []);
 
   return (
-    <Modal title={t("ai.title")} onClose={onClose} size="md">
-      <ChatPanel transport={transport} context={context} scope={vaultPath ?? "default"} />
-    </Modal>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", padding: "var(--space-2) var(--space-3)", borderBottom: "1px solid var(--border-color-light)", flexShrink: 0 }}>
+        <strong style={{ fontSize: "var(--text-md)", minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          {t("ai.title")}
+        </strong>
+        <span style={{ marginInlineStart: "auto", flexShrink: 0 }}>
+          <IconButton label={t("common.close")} onClick={onClose}>
+            <X size={ICON.ui} />
+          </IconButton>
+        </span>
+      </div>
+      <div style={{ flex: 1, minHeight: 0, padding: "var(--space-3)", overflow: "hidden" }}>
+        <ChatPanel transport={transport} context={context} scope={vaultPath ?? "default"} />
+      </div>
+    </div>
   );
 }

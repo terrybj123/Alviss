@@ -353,7 +353,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   // ---- view --------------------------------------------------------------
   if (view === "config") {
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)", height: "100%", minHeight: 0, overflowY: "auto" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
           <Button size="sm" variant="ghost" icon={<ArrowLeft size={ICON.ui} />} onClick={() => setView("chat")}>
             {t("ai.back")}
@@ -444,7 +444,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)", height: "100%", minHeight: 0 }}>
       <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)" }}>
         {active ? (
           <SelectField
@@ -480,7 +480,7 @@ export function ChatPanel({ transport, context, scope = "default" }: ChatPanelPr
         <Button size="sm" variant="ghost" icon={<Settings2 size={ICON.ui} />} onClick={() => setView("config")} aria-label={t("ai.providers")} />
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", minHeight: "min(46vh, 380px)", maxHeight: "min(46vh, 380px)", overflowY: "auto" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)", flex: 1, minHeight: 0, overflowY: "auto" }}>
         {turns.length === 0 && streaming === null && <EmptyState title={t("ai.title")}>{t("ai.emptyChat")}</EmptyState>}
         {turns.map((turn, index) => (
           <div key={index} style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)", alignItems: turn.role === "user" ? "flex-end" : "flex-start" }}>
