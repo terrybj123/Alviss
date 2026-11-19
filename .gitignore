@@ -54,3 +54,10 @@ packages/core/test-benchmark-vault/
 .claude/scheduled_tasks.lock
 .claude/launch.json
 apps/mobile/.webdav-data/
+
+# never commit credentials
+key.md
+.env
+.env.*
+*.p12
+*.p8
