@@ -11,16 +11,12 @@ works with the provider you choose.
 
 ## Install
 
-**[Download Alviss-0.1.0-macos-universal.zip](https://github.com/terrybj123/Alviss/releases/download/alviss-v0.1.0/Alviss-0.1.0-macos-universal.zip)**
-(30 MB) — or open [Releases](https://github.com/terrybj123/Alviss/releases) and take the newest
-`Alviss-*-macos-universal.zip` from there.
+**[Download Alviss-0.1.1-macos-universal.zip](https://github.com/terrybj123/Alviss/releases/download/alviss-v0.1.1/Alviss-0.1.1-macos-universal.zip)**
+— macOS 13.3 or newer, Apple Silicon or Intel, one universal app.
 
-macOS 13.3 or newer, Apple Silicon or Intel, in one universal app.
-
-The build is **not notarized yet** (no Apple Developer certificate), so the first launch needs one
-step past Gatekeeper. [docs/INSTALL.md](docs/INSTALL.md) walks through it, together with the
-checksum, the update path and how to uninstall. Nothing is installed in the background: you unzip,
-drag to Applications, and launch.
+Unzip, drag **Alviss.app** into **Applications**, open it. The build is signed with a Developer ID
+and **notarized by Apple**, so macOS verifies it on its own — no security warning to click through.
+[docs/INSTALL.md](docs/INSTALL.md) covers the checksum, updating and a clean uninstall.
 
 ## What Alviss is
 
