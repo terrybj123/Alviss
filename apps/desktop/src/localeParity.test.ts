@@ -402,54 +402,15 @@ const VERBATIM_ALLOWED = new Set<string>([
   "workspaceSecurity.ruleField.tag",
   "workspaceSecurity.slice",
   "workspaceSecurity.slices",
-  // The chat ships in English and Simplified Chinese only (plan §4.1): the
-  // other eight bundles carry the English string as a placeholder until the
-  // panel is translated, which is a decision, not a forgotten translation.
-  "ai.addCustom",
-  "ai.address",
-  "ai.back",
-  "ai.cancel",
-  "ai.context",
-  "ai.contextNone",
-  "ai.contextNote",
-  "ai.emptyChat",
-  "ai.errorContext",
-  "ai.errorKey",
-  "ai.errorModel",
-  "ai.errorNetwork",
-  "ai.errorRate",
-  "ai.errorServer",
-  "ai.key",
-  "ai.keyHint",
-  "ai.keyNotStored",
-  "ai.keyStored",
-  "ai.model",
-  "ai.name",
-  "ai.dragToResize",
-  "ai.edit",
-  "ai.emptyAnswer",
-  "ai.modelHint",
-  "ai.protocol",
-  "ai.protocolOpenAi",
+  // A product name and a brand are the same in every language, and "Name" is
+  // the German word for it (2026-11-21).
   "ai.protocolAnthropic",
-  "ai.newChat",
-  "ai.noModel",
-  "ai.noProviders",
-  "ai.open",
-  "ai.placeholder",
-  "ai.providers",
-  "ai.remove",
-  "ai.save",
-  "ai.send",
-  "ai.sending",
-  "ai.stop",
-  "ai.test",
-  "ai.testEmpty",
-  "ai.testOk",
-  "ai.testing",
-  "ai.textSize",
   "ai.title",
-  "ai.usage",
+  "ai.name",
+  // The chat ships in English, Simplified Chinese, German (maintained) and
+  // French and Japanese (machine, marked beta). The remaining bundles carry the
+  // English string as a placeholder, which is a decision, not a forgotten
+  // translation — so their entries left this list on 2026-11-21.
 // count: 78
 ]);
 

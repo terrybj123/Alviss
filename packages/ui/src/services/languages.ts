@@ -13,31 +13,38 @@ export interface AppLanguage {
   code: string;
   /** Native self-name — shown untranslated in the language picker. */
   nativeName: string;
+  /**
+   * True while the translation is machine-made and has not been reviewed by a
+   * native speaker. The picker says so; nothing is hidden (2026-11-21).
+   */
+  beta?: boolean;
 }
 
 export const APP_LANGUAGES: AppLanguage[] = [
   { code: "en", nativeName: "English" },
   { code: "de", nativeName: "Deutsch" },
-  { code: "fr", nativeName: "Français" },
+  { code: "fr", nativeName: "Français", beta: true },
   { code: "es", nativeName: "Español" },
   { code: "pt-BR", nativeName: "Português (Brasil)" },
   { code: "it", nativeName: "Italiano" },
   { code: "nl", nativeName: "Nederlands" },
   { code: "pl", nativeName: "Polski" },
   { code: "zh-CN", nativeName: "简体中文" },
-  { code: "ja", nativeName: "日本語" },
+  { code: "ja", nativeName: "日本語", beta: true },
 ];
 
 export const DEFAULT_LANGUAGE = "en";
 
 /**
- * The UI languages this build OFFERS (Alviss Phase 1: English and Simplified
- * Chinese). `APP_LANGUAGES` stays the asset registry — the parity tests, the
+ * The UI languages this build OFFERS, in the order the picker shows them:
+ * English (source), Simplified Chinese (written by hand), German (the upstream
+ * author's own language), French and Japanese (machine translations, marked
+ * beta). `APP_LANGUAGES` stays the asset registry — the parity tests, the
  * date-fns loaders and the vault templates still know every bundle — while this
- * list is what the language picker shows and what an OS locale may resolve to.
+ * list is what the picker shows and what an OS locale may resolve to.
  */
-export const OFFERED_LANGUAGES: AppLanguage[] = APP_LANGUAGES.filter(
-  (l) => l.code === "en" || l.code === "zh-CN",
+export const OFFERED_LANGUAGES: AppLanguage[] = ["en", "zh-CN", "de", "fr", "ja"].map(
+  (code) => APP_LANGUAGES.find((l) => l.code === code)!,
 );
 
 /** Clamps any language tag to one this build offers; English otherwise. */

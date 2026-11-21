@@ -1,99 +1,94 @@
-# The AI assistant
+# AI アシスタント
 
-Alviss has a chat inside the editor. It answers from the note you are reading,
-streams the answer as it is written, and talks straight to the model provider
-you configure. Alviss runs no AI service of its own and never proxies your
-requests.
+Alviss にはエディター内のチャットがあります。読んでいるノートから答え、回答は書きながら
+表示され、設定したモデルのプロバイダーと直接やり取りします。Alviss 自身は AI サービスを
+持たず、リクエストを中継しません。
 
-## Opening the chat
+## チャットを開く
 
-Click **Open the chat** at the top of the left sidebar, press **⌘⇧K**, or open the
-command palette (**⌘K**) and choose **Open the chat**. The chat docks to the right
-of the note, so you can read and ask at the same time. Drag the divider to change
-its width; the width is remembered per window. Close it with the **×** in its
-header, or **⌘⇧K** again.
+左サイドバー上部の **チャットを開く** をクリックするか、**⌘⇧K** を押すか、コマンドパレット
+（**⌘K**）で **チャットを開く** を選びます。チャットはノートの右側にドッキングするので、
+読みながら質問できます。仕切りをドラッグすると幅が変わります。幅はウィンドウごとに記憶され
+ます。閉じるにはヘッダーの **×** か、もう一度 **⌘⇧K**。
 
-The first time, it opens on the provider list, because there is nothing to talk
-to yet.
+初回はプロバイダー一覧で開きます。まだ話す相手がいないためです。
 
-## Choosing a provider
+## プロバイダーを選ぶ
 
-Alviss brings no model of its own. You point it at one:
+Alviss はモデルを同梱していません。利用するものを指定します。
 
-| Provider | Where it runs | Key |
+| プロバイダー | 動作場所 | キー |
 |---|---|---|
-| OpenAI | cloud | yes |
-| Anthropic | cloud | yes |
-| DeepSeek | cloud | yes |
-| Ollama | on this Mac | no |
-| LM Studio | on this Mac | no |
-| Own server | anywhere | depends |
+| OpenAI | クラウド | 必要 |
+| Anthropic | クラウド | 必要 |
+| DeepSeek | クラウド | 必要 |
+| Ollama | この Mac | 不要 |
+| LM Studio | この Mac | 不要 |
+| 自分のサーバー | どこでも | 場合による |
 
-**Own server** is the general case: any endpoint that speaks the OpenAI chat
-protocol. Give it a name, its address (for example `https://your-server/v1`) and,
-if it wants one, a token. A server on this machine may use plain `http`; every
-other address must be `https`.
+**自分のサーバー** は汎用の入口です。OpenAI のチャットプロトコルを話す任意のエンドポイント。
+名前、アドレス（例 `https://your-server/v1`）、必要ならトークンを入力します。このマシン上の
+サーバーは平文の `http` を使えますが、それ以外のアドレスは `https` でなければなりません。
 
-**Test connection** asks the provider for its model list and offers it under the
-model field, so you do not have to type a model id from memory.
+**接続をテスト** はプロバイダーにモデル一覧を問い合わせ、モデル欄の下に表示します。モデル
+ID を記憶から打ち込む必要はありません。
 
-A provider you added stays editable: its name, address, model and key can be changed
-later, and **Remove** deletes it together with its key.
+追加したプロバイダーは後から編集できます。名前、アドレス、モデル、キーを変更でき、**削除**
+はキーごと消します。
 
-## Your key
+## キー
 
-The key is stored in the macOS keychain and read by the application's native
-process when a request is made. It is never shown again — not in the panel, not
-in the settings, not in a log — and it is never written into your vault. Two
-different providers can hold different keys.
+キーは macOS のキーチェーンに保存され、リクエストのたびにアプリのネイティブプロセスが読み
+ます。二度と表示されません — パネルにも、設定にも、ログにも — そして Vault に書き込まれる
+こともありません。プロバイダーごとに別のキーを持てます。
 
-*Remove* deletes the key from the keychain as well.
+*削除* はキーチェーンからもキーを消します。
 
-## What is sent
+## 送信される内容
 
-Whatever the question needs:
+質問に必要なものだけです。
 
-1. A short instruction describing the assistant's role.
-2. The note you are reading, when **Current note** is on. Switch it to **No note** to send the question alone.
-3. The conversation so far.
+1. アシスタントの役割を説明する短い指示。
+2. **現在のノート** がオンのとき、読んでいるノート。**ノートなし** に切り替えると質問だけを送ります。
+3. これまでの会話。
 
-A long note is cut at a fixed limit before it is sent. Nothing else leaves the
-machine: no vault listing, no file names, no settings.
+長いノートは送信前に一定の上限で切り詰められます。それ以外はマシンの外に出ません。Vault の
+一覧も、ファイル名も、設定も送りません。
 
-## Answers
+## 回答
 
-The answer appears as it is written and stays in the conversation when it
-finishes. **Stop** ends an answer mid-sentence and keeps what arrived.
+回答は書きながら表示され、終わると会話に残ります。**停止** は文の途中で回答を終え、届いた
+ところまでを残します。
 
-Answers are rendered as Markdown, with everything escaped: a model that writes
-HTML produces text, not a page.
+回答は Markdown として描画され、すべてエスケープされます。HTML を書くモデルはページでは
+なくテキストを生みます。
 
-**New conversation** clears the panel. The last conversation is remembered per
-vault and comes back when you reopen the chat.
+**新しい会話** はパネルを空にします。最後の会話は Vault ごとに記憶され、次に開いたときに戻
+ります。
 
-The row under the composer carries the provider switch on the left and **Send** on the right, so the
-box you type in takes the whole width of the panel.
+入力欄の下の行には、左にプロバイダーの切り替え、右に **送信** が並びます。入力欄はパネルの
+幅いっぱいを使えます。
 
-Type in the composer at the bottom of the panel. **Enter** sends and **Shift+Enter** starts a new
-line; while a Chinese or Japanese input method is composing, Enter belongs to the candidates, not to
-the chat. Drag the bar just above the composer to make it taller — the height is remembered.
+パネル下部の入力欄に入力します。**Enter** で送信、**Shift+Enter** で改行。中国語や日本語の
+入力メソッドが変換中なら、Enter は候補のためのもので、送信にはなりません。入力欄の上の
+バーをドラッグすると高くなり、高さは記憶されます。
 
-The **Aa** button in the header cycles the text size (small, default, large), and the choice is
-remembered for the next conversation.
+ヘッダーの **Aa** ボタンで文字サイズを切り替えます（小、標準、大）。選択は次の会話でも記憶
+されます。
 
-## When something fails
+## 失敗したとき
 
-The message names the fix, not just the fault:
+メッセージは故障ではなく直し方を示します。
 
-| Message | What to do |
+| メッセージ | 対処 |
 |---|---|
-| The provider rejected the key | open **Providers**, enter a new key |
-| The provider does not know this model | check the model id; use **Test connection** to list them |
-| The provider is rate limiting this key | wait a moment |
-| The note and the question do not fit | switch the context off, or choose a model with a larger window |
-| The provider could not be reached | check the address and your connection |
+| プロバイダーがキーを拒否しました | **プロバイダー** を開き、新しいキーを入力 |
+| プロバイダーはこのモデルを知りません | モデル ID を確認し、**接続をテスト** で一覧を取得 |
+| このキーはレート制限中です | 少し待つ |
+| ノートと質問が収まりません | コンテキストを切るか、より大きなウィンドウのモデルを選ぶ |
+| プロバイダーに接続できませんでした | アドレスと接続を確認 |
 
-## What the assistant does not do
+## アシスタントがしないこと
 
-It does not write to your vault. It has no tools, no internet access of its own,
-and it cannot change a file. A direct edit stays yours to make.
+Vault には書き込みません。ツールも、独自のインターネットアクセスもなく、ファイルを変更でき
+ません。直接の編集はあなたの手で行います。

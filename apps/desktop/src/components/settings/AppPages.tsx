@@ -199,7 +199,7 @@ export const AppearancePage: React.FC<AppearancePageProps> = (p) => {
               ariaLabel={t("settings.language")}
               value={p.appLanguage}
               onChange={p.onLanguage}
-              options={OFFERED_LANGUAGES.map((l) => ({ value: l.code, label: l.nativeName }))}
+              options={OFFERED_LANGUAGES.map((l) => ({ value: l.code, label: l.beta ? `${l.nativeName} (beta)` : l.nativeName }))}
             />
           </div>
         </SettingRow>

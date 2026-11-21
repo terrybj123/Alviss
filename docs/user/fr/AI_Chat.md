@@ -1,99 +1,98 @@
-# The AI assistant
+# L’assistant IA
 
-Alviss has a chat inside the editor. It answers from the note you are reading,
-streams the answer as it is written, and talks straight to the model provider
-you configure. Alviss runs no AI service of its own and never proxies your
-requests.
+Alviss intègre un chat dans l’éditeur. Il répond à partir de la note que vous lisez,
+affiche la réponse au fil de son écriture et parle directement au fournisseur de
+modèle que vous configurez. Alviss n’exploite aucun service d’IA et ne fait jamais
+transiter vos requêtes par un serveur.
 
-## Opening the chat
+## Ouvrir le chat
 
-Click **Open the chat** at the top of the left sidebar, press **⌘⇧K**, or open the
-command palette (**⌘K**) and choose **Open the chat**. The chat docks to the right
-of the note, so you can read and ask at the same time. Drag the divider to change
-its width; the width is remembered per window. Close it with the **×** in its
-header, or **⌘⇧K** again.
+Cliquez sur **Ouvrir le chat** en haut de la barre latérale gauche, appuyez sur **⌘⇧K**, ou ouvrez
+la palette de commandes (**⌘K**) et choisissez **Ouvrir le chat**. Le chat s’ancre à droite de la
+note, pour lire et demander en même temps. Faites glisser le séparateur pour changer sa largeur ;
+la largeur est mémorisée par fenêtre. Fermez avec le **×** de l’en-tête, ou **⌘⇧K** à nouveau.
 
-The first time, it opens on the provider list, because there is nothing to talk
-to yet.
+La première fois, il s’ouvre sur la liste des fournisseurs, faute de quoi que ce soit à qui parler.
 
-## Choosing a provider
+## Choisir un fournisseur
 
-Alviss brings no model of its own. You point it at one:
+Alviss n’embarque aucun modèle. Vous le pointez vers un :
 
-| Provider | Where it runs | Key |
+| Fournisseur | Où il tourne | Clé |
 |---|---|---|
-| OpenAI | cloud | yes |
-| Anthropic | cloud | yes |
-| DeepSeek | cloud | yes |
-| Ollama | on this Mac | no |
-| LM Studio | on this Mac | no |
-| Own server | anywhere | depends |
+| OpenAI | dans le cloud | oui |
+| Anthropic | dans le cloud | oui |
+| DeepSeek | dans le cloud | oui |
+| Ollama | sur ce Mac | non |
+| LM Studio | sur ce Mac | non |
+| Serveur personnel | n’importe où | selon le cas |
 
-**Own server** is the general case: any endpoint that speaks the OpenAI chat
-protocol. Give it a name, its address (for example `https://your-server/v1`) and,
-if it wants one, a token. A server on this machine may use plain `http`; every
-other address must be `https`.
+**Serveur personnel** est le cas général : tout point d’accès qui parle le protocole de chat
+d’OpenAI. Donnez-lui un nom, son adresse (par exemple `https://your-server/v1`) et, s’il en veut
+une, un jeton. Un serveur sur cette machine peut utiliser `http` simple ; toute autre adresse doit
+être en `https`.
 
-**Test connection** asks the provider for its model list and offers it under the
-model field, so you do not have to type a model id from memory.
+**Tester la connexion** demande au fournisseur sa liste de modèles et la propose sous le champ
+modèle, pour ne pas saisir un identifiant de mémoire.
 
-A provider you added stays editable: its name, address, model and key can be changed
-later, and **Remove** deletes it together with its key.
+Un fournisseur ajouté reste modifiable : son nom, son adresse, son modèle et sa clé peuvent être
+changés plus tard, et **Supprimer** l’efface avec sa clé.
 
-## Your key
+## Votre clé
 
-The key is stored in the macOS keychain and read by the application's native
-process when a request is made. It is never shown again — not in the panel, not
-in the settings, not in a log — and it is never written into your vault. Two
-different providers can hold different keys.
+La clé est conservée dans le trousseau de macOS et lue par le processus natif de l’application au
+moment d’une requête. Elle n’est plus jamais affichée — ni dans le panneau, ni dans les réglages, ni
+dans un journal — et n’est jamais écrite dans votre coffre. Deux fournisseurs différents peuvent
+détenir des clés différentes.
 
-*Remove* deletes the key from the keychain as well.
+*Supprimer* efface aussi la clé du trousseau.
 
-## What is sent
+## Ce qui est envoyé
 
-Whatever the question needs:
+Ce dont la question a besoin :
 
-1. A short instruction describing the assistant's role.
-2. The note you are reading, when **Current note** is on. Switch it to **No note** to send the question alone.
-3. The conversation so far.
+1. Une courte consigne décrivant le rôle de l’assistant.
+2. La note que vous lisez, quand **Note actuelle** est activée. Passez à **Sans note** pour n’envoyer que la question.
+3. La conversation jusqu’ici.
 
-A long note is cut at a fixed limit before it is sent. Nothing else leaves the
-machine: no vault listing, no file names, no settings.
+Une note longue est coupée à une limite fixe avant l’envoi. Rien d’autre ne quitte la machine :
+aucune liste de coffre, aucun nom de fichier, aucun réglage.
 
-## Answers
+## Les réponses
 
-The answer appears as it is written and stays in the conversation when it
-finishes. **Stop** ends an answer mid-sentence and keeps what arrived.
+La réponse apparaît au fil de l’écriture et reste dans la conversation une fois terminée.
+**Arrêter** interrompt une réponse en pleine phrase et garde ce qui est arrivé.
 
-Answers are rendered as Markdown, with everything escaped: a model that writes
-HTML produces text, not a page.
+Les réponses sont rendues en Markdown, entièrement échappées : un modèle qui écrit du HTML produit
+du texte, pas une page.
 
-**New conversation** clears the panel. The last conversation is remembered per
-vault and comes back when you reopen the chat.
+**Nouvelle conversation** vide le panneau. La dernière conversation est mémorisée par coffre et
+revient à la réouverture du chat.
 
-The row under the composer carries the provider switch on the left and **Send** on the right, so the
-box you type in takes the whole width of the panel.
+La ligne sous la zone de saisie porte le sélecteur de fournisseur à gauche et **Envoyer** à droite,
+pour que la zone de saisie occupe toute la largeur du panneau.
 
-Type in the composer at the bottom of the panel. **Enter** sends and **Shift+Enter** starts a new
-line; while a Chinese or Japanese input method is composing, Enter belongs to the candidates, not to
-the chat. Drag the bar just above the composer to make it taller — the height is remembered.
+Saisissez dans la zone en bas du panneau. **Entrée** envoie, **Maj+Entrée** commence une nouvelle
+ligne ; pendant qu’une méthode de saisie chinoise ou japonaise compose, Entrée appartient aux
+candidats, pas au chat. Faites glisser la barre au-dessus de la zone pour l’agrandir — la hauteur
+est mémorisée.
 
-The **Aa** button in the header cycles the text size (small, default, large), and the choice is
-remembered for the next conversation.
+Le bouton **Aa** de l’en-tête fait défiler la taille du texte (petite, par défaut, grande), et le
+choix est mémorisé pour la conversation suivante.
 
-## When something fails
+## Quand quelque chose échoue
 
-The message names the fix, not just the fault:
+Le message nomme le remède, pas seulement la panne :
 
-| Message | What to do |
+| Message | Que faire |
 |---|---|
-| The provider rejected the key | open **Providers**, enter a new key |
-| The provider does not know this model | check the model id; use **Test connection** to list them |
-| The provider is rate limiting this key | wait a moment |
-| The note and the question do not fit | switch the context off, or choose a model with a larger window |
-| The provider could not be reached | check the address and your connection |
+| Le fournisseur a refusé la clé | ouvrir **Fournisseurs**, saisir une nouvelle clé |
+| Le fournisseur ne connaît pas ce modèle | vérifier l’identifiant ; utiliser **Tester la connexion** pour les lister |
+| Le fournisseur limite cette clé | patienter un instant |
+| La note et la question ne tiennent pas | couper le contexte, ou choisir un modèle à fenêtre plus large |
+| Le fournisseur est injoignable | vérifier l’adresse et votre connexion |
 
-## What the assistant does not do
+## Ce que l’assistant ne fait pas
 
-It does not write to your vault. It has no tools, no internet access of its own,
-and it cannot change a file. A direct edit stays yours to make.
+Il n’écrit pas dans votre coffre. Il n’a pas d’outils, pas d’accès internet propre et ne peut pas
+modifier un fichier. Une modification directe reste votre affaire.
