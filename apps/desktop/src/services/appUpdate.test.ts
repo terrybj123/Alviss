@@ -28,7 +28,7 @@ const release = { version: "9.9.9" };
 
 beforeEach(() => {
   invoke.mockReset();
-  getIdentifier.mockReset().mockResolvedValue("com.plainva.desktop");
+  getIdentifier.mockReset().mockResolvedValue("com.alviss.desktop");
   check.mockReset().mockResolvedValue(release);
 });
 
@@ -55,7 +55,7 @@ describe("app update check", () => {
   });
 
   it("does not offer a release to a dev or Labs build, managed or not", async () => {
-    getIdentifier.mockResolvedValue("com.plainva.desktop.labs");
+    getIdentifier.mockResolvedValue("com.alviss.desktop.labs");
     invoke.mockResolvedValue(null);
     expect(await checkForAppUpdate()).toEqual({ status: "no-release" });
     expect(check).not.toHaveBeenCalled();

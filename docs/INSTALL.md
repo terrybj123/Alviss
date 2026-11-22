@@ -4,7 +4,7 @@ Alviss is a macOS app, distributed as a download from this repository's
 [releases](https://github.com/terrybj123/Alviss/releases). There is no App Store
 listing and no account to create.
 
-> **0.1.2 is signed and notarized by Apple**, so macOS verifies it by itself: download, drag,
+> **0.1.3 is signed and notarized by Apple**, so macOS verifies it by itself: download, drag,
 > open. The Gatekeeper workaround in §3 is only needed for the older 0.1.0 build, which had no
 > Apple certificate.
 >
@@ -22,7 +22,7 @@ listing and no account to create.
 
 1. Open the [latest release](https://github.com/terrybj123/Alviss/releases/latest), or take the
    file directly:
-   [Alviss-0.1.2-macos-universal.zip](https://github.com/terrybj123/Alviss/releases/download/alviss-v0.1.2/Alviss-0.1.2-macos-universal.zip).
+   [Alviss-0.1.3-macos-universal.zip](https://github.com/terrybj123/Alviss/releases/download/alviss-v0.1.3/Alviss-0.1.3-macos-universal.zip).
 2. Download the `.zip` — it sits under **Assets** on the release page, named
    `Alviss-<version>-macos-universal.zip`.
 3. Double-click it, then drag **Alviss.app** into **Applications**.
@@ -63,7 +63,7 @@ this download yourself. Do not run it on a file you did not download from this
 repository.
 
 After either step Alviss opens normally, including updates within its own version line. Installing
-0.1.2 or newer needs none of this.
+0.1.3 or newer needs none of this.
 
 ## 4. Your first five minutes
 

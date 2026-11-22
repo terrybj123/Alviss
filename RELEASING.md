@@ -79,8 +79,23 @@ open the chat (`⌘⇧K`).
    prereleases out of `/releases/latest`, and on 2026-11-15 the single installable build was marked
    that way, so every "latest" link led to an empty list and nobody could find the download. While
    it is the only build, publish it normally and say "developer preview" in the title.
-4. Update the updater manifest (`latest.json`) the app reads:
-   `https://github.com/terrybj123/Alviss/releases/latest/download/latest.json`.
+4. **Publish the in-app update feed.** The app reads one URL:
+   `https://github.com/terrybj123/Alviss/releases/latest/download/latest.json` — that file has to be
+   an asset of the newest release, next to the archive it points at.
+
+   ```bash
+   # the tarball and its signature come out of `tauri build` (createUpdaterArtifacts)
+   BUNDLE=apps/desktop/src-tauri/target/universal-apple-darwin/release/bundle/macos
+   # upload $BUNDLE/Alviss.app.tar.gz as Alviss-<version>-universal.app.tar.gz
+   node scripts/updater-manifest.mjs <version> \
+     "https://github.com/terrybj123/Alviss/releases/download/alviss-v<version>/Alviss-<version>-universal.app.tar.gz" \
+     "$BUNDLE/Alviss.app.tar.gz.sig" latest.json "What changed"
+   # upload latest.json to the same release
+   ```
+
+   One universal tarball serves both architectures: the generator writes
+   `darwin-aarch64` and `darwin-x86_64` entries with the same URL and signature, which is what the
+   updater looks up (`{os}-{arch}`).
 5. Keep `NOTICE` accurate: it names the upstream base commit and the modifications. A release
    whose `NOTICE` is stale is a licence problem, not a documentation problem.
 

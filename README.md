@@ -11,7 +11,7 @@ works with the provider you choose.
 
 ## Install
 
-**[Download Alviss-0.1.2-macos-universal.zip](https://github.com/terrybj123/Alviss/releases/download/alviss-v0.1.2/Alviss-0.1.2-macos-universal.zip)**
+**[Download Alviss-0.1.3-macos-universal.zip](https://github.com/terrybj123/Alviss/releases/download/alviss-v0.1.3/Alviss-0.1.3-macos-universal.zip)**
 — macOS 13.3 or newer, Apple Silicon or Intel, one universal app.
 It speaks **English, 简体中文, Deutsch**, and — marked beta — **Français** and **日本語**;
 switch in **Settings → Appearance → Language**.

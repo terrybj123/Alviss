@@ -25,7 +25,7 @@ export type UpdateCheckResult =
  * source and must never offer — or install — the public release over
  * themselves; their overlays also clear the updater endpoints.
  */
-const RELEASE_IDENTIFIER = "com.plainva.desktop";
+export const RELEASE_IDENTIFIER = "com.alviss.desktop";
 
 async function isReleaseInstall(): Promise<boolean> {
   try {
